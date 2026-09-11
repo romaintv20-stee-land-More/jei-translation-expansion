@@ -1,0 +1,78 @@
+{
+  "minecraft_version": "1.9.4",
+  "jei_version": "3.6.8",
+  "upstream_commit": "bd9fcad11a8b92d181fc8c2ec976e31c7467799a",
+  "base_scope_manifest": "upstream/minecraft-1.9-language-scope.json",
+  "scope_unchanged_from_minecraft_1_9": true,
+  "scope_reuse_reason": "Minecraft 1.9.4 points to the exact same asset-index id and SHA-1 as the audited Minecraft 1.9 target: id 1.9, SHA-1 d7aae43ea69d80cc3441bee4179abd791f6534cd. Therefore the raw vanilla language inventory is identical and no language-code policy reclassification is required.",
+  "raw_language_count": 90,
+  "selected_scope_count": 70,
+  "addon_full_locale_count": 63,
+  "addon_full_locales_source": "Use the exact addon_full_locales array from upstream/minecraft-1.9-language-scope.json.",
+  "documented_full_english_fallback_locales": [
+    "gv_IM",
+    "kw_GB",
+    "se_NO",
+    "br_FR",
+    "fo_FO",
+    "fy_NL",
+    "gd_GB",
+    "ksh_DE",
+    "li_LI",
+    "so_SO"
+  ],
+  "documented_full_english_fallback_count": 10,
+  "translated_or_ai_assisted_full_locale_count": 53,
+  "minecraft_facing_jei_upstream_locales": [
+    "en_US",
+    "de_DE",
+    "fi_FI",
+    "fr_FR",
+    "ko_KR",
+    "ru_RU",
+    "zh_CN"
+  ],
+  "upstream_complete_no_addon_locales": [
+    "en_US"
+  ],
+  "upstream_missing_key_supplement_locales": [
+    "de_DE",
+    "fi_FI",
+    "fr_FR",
+    "ko_KR",
+    "ru_RU",
+    "zh_CN"
+  ],
+  "upstream_missing_key_supplement_locale_count": 6,
+  "jei_upstream_non_minecraft_locale_files": [
+    "nb_NO"
+  ],
+  "norwegian_policy": {
+    "minecraft_locale": "no_NO",
+    "jei_upstream_non_matching_locale": "nb_NO",
+    "action": "Keep no_NO as the Minecraft-facing full addon locale. Preserve JEI's nb_NO upstream file and do not treat it as an alias."
+  },
+  "translation_delta": {
+    "base_generation": "g3-mc1.9",
+    "unchanged_key_and_english_value_count": 76,
+    "added_key_count": 3,
+    "changed_english_value_count": 1,
+    "removed_key_count": 0,
+    "reviewed_entries_per_full_addon_locale": 4,
+    "added_keys": [
+      "jei.tooltip.cheat.mode",
+      "config.jei.advanced.hideLaggyModelsEnabled",
+      "config.jei.advanced.hideLaggyModelsEnabled.comment"
+    ],
+    "changed_english_value_keys": [
+      "gui.jei.category.craftingTable"
+    ]
+  },
+  "upstream_supplement_policy": {
+    "preserve_existing_upstream_keys": true,
+    "never_carry_forward_obsolete_supplement_entries": true,
+    "notes": "ru_RU and zh_CN gained many upstream translations in JEI 3.6.8. Reconstruct the exact 1.9.4 supplements from current missing-key sets rather than blindly appending to the 1.9 supplements. fr_FR now needs a three-key supplement because the upstream file is unchanged while the English source gained three keys."
+  },
+  "source_audit": "upstream/minecraft-1.9.4-language-audit.json",
+  "english_diff": "upstream/diffs/1.9-to-1.9.4.json"
+}
