@@ -1,0 +1,81 @@
+{
+  "minecraft_version": "1.10",
+  "jei_version": "3.7.1",
+  "upstream_commit": "7f4e95d5b7620a0d304aa73243cd9b3f9737e247",
+  "base_scope_manifest": "upstream/minecraft-1.9-language-scope.json",
+  "scope_unchanged_from_minecraft_1_9": true,
+  "scope_reuse_reason": "CI verifies that Minecraft 1.10's asset index id 1.10 / SHA-1 7c2800b458376b8fc0b738382fb7784328fddda9 exposes exactly the same language-code set as the audited Minecraft 1.9 asset index. Therefore the frozen 70-language project scope carries forward unchanged.",
+  "raw_language_count": 90,
+  "selected_scope_count": 70,
+  "addon_full_locale_count": 63,
+  "addon_full_locales_source": "Use the exact addon_full_locales array from upstream/minecraft-1.9-language-scope.json.",
+  "documented_full_english_fallback_locales": [
+    "gv_IM",
+    "kw_GB",
+    "se_NO",
+    "br_FR",
+    "fo_FO",
+    "fy_NL",
+    "gd_GB",
+    "ksh_DE",
+    "li_LI",
+    "so_SO"
+  ],
+  "documented_full_english_fallback_count": 10,
+  "translated_or_ai_assisted_full_locale_count": 53,
+  "minecraft_facing_jei_upstream_locales": [
+    "en_US",
+    "de_DE",
+    "fi_FI",
+    "fr_FR",
+    "ko_KR",
+    "ru_RU",
+    "zh_CN"
+  ],
+  "upstream_complete_no_addon_locales": ["en_US"],
+  "upstream_missing_key_supplement_locales": [
+    "de_DE",
+    "fi_FI",
+    "fr_FR",
+    "ko_KR",
+    "ru_RU",
+    "zh_CN"
+  ],
+  "upstream_missing_key_supplement_locale_count": 6,
+  "jei_upstream_non_minecraft_locale_files": ["nb_NO"],
+  "norwegian_policy": {
+    "minecraft_locale": "no_NO",
+    "jei_upstream_non_matching_locale": "nb_NO",
+    "action": "Keep no_NO as the Minecraft-facing full addon locale. Preserve JEI's nb_NO upstream file and do not treat it as an alias."
+  },
+  "translation_delta": {
+    "base_generation": "g4-mc1.9.4",
+    "unchanged_key_and_english_value_count": 77,
+    "added_key_count": 0,
+    "changed_english_value_count": 1,
+    "removed_key_count": 2,
+    "new_translation_entries_required": 0,
+    "removed_keys": [
+      "config.jei.advanced.hideLaggyModelsEnabled",
+      "config.jei.advanced.hideLaggyModelsEnabled.comment"
+    ],
+    "changed_english_value_keys": ["gui.jei.category.craftingTable"],
+    "changed_value_reuse_source_generation": "g3-mc1.9"
+  },
+  "upstream_supplement_policy": {
+    "preserve_existing_upstream_keys": true,
+    "rebuild_against_exact_target_key_set": true,
+    "semantic_reversion_rule": "If an addon-owned missing key has reverted to an earlier validated English meaning, restore that earlier generation's translation rather than retaining the later semantic variant.",
+    "notes": "Filtering G4 supplements to the 1.10 target automatically removes the deleted hideLaggyModels entries. ko_KR gui.jei.category.craftingTable is then restored from G3 (제작대). ru_RU is reduced to the two color-search keys; fr_FR and zh_CN each retain only jei.tooltip.cheat.mode."
+  },
+  "translation_realization": {
+    "generation": "g5-mc1.10",
+    "policy": "translations/g5-mc1.10/policy.json",
+    "reconstruction_script": "scripts/reconstruct_1_10.py",
+    "delta_validator": "scripts/validate_1_10_delta.py",
+    "complete_validator": "scripts/validate_1_10_complete.py",
+    "status": "implementation-pending"
+  },
+  "source_audit": "upstream/minecraft-1.10-language-audit.json",
+  "english_diff": "upstream/diffs/1.9.4-to-1.10.json"
+}
