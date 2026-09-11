@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "jei_translation_expansion",
+    "name": "JEI Translation Expansion",
+    "description": "Unofficial translation expansion for Just Enough Items (JEI). Adds missing JEI language support for Minecraft 1.8.9 without adding gameplay content.",
+    "version": "@PROJECT_VERSION@",
+    "mcversion": "1.8.9",
+    "url": "https://github.com/romaintv20-stee-land-More/jei-translation-expansion",
+    "updateUrl": "",
+    "authorList": ["romaintv20-stee-land-More"],
+    "credits": "Translations are AI-assisted and community-correctable. JEI by mezz is licensed under MIT.",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]
