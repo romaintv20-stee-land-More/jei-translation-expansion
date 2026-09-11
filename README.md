@@ -1,6 +1,6 @@
 # JEI Translation Expansion
 
-Unofficial localization companion for **Just Enough Items (JEI)**. The goal is to add missing languages and complete incomplete JEI translations across supported Minecraft versions and mod loaders without unnecessarily replacing translations already provided by JEI.
+Unofficial localization companion for **Just Enough Items (JEI)**. The project adds missing languages and completes incomplete JEI translations across historical Minecraft versions while preserving translations already shipped by JEI.
 
 > This project is independent and unofficial. It is not affiliated with or endorsed by mezz or the JEI project.
 
@@ -10,34 +10,38 @@ Unofficial localization companion for **Just Enough Items (JEI)**. The goal is t
 - JEI CurseForge: https://www.curseforge.com/minecraft/mc-mods/jei
 - This project: https://github.com/romaintv20-stee-land-More/jei-translation-expansion
 
-## Project goals
+## Fixed project rules
 
-- Audit JEI translation keys across Minecraft versions before translating.
-- Group compatible Minecraft/JEI versions into localization generations for internal translation reuse.
-- Add missing real-world languages supported by Minecraft.
-- Complete missing keys in languages already included by JEI.
-- Preserve upstream JEI translations by default; only override an existing upstream key when explicitly reviewed and allowlisted.
-- Preserve formatting placeholders such as `%s`, `%d`, indexed placeholders, escaped characters and other formatting tokens.
-- Avoid blindly reusing a translation when the same key changes English meaning between JEI generations.
-- Exclude novelty/fantasy languages and initially defer most regional/orthographic variants when a primary form is already covered.
-- Prefer an English fallback over an unreliable translation for low-confidence languages.
-- Produce **one dedicated release JAR per Minecraft version**. Compatible translations may be reused internally, but multiple Minecraft versions are never grouped into the same JAR.
+- Audit the real upstream endpoint before translating a Minecraft version.
+- Reuse a translation only when both the localization key and English meaning are unchanged.
+- Preserve JEI upstream translations; selected upstream locales receive only exact missing-key supplements unless an override is explicitly approved.
+- Preserve placeholders and technical literals exactly.
+- Prefer a documented English fallback over an unreliable translation.
+- Focus initially on real-world primary Minecraft languages; constructed/novelty languages and most regional variants are deferred.
+- **One Minecraft version = one final release JAR. Never combine several Minecraft versions in one JAR.**
 
 ## AI-assisted translation policy
 
-Translations may be created or assisted with artificial intelligence. AI output is not treated as automatically correct. The project uses automated QA and manual/community review where possible to check key coverage, JSON/LANG syntax, placeholders, unchanged technical tokens, consistency and compatibility between JEI generations.
-
-If a language cannot be translated with sufficient confidence, the project keeps a documented English fallback rather than publishing a knowingly unreliable translation.
+Translations may be created or assisted with AI, but AI output is not treated as automatically correct. Automated QA checks exact key coverage, resource syntax, placeholders, technical tokens, semantic reuse boundaries, upstream ownership and deterministic reconstruction. Low-confidence language content uses an explicit English fallback instead of an invented translation.
 
 ## Current status
 
-Audit and translation work is progressing chronologically through historical JEI/Minecraft versions. The selected translation/reconstruction scopes are complete and CI-validated for **Minecraft 1.8, 1.8.9, 1.9, 1.9.4, 1.10 and 1.10.2**.
+The selected translation/reconstruction scopes are complete and CI-validated for:
 
-Minecraft 1.10 / JEI 3.7.1 expands the selected project scope to 72 languages after Minecraft adds Hawaiian and Mongolian. Minecraft 1.10.2 / JEI 3.14.8 keeps that 72-language scope but JEI itself expands to 23 upstream locale files: within the selected scope, 4 locales are complete upstream, 16 receive exact missing-key-only supplements, and 52 remain addon-owned full locale files. G6 is CI-validated by workflow run **34642956606**.
+`1.8` → `1.8.9` → `1.9` → `1.9.4` → `1.10` → `1.10.2` → `1.11` → `1.11.2`.
 
-Version-specific runtime/JAR validation may be finalized separately while auditing continues to later Minecraft versions. The next chronological historical JEI/Minecraft target is determined from actual upstream branch history before translation work starts. The oldest verified JEI branch in the official upstream repository is **Minecraft 1.8**; the modern upstream endpoint is audited separately as the project progresses.
+Latest completed generations:
 
-For the canonical handoff and exact next steps, read [`PROJECT_STATUS.md`](PROJECT_STATUS.md) first.
+- **G7 — Minecraft 1.11 / JEI 4.1.1**: 87 keys, all semantically identical to G6; Minecraft adds only deferred constructed language `io_ido`; selected scope remains 72; 52 full addon locales + 16 exact supplements; CI **34644034423**.
+- **G8 — Minecraft 1.11.2 / JEI 4.5.1**: 93 keys; G7→G8 = 85 unchanged, 7 added, 1 removed, 1 changed; selected scope remains 72; 52 full addon locales + 19 exact supplements, with `en_us` the only selected locale complete upstream; CI **34644712028**.
+
+From Minecraft 1.11 onward JEI uses lowercase locale resource filenames such as `en_us.lang`.
+
+Historical auditing now continues with the **Minecraft 1.12 branch family**. Exact branch history and patch-version endpoints are verified before creating the next generation.
+
+Runtime-tested final JAR promotion is tracked separately from chronological translation auditing. Final artifacts belong under `release-jars/<minecraft-version>/` only after the required runtime validation.
+
+For the canonical handoff and exact next task, always read [`PROJECT_STATUS.md`](PROJECT_STATUS.md) first.
 
 ## Repository layout
 
