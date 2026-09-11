@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Stillingar
+jei.tooltip.show.all.recipes=Sýna allar uppskriftir
+jei.tooltip.delete.item=Smelltu til að eyða
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Hluti vantar
+jei.tooltip.error.recipe.transfer.inventory.full=Birgðirnar eru of fullar
+
+# Error Messages
+jei.chat.error.command.too.long=JEI verður að vera uppsett á þjóninum til að vinna úr þessari spjallskipun, því hún er of löng til að Minecraft geti sent hana.
+
+# Key Bindings
+key.jei.toggleOverlay=Sýna/fela hlutalista (Ctrl + )
+key.jei.showRecipe=Sýna uppskrift hlutar
+key.jei.showUses=Sýna notkun hlutar
+
+# Config
+config.jei.default=Sjálfgefið
+config.jei.valid=Gilt
+
+config.jei.title=Stillingar %MODNAME
+
+config.jei.mode=Hamur
+config.jei.mode.comment=Breyta hamnum sem JEI starfar í.
+config.jei.mode.cheatItemsEnabled=Svindl með hluti
+config.jei.mode.cheatItemsEnabled.comment=Gefur hluti með /give í stað þess að sýna uppskriftina.
+config.jei.mode.editEnabled=Breytingarhamur hlutalista
+config.jei.mode.editEnabled.comment=Fela eða sýna hluti með því að smella á þá í hlutalistanum.
+
+config.jei.interface=Viðmót
+config.jei.interface.comment=Valkostir sem tengjast notendaviðmótinu.
+config.jei.interface.recipeAnimationsEnabled=Uppskriftahreyfingar
+config.jei.interface.recipeAnimationsEnabled.comment=Sýna hreyfingar uppskrifta (eld í ofni, framvindustikur o.s.frv.)
+
+config.jei.search=Leit
+config.jei.search.comment=Valkostir sem tengjast leitarstikunni.
+config.jei.search.atPrefixRequiredForModName=Nota @ fyrir heiti mods
+config.jei.search.atPrefixRequiredForModName.comment=Krefjast "@ModName" til að leita eftir heiti mods í stað "ModName".
+
+config.jei.advanced=Ítarlegt
+config.jei.advanced.comment=Ítarlegar stillingar til að breyta því hvernig JEI virkar.
+config.jei.advanced.nbtKeyIgnoreList=Listi yfir hunsaða NBT-lykla
+config.jei.advanced.nbtKeyIgnoreList.comment=Listi yfir NBT-lykla sem á að hunsa þegar uppskriftir eru sóttar.
+config.jei.advanced.itemBlacklist=Svartlisti hluta
+config.jei.advanced.itemBlacklist.comment=Listi yfir hluti sem ekki eiga að birtast í hlutalistanum. Snið: modId:name[:meta]. Breytingarhamur bætir sjálfkrafa við eða fjarlægir færslur hér.
+config.jei.advanced.hideMissingModelsEnabled=Fela hluti með vantað líkan
+config.jei.advanced.hideMissingModelsEnabled.comment=Hlutir með vantað líkan verða faldir úr hlutalistanum.
+config.jei.advanced.debugModeEnabled=Villuleitarhamur
+config.jei.advanced.debugModeEnabled.comment=Bætir við ýmsu til að hjálpa við þróun JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Eyða hlutum í svindlham
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Í svindlham skaltu draga ItemStack yfir hlutalistann og smella til að eyða honum. (krefst JEI á þjóninum)
+
+config.jei.addons=Viðbætur
+config.jei.addons.comment=Flokkur fyrir stillingar JEI-viðbóta.
+
+# Edit Mode
+gui.jei.editMode.description=Breytingarhamur JEI-hlutalista:
+gui.jei.editMode.description.hide=Ctrl-smelltu til að fela.
+gui.jei.editMode.description.show=Falið. Ctrl-smelltu til að sýna.
+gui.jei.editMode.description.hide.wild=Ctrl-hægrismelltu til að fela með algildistákni.
+gui.jei.editMode.description.show.wild=Falið með algildistákni. Ctrl-hægrismelltu til að sýna.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Vinnuborð
+gui.jei.category.smelting=Bræðsla
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Eldsneyti
+gui.jei.category.fuel.burnTime=Brennslutími: %s
+gui.jei.category.brewing=Bruggun
+gui.jei.category.brewing.steps=Skref: %s
+gui.jei.category.itemDescription=Lýsing
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
