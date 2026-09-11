@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=تنظیمات
+jei.tooltip.show.all.recipes=نمایش همه دستورها
+jei.tooltip.delete.item=برای حذف کلیک کنید
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=آیتم‌های کمبود
+jei.tooltip.error.recipe.transfer.inventory.full=موجودی بیش از حد پر است
+
+# Error Messages
+jei.chat.error.command.too.long=برای پردازش این فرمان چت، JEI باید روی سرور نصب باشد، زیرا این فرمان برای ارسال توسط Minecraft بیش از حد طولانی است.
+
+# Key Bindings
+key.jei.toggleOverlay=نمایش/پنهان کردن فهرست آیتم‌ها (Ctrl + )
+key.jei.showRecipe=نمایش دستور ساخت آیتم
+key.jei.showUses=نمایش کاربردهای آیتم
+
+# Config
+config.jei.default=پیش‌فرض
+config.jei.valid=معتبر
+
+config.jei.title=تنظیمات %MODNAME
+
+config.jei.mode=حالت
+config.jei.mode.comment=حالتی را که JEI در آن کار می‌کند تغییر می‌دهد.
+config.jei.mode.cheatItemsEnabled=تقلب آیتم‌ها
+config.jei.mode.cheatItemsEnabled.comment=به‌جای نمایش دستور ساخت، آیتم‌ها را با /give می‌دهد.
+config.jei.mode.editEnabled=حالت ویرایش فهرست آیتم‌ها
+config.jei.mode.editEnabled.comment=با کلیک روی آیتم‌ها در فهرست، آن‌ها را پنهان یا نمایان کنید.
+
+config.jei.interface=رابط کاربری
+config.jei.interface.comment=گزینه‌های مربوط به رابط کاربری.
+config.jei.interface.recipeAnimationsEnabled=پویانمایی دستورها
+config.jei.interface.recipeAnimationsEnabled.comment=پویانمایی دستورها را نمایش می‌دهد (آتش کوره، نوارهای پیشرفت و غیره)
+
+config.jei.search=جستجو
+config.jei.search.comment=گزینه‌های مربوط به نوار جستجو.
+config.jei.search.atPrefixRequiredForModName=استفاده از @ برای نام مود
+config.jei.search.atPrefixRequiredForModName.comment=برای جستجو بر اساس نام مود، "@ModName" را به‌جای "ModName" الزامی می‌کند.
+
+config.jei.advanced=پیشرفته
+config.jei.advanced.comment=گزینه‌های پیشرفته برای تغییر نحوه عملکرد JEI.
+config.jei.advanced.nbtKeyIgnoreList=فهرست کلیدهای NBT نادیده‌گرفته‌شده
+config.jei.advanced.nbtKeyIgnoreList.comment=فهرست کلیدهای NBT که هنگام دریافت دستورها باید نادیده گرفته شوند.
+config.jei.advanced.itemBlacklist=فهرست سیاه آیتم‌ها
+config.jei.advanced.itemBlacklist.comment=فهرست آیتم‌هایی که نباید در فهرست آیتم‌ها نمایش داده شوند. قالب: modId:name[:meta]. حالت ویرایش به‌طور خودکار ورودی‌ها را در اینجا اضافه یا حذف می‌کند.
+config.jei.advanced.hideMissingModelsEnabled=پنهان کردن آیتم‌های بدون مدل
+config.jei.advanced.hideMissingModelsEnabled.comment=آیتم‌هایی که مدل آن‌ها موجود نیست از فهرست آیتم‌ها پنهان خواهند شد.
+config.jei.advanced.debugModeEnabled=حالت اشکال‌زدایی
+config.jei.advanced.debugModeEnabled.comment=موارد مختلفی را برای کمک به توسعه JEI اضافه می‌کند.
+config.jei.advanced.deleteItemsInCheatModeEnabled=حذف آیتم‌ها در حالت تقلب
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=در حالت تقلب، یک ItemStack را روی فهرست آیتم‌ها بکشید و برای حذف آن کلیک کنید. (به JEI روی سرور نیاز دارد)
+
+config.jei.addons=افزونه‌ها
+config.jei.addons.comment=دسته‌بندی گزینه‌های تنظیمات افزونه‌های JEI.
+
+# Edit Mode
+gui.jei.editMode.description=حالت ویرایش فهرست آیتم‌های JEI:
+gui.jei.editMode.description.hide=برای پنهان کردن Ctrl-کلیک کنید.
+gui.jei.editMode.description.show=پنهان است. برای نمایش Ctrl-کلیک کنید.
+gui.jei.editMode.description.hide.wild=برای پنهان کردن با نویسه عام، Ctrl-راست‌کلیک کنید.
+gui.jei.editMode.description.show.wild=با نویسه عام پنهان شده است. برای نمایش Ctrl-راست‌کلیک کنید.
+
+# Recipe Categories
+gui.jei.category.craftingTable=میز ساخت
+gui.jei.category.smelting=ذوب کردن
+gui.jei.category.smelting.experience=%s تجربه
+gui.jei.category.fuel=سوخت
+gui.jei.category.fuel.burnTime=زمان سوختن: %s
+gui.jei.category.brewing=معجون‌سازی
+gui.jei.category.brewing.steps=مراحل: %s
+gui.jei.category.itemDescription=توضیحات
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
