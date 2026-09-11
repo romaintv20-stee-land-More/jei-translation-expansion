@@ -1,0 +1,82 @@
+{
+  "minecraft_version": "1.11",
+  "jei_version": "4.1.1",
+  "upstream_commit": "c9fcc36ff0effec2b5239eebd2c9133da04df4bb",
+  "base_scope_manifest": "upstream/minecraft-1.10.2-language-scope.json",
+  "raw_language_count": 95,
+  "selected_scope_count": 72,
+  "selected_scope_changed_from_1_10_2": false,
+  "new_minecraft_language_codes": ["io_ido"],
+  "new_selected_primary_languages": [],
+  "new_deferred_constructed_languages": ["io_ido"],
+  "selected_scope_reuse_reason": "Minecraft 1.11 adds only io_ido (Ido), a constructed language. The project policy defers constructed non-primary languages, so all 72 G6 selected real-world primary languages carry forward unchanged.",
+  "runtime_locale_filename_case": "lowercase",
+  "runtime_locale_filename_example": "en_us.lang",
+  "selected_upstream_locale_count": 20,
+  "selected_upstream_complete_locales": ["en_us", "ru_ru", "sv_se", "uk_ua"],
+  "selected_upstream_complete_locale_count": 4,
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr",
+    "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "pl_pl", "pt_br", "zh_cn"
+  ],
+  "selected_upstream_incomplete_locale_count": 16,
+  "jei_upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 52,
+  "addon_full_locales": [
+    "af_za", "ast_es", "az_az", "be_by", "br_fr", "ca_es", "cy_gb", "da_dk",
+    "eo_uy", "et_ee", "eu_es", "fa_ir", "fil_ph", "fo_fo", "fy_nl", "ga_ie",
+    "gd_gb", "gl_es", "gv_im", "haw_us", "hi_in", "hr_hr", "hu_hu", "hy_am",
+    "id_id", "is_is", "ka_ge", "ksh_de", "kw_gb", "la_la", "lb_lu", "li_li",
+    "lv_lv", "mi_nz", "mk_mk", "mn_mn", "ms_my", "mt_mt", "nds_de", "nl_nl",
+    "no_no", "oc_fr", "ro_ro", "se_no", "sk_sk", "sl_si", "so_so", "sq_al",
+    "sr_sp", "th_th", "tr_tr", "vi_vn"
+  ],
+  "documented_full_english_fallback_locales": [
+    "gv_im", "kw_gb", "se_no", "br_fr", "fo_fo", "fy_nl", "gd_gb", "ksh_de",
+    "li_li", "so_so", "haw_us", "mn_mn"
+  ],
+  "documented_full_english_fallback_count": 12,
+  "translated_or_ai_assisted_full_locale_count": 40,
+  "translation_delta": {
+    "base_generation": "g6-mc1.10.2",
+    "unchanged_key_and_english_value_count": 87,
+    "added_key_count": 0,
+    "changed_english_value_count": 0,
+    "removed_key_count": 0,
+    "reviewed_key_count": 0,
+    "new_non_english_translation_entries_required": 0,
+    "resource_filename_case_change_only": true
+  },
+  "upstream_supplement_policy": {
+    "preserve_existing_upstream_keys": true,
+    "supplement_only_exact_missing_normal_keys": true,
+    "supplement_locales": [
+      "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr",
+      "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "pl_pl", "pt_br", "zh_cn"
+    ],
+    "persistent_g6_supplement_locales": [
+      "ar_sa", "bg_bg", "cs_cz", "el_gr", "es_es", "fi_fi", "fr_fr", "he_il",
+      "it_it", "ja_jp", "ko_kr", "lt_lt", "pl_pl", "pt_br", "zh_cn"
+    ],
+    "new_supplement_locale": "de_de",
+    "new_supplement_reuse_source": "Pinned JEI 3.14.8 de_DE upstream translation, because the English source is byte-identical and those 16 translations disappeared upstream in JEI 4.1.1.",
+    "retired_g6_supplement_locale": "sv_se",
+    "retired_reason": "JEI 4.1.1 sv_se is complete for all 84 normal target keys.",
+    "never_emit_upstream_owned_key": true
+  },
+  "norwegian_policy": {
+    "minecraft_locale": "no_no",
+    "jei_upstream_nonmatching_locale": "nb_no",
+    "action": "Keep no_no as the Minecraft-facing full addon locale. Preserve JEI's nb_no upstream file and do not treat it as an alias."
+  },
+  "translation_realization": {
+    "generation": "g7-mc1.11",
+    "policy": "translations/g7-mc1.11/policy.json",
+    "reconstruction_script": "scripts/reconstruct_1_11.py",
+    "delta_validator": "scripts/validate_1_11_delta.py",
+    "complete_validator": "scripts/validate_1_11_complete.py",
+    "status": "implementation-in-progress"
+  },
+  "source_audit": "upstream/minecraft-1.11-language-audit.json",
+  "english_diff": "upstream/diffs/1.10.2-to-1.11.json"
+}
