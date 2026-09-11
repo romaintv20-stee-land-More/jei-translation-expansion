@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Gosodiadau
+jei.tooltip.show.all.recipes=Dangos pob rysáit
+jei.tooltip.delete.item=Cliciwch i ddileu
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Eitemau ar goll
+jei.tooltip.error.recipe.transfer.inventory.full=Mae'r rhestr eiddo yn rhy llawn
+
+# Error Messages
+jei.chat.error.command.too.long=Rhaid i JEI fod wedi'i osod ar y gweinydd i drin y gorchymyn sgwrsio hwn, gan ei fod yn rhy hir i Minecraft ei anfon.
+
+# Key Bindings
+key.jei.toggleOverlay=Toglo troshaen y rhestr eitemau (Ctrl + )
+key.jei.showRecipe=Dangos rysáit yr eitem
+key.jei.showUses=Dangos defnyddiau'r eitem
+
+# Config
+config.jei.default=Diofyn
+config.jei.valid=Dilys
+
+config.jei.title=Gosodiadau %MODNAME
+
+config.jei.mode=Modd
+config.jei.mode.comment=Newid y modd y mae JEI yn gweithredu ynddo.
+config.jei.mode.cheatItemsEnabled=Twyllo eitemau
+config.jei.mode.cheatItemsEnabled.comment=Rhoi eitemau gyda /give yn lle dangos y rysáit.
+config.jei.mode.editEnabled=Modd golygu rhestr eitemau
+config.jei.mode.editEnabled.comment=Cuddio neu ddangos eitemau trwy glicio arnynt yn y rhestr eitemau.
+
+config.jei.interface=Rhyngwyneb
+config.jei.interface.comment=Dewisiadau sy'n ymwneud â'r rhyngwyneb defnyddiwr.
+config.jei.interface.recipeAnimationsEnabled=Animeiddiadau ryseitiau
+config.jei.interface.recipeAnimationsEnabled.comment=Dangos animeiddiadau ryseitiau (tân ffwrnais, bariau cynnydd, ac ati)
+
+config.jei.search=Chwilio
+config.jei.search.comment=Dewisiadau sy'n ymwneud â'r bar chwilio.
+config.jei.search.atPrefixRequiredForModName=Defnyddio @ ar gyfer enw mod
+config.jei.search.atPrefixRequiredForModName.comment=Gofyn am "@ModName" i chwilio yn ôl enw mod yn lle "ModName".
+
+config.jei.advanced=Uwch
+config.jei.advanced.comment=Dewisiadau gosod uwch i newid sut mae JEI yn gweithio.
+config.jei.advanced.nbtKeyIgnoreList=Rhestr allweddi NBT i'w hanwybyddu
+config.jei.advanced.nbtKeyIgnoreList.comment=Rhestr o allweddi NBT i'w hanwybyddu wrth nôl ryseitiau.
+config.jei.advanced.itemBlacklist=Rhestr wahardd eitemau
+config.jei.advanced.itemBlacklist.comment=Rhestr o eitemau na ddylid eu dangos yn y rhestr eitemau. Fformat: modId:name[:meta]. Bydd y modd golygu yn ychwanegu neu dynnu cofnodion yma'n awtomatig.
+config.jei.advanced.hideMissingModelsEnabled=Cuddio eitemau â modelau coll
+config.jei.advanced.hideMissingModelsEnabled.comment=Bydd eitemau â modelau coll yn cael eu cuddio o'r rhestr eitemau.
+config.jei.advanced.debugModeEnabled=Modd dadfygio
+config.jei.advanced.debugModeEnabled.comment=Ychwanegu pethau amrywiol i helpu gyda datblygu JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Dileu eitemau yn y modd twyllo
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Yn y modd twyllo, llusgwch ItemStack dros y rhestr eitemau a chlicio i'w ddileu. (mae angen JEI ar y gweinydd)
+
+config.jei.addons=Ychwanegion
+config.jei.addons.comment=Categori ar gyfer dewisiadau gosod ychwanegion JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Modd golygu rhestr eitemau JEI:
+gui.jei.editMode.description.hide=Ctrl-clic i guddio.
+gui.jei.editMode.description.show=Wedi'i guddio. Ctrl-clic i ddangos.
+gui.jei.editMode.description.hide.wild=Ctrl-de-glic i guddio gyda nod chwilio.
+gui.jei.editMode.description.show.wild=Wedi'i guddio gyda nod chwilio. Ctrl-de-glic i ddangos.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Bwrdd crefftio
+gui.jei.category.smelting=Mwyndoddi
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Tanwydd
+gui.jei.category.fuel.burnTime=Amser llosgi: %s
+gui.jei.category.brewing=Bragu
+gui.jei.category.brewing.steps=Camau: %s
+gui.jei.category.itemDescription=Disgrifiad
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
