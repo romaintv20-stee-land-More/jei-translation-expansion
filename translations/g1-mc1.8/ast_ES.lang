@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Configuración
+jei.tooltip.show.all.recipes=Amosar toles recetes
+jei.tooltip.delete.item=Calca pa desaniciar
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Oxetos que falten
+jei.tooltip.error.recipe.transfer.inventory.full=L'inventariu ta demasiao llenu
+
+# Error Messages
+jei.chat.error.command.too.long=JEI tien de tar instaláu nel sirvidor pa xestionar esti comandu de chat, porque ye demasiao llargu pa que Minecraft lu unvie.
+
+# Key Bindings
+key.jei.toggleOverlay=Amosar/anubrir la llista d'oxetos (Ctrl + )
+key.jei.showRecipe=Amosar la receta del oxetu
+key.jei.showUses=Amosar los usos del oxetu
+
+# Config
+config.jei.default=Predetermináu
+config.jei.valid=Válidu
+
+config.jei.title=Configuración de %MODNAME
+
+config.jei.mode=Mou
+config.jei.mode.comment=Camuda'l mou nel que funciona JEI.
+config.jei.mode.cheatItemsEnabled=Trampa d'oxetos
+config.jei.mode.cheatItemsEnabled.comment=Da oxetos con /give en cuenta d'amosar la receta.
+config.jei.mode.editEnabled=Mou d'edición de la llista d'oxetos
+config.jei.mode.editEnabled.comment=Anubre o amuesa oxetos calcando nellos na llista d'oxetos.
+
+config.jei.interface=Interfaz
+config.jei.interface.comment=Opciones rellacionaes cola interfaz d'usuariu.
+config.jei.interface.recipeAnimationsEnabled=Animaciones de recetes
+config.jei.interface.recipeAnimationsEnabled.comment=Amosar animaciones de recetes (fueu del fornu, barres de progresu, etc.)
+
+config.jei.search=Gueta
+config.jei.search.comment=Opciones rellacionaes cola barra de gueta.
+config.jei.search.atPrefixRequiredForModName=Usar @ pal nome del mod
+config.jei.search.atPrefixRequiredForModName.comment=Rique "@ModName" pa guetar pol nome del mod en cuenta de "ModName".
+
+config.jei.advanced=Avanzao
+config.jei.advanced.comment=Opciones avanzaes pa camudar cómo funciona JEI.
+config.jei.advanced.nbtKeyIgnoreList=Llista de claves NBT ignoraes
+config.jei.advanced.nbtKeyIgnoreList.comment=Llista de claves NBT que tienen d'ignorase al recuperar recetes.
+config.jei.advanced.itemBlacklist=Llista negra d'oxetos
+config.jei.advanced.itemBlacklist.comment=Llista d'oxetos que nun tienen d'amosase na llista d'oxetos. Formatu: modId:name[:meta]. El mou d'edición va amestar o quitar entraes equí automáticamente.
+config.jei.advanced.hideMissingModelsEnabled=Anubrir oxetos con modelos que falten
+config.jei.advanced.hideMissingModelsEnabled.comment=Los oxetos con modelos que falten van anubrise de la llista d'oxetos.
+config.jei.advanced.debugModeEnabled=Mou de depuración
+config.jei.advanced.debugModeEnabled.comment=Amesta coses variaes p'ayudar nel desenvolvimientu de JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Desaniciar oxetos nel mou trampa
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Nel mou trampa, arrastra un ItemStack enriba de la llista d'oxetos y calca pa desanicialu. (rique JEI nel sirvidor)
+
+config.jei.addons=Complementos
+config.jei.addons.comment=Categoría pa les opciones de configuración de complementos de JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Mou d'edición de la llista d'oxetos de JEI:
+gui.jei.editMode.description.hide=Ctrl-calca p'anubrir.
+gui.jei.editMode.description.show=Anubríu. Ctrl-calca p'amosar.
+gui.jei.editMode.description.hide.wild=Ctrl-calca col botón derechu p'anubrir con comodín.
+gui.jei.editMode.description.show.wild=Anubríu con comodín. Ctrl-calca col botón derechu p'amosar.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Mesa de trabayu
+gui.jei.category.smelting=Fundición
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Combustible
+gui.jei.category.fuel.burnTime=Tiempu de combustión: %s
+gui.jei.category.brewing=Ellaboración de pociones
+gui.jei.category.brewing.steps=Pasos: %s
+gui.jei.category.itemDescription=Descripción
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
