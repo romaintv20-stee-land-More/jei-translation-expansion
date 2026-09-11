@@ -31,6 +31,23 @@
       "verified": true
     },
     {
+      "branch": "1.9",
+      "audited_commit": "b2ffe6bd7734d093006de99f9dc99b2b77ce780d",
+      "minecraft": "1.9",
+      "jei": "3.3.3",
+      "loaders": ["forge"],
+      "forge": "12.16.0.1865-1.9",
+      "mcp_mappings": "snapshot_20160421",
+      "language_format": "lang",
+      "english_source": "src/main/resources/assets/jei/lang/en_US.lang",
+      "english_key_count": 77,
+      "java_source_compatibility": "1.7",
+      "java_target_compatibility": "1.7",
+      "official_locales": ["de_DE", "en_US", "fi_FI", "fr_FR", "ko_KR", "nb_NO", "ru_RU", "zh_CN"],
+      "verified": true,
+      "notes": "The branch later transitions to Minecraft 1.9.4. This Minecraft 1.9 endpoint is deliberately pinned to the last 1.9 commit immediately before transition commit d6b11a003a4a10702a36f8a97fa28cae883c9360."
+    },
+    {
       "branch": "26.2",
       "minecraft": "26.2",
       "jei": null,

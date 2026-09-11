@@ -27,6 +27,26 @@
       "removed_key_count": 2,
       "delta_key_count_per_locale": 29,
       "diff_manifest": "upstream/diffs/1.8-to-1.8.9.json"
+    },
+    {
+      "id": "g3-mc1.9",
+      "minecraft_versions": ["1.9"],
+      "jei_versions": ["3.3.3"],
+      "upstream_branch": "1.9",
+      "audited_commit": "b2ffe6bd7734d093006de99f9dc99b2b77ce780d",
+      "source": "upstream/sources/1.9/en_US.lang",
+      "key_count": 77,
+      "base_generation": "g2-mc1.8.9",
+      "storage": "delta-from-base-planned",
+      "translation_path": null,
+      "reuse_unchanged_key_count": 74,
+      "added_key_count": 2,
+      "changed_english_value_count": 1,
+      "removed_key_count": 0,
+      "delta_key_count_per_inherited_locale": 3,
+      "diff_manifest": "upstream/diffs/1.8.9-to-1.9.json",
+      "translation_scope_status": "pending-minecraft-1.9-locale-code-reconciliation",
+      "notes": "Do not create the G3 translation set until Minecraft 1.9 locale identifiers are verified. JEI adds upstream fr_FR and nb_NO; the prior project scope used no_NO, so Norwegian locale handling must be resolved first."
     }
   ],
   "rules": {
@@ -37,5 +57,5 @@
     "translation_reuse_between_versions_is_allowed": true,
     "delta_generations_must_be_reconstructed_and_validated_before_release": true
   },
-  "notes": "G1 and G2 are distinct because JEI 1.8.9 adds/removes keys and changes the English meaning of existing keys. G2 stores only the verified translation delta and inherits unchanged translations from G1 at build time. Final release policy is one Minecraft version per JAR; translation inheritance does not imply multi-version packaging."
+  "notes": "G1 and G2 are distinct because JEI 1.8.9 adds/removes keys and changes the English meaning of existing keys. G3 is a verified localization endpoint for Minecraft 1.9 / JEI 3.3.3 and differs from G2 by only three new/reviewed entries per inherited locale, but translation storage remains intentionally uncreated until the Minecraft 1.9 language-code scope is verified. Final release policy is one Minecraft version per JAR; translation inheritance never implies multi-version packaging."
 }

@@ -57,15 +57,23 @@
     "builder": "scripts/build_1_8_9.py",
     "workflow": ".github/workflows/build-1.8.9.yml",
     "successful": true,
-    "source_commit": "8100b0bf500a9a98957a090b3b758f99fe07b576",
-    "workflow_run_id": 34632271287,
+    "source_commit": "ef200a1ac1e03b09fd5c3b950c319e8ebf760647",
+    "workflow_run_id": 34632859235,
     "filename": "jei-translation-expansion-0.1.0-ci-mc1.8.9-forge.jar",
     "sha256": "029d6cdcc0f83b098a8b96f423e8fefef6722e8c0db9cd205ef33bf23e22a1e0",
     "jar_file_count": 64,
     "packaged_language_resource_count": 59,
     "actions_artifact_name": "jei-translation-expansion-mc1.8.9-prototype",
-    "actions_artifact_id": 10276756264,
+    "actions_artifact_id": 10277785240,
     "actions_artifact_retention": "14-days-from-build",
+    "static_inspection": {
+      "java_class_major_version": 51,
+      "forge_mod_annotation_descriptor_verified": true,
+      "client_side_only_verified": true,
+      "accepted_minecraft_versions_verified": true,
+      "jei_dependency_verified": true,
+      "compile_stub_absent_from_jar": true
+    },
     "final_release_archive": false
   },
   "status": {
@@ -90,6 +98,7 @@
     "JEI's mod id is exactly JEI.",
     "The prototype intentionally uses an exact JEI 2.28.18 dependency until a wider 1.8.9 JEI compatibility range is explicitly audited.",
     "The compile-only Forge Mod annotation stub is never packaged in the output JAR.",
+    "The latest successful workflow run strengthened the bytecode check to match the exact class-file annotation descriptor Lnet/minecraftforge/fml/common/Mod;.",
     "Prototype JARs are not stored in release-jars; that directory is reserved for final runtime-validated artifacts."
   ]
 }

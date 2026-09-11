@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "base": {
+    "minecraft": "1.8.9",
+    "jei": "2.28.18",
+    "source": "upstream/sources/1.8.9/en_US.lang",
+    "key_count": 75
+  },
+  "target": {
+    "minecraft": "1.9",
+    "jei": "3.3.3",
+    "upstream_branch": "1.9",
+    "audited_commit": "b2ffe6bd7734d093006de99f9dc99b2b77ce780d",
+    "source": "upstream/sources/1.9/en_US.lang",
+    "key_count": 77,
+    "normal_key_count": 74,
+    "debug_only_key_count": 3
+  },
+  "comparison": {
+    "unchanged_key_and_english_value_count": 74,
+    "added_key_count": 2,
+    "removed_key_count": 0,
+    "changed_english_value_count": 1,
+    "new_or_reviewed_translation_key_count_per_inherited_locale": 3
+  },
+  "added": {
+    "jei.tooltip.shapeless.recipe": "Shapeless Recipe",
+    "key.jei.focusSearch": "Select Search Bar"
+  },
+  "removed": {},
+  "changed_english_values": {
+    "key.jei.toggleOverlay": {
+      "base": "Toggle Item List Overlay (Ctrl + )",
+      "target": "Toggle Item List Overlay"
+    }
+  },
+  "target_official_locales": [
+    "de_DE",
+    "en_US",
+    "fi_FI",
+    "fr_FR",
+    "ko_KR",
+    "nb_NO",
+    "ru_RU",
+    "zh_CN"
+  ],
+  "scope_notes": [
+    "The upstream branch named 1.9 later moved to Minecraft 1.9.4. This audit is pinned to b2ffe6bd7734d093006de99f9dc99b2b77ce780d, the parent immediately before the Minecraft 1.9.4 transition commit d6b11a003a4a10702a36f8a97fa28cae883c9360.",
+    "fr_FR and nb_NO are present upstream at the audited Minecraft 1.9 snapshot, unlike the six-locale upstream set used for the Minecraft 1.8.9 audit.",
+    "Do not start bulk Minecraft 1.9 translation/reconstruction until the actual Minecraft 1.9 language-code scope is reconciled, especially the relationship between the project's prior no_NO scope and JEI's upstream nb_NO filename.",
+    "Existing upstream locale files must be audited for missing keys before any supplement is created. Never overwrite an upstream-owned key without explicit approval."
+  ]
+}
