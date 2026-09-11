@@ -11,6 +11,7 @@ This document tracks verified JEI/Minecraft translation endpoints. It is intenti
 | `1.9` pinned at `b2ffe6b` | 1.9 | 3.3.3 | Forge | legacy `.lang` | 77 | selected 70-language translation/reconstruction scope complete; CI green |
 | `1.9` pinned at `bd9fcad` | 1.9.4 | 3.6.8 | Forge | legacy `.lang` | 80 | selected 70-language translation/reconstruction scope complete; CI green |
 | `1.10` pinned at `7f4e95d` | 1.10 | 3.7.1 | Forge | legacy `.lang` | 78 | selected 72-language translation/reconstruction scope complete; CI green |
+| `1.10` pinned at `446af20` | 1.10.2 | 3.14.8 | Forge | legacy `.lang` | 87 | selected 72-language translation/reconstruction scope complete; CI green |
 | `26.2` | 26.2 | audit pending exact JEI release | audit pending | JSON | several hundred | partially verified |
 
 ## Minecraft 1.8 details
@@ -141,61 +142,10 @@ Verified build metadata:
 - **3 added keys**
 - **0 removed**
 - **1 changed English value**
-- four new/reviewed entries per complete addon locale
-
-Added keys:
-
-- `jei.tooltip.cheat.mode`
-- `config.jei.advanced.hideLaggyModelsEnabled`
-- `config.jei.advanced.hideLaggyModelsEnabled.comment`
-
-Changed value:
-
-- `gui.jei.category.craftingTable`: `Crafting Table` -> `Crafting`
 
 Exact comparison: `upstream/diffs/1.9-to-1.9.4.json`.
 
-### Minecraft language scope
-
-Minecraft 1.9.4 uses the exact same vanilla asset index as the audited Minecraft 1.9 target:
-
-- asset index id `1.9`
-- SHA-1 `d7aae43ea69d80cc3441bee4179abd791f6534cd`
-
-Therefore the raw 90-code inventory and the selected **70-language** project scope carry forward unchanged. The output remains **63 complete addon locales** with the same 53 translated / AI-assisted and 10 documented full-English fallback locales.
-
-### JEI 3.6.8 exact upstream completeness
-
-| Locale | Normal present | Missing normal | Addon handling |
-|---|---:|---:|---|
-| `de_DE` | 53/77 | 24 | exact missing-key supplement |
-| `en_US` | 77/77 | 0 | upstream only |
-| `fi_FI` | 58/77 | 19 | exact missing-key supplement |
-| `fr_FR` | 74/77 | 3 | exact missing-key supplement |
-| `ko_KR` | 5/77 | 72 | exact missing-key supplement |
-| `nb_NO` | 74/77 | 3 | preserve upstream; not the selected Minecraft locale code |
-| `ru_RU` | 73/77 | 4 | exact missing-key supplement |
-| `zh_CN` | 74/77 | 3 | exact missing-key supplement |
-
-Only `en_US`, `ru_RU`, and `zh_CN` changed as JEI language files between the pinned 1.9 and 1.9.4 endpoints. The G4 reconstruction deliberately filters older supplements against the exact JEI 3.6.8 missing sets, so translations newly supplied upstream are never duplicated by the addon.
-
-Special semantic review: `ko_KR` still lacks `gui.jei.category.craftingTable` upstream. Its addon-owned value was revised to `제작` to match the new generic English meaning `Crafting` rather than the previous table-specific `Crafting Table`.
-
-### G4 implementation and validation
-
-- source audit: `upstream/minecraft-1.9.4-language-audit.json`
-- scope: `upstream/minecraft-1.9.4-language-scope.json`
-- delta: `translations/g4-mc1.9.4/delta.tsv`
-- policy: `translations/g4-mc1.9.4/policy.json`
-- supplement deltas: `translations/g4-mc1.9.4/upstream-supplement-delta/`
-- reconstruction: `scripts/reconstruct_1_9_4.py`
-- delta QA: `scripts/validate_1_9_4_delta.py`
-- complete QA: `scripts/validate_1_9_4_complete.py`
-- successful validation workflow run: **34639831977**
-
-The validated target is exactly **63 complete 80-key addon locales + 6 selected missing-key-only upstream supplements**.
-
-No final 1.9.4 JAR has been promoted yet; the project is intentionally continuing version audits/translations first.
+Minecraft 1.9.4 uses the same vanilla asset index as 1.9, so the raw 90-code inventory and selected **70-language** scope carry forward unchanged. The validated target is **63 complete 80-key addon locales + 6 selected missing-key-only upstream supplements**. Successful validation workflow run: **34639831977**.
 
 ## Minecraft 1.10 / JEI 3.7.1 details
 
@@ -215,16 +165,15 @@ Verified build metadata:
 - legacy `.lang`
 - English source `upstream/sources/1.10/en_US.lang`
 - 78 keys = 75 normal + 3 debug-only
-- JEI locales: `de_DE`, `en_US`, `fi_FI`, `fr_FR`, `ko_KR`, `nb_NO`, `ru_RU`, `zh_CN`
 
 ### 1.9.4 -> 1.10 localization transition
 
 - **77 unchanged key/value pairs reusable**
 - **0 added keys**
-- **2 removed keys**: the two `hideLaggyModels` config entries
+- **2 removed keys**
 - **1 changed English value**: `gui.jei.category.craftingTable`, `Crafting` -> `Crafting Table`
 
-That changed value is an exact return to the G3 Minecraft 1.9 meaning, so G5 restores the already validated G3 translations instead of retranslating. For example, addon-owned `ko_KR` returns from G4 `제작` to G3 `제작대`.
+That changed value is an exact return to the G3 Minecraft 1.9 meaning, so G5 restores the already validated G3 translations instead of retranslating.
 
 Exact comparison: `upstream/diffs/1.9.4-to-1.10.json`.
 
@@ -232,41 +181,79 @@ Exact comparison: `upstream/diffs/1.9.4-to-1.10.json`.
 
 The live Mojang asset-index audit found **94 raw language codes**, four more than Minecraft 1.9/1.9.4:
 
-- `de_AT` — Austrian German: deferred as a regional German variant;
-- `haw_US` — Hawaiian: selected as a new primary language;
-- `mn_MN` — Mongolian: selected as a new primary language;
-- `swg_de` — Oschtallgaierisch: deferred as a regional German/Swabian variety.
+- `de_AT` — deferred regional German variant;
+- `haw_US` — selected;
+- `mn_MN` — selected;
+- `swg_de` — deferred regional German/Swabian variety.
 
-The selected scope therefore grows to **72 languages**. The target contains **65 complete addon locales**: 63 inherited from G4 plus new `haw_US` and `mn_MN`. Because reliable full technical translations were not guaranteed in this pass, those two new locales use explicit English fallbacks rather than invented translations. Total complete-locale realization is therefore **53 translated / AI-assisted + 12 documented English fallbacks**.
+The selected scope grows to **72 languages**. G5 reconstructs **65 complete addon locales** plus **6 exact upstream supplements**. Successful validation workflow run: **34641765047**.
 
-### JEI 3.7.1 exact upstream completeness
+## Minecraft 1.10.2 / JEI 3.14.8 details
 
-| Locale | Normal present | Missing normal | Addon handling |
-|---|---:|---:|---|
-| `de_DE` | 53/75 | 22 | exact missing-key supplement |
-| `en_US` | 75/75 | 0 | upstream only |
-| `fi_FI` | 58/75 | 17 | exact missing-key supplement |
-| `fr_FR` | 74/75 | 1 | only `jei.tooltip.cheat.mode` |
-| `ko_KR` | 5/75 | 70 | exact supplement; restore G3 Crafting Table wording |
-| `nb_NO` | 74/75 | 1 | preserve upstream; not selected Minecraft code |
-| `ru_RU` | 73/75 | 2 | only the color-search key/comment pair |
-| `zh_CN` | 74/75 | 1 | only `jei.tooltip.cheat.mode` |
+### Pinned endpoint
 
-The G5 QA fetches the pinned JEI files, checks their Git blob SHAs and requires every generated supplement to equal the exact set of normal keys still absent upstream.
+The final Minecraft 1.10.2 endpoint of the historical upstream branch `1.10` is:
 
-### G5 implementation and validation
+`446af20eaa73d260517f0adc737232437363f78d`
 
-- source audit: `upstream/minecraft-1.10-language-audit.json`
-- scope: `upstream/minecraft-1.10-language-scope.json`
-- policy: `translations/g5-mc1.10/policy.json`
-- deterministic reconstruction: `scripts/reconstruct_1_10.py`
-- source/scope/upstream QA: `scripts/validate_1_10_delta.py`
-- complete QA: `scripts/validate_1_10_complete.py`
-- successful validation workflow run: **34641765047**
+Verified directly from upstream build metadata:
 
-The validated target is exactly **65 complete 78-key addon locales + 6 exact missing-key-only upstream supplements**.
+- Minecraft `1.10.2`
+- JEI `3.14.8`
+- Forge `12.18.3.2254`
+- MCP mappings `snapshot_20161111`
+- Java source/target `1.6`
+- legacy `.lang`
+- English source `upstream/sources/1.10.2/en_US.lang`
+- 87 keys = 84 normal + 3 debug-only
+- 23 upstream locale files
 
-No final 1.10 JAR has been promoted yet; translation/version auditing continues first.
+The earlier transition commit `c88aa6c5c078586fa23abaa83309d293cd72ea61` is only the first 1.10.2 commit (JEI 3.7.2); it is not the final endpoint used for G6.
+
+### 1.10 -> 1.10.2 localization transition
+
+- **53 unchanged key/value pairs reusable**
+- **25 added keys**
+- **16 removed keys**
+- **9 changed English values**
+- **34 added/changed keys require review**
+
+`gui.jei.category.craftingTable` changes from `Crafting Table` back to `Crafting`, exactly matching G4, so that one semantic reversion reuses G4 translations. The other 33 added/changed entries use documented target-English fallback when no already-validated exact-semantic translation exists.
+
+Exact comparison: `upstream/diffs/1.10-to-1.10.2.json`.
+
+### Scope and upstream ownership
+
+Minecraft 1.10.2 uses the exact same asset index as Minecraft 1.10, so:
+
+- raw inventory remains **94 language codes**;
+- selected project scope remains **72 languages**.
+
+JEI 3.14.8 expands to 23 upstream locale files. Within the selected scope:
+
+- **20 selected upstream locales** exist;
+- **4 are complete upstream**: `de_DE`, `en_US`, `ru_RU`, `uk_UA`;
+- **16 are incomplete** and receive exact missing-key-only supplements;
+- **52 locales remain addon-owned full files**;
+- `en_AU`, `nb_NO`, `zh_TW` are preserved upstream but are not selected matching project locales.
+
+The 16 exact supplement locales are:
+
+`ar_SA`, `bg_BG`, `cs_CZ`, `el_GR`, `es_ES`, `fi_FI`, `fr_FR`, `he_IL`, `it_IT`, `ja_JP`, `ko_KR`, `lt_LT`, `pl_PL`, `pt_BR`, `sv_SE`, `zh_CN`.
+
+### G6 implementation and validation
+
+- source audit: `upstream/minecraft-1.10.2-language-audit.json`
+- scope: `upstream/minecraft-1.10.2-language-scope.json`
+- policy: `translations/g6-mc1.10.2/policy.json`
+- deterministic reconstruction: `scripts/reconstruct_1_10_2.py`
+- source/scope/upstream QA: `scripts/validate_1_10_2_delta.py`
+- complete QA: `scripts/validate_1_10_2_complete.py`
+- successful validation workflow run: **34642956606**
+
+The validated target is exactly **52 complete 87-key addon locale files + 16 exact missing-key-only upstream supplements**, with no addon resource emitted for the four selected locales already complete upstream.
+
+No final 1.10.2 JAR has been promoted yet; translation/version auditing continues first.
 
 ## Audit rules
 
