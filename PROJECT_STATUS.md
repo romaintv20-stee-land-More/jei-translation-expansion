@@ -74,9 +74,7 @@ Pinned endpoint: `7f4e95d5b7620a0d304aa73243cd9b3f9737e247`, direct parent of th
 - Forge `12.18.0.1999-1.10.0`; MCP `snapshot_20160518`; Java 1.7; legacy `.lang`
 - 78 keys = 75 normal + 3 debug-only
 - 77 unchanged, 0 added, 2 removed, 1 changed vs 1.9.4
-- `gui.jei.category.craftingTable`: `Crafting` -> `Crafting Table`; exact semantic return to G3, so G3 translations reused
-- Minecraft raw inventory 94 after additions `de_AT`, `haw_US`, `mn_MN`, `swg_de`
-- selected scope 72: retain `haw_US`, `mn_MN`; defer `de_AT`, `swg_de`
+- Minecraft raw inventory 94; selected scope 72
 - 65 complete addon locales + 6 exact supplements
 - 53 translated/AI-assisted + 12 documented full-English fallbacks
 - CI run **34641765047**
@@ -85,90 +83,118 @@ Pinned endpoint: `7f4e95d5b7620a0d304aa73243cd9b3f9737e247`, direct parent of th
 
 Status: **selected 72-language translation/reconstruction scope complete; CI green; final runtime-tested JAR not promoted yet**.
 
-Pinned final endpoint of historical upstream branch `1.10`:
+Pinned final endpoint of historical upstream branch `1.10`: `446af20eaa73d260517f0adc737232437363f78d`.
 
-`446af20eaa73d260517f0adc737232437363f78d`
-
-Verified directly from upstream build files:
+Verified build metadata:
 
 - Minecraft `1.10.2`
 - JEI `3.14.8`
 - Forge `12.18.3.2254`
 - MCP mappings `snapshot_20161111`
-- Java source/target **1.6**
+- Java source/target `1.6`
 - legacy `.lang`
-- English source `upstream/sources/1.10.2/en_US.lang`
+- 87 keys = 84 normal + 3 debug-only
+- G5 -> G6: 53 unchanged, 25 added, 16 removed, 9 changed
+- raw Minecraft inventory 94; selected scope 72
+- 52 addon full locales + 16 exact supplements + 4 complete upstream selected locales
+- CI run **34642956606**
 
-Important correction: an earlier handoff incorrectly recorded Forge `12.18.3.2511` and Java `1.8`. The pinned upstream commit explicitly declares Forge `12.18.3.2254` and `sourceCompatibility`/`targetCompatibility` Java `1.6`; the manifests/docs now use the verified values.
+Important correction: an earlier handoff incorrectly recorded Forge `12.18.3.2511` and Java `1.8`. The pinned upstream commit explicitly declares Forge `12.18.3.2254` and Java source/target `1.6`; current canonical docs use the verified values.
 
-#### Exact G5 -> G6 English diff
+### G7 — Minecraft 1.11 / JEI 4.1.1
 
-Target: **87 keys = 84 normal + 3 debug-only**.
+Status: **selected 72-language translation/reconstruction scope complete; CI green; final runtime-tested JAR not promoted yet**.
 
-- **53 unchanged key/value pairs** reusable
-- **25 added keys**
-- **16 removed keys**
-- **9 changed English values**
-- total reviewed added/changed keys: **34**
+The historical upstream branch `1.11` later changes to Minecraft 1.11.2 at commit `72c7ea7cf2e7f5243e1d7179aaa10fad038574bf` (`"update" for 1.11.2`). The last Minecraft 1.11 endpoint is its parent:
 
-Exact manifest: `upstream/diffs/1.10-to-1.10.2.json`.
+`c9fcc36ff0effec2b5239eebd2c9133da04df4bb`
 
-`gui.jei.category.craftingTable` changes from `Crafting Table` back to `Crafting`, exactly matching G4, so G4 translations are reused. The other 33 added/changed entries use documented target-English fallback when no already-validated exact-semantic translation exists. This avoids inventing low-confidence technical translations and protects new placeholder-bearing strings such as `%CTRL`.
+Verified build metadata:
 
-#### Minecraft scope
+- Minecraft `1.11`
+- JEI `4.1.1`
+- Forge `13.19.1.2188`
+- MCP mappings `snapshot_20161205`
+- Java source/target `1.6`
+- legacy `.lang`
+- resource locale filenames switch to **lowercase**, e.g. `en_us.lang`
+- English source `upstream/sources/1.11/en_us.lang`
 
-Minecraft 1.10.2 reuses the exact Minecraft 1.10 asset index:
+#### Exact G6 -> G7 English diff
 
-- asset index id `1.10`
-- SHA-1 `7c2800b458376b8fc0b738382fb7784328fddda9`
-- raw inventory **94 codes**
-- selected scope **72 languages**
+The pinned JEI 4.1.1 English file is byte-identical to G6 JEI 3.14.8 (same Git blob `75790131d753d64fe0cf98f3ac5c0ee67f6bd545`).
 
-#### JEI 3.14.8 ownership
+- **87 unchanged key/value pairs**
+- **0 added**
+- **0 removed**
+- **0 changed**
+- no new semantic translation entries required
 
-JEI expands to **23 upstream locale files**. Within the selected project scope:
+Exact manifest: `upstream/diffs/1.10.2-to-1.11.json`.
 
-- selected matching upstream locales: **20**
-- complete upstream selected locales: **4** — `de_DE`, `en_US`, `ru_RU`, `uk_UA`
-- incomplete selected upstream locales requiring exact supplements: **16**
-- addon-owned full locales: **52**
-- translated/AI-assisted addon full locales: **40**
-- documented full-English fallback locales: **12**
-- upstream nonmatching/unselected locales preserved untouched: `en_AU`, `nb_NO`, `zh_TW`
+#### Minecraft 1.11 scope
 
-The 16 supplement locales are:
+Live Mojang audit:
 
-`ar_SA`, `bg_BG`, `cs_CZ`, `el_GR`, `es_ES`, `fi_FI`, `fr_FR`, `he_IL`, `it_IT`, `ja_JP`, `ko_KR`, `lt_LT`, `pl_PL`, `pt_BR`, `sv_SE`, `zh_CN`.
+- asset index id `1.11`
+- SHA-1 `c64959fe73672e9b053b157f57b6aba318d0b3b5`
+- raw language inventory **95 codes**
+- only new code vs 1.10/1.10.2: `io_ido`
+- `io_ido` is Ido, a constructed language, so it remains deferred by project policy
+- selected scope therefore remains **72 languages**
 
-#### G6 implementation and validation
+#### JEI 4.1.1 ownership
 
-- source: `upstream/sources/1.10.2/en_US.lang`
-- exact diff: `upstream/diffs/1.10-to-1.10.2.json`
-- source audit: `upstream/minecraft-1.10.2-language-audit.json`
-- scope: `upstream/minecraft-1.10.2-language-scope.json`
-- policy: `translations/g6-mc1.10.2/policy.json`
-- audit script: `scripts/audit_1_10_2.py`
-- reconstruction: `scripts/reconstruct_1_10_2.py`
-- source/scope/upstream QA: `scripts/validate_1_10_2_delta.py`
-- complete QA: `scripts/validate_1_10_2_complete.py`
-- endpoint audit run: **34642438873**
-- successful complete validation run: **34642956606**
+JEI still ships 23 locale files, now lowercase. Within the selected scope:
 
-Validated result: **52 complete 87-key addon locale files + 16 exact missing-key-only upstream supplements**, with no addon file for the four selected locales already complete upstream.
+- 20 selected matching upstream locales
+- 4 complete upstream: `en_us`, `ru_ru`, `sv_se`, `uk_ua`
+- 16 incomplete upstream locales requiring exact supplements
+- 52 addon-owned full locales
+- 12 documented full-English fallback locales
 
-## Current task — determine G7 chronologically
+Ownership changes from G6:
 
-G6 is complete. Continue from actual JEI upstream history, not assumptions.
+- `de_de` was complete in JEI 3.14.8 but is missing 16 keys in JEI 4.1.1. Those 16 values are reused exactly from the pinned G6 upstream `de_DE` translation and stored in `translations/g7-mc1.11/de_de-from-g6-upstream.lang`.
+- `sv_se` becomes complete upstream, so the G6 `sv_SE` supplement is retired and no addon `sv_se` file is emitted.
+- the other 15 supplement locales reuse their exact G6 project values because all English semantics are unchanged.
+
+#### G7 implementation and validation
+
+- source: `upstream/sources/1.11/en_us.lang`
+- exact diff: `upstream/diffs/1.10.2-to-1.11.json`
+- audit: `upstream/minecraft-1.11-language-audit.json`
+- scope: `upstream/minecraft-1.11-language-scope.json`
+- policy: `translations/g7-mc1.11/policy.json`
+- audit script: `scripts/audit_1_11.py`
+- reconstruction: `scripts/reconstruct_1_11.py`
+- source/scope/upstream QA: `scripts/validate_1_11_delta.py`
+- complete QA: `scripts/validate_1_11_complete.py`
+- initial endpoint audit run: **34643677382**
+- successful complete validation run: **34644034423**
+
+Validated result: **52 complete 87-key addon locale files + 16 exact missing-key-only upstream supplements**, all emitted with lowercase locale filenames, with no addon resource for the four selected locales already complete upstream.
+
+## Current task — G8 Minecraft 1.11.2
+
+Minecraft 1.11 and 1.11.2 are separate targets and must eventually receive separate JARs.
+
+Known 1.11.2 history:
+
+- transition commit `72c7ea7cf2e7f5243e1d7179aaa10fad038574bf` changes Minecraft `1.11` -> `1.11.2`, JEI `4.1.1` -> `4.2.0`, Forge `13.19.1.2188` -> `13.20.0.2200`;
+- final branch `1.11` HEAD is `11023c1f4449b82d0b88366001b058e6949b40ab`;
+- HEAD metadata: Minecraft `1.11.2`, JEI `4.5.1`, Forge `13.20.0.2315`;
+- English source remains legacy lowercase `src/main/resources/assets/jei/lang/en_us.lang` but has changed from G7, so G8 requires a real semantic diff.
 
 Next steps:
 
-1. Enumerate historical upstream branches after `1.10` and identify the next real Minecraft target.
-2. Determine whether that branch contains multiple Minecraft patch/minor endpoints; if so, pin each distinct Minecraft version separately.
-3. For the first chronological target after 1.10.2, record exact JEI version, commit, Forge/loader metadata, Java source/target and language format.
-4. Fetch the exact English source and upstream locale set.
-5. Audit the Minecraft language inventory/asset index and selected-scope changes.
-6. Compute an exact G6 -> G7 key/English diff and reuse translations only where key + English meaning are identical.
-7. Build deterministic reconstruction/QA, obtain green CI, then update this file before advancing again.
+1. Pin and verify all final 1.11.2 build metadata at `11023c1f4449b82d0b88366001b058e6949b40ab`, including Java source/target.
+2. Store the exact G8 English source and compute the exact G7 -> G8 key/value diff.
+3. Audit Minecraft 1.11.2 asset-index language inventory and selected-scope changes.
+4. Audit exact JEI 4.5.1 upstream locale ownership/completeness.
+5. Reuse G7 translations only for unchanged key/value pairs; review every added/changed meaning.
+6. Build deterministic G8 reconstruction/QA and obtain green CI.
+7. Synchronize `upstream/versions.json`, `upstream/generations.json`, README/docs and this handoff before advancing to the next Minecraft target.
 
 ## Modern endpoint
 
@@ -183,10 +209,10 @@ Branch `26.2` uses JSON language files at `Common/src/main/resources/assets/jei/
 - `docs/TRANSLATION_STATUS.md`
 - `upstream/versions.json`
 - `upstream/generations.json`
-- `upstream/minecraft-1.10.2-language-audit.json`
-- `upstream/minecraft-1.10.2-language-scope.json`
+- `upstream/minecraft-1.11-language-audit.json`
+- `upstream/minecraft-1.11-language-scope.json`
 - `packaging/1.8.9/release.json`
 
 ## Resume prompt
 
-> Reprends JEI Translation Expansion depuis `PROJECT_STATUS.md`. G6 Minecraft 1.10.2 / JEI 3.14.8 est termine au stade traduction/reconstruction et CI verte: commit upstream `446af20eaa73d260517f0adc737232437363f78d`, Forge `12.18.3.2254`, Java source/target 1.6, 87 cles (84 normales), diff G5->G6 = 53 inchangees, 25 ajoutees, 16 supprimees, 9 modifiees; scope Minecraft 94 brut / 72 selectionne; 52 locales addon completes, 16 supplements exacts, 4 locales completes upstream; CI `34642956606`. Le prochain travail est d'identifier depuis l'historique upstream le premier target Minecraft chronologique apres 1.10.2, puis de creer G7. Regle fixe: un JAR distinct par version Minecraft.
+> Reprends JEI Translation Expansion depuis `PROJECT_STATUS.md`. G7 Minecraft 1.11 / JEI 4.1.1 est termine au stade traduction/reconstruction: endpoint `c9fcc36ff0effec2b5239eebd2c9133da04df4bb`, Forge `13.19.1.2188`, Java 1.6, 87 cles toutes identiques a G6, ressources `.lang` en noms de locales minuscules, Minecraft 95 codes brut / scope 72 (`io_ido` differe), 52 locales addon completes, 16 supplements exacts, 4 locales completes upstream, CI `34644034423`. Le target courant est Minecraft 1.11.2 / JEI 4.5.1 final a `11023c1f4449b82d0b88366001b058e6949b40ab`. Regle fixe: un JAR distinct par version Minecraft.
