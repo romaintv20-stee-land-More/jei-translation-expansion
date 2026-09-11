@@ -26,6 +26,30 @@ The addon must not add gameplay content. It exists only to provide localization 
 
 Do **not** begin mass translation before the version/key audit is complete. JEI has existed across many Minecraft versions and its translation schema has changed over time. The project must first identify localization generations by comparing the real upstream English source for each relevant branch/version.
 
+## Current repository state
+
+Already initialized on `main`:
+
+- `README.md` — public project description, goals, AI policy and licensing summary.
+- `PROJECT_STATUS.md` — this canonical handoff.
+- `docs/VERSION_MATRIX.md` — verified version audit facts collected so far.
+- `docs/WORKFLOW.md` — audit, translation, QA and release workflow.
+- `upstream/versions.json` — machine-readable partial upstream version audit.
+- `upstream/generations.json` — generation schema placeholder; intentionally empty until the comparison audit is complete.
+- `upstream/official-locales.json` — partial inventory of locales shipped by JEI.
+- `overrides/approved-overrides.json` — empty allowlist for reviewed overrides of upstream translations.
+- `LICENSE` — MIT.
+- `NOTICE` — unofficial-project notice and JEI attribution.
+
+Still to create after/during the full audit:
+
+- `scripts/audit_jei.py`
+- `scripts/compare_keys.py`
+- `scripts/validate_translations.py`
+- `scripts/build_release.py`
+- generation translation directories under `translations/`
+- GitHub Actions workflow(s) for validation/builds
+
 ## Verified oldest starting point
 
 The official JEI GitHub repository has a branch named **`1.8`**, and no `1.7` branch was found in the upstream branch search performed on 2026-09-11.
@@ -68,9 +92,9 @@ On upstream branch `26.2`:
 
 ## Planned architecture
 
-The repository should separate **localization generations** from **distribution JAR groups**.
+The repository separates **localization generations** from **distribution JAR groups**.
 
-A generation is defined by a compatible set of JEI translation keys/English meanings. Example names should be based on the audit, not guessed in advance, such as:
+A generation is defined by a compatible set of JEI translation keys/English meanings. Generation names must be based on the completed audit rather than guessed in advance, for example:
 
 ```text
 translations/
@@ -80,21 +104,6 @@ translations/
 ```
 
 Distribution JARs may cover multiple Minecraft versions when loader metadata/resource compatibility makes that safe. The goal is to avoid one JAR per Minecraft version and keep the total number of downloadable files practical.
-
-Planned supporting files:
-
-```text
-upstream/versions.json
-upstream/generations.json
-upstream/official-locales.json
-overrides/approved-overrides.json
-scripts/audit_jei.py
-scripts/compare_keys.py
-scripts/validate_translations.py
-scripts/build_release.py
-docs/VERSION_MATRIX.md
-docs/WORKFLOW.md
-```
 
 ## QA requirements
 
@@ -127,7 +136,7 @@ When JEI source translation material or other MIT-covered upstream material is r
 
 ## Immediate next steps
 
-1. Enumerate all relevant upstream JEI branches/releases from **1.8 through 26.2**.
+1. Start the detailed audit from **Minecraft 1.8**, then move forward through the JEI branches/releases toward `26.2`.
 2. For each branch, record:
    - actual Minecraft version;
    - JEI version;
