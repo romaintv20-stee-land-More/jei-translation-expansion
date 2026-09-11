@@ -67,7 +67,7 @@ jobs:
           javap -verbose -classpath "$JAR" io.github.romaintv20.jeitranslationexpansion.JeiTranslationExpansion | tee build/javap-1.8.9.txt
           grep -Fq 'major version: 51' build/javap-1.8.9.txt
           grep -Fq 'RuntimeVisibleAnnotations' build/javap-1.8.9.txt
-          grep -Fq 'net.minecraftforge.fml.common.Mod' build/javap-1.8.9.txt
+          grep -Fq 'Lnet/minecraftforge/fml/common/Mod;' build/javap-1.8.9.txt
           grep -Fq 'jei_translation_expansion' build/javap-1.8.9.txt
           grep -Fq 'clientSideOnly' build/javap-1.8.9.txt
           grep -Fq 'acceptedMinecraftVersions' build/javap-1.8.9.txt
