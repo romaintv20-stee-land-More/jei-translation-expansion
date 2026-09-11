@@ -23,7 +23,6 @@ TECHNICAL_TOKENS = (
     "ModId",
     "mB",
     "Ctrl",
-    "Shift",
     "XP",
 )
 INHERITED_FALLBACKS = {"gv_IM", "kw_GB", "se_NO"}
