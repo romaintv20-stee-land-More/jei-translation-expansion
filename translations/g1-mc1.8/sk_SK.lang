@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Nastavenia
+jei.tooltip.show.all.recipes=Zobraziť všetky recepty
+jei.tooltip.delete.item=Kliknutím odstrániť
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Chýbajúce predmety
+jei.tooltip.error.recipe.transfer.inventory.full=Inventár je príliš plný
+
+# Error Messages
+jei.chat.error.command.too.long=JEI musí byť nainštalované na serveri, aby mohlo spracovať tento chatový príkaz, pretože je príliš dlhý na odoslanie cez Minecraft.
+
+# Key Bindings
+key.jei.toggleOverlay=Zobraziť/skryť zoznam predmetov (Ctrl + )
+key.jei.showRecipe=Zobraziť recept predmetu
+key.jei.showUses=Zobraziť použitia predmetu
+
+# Config
+config.jei.default=Predvolené
+config.jei.valid=Platné
+
+config.jei.title=Nastavenia %MODNAME
+
+config.jei.mode=Režim
+config.jei.mode.comment=Zmení režim, v ktorom JEI funguje.
+config.jei.mode.cheatItemsEnabled=Podvádzanie s predmetmi
+config.jei.mode.cheatItemsEnabled.comment=Dáva predmety pomocou /give namiesto zobrazenia receptu.
+config.jei.mode.editEnabled=Režim úprav zoznamu predmetov
+config.jei.mode.editEnabled.comment=Skryte alebo zobrazte predmety kliknutím na ne v zozname predmetov.
+
+config.jei.interface=Rozhranie
+config.jei.interface.comment=Možnosti týkajúce sa používateľského rozhrania.
+config.jei.interface.recipeAnimationsEnabled=Animácie receptov
+config.jei.interface.recipeAnimationsEnabled.comment=Zobraziť animácie receptov (oheň v peci, ukazovatele priebehu atď.)
+
+config.jei.search=Vyhľadávanie
+config.jei.search.comment=Možnosti týkajúce sa vyhľadávacieho panela.
+config.jei.search.atPrefixRequiredForModName=Použiť @ pre názov modu
+config.jei.search.atPrefixRequiredForModName.comment=Vyžadovať "@ModName" na vyhľadávanie podľa názvu modu namiesto "ModName".
+
+config.jei.advanced=Pokročilé
+config.jei.advanced.comment=Pokročilé nastavenia na zmenu fungovania JEI.
+config.jei.advanced.nbtKeyIgnoreList=Zoznam ignorovaných NBT kľúčov
+config.jei.advanced.nbtKeyIgnoreList.comment=Zoznam NBT kľúčov, ktoré sa majú ignorovať pri získavaní receptov.
+config.jei.advanced.itemBlacklist=Čierna listina predmetov
+config.jei.advanced.itemBlacklist.comment=Zoznam predmetov, ktoré sa nemajú zobrazovať v zozname predmetov. Formát: modId:name[:meta]. Režim úprav sem automaticky pridá alebo odstráni položky.
+config.jei.advanced.hideMissingModelsEnabled=Skryť predmety s chýbajúcimi modelmi
+config.jei.advanced.hideMissingModelsEnabled.comment=Predmety s chýbajúcimi modelmi budú skryté zo zoznamu predmetov.
+config.jei.advanced.debugModeEnabled=Režim ladenia
+config.jei.advanced.debugModeEnabled.comment=Pridáva rôzne veci na pomoc pri vývoji JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Odstraňovať predmety v režime podvádzania
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=V režime podvádzania pretiahnite ItemStack nad zoznam predmetov a kliknutím ho odstráňte. (vyžaduje JEI na serveri)
+
+config.jei.addons=Doplnky
+config.jei.addons.comment=Kategória možností nastavenia doplnkov JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Režim úprav zoznamu predmetov JEI:
+gui.jei.editMode.description.hide=Ctrl-klik pre skrytie.
+gui.jei.editMode.description.show=Skryté. Ctrl-klik pre zobrazenie.
+gui.jei.editMode.description.hide.wild=Ctrl-klik pravým tlačidlom pre skrytie pomocou zástupného znaku.
+gui.jei.editMode.description.show.wild=Skryté zástupným znakom. Ctrl-klik pravým tlačidlom pre zobrazenie.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Pracovný stôl
+gui.jei.category.smelting=Tavenie
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Palivo
+gui.jei.category.fuel.burnTime=Doba horenia: %s
+gui.jei.category.brewing=Varenie elixírov
+gui.jei.category.brewing.steps=Kroky: %s
+gui.jei.category.itemDescription=Popis
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
