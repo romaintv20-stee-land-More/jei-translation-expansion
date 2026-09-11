@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-11",
+  "status": "verified-raw-scope-policy-review-pending",
+  "minecraft": "1.9",
+  "jei": "3.3.3",
+  "jei_upstream_commit": "b2ffe6bd7734d093006de99f9dc99b2b77ce780d",
+  "minecraft_asset_index": {
+    "url": "https://piston-meta.mojang.com/v1/packages/d7aae43ea69d80cc3441bee4179abd791f6534cd/1.9.json",
+    "external_language_file_count": 89,
+    "raw_language_count_including_en_us": 90
+  },
+  "minecraft_language_codes": [
+    "af_ZA", "ar_SA", "ast_ES", "az_AZ", "be_BY", "bg_BG", "br_FR", "ca_ES", "cs_CZ", "cy_GB", "da_DK", "de_DE", "el_GR", "en_AU", "en_CA", "en_GB", "en_NZ", "en_PT", "en_UD", "en_US", "eo_UY", "es_AR", "es_ES", "es_MX", "es_UY", "es_VE", "et_EE", "eu_ES", "fa_IR", "fi_FI", "fil_PH", "fo_FO", "fr_CA", "fr_FR", "fy_NL", "ga_IE", "gd_GB", "gl_ES", "gv_IM", "he_IL", "hi_IN", "hr_HR", "hu_HU", "hy_AM", "id_ID", "is_IS", "it_IT", "ja_JP", "jbo_EN", "ka_GE", "ko_KR", "ksh_DE", "kw_GB", "la_LA", "lb_LU", "li_LI", "lol_US", "lt_LT", "lv_LV", "mi_NZ", "mk_MK", "ms_MY", "mt_MT", "nds_DE", "nl_NL", "nn_NO", "no_NO", "oc_FR", "pl_PL", "pt_BR", "pt_PT", "qya_AA", "ro_RO", "ru_RU", "se_NO", "sk_SK", "sl_SI", "so_SO", "sq_AL", "sr_SP", "sv_SE", "th_TH", "tlh_AA", "tr_TR", "tzl_TZL", "uk_UA", "val_ES", "vi_VN", "zh_CN", "zh_TW"
+  ],
+  "comparison_with_minecraft_1_8_project_scope": {
+    "added_code_count": 15,
+    "added_codes": [
+      "be_BY", "br_FR", "en_NZ", "en_UD", "fo_FO", "fy_NL", "gd_GB", "jbo_EN", "ksh_DE", "li_LI", "lol_US", "mk_MK", "so_SO", "sq_AL", "tzl_TZL"
+    ],
+    "removed_code_count": 0,
+    "removed_codes": [],
+    "carried_exclusions_present": ["en_PT", "qya_AA", "tlh_AA"],
+    "carried_deferred_variants_present": [
+      "en_AU", "en_CA", "en_GB", "es_AR", "es_MX", "es_UY", "es_VE", "fr_CA", "nn_NO", "pt_PT", "val_ES", "zh_TW"
+    ],
+    "obvious_new_primary_candidates": [
+      "be_BY", "br_FR", "fo_FO", "fy_NL", "gd_GB", "ksh_DE", "li_LI", "mk_MK", "so_SO", "sq_AL"
+    ],
+    "obvious_new_deferred_variant_candidates": ["en_NZ"],
+    "obvious_new_novelty_candidates": ["en_UD", "lol_US"],
+    "new_constructed_language_codes_requiring_explicit_policy_decision": ["jbo_EN", "tzl_TZL"],
+    "scope_count_if_only_obvious_primary_candidates_are_added": 70,
+    "scope_count_if_jbo_EN_and_tzl_TZL_are_also_retained": 72
+  },
+  "norwegian_reconciliation": {
+    "minecraft_has_no_NO": true,
+    "minecraft_has_nb_NO": false,
+    "jei_upstream_has_no_NO": false,
+    "jei_upstream_has_nb_NO": true,
+    "project_decision": "Use no_NO as the Minecraft-facing locale. Do not rename or overwrite JEI's upstream nb_NO file. Treat no_NO as absent upstream for the addon unless runtime evidence proves an alias."
+  },
+  "jei_english": {
+    "key_count": 77,
+    "normal_key_count": 74,
+    "debug_only_key_count": 3
+  },
+  "jei_upstream_locales": ["de_DE", "en_US", "fi_FI", "fr_FR", "ko_KR", "nb_NO", "ru_RU", "zh_CN"],
+  "jei_upstream_locale_completeness": {
+    "de_DE": {"normal_present": 53, "normal_target": 74, "missing_normal": 21, "extra_keys": 2},
+    "en_US": {"normal_present": 74, "normal_target": 74, "missing_normal": 0, "extra_keys": 0},
+    "fi_FI": {"normal_present": 58, "normal_target": 74, "missing_normal": 16, "extra_keys": 2},
+    "fr_FR": {"normal_present": 74, "normal_target": 74, "missing_normal": 0, "extra_keys": 0},
+    "ko_KR": {"normal_present": 5, "normal_target": 74, "missing_normal": 69, "extra_keys": 0},
+    "nb_NO": {"normal_present": 74, "normal_target": 74, "missing_normal": 0, "extra_keys": 0},
+    "ru_RU": {"normal_present": 53, "normal_target": 74, "missing_normal": 21, "extra_keys": 2},
+    "zh_CN": {"normal_present": 21, "normal_target": 74, "missing_normal": 53, "extra_keys": 2}
+  },
+  "supplement_implications": {
+    "minecraft_matching_upstream_locales_complete_without_addon": ["en_US", "fr_FR"],
+    "minecraft_matching_upstream_locales_requiring_missing_key_supplements": ["de_DE", "fi_FI", "ko_KR", "ru_RU", "zh_CN"],
+    "upstream_locale_not_present_in_minecraft_1_9_asset_codes": ["nb_NO"],
+    "minecraft_locale_absent_from_jei_upstream": ["no_NO"]
+  },
+  "automation": {
+    "script": "scripts/audit_1_9.py",
+    "workflow": ".github/workflows/audit-1.9.yml",
+    "successful_workflow_run": 34635026243,
+    "artifact_id": 10277798915,
+    "artifact_name": "minecraft-1.9-language-audit"
+  },
+  "notes": [
+    "The generated workflow artifact contains the exact missing-key lists for every upstream JEI locale and can be regenerated with scripts/audit_1_9.py.",
+    "The raw Minecraft 1.9 language inventory is verified. Final selected project scope remains open only for the two newly observed constructed-language codes jbo_EN and tzl_TZL; all other new codes have an obvious classification under the existing project policy.",
+    "New primary languages that did not exist in the Minecraft 1.8 project scope require full 1.9 translations rather than a three-key delta inherited from G2."
+  ]
+}
