@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Nastavitve
+jei.tooltip.show.all.recipes=Prikaži vse recepte
+jei.tooltip.delete.item=Klikni za brisanje
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Manjkajoči predmeti
+jei.tooltip.error.recipe.transfer.inventory.full=Inventar je prepoln
+
+# Error Messages
+jei.chat.error.command.too.long=JEI mora biti nameščen na strežniku, da lahko obdela ta ukaz klepeta, ker je predolg, da bi ga Minecraft poslal.
+
+# Key Bindings
+key.jei.toggleOverlay=Prikaži/skrij seznam predmetov (Ctrl + )
+key.jei.showRecipe=Prikaži recept predmeta
+key.jei.showUses=Prikaži uporabe predmeta
+
+# Config
+config.jei.default=Privzeto
+config.jei.valid=Veljavno
+
+config.jei.title=Nastavitve %MODNAME
+
+config.jei.mode=Način
+config.jei.mode.comment=Spremeni način, v katerem deluje JEI.
+config.jei.mode.cheatItemsEnabled=Goljufanje s predmeti
+config.jei.mode.cheatItemsEnabled.comment=Daje predmete z /give namesto prikaza recepta.
+config.jei.mode.editEnabled=Način urejanja seznama predmetov
+config.jei.mode.editEnabled.comment=Skrij ali prikaži predmete s klikom nanje na seznamu predmetov.
+
+config.jei.interface=Vmesnik
+config.jei.interface.comment=Možnosti, povezane z uporabniškim vmesnikom.
+config.jei.interface.recipeAnimationsEnabled=Animacije receptov
+config.jei.interface.recipeAnimationsEnabled.comment=Prikaži animacije receptov (ogenj peči, vrstice napredka itd.)
+
+config.jei.search=Iskanje
+config.jei.search.comment=Možnosti, povezane z iskalno vrstico.
+config.jei.search.atPrefixRequiredForModName=Uporabi @ za ime moda
+config.jei.search.atPrefixRequiredForModName.comment=Za iskanje po imenu moda zahtevaj "@ModName" namesto "ModName".
+
+config.jei.advanced=Napredno
+config.jei.advanced.comment=Napredne nastavitve za spreminjanje delovanja JEI.
+config.jei.advanced.nbtKeyIgnoreList=Seznam prezrtih ključev NBT
+config.jei.advanced.nbtKeyIgnoreList.comment=Seznam ključev NBT, ki naj se prezrejo pri pridobivanju receptov.
+config.jei.advanced.itemBlacklist=Črni seznam predmetov
+config.jei.advanced.itemBlacklist.comment=Seznam predmetov, ki se ne smejo prikazati na seznamu predmetov. Oblika: modId:name[:meta]. Način urejanja bo tukaj samodejno dodajal ali odstranjeval vnose.
+config.jei.advanced.hideMissingModelsEnabled=Skrij predmete z manjkajočimi modeli
+config.jei.advanced.hideMissingModelsEnabled.comment=Predmeti z manjkajočimi modeli bodo skriti s seznama predmetov.
+config.jei.advanced.debugModeEnabled=Način razhroščevanja
+config.jei.advanced.debugModeEnabled.comment=Doda različne stvari za pomoč pri razvoju JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Izbriši predmete v načinu goljufanja
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=V načinu goljufanja povleci ItemStack nad seznam predmetov in klikni, da ga izbrišeš. (zahteva JEI na strežniku)
+
+config.jei.addons=Dodatki
+config.jei.addons.comment=Kategorija za možnosti nastavitev dodatkov JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Način urejanja seznama predmetov JEI:
+gui.jei.editMode.description.hide=Ctrl-klik za skrivanje.
+gui.jei.editMode.description.show=Skrito. Ctrl-klik za prikaz.
+gui.jei.editMode.description.hide.wild=Ctrl-desni klik za skrivanje z nadomestnim znakom.
+gui.jei.editMode.description.show.wild=Skrito z nadomestnim znakom. Ctrl-desni klik za prikaz.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Delovna miza
+gui.jei.category.smelting=Taljenje
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Gorivo
+gui.jei.category.fuel.burnTime=Čas gorenja: %s
+gui.jei.category.brewing=Kuhanje napitkov
+gui.jei.category.brewing.steps=Koraki: %s
+gui.jei.category.itemDescription=Opis
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
