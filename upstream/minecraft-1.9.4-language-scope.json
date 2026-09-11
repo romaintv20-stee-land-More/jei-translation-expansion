@@ -32,9 +32,7 @@
     "ru_RU",
     "zh_CN"
   ],
-  "upstream_complete_no_addon_locales": [
-    "en_US"
-  ],
+  "upstream_complete_no_addon_locales": ["en_US"],
   "upstream_missing_key_supplement_locales": [
     "de_DE",
     "fi_FI",
@@ -44,9 +42,7 @@
     "zh_CN"
   ],
   "upstream_missing_key_supplement_locale_count": 6,
-  "jei_upstream_non_minecraft_locale_files": [
-    "nb_NO"
-  ],
+  "jei_upstream_non_minecraft_locale_files": ["nb_NO"],
   "norwegian_policy": {
     "minecraft_locale": "no_NO",
     "jei_upstream_non_matching_locale": "nb_NO",
@@ -64,14 +60,23 @@
       "config.jei.advanced.hideLaggyModelsEnabled",
       "config.jei.advanced.hideLaggyModelsEnabled.comment"
     ],
-    "changed_english_value_keys": [
-      "gui.jei.category.craftingTable"
-    ]
+    "changed_english_value_keys": ["gui.jei.category.craftingTable"]
   },
   "upstream_supplement_policy": {
     "preserve_existing_upstream_keys": true,
     "never_carry_forward_obsolete_supplement_entries": true,
     "notes": "ru_RU and zh_CN gained many upstream translations in JEI 3.6.8. Reconstruct the exact 1.9.4 supplements from current missing-key sets rather than blindly appending to the 1.9 supplements. fr_FR now needs a three-key supplement because the upstream file is unchanged while the English source gained three keys."
+  },
+  "translation_realization": {
+    "generation": "g4-mc1.9.4",
+    "delta": "translations/g4-mc1.9.4/delta.tsv",
+    "policy": "translations/g4-mc1.9.4/policy.json",
+    "upstream_supplement_delta_dir": "translations/g4-mc1.9.4/upstream-supplement-delta",
+    "reconstruction_script": "scripts/reconstruct_1_9_4.py",
+    "delta_validator": "scripts/validate_1_9_4_delta.py",
+    "complete_validator": "scripts/validate_1_9_4_complete.py",
+    "successful_validation_run": 34639831977,
+    "status": "complete-for-selected-scope"
   },
   "source_audit": "upstream/minecraft-1.9.4-language-audit.json",
   "english_diff": "upstream/diffs/1.9-to-1.9.4.json"
