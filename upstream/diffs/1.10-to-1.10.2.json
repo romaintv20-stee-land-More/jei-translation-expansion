@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "base": {
+    "minecraft": "1.10",
+    "jei": "3.7.1",
+    "generation": "g5-mc1.10",
+    "source": "upstream/sources/1.10/en_US.lang",
+    "key_count": 78
+  },
+  "target": {
+    "minecraft": "1.10.2",
+    "jei": "3.14.8",
+    "generation": "g6-mc1.10.2",
+    "upstream_commit": "446af20eaa73d260517f0adc737232437363f78d",
+    "source": "upstream/sources/1.10.2/en_US.lang",
+    "key_count": 87
+  },
+  "unchanged_key_and_value_count": 53,
+  "added_key_count": 25,
+  "added_keys": [
+    "config.jei.advanced.centerSearchBarEnabled",
+    "config.jei.advanced.centerSearchBarEnabled.comment",
+    "config.jei.advanced.modNameFormat",
+    "config.jei.advanced.modNameFormat.comment",
+    "config.jei.search.colorSearchMode",
+    "config.jei.search.colorSearchMode.comment",
+    "config.jei.search.creativeTabSearchMode",
+    "config.jei.search.creativeTabSearchMode.comment",
+    "config.jei.search.modNameSearchMode",
+    "config.jei.search.modNameSearchMode.comment",
+    "config.jei.search.oreDictSearchMode",
+    "config.jei.search.oreDictSearchMode.comment",
+    "config.jei.search.tooltipSearchMode",
+    "config.jei.search.tooltipSearchMode.comment",
+    "gui.jei.category.fuel.smeltCount",
+    "gui.jei.category.fuel.smeltCount.single",
+    "jei.chat.error.no.cheat.permission.1",
+    "jei.chat.error.no.cheat.permission.2",
+    "jei.tooltip.error.crash",
+    "jei.tooltip.error.recipe.transfer.no.server",
+    "jei.tooltip.error.recipe.transfer.too.large.player.inventory",
+    "jei.tooltip.error.recipe.transfer.unknown",
+    "key.jei.ctrl",
+    "key.jei.ctrl.mac",
+    "key.jei.toggleCheatMode"
+  ],
+  "removed_key_count": 16,
+  "removed_keys": [
+    "config.jei.addons",
+    "config.jei.addons.comment",
+    "config.jei.advanced.deleteItemsInCheatModeEnabled",
+    "config.jei.advanced.deleteItemsInCheatModeEnabled.comment",
+    "config.jei.advanced.hideMissingModelsEnabled",
+    "config.jei.advanced.hideMissingModelsEnabled.comment",
+    "config.jei.search.atPrefixRequiredForModName",
+    "config.jei.search.atPrefixRequiredForModName.comment",
+    "config.jei.search.prefixRequiredForColorSearch",
+    "config.jei.search.prefixRequiredForColorSearch.comment",
+    "config.jei.search.prefixRequiredForCreativeTabSearch",
+    "config.jei.search.prefixRequiredForCreativeTabSearch.comment",
+    "config.jei.search.prefixRequiredForOreDictSearch",
+    "config.jei.search.prefixRequiredForOreDictSearch.comment",
+    "config.jei.search.prefixRequiredForTooltipSearch",
+    "config.jei.search.prefixRequiredForTooltipSearch.comment"
+  ],
+  "changed_english_value_count": 9,
+  "changed_english_values": {
+    "gui.jei.category.craftingTable": {
+      "from": "Crafting Table",
+      "to": "Crafting",
+      "reuse_from_generation": "g4-mc1.9.4",
+      "reason": "The target English value is exactly the previously validated G4 generic Crafting value."
+    },
+    "gui.jei.editMode.description.hide": {
+      "from": "Ctrl-click to hide.",
+      "to": "%CTRL-click to hide."
+    },
+    "gui.jei.editMode.description.hide.mod.id": {
+      "from": "Ctrl-Shift-click to hide by ModId.",
+      "to": "%CTRL-SHIFT-click to hide by ModId."
+    },
+    "gui.jei.editMode.description.hide.wild": {
+      "from": "Ctrl-right-click to hide with wildcard.",
+      "to": "%CTRL-right-click to hide with wildcard."
+    },
+    "gui.jei.editMode.description.show": {
+      "from": "Hidden. Ctrl-click to show.",
+      "to": "Hidden. %CTRL-click to show."
+    },
+    "gui.jei.editMode.description.show.mod.id": {
+      "from": "Hidden by ModId. Ctrl-Shift-click to show.",
+      "to": "Hidden by ModId. %CTRL-SHIFT-click to show."
+    },
+    "gui.jei.editMode.description.show.wild": {
+      "from": "Hidden by Wildcard. Ctrl-right-click to show.",
+      "to": "Hidden by Wildcard. %CTRL-right-click to show."
+    },
+    "jei.tooltip.config": {
+      "from": "Config",
+      "to": "JEI Config"
+    },
+    "jei.tooltip.transfer": {
+      "from": "Transfer Items",
+      "to": "Move Items"
+    }
+  },
+  "reviewed_key_count": 34,
+  "notes": "G6 may reuse only the 53 unchanged key/value pairs. gui.jei.category.craftingTable is an exact semantic reversion to G4 and can safely restore G4 translations. The remaining 33 added/changed entries require translation or an explicitly documented English fallback."
+}
