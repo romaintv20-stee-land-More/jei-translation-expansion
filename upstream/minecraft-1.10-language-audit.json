@@ -1,0 +1,158 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-11",
+  "status": "pinned-audit-with-ci-verification",
+  "minecraft": "1.10",
+  "jei": "3.7.1",
+  "jei_upstream_branch": "1.10",
+  "jei_upstream_commit": "7f4e95d5b7620a0d304aa73243cd9b3f9737e247",
+  "transition_to_next_minecraft_commit": "c88aa6c5c078586fa23abaa83309d293cd72ea61",
+  "build_metadata": {
+    "forge": "12.18.0.1999-1.10.0",
+    "mcp_mappings": "snapshot_20160518",
+    "java_source_compatibility": "1.7",
+    "java_target_compatibility": "1.7",
+    "language_format": "lang",
+    "english_source_path": "src/main/resources/assets/jei/lang/en_US.lang"
+  },
+  "minecraft_asset_index": {
+    "id": "1.10",
+    "sha1": "7c2800b458376b8fc0b738382fb7784328fddda9",
+    "url": "https://piston-meta.mojang.com/v1/packages/7c2800b458376b8fc0b738382fb7784328fddda9/1.10.json",
+    "external_language_file_count": 89,
+    "raw_language_count_including_en_us": 90,
+    "language_inventory_changed_from_1_9": false,
+    "verification": "scripts/validate_1_10_delta.py fetches both the pinned 1.9 and 1.10 Mojang asset indexes and requires their language-code sets to be exactly equal."
+  },
+  "jei_english": {
+    "key_count": 78,
+    "normal_key_count": 75,
+    "debug_only_key_count": 3
+  },
+  "english_diff_from_1_9_4": {
+    "unchanged_key_and_value_count": 77,
+    "added_key_count": 0,
+    "removed_key_count": 2,
+    "changed_english_value_count": 1,
+    "manifest": "upstream/diffs/1.9.4-to-1.10.json"
+  },
+  "jei_upstream_locales": [
+    "de_DE",
+    "en_US",
+    "fi_FI",
+    "fr_FR",
+    "ko_KR",
+    "nb_NO",
+    "ru_RU",
+    "zh_CN"
+  ],
+  "jei_upstream_blob_shas": {
+    "de_DE": "71977943f8302db1e103b72c7e873566d8698d19",
+    "en_US": "00792b9e7ef5577266a57f4227befbe40c66d362",
+    "fi_FI": "d3adae23732f3e52068979bccba07d8f31fbc110",
+    "fr_FR": "ca277d5566eb516cd0fa55aa00aae10e5049c818",
+    "ko_KR": "b8198d32638c7f9348f85880e2cbb9e5fcabd094",
+    "nb_NO": "0340870766d881f6600c717cfcd01b17b197f04f",
+    "ru_RU": "a7e534e7180abe08a8216f271160b1adf3073ebd",
+    "zh_CN": "fc54b01aa06b394bf5aa170383b685203f8129d8"
+  },
+  "upstream_language_file_changes_from_1_9_4_endpoint": {
+    "changed": ["en_US", "ru_RU"],
+    "unchanged": ["de_DE", "fi_FI", "fr_FR", "ko_KR", "nb_NO", "zh_CN"]
+  },
+  "jei_upstream_locale_completeness": {
+    "de_DE": {
+      "normal_present": 53,
+      "normal_target": 75,
+      "missing_normal": 22,
+      "handling": "missing-key supplement"
+    },
+    "en_US": {
+      "normal_present": 75,
+      "normal_target": 75,
+      "missing_normal": 0,
+      "handling": "upstream complete"
+    },
+    "fi_FI": {
+      "normal_present": 58,
+      "normal_target": 75,
+      "missing_normal": 17,
+      "handling": "missing-key supplement"
+    },
+    "fr_FR": {
+      "normal_present": 74,
+      "normal_target": 75,
+      "missing_normal": 1,
+      "missing_normal_keys": ["jei.tooltip.cheat.mode"],
+      "handling": "missing-key supplement"
+    },
+    "ko_KR": {
+      "normal_present": 5,
+      "normal_target": 75,
+      "missing_normal": 70,
+      "handling": "missing-key supplement; restore addon-owned Crafting Table translation from G3"
+    },
+    "nb_NO": {
+      "normal_present": 74,
+      "normal_target": 75,
+      "missing_normal": 1,
+      "missing_normal_keys": ["jei.tooltip.cheat.mode"],
+      "handling": "preserve upstream untouched; not the selected Minecraft locale code"
+    },
+    "ru_RU": {
+      "normal_present": 73,
+      "normal_target": 75,
+      "missing_normal": 2,
+      "missing_normal_keys": [
+        "config.jei.advanced.colorSearchEnabled",
+        "config.jei.advanced.colorSearchEnabled.comment"
+      ],
+      "handling": "missing-key supplement"
+    },
+    "zh_CN": {
+      "normal_present": 74,
+      "normal_target": 75,
+      "missing_normal": 1,
+      "missing_normal_keys": ["jei.tooltip.cheat.mode"],
+      "handling": "missing-key supplement"
+    }
+  },
+  "selected_scope_implications": {
+    "scope_same_as_minecraft_1_9": true,
+    "selected_scope_count": 70,
+    "minecraft_facing_upstream_locale_count": 7,
+    "addon_full_locale_count": 63,
+    "upstream_complete_no_addon_locales": ["en_US"],
+    "upstream_missing_key_supplement_locales": [
+      "de_DE",
+      "fi_FI",
+      "fr_FR",
+      "ko_KR",
+      "ru_RU",
+      "zh_CN"
+    ],
+    "upstream_missing_key_supplement_locale_count": 6,
+    "jei_upstream_non_minecraft_locale_files": ["nb_NO"]
+  },
+  "translation_reuse": {
+    "base_generation": "g4-mc1.9.4",
+    "unchanged_pairs_reused_from_g4": 77,
+    "new_translation_entries_required": 0,
+    "semantic_reversion_key": "gui.jei.category.craftingTable",
+    "semantic_reversion_source_generation": "g3-mc1.9",
+    "reason": "The English value returns exactly from Crafting to Crafting Table, so the previously validated G3 translations are authoritative for the addon-owned value."
+  },
+  "norwegian_reconciliation": {
+    "minecraft_has_no_NO": true,
+    "minecraft_has_nb_NO": false,
+    "jei_upstream_has_no_NO": false,
+    "jei_upstream_has_nb_NO": true,
+    "project_decision": "Continue using no_NO as the Minecraft-facing full addon locale and preserve JEI's nb_NO file without treating it as an alias."
+  },
+  "evidence": {
+    "next_transition_commit_message": "Update for Minecraft 1.10.2",
+    "minecraft_version_metadata_mirror": "bacondev7/Minecraft-Assets release/1.10/VERSION.md",
+    "minecraft_asset_index_mirror": "MultiMC/meta-upstream mojang/assets/1.10.json",
+    "ci_verifier": "scripts/validate_1_10_delta.py"
+  }
+}
