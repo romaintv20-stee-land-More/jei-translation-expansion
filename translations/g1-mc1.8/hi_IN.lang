@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=सेटिंग्स
+jei.tooltip.show.all.recipes=सभी रेसिपी दिखाएँ
+jei.tooltip.delete.item=हटाने के लिए क्लिक करें
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=गायब वस्तुएँ
+jei.tooltip.error.recipe.transfer.inventory.full=इन्वेंटरी बहुत भरी हुई है
+
+# Error Messages
+jei.chat.error.command.too.long=इस चैट कमांड को संभालने के लिए JEI सर्वर पर इंस्टॉल होना चाहिए, क्योंकि यह Minecraft द्वारा भेजे जाने के लिए बहुत लंबा है।
+
+# Key Bindings
+key.jei.toggleOverlay=वस्तु सूची दिखाएँ/छिपाएँ (Ctrl + )
+key.jei.showRecipe=वस्तु की रेसिपी दिखाएँ
+key.jei.showUses=वस्तु के उपयोग दिखाएँ
+
+# Config
+config.jei.default=डिफ़ॉल्ट
+config.jei.valid=मान्य
+
+config.jei.title=%MODNAME सेटिंग्स
+
+config.jei.mode=मोड
+config.jei.mode.comment=JEI के काम करने का मोड बदलें।
+config.jei.mode.cheatItemsEnabled=वस्तु चीटिंग
+config.jei.mode.cheatItemsEnabled.comment=रेसिपी दिखाने के बजाय /give से वस्तुएँ दें।
+config.jei.mode.editEnabled=वस्तु सूची संपादन मोड
+config.jei.mode.editEnabled.comment=वस्तु सूची में वस्तुओं पर क्लिक करके उन्हें छिपाएँ या दिखाएँ।
+
+config.jei.interface=इंटरफ़ेस
+config.jei.interface.comment=यूज़र इंटरफ़ेस से संबंधित विकल्प।
+config.jei.interface.recipeAnimationsEnabled=रेसिपी एनीमेशन
+config.jei.interface.recipeAnimationsEnabled.comment=रेसिपी एनीमेशन दिखाएँ (भट्ठी की आग, प्रगति पट्टियाँ आदि)
+
+config.jei.search=खोज
+config.jei.search.comment=खोज पट्टी से संबंधित विकल्प।
+config.jei.search.atPrefixRequiredForModName=मॉड नाम के लिए @ का उपयोग करें
+config.jei.search.atPrefixRequiredForModName.comment=मॉड नाम से खोजने के लिए "ModName" के बजाय "@ModName" आवश्यक करें।
+
+config.jei.advanced=उन्नत
+config.jei.advanced.comment=JEI के काम करने के तरीके को बदलने के लिए उन्नत सेटिंग्स।
+config.jei.advanced.nbtKeyIgnoreList=अनदेखे NBT कुंजियों की सूची
+config.jei.advanced.nbtKeyIgnoreList.comment=रेसिपी प्राप्त करते समय अनदेखा की जाने वाली NBT कुंजियों की सूची।
+config.jei.advanced.itemBlacklist=वस्तु ब्लैकलिस्ट
+config.jei.advanced.itemBlacklist.comment=उन वस्तुओं की सूची जिन्हें वस्तु सूची में नहीं दिखाया जाना चाहिए। प्रारूप: modId:name[:meta]. संपादन मोड यहाँ प्रविष्टियाँ अपने-आप जोड़ेगा या हटाएगा।
+config.jei.advanced.hideMissingModelsEnabled=गायब मॉडल वाली वस्तुएँ छिपाएँ
+config.jei.advanced.hideMissingModelsEnabled.comment=गायब मॉडल वाली वस्तुएँ वस्तु सूची से छिपा दी जाएँगी।
+config.jei.advanced.debugModeEnabled=डीबग मोड
+config.jei.advanced.debugModeEnabled.comment=JEI विकास में मदद के लिए विभिन्न चीज़ें जोड़ता है।
+config.jei.advanced.deleteItemsInCheatModeEnabled=चीट मोड में वस्तुएँ हटाएँ
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=चीट मोड में, ItemStack को वस्तु सूची के ऊपर खींचें और हटाने के लिए क्लिक करें। (सर्वर पर JEI आवश्यक है)
+
+config.jei.addons=ऐडऑन
+config.jei.addons.comment=JEI ऐडऑन सेटिंग्स के लिए श्रेणी।
+
+# Edit Mode
+gui.jei.editMode.description=JEI वस्तु सूची संपादन मोड:
+gui.jei.editMode.description.hide=छिपाने के लिए Ctrl-क्लिक करें।
+gui.jei.editMode.description.show=छिपा हुआ। दिखाने के लिए Ctrl-क्लिक करें।
+gui.jei.editMode.description.hide.wild=वाइल्डकार्ड से छिपाने के लिए Ctrl-दायाँ क्लिक करें।
+gui.jei.editMode.description.show.wild=वाइल्डकार्ड से छिपा हुआ। दिखाने के लिए Ctrl-दायाँ क्लिक करें।
+
+# Recipe Categories
+gui.jei.category.craftingTable=क्राफ्टिंग टेबल
+gui.jei.category.smelting=गलाना
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=ईंधन
+gui.jei.category.fuel.burnTime=जलने का समय: %s
+gui.jei.category.brewing=पोशन बनाना
+gui.jei.category.brewing.steps=चरण: %s
+gui.jei.category.itemDescription=विवरण
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
