@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "base": {
+    "minecraft": "1.9.4",
+    "jei": "3.6.8",
+    "generation": "g4-mc1.9.4",
+    "source": "upstream/sources/1.9.4/en_US.lang",
+    "key_count": 80
+  },
+  "target": {
+    "minecraft": "1.10",
+    "jei": "3.7.1",
+    "generation": "g5-mc1.10",
+    "upstream_commit": "7f4e95d5b7620a0d304aa73243cd9b3f9737e247",
+    "source": "upstream/sources/1.10/en_US.lang",
+    "key_count": 78
+  },
+  "unchanged_key_and_value_count": 77,
+  "added_key_count": 0,
+  "added_keys": [],
+  "removed_key_count": 2,
+  "removed_keys": [
+    "config.jei.advanced.hideLaggyModelsEnabled",
+    "config.jei.advanced.hideLaggyModelsEnabled.comment"
+  ],
+  "changed_english_value_count": 1,
+  "changed_english_values": {
+    "gui.jei.category.craftingTable": {
+      "from": "Crafting",
+      "to": "Crafting Table",
+      "reuse_from_generation": "g3-mc1.9",
+      "reason": "The target English value is exactly the previously validated G3 value, so translations can be restored from G3 rather than translated again."
+    }
+  },
+  "notes": "The 1.10 target is effectively G4 with the two hideLaggyModels keys removed and gui.jei.category.craftingTable reverted to its G3 English meaning. jei.tooltip.cheat.mode remains unchanged from G4."
+}
