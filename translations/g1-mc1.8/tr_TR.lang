@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Ayarlar
+jei.tooltip.show.all.recipes=Tüm tarifleri göster
+jei.tooltip.delete.item=Silmek için tıkla
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Eksik eşyalar
+jei.tooltip.error.recipe.transfer.inventory.full=Envanter çok dolu
+
+# Error Messages
+jei.chat.error.command.too.long=Bu sohbet komutunu işlemek için JEI sunucuda kurulu olmalıdır, çünkü komut Minecraft'ın gönderebileceğinden daha uzundur.
+
+# Key Bindings
+key.jei.toggleOverlay=Eşya listesini göster/gizle (Ctrl + )
+key.jei.showRecipe=Eşya tarifini göster
+key.jei.showUses=Eşyanın kullanımlarını göster
+
+# Config
+config.jei.default=Varsayılan
+config.jei.valid=Geçerli
+
+config.jei.title=%MODNAME ayarları
+
+config.jei.mode=Mod
+config.jei.mode.comment=JEI'nin çalıştığı modu değiştirir.
+config.jei.mode.cheatItemsEnabled=Eşya hilesi
+config.jei.mode.cheatItemsEnabled.comment=Tarifi göstermek yerine /give ile eşya verir.
+config.jei.mode.editEnabled=Eşya listesi düzenleme modu
+config.jei.mode.editEnabled.comment=Eşya listesindeki eşyalara tıklayarak onları gizleyin veya gösterin.
+
+config.jei.interface=Arayüz
+config.jei.interface.comment=Kullanıcı arayüzüyle ilgili seçenekler.
+config.jei.interface.recipeAnimationsEnabled=Tarif animasyonları
+config.jei.interface.recipeAnimationsEnabled.comment=Tarif animasyonlarını göster (fırın ateşi, ilerleme çubukları vb.)
+
+config.jei.search=Arama
+config.jei.search.comment=Arama çubuğuyla ilgili seçenekler.
+config.jei.search.atPrefixRequiredForModName=Mod adı için @ kullan
+config.jei.search.atPrefixRequiredForModName.comment=Mod adına göre aramak için "ModName" yerine "@ModName" kullanılmasını zorunlu kılar.
+
+config.jei.advanced=Gelişmiş
+config.jei.advanced.comment=JEI'nin çalışma şeklini değiştirmek için gelişmiş ayarlar.
+config.jei.advanced.nbtKeyIgnoreList=Yok sayılan NBT anahtarları listesi
+config.jei.advanced.nbtKeyIgnoreList.comment=Tarifler alınırken yok sayılması gereken NBT anahtarlarının listesi.
+config.jei.advanced.itemBlacklist=Eşya kara listesi
+config.jei.advanced.itemBlacklist.comment=Eşya listesinde gösterilmemesi gereken eşyaların listesi. Biçim: modId:name[:meta]. Düzenleme modu buraya otomatik olarak kayıt ekler veya kaldırır.
+config.jei.advanced.hideMissingModelsEnabled=Modeli eksik eşyaları gizle
+config.jei.advanced.hideMissingModelsEnabled.comment=Modeli eksik eşyalar eşya listesinden gizlenecektir.
+config.jei.advanced.debugModeEnabled=Hata ayıklama modu
+config.jei.advanced.debugModeEnabled.comment=JEI geliştirmeye yardımcı olmak için çeşitli şeyler ekler.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Hile modunda eşyaları sil
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Hile modunda bir ItemStack'i eşya listesinin üzerine sürükleyin ve silmek için tıklayın. (sunucuda JEI gerektirir)
+
+config.jei.addons=Eklentiler
+config.jei.addons.comment=JEI eklentilerinin yapılandırma seçenekleri için kategori.
+
+# Edit Mode
+gui.jei.editMode.description=JEI eşya listesi düzenleme modu:
+gui.jei.editMode.description.hide=Gizlemek için Ctrl-tıkla.
+gui.jei.editMode.description.show=Gizli. Göstermek için Ctrl-tıkla.
+gui.jei.editMode.description.hide.wild=Joker karakterle gizlemek için Ctrl-sağ tıkla.
+gui.jei.editMode.description.show.wild=Joker karakterle gizli. Göstermek için Ctrl-sağ tıkla.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Çalışma masası
+gui.jei.category.smelting=Eritme
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Yakıt
+gui.jei.category.fuel.burnTime=Yanma süresi: %s
+gui.jei.category.brewing=İksir yapımı
+gui.jei.category.brewing.steps=Adımlar: %s
+gui.jei.category.itemDescription=Açıklama
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
