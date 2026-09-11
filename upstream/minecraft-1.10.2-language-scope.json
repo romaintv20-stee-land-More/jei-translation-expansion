@@ -66,7 +66,8 @@
     "reconstruction_script": "scripts/reconstruct_1_10_2.py",
     "delta_validator": "scripts/validate_1_10_2_delta.py",
     "complete_validator": "scripts/validate_1_10_2_complete.py",
-    "status": "implementation-in-progress"
+    "successful_validation_run": 34642956606,
+    "status": "complete-for-selected-scope"
   },
   "source_audit": "upstream/minecraft-1.10.2-language-audit.json",
   "english_diff": "upstream/diffs/1.10-to-1.10.2.json"
