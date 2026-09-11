@@ -31,9 +31,9 @@ If a language cannot be translated with sufficient confidence, the project keeps
 
 ## Current status
 
-Audit and translation work is progressing chronologically through historical JEI/Minecraft versions. Minecraft 1.8 and 1.8.9 translation scopes are complete, and Minecraft 1.9 / JEI 3.3.3 has a complete selected-scope translation/reconstruction pipeline. Version-specific runtime/JAR validation may be finalized separately while auditing continues to later Minecraft versions.
+Audit and translation work is progressing chronologically through historical JEI/Minecraft versions. The selected translation/reconstruction scopes are complete and CI-validated for **Minecraft 1.8, 1.8.9, 1.9, 1.9.4 and 1.10**. Minecraft 1.10 / JEI 3.7.1 expands the selected project scope to 72 languages after Minecraft adds Hawaiian and Mongolian; its deterministic pipeline validates 65 complete addon locales plus six exact missing-key-only JEI supplements.
 
-The oldest verified JEI branch in the official upstream repository is **Minecraft 1.8**. The modern upstream endpoint is audited separately as the project progresses.
+Version-specific runtime/JAR validation may be finalized separately while auditing continues to later Minecraft versions. The next chronological audit target is Minecraft **1.10.2**. The oldest verified JEI branch in the official upstream repository is **Minecraft 1.8**; the modern upstream endpoint is audited separately as the project progresses.
 
 For the canonical handoff and exact next steps, read [`PROJECT_STATUS.md`](PROJECT_STATUS.md) first.
 
