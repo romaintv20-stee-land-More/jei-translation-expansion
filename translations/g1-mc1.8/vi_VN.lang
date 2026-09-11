@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Cài đặt
+jei.tooltip.show.all.recipes=Hiển thị tất cả công thức
+jei.tooltip.delete.item=Nhấp để xóa
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Thiếu vật phẩm
+jei.tooltip.error.recipe.transfer.inventory.full=Túi đồ quá đầy
+
+# Error Messages
+jei.chat.error.command.too.long=JEI phải được cài trên máy chủ để xử lý lệnh trò chuyện này vì lệnh quá dài để Minecraft gửi đi.
+
+# Key Bindings
+key.jei.toggleOverlay=Hiện/ẩn danh sách vật phẩm (Ctrl + )
+key.jei.showRecipe=Hiển thị công thức của vật phẩm
+key.jei.showUses=Hiển thị cách dùng của vật phẩm
+
+# Config
+config.jei.default=Mặc định
+config.jei.valid=Hợp lệ
+
+config.jei.title=Cài đặt %MODNAME
+
+config.jei.mode=Chế độ
+config.jei.mode.comment=Thay đổi chế độ hoạt động của JEI.
+config.jei.mode.cheatItemsEnabled=Gian lận vật phẩm
+config.jei.mode.cheatItemsEnabled.comment=Cấp vật phẩm bằng /give thay vì hiển thị công thức.
+config.jei.mode.editEnabled=Chế độ chỉnh sửa danh sách vật phẩm
+config.jei.mode.editEnabled.comment=Ẩn hoặc hiện vật phẩm bằng cách nhấp vào chúng trong danh sách vật phẩm.
+
+config.jei.interface=Giao diện
+config.jei.interface.comment=Các tùy chọn liên quan đến giao diện người dùng.
+config.jei.interface.recipeAnimationsEnabled=Hoạt ảnh công thức
+config.jei.interface.recipeAnimationsEnabled.comment=Hiển thị hoạt ảnh công thức (lửa lò nung, thanh tiến trình, v.v.)
+
+config.jei.search=Tìm kiếm
+config.jei.search.comment=Các tùy chọn liên quan đến thanh tìm kiếm.
+config.jei.search.atPrefixRequiredForModName=Dùng @ cho tên mod
+config.jei.search.atPrefixRequiredForModName.comment=Yêu cầu "@ModName" để tìm theo tên mod thay vì "ModName".
+
+config.jei.advanced=Nâng cao
+config.jei.advanced.comment=Các cài đặt nâng cao để thay đổi cách JEI hoạt động.
+config.jei.advanced.nbtKeyIgnoreList=Danh sách khóa NBT bị bỏ qua
+config.jei.advanced.nbtKeyIgnoreList.comment=Danh sách các khóa NBT cần bỏ qua khi lấy công thức.
+config.jei.advanced.itemBlacklist=Danh sách đen vật phẩm
+config.jei.advanced.itemBlacklist.comment=Danh sách vật phẩm không được hiển thị trong danh sách vật phẩm. Định dạng: modId:name[:meta]. Chế độ chỉnh sửa sẽ tự động thêm hoặc xóa mục tại đây.
+config.jei.advanced.hideMissingModelsEnabled=Ẩn vật phẩm thiếu mô hình
+config.jei.advanced.hideMissingModelsEnabled.comment=Vật phẩm bị thiếu mô hình sẽ được ẩn khỏi danh sách vật phẩm.
+config.jei.advanced.debugModeEnabled=Chế độ gỡ lỗi
+config.jei.advanced.debugModeEnabled.comment=Thêm nhiều thứ để hỗ trợ phát triển JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Xóa vật phẩm trong chế độ gian lận
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Trong chế độ gian lận, kéo ItemStack lên danh sách vật phẩm rồi nhấp để xóa. (yêu cầu JEI trên máy chủ)
+
+config.jei.addons=Tiện ích bổ sung
+config.jei.addons.comment=Danh mục cho các tùy chọn cấu hình tiện ích bổ sung của JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Chế độ chỉnh sửa danh sách vật phẩm JEI:
+gui.jei.editMode.description.hide=Ctrl-nhấp để ẩn.
+gui.jei.editMode.description.show=Đang ẩn. Ctrl-nhấp để hiện.
+gui.jei.editMode.description.hide.wild=Ctrl-nhấp phải để ẩn bằng ký tự đại diện.
+gui.jei.editMode.description.show.wild=Đã ẩn bằng ký tự đại diện. Ctrl-nhấp phải để hiện.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Bàn chế tạo
+gui.jei.category.smelting=Nung chảy
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Nhiên liệu
+gui.jei.category.fuel.burnTime=Thời gian cháy: %s
+gui.jei.category.brewing=Pha chế
+gui.jei.category.brewing.steps=Các bước: %s
+gui.jei.category.itemDescription=Mô tả
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
