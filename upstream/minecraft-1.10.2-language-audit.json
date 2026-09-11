@@ -1,0 +1,332 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-11",
+  "status": "verified-source-scope-and-upstream-ownership",
+  "minecraft": "1.10.2",
+  "jei": "3.14.8",
+  "jei_upstream_branch": "1.10",
+  "jei_upstream_commit": "446af20eaa73d260517f0adc737232437363f78d",
+  "build_metadata": {
+    "forge": "12.18.3.2511",
+    "mcp_mappings": "snapshot_20161111",
+    "java_source_compatibility": "1.8",
+    "java_target_compatibility": "1.8",
+    "language_format": "lang",
+    "english_source_path": "src/main/resources/assets/jei/lang/en_US.lang"
+  },
+  "minecraft_asset_index": {
+    "id": "1.10",
+    "sha1": "7c2800b458376b8fc0b738382fb7784328fddda9",
+    "url": "https://piston-meta.mojang.com/v1/packages/7c2800b458376b8fc0b738382fb7784328fddda9/1.10.json",
+    "same_as_minecraft_1_10": true,
+    "raw_language_count_including_en_us": 94,
+    "selected_scope_count": 72
+  },
+  "jei_english": {
+    "key_count": 87,
+    "normal_key_count": 84,
+    "debug_only_key_count": 3
+  },
+  "english_diff_from_1_10": {
+    "unchanged_key_and_value_count": 53,
+    "added_key_count": 25,
+    "removed_key_count": 16,
+    "changed_english_value_count": 9,
+    "reviewed_key_count": 34,
+    "manifest": "upstream/diffs/1.10-to-1.10.2.json"
+  },
+  "jei_upstream_locale_count": 23,
+  "jei_upstream_locales": [
+    "ar_SA", "bg_BG", "cs_CZ", "de_DE", "el_GR", "en_AU", "en_US", "es_ES",
+    "fi_FI", "fr_FR", "he_IL", "it_IT", "ja_JP", "ko_KR", "lt_LT", "nb_NO",
+    "pl_PL", "pt_BR", "ru_RU", "sv_SE", "uk_UA", "zh_CN", "zh_TW"
+  ],
+  "jei_upstream_blob_shas": {
+    "ar_SA": "c4efdfc6794316f4dd3b021ad1d8b08f30af75f3",
+    "bg_BG": "bd754db8830a5c8b9fa29fcf6549a21d7470ab58",
+    "cs_CZ": "99f9e148c643840da4ba359e35b929469ed500cd",
+    "de_DE": "1608342d58a14a99d44e95c4bddcbfc99ff666e7",
+    "el_GR": "1a7dbc750af614b63340471afdb56a09a2764385",
+    "en_AU": "081d6a9da98c2061d248057b15d67e5a64d9712d",
+    "en_US": "75790131d753d64fe0cf98f3ac5c0ee67f6bd545",
+    "es_ES": "d9f5e85fd522d6fdd0581d8256c6d39c960a7173",
+    "fi_FI": "f1361a416a99dfd260b3d9dc72ca23af04748390",
+    "fr_FR": "4bbbbad52f4074db1b2eadebb669596752a74f8f",
+    "he_IL": "2e182dacf4876875db7090509073be6a630f281a",
+    "it_IT": "4dd698f4357067f0fd64cf3482a546ea7d9f43b9",
+    "ja_JP": "b6628bb94141fd8728678e725c98e5fb99791817",
+    "ko_KR": "d170cfa1616405ebae32f052641bb00afeb6aaef",
+    "lt_LT": "6acc7f3a267e7e19eb4cbdc002543a1904b2dfd7",
+    "nb_NO": "1d2b68153a2de9261f5e377a3f9fa02fbc60014a",
+    "pl_PL": "76fda22028622105f0562dcabe6420bcb2763545",
+    "pt_BR": "436af03ffbf28d6a9c9a9d90e648d1e7ea9ae0c4",
+    "ru_RU": "7d79a3157fd7336d3659c0d5212b02315cf2f4e6",
+    "sv_SE": "abe9d59e07e91f6e38deae184d924999d6b5c67e",
+    "uk_UA": "6c35d76039de057000bdc7cdfbc54bb6da290282",
+    "zh_CN": "054e9fc895aff04835cd0004c76e0e1a00e9bef3",
+    "zh_TW": "1dc455ef9db98c1ad3f5040ef57abd1581add199"
+  },
+  "selected_upstream_locales": [
+    "ar_SA", "bg_BG", "cs_CZ", "de_DE", "el_GR", "en_US", "es_ES", "fi_FI",
+    "fr_FR", "he_IL", "it_IT", "ja_JP", "ko_KR", "lt_LT", "pl_PL", "pt_BR",
+    "ru_RU", "sv_SE", "uk_UA", "zh_CN"
+  ],
+  "selected_upstream_complete_locales": ["de_DE", "en_US", "ru_RU", "uk_UA"],
+  "selected_upstream_incomplete_locales": [
+    "ar_SA", "bg_BG", "cs_CZ", "el_GR", "es_ES", "fi_FI", "fr_FR", "he_IL",
+    "it_IT", "ja_JP", "ko_KR", "lt_LT", "pl_PL", "pt_BR", "sv_SE", "zh_CN"
+  ],
+  "upstream_unselected_or_nonmatching_locales": ["en_AU", "nb_NO", "zh_TW"],
+  "selected_upstream_locale_completeness": {
+    "ar_SA": {
+      "normal_present": 66,
+      "normal_target": 84,
+      "missing_normal": 18,
+      "extra_key_count": 10,
+      "missing_normal_keys": [
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2",
+        "jei.tooltip.error.crash", "jei.tooltip.error.recipe.transfer.too.large.player.inventory",
+        "key.jei.ctrl", "key.jei.ctrl.mac"
+      ]
+    },
+    "bg_BG": {
+      "normal_present": 61, "normal_target": 84, "missing_normal": 23, "extra_key_count": 10,
+      "missing_normal_keys": [
+        "config.jei.advanced.centerSearchBarEnabled", "config.jei.advanced.centerSearchBarEnabled.comment",
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "gui.jei.category.fuel.smeltCount", "gui.jei.category.fuel.smeltCount.single",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2",
+        "jei.tooltip.error.crash", "jei.tooltip.error.recipe.transfer.too.large.player.inventory",
+        "key.jei.ctrl", "key.jei.ctrl.mac", "key.jei.toggleCheatMode"
+      ]
+    },
+    "cs_CZ": {
+      "normal_present": 64, "normal_target": 84, "missing_normal": 20, "extra_key_count": 10,
+      "missing_normal_keys": [
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "gui.jei.category.fuel.smeltCount", "gui.jei.category.fuel.smeltCount.single",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2",
+        "jei.tooltip.error.crash", "jei.tooltip.error.recipe.transfer.too.large.player.inventory",
+        "key.jei.ctrl", "key.jei.ctrl.mac"
+      ]
+    },
+    "de_DE": {"normal_present": 84, "normal_target": 84, "missing_normal": 0, "extra_key_count": 0, "missing_normal_keys": []},
+    "el_GR": {
+      "normal_present": 67, "normal_target": 84, "missing_normal": 17, "extra_key_count": 10,
+      "missing_normal_keys": [
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2",
+        "jei.tooltip.error.recipe.transfer.too.large.player.inventory", "key.jei.ctrl", "key.jei.ctrl.mac"
+      ]
+    },
+    "en_US": {"normal_present": 84, "normal_target": 84, "missing_normal": 0, "extra_key_count": 0, "missing_normal_keys": []},
+    "es_ES": {
+      "normal_present": 61, "normal_target": 84, "missing_normal": 23, "extra_key_count": 10,
+      "missing_normal_keys": [
+        "config.jei.advanced.centerSearchBarEnabled", "config.jei.advanced.centerSearchBarEnabled.comment",
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "gui.jei.category.fuel.smeltCount", "gui.jei.category.fuel.smeltCount.single",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2",
+        "jei.tooltip.error.crash", "jei.tooltip.error.recipe.transfer.too.large.player.inventory",
+        "key.jei.ctrl", "key.jei.ctrl.mac", "key.jei.toggleCheatMode"
+      ]
+    },
+    "fi_FI": {
+      "normal_present": 50, "normal_target": 84, "missing_normal": 34, "extra_key_count": 4,
+      "missing_normal_keys": [
+        "config.jei.advanced.centerSearchBarEnabled", "config.jei.advanced.centerSearchBarEnabled.comment",
+        "config.jei.advanced.colorSearchEnabled", "config.jei.advanced.colorSearchEnabled.comment",
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "gui.jei.category.fuel.smeltCount", "gui.jei.category.fuel.smeltCount.single",
+        "gui.jei.editMode.description.hide.mod.id", "gui.jei.editMode.description.show.mod.id",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2",
+        "jei.tooltip.cheat.mode", "jei.tooltip.error.crash", "jei.tooltip.error.recipe.transfer.no.server",
+        "jei.tooltip.error.recipe.transfer.too.large.player.inventory", "jei.tooltip.error.recipe.transfer.unknown",
+        "jei.tooltip.item.colors", "jei.tooltip.recipe.ore.dict", "jei.tooltip.shapeless.recipe",
+        "key.jei.ctrl", "key.jei.ctrl.mac", "key.jei.focusSearch", "key.jei.toggleCheatMode"
+      ]
+    },
+    "fr_FR": {
+      "normal_present": 58, "normal_target": 84, "missing_normal": 26, "extra_key_count": 10,
+      "missing_normal_keys": [
+        "config.jei.advanced.centerSearchBarEnabled", "config.jei.advanced.centerSearchBarEnabled.comment",
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "gui.jei.category.fuel.smeltCount", "gui.jei.category.fuel.smeltCount.single",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2",
+        "jei.tooltip.cheat.mode", "jei.tooltip.error.crash", "jei.tooltip.error.recipe.transfer.no.server",
+        "jei.tooltip.error.recipe.transfer.too.large.player.inventory", "jei.tooltip.error.recipe.transfer.unknown",
+        "key.jei.ctrl", "key.jei.ctrl.mac", "key.jei.toggleCheatMode"
+      ]
+    },
+    "he_IL": {
+      "normal_present": 69, "normal_target": 84, "missing_normal": 15, "extra_key_count": 10,
+      "missing_normal_keys": [
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2",
+        "jei.tooltip.error.recipe.transfer.too.large.player.inventory"
+      ]
+    },
+    "it_IT": {
+      "normal_present": 66, "normal_target": 84, "missing_normal": 18, "extra_key_count": 10,
+      "missing_normal_keys": [
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2",
+        "jei.tooltip.error.crash", "jei.tooltip.error.recipe.transfer.too.large.player.inventory",
+        "key.jei.ctrl", "key.jei.ctrl.mac"
+      ]
+    },
+    "ja_JP": {"normal_present": 82, "normal_target": 84, "missing_normal": 2, "extra_key_count": 0, "missing_normal_keys": ["key.jei.ctrl", "key.jei.ctrl.mac"]},
+    "ko_KR": {
+      "normal_present": 69, "normal_target": 84, "missing_normal": 15, "extra_key_count": 10,
+      "missing_normal_keys": [
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2",
+        "jei.tooltip.error.recipe.transfer.too.large.player.inventory"
+      ]
+    },
+    "lt_LT": {
+      "normal_present": 59, "normal_target": 84, "missing_normal": 25, "extra_key_count": 18,
+      "missing_normal_keys": [
+        "config.jei.advanced.centerSearchBarEnabled", "config.jei.advanced.centerSearchBarEnabled.comment",
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "gui.jei.category.fuel.smeltCount", "gui.jei.category.fuel.smeltCount.single",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2",
+        "jei.tooltip.error.crash", "jei.tooltip.error.recipe.transfer.no.server",
+        "jei.tooltip.error.recipe.transfer.too.large.player.inventory", "jei.tooltip.error.recipe.transfer.unknown",
+        "key.jei.ctrl", "key.jei.ctrl.mac", "key.jei.toggleCheatMode"
+      ]
+    },
+    "pl_PL": {
+      "normal_present": 66, "normal_target": 84, "missing_normal": 18, "extra_key_count": 10,
+      "missing_normal_keys": [
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2",
+        "jei.tooltip.error.crash", "jei.tooltip.error.recipe.transfer.too.large.player.inventory",
+        "key.jei.ctrl", "key.jei.ctrl.mac"
+      ]
+    },
+    "pt_BR": {
+      "normal_present": 70, "normal_target": 84, "missing_normal": 14, "extra_key_count": 10,
+      "missing_normal_keys": [
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2"
+      ]
+    },
+    "ru_RU": {"normal_present": 84, "normal_target": 84, "missing_normal": 0, "extra_key_count": 0, "missing_normal_keys": []},
+    "sv_SE": {
+      "normal_present": 66, "normal_target": 84, "missing_normal": 18, "extra_key_count": 10,
+      "missing_normal_keys": [
+        "config.jei.advanced.modNameFormat", "config.jei.advanced.modNameFormat.comment",
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment",
+        "jei.chat.error.no.cheat.permission.1", "jei.chat.error.no.cheat.permission.2",
+        "jei.tooltip.error.crash", "jei.tooltip.error.recipe.transfer.too.large.player.inventory",
+        "key.jei.ctrl", "key.jei.ctrl.mac"
+      ]
+    },
+    "uk_UA": {"normal_present": 84, "normal_target": 84, "missing_normal": 0, "extra_key_count": 0, "missing_normal_keys": []},
+    "zh_CN": {
+      "normal_present": 74, "normal_target": 84, "missing_normal": 10, "extra_key_count": 10,
+      "missing_normal_keys": [
+        "config.jei.search.colorSearchMode", "config.jei.search.colorSearchMode.comment",
+        "config.jei.search.creativeTabSearchMode", "config.jei.search.creativeTabSearchMode.comment",
+        "config.jei.search.modNameSearchMode", "config.jei.search.modNameSearchMode.comment",
+        "config.jei.search.oreDictSearchMode", "config.jei.search.oreDictSearchMode.comment",
+        "config.jei.search.tooltipSearchMode", "config.jei.search.tooltipSearchMode.comment"
+      ]
+    }
+  },
+  "unselected_upstream_completeness": {
+    "en_AU": {"normal_present": 5, "normal_target": 84, "missing_normal": 79, "extra_key_count": 2},
+    "nb_NO": {"normal_present": 58, "normal_target": 84, "missing_normal": 26, "extra_key_count": 10},
+    "zh_TW": {"normal_present": 74, "normal_target": 84, "missing_normal": 10, "extra_key_count": 10}
+  },
+  "selected_scope_implications": {
+    "raw_language_count": 94,
+    "selected_scope_count": 72,
+    "selected_upstream_locale_count": 20,
+    "selected_upstream_complete_locale_count": 4,
+    "selected_upstream_incomplete_locale_count": 16,
+    "addon_full_locale_count": 52,
+    "addon_full_locales": [
+      "af_ZA", "ast_ES", "az_AZ", "be_BY", "br_FR", "ca_ES", "cy_GB", "da_DK",
+      "eo_UY", "et_EE", "eu_ES", "fa_IR", "fil_PH", "fo_FO", "fy_NL", "ga_IE",
+      "gd_GB", "gl_ES", "gv_IM", "haw_US", "hi_IN", "hr_HR", "hu_HU", "hy_AM",
+      "id_ID", "is_IS", "ka_GE", "ksh_DE", "kw_GB", "la_LA", "lb_LU", "li_LI",
+      "lv_LV", "mi_NZ", "mk_MK", "mn_MN", "ms_MY", "mt_MT", "nds_DE", "nl_NL",
+      "no_NO", "oc_FR", "ro_RO", "se_NO", "sk_SK", "sl_SI", "so_SO", "sq_AL",
+      "sr_SP", "th_TH", "tr_TR", "vi_VN"
+    ]
+  },
+  "audit_script": "scripts/audit_1_10_2.py",
+  "successful_audit_workflow_run": 34642438873
+}
