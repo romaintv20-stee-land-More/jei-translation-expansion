@@ -1,0 +1,98 @@
+# Tooltips
+jei.tooltip.config=Налады
+jei.tooltip.show.recipes=Паказаць рэцэпты
+jei.tooltip.show.all.recipes=Паказаць усе рэцэпты
+jei.tooltip.delete.item=Націсніце, каб выдаліць
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+jei.tooltip.transfer=Перанесці прадметы
+jei.tooltip.recipe.ore.dict=Прымае любы: %s
+jei.tooltip.item.colors=Колеры: %s
+jei.tooltip.shapeless.recipe=Бясформенны рэцэпт
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Не хапае прадметаў
+jei.tooltip.error.recipe.transfer.inventory.full=Інвентар перапоўнены
+
+# Error Messages
+jei.chat.error.command.too.long=JEI павінен быць усталяваны на серверы для апрацоўкі гэтай каманды чата, бо яна занадта доўгая для адпраўкі Minecraft.
+
+# Key Bindings
+key.jei.toggleOverlay=Пераключыць накладку спісу прадметаў
+key.jei.focusSearch=Выбраць радок пошуку
+key.jei.showRecipe=Паказаць рэцэпт прадмета
+key.jei.showUses=Паказаць выкарыстанні прадмета
+key.jei.recipeBack=Паказаць папярэднюю старонку рэцэптаў
+
+# Config
+config.jei.default=Прадвызначана
+config.jei.valid=Дапушчальна
+
+config.jei.title=Налады %MODNAME
+
+config.jei.mode=Рэжым
+config.jei.mode.comment=Змяняе рэжым працы JEI.
+config.jei.mode.cheatItemsEnabled=Рэжым выдачы прадметаў
+config.jei.mode.cheatItemsEnabled.comment=Выдае прадметы замест паказу рэцэпта.
+config.jei.mode.editEnabled=Рэжым схавання прадметаў
+config.jei.mode.editEnabled.comment=Хавае і паказвае прадметы націсканнем на іх у спісе прадметаў.
+
+config.jei.interface=Інтэрфейс
+config.jei.interface.comment=Параметры карыстальніцкага інтэрфейсу.
+config.jei.interface.overlayEnabled=Спіс прадметаў уключаны
+config.jei.interface.overlayEnabled.comment=Паказвае спіс прадметаў побач з адкрытымі інтэрфейсамі.
+config.jei.interface.recipeAnimationsEnabled=Анімацыі рэцэптаў
+config.jei.interface.recipeAnimationsEnabled.comment=Паказвае анімацыі рэцэптаў (агонь печы, палосы прагрэсу і г.д.).
+
+config.jei.search=Параметры пошуку
+config.jei.search.comment=Параметры, звязаныя з радком пошуку.
+config.jei.search.atPrefixRequiredForModName=Патрабаваць @ для назвы мода
+config.jei.search.atPrefixRequiredForModName.comment=Патрабаваць «@» перад словам для пошуку па назве мода.
+config.jei.search.prefixRequiredForTooltipSearch=Патрабаваць # для падказкі
+config.jei.search.prefixRequiredForTooltipSearch.comment=Патрабаваць «#» перад словам для пошуку ў падказках.
+config.jei.search.prefixRequiredForOreDictSearch=Патрабаваць $ для слоўніка руд
+config.jei.search.prefixRequiredForOreDictSearch.comment=Патрабаваць «$» перад словам для пошуку назваў у слоўніку руд.
+config.jei.search.prefixRequiredForCreativeTabSearch=Патрабаваць %% для назвы творчай укладкі
+config.jei.search.prefixRequiredForCreativeTabSearch.comment=Патрабаваць «%» перад словам для пошуку назваў творчых укладак.
+config.jei.search.prefixRequiredForColorSearch=Патрабаваць ^ для колераў
+config.jei.search.prefixRequiredForColorSearch.comment=Патрабаваць «^» перад словам для пошуку па колеры прадметаў.
+
+config.jei.advanced=Пашыраныя
+config.jei.advanced.comment=Пашыраныя параметры, якія змяняюць працу JEI.
+config.jei.advanced.itemBlacklist=Чорны спіс прадметаў
+config.jei.advanced.itemBlacklist.comment=Спіс прадметаў, якія не павінны паказвацца ў спісе прадметаў. Фармат: modId[:name[:meta]]. Рэжым рэдагавання будзе аўтаматычна дадаваць або выдаляць запісы тут.
+config.jei.advanced.hideMissingModelsEnabled=Хаваць прадметы без мадэляў
+config.jei.advanced.hideMissingModelsEnabled.comment=Прадметы з адсутнымі мадэлямі будуць схаваны са спісу прадметаў.
+config.jei.advanced.colorSearchEnabled=Уключыць пошук па колеры
+config.jei.advanced.colorSearchEnabled.comment=Шукае прадметы па колеры і паказвае даступныя для пошуку колеры ў падказках спісу прадметаў.
+config.jei.advanced.debugModeEnabled=Рэжым адладкі
+config.jei.advanced.debugModeEnabled.comment=Карысна толькі для распрацоўшчыкаў JEI; дадае тысячы тэставых прадметаў і некалькі рэцэптаў для адладкі.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Выдаляць прадметы ў рэжыме выдачы
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=У рэжыме выдачы перацягніце ItemStack на спіс прадметаў і націсніце, каб выдаліць яго. (патрабуе JEI на серверы)
+
+config.jei.addons=Дадаткі
+config.jei.addons.comment=Катэгорыя параметраў дадаткаў JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Рэжым рэдагавання спісу прадметаў JEI:
+gui.jei.editMode.description.hide=Ctrl-націск, каб схаваць.
+gui.jei.editMode.description.show=Схавана. Ctrl-націск, каб паказаць.
+gui.jei.editMode.description.hide.wild=Ctrl-націск правай кнопкай, каб схаваць з шаблонам.
+gui.jei.editMode.description.show.wild=Схавана па шаблоне. Ctrl-націск правай кнопкай, каб паказаць.
+gui.jei.editMode.description.hide.mod.id=Ctrl-Shift-націск, каб схаваць па ModId.
+gui.jei.editMode.description.show.mod.id=Схавана па ModId. Ctrl-Shift-націск, каб паказаць.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Варштат
+gui.jei.category.smelting=Пераплаўка
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Паліва
+gui.jei.category.fuel.burnTime=Час гарэння: %s
+gui.jei.category.brewing=Зельеварэнне
+gui.jei.category.brewing.steps=Крокі: %s
+gui.jei.category.itemDescription=Апісанне
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
