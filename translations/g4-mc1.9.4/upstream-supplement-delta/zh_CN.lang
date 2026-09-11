@@ -1,0 +1,4 @@
+# G4 keys still absent from JEI 3.6.8 zh_CN. Other former addon keys are now upstream-owned and must not be duplicated.
+jei.tooltip.cheat.mode=作弊模式
+config.jei.advanced.hideLaggyModelsEnabled=隐藏模型加载缓慢的物品
+config.jei.advanced.hideLaggyModelsEnabled.comment=模型导致长时间延迟的物品将从物品列表中隐藏。
