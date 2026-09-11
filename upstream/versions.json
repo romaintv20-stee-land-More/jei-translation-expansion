@@ -48,6 +48,23 @@
       "notes": "The branch later transitions to Minecraft 1.9.4. This Minecraft 1.9 endpoint is deliberately pinned to the last 1.9 commit immediately before transition commit d6b11a003a4a10702a36f8a97fa28cae883c9360."
     },
     {
+      "branch": "1.9",
+      "audited_commit": "bd9fcad11a8b92d181fc8c2ec976e31c7467799a",
+      "minecraft": "1.9.4",
+      "jei": "3.6.8",
+      "loaders": ["forge"],
+      "forge": "12.17.0.1962",
+      "mcp_mappings": "snapshot_20160518",
+      "language_format": "lang",
+      "english_source": "src/main/resources/assets/jei/lang/en_US.lang",
+      "english_key_count": 80,
+      "java_source_compatibility": "1.7",
+      "java_target_compatibility": "1.7",
+      "official_locales": ["de_DE", "en_US", "fi_FI", "fr_FR", "ko_KR", "nb_NO", "ru_RU", "zh_CN"],
+      "verified": true,
+      "notes": "This is the current HEAD of the historical upstream branch 1.9 and is explicitly Minecraft 1.9.4 / JEI 3.6.8. It is a separate release target from Minecraft 1.9 and must receive its own JAR."
+    },
+    {
       "branch": "26.2",
       "minecraft": "26.2",
       "jei": null,
