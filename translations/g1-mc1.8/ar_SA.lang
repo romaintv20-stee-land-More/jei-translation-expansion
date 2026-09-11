@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=الإعدادات
+jei.tooltip.show.all.recipes=عرض كل الوصفات
+jei.tooltip.delete.item=انقر للحذف
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=عناصر مفقودة
+jei.tooltip.error.recipe.transfer.inventory.full=المخزون ممتلئ جدًا
+
+# Error Messages
+jei.chat.error.command.too.long=يجب أن يكون JEI مثبتًا على الخادم لمعالجة أمر الدردشة هذا، لأنه طويل جدًا بحيث لا يستطيع Minecraft إرساله.
+
+# Key Bindings
+key.jei.toggleOverlay=تبديل عرض قائمة العناصر (Ctrl + )
+key.jei.showRecipe=عرض وصفة العنصر
+key.jei.showUses=عرض استخدامات العنصر
+
+# Config
+config.jei.default=افتراضي
+config.jei.valid=صالح
+
+config.jei.title=إعدادات %MODNAME
+
+config.jei.mode=الوضع
+config.jei.mode.comment=تغيير الوضع الذي يعمل فيه JEI.
+config.jei.mode.cheatItemsEnabled=غش العناصر
+config.jei.mode.cheatItemsEnabled.comment=إعطاء العناصر باستخدام /give بدلًا من عرض الوصفة.
+config.jei.mode.editEnabled=وضع تحرير قائمة العناصر
+config.jei.mode.editEnabled.comment=إخفاء العناصر أو إظهارها بالنقر عليها في قائمة العناصر.
+
+config.jei.interface=الواجهة
+config.jei.interface.comment=خيارات متعلقة بواجهة المستخدم.
+config.jei.interface.recipeAnimationsEnabled=حركات الوصفات
+config.jei.interface.recipeAnimationsEnabled.comment=عرض حركات الوصفات (نار الفرن، أشرطة التقدم، إلخ)
+
+config.jei.search=بحث
+config.jei.search.comment=خيارات متعلقة بشريط البحث.
+config.jei.search.atPrefixRequiredForModName=استخدام @ لاسم المود
+config.jei.search.atPrefixRequiredForModName.comment=يتطلب "@ModName" للبحث حسب اسم المود بدلًا من "ModName".
+
+config.jei.advanced=متقدم
+config.jei.advanced.comment=خيارات إعدادات متقدمة لتغيير طريقة عمل JEI.
+config.jei.advanced.nbtKeyIgnoreList=قائمة تجاهل مفاتيح NBT
+config.jei.advanced.nbtKeyIgnoreList.comment=قائمة بمفاتيح NBT التي يجب تجاهلها عند جلب الوصفات.
+config.jei.advanced.itemBlacklist=القائمة السوداء للعناصر
+config.jei.advanced.itemBlacklist.comment=قائمة بالعناصر التي يجب ألا تظهر في قائمة العناصر. التنسيق: modId:name[:meta]. سيضيف وضع التحرير الإدخالات هنا أو يزيلها تلقائيًا.
+config.jei.advanced.hideMissingModelsEnabled=إخفاء العناصر ذات النماذج المفقودة
+config.jei.advanced.hideMissingModelsEnabled.comment=سيتم إخفاء العناصر التي تفتقد نماذجها من قائمة العناصر.
+config.jei.advanced.debugModeEnabled=وضع التصحيح
+config.jei.advanced.debugModeEnabled.comment=يضيف أشياء متنوعة للمساعدة في تطوير JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=حذف العناصر في وضع الغش
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=في وضع الغش، اسحب ItemStack فوق قائمة العناصر وانقر لحذفه. (يتطلب JEI على الخادم)
+
+config.jei.addons=الإضافات
+config.jei.addons.comment=فئة خيارات إعدادات إضافات JEI.
+
+# Edit Mode
+gui.jei.editMode.description=وضع تحرير قائمة عناصر JEI:
+gui.jei.editMode.description.hide=Ctrl + نقر للإخفاء.
+gui.jei.editMode.description.show=مخفي. Ctrl + نقر للإظهار.
+gui.jei.editMode.description.hide.wild=Ctrl + نقر بالزر الأيمن للإخفاء باستخدام حرف بدل.
+gui.jei.editMode.description.show.wild=مخفي بحرف بدل. Ctrl + نقر بالزر الأيمن للإظهار.
+
+# Recipe Categories
+gui.jei.category.craftingTable=طاولة التصنيع
+gui.jei.category.smelting=الصهر
+gui.jei.category.smelting.experience=%s خبرة
+gui.jei.category.fuel=وقود
+gui.jei.category.fuel.burnTime=مدة الاحتراق: %s
+gui.jei.category.brewing=التخمير
+gui.jei.category.brewing.steps=الخطوات: %s
+gui.jei.category.itemDescription=الوصف
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
