@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Настройки
+jei.tooltip.show.all.recipes=Покажи всички рецепти
+jei.tooltip.delete.item=Щракни за изтриване
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Липсващи предмети
+jei.tooltip.error.recipe.transfer.inventory.full=Инвентарът е прекалено пълен
+
+# Error Messages
+jei.chat.error.command.too.long=JEI трябва да е инсталиран на сървъра, за да обработи тази чат команда, защото тя е твърде дълга, за да бъде изпратена от Minecraft.
+
+# Key Bindings
+key.jei.toggleOverlay=Покажи/скрий списъка с предмети (Ctrl + )
+key.jei.showRecipe=Покажи рецептата на предмета
+key.jei.showUses=Покажи приложенията на предмета
+
+# Config
+config.jei.default=По подразбиране
+config.jei.valid=Валидно
+
+config.jei.title=Настройки на %MODNAME
+
+config.jei.mode=Режим
+config.jei.mode.comment=Променя режима, в който работи JEI.
+config.jei.mode.cheatItemsEnabled=Измама с предмети
+config.jei.mode.cheatItemsEnabled.comment=Дава предмети с /give вместо да показва рецептата.
+config.jei.mode.editEnabled=Режим за редактиране на списъка с предмети
+config.jei.mode.editEnabled.comment=Скрива или показва предмети чрез щракване върху тях в списъка.
+
+config.jei.interface=Интерфейс
+config.jei.interface.comment=Опции, свързани с потребителския интерфейс.
+config.jei.interface.recipeAnimationsEnabled=Анимации на рецептите
+config.jei.interface.recipeAnimationsEnabled.comment=Показва анимации на рецептите (огън в пещта, ленти за напредък и др.)
+
+config.jei.search=Търсене
+config.jei.search.comment=Опции, свързани с лентата за търсене.
+config.jei.search.atPrefixRequiredForModName=Използвай @ за име на мод
+config.jei.search.atPrefixRequiredForModName.comment=Изисква "@ModName" за търсене по име на мод вместо "ModName".
+
+config.jei.advanced=Разширени
+config.jei.advanced.comment=Разширени настройки за промяна на начина, по който работи JEI.
+config.jei.advanced.nbtKeyIgnoreList=Списък с игнорирани NBT ключове
+config.jei.advanced.nbtKeyIgnoreList.comment=Списък с NBT ключове, които трябва да се игнорират при извличане на рецепти.
+config.jei.advanced.itemBlacklist=Черен списък на предмети
+config.jei.advanced.itemBlacklist.comment=Списък с предмети, които не трябва да се показват в списъка с предмети. Формат: modId:name[:meta]. Режимът за редактиране автоматично ще добавя или премахва записи тук.
+config.jei.advanced.hideMissingModelsEnabled=Скрий предметите с липсващи модели
+config.jei.advanced.hideMissingModelsEnabled.comment=Предметите с липсващи модели ще бъдат скрити от списъка с предмети.
+config.jei.advanced.debugModeEnabled=Режим за отстраняване на грешки
+config.jei.advanced.debugModeEnabled.comment=Добавя различни неща, които помагат при разработката на JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Изтриване на предмети в режим на измама
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=В режим на измама плъзни ItemStack върху списъка с предмети и щракни, за да го изтриеш. (изисква JEI на сървъра)
+
+config.jei.addons=Добавки
+config.jei.addons.comment=Категория за настройките на добавките за JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Режим за редактиране на списъка с предмети на JEI:
+gui.jei.editMode.description.hide=Ctrl + щракване за скриване.
+gui.jei.editMode.description.show=Скрито. Ctrl + щракване за показване.
+gui.jei.editMode.description.hide.wild=Ctrl + десен бутон за скриване с маска.
+gui.jei.editMode.description.show.wild=Скрито с маска. Ctrl + десен бутон за показване.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Работна маса
+gui.jei.category.smelting=Претопяване
+gui.jei.category.smelting.experience=%s опит
+gui.jei.category.fuel=Гориво
+gui.jei.category.fuel.burnTime=Време на горене: %s
+gui.jei.category.brewing=Варене
+gui.jei.category.brewing.steps=Стъпки: %s
+gui.jei.category.itemDescription=Описание
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
