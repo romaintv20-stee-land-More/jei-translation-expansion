@@ -11,7 +11,7 @@ Last synchronized: **2026-09-11**
 - Unofficial MIT localization companion for JEI; no gameplay content.
 - **One Minecraft version per final JAR. Never group multiple Minecraft versions in one artifact.**
 - Final runtime-validated JARs go in `release-jars/<minecraft-version>/`; prototypes do not.
-- Translation reuse between versions is encouraged only when both localization key and English meaning are unchanged.
+- Translation reuse between versions is allowed only when both localization key and English meaning are unchanged.
 - Preserve upstream JEI translations. For a locale already shipped by JEI, add only missing keys unless an override is explicitly approved.
 - Preserve placeholders and technical literals exactly. Prefer a documented English fallback to an uncertain translation.
 - Initial scope focuses on real-world primary Minecraft languages; novelty/fantasy entries, constructed non-primary languages and most regional variants are excluded/deferred.
@@ -20,127 +20,142 @@ Last synchronized: **2026-09-11**
 
 Status: **selected translation scope complete**.
 
-- Forge `11.14.4.1577`; Java source/target 1.7; legacy `.lang`.
 - English: 58 keys = 55 normal + 3 debug-only.
 - Selected scope: 60 languages.
 - 54 addon-owned full locales: 51 translated/AI-assisted + 3 English fallbacks (`gv_IM`, `kw_GB`, `se_NO`).
-- Source: `upstream/sources/1.8/en_US.lang`.
-- Scope: `upstream/minecraft-1.8-language-scope.json`.
 
 ## Minecraft 1.8.9 / JEI 2.28.18
 
 Status: **selected translation scope complete; reproducible Forge prototype passes static CI; real runtime test still pending**.
 
-- Forge `11.15.1.1855`; minimum declared Forge `11.15.1.1808`; Java 1.7; legacy `.lang`.
 - English: 75 keys = 72 normal + 3 debug-only.
 - Exact 1.8 -> 1.8.9 diff: 46 unchanged, 19 added, 2 removed, 10 changed English values.
 - 54 absent-locale files reconstruct from G1 + G2.
-- Missing-key-only supplements complete `de_DE`, `fi_FI`, `ko_KR`, `ru_RU`, `zh_CN` to 72/72 normal keys.
+- Missing-key-only supplements complete `de_DE`, `fi_FI`, `ko_KR`, `ru_RU`, `zh_CN`.
 - Latest successful static prototype build run: `34632859235`.
-- JAR: `jei-translation-expansion-0.1.0-ci-mc1.8.9-forge.jar`.
-- SHA-256: `029d6cdcc0f83b098a8b96f423e8fefef6722e8c0db9cd205ef33bf23e22a1e0`.
+- JAR SHA-256: `029d6cdcc0f83b098a8b96f423e8fefef6722e8c0db9cd205ef33bf23e22a1e0`.
 
 Do **not** promote to `release-jars/1.8.9/` yet. Remaining blocker: real Minecraft 1.8.9 + compatible Forge + JEI 2.28.18 client test. Details: `packaging/1.8.9/release.json`.
 
 ## Minecraft 1.9 / JEI 3.3.3
 
-Status: **selected 70-language translation/reconstruction stage complete; CI green; final runtime-tested JAR not built/promoted yet**.
+Status: **selected 70-language translation/reconstruction stage complete; CI green; final runtime-tested JAR not promoted yet**.
 
-### Pinned endpoint
-
-Use JEI commit:
+Pinned JEI endpoint:
 
 `b2ffe6bd7734d093006de99f9dc99b2b77ce780d`
 
-Do not use the current `1.9` branch HEAD as Minecraft 1.9: the branch later transitioned to Minecraft 1.9.4 at commit `d6b11a003a4a10702a36f8a97fa28cae883c9360`.
-
-Verified snapshot:
+Verified:
 
 - Minecraft `1.9`
 - JEI `3.3.3`
 - Forge `12.16.0.1865-1.9`
-- MCP mappings `snapshot_20160421`
-- Java source/target 1.7
-- legacy `.lang`
-- English source `upstream/sources/1.9/en_US.lang`
+- MCP `snapshot_20160421`
+- Java 1.7; legacy `.lang`
 - 77 keys = 74 normal + 3 debug-only
-- JEI locales: `de_DE`, `en_US`, `fi_FI`, `fr_FR`, `ko_KR`, `nb_NO`, `ru_RU`, `zh_CN`
-
-### 1.8.9 -> 1.9 diff
-
-- 74 unchanged key/value pairs reusable
-- 2 added: `jei.tooltip.shapeless.recipe`, `key.jei.focusSearch`
-- 0 removed
-- 1 changed English value: `key.jei.toggleOverlay`
-- inherited addon locales therefore require only a three-entry G3 delta
-
-Machine-readable diff: `upstream/diffs/1.8.9-to-1.9.json`.
-
-### Language scope and upstream ownership
-
-Minecraft 1.9 raw inventory: 90 language codes. Final project scope: **70 real-world primary-language locales**.
-
-New selected primary languages: `be_BY`, `br_FR`, `fo_FO`, `fy_NL`, `gd_GB`, `ksh_DE`, `li_LI`, `mk_MK`, `so_SO`, `sq_AL`.
-
-Deferred/excluded new codes:
-
-- `en_NZ`: regional English variant;
-- `en_UD`, `lol_US`: novelty;
-- `jbo_EN` (Lojban), `tzl_TZL` (Talossan): constructed languages, deferred under the initial primary real-world language policy.
-
-Minecraft has `no_NO` and not `nb_NO`; JEI 3.3.3 has `nb_NO` and not `no_NO`. Keep `no_NO` as a distinct Minecraft-facing full addon locale and preserve JEI's `nb_NO` untouched.
-
-Selected-scope output:
-
-- **63 complete addon locales**;
-- **5 missing-key-only upstream supplements**: `de_DE`, `fi_FI`, `ko_KR`, `ru_RU`, `zh_CN`;
-- `en_US` and `fr_FR` are complete upstream and are not duplicated.
-
-### Translation realization
-
-Of the 63 complete addon locales:
-
-- 53 inherit G2 and apply `translations/g3-mc1.9/inherited-delta.tsv`;
-- the 10 new selected locales have no earlier project base;
-- full AI-assisted drafts: `be_BY`, `mk_MK`, `sq_AL`;
-- documented English fallbacks: `br_FR`, `fo_FO`, `fy_NL`, `gd_GB`, `ksh_DE`, `li_LI`, `so_SO`;
-- inherited English fallbacks remain `gv_IM`, `kw_GB`, `se_NO`.
-
-Final complete-addon result: **53 translated/AI-assisted locales + 10 documented English fallbacks**.
+- scope: 70 languages
+- output: 63 complete addon locales + 5 missing-key-only upstream supplements
+- complete addon result: 53 translated/AI-assisted + 10 documented English fallbacks
+- complete validation run: **34638556534**
 
 Important files:
 
-- scope: `upstream/minecraft-1.9-language-scope.json`
-- raw/upstream audit: `upstream/minecraft-1.9-language-audit.json`
-- new-locale confidence policy: `translations/g3-mc1.9/new-full-policy.json`
-- inherited delta: `translations/g3-mc1.9/inherited-delta.tsv`
-- upstream-new-key delta: `translations/g3-mc1.9/upstream-supplement-delta.tsv`
-- reconstruction: `scripts/reconstruct_1_9.py`
-- delta QA: `scripts/validate_1_9_delta.py`
-- complete QA: `scripts/validate_1_9_complete.py`
+- `upstream/sources/1.9/en_US.lang`
+- `upstream/diffs/1.8.9-to-1.9.json`
+- `upstream/minecraft-1.9-language-audit.json`
+- `upstream/minecraft-1.9-language-scope.json`
+- `translations/g3-mc1.9/`
+- `scripts/reconstruct_1_9.py`
+- `scripts/validate_1_9_delta.py`
+- `scripts/validate_1_9_complete.py`
 
-Successful complete validation run: **34638556534**. It passed G3 delta validation, deterministic reconstruction of all 63 full locales + five supplements, key coverage, placeholders, technical-token checks, debug-English policy and documented-fallback checks.
+## Minecraft 1.9.4 / JEI 3.6.8
 
-## Current task: Minecraft 1.9.4
+Status: **exact upstream/language audit complete; translation G4 and deterministic reconstruction are the current work**.
 
-The 1.9 translation stage is complete. Continue directly with a full Minecraft **1.9.4** audit.
+### Pinned endpoint
 
-Known transition:
+The current HEAD of the historical upstream branch `1.9` is:
 
-- upstream branch: `1.9`
-- transition commit to Minecraft 1.9.4: `d6b11a003a4a10702a36f8a97fa28cae883c9360`
-- previously observed branch HEAD metadata: Minecraft `1.9.4`, JEI `3.6.8`, Forge `12.17.0.1962`
+`bd9fcad11a8b92d181fc8c2ec976e31c7467799a`
 
-Next actions:
+Verified directly from upstream:
 
-1. Query the current upstream `1.9` branch and pin the exact Minecraft 1.9.4 endpoint instead of relying on branch naming.
-2. Fetch the exact 1.9.4 English source and build metadata.
-3. Compare 1.9 -> 1.9.4 key/value semantics exactly.
-4. Audit JEI upstream locales and completeness for the pinned endpoint.
-5. Verify Minecraft 1.9.4 raw language inventory and derive the selected scope under existing policy.
-6. Reuse G3 translations only for proven unchanged key/value pairs.
-7. Translate/review the 1.9.4 delta, build missing-key-only supplements, add deterministic reconstruction/QA, and persist G4.
-8. Then continue chronologically to the next Minecraft version.
+- Minecraft `1.9.4`
+- JEI `3.6.8`
+- Forge `12.17.0.1962`
+- MCP mappings `snapshot_20160518`
+- Java source/target 1.7
+- legacy `.lang`
+- English source `upstream/sources/1.9.4/en_US.lang`
+- 80 keys = 77 normal + 3 debug-only
+- JEI locales: `de_DE`, `en_US`, `fi_FI`, `fr_FR`, `ko_KR`, `nb_NO`, `ru_RU`, `zh_CN`
+
+### Exact 1.9 -> 1.9.4 localization diff
+
+- **76 unchanged key/value pairs reusable**
+- **3 added keys**:
+  - `jei.tooltip.cheat.mode=Cheat Mode`
+  - `config.jei.advanced.hideLaggyModelsEnabled=Hide Items with Laggy Models`
+  - `config.jei.advanced.hideLaggyModelsEnabled.comment=Items with models that cause a long delay will be hidden from the item list.`
+- **0 removed**
+- **1 changed English value**:
+  - `gui.jei.category.craftingTable`: `Crafting Table` -> `Crafting`
+- therefore **4 translated/reviewed G4 entries per complete addon locale**
+
+Exact manifest: `upstream/diffs/1.9-to-1.9.4.json`.
+
+### Minecraft language inventory / scope
+
+Minecraft 1.9.4 uses asset index id `1.9`, SHA-1:
+
+`d7aae43ea69d80cc3441bee4179abd791f6534cd`
+
+This is the **exact same asset index** already audited for Minecraft 1.9. Therefore:
+
+- raw language inventory remains 90 codes;
+- no vanilla language code was added/removed for this target;
+- the frozen selected project scope remains **70 languages**;
+- `jbo_EN` / `tzl_TZL` stay deferred; novelty/regional exclusions stay unchanged;
+- `no_NO` remains the Minecraft-facing addon locale while upstream `nb_NO` is preserved separately.
+
+Scope manifest: `upstream/minecraft-1.9.4-language-scope.json`.
+
+### JEI 3.6.8 upstream completeness
+
+Only `en_US`, `ru_RU`, and `zh_CN` changed among JEI language files between the pinned 1.9 and 1.9.4 endpoints. `de_DE`, `fi_FI`, `fr_FR`, `ko_KR`, `nb_NO` are byte-unchanged upstream.
+
+| Locale | Normal present | Missing | Extra | Handling |
+|---|---:|---:|---:|---|
+| `de_DE` | 53/77 | 24 | 2 | missing-key supplement |
+| `en_US` | 77/77 | 0 | 0 | upstream only |
+| `fi_FI` | 58/77 | 19 | 2 | missing-key supplement |
+| `fr_FR` | 74/77 | 3 | 0 | missing-key supplement |
+| `ko_KR` | 5/77 | 72 | 0 | missing-key supplement |
+| `nb_NO` | 74/77 | 3 | 0 | preserve upstream; not selected Minecraft code |
+| `ru_RU` | 73/77 | 4 | 2 | missing-key supplement |
+| `zh_CN` | 74/77 | 3 | 0 | missing-key supplement |
+
+Selected-scope output therefore remains **63 complete addon locales**, but the number of selected upstream supplements becomes **6** (`de_DE`, `fi_FI`, `fr_FR`, `ko_KR`, `ru_RU`, `zh_CN`). Only `en_US` is complete upstream among the selected Minecraft-facing JEI locales.
+
+Critical supplement rule for 1.9.4:
+
+- do **not** blindly carry the 1.9 supplements forward;
+- JEI 3.6.8 added many `ru_RU` and `zh_CN` keys upstream, so old addon entries that upstream now owns must disappear from the addon supplement;
+- `fr_FR` now needs exactly the three new G4 keys;
+- `ko_KR` still lacks `gui.jei.category.craftingTable`, so its addon value must be reviewed for the changed English meaning `Crafting Table` -> `Crafting`;
+- for locales where that changed key already exists upstream, preserve the upstream translation and do not override it.
+
+Full audit: `upstream/minecraft-1.9.4-language-audit.json`.
+
+### Current next actions
+
+1. Create G4 four-entry translation delta for all 63 complete addon locales, preserving the ten documented full-English fallback locales.
+2. Build exact JEI 3.6.8 missing-key supplements for the six selected upstream locales, filtering out keys now translated upstream.
+3. Add deterministic 1.9.4 reconstruction from G3 + G4.
+4. Add complete QA/CI: key coverage, placeholders, technical literals, exact fallback policy and no-upstream-overwrite checks.
+5. Update `upstream/generations.json`, `docs/VERSION_MATRIX.md`, `docs/TRANSLATION_STATUS.md`, and this file when G4 is green.
+6. Then continue chronologically to the next Minecraft version.
 
 ## Modern endpoint
 
@@ -155,10 +170,10 @@ Branch `26.2` uses JSON language files at `Common/src/main/resources/assets/jei/
 - `docs/TRANSLATION_STATUS.md`
 - `upstream/versions.json`
 - `upstream/generations.json`
-- `upstream/minecraft-1.9-language-audit.json`
-- `upstream/minecraft-1.9-language-scope.json`
+- `upstream/minecraft-1.9.4-language-audit.json`
+- `upstream/minecraft-1.9.4-language-scope.json`
 - `packaging/1.8.9/release.json`
 
 ## Resume prompt
 
-> Reprends JEI Translation Expansion depuis le depot et lis d'abord `PROJECT_STATUS.md`. Minecraft 1.9 / JEI 3.3.3 est termine au stade traduction/reconstruction pour le scope selectionne de 70 langues; validation complete verte au run `34638556534`. Ne promeus toujours pas la 1.8.9 avant test reel en jeu. La prochaine cible est Minecraft 1.9.4 sur la branche upstream `1.9`: pince d'abord l'endpoint exact 1.9.4, puis audite source anglaise, diff, langues upstream, inventaire Minecraft, scope, traductions, reconstruction et QA. Regle fixe: un JAR distinct par version Minecraft.
+> Reprends JEI Translation Expansion depuis le depot et lis d'abord `PROJECT_STATUS.md`. Minecraft 1.9 / JEI 3.3.3 est termine au stade traduction/reconstruction, validation verte au run `34638556534`. Minecraft 1.9.4 / JEI 3.6.8 est epingle a `bd9fcad11a8b92d181fc8c2ec976e31c7467799a`; son audit complet est termine: 80 cles, 76 reutilisables, 3 ajoutees, 1 valeur anglaise modifiee, scope identique de 70 langues, 63 locales addon completes et 6 supplements upstream. Prochaine etape: creer G4, reconstruire/valider 1.9.4, mettre les docs/status a jour, puis passer a la version Minecraft suivante. Regle fixe: un JAR distinct par version Minecraft.
