@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Settings
+jei.tooltip.show.all.recipes=Uri r-riċetti kollha
+jei.tooltip.delete.item=Ikklikkja biex tħassar
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Oġġetti neqsin
+jei.tooltip.error.recipe.transfer.inventory.full=L-inventarju mimli wisq
+
+# Error Messages
+jei.chat.error.command.too.long=JEI għandu jkun installat fuq is-server biex jimmaniġġja dan il-kmand taċ-chat, għax huwa twil wisq biex Minecraft jibagħtu.
+
+# Key Bindings
+key.jei.toggleOverlay=Uri/aħbi l-lista tal-oġġetti (Ctrl + )
+key.jei.showRecipe=Uri r-riċetta tal-oġġett
+key.jei.showUses=Uri l-użi tal-oġġett
+
+# Config
+config.jei.default=Default
+config.jei.valid=Validu
+
+config.jei.title=Settings ta' %MODNAME
+
+config.jei.mode=Modalità
+config.jei.mode.comment=Ibdel il-modalità li fiha jaħdem JEI.
+config.jei.mode.cheatItemsEnabled=Cheat tal-oġġetti
+config.jei.mode.cheatItemsEnabled.comment=Agħti oġġetti b'/give minflok turi r-riċetta.
+config.jei.mode.editEnabled=Modalità ta' editjar tal-lista tal-oġġetti
+config.jei.mode.editEnabled.comment=Aħbi jew uri oġġetti billi tikklikkja fuqhom fil-lista tal-oġġetti.
+
+config.jei.interface=Interfaċċa
+config.jei.interface.comment=Għażliet relatati mal-interfaċċa tal-utent.
+config.jei.interface.recipeAnimationsEnabled=Animazzjonijiet tar-riċetti
+config.jei.interface.recipeAnimationsEnabled.comment=Uri animazzjonijiet tar-riċetti (nar tal-forn, bars tal-progress, eċċ.)
+
+config.jei.search=Tiftix
+config.jei.search.comment=Għażliet relatati mal-bar tat-tiftix.
+config.jei.search.atPrefixRequiredForModName=Uża @ għall-isem tal-mod
+config.jei.search.atPrefixRequiredForModName.comment=Jeħtieġ "@ModName" biex tfittex bl-isem tal-mod minflok "ModName".
+
+config.jei.advanced=Avvanzat
+config.jei.advanced.comment=Għażliet avvanzati biex tibdel kif jaħdem JEI.
+config.jei.advanced.nbtKeyIgnoreList=Lista ta' ċwievet NBT injorati
+config.jei.advanced.nbtKeyIgnoreList.comment=Lista ta' ċwievet NBT li għandhom jiġu injorati meta jittieħdu r-riċetti.
+config.jei.advanced.itemBlacklist=Lista sewda tal-oġġetti
+config.jei.advanced.itemBlacklist.comment=Lista ta' oġġetti li m'għandhomx jintwerew fil-lista tal-oġġetti. Format: modId:name[:meta]. Il-modalità ta' editjar iżżid jew tneħħi entries hawn awtomatikament.
+config.jei.advanced.hideMissingModelsEnabled=Aħbi oġġetti b'mudelli neqsin
+config.jei.advanced.hideMissingModelsEnabled.comment=Oġġetti b'mudelli neqsin jinħbew mil-lista tal-oġġetti.
+config.jei.advanced.debugModeEnabled=Modalità debug
+config.jei.advanced.debugModeEnabled.comment=Iżid affarijiet varji biex jgħin fl-iżvilupp ta' JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Ħassar oġġetti fil-modalità cheat
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Fil-modalità cheat, iġbed ItemStack fuq il-lista tal-oġġetti u kklikkja biex tħassru. (jeħtieġ JEI fuq is-server)
+
+config.jei.addons=Add-ons
+config.jei.addons.comment=Kategorija għall-għażliet ta' konfigurazzjoni tal-add-ons ta' JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Modalità ta' editjar tal-lista tal-oġġetti ta' JEI:
+gui.jei.editMode.description.hide=Ctrl-ikklikkja biex taħbi.
+gui.jei.editMode.description.show=Moħbi. Ctrl-ikklikkja biex turi.
+gui.jei.editMode.description.hide.wild=Ctrl-lemin ikklikkja biex taħbi b'wildcard.
+gui.jei.editMode.description.show.wild=Moħbi b'wildcard. Ctrl-lemin ikklikkja biex turi.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Mejda tax-xogħol
+gui.jei.category.smelting=Tidwib
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Fjuwil
+gui.jei.category.fuel.burnTime=Ħin tal-ħruq: %s
+gui.jei.category.brewing=Preparazzjoni tal-potions
+gui.jei.category.brewing.steps=Passi: %s
+gui.jei.category.itemDescription=Deskrizzjoni
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
