@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=הגדרות
+jei.tooltip.show.all.recipes=הצג את כל המתכונים
+jei.tooltip.delete.item=לחץ כדי למחוק
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=פריטים חסרים
+jei.tooltip.error.recipe.transfer.inventory.full=המלאי מלא מדי
+
+# Error Messages
+jei.chat.error.command.too.long=JEI חייב להיות מותקן בשרת כדי לטפל בפקודת הצ'אט הזו, משום שהיא ארוכה מדי לשליחה על ידי Minecraft.
+
+# Key Bindings
+key.jei.toggleOverlay=הצג/הסתר את רשימת הפריטים (Ctrl + )
+key.jei.showRecipe=הצג מתכון של פריט
+key.jei.showUses=הצג שימושים של פריט
+
+# Config
+config.jei.default=ברירת מחדל
+config.jei.valid=תקין
+
+config.jei.title=הגדרות %MODNAME
+
+config.jei.mode=מצב
+config.jei.mode.comment=שנה את המצב שבו JEI פועל.
+config.jei.mode.cheatItemsEnabled=רמאות בפריטים
+config.jei.mode.cheatItemsEnabled.comment=תן פריטים באמצעות /give במקום להציג את המתכון.
+config.jei.mode.editEnabled=מצב עריכת רשימת הפריטים
+config.jei.mode.editEnabled.comment=הסתר או הצג פריטים על ידי לחיצה עליהם ברשימת הפריטים.
+
+config.jei.interface=ממשק
+config.jei.interface.comment=אפשרויות הקשורות לממשק המשתמש.
+config.jei.interface.recipeAnimationsEnabled=הנפשות מתכונים
+config.jei.interface.recipeAnimationsEnabled.comment=הצג הנפשות מתכונים (אש בכבשן, סרגלי התקדמות וכו')
+
+config.jei.search=חיפוש
+config.jei.search.comment=אפשרויות הקשורות לשורת החיפוש.
+config.jei.search.atPrefixRequiredForModName=השתמש ב-@ לשם המוד
+config.jei.search.atPrefixRequiredForModName.comment=דרוש "@ModName" כדי לחפש לפי שם מוד במקום "ModName".
+
+config.jei.advanced=מתקדם
+config.jei.advanced.comment=אפשרויות מתקדמות לשינוי אופן הפעולה של JEI.
+config.jei.advanced.nbtKeyIgnoreList=רשימת מפתחות NBT להתעלמות
+config.jei.advanced.nbtKeyIgnoreList.comment=רשימת מפתחות NBT שיש להתעלם מהם בעת אחזור מתכונים.
+config.jei.advanced.itemBlacklist=רשימה שחורה של פריטים
+config.jei.advanced.itemBlacklist.comment=רשימת פריטים שלא יוצגו ברשימת הפריטים. תבנית: modId:name[:meta]. מצב העריכה יוסיף או יסיר כאן רשומות באופן אוטומטי.
+config.jei.advanced.hideMissingModelsEnabled=הסתר פריטים עם מודלים חסרים
+config.jei.advanced.hideMissingModelsEnabled.comment=פריטים שמודל שלהם חסר יוסתרו מרשימת הפריטים.
+config.jei.advanced.debugModeEnabled=מצב ניפוי שגיאות
+config.jei.advanced.debugModeEnabled.comment=מוסיף דברים שונים כדי לסייע בפיתוח JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=מחק פריטים במצב רמאות
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=במצב רמאות, גרור ItemStack מעל רשימת הפריטים ולחץ כדי למחוק אותו. (דורש JEI בשרת)
+
+config.jei.addons=תוספים
+config.jei.addons.comment=קטגוריה לאפשרויות ההגדרה של תוספי JEI.
+
+# Edit Mode
+gui.jei.editMode.description=מצב עריכת רשימת הפריטים של JEI:
+gui.jei.editMode.description.hide=Ctrl-לחיצה כדי להסתיר.
+gui.jei.editMode.description.show=מוסתר. Ctrl-לחיצה כדי להציג.
+gui.jei.editMode.description.hide.wild=Ctrl-לחיצה ימנית כדי להסתיר עם תו כללי.
+gui.jei.editMode.description.show.wild=מוסתר באמצעות תו כללי. Ctrl-לחיצה ימנית כדי להציג.
+
+# Recipe Categories
+gui.jei.category.craftingTable=שולחן יצירה
+gui.jei.category.smelting=התכה
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=דלק
+gui.jei.category.fuel.burnTime=זמן בעירה: %s
+gui.jei.category.brewing=רקיחת שיקויים
+gui.jei.category.brewing.steps=שלבים: %s
+gui.jei.category.itemDescription=תיאור
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
