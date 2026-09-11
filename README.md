@@ -13,7 +13,7 @@ Unofficial localization companion for **Just Enough Items (JEI)**. The goal is t
 ## Project goals
 
 - Audit JEI translation keys across Minecraft versions before translating.
-- Group compatible Minecraft/JEI versions into localization generations instead of maintaining one translation set per Minecraft version.
+- Group compatible Minecraft/JEI versions into localization generations for internal translation reuse.
 - Add missing real-world languages supported by Minecraft.
 - Complete missing keys in languages already included by JEI.
 - Preserve upstream JEI translations by default; only override an existing upstream key when explicitly reviewed and allowlisted.
@@ -21,23 +21,23 @@ Unofficial localization companion for **Just Enough Items (JEI)**. The goal is t
 - Avoid blindly reusing a translation when the same key changes English meaning between JEI generations.
 - Exclude novelty/fantasy languages and initially defer most regional/orthographic variants when a primary form is already covered.
 - Prefer an English fallback over an unreliable translation for low-confidence languages.
-- Produce the smallest practical number of distributable JARs by grouping compatible Minecraft versions and loaders safely.
+- Produce **one dedicated release JAR per Minecraft version**. Compatible translations may be reused internally, but multiple Minecraft versions are never grouped into the same JAR.
 
 ## AI-assisted translation policy
 
-Translations may be created or assisted with artificial intelligence. AI output is not treated as automatically correct. The project will use automated QA and manual/community review where possible to check key coverage, JSON/LANG syntax, placeholders, unchanged technical tokens, consistency and compatibility between JEI generations.
+Translations may be created or assisted with artificial intelligence. AI output is not treated as automatically correct. The project uses automated QA and manual/community review where possible to check key coverage, JSON/LANG syntax, placeholders, unchanged technical tokens, consistency and compatibility between JEI generations.
 
-If a language cannot be translated with sufficient confidence, the project should keep a documented English fallback rather than publish a knowingly unreliable translation.
+If a language cannot be translated with sufficient confidence, the project keeps a documented English fallback rather than publishing a knowingly unreliable translation.
 
 ## Current status
 
-The project is in the **upstream audit / architecture phase**. Translation work should not begin until JEI versions have been grouped into verified localization generations.
+Audit and translation work is progressing chronologically through historical JEI/Minecraft versions. Minecraft 1.8 and 1.8.9 translation scopes are complete, and Minecraft 1.9 / JEI 3.3.3 has a complete selected-scope translation/reconstruction pipeline. Version-specific runtime/JAR validation may be finalized separately while auditing continues to later Minecraft versions.
 
-The oldest verified JEI branch in the official upstream repository is **Minecraft 1.8**. The current upstream default branch at project initialization is **26.2**.
+The oldest verified JEI branch in the official upstream repository is **Minecraft 1.8**. The modern upstream endpoint is audited separately as the project progresses.
 
 For the canonical handoff and exact next steps, read [`PROJECT_STATUS.md`](PROJECT_STATUS.md) first.
 
-## Planned repository layout
+## Repository layout
 
 ```text
 translations/
@@ -47,24 +47,24 @@ translations/
 upstream/
   versions.json
   generations.json
-  official-locales.json
+  sources/
+  diffs/
 overrides/
   approved-overrides.json
 scripts/
-  audit_jei.py
-  compare_keys.py
-  validate_translations.py
-  build_release.py
 docs/
   VERSION_MATRIX.md
+  TRANSLATION_STATUS.md
   WORKFLOW.md
+release-jars/
+  <minecraft-version>/
 PROJECT_STATUS.md
 README.md
 LICENSE
 NOTICE
 ```
 
-The exact generation names and number of JARs must be determined by the audit rather than guessed in advance.
+Localization generations are an internal reuse mechanism only. Final release artifacts remain strictly version-specific.
 
 ## Licensing
 
