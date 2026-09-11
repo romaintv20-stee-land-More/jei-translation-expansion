@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Parametrlər
+jei.tooltip.show.all.recipes=Bütün reseptləri göstər
+jei.tooltip.delete.item=Silmək üçün klikləyin
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Çatışmayan əşyalar
+jei.tooltip.error.recipe.transfer.inventory.full=İnventar çox doludur
+
+# Error Messages
+jei.chat.error.command.too.long=Bu söhbət əmrini emal etmək üçün JEI serverdə quraşdırılmalıdır, çünki əmr Minecraft-ın göndərə bilməsi üçün çox uzundur.
+
+# Key Bindings
+key.jei.toggleOverlay=Əşya siyahısını göstər/gizlət (Ctrl + )
+key.jei.showRecipe=Əşyanın reseptini göstər
+key.jei.showUses=Əşyanın istifadələrini göstər
+
+# Config
+config.jei.default=Standart
+config.jei.valid=Etibarlı
+
+config.jei.title=%MODNAME parametrləri
+
+config.jei.mode=Rejim
+config.jei.mode.comment=JEI-nin işlədiyi rejimi dəyişir.
+config.jei.mode.cheatItemsEnabled=Əşya fırıldağı
+config.jei.mode.cheatItemsEnabled.comment=Resepti göstərmək əvəzinə /give ilə əşyalar verir.
+config.jei.mode.editEnabled=Əşya siyahısını redaktə rejimi
+config.jei.mode.editEnabled.comment=Əşya siyahısında üzərinə klikləməklə əşyaları gizlədin və ya göstərin.
+
+config.jei.interface=İnterfeys
+config.jei.interface.comment=İstifadəçi interfeysi ilə bağlı seçimlər.
+config.jei.interface.recipeAnimationsEnabled=Resept animasiyaları
+config.jei.interface.recipeAnimationsEnabled.comment=Resept animasiyalarını göstər (soba alovu, irəliləyiş zolaqları və s.)
+
+config.jei.search=Axtarış
+config.jei.search.comment=Axtarış sətri ilə bağlı seçimlər.
+config.jei.search.atPrefixRequiredForModName=Mod adı üçün @ istifadə et
+config.jei.search.atPrefixRequiredForModName.comment=Mod adına görə axtarış üçün "ModName" əvəzinə "@ModName" tələb edir.
+
+config.jei.advanced=Qabaqcıl
+config.jei.advanced.comment=JEI-nin necə işlədiyini dəyişmək üçün qabaqcıl parametrlər.
+config.jei.advanced.nbtKeyIgnoreList=Nəzərə alınmayan NBT açarlarının siyahısı
+config.jei.advanced.nbtKeyIgnoreList.comment=Reseptlər əldə edilərkən nəzərə alınmamalı NBT açarlarının siyahısı.
+config.jei.advanced.itemBlacklist=Əşyaların qara siyahısı
+config.jei.advanced.itemBlacklist.comment=Əşya siyahısında göstərilməməli əşyaların siyahısı. Format: modId:name[:meta]. Redaktə rejimi buradakı qeydləri avtomatik əlavə edəcək və ya siləcək.
+config.jei.advanced.hideMissingModelsEnabled=Modeli çatışmayan əşyaları gizlət
+config.jei.advanced.hideMissingModelsEnabled.comment=Modeli çatışmayan əşyalar əşya siyahısından gizlədiləcək.
+config.jei.advanced.debugModeEnabled=Sazlama rejimi
+config.jei.advanced.debugModeEnabled.comment=JEI inkişafına kömək etmək üçün müxtəlif elementlər əlavə edir.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Fırıldaq rejimində əşyaları sil
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Fırıldaq rejimində bir ItemStack-i əşya siyahısının üzərinə sürükləyin və silmək üçün klikləyin. (serverdə JEI tələb olunur)
+
+config.jei.addons=Əlavələr
+config.jei.addons.comment=JEI əlavələrinin konfiqurasiya seçimləri üçün kateqoriya.
+
+# Edit Mode
+gui.jei.editMode.description=JEI əşya siyahısını redaktə rejimi:
+gui.jei.editMode.description.hide=Gizlətmək üçün Ctrl-klik.
+gui.jei.editMode.description.show=Gizlidir. Göstərmək üçün Ctrl-klik.
+gui.jei.editMode.description.hide.wild=Şablonla gizlətmək üçün Ctrl-sağ klik.
+gui.jei.editMode.description.show.wild=Şablonla gizlədilib. Göstərmək üçün Ctrl-sağ klik.
+
+# Recipe Categories
+gui.jei.category.craftingTable=İş masası
+gui.jei.category.smelting=Əritmə
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Yanacaq
+gui.jei.category.fuel.burnTime=Yanma müddəti: %s
+gui.jei.category.brewing=İksir hazırlama
+gui.jei.category.brewing.steps=Addımlar: %s
+gui.jei.category.itemDescription=Təsvir
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
