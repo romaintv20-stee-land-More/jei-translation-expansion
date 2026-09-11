@@ -35,3 +35,9 @@ jobs:
         run: python scripts/reconstruct_1_9_4.py --check
       - name: Validate Minecraft 1.9.4 complete resources
         run: python scripts/validate_1_9_4_complete.py
+      - name: Validate Minecraft 1.10 source scope and upstream ownership
+        run: python scripts/validate_1_10_delta.py
+      - name: Reconstruct and verify Minecraft 1.10 resources
+        run: python scripts/reconstruct_1_10.py --check
+      - name: Validate Minecraft 1.10 complete resources
+        run: python scripts/validate_1_10_complete.py
