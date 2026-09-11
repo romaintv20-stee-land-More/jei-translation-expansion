@@ -1,0 +1,36 @@
+name: Audit Minecraft 1.9 localization
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'scripts/audit_1_9.py'
+      - 'upstream/minecraft-1.8-language-scope.json'
+      - '.github/workflows/audit-1.9.yml'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Audit Minecraft 1.9 language scope and JEI locales
+        run: python scripts/audit_1_9.py
+
+      - name: Show audit JSON
+        run: cat build/audit/minecraft-1.9-language-audit.json
+
+      - name: Upload audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: minecraft-1.9-language-audit
+          path: build/audit/minecraft-1.9-language-audit.json
+          if-no-files-found: error
+          retention-days: 14
