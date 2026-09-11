@@ -1,0 +1,48 @@
+{
+  "minecraft": "1.9.4",
+  "jei": "3.6.8",
+  "base_generation": "g3-mc1.9",
+  "target_key_count": 80,
+  "normal_key_count": 77,
+  "debug_key_count": 3,
+  "full_addon_locale_count": 63,
+  "g4_reviewed_keys_per_full_locale": 4,
+  "g4_reviewed_keys": [
+    "jei.tooltip.cheat.mode",
+    "config.jei.advanced.hideLaggyModelsEnabled",
+    "config.jei.advanced.hideLaggyModelsEnabled.comment",
+    "gui.jei.category.craftingTable"
+  ],
+  "documented_full_english_fallback_locales": [
+    "gv_IM",
+    "kw_GB",
+    "se_NO",
+    "br_FR",
+    "fo_FO",
+    "fy_NL",
+    "gd_GB",
+    "ksh_DE",
+    "li_LI",
+    "so_SO"
+  ],
+  "translated_or_ai_assisted_full_locale_count": 53,
+  "full_english_fallback_locale_count": 10,
+  "upstream_missing_key_supplement_locales": [
+    "de_DE",
+    "fi_FI",
+    "fr_FR",
+    "ko_KR",
+    "ru_RU",
+    "zh_CN"
+  ],
+  "upstream_supplement_rule": "Reconstruct against the exact JEI 3.6.8 missing-key set. Never carry a G3 supplement entry forward if JEI 3.6.8 now owns that key. Existing upstream keys are never overridden by G4 without explicit approval.",
+  "special_cases": {
+    "fr_FR": "Upstream was complete for JEI 3.3.3 but is unchanged while G4 adds three normal keys, so it now receives exactly those three missing keys.",
+    "ko_KR": "gui.jei.category.craftingTable is absent upstream and its English meaning changed from Crafting Table to Crafting, so the addon-owned missing-key translation is explicitly revised to 제작.",
+    "ru_RU": "JEI 3.6.8 upstream now owns most keys that were supplied by the G3 supplement. Keep only the two still-missing color-search keys inherited from G3 plus the two new hide-laggy-model keys.",
+    "zh_CN": "JEI 3.6.8 upstream now owns all previously supplemented normal keys. Supply only the three G4-added keys still missing upstream."
+  },
+  "debug_policy": "The three upstream DEBUG description keys remain in English for all complete addon locales.",
+  "fallback_policy": "If translation confidence is insufficient, preserve the existing documented English fallback rather than inventing a translation. No new fallback locale is introduced by G4.",
+  "source_diff": "upstream/diffs/1.9-to-1.9.4.json"
+}
