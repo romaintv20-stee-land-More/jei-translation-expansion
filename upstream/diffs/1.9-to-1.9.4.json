@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "base": {
+    "minecraft": "1.9",
+    "jei": "3.3.3",
+    "upstream_commit": "b2ffe6bd7734d093006de99f9dc99b2b77ce780d",
+    "source": "upstream/sources/1.9/en_US.lang",
+    "key_count": 77,
+    "normal_key_count": 74,
+    "debug_only_key_count": 3
+  },
+  "target": {
+    "minecraft": "1.9.4",
+    "jei": "3.6.8",
+    "upstream_branch": "1.9",
+    "audited_commit": "bd9fcad11a8b92d181fc8c2ec976e31c7467799a",
+    "source": "upstream/sources/1.9.4/en_US.lang",
+    "key_count": 80,
+    "normal_key_count": 77,
+    "debug_only_key_count": 3
+  },
+  "comparison": {
+    "unchanged_key_and_english_value_count": 76,
+    "added_key_count": 3,
+    "removed_key_count": 0,
+    "changed_english_value_count": 1,
+    "new_or_reviewed_translation_key_count_per_full_locale": 4
+  },
+  "added": {
+    "jei.tooltip.cheat.mode": "Cheat Mode",
+    "config.jei.advanced.hideLaggyModelsEnabled": "Hide Items with Laggy Models",
+    "config.jei.advanced.hideLaggyModelsEnabled.comment": "Items with models that cause a long delay will be hidden from the item list."
+  },
+  "removed": {},
+  "changed_english_values": {
+    "gui.jei.category.craftingTable": {
+      "base": "Crafting Table",
+      "target": "Crafting"
+    }
+  },
+  "target_official_locales": [
+    "de_DE",
+    "en_US",
+    "fi_FI",
+    "fr_FR",
+    "ko_KR",
+    "nb_NO",
+    "ru_RU",
+    "zh_CN"
+  ],
+  "upstream_compare": {
+    "base_commit": "b2ffe6bd7734d093006de99f9dc99b2b77ce780d",
+    "target_commit": "bd9fcad11a8b92d181fc8c2ec976e31c7467799a",
+    "commits_ahead": 53,
+    "language_files_changed_between_endpoints": [
+      "en_US.lang",
+      "ru_RU.lang",
+      "zh_CN.lang"
+    ],
+    "language_files_unchanged_between_endpoints": [
+      "de_DE.lang",
+      "fi_FI.lang",
+      "fr_FR.lang",
+      "ko_KR.lang",
+      "nb_NO.lang"
+    ]
+  },
+  "scope_notes": [
+    "Minecraft 1.9.4 uses the same Minecraft asset index id and exact asset-index SHA-1 as the audited Minecraft 1.9 target, so the raw vanilla language inventory is unchanged.",
+    "Translation reuse from G3 is valid only for the 76 key/value pairs that are unchanged. The three added keys and the changed Crafting category label require G4 translation/review for every addon-owned full locale.",
+    "For upstream-owned locales, never override an existing key solely because the English source changed. Only supply keys that are absent from the exact JEI 3.6.8 upstream locale file unless an override is explicitly approved."
+  ]
+}
