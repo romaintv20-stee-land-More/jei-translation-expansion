@@ -1,0 +1,23 @@
+{
+  "minecraft": "1.9",
+  "jei": "3.3.3",
+  "normal_key_count": 74,
+  "debug_key_count": 3,
+  "translated_ai_assisted_locales": [
+    "be_BY",
+    "mk_MK",
+    "sq_AL"
+  ],
+  "documented_english_fallback_locales": [
+    "br_FR",
+    "fo_FO",
+    "fy_NL",
+    "gd_GB",
+    "ksh_DE",
+    "li_LI",
+    "so_SO"
+  ],
+  "fallback_reason": "These low-resource or strongly regional languages were newly added to the selected Minecraft 1.9 primary-language scope, but a sufficiently reliable full JEI technical translation could not be guaranteed in this pass. Project policy prefers an explicit English fallback over invented or low-confidence text. The fallback can be replaced locale-by-locale after trustworthy community or expert review.",
+  "debug_policy": "The three upstream DEBUG description keys remain in English for every addon locale, matching upstream's explicit 'do not need translation' comment.",
+  "technical_policy": "Placeholders and technical literals must be preserved exactly, including %,d, %s, %MODNAME, ItemStack, ModId/modId syntax, mB, XP, JEI, Ctrl and Shift where applicable."
+}
