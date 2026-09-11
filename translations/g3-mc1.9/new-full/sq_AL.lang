@@ -1,0 +1,98 @@
+# Tooltips
+jei.tooltip.config=Konfigurimi
+jei.tooltip.show.recipes=Shfaq recetat
+jei.tooltip.show.all.recipes=Shfaq të gjitha recetat
+jei.tooltip.delete.item=Kliko për ta fshirë
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+jei.tooltip.transfer=Transfero objektet
+jei.tooltip.recipe.ore.dict=Pranon cilindo: %s
+jei.tooltip.item.colors=Ngjyrat: %s
+jei.tooltip.shapeless.recipe=Recetë pa formë
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Mungojnë objekte
+jei.tooltip.error.recipe.transfer.inventory.full=Inventari është tepër i mbushur
+
+# Error Messages
+jei.chat.error.command.too.long=JEI duhet të jetë në server për ta trajtuar këtë komandë bisede, sepse është tepër e gjatë që Minecraft ta dërgojë.
+
+# Key Bindings
+key.jei.toggleOverlay=Ndërro mbivendosjen e listës së objekteve
+key.jei.focusSearch=Zgjidh shiritin e kërkimit
+key.jei.showRecipe=Shfaq recetën e objektit
+key.jei.showUses=Shfaq përdorimet e objektit
+key.jei.recipeBack=Shfaq faqen e mëparshme të recetave
+
+# Config
+config.jei.default=Parazgjedhur
+config.jei.valid=E vlefshme
+
+config.jei.title=Konfigurimi i %MODNAME
+
+config.jei.mode=Mënyra
+config.jei.mode.comment=Ndrysho mënyrën në të cilën funksionon JEI.
+config.jei.mode.cheatItemsEnabled=Mënyra e marrjes së objekteve
+config.jei.mode.cheatItemsEnabled.comment=Jep objektet në vend që të shfaqë recetën.
+config.jei.mode.editEnabled=Mënyra e fshehjes së objekteve
+config.jei.mode.editEnabled.comment=Fshih dhe rishfaq objekte duke klikuar mbi to në listën e objekteve.
+
+config.jei.interface=Ndërfaqja
+config.jei.interface.comment=Opsione që lidhen me ndërfaqen e përdoruesit.
+config.jei.interface.overlayEnabled=Lista e objekteve është aktive
+config.jei.interface.overlayEnabled.comment=Shfaq listën e objekteve pranë ndërfaqeve të hapura.
+config.jei.interface.recipeAnimationsEnabled=Animacionet e recetave
+config.jei.interface.recipeAnimationsEnabled.comment=Shfaq animacionet e recetave (zjarri i furrës, shiritat e përparimit, etj.)
+
+config.jei.search=Opsionet e kërkimit
+config.jei.search.comment=Opsione që lidhen me shiritin e kërkimit.
+config.jei.search.atPrefixRequiredForModName=Kërko @ për emrin e modit
+config.jei.search.atPrefixRequiredForModName.comment=Kërkon „@“ përpara një fjale për të kërkuar sipas emrit të modit.
+config.jei.search.prefixRequiredForTooltipSearch=Kërko # për këshillën
+config.jei.search.prefixRequiredForTooltipSearch.comment=Kërkon „#“ përpara një fjale për të kërkuar në këshilla.
+config.jei.search.prefixRequiredForOreDictSearch=Kërko $ për Ore Dictionary
+config.jei.search.prefixRequiredForOreDictSearch.comment=Kërkon „$“ përpara një fjale për të kërkuar emra në Ore Dictionary.
+config.jei.search.prefixRequiredForCreativeTabSearch=Kërko %% për emrin e skedës Creative
+config.jei.search.prefixRequiredForCreativeTabSearch.comment=Kërkon „%“ përpara një fjale për të kërkuar emrat e skedave Creative.
+config.jei.search.prefixRequiredForColorSearch=Kërko ^ për ngjyrat
+config.jei.search.prefixRequiredForColorSearch.comment=Kërkon „^“ përpara një fjale për të kërkuar sipas ngjyrave të objekteve.
+
+config.jei.advanced=Të avancuara
+config.jei.advanced.comment=Opsione të avancuara për të ndryshuar mënyrën se si funksionon JEI.
+config.jei.advanced.itemBlacklist=Lista e zezë e objekteve
+config.jei.advanced.itemBlacklist.comment=Lista e objekteve që nuk duhet të shfaqen në listën e objekteve. Formati: modId[:name[:meta]]. Mënyra e redaktimit do të shtojë ose heqë automatikisht hyrje këtu.
+config.jei.advanced.hideMissingModelsEnabled=Fshih objektet me modele që mungojnë
+config.jei.advanced.hideMissingModelsEnabled.comment=Objektet me modele që mungojnë do të fshihen nga lista e objekteve.
+config.jei.advanced.colorSearchEnabled=Aktivizo kërkimin sipas ngjyrës
+config.jei.advanced.colorSearchEnabled.comment=Kërko objekte sipas ngjyrës dhe shfaq ngjyrat e kërkueshme të objekteve në këshillat e listës së objekteve.
+config.jei.advanced.debugModeEnabled=Mënyra e diagnostikimit
+config.jei.advanced.debugModeEnabled.comment=E dobishme vetëm për zhvilluesit e JEI; shton mijëra objekte prove dhe disa receta diagnostikimi.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Fshi objektet në mënyrën e marrjes
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Në mënyrën e marrjes, tërhiq një ItemStack mbi listën e objekteve dhe kliko për ta fshirë. (kërkon JEI në server)
+
+config.jei.addons=Shtesat
+config.jei.addons.comment=Kategori për opsionet e konfigurimit të shtesave JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Mënyra e redaktimit të listës së objekteve JEI:
+gui.jei.editMode.description.hide=Ctrl-klik për ta fshehur.
+gui.jei.editMode.description.show=E fshehur. Ctrl-klik për ta shfaqur.
+gui.jei.editMode.description.hide.wild=Ctrl-klik i djathtë për ta fshehur me wildcard.
+gui.jei.editMode.description.show.wild=E fshehur me Wildcard. Ctrl-klik i djathtë për ta shfaqur.
+gui.jei.editMode.description.hide.mod.id=Ctrl-Shift-klik për ta fshehur sipas ModId.
+gui.jei.editMode.description.show.mod.id=E fshehur sipas ModId. Ctrl-Shift-klik për ta shfaqur.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Tavolina e punës
+gui.jei.category.smelting=Shkrirja
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Karburant
+gui.jei.category.fuel.burnTime=Koha e djegies: %s
+gui.jei.category.brewing=Përgatitja e eliksireve
+gui.jei.category.brewing.steps=Hapat: %s
+gui.jei.category.itemDescription=Përshkrimi
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
