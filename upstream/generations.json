@@ -36,8 +36,9 @@
       "audited_commit": "b2ffe6bd7734d093006de99f9dc99b2b77ce780d",
       "source": "upstream/sources/1.9/en_US.lang",
       "key_count": 77,
+      "normal_key_count": 74,
       "base_generation": "g2-mc1.8.9",
-      "storage": "delta-from-base-planned",
+      "storage": "delta-from-base-plus-new-full-locales-planned",
       "translation_path": null,
       "reuse_unchanged_key_count": 74,
       "added_key_count": 2,
@@ -45,8 +46,17 @@
       "removed_key_count": 0,
       "delta_key_count_per_inherited_locale": 3,
       "diff_manifest": "upstream/diffs/1.8.9-to-1.9.json",
-      "translation_scope_status": "pending-minecraft-1.9-locale-code-reconciliation",
-      "notes": "Do not create the G3 translation set until Minecraft 1.9 locale identifiers are verified. JEI adds upstream fr_FR and nb_NO; the prior project scope used no_NO, so Norwegian locale handling must be resolved first."
+      "minecraft_language_audit": "upstream/minecraft-1.9-language-audit.json",
+      "minecraft_raw_language_count": 90,
+      "new_minecraft_language_codes_since_1_8_scope": 15,
+      "obvious_new_primary_candidate_count": 10,
+      "constructed_language_policy_review": ["jbo_EN", "tzl_TZL"],
+      "provisional_selected_scope_count_without_constructed_review_codes": 70,
+      "possible_selected_scope_count_with_constructed_review_codes": 72,
+      "norwegian_minecraft_locale": "no_NO",
+      "norwegian_jei_upstream_mismatched_locale": "nb_NO",
+      "translation_scope_status": "raw-scope-verified-two-constructed-language-policy-decisions-pending",
+      "notes": "Minecraft 1.9 has 89 external language files plus integrated en_US = 90 codes. There are 15 codes not present in the project's Minecraft 1.8 raw scope. Ten are obvious primary-language candidates, en_NZ is an obvious regional variant, en_UD and lol_US are obvious novelty candidates, while jbo_EN and tzl_TZL require an explicit project-policy decision. Minecraft assets contain no_NO and not nb_NO, so no_NO remains the Minecraft-facing Norwegian target; JEI's upstream nb_NO is preserved but not treated as a replacement. New primary locales require full G3 translations; inherited locales require only the verified three-key delta."
     }
   ],
   "rules": {
@@ -57,5 +67,5 @@
     "translation_reuse_between_versions_is_allowed": true,
     "delta_generations_must_be_reconstructed_and_validated_before_release": true
   },
-  "notes": "G1 and G2 are distinct because JEI 1.8.9 adds/removes keys and changes the English meaning of existing keys. G3 is a verified localization endpoint for Minecraft 1.9 / JEI 3.3.3 and differs from G2 by only three new/reviewed entries per inherited locale, but translation storage remains intentionally uncreated until the Minecraft 1.9 language-code scope is verified. Final release policy is one Minecraft version per JAR; translation inheritance never implies multi-version packaging."
+  "notes": "Translation inheritance reduces repeated work but never implies multi-version packaging. Every final Minecraft target must reconstruct and validate its own exact resources."
 }
