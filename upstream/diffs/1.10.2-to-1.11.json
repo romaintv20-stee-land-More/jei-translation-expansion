@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "base": {
+    "minecraft": "1.10.2",
+    "jei": "3.14.8",
+    "generation": "g6-mc1.10.2",
+    "source": "upstream/sources/1.10.2/en_US.lang",
+    "key_count": 87
+  },
+  "target": {
+    "minecraft": "1.11",
+    "jei": "4.1.1",
+    "generation": "g7-mc1.11",
+    "upstream_commit": "c9fcc36ff0effec2b5239eebd2c9133da04df4bb",
+    "source": "upstream/sources/1.11/en_us.lang",
+    "key_count": 87
+  },
+  "unchanged_key_and_value_count": 87,
+  "added_key_count": 0,
+  "added_keys": [],
+  "removed_key_count": 0,
+  "removed_keys": [],
+  "changed_english_value_count": 0,
+  "changed_english_values": {},
+  "reviewed_key_count": 0,
+  "resource_filename_case_changed": true,
+  "resource_filename_change": "JEI/Minecraft 1.11 resources use lowercase locale filenames such as en_us.lang instead of legacy mixed-case names such as en_US.lang.",
+  "notes": "The pinned JEI 4.1.1 en_us.lang is byte-identical to JEI 3.14.8 en_US.lang (Git blob 75790131d753d64fe0cf98f3ac5c0ee67f6bd545). G7 therefore requires no semantic retranslation of existing JEI strings; work is limited to Minecraft language-scope changes, lowercase resource naming and exact upstream ownership changes."
+}
