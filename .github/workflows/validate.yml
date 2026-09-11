@@ -15,5 +15,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate translations
+      - name: Validate Minecraft 1.8 translations
         run: python scripts/validate_translations.py
+      - name: Validate Minecraft 1.8.9 translation deltas
+        run: python scripts/validate_1_8_9_delta.py
