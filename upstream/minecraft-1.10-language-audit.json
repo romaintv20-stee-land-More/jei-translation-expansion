@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "audit_date": "2026-09-11",
-  "status": "pinned-audit-with-ci-verification",
+  "status": "verified-raw-scope-and-upstream-completeness",
   "minecraft": "1.10",
   "jei": "3.7.1",
   "jei_upstream_branch": "1.10",
@@ -19,10 +19,22 @@
     "id": "1.10",
     "sha1": "7c2800b458376b8fc0b738382fb7784328fddda9",
     "url": "https://piston-meta.mojang.com/v1/packages/7c2800b458376b8fc0b738382fb7784328fddda9/1.10.json",
-    "external_language_file_count": 89,
-    "raw_language_count_including_en_us": 90,
-    "language_inventory_changed_from_1_9": false,
-    "verification": "scripts/validate_1_10_delta.py fetches both the pinned 1.9 and 1.10 Mojang asset indexes and requires their language-code sets to be exactly equal."
+    "external_language_file_count": 93,
+    "raw_language_count_including_en_us": 94,
+    "language_inventory_changed_from_1_9": true,
+    "added_since_1_9": ["de_AT", "haw_US", "mn_MN", "swg_de"],
+    "removed_since_1_9": [],
+    "verification": "The G5 CI validator fetches both pinned Mojang asset indexes and requires the exact 1.10-vs-1.9 language delta to be de_AT, haw_US, mn_MN and swg_de with no removals."
+  },
+  "new_minecraft_language_policy": {
+    "selected_new_primary_languages": ["haw_US", "mn_MN"],
+    "deferred_new_regional_or_dialect_variants": ["de_AT", "swg_de"],
+    "classifications": {
+      "de_AT": "Austrian German; deferred as a regional German variant under the existing regional-variant policy.",
+      "haw_US": "Hawaiian; selected as a real-world primary language.",
+      "mn_MN": "Mongolian; selected as a real-world primary language.",
+      "swg_de": "Minecraft identifies this locale as Oschtallgaierisch; deferred as a regional German/Swabian variety under the existing regional-variant policy."
+    }
   },
   "jei_english": {
     "key_count": 78,
@@ -118,10 +130,15 @@
     }
   },
   "selected_scope_implications": {
-    "scope_same_as_minecraft_1_9": true,
-    "selected_scope_count": 70,
+    "scope_changed_from_minecraft_1_9": true,
+    "selected_scope_count": 72,
+    "inherited_selected_scope_count": 70,
+    "new_selected_primary_languages": ["haw_US", "mn_MN"],
     "minecraft_facing_upstream_locale_count": 7,
-    "addon_full_locale_count": 63,
+    "addon_full_locale_count": 65,
+    "inherited_addon_full_locale_count": 63,
+    "new_addon_full_locale_count": 2,
+    "new_addon_full_locales": ["haw_US", "mn_MN"],
     "upstream_complete_no_addon_locales": ["en_US"],
     "upstream_missing_key_supplement_locales": [
       "de_DE",
@@ -137,10 +154,12 @@
   "translation_reuse": {
     "base_generation": "g4-mc1.9.4",
     "unchanged_pairs_reused_from_g4": 77,
-    "new_translation_entries_required": 0,
     "semantic_reversion_key": "gui.jei.category.craftingTable",
     "semantic_reversion_source_generation": "g3-mc1.9",
-    "reason": "The English value returns exactly from Crafting to Crafting Table, so the previously validated G3 translations are authoritative for the addon-owned value."
+    "new_non_english_translation_entries_required": 0,
+    "new_documented_complete_english_fallback_locales": ["haw_US", "mn_MN"],
+    "new_documented_complete_english_fallback_locale_count": 2,
+    "reason": "The changed English value returns exactly from Crafting to Crafting Table, so G3 translations are authoritative for inherited addon-owned values. The two newly selected Minecraft languages use explicit English fallback because reliable complete technical translations are not guaranteed in this pass."
   },
   "norwegian_reconciliation": {
     "minecraft_has_no_NO": true,
@@ -150,6 +169,7 @@
     "project_decision": "Continue using no_NO as the Minecraft-facing full addon locale and preserve JEI's nb_NO file without treating it as an alias."
   },
   "evidence": {
+    "failed_discovery_validation_run": 34641315392,
     "next_transition_commit_message": "Update for Minecraft 1.10.2",
     "minecraft_version_metadata_mirror": "bacondev7/Minecraft-Assets release/1.10/VERSION.md",
     "minecraft_asset_index_mirror": "MultiMC/meta-upstream mojang/assets/1.10.json",
