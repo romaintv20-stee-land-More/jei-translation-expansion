@@ -1,0 +1,64 @@
+locale	jei.tooltip.cheat.mode	config.jei.advanced.hideLaggyModelsEnabled	config.jei.advanced.hideLaggyModelsEnabled.comment	gui.jei.category.craftingTable
+af_ZA	Bedrogmodus	Versteek items met stadige modelle	Items met modelle wat 'n lang vertraging veroorsaak, sal uit die itemlys versteek word.	Vervaardiging
+ar_SA	وضع الغش	إخفاء العناصر ذات النماذج البطيئة	سيتم إخفاء العناصر ذات النماذج التي تسبب تأخيرًا طويلًا من قائمة العناصر.	التصنيع
+ast_ES	Mou trampes	Anubrir oxetos con modelos lentos	Los oxetos con modelos que causen un retrasu llargu van anubrise de la llista d'oxetos.	Fabricación
+az_AZ	Fırıldaq rejimi	Ləng modelləri olan əşyaları gizlət	Uzun gecikməyə səbəb olan modelləri olan əşyalar əşyalar siyahısından gizlədiləcək.	Hazırlama
+bg_BG	Режим за измама	Скриване на предмети с бавни модели	Предметите с модели, които причиняват голямо забавяне, ще бъдат скрити от списъка с предмети.	Изработка
+ca_ES	Mode trampa	Amaga els objectes amb models lents	Els objectes amb models que causen un retard llarg s'amagaran de la llista d'objectes.	Fabricació
+cs_CZ	Režim cheatů	Skrýt předměty s pomalými modely	Předměty s modely, které způsobují dlouhé zpoždění, budou skryty ze seznamu předmětů.	Výroba
+cy_GB	Modd twyllo	Cuddio eitemau â modelau araf	Bydd eitemau â modelau sy'n achosi oedi hir yn cael eu cuddio o'r rhestr eitemau.	Crefftio
+da_DK	Snydetilstand	Skjul genstande med langsomme modeller	Genstande med modeller, der forårsager lang forsinkelse, skjules fra genstandslisten.	Fremstilling
+el_GR	Λειτουργία εξαπάτησης	Απόκρυψη αντικειμένων με αργά μοντέλα	Αντικείμενα με μοντέλα που προκαλούν μεγάλη καθυστέρηση θα κρύβονται από τη λίστα αντικειμένων.	Κατασκευή
+eo_UY	Trompreĝimo	Kaŝi objektojn kun malrapidaj modeloj	Objektoj kun modeloj kiuj kaŭzas longan prokraston estos kaŝitaj el la listo de objektoj.	Fabrikado
+es_ES	Modo trucos	Ocultar objetos con modelos lentos	Los objetos con modelos que causen un retraso prolongado se ocultarán de la lista de objetos.	Fabricación
+et_EE	Pettusrežiim	Peida aeglaste mudelitega esemed	Esemed, mille mudelid põhjustavad pika viivituse, peidetakse esemete loendist.	Meisterdamine
+eu_ES	Iruzur modua	Ezkutatu modelo geldoak dituzten elementuak	Atzerapen luzea eragiten duten modeloak dituzten elementuak elementuen zerrendatik ezkutatuko dira.	Fabrikazioa
+fa_IR	حالت تقلب	مخفی کردن آیتم‌های دارای مدل‌های کند	آیتم‌هایی که مدلشان باعث تأخیر طولانی می‌شود از فهرست آیتم‌ها مخفی خواهند شد.	ساخت
+fil_PH	Mode ng Pandaraya	Itago ang mga item na may mababagal na modelo	Itatago sa listahan ng item ang mga item na may modelong nagdudulot ng mahabang pagkaantala.	Paggawa
+ga_IE	Mód Caimiléireachta	Folaigh míreanna le samhlacha malla	Cuirfear míreanna le samhlacha a chuireann moill fhada faoi cheilt ón liosta míreanna.	Ceardaíocht
+gl_ES	Modo trampas	Agochar obxectos con modelos lentos	Os obxectos con modelos que causen un atraso longo agocharanse da lista de obxectos.	Fabricación
+gv_IM	Cheat Mode	Hide Items with Laggy Models	Items with models that cause a long delay will be hidden from the item list.	Crafting
+he_IL	מצב רמאות	הסתר פריטים עם מודלים איטיים	פריטים עם מודלים שגורמים לעיכוב ממושך יוסתרו מרשימת הפריטים.	יצירה
+hi_IN	चीट मोड	धीमे मॉडल वाले आइटम छिपाएँ	लंबे विलंब का कारण बनने वाले मॉडल वाले आइटम आइटम सूची से छिपा दिए जाएंगे।	क्राफ्टिंग
+hr_HR	Način varanja	Sakrij predmete sa sporim modelima	Predmeti s modelima koji uzrokuju dugo kašnjenje bit će skriveni s popisa predmeta.	Izrada
+hu_HU	Csalás mód	Lassú modellel rendelkező tárgyak elrejtése	A hosszú késést okozó modellel rendelkező tárgyak el lesznek rejtve a tárgylistáról.	Barkácsolás
+hy_AM	Խաբեության ռեժիմ	Թաքցնել դանդաղ մոդելներով առարկաները	Երկար ուշացում առաջացնող մոդելներով առարկաները կթաքցվեն առարկաների ցանկից։	Պատրաստում
+id_ID	Mode Curang	Sembunyikan item dengan model lambat	Item dengan model yang menyebabkan penundaan lama akan disembunyikan dari daftar item.	Pembuatan
+is_IS	Svindlhamur	Fela hluti með hægum líkönum	Hlutir með líkön sem valda mikilli töf verða faldir af hlutalistanum.	Föndur
+it_IT	Modalità trucchi	Nascondi oggetti con modelli lenti	Gli oggetti con modelli che causano un lungo ritardo verranno nascosti dall'elenco degli oggetti.	Fabbricazione
+ja_JP	チートモード	重いモデルのアイテムを非表示	長い遅延を引き起こすモデルを持つアイテムは、アイテムリストから非表示になります。	クラフト
+ka_GE	ჩიტის რეჟიმი	ნელი მოდელების მქონე ნივთების დამალვა	ნივთები, რომელთა მოდელები დიდ დაყოვნებას იწვევს, ნივთების სიიდან დაიმალება.	დამზადება
+kw_GB	Cheat Mode	Hide Items with Laggy Models	Items with models that cause a long delay will be hidden from the item list.	Crafting
+la_LA	Modus fraudis	Res cum exemplaribus tardis celare	Res quarum exemplaria longam moram faciunt e indice rerum celabuntur.	Fabricatio
+lb_LU	Cheat-Modus	Géigestänn mat luesen Modeller verstoppen	Géigestänn mat Modeller, déi eng laang Verzögerung verursaachen, ginn aus der Géigestänn-Lëscht verstoppt.	Hierstellung
+lt_LT	Sukčiavimo režimas	Slėpti daiktus su lėtais modeliais	Daiktai su modeliais, kurie sukelia ilgą delsą, bus paslėpti iš daiktų sąrašo.	Gamyba
+lv_LV	Krāpšanās režīms	Paslēpt priekšmetus ar lēniem modeļiem	Priekšmeti ar modeļiem, kas izraisa ilgu aizkavi, tiks paslēpti no priekšmetu saraksta.	Izgatavošana
+mi_NZ	Aratau Tinihanga	Hunaia ngā tūemi whai tauira pōturi	Ka hunaina ngā tūemi whai tauira e roa ai te takaroa i te rārangi tūemi.	Hanga
+ms_MY	Mod Menipu	Sembunyikan item dengan model lambat	Item dengan model yang menyebabkan kelewatan panjang akan disembunyikan daripada senarai item.	Pembuatan
+mt_MT	Mod Qerq	Aħbi oġġetti b'mudelli bil-mod	Oġġetti b'mudelli li jikkawżaw dewmien twil se jinħbew mil-lista tal-oġġetti.	Ħolqien
+nds_DE	Schummelmodus	Saken mit langsame Modellen versteken	Saken mit Modellen, de en lange Verzögerung maakt, warrt ut de Sakenlist versteken.	Hantwark
+nl_NL	Valsspeelmodus	Verberg voorwerpen met trage modellen	Voorwerpen met modellen die een lange vertraging veroorzaken, worden verborgen uit de voorwerpenlijst.	Maken
+no_NO	Juksemodus	Skjul gjenstander med trege modeller	Gjenstander med modeller som forårsaker lang forsinkelse, skjules fra gjenstandslisten.	Håndverk
+oc_FR	Mòde tricha	Amagar los objèctes amb de modèls lents	Los objèctes amb de modèls que causan un retard long seràn amagats de la lista d'objèctes.	Fabricacion
+pl_PL	Tryb oszustwa	Ukryj przedmioty z wolnymi modelami	Przedmioty z modelami powodującymi długie opóźnienie zostaną ukryte na liście przedmiotów.	Wytwarzanie
+pt_BR	Modo de trapaça	Ocultar itens com modelos lentos	Itens com modelos que causam um longo atraso serão ocultados da lista de itens.	Fabricação
+ro_RO	Mod trișare	Ascunde obiectele cu modele lente	Obiectele cu modele care provoacă o întârziere mare vor fi ascunse din lista de obiecte.	Fabricare
+se_NO	Cheat Mode	Hide Items with Laggy Models	Items with models that cause a long delay will be hidden from the item list.	Crafting
+sk_SK	Režim podvádzania	Skryť predmety s pomalými modelmi	Predmety s modelmi, ktoré spôsobujú dlhé oneskorenie, budú skryté zo zoznamu predmetov.	Výroba
+sl_SI	Način goljufanja	Skrij predmete s počasnimi modeli	Predmeti z modeli, ki povzročajo dolgo zakasnitev, bodo skriti s seznama predmetov.	Izdelovanje
+sr_SP	Режим варања	Сакриј предмете са спорим моделима	Предмети са моделима који изазивају дуго кашњење биће сакривени са списка предмета.	Прављење
+sv_SE	Fuskläge	Dölj föremål med långsamma modeller	Föremål med modeller som orsakar lång fördröjning döljs från föremålslistan.	Tillverkning
+th_TH	โหมดโกง	ซ่อนไอเทมที่มีโมเดลช้า	ไอเทมที่มีโมเดลซึ่งทำให้เกิดความล่าช้านานจะถูกซ่อนจากรายการไอเทม	การคราฟต์
+tr_TR	Hile Modu	Yavaş modellere sahip eşyaları gizle	Uzun gecikmeye neden olan modellere sahip eşyalar eşya listesinden gizlenecektir.	Üretim
+uk_UA	Режим читів	Приховувати предмети з повільними моделями	Предмети з моделями, що спричиняють тривалу затримку, буде приховано зі списку предметів.	Створення
+vi_VN	Chế độ gian lận	Ẩn vật phẩm có mô hình chậm	Các vật phẩm có mô hình gây độ trễ lâu sẽ bị ẩn khỏi danh sách vật phẩm.	Chế tạo
+be_BY	Рэжым чытаў	Хаваць прадметы з павольнымі мадэлямі	Прадметы з мадэлямі, якія выклікаюць доўгую затрымку, будуць схаваны са спісу прадметаў.	Стварэнне
+br_FR	Cheat Mode	Hide Items with Laggy Models	Items with models that cause a long delay will be hidden from the item list.	Crafting
+fo_FO	Cheat Mode	Hide Items with Laggy Models	Items with models that cause a long delay will be hidden from the item list.	Crafting
+fy_NL	Cheat Mode	Hide Items with Laggy Models	Items with models that cause a long delay will be hidden from the item list.	Crafting
+gd_GB	Cheat Mode	Hide Items with Laggy Models	Items with models that cause a long delay will be hidden from the item list.	Crafting
+ksh_DE	Cheat Mode	Hide Items with Laggy Models	Items with models that cause a long delay will be hidden from the item list.	Crafting
+li_LI	Cheat Mode	Hide Items with Laggy Models	Items with models that cause a long delay will be hidden from the item list.	Crafting
+mk_MK	Режим за мамење	Сокриј предмети со бавни модели	Предметите со модели што предизвикуваат долго доцнење ќе бидат скриени од списокот со предмети.	Изработка
+so_SO	Cheat Mode	Hide Items with Laggy Models	Items with models that cause a long delay will be hidden from the item list.	Crafting
+sq_AL	Mënyra e mashtrimit	Fshih objektet me modele të ngadalta	Objektet me modele që shkaktojnë një vonesë të gjatë do të fshihen nga lista e objekteve.	Përpunimi
