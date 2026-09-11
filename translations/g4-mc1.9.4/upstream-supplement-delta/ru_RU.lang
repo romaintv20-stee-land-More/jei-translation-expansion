@@ -1,0 +1,3 @@
+# Only G4 keys still absent from JEI 3.6.8 ru_RU. Other former addon keys are now upstream-owned and must not be duplicated.
+config.jei.advanced.hideLaggyModelsEnabled=Скрывать предметы с медленными моделями
+config.jei.advanced.hideLaggyModelsEnabled.comment=Предметы с моделями, вызывающими долгую задержку, будут скрыты из списка предметов.
