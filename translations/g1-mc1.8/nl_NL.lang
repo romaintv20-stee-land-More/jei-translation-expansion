@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Configuratie
+jei.tooltip.show.all.recipes=Alle recepten tonen
+jei.tooltip.delete.item=Klik om te verwijderen
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Ontbrekende voorwerpen
+jei.tooltip.error.recipe.transfer.inventory.full=De inventaris is te vol
+
+# Error Messages
+jei.chat.error.command.too.long=JEI moet op de server zijn geïnstalleerd om deze chatopdracht te verwerken, omdat deze te lang is om door Minecraft te worden verzonden.
+
+# Key Bindings
+key.jei.toggleOverlay=Voorwerpenlijst tonen/verbergen (Ctrl + )
+key.jei.showRecipe=Recept van voorwerp tonen
+key.jei.showUses=Gebruik van voorwerp tonen
+
+# Config
+config.jei.default=Standaard
+config.jei.valid=Geldig
+
+config.jei.title=Configuratie van %MODNAME
+
+config.jei.mode=Modus
+config.jei.mode.comment=Wijzigt de modus waarin JEI werkt.
+config.jei.mode.cheatItemsEnabled=Voorwerpen cheaten
+config.jei.mode.cheatItemsEnabled.comment=Geeft voorwerpen met /give in plaats van het recept te tonen.
+config.jei.mode.editEnabled=Bewerkmodus voor voorwerpenlijst
+config.jei.mode.editEnabled.comment=Verberg of toon voorwerpen door erop te klikken in de voorwerpenlijst.
+
+config.jei.interface=Interface
+config.jei.interface.comment=Opties met betrekking tot de gebruikersinterface.
+config.jei.interface.recipeAnimationsEnabled=Receptanimaties
+config.jei.interface.recipeAnimationsEnabled.comment=Toont receptanimaties (ovenvuur, voortgangsbalken, enz.)
+
+config.jei.search=Zoeken
+config.jei.search.comment=Opties met betrekking tot de zoekbalk.
+config.jei.search.atPrefixRequiredForModName=@ gebruiken voor modnaam
+config.jei.search.atPrefixRequiredForModName.comment=Vereist «@ModName» om op modnaam te zoeken in plaats van «ModName».
+
+config.jei.advanced=Geavanceerd
+config.jei.advanced.comment=Geavanceerde opties om de werking van JEI te wijzigen.
+config.jei.advanced.nbtKeyIgnoreList=Lijst met genegeerde NBT-sleutels
+config.jei.advanced.nbtKeyIgnoreList.comment=Lijst met NBT-sleutels die moeten worden genegeerd bij het ophalen van recepten.
+config.jei.advanced.itemBlacklist=Zwarte lijst voor voorwerpen
+config.jei.advanced.itemBlacklist.comment=Lijst met voorwerpen die niet in de voorwerpenlijst mogen worden weergegeven. Formaat: modId:name[:meta]. De bewerkmodus voegt hier automatisch vermeldingen toe of verwijdert ze.
+config.jei.advanced.hideMissingModelsEnabled=Voorwerpen zonder model verbergen
+config.jei.advanced.hideMissingModelsEnabled.comment=Voorwerpen met ontbrekende modellen worden verborgen in de voorwerpenlijst.
+config.jei.advanced.debugModeEnabled=Debugmodus
+config.jei.advanced.debugModeEnabled.comment=Voegt willekeurige elementen toe om te helpen bij de ontwikkeling van JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Voorwerpen verwijderen in cheatmodus
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Sleep in cheatmodus een ItemStack over de voorwerpenlijst en klik om deze te verwijderen. (JEI is vereist op de server)
+
+config.jei.addons=Add-ons
+config.jei.addons.comment=Categorie voor configuratieopties van JEI-add-ons.
+
+# Edit Mode
+gui.jei.editMode.description=Bewerkmodus voor de JEI-voorwerpenlijst:
+gui.jei.editMode.description.hide=Ctrl-klik om te verbergen.
+gui.jei.editMode.description.show=Verborgen. Ctrl-klik om te tonen.
+gui.jei.editMode.description.hide.wild=Ctrl-rechtsklik om met jokerteken te verbergen.
+gui.jei.editMode.description.show.wild=Verborgen met jokerteken. Ctrl-rechtsklik om te tonen.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Werkbank
+gui.jei.category.smelting=Smelten
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Brandstof
+gui.jei.category.fuel.burnTime=Brandtijd: %s
+gui.jei.category.brewing=Brouwen
+gui.jei.category.brewing.steps=Stappen: %s
+gui.jei.category.itemDescription=Beschrijving
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
