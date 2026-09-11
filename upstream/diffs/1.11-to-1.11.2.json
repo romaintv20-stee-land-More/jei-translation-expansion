@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "base": {
+    "minecraft": "1.11",
+    "jei": "4.1.1",
+    "generation": "g7-mc1.11",
+    "source": "upstream/sources/1.11/en_us.lang",
+    "key_count": 87
+  },
+  "target": {
+    "minecraft": "1.11.2",
+    "jei": "4.5.1",
+    "generation": "g8-mc1.11.2",
+    "upstream_commit": "11023c1f4449b82d0b88366001b058e6949b40ab",
+    "source": "upstream/sources/1.11.2/en_us.lang",
+    "key_count": 93
+  },
+  "unchanged_key_and_value_count": 85,
+  "added_key_count": 7,
+  "added_keys": [
+    "config.jei.advanced.maxSubtypes",
+    "config.jei.advanced.maxSubtypes.comment",
+    "config.jei.search.resourceIdSearchMode",
+    "config.jei.search.resourceIdSearchMode.comment",
+    "gui.jei.category.itemInformation",
+    "key.jei.nextPage",
+    "key.jei.previousPage"
+  ],
+  "removed_key_count": 1,
+  "removed_keys": ["gui.jei.category.itemDescription"],
+  "changed_english_value_count": 1,
+  "changed_english_values": {
+    "key.jei.recipeBack": {
+      "base": "Show Previous Recipe Page",
+      "target": "Show Previously Viewed Recipe"
+    }
+  },
+  "reviewed_key_count": 8,
+  "reviewed_added_or_changed_keys": [
+    "config.jei.advanced.maxSubtypes",
+    "config.jei.advanced.maxSubtypes.comment",
+    "config.jei.search.resourceIdSearchMode",
+    "config.jei.search.resourceIdSearchMode.comment",
+    "gui.jei.category.itemInformation",
+    "key.jei.nextPage",
+    "key.jei.previousPage",
+    "key.jei.recipeBack"
+  ],
+  "notes": "G8 reuses the 85 G7 key/value pairs whose English meaning is identical. The seven added keys and changed recipeBack meaning are reviewed separately. The removed itemDescription key is not emitted."
+}
