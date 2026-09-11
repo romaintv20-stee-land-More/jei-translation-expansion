@@ -36,7 +36,7 @@ jobs:
           python-version: '3.12'
 
       - name: Set up Java 8
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: '8'
@@ -57,12 +57,20 @@ jobs:
           VERSION="${INPUT_VERSION:-0.1.0-ci}"
           python scripts/build_1_8_9.py --version "$VERSION"
 
-      - name: Inspect JAR
+      - name: Inspect JAR and Forge entrypoint bytecode
         run: |
           JAR=$(find build/releases/1.8.9 -name '*.jar' -type f | head -n 1)
           test -n "$JAR"
           unzip -l "$JAR"
-          echo "Language files: $(unzip -Z1 "$JAR" | grep '^assets/jei/lang/.*\.lang$' | wc -l)"
+          test "$(unzip -Z1 "$JAR" | grep '^assets/jei/lang/.*\.lang$' | wc -l)" -eq 59
+          ! unzip -Z1 "$JAR" | grep -q '^net/minecraftforge/fml/common/Mod.class$'
+          javap -verbose -classpath "$JAR" io.github.romaintv20.jeitranslationexpansion.JeiTranslationExpansion > build/javap-1.8.9.txt
+          grep -q 'major version: 51' build/javap-1.8.9.txt
+          grep -q 'RuntimeVisibleAnnotations' build/javap-1.8.9.txt
+          grep -q 'jei_translation_expansion' build/javap-1.8.9.txt
+          grep -q 'clientSideOnly=true' build/javap-1.8.9.txt
+          grep -q '\[1.8.9\]' build/javap-1.8.9.txt
+          grep -q 'required-after:JEI@\[2.28.18\]' build/javap-1.8.9.txt
           sha256sum "$JAR"
 
       - name: Upload prototype artifact
