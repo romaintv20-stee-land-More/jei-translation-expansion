@@ -1,0 +1,4 @@
+# G4 keys missing from JEI 3.6.8 fi_FI. Existing upstream-owned keys are intentionally omitted.
+jei.tooltip.cheat.mode=Huijaustila
+config.jei.advanced.hideLaggyModelsEnabled=Piilota hitaiden mallien tavarat
+config.jei.advanced.hideLaggyModelsEnabled.comment=Tavarat, joiden mallit aiheuttavat pitkän viiveen, piilotetaan tavaraluettelosta.
