@@ -5,7 +5,9 @@ G5 reuses every unchanged G4 key/value pair, drops the two keys removed from
 JEI 3.7.1, and restores gui.jei.category.craftingTable from G3 because its
 English meaning reverts exactly from "Crafting" to "Crafting Table".
 
-No new translation is authored in G5.
+Minecraft 1.10 also adds two selected primary locales, haw_US and mn_MN. They
+are emitted as explicit complete English fallbacks rather than low-confidence
+invented translations.
 """
 from __future__ import annotations
 
@@ -33,6 +35,7 @@ REMOVED_KEYS = {
 }
 CRAFTING_KEY = "gui.jei.category.craftingTable"
 CHANGED_KEYS = {CRAFTING_KEY}
+NEW_FULL_FALLBACK_LOCALES = {"haw_US", "mn_MN"}
 
 
 def parse_lang(path: Path) -> dict[str, str]:
@@ -82,17 +85,22 @@ def reconstruct_full(target: dict[str, str], scope: dict) -> dict[str, dict[str,
 
     g4_full = reconstruct_g4_full()
     g3_full = reconstruct_g3_full()
-    expected_locales = set(json.loads(g4.G3_SCOPE_PATH.read_text(encoding="utf-8"))["addon_full_locales"])
+    inherited_locales = set(json.loads(g4.G3_SCOPE_PATH.read_text(encoding="utf-8"))["addon_full_locales"])
+    new_locales = set(scope["new_addon_full_locales"])
 
-    if scope["scope_unchanged_from_minecraft_1_9"] is not True:
-        raise ValueError("G5 scope must explicitly inherit the frozen Minecraft 1.9 language scope")
-    if scope["addon_full_locale_count"] != len(expected_locales):
-        raise ValueError("G5 addon full locale count does not match inherited scope")
-    if set(g4_full) != expected_locales or set(g3_full) != expected_locales:
+    if scope["scope_changed_from_minecraft_1_9"] is not True:
+        raise ValueError("G5 scope must explicitly record the Minecraft 1.10 language expansion")
+    if new_locales != NEW_FULL_FALLBACK_LOCALES:
+        raise ValueError(f"unexpected G5 new full locale set: {sorted(new_locales)}")
+    if scope["inherited_addon_full_locale_count"] != len(inherited_locales):
+        raise ValueError("G5 inherited full locale count does not match G3/G4 scope")
+    if scope["addon_full_locale_count"] != len(inherited_locales | new_locales):
+        raise ValueError("G5 total addon full locale count does not match inherited + new scope")
+    if set(g4_full) != inherited_locales or set(g3_full) != inherited_locales:
         raise ValueError("G3/G4 full locale sets do not match the G5 inherited scope")
 
     result: dict[str, dict[str, str]] = {}
-    for locale in sorted(expected_locales):
+    for locale in sorted(inherited_locales):
         complete = {key: value for key, value in g4_full[locale].items() if key in target}
         complete[CRAFTING_KEY] = g3_full[locale][CRAFTING_KEY]
         if set(complete) != set(target):
@@ -100,6 +108,12 @@ def reconstruct_full(target: dict[str, str], scope: dict) -> dict[str, dict[str,
             extra = sorted(set(complete) - set(target))
             raise ValueError(f"{locale}: reconstructed G5 key mismatch; missing={missing}, extra={extra}")
         result[locale] = complete
+
+    # The new selected primary languages are deliberately complete English
+    # fallbacks until a reliable full translation is available.
+    for locale in sorted(new_locales):
+        result[locale] = dict(target)
+
     return result
 
 
