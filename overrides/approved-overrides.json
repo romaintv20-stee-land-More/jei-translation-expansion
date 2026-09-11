@@ -1,0 +1,6 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-09-11",
+  "overrides": [],
+  "notes": "Existing upstream JEI translations are protected by default. Add an entry here only after an existing upstream translation has been explicitly reviewed and approved for replacement."
+}
