@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Ustawienia
+jei.tooltip.show.all.recipes=Pokaż wszystkie receptury
+jei.tooltip.delete.item=Kliknij, aby usunąć
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Brakujące przedmioty
+jei.tooltip.error.recipe.transfer.inventory.full=Ekwipunek jest zbyt pełny
+
+# Error Messages
+jei.chat.error.command.too.long=JEI musi być zainstalowane na serwerze, aby obsłużyć to polecenie czatu, ponieważ jest zbyt długie, by Minecraft mógł je wysłać.
+
+# Key Bindings
+key.jei.toggleOverlay=Pokaż/ukryj listę przedmiotów (Ctrl + )
+key.jei.showRecipe=Pokaż recepturę przedmiotu
+key.jei.showUses=Pokaż zastosowania przedmiotu
+
+# Config
+config.jei.default=Domyślne
+config.jei.valid=Prawidłowe
+
+config.jei.title=Ustawienia %MODNAME
+
+config.jei.mode=Tryb
+config.jei.mode.comment=Zmienia tryb działania JEI.
+config.jei.mode.cheatItemsEnabled=Oszukiwanie z przedmiotami
+config.jei.mode.cheatItemsEnabled.comment=Daje przedmioty poleceniem /give zamiast wyświetlać recepturę.
+config.jei.mode.editEnabled=Tryb edycji listy przedmiotów
+config.jei.mode.editEnabled.comment=Ukrywaj lub pokazuj przedmioty, klikając je na liście przedmiotów.
+
+config.jei.interface=Interfejs
+config.jei.interface.comment=Opcje związane z interfejsem użytkownika.
+config.jei.interface.recipeAnimationsEnabled=Animacje receptur
+config.jei.interface.recipeAnimationsEnabled.comment=Pokazuj animacje receptur (ogień pieca, paski postępu itd.)
+
+config.jei.search=Wyszukiwanie
+config.jei.search.comment=Opcje związane z paskiem wyszukiwania.
+config.jei.search.atPrefixRequiredForModName=Użyj @ dla nazwy moda
+config.jei.search.atPrefixRequiredForModName.comment=Wymagaj "@ModName" do wyszukiwania według nazwy moda zamiast "ModName".
+
+config.jei.advanced=Zaawansowane
+config.jei.advanced.comment=Zaawansowane ustawienia zmieniające sposób działania JEI.
+config.jei.advanced.nbtKeyIgnoreList=Lista ignorowanych kluczy NBT
+config.jei.advanced.nbtKeyIgnoreList.comment=Lista kluczy NBT, które mają być ignorowane podczas pobierania receptur.
+config.jei.advanced.itemBlacklist=Czarna lista przedmiotów
+config.jei.advanced.itemBlacklist.comment=Lista przedmiotów, które nie powinny być wyświetlane na liście przedmiotów. Format: modId:name[:meta]. Tryb edycji automatycznie doda lub usunie tutaj wpisy.
+config.jei.advanced.hideMissingModelsEnabled=Ukryj przedmioty z brakującymi modelami
+config.jei.advanced.hideMissingModelsEnabled.comment=Przedmioty z brakującymi modelami zostaną ukryte z listy przedmiotów.
+config.jei.advanced.debugModeEnabled=Tryb debugowania
+config.jei.advanced.debugModeEnabled.comment=Dodaje różne elementy pomagające w rozwoju JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Usuwaj przedmioty w trybie oszustwa
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=W trybie oszustwa przeciągnij ItemStack nad listę przedmiotów i kliknij, aby go usunąć. (wymaga JEI na serwerze)
+
+config.jei.addons=Dodatki
+config.jei.addons.comment=Kategoria opcji konfiguracji dodatków JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Tryb edycji listy przedmiotów JEI:
+gui.jei.editMode.description.hide=Ctrl-klik, aby ukryć.
+gui.jei.editMode.description.show=Ukryte. Ctrl-klik, aby pokazać.
+gui.jei.editMode.description.hide.wild=Ctrl-prawy klik, aby ukryć z symbolem wieloznacznym.
+gui.jei.editMode.description.show.wild=Ukryte symbolem wieloznacznym. Ctrl-prawy klik, aby pokazać.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Stół rzemieślniczy
+gui.jei.category.smelting=Przetapianie
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Paliwo
+gui.jei.category.fuel.burnTime=Czas spalania: %s
+gui.jei.category.brewing=Warzenie
+gui.jei.category.brewing.steps=Kroki: %s
+gui.jei.category.itemDescription=Opis
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
