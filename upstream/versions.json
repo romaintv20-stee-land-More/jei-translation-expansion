@@ -65,6 +65,23 @@
       "notes": "This is the current HEAD of the historical upstream branch 1.9 and is explicitly Minecraft 1.9.4 / JEI 3.6.8. It is a separate release target from Minecraft 1.9 and must receive its own JAR."
     },
     {
+      "branch": "1.10",
+      "audited_commit": "7f4e95d5b7620a0d304aa73243cd9b3f9737e247",
+      "minecraft": "1.10",
+      "jei": "3.7.1",
+      "loaders": ["forge"],
+      "forge": "12.18.0.1999-1.10.0",
+      "mcp_mappings": "snapshot_20160518",
+      "language_format": "lang",
+      "english_source": "src/main/resources/assets/jei/lang/en_US.lang",
+      "english_key_count": 78,
+      "java_source_compatibility": "1.7",
+      "java_target_compatibility": "1.7",
+      "official_locales": ["de_DE", "en_US", "fi_FI", "fr_FR", "ko_KR", "nb_NO", "ru_RU", "zh_CN"],
+      "verified": true,
+      "notes": "This commit is the last Minecraft 1.10 endpoint immediately before c88aa6c5c078586fa23abaa83309d293cd72ea61 updates the branch to Minecraft 1.10.2. It is a distinct target/JAR lineage."
+    },
+    {
       "branch": "26.2",
       "minecraft": "26.2",
       "jei": null,
