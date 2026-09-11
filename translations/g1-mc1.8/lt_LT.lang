@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Nustatymai
+jei.tooltip.show.all.recipes=Rodyti visus receptus
+jei.tooltip.delete.item=Spustelėkite, kad ištrintumėte
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Trūkstami daiktai
+jei.tooltip.error.recipe.transfer.inventory.full=Inventorius per pilnas
+
+# Error Messages
+jei.chat.error.command.too.long=JEI turi būti įdiegtas serveryje, kad galėtų apdoroti šią pokalbio komandą, nes ji per ilga, kad Minecraft ją išsiųstų.
+
+# Key Bindings
+key.jei.toggleOverlay=Rodyti / slėpti daiktų sąrašą (Ctrl + )
+key.jei.showRecipe=Rodyti daikto receptą
+key.jei.showUses=Rodyti daikto panaudojimus
+
+# Config
+config.jei.default=Numatytasis
+config.jei.valid=Galiojantis
+
+config.jei.title=%MODNAME nustatymai
+
+config.jei.mode=Režimas
+config.jei.mode.comment=Pakeičia režimą, kuriuo veikia JEI.
+config.jei.mode.cheatItemsEnabled=Daiktų gavimas apgaulės būdu
+config.jei.mode.cheatItemsEnabled.comment=Duoda daiktus su /give, užuot rodžius receptą.
+config.jei.mode.editEnabled=Daiktų sąrašo redagavimo režimas
+config.jei.mode.editEnabled.comment=Slėpkite arba rodykite daiktus spustelėdami juos daiktų sąraše.
+
+config.jei.interface=Sąsaja
+config.jei.interface.comment=Su vartotojo sąsaja susijusios parinktys.
+config.jei.interface.recipeAnimationsEnabled=Receptų animacijos
+config.jei.interface.recipeAnimationsEnabled.comment=Rodyti receptų animacijas (krosnies ugnį, eigos juostas ir t. t.)
+
+config.jei.search=Paieška
+config.jei.search.comment=Su paieškos juosta susijusios parinktys.
+config.jei.search.atPrefixRequiredForModName=Naudoti @ modifikacijos pavadinimui
+config.jei.search.atPrefixRequiredForModName.comment=Reikalauti "@ModName", kad būtų ieškoma pagal modifikacijos pavadinimą, o ne "ModName".
+
+config.jei.advanced=Išplėstiniai
+config.jei.advanced.comment=Išplėstiniai nustatymai, keičiantys JEI veikimą.
+config.jei.advanced.nbtKeyIgnoreList=Ignoruojamų NBT raktų sąrašas
+config.jei.advanced.nbtKeyIgnoreList.comment=NBT raktų, kuriuos reikia ignoruoti gaunant receptus, sąrašas.
+config.jei.advanced.itemBlacklist=Daiktų juodasis sąrašas
+config.jei.advanced.itemBlacklist.comment=Daiktų, kurie neturėtų būti rodomi daiktų sąraše, sąrašas. Formatas: modId:name[:meta]. Redagavimo režimas čia automatiškai pridės arba pašalins įrašus.
+config.jei.advanced.hideMissingModelsEnabled=Slėpti daiktus su trūkstamais modeliais
+config.jei.advanced.hideMissingModelsEnabled.comment=Daiktai su trūkstamais modeliais bus paslėpti iš daiktų sąrašo.
+config.jei.advanced.debugModeEnabled=Derinimo režimas
+config.jei.advanced.debugModeEnabled.comment=Prideda įvairių dalykų, padedančių kurti JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Trinti daiktus apgaulės režimu
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Apgaulės režimu nutempkite ItemStack virš daiktų sąrašo ir spustelėkite, kad jį ištrintumėte. (serveryje reikalingas JEI)
+
+config.jei.addons=Priedai
+config.jei.addons.comment=JEI priedų konfigūracijos parinkčių kategorija.
+
+# Edit Mode
+gui.jei.editMode.description=JEI daiktų sąrašo redagavimo režimas:
+gui.jei.editMode.description.hide=Ctrl-spustelėjimas paslėpti.
+gui.jei.editMode.description.show=Paslėpta. Ctrl-spustelėjimas parodyti.
+gui.jei.editMode.description.hide.wild=Ctrl-dešinysis spustelėjimas paslėpti su pakaitos simboliu.
+gui.jei.editMode.description.show.wild=Paslėpta su pakaitos simboliu. Ctrl-dešinysis spustelėjimas parodyti.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Darbastalis
+gui.jei.category.smelting=Lydymas
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Kuras
+gui.jei.category.fuel.burnTime=Degimo laikas: %s
+gui.jei.category.brewing=Gėrimų virimas
+gui.jei.category.brewing.steps=Žingsniai: %s
+gui.jei.category.itemDescription=Aprašymas
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
