@@ -1,0 +1,6 @@
+# G4 keys missing from JEI 3.6.8 ko_KR. Existing upstream-owned keys are intentionally omitted.
+jei.tooltip.cheat.mode=치트 모드
+config.jei.advanced.hideLaggyModelsEnabled=느린 모델을 가진 아이템 숨기기
+config.jei.advanced.hideLaggyModelsEnabled.comment=긴 지연을 일으키는 모델을 가진 아이템은 아이템 목록에서 숨깁니다.
+# The upstream file does not own this key. Its English meaning changed from "Crafting Table" to "Crafting" in G4.
+gui.jei.category.craftingTable=제작
