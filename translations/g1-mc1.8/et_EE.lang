@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Seaded
+jei.tooltip.show.all.recipes=Näita kõiki retsepte
+jei.tooltip.delete.item=Klõpsa kustutamiseks
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Puuduvad esemed
+jei.tooltip.error.recipe.transfer.inventory.full=Inventar on liiga täis
+
+# Error Messages
+jei.chat.error.command.too.long=JEI peab olema serverisse paigaldatud, et seda vestluskäsku töödelda, sest see on Minecrafti saatmiseks liiga pikk.
+
+# Key Bindings
+key.jei.toggleOverlay=Lülita esemeloendi ülekatet (Ctrl + )
+key.jei.showRecipe=Näita eseme retsepti
+key.jei.showUses=Näita eseme kasutusi
+
+# Config
+config.jei.default=Vaikimisi
+config.jei.valid=Kehtiv
+
+config.jei.title=%MODNAME seaded
+
+config.jei.mode=Režiim
+config.jei.mode.comment=Muudab režiimi, milles JEI töötab.
+config.jei.mode.cheatItemsEnabled=Esemete petmine
+config.jei.mode.cheatItemsEnabled.comment=Annab esemeid käsuga /give retsepti näitamise asemel.
+config.jei.mode.editEnabled=Esemeloendi muutmisrežiim
+config.jei.mode.editEnabled.comment=Peida või näita esemeid, klõpsates neil esemeloendis.
+
+config.jei.interface=Liides
+config.jei.interface.comment=Kasutajaliidesega seotud valikud.
+config.jei.interface.recipeAnimationsEnabled=Retseptide animatsioonid
+config.jei.interface.recipeAnimationsEnabled.comment=Näita retseptide animatsioone (ahjutuli, edenemisribad jne)
+
+config.jei.search=Otsing
+config.jei.search.comment=Otsinguribaga seotud valikud.
+config.jei.search.atPrefixRequiredForModName=Kasuta modi nime jaoks @
+config.jei.search.atPrefixRequiredForModName.comment=Nõua modi nime järgi otsimiseks "@ModName" asemel "ModName".
+
+config.jei.advanced=Täpsemad
+config.jei.advanced.comment=Täpsemad seaded JEI tööviisi muutmiseks.
+config.jei.advanced.nbtKeyIgnoreList=Eiratavate NBT-võtmete loend
+config.jei.advanced.nbtKeyIgnoreList.comment=NBT-võtmete loend, mida retseptide hankimisel eirata.
+config.jei.advanced.itemBlacklist=Esemete must nimekiri
+config.jei.advanced.itemBlacklist.comment=Esemete loend, mida esemeloendis ei kuvata. Vorming: modId:name[:meta]. Muutmisrežiim lisab või eemaldab siia kirjeid automaatselt.
+config.jei.advanced.hideMissingModelsEnabled=Peida puuduva mudeliga esemed
+config.jei.advanced.hideMissingModelsEnabled.comment=Puuduva mudeliga esemed peidetakse esemeloendist.
+config.jei.advanced.debugModeEnabled=Silumisrežiim
+config.jei.advanced.debugModeEnabled.comment=Lisab erinevaid asju JEI arendamise hõlbustamiseks.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Kustuta esemed peturežiimis
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Peturežiimis lohista ItemStack esemeloendi kohale ja klõpsa selle kustutamiseks. (nõuab JEI-d serveris)
+
+config.jei.addons=Lisad
+config.jei.addons.comment=JEI lisade seadistusvalikute kategooria.
+
+# Edit Mode
+gui.jei.editMode.description=JEI esemeloendi muutmisrežiim:
+gui.jei.editMode.description.hide=Peitmiseks Ctrl-klõps.
+gui.jei.editMode.description.show=Peidetud. Näitamiseks Ctrl-klõps.
+gui.jei.editMode.description.hide.wild=Metamärgiga peitmiseks Ctrl-paremklõps.
+gui.jei.editMode.description.show.wild=Metamärgiga peidetud. Näitamiseks Ctrl-paremklõps.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Meisterdamislaud
+gui.jei.category.smelting=Sulatamine
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Kütus
+gui.jei.category.fuel.burnTime=Põlemisaeg: %s
+gui.jei.category.brewing=Pruulimine
+gui.jei.category.brewing.steps=Sammud: %s
+gui.jei.category.itemDescription=Kirjeldus
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
