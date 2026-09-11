@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Indstillinger
+jei.tooltip.show.all.recipes=Vis alle opskrifter
+jei.tooltip.delete.item=Klik for at slette
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Manglende genstande
+jei.tooltip.error.recipe.transfer.inventory.full=Inventaret er for fuldt
+
+# Error Messages
+jei.chat.error.command.too.long=JEI skal være installeret på serveren for at håndtere denne chatkommando, fordi den er for lang til, at Minecraft kan sende den.
+
+# Key Bindings
+key.jei.toggleOverlay=Vis/skjul genstandslisten (Ctrl + )
+key.jei.showRecipe=Vis genstandens opskrift
+key.jei.showUses=Vis genstandens anvendelser
+
+# Config
+config.jei.default=Standard
+config.jei.valid=Gyldig
+
+config.jei.title=%MODNAME-indstillinger
+
+config.jei.mode=Tilstand
+config.jei.mode.comment=Skift den tilstand, som JEI kører i.
+config.jei.mode.cheatItemsEnabled=Snyd med genstande
+config.jei.mode.cheatItemsEnabled.comment=Giv genstande med /give i stedet for at vise opskriften.
+config.jei.mode.editEnabled=Redigeringstilstand for genstandslisten
+config.jei.mode.editEnabled.comment=Skjul eller vis genstande ved at klikke på dem i genstandslisten.
+
+config.jei.interface=Grænseflade
+config.jei.interface.comment=Indstillinger relateret til brugergrænsefladen.
+config.jei.interface.recipeAnimationsEnabled=Opskriftsanimationer
+config.jei.interface.recipeAnimationsEnabled.comment=Vis opskriftsanimationer (ovnild, statuslinjer osv.)
+
+config.jei.search=Søg
+config.jei.search.comment=Indstillinger relateret til søgefeltet.
+config.jei.search.atPrefixRequiredForModName=Brug @ til modnavn
+config.jei.search.atPrefixRequiredForModName.comment=Kræv "@ModName" for at søge efter modnavn i stedet for "ModName".
+
+config.jei.advanced=Avanceret
+config.jei.advanced.comment=Avancerede indstillinger til at ændre, hvordan JEI fungerer.
+config.jei.advanced.nbtKeyIgnoreList=Liste over ignorerede NBT-nøgler
+config.jei.advanced.nbtKeyIgnoreList.comment=Liste over NBT-nøgler, der skal ignoreres, når opskrifter hentes.
+config.jei.advanced.itemBlacklist=Sortliste over genstande
+config.jei.advanced.itemBlacklist.comment=Liste over genstande, der ikke skal vises i genstandslisten. Format: modId:name[:meta]. Redigeringstilstand tilføjer eller fjerner automatisk poster her.
+config.jei.advanced.hideMissingModelsEnabled=Skjul genstande med manglende modeller
+config.jei.advanced.hideMissingModelsEnabled.comment=Genstande med manglende modeller skjules fra genstandslisten.
+config.jei.advanced.debugModeEnabled=Fejlretningstilstand
+config.jei.advanced.debugModeEnabled.comment=Tilføjer forskellige ting for at hjælpe med udviklingen af JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Slet genstande i snydetilstand
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=I snydetilstand skal du trække en ItemStack over genstandslisten og klikke for at slette den. (kræver JEI på serveren)
+
+config.jei.addons=Tilføjelser
+config.jei.addons.comment=Kategori for konfigurationsindstillinger til JEI-tilføjelser.
+
+# Edit Mode
+gui.jei.editMode.description=JEI-redigeringstilstand for genstandslisten:
+gui.jei.editMode.description.hide=Ctrl-klik for at skjule.
+gui.jei.editMode.description.show=Skjult. Ctrl-klik for at vise.
+gui.jei.editMode.description.hide.wild=Ctrl-højreklik for at skjule med jokertegn.
+gui.jei.editMode.description.show.wild=Skjult med jokertegn. Ctrl-højreklik for at vise.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Arbejdsbord
+gui.jei.category.smelting=Smeltning
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Brændsel
+gui.jei.category.fuel.burnTime=Brændetid: %s
+gui.jei.category.brewing=Brygning
+gui.jei.category.brewing.steps=Trin: %s
+gui.jei.category.itemDescription=Beskrivelse
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
