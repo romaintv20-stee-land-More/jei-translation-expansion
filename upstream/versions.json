@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-09-11",
+  "upstream_repository": "mezz/JustEnoughItems",
+  "audit_status": "partial",
+  "versions": [
+    {
+      "branch": "1.8",
+      "minecraft": "1.8",
+      "jei": "2.15.0",
+      "loaders": ["forge"],
+      "forge": "11.14.4.1577",
+      "language_format": "lang",
+      "english_source": "src/main/resources/assets/jei/lang/en_US.lang",
+      "java_source_compatibility": "1.7",
+      "verified": true
+    },
+    {
+      "branch": "26.2",
+      "minecraft": "26.2",
+      "jei": null,
+      "loaders": [],
+      "language_format": "json",
+      "english_source": "Common/src/main/resources/assets/jei/lang/en_us.json",
+      "verified": false,
+      "notes": "English language path verified; exact JEI version/loaders/Java still require full audit."
+    }
+  ]
+}
