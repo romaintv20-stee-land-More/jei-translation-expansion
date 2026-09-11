@@ -64,13 +64,15 @@ jobs:
           unzip -l "$JAR"
           test "$(unzip -Z1 "$JAR" | grep '^assets/jei/lang/.*\.lang$' | wc -l)" -eq 59
           ! unzip -Z1 "$JAR" | grep -q '^net/minecraftforge/fml/common/Mod.class$'
-          javap -verbose -classpath "$JAR" io.github.romaintv20.jeitranslationexpansion.JeiTranslationExpansion > build/javap-1.8.9.txt
-          grep -q 'major version: 51' build/javap-1.8.9.txt
-          grep -q 'RuntimeVisibleAnnotations' build/javap-1.8.9.txt
-          grep -q 'jei_translation_expansion' build/javap-1.8.9.txt
-          grep -q 'clientSideOnly=true' build/javap-1.8.9.txt
-          grep -q '\[1.8.9\]' build/javap-1.8.9.txt
-          grep -q 'required-after:JEI@\[2.28.18\]' build/javap-1.8.9.txt
+          javap -verbose -classpath "$JAR" io.github.romaintv20.jeitranslationexpansion.JeiTranslationExpansion | tee build/javap-1.8.9.txt
+          grep -Fq 'major version: 51' build/javap-1.8.9.txt
+          grep -Fq 'RuntimeVisibleAnnotations' build/javap-1.8.9.txt
+          grep -Fq 'net.minecraftforge.fml.common.Mod' build/javap-1.8.9.txt
+          grep -Fq 'jei_translation_expansion' build/javap-1.8.9.txt
+          grep -Fq 'clientSideOnly' build/javap-1.8.9.txt
+          grep -Fq 'acceptedMinecraftVersions' build/javap-1.8.9.txt
+          grep -Fq '[1.8.9]' build/javap-1.8.9.txt
+          grep -Fq 'required-after:JEI@[2.28.18]' build/javap-1.8.9.txt
           sha256sum "$JAR"
 
       - name: Upload prototype artifact
