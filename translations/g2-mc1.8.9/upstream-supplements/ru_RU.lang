@@ -1,0 +1,20 @@
+# Missing JEI 1.8.9 keys only. Existing upstream ru_RU entries are intentionally not duplicated.
+jei.tooltip.show.recipes=Показать рецепты
+jei.tooltip.transfer=Перенести предметы
+jei.tooltip.recipe.ore.dict=Подходит любой: %s
+jei.tooltip.item.colors=Цвета: %s
+key.jei.recipeBack=Показать предыдущую страницу рецептов
+config.jei.interface.overlayEnabled=Список предметов включён
+config.jei.interface.overlayEnabled.comment=Показывать список предметов рядом с открытыми интерфейсами.
+config.jei.search.prefixRequiredForTooltipSearch=Требовать # для поиска по подсказкам
+config.jei.search.prefixRequiredForTooltipSearch.comment=Требовать "#" перед словом для поиска по подсказкам.
+config.jei.search.prefixRequiredForOreDictSearch=Требовать $ для Ore Dictionary
+config.jei.search.prefixRequiredForOreDictSearch.comment=Требовать "$" перед словом для поиска по именам Ore Dictionary.
+config.jei.search.prefixRequiredForCreativeTabSearch=Требовать %% для названия вкладки творчества
+config.jei.search.prefixRequiredForCreativeTabSearch.comment=Требовать "%" перед словом для поиска по названиям вкладок творчества.
+config.jei.search.prefixRequiredForColorSearch=Требовать ^ для цветов
+config.jei.search.prefixRequiredForColorSearch.comment=Требовать "^" перед словом для поиска по цветам предметов.
+config.jei.advanced.colorSearchEnabled=Включить поиск по цвету
+config.jei.advanced.colorSearchEnabled.comment=Искать предметы по цвету и показывать доступные для поиска цвета в подсказках.
+gui.jei.editMode.description.hide.mod.id=Ctrl-Shift-клик, чтобы скрыть по ModId.
+gui.jei.editMode.description.show.mod.id=Скрыто по ModId. Ctrl-Shift-клик, чтобы показать.
