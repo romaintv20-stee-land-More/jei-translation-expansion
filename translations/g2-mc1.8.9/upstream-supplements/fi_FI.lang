@@ -1,0 +1,15 @@
+# Missing JEI 1.8.9 keys only. Existing upstream fi_FI entries are intentionally not duplicated.
+jei.tooltip.recipe.ore.dict=Hyväksyy minkä tahansa: %s
+jei.tooltip.item.colors=Värit: %s
+config.jei.search.prefixRequiredForTooltipSearch=Vaadi # työkaluvihjeiden hakuun
+config.jei.search.prefixRequiredForTooltipSearch.comment=Vaadi "#" sanan eteen, jotta työkaluvihjeistä voidaan hakea.
+config.jei.search.prefixRequiredForOreDictSearch=Vaadi $ Ore Dictionary -hakuun
+config.jei.search.prefixRequiredForOreDictSearch.comment=Vaadi "$" sanan eteen, jotta Ore Dictionary -nimiä voidaan hakea.
+config.jei.search.prefixRequiredForCreativeTabSearch=Vaadi %% luovan tilan välilehden nimelle
+config.jei.search.prefixRequiredForCreativeTabSearch.comment=Vaadi "%" sanan eteen, jotta luovan tilan välilehtien nimiä voidaan hakea.
+config.jei.search.prefixRequiredForColorSearch=Vaadi ^ väreille
+config.jei.search.prefixRequiredForColorSearch.comment=Vaadi "^" sanan eteen, jotta tavaroiden värejä voidaan hakea.
+config.jei.advanced.colorSearchEnabled=Ota värihaku käyttöön
+config.jei.advanced.colorSearchEnabled.comment=Hae tavaroita värin perusteella ja näytä haettavat tavaravärit työkaluvihjeissä.
+gui.jei.editMode.description.hide.mod.id=Ctrl-Shift-paina piilottaaksesi ModId:n perusteella.
+gui.jei.editMode.description.show.mod.id=Piilotettu ModId:n perusteella. Ctrl-Shift-paina näyttääksesi.
