@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Socruithe
+jei.tooltip.show.all.recipes=Taispeáin gach oideas
+jei.tooltip.delete.item=Cliceáil le scriosadh
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Míreanna ar iarraidh
+jei.tooltip.error.recipe.transfer.inventory.full=Tá an fardal ró-lán
+
+# Error Messages
+jei.chat.error.command.too.long=Caithfidh JEI a bheith suiteáilte ar an bhfreastalaí chun an t-ordú comhrá seo a láimhseáil, mar tá sé rófhada le seoladh ag Minecraft.
+
+# Key Bindings
+key.jei.toggleOverlay=Scoránaigh forleagan liosta na míreanna (Ctrl + )
+key.jei.showRecipe=Taispeáin oideas na míre
+key.jei.showUses=Taispeáin úsáidí na míre
+
+# Config
+config.jei.default=Réamhshocrú
+config.jei.valid=Bailí
+
+config.jei.title=Socruithe %MODNAME
+
+config.jei.mode=Mód
+config.jei.mode.comment=Athraíonn sé an mód ina n-oibríonn JEI.
+config.jei.mode.cheatItemsEnabled=Cealgaireacht míreanna
+config.jei.mode.cheatItemsEnabled.comment=Tugann sé míreanna le /give in ionad an t-oideas a thaispeáint.
+config.jei.mode.editEnabled=Mód eagarthóireachta liosta míreanna
+config.jei.mode.editEnabled.comment=Folaigh nó taispeáin míreanna trí chliceáil orthu i liosta na míreanna.
+
+config.jei.interface=Comhéadan
+config.jei.interface.comment=Roghanna a bhaineann leis an gcomhéadan úsáideora.
+config.jei.interface.recipeAnimationsEnabled=Beochana oidis
+config.jei.interface.recipeAnimationsEnabled.comment=Taispeáin beochana oidis (tine foirnéise, barraí dul chun cinn, srl.)
+
+config.jei.search=Cuardach
+config.jei.search.comment=Roghanna a bhaineann leis an mbarra cuardaigh.
+config.jei.search.atPrefixRequiredForModName=Úsáid @ d'ainm an mhod
+config.jei.search.atPrefixRequiredForModName.comment=Éiligh "@ModName" chun cuardach de réir ainm an mhod in ionad "ModName".
+
+config.jei.advanced=Ardleibhéal
+config.jei.advanced.comment=Ardroghanna socruithe chun an chaoi a n-oibríonn JEI a athrú.
+config.jei.advanced.nbtKeyIgnoreList=Liosta eochracha NBT le neamhaird
+config.jei.advanced.nbtKeyIgnoreList.comment=Liosta d'eochracha NBT ar cheart neamhaird a dhéanamh díobh agus oidis á bhfáil.
+config.jei.advanced.itemBlacklist=Dúliosta míreanna
+config.jei.advanced.itemBlacklist.comment=Liosta de mhíreanna nár cheart a thaispeáint i liosta na míreanna. Formáid: modId:name[:meta]. Cuirfidh nó bainfidh an mód eagarthóireachta iontrálacha anseo go huathoibríoch.
+config.jei.advanced.hideMissingModelsEnabled=Folaigh míreanna le samhlacha ar iarraidh
+config.jei.advanced.hideMissingModelsEnabled.comment=Folófar míreanna a bhfuil samhlacha ar iarraidh orthu ó liosta na míreanna.
+config.jei.advanced.debugModeEnabled=Mód dífhabhtaithe
+config.jei.advanced.debugModeEnabled.comment=Cuireann sé rudaí éagsúla leis chun cabhrú le forbairt JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Scrios míreanna sa mhód cealgaireachta
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Sa mhód cealgaireachta, tarraing ItemStack thar liosta na míreanna agus cliceáil chun é a scriosadh. (teastaíonn JEI ar an bhfreastalaí)
+
+config.jei.addons=Breiseáin
+config.jei.addons.comment=Catagóir do roghanna cumraíochta bhreiseáin JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Mód eagarthóireachta liosta míreanna JEI:
+gui.jei.editMode.description.hide=Ctrl-cliceáil le folach.
+gui.jei.editMode.description.show=Folaithe. Ctrl-cliceáil le taispeáint.
+gui.jei.editMode.description.hide.wild=Ctrl-deaschliceáil le folach le saoróg.
+gui.jei.editMode.description.show.wild=Folaithe le saoróg. Ctrl-deaschliceáil le taispeáint.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Binse ceardaíochta
+gui.jei.category.smelting=Bruithniú
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Breosla
+gui.jei.category.fuel.burnTime=Am dóite: %s
+gui.jei.category.brewing=Grúdú
+gui.jei.category.brewing.steps=Céimeanna: %s
+gui.jei.category.itemDescription=Cur síos
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
