@@ -265,6 +265,20 @@
     "so_SO",
     "sq_AL"
   ],
+  "new_full_ai_assisted_translation_locales": [
+    "be_BY",
+    "mk_MK",
+    "sq_AL"
+  ],
+  "new_full_documented_english_fallback_locales": [
+    "br_FR",
+    "fo_FO",
+    "fy_NL",
+    "gd_GB",
+    "ksh_DE",
+    "li_LI",
+    "so_SO"
+  ],
   "upstream_missing_key_supplement_locale_count": 5,
   "upstream_missing_key_supplement_locales": [
     "de_DE",
@@ -285,10 +299,20 @@
   },
   "translation_workload": {
     "inherited_locale_delta_entries": 159,
-    "new_full_normal_translation_entries": 740,
-    "normal_keys_per_new_full_locale": 74,
+    "new_full_normal_key_count": 74,
+    "new_full_ai_assisted_entries": 222,
+    "new_full_english_fallback_entries": 518,
     "delta_keys_per_inherited_locale": 3,
-    "debug_keys_left_in_english_by_design": 3
+    "debug_keys_left_in_english_by_design": 3,
+    "total_complete_full_locale_english_fallback_count_including_inherited": 10
+  },
+  "translation_realization": {
+    "policy_manifest": "translations/g3-mc1.9/new-full-policy.json",
+    "inherited_delta": "translations/g3-mc1.9/inherited-delta.tsv",
+    "upstream_supplement_delta": "translations/g3-mc1.9/upstream-supplement-delta.tsv",
+    "reconstruction_script": "scripts/reconstruct_1_9.py",
+    "complete_validator": "scripts/validate_1_9_complete.py",
+    "successful_validation_run": 34638556534
   },
   "source_audit": "upstream/minecraft-1.9-language-audit.json",
   "english_diff": "upstream/diffs/1.8.9-to-1.9.json"
