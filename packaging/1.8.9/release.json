@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "minecraft": "1.8.9",
   "loader": "forge",
   "artifact_policy": "one-minecraft-version-per-jar",
@@ -19,30 +19,77 @@
     "resource_directory": "assets/jei/lang",
     "english_source": "upstream/sources/1.8.9/en_US.lang",
     "key_count": 75,
-    "addon_locale_count": 54,
+    "normal_key_count": 72,
+    "debug_only_key_count": 3,
+    "absent_upstream_addon_locale_count": 54,
+    "upstream_non_english_locale_count": 5,
+    "upstream_supplement_locales": ["de_DE", "fi_FI", "ko_KR", "ru_RU", "zh_CN"],
+    "packaged_language_resource_count": 59,
+    "selected_primary_language_scope_count_including_upstream_en_us": 60,
     "base_generation": "g1-mc1.8",
     "delta_generation": "g2-mc1.8.9",
-    "reconstruction_script": "scripts/reconstruct_1_8_9.py"
+    "reconstruction_script": "scripts/reconstruct_1_8_9.py",
+    "upstream_supplement_validator": "scripts/validate_1_8_9_upstream_supplements.py"
+  },
+  "upstream_locale_completion": {
+    "de_DE": {"upstream_normal_keys": 53, "supplement_keys": 19, "combined_normal_keys": 72},
+    "fi_FI": {"upstream_normal_keys": 58, "supplement_keys": 14, "combined_normal_keys": 72},
+    "ko_KR": {"upstream_normal_keys": 5, "supplement_keys": 67, "combined_normal_keys": 72},
+    "ru_RU": {"upstream_normal_keys": 53, "supplement_keys": 19, "combined_normal_keys": 72},
+    "zh_CN": {"upstream_normal_keys": 21, "supplement_keys": 51, "combined_normal_keys": 72}
   },
   "addon": {
-    "planned_modid": "jei_translation_expansion",
+    "modid": "jei_translation_expansion",
     "required_dependency_modid": "JEI",
-    "exact_jei_dependency_range": null,
-    "entrypoint_strategy": "pending-runtime-audit"
+    "jei_dependency_range_for_current_prototype": "[2.28.18]",
+    "forge_dependency_range_for_current_prototype": "[11.15.1.1808,)",
+    "accepted_minecraft_versions": "[1.8.9]",
+    "client_side_only": true,
+    "acceptable_remote_versions": "*",
+    "entrypoint_strategy": "minimal-client-only-forge-mod",
+    "entrypoint_template": "packaging/1.8.9/src/JeiTranslationExpansion.java.in",
+    "metadata_template": "packaging/1.8.9/mcmod.info.in",
+    "compile_strategy": "javac-source-target-7-with-compile-only-forge-Mod-annotation-stub",
+    "compile_stub": "packaging/1.8.9/compile-stubs/net/minecraftforge/fml/common/Mod.java",
+    "compile_stub_packaged": false
+  },
+  "prototype_build": {
+    "builder": "scripts/build_1_8_9.py",
+    "workflow": ".github/workflows/build-1.8.9.yml",
+    "successful": true,
+    "source_commit": "8100b0bf500a9a98957a090b3b758f99fe07b576",
+    "workflow_run_id": 34632271287,
+    "filename": "jei-translation-expansion-0.1.0-ci-mc1.8.9-forge.jar",
+    "sha256": "029d6cdcc0f83b098a8b96f423e8fefef6722e8c0db9cd205ef33bf23e22a1e0",
+    "jar_file_count": 64,
+    "packaged_language_resource_count": 59,
+    "actions_artifact_name": "jei-translation-expansion-mc1.8.9-prototype",
+    "actions_artifact_id": 10276756264,
+    "actions_artifact_retention": "14-days-from-build",
+    "final_release_archive": false
   },
   "status": {
     "translation_complete": true,
     "delta_qa_complete": true,
+    "upstream_existing_locale_completion_complete": true,
     "complete_locale_reconstruction_implemented": true,
-    "forge_metadata_finalized": false,
-    "jar_built": false,
+    "prototype_forge_metadata_implemented": true,
+    "prototype_jar_built_and_inspected": true,
     "runtime_tested": false,
+    "final_jar_promoted_to_release_jars": false,
     "publication_ready": false
   },
+  "remaining_before_final_release": [
+    "Run an in-game Minecraft 1.8.9 + compatible Forge + JEI 2.28.18 runtime test.",
+    "Confirm the addon is discovered client-side and JEI loads both full absent-locale resources and partial missing-key supplements correctly.",
+    "If runtime test passes, build the chosen final project version reproducibly, record its SHA-256, and store it under release-jars/1.8.9/."
+  ],
   "notes": [
     "JEI 1.8.9 declares acceptedMinecraftVersions=[1.8.9].",
     "JEI 1.8.9 is built against Forge 11.15.1.1855 and declares required-after:Forge@[11.15.1.1808,).",
     "JEI's mod id is exactly JEI.",
-    "The final addon dependency range on JEI and the resource-only vs minimal @Mod entrypoint strategy must be verified before release."
+    "The prototype intentionally uses an exact JEI 2.28.18 dependency until a wider 1.8.9 JEI compatibility range is explicitly audited.",
+    "The compile-only Forge Mod annotation stub is never packaged in the output JAR.",
+    "Prototype JARs are not stored in release-jars; that directory is reserved for final runtime-validated artifacts."
   ]
 }
