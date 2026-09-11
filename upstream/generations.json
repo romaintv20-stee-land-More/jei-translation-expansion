@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-09-11",
+  "status": "audit-required",
+  "generations": [],
+  "rules": {
+    "same_generation_requires_compatible_keys": true,
+    "same_generation_requires_compatible_english_meaning": true,
+    "distribution_jar_grouping_is_separate": true
+  },
+  "notes": "Do not populate generations by guesswork. Compare actual upstream English key/value sets first."
+}
