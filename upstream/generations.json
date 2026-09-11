@@ -1,12 +1,39 @@
 {
   "schema_version": 1,
   "last_updated": "2026-09-11",
-  "status": "audit-required",
-  "generations": [],
+  "status": "partial",
+  "generations": [
+    {
+      "id": "g1-mc1.8",
+      "minecraft_versions": ["1.8"],
+      "jei_versions": ["2.15.0"],
+      "source": "upstream/sources/1.8/en_US.lang",
+      "key_count": 58,
+      "storage": "full-locale-files",
+      "translation_path": "translations/g1-mc1.8"
+    },
+    {
+      "id": "g2-mc1.8.9",
+      "minecraft_versions": ["1.8.9"],
+      "jei_versions": ["2.28.18"],
+      "source": "upstream/sources/1.8.9/en_US.lang",
+      "key_count": 75,
+      "base_generation": "g1-mc1.8",
+      "storage": "delta-from-base",
+      "translation_path": "translations/g2-mc1.8.9",
+      "reuse_unchanged_key_count": 46,
+      "added_key_count": 19,
+      "changed_english_value_count": 10,
+      "removed_key_count": 2,
+      "delta_key_count_per_locale": 29,
+      "diff_manifest": "upstream/diffs/1.8-to-1.8.9.json"
+    }
+  ],
   "rules": {
     "same_generation_requires_compatible_keys": true,
     "same_generation_requires_compatible_english_meaning": true,
-    "distribution_jar_grouping_is_separate": true
+    "distribution_jar_grouping_is_separate": true,
+    "delta_generations_must_be_reconstructed_and_validated_before_release": true
   },
-  "notes": "Do not populate generations by guesswork. Compare actual upstream English key/value sets first."
+  "notes": "G1 and G2 are distinct because JEI 1.8.9 adds/removes keys and changes the English meaning of existing keys. G2 stores only the verified translation delta and inherits unchanged translations from G1 at build time."
 }
