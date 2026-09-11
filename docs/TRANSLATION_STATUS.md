@@ -171,10 +171,78 @@ Special checks:
 
 The successful run reconstructed and validated exactly **63 complete 80-key addon locale files + 6 missing-key-only upstream supplements**.
 
+## Minecraft 1.10 / JEI 3.7.1
+
+Status: **selected 72-language translation/reconstruction stage complete; CI green; version-specific JAR not finalized yet**.
+
+Pinned upstream commit: `7f4e95d5b7620a0d304aa73243cd9b3f9737e247`.
+
+Verified build metadata:
+
+- Forge `12.18.0.1999-1.10.0`
+- MCP mappings `snapshot_20160518`
+- Java source/target `1.7`
+- legacy `.lang`
+
+### English/G5 transition
+
+- source: `upstream/sources/1.10/en_US.lang`
+- 78 keys = 75 normal + 3 debug-only
+- versus 1.9.4: **77 unchanged**, **0 added**, **2 removed**, **1 changed English value**
+- removed: `config.jei.advanced.hideLaggyModelsEnabled` and its comment
+- changed: `gui.jei.category.craftingTable`, `Crafting` -> `Crafting Table`
+
+The changed value is an exact semantic return to G3, so inherited addon locales restore their validated G3 translation for that key. `ko_KR` therefore returns to `제작대`.
+
+Exact diff: `upstream/diffs/1.9.4-to-1.10.json`.
+
+### Expanded Minecraft language scope
+
+The live asset-index validator found **94 raw Minecraft language codes**, four additions since 1.9/1.9.4:
+
+- selected: `haw_US`, `mn_MN`;
+- deferred regional/dialect variants: `de_AT`, `swg_de`.
+
+The selected project scope is therefore **72 languages**. G5 reconstructs **65 complete addon locales**:
+
+- 63 inherited from G4;
+- 2 new selected locales: `haw_US`, `mn_MN`;
+- 53 complete locales remain translated / AI-assisted;
+- 12 use documented English fallback, including the two new selected languages.
+
+The Hawaiian and Mongolian fallback decision is deliberate: no low-confidence technical translation is invented merely to satisfy the new locale count.
+
+Scope: `upstream/minecraft-1.10-language-scope.json`.
+
+### Exact JEI 3.7.1 upstream supplements
+
+| Locale | Upstream normal | Addon supplement | Combined |
+|---|---:|---:|---:|
+| `de_DE` | 53/75 | 22 | 75/75 |
+| `fi_FI` | 58/75 | 17 | 75/75 |
+| `fr_FR` | 74/75 | 1 | 75/75 |
+| `ko_KR` | 5/75 | 70 | 75/75 |
+| `ru_RU` | 73/75 | 2 | 75/75 |
+| `zh_CN` | 74/75 | 1 | 75/75 |
+
+`en_US` is complete upstream. `nb_NO` remains preserved upstream and is not treated as a replacement for Minecraft's `no_NO`.
+
+The G5 validator also fetches the exact pinned JEI locale files, verifies their Git blob SHAs and requires generated supplements to match the exact upstream missing-key sets. This catches both stale supplements and accidental overwrites of translations JEI already owns.
+
+### Automation and CI
+
+- policy: `translations/g5-mc1.10/policy.json`
+- deterministic reconstruction: `scripts/reconstruct_1_10.py`
+- source/scope/upstream QA: `scripts/validate_1_10_delta.py`
+- complete QA: `scripts/validate_1_10_complete.py`
+- successful complete validation run: **34641765047**
+
+The successful run reconstructed and validated exactly **65 complete 78-key addon locale files + 6 missing-key-only upstream supplements**.
+
 ## Next version
 
-The next task is to audit the next chronological JEI/Minecraft target after Minecraft 1.9.4. The exact upstream endpoint must be pinned from actual build metadata before any translation inheritance is assumed.
+The next chronological target is **Minecraft 1.10.2**. Transition commit `c88aa6c5c078586fa23abaa83309d293cd72ea61` changes the branch from Minecraft 1.10 to 1.10.2, so 1.10.2 must be audited and packaged as a separate version/JAR target even if most translations are reusable.
 
 ## Release limitation
 
-Minecraft 1.8.9 still requires real runtime validation before final publication. Minecraft 1.9 and 1.9.4 have complete translation/reconstruction data but do not yet have finalized runtime-tested release JARs. Audit/translation work may continue to later Minecraft versions before those JARs are finalized.
+Minecraft 1.8.9 still requires real runtime validation before final publication. Minecraft 1.9, 1.9.4 and 1.10 have complete translation/reconstruction data but do not yet have finalized runtime-tested release JARs. Audit/translation work may continue to later Minecraft versions before those JARs are finalized.
