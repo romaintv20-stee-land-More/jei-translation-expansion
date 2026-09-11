@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Konfigurasie
+jei.tooltip.show.all.recipes=Wys alle resepte
+jei.tooltip.delete.item=Klik om te verwyder
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Ontbrekende items
+jei.tooltip.error.recipe.transfer.inventory.full=Voorraad is te vol
+
+# Error Messages
+jei.chat.error.command.too.long=JEI moet op die bediener wees om hierdie kletsopdrag te hanteer, want dit is te lank vir Minecraft om te stuur.
+
+# Key Bindings
+key.jei.toggleOverlay=Wissel itemlys-oorleg (Ctrl + )
+key.jei.showRecipe=Wys itemresep
+key.jei.showUses=Wys itemgebruike
+
+# Config
+config.jei.default=Verstek
+config.jei.valid=Geldig
+
+config.jei.title=%MODNAME-konfigurasie
+
+config.jei.mode=Modus
+config.jei.mode.comment=Verander die modus waarin JEI werk.
+config.jei.mode.cheatItemsEnabled=Itembedrog
+config.jei.mode.cheatItemsEnabled.comment=Gee items met /give in plaas daarvan om die resep te wys.
+config.jei.mode.editEnabled=Itemlys-redigeermodus
+config.jei.mode.editEnabled.comment=Versteek of wys items deur daarop in die itemlys te klik.
+
+config.jei.interface=Koppelvlak
+config.jei.interface.comment=Opsies wat met die gebruikerskoppelvlak verband hou.
+config.jei.interface.recipeAnimationsEnabled=Resepanimasies
+config.jei.interface.recipeAnimationsEnabled.comment=Wys resepanimasies (oondvuur, vorderingsbalke, ens.)
+
+config.jei.search=Soek
+config.jei.search.comment=Opsies wat met die soekbalk verband hou.
+config.jei.search.atPrefixRequiredForModName=Gebruik @ vir modnaam
+config.jei.search.atPrefixRequiredForModName.comment=Vereis "@ModName" om volgens modnaam te soek in plaas van "ModName".
+
+config.jei.advanced=Gevorderd
+config.jei.advanced.comment=Gevorderde konfigurasie-opsies om te verander hoe JEI werk.
+config.jei.advanced.nbtKeyIgnoreList=Ignoreerlys vir NBT-sleutels
+config.jei.advanced.nbtKeyIgnoreList.comment=Lys van NBT-sleutels wat geïgnoreer moet word wanneer resepte verkry word.
+config.jei.advanced.itemBlacklist=Item-swartlys
+config.jei.advanced.itemBlacklist.comment=Lys van items wat nie in die itemlys gewys moet word nie. Formaat: modId:name[:meta]. Redigeermodus sal inskrywings hier outomaties byvoeg of verwyder.
+config.jei.advanced.hideMissingModelsEnabled=Versteek items met ontbrekende modelle
+config.jei.advanced.hideMissingModelsEnabled.comment=Items met ontbrekende modelle sal uit die itemlys versteek word.
+config.jei.advanced.debugModeEnabled=Ontfoutmodus
+config.jei.advanced.debugModeEnabled.comment=Voeg willekeurige dinge by om met JEI-ontwikkeling te help.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Verwyder items in bedriegmodus
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Sleep in bedriegmodus 'n ItemStack oor die itemlys en klik om dit te verwyder. (vereis JEI op die bediener)
+
+config.jei.addons=Byvoegings
+config.jei.addons.comment=Kategorie vir JEI-byvoegingkonfigurasie-opsies.
+
+# Edit Mode
+gui.jei.editMode.description=JEI-itemlys-redigeermodus:
+gui.jei.editMode.description.hide=Ctrl-klik om te versteek.
+gui.jei.editMode.description.show=Versteek. Ctrl-klik om te wys.
+gui.jei.editMode.description.hide.wild=Ctrl-regsklik om met 'n jokerteken te versteek.
+gui.jei.editMode.description.show.wild=Versteek met jokerteken. Ctrl-regsklik om te wys.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Handwerktafel
+gui.jei.category.smelting=Smelting
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Brandstof
+gui.jei.category.fuel.burnTime=Brandtyd: %s
+gui.jei.category.brewing=Brouwerk
+gui.jei.category.brewing.steps=Stappe: %s
+gui.jei.category.itemDescription=Beskrywing
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
