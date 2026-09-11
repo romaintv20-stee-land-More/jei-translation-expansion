@@ -46,6 +46,25 @@ Translation reuse between versions is still allowed internally. For example, a l
 
 Loader support must still be audited per Minecraft version. If one physical JAR can safely support all required loaders for the same Minecraft version, that is acceptable; otherwise loader-specific artifacts may be necessary. In every case, a JAR must not claim multiple Minecraft versions.
 
+### GitHub archive for finalized JARs
+
+Final validated JARs must also be retained in the repository under `release-jars/`, grouped by Minecraft version, so they can be retrieved later without rebuilding if needed.
+
+Planned structure:
+
+```text
+release-jars/
+  1.8/
+    jei-translation-expansion-<project-version>-mc1.8-forge.jar
+  1.8.9/
+    jei-translation-expansion-<project-version>-mc1.8.9-forge.jar
+  ...
+```
+
+If one Minecraft version requires separate loader artifacts, all of that version's JARs stay in the same version folder and include the loader in the filename. Only final validated builds belong in this archive; temporary/draft outputs do not.
+
+GitHub Releases may additionally be used for public distribution, but `release-jars/` is the project-side retained archive. See `release-jars/README.md`.
+
 This decision supersedes earlier ideas about grouped multi-version JARs.
 
 ## Translation policy
@@ -167,29 +186,13 @@ Generations are only an internal translation/reuse mechanism. **Final distributi
 
 ### Minecraft 1.8
 
-`scripts/validate_translations.py` validates:
-
-- all 54 expected locale files;
-- exact key-set parity;
-- duplicate keys;
-- placeholder parity including `%,d`, `%s`, `%MODNAME`;
-- technical-token preservation;
-- debug-only strings staying in English;
-- English fallback limited to the three documented low-confidence locales.
+`scripts/validate_translations.py` validates all 54 expected locale files, exact key-set parity, duplicate keys, placeholder parity, technical-token preservation, debug-only strings staying in English, and the documented fallback policy.
 
 ### Minecraft 1.8.9
 
-`scripts/validate_1_8_9_delta.py` validates:
+`scripts/validate_1_8_9_delta.py` validates the exact 58 -> 75 transition, all 54 locale deltas, the 29 delta keys per locale, placeholder/technical-token preservation, fallback locales, and reconstruction of the complete target key set.
 
-- exact 58 -> 75 English-source transition;
-- +19 / -2 / 10 changed / 46 reusable diff shape;
-- all 54 locale deltas;
-- exactly 29 delta keys per locale;
-- placeholder and technical-token preservation;
-- documented fallback locales;
-- successful reconstruction of the target 1.8.9 key set from G1 + G2 delta.
-
-`.github/workflows/validate.yml` runs both validators. The latest validation after completing 1.8.9 passed successfully.
+`.github/workflows/validate.yml` runs both validators. Validation after completing 1.8.9 passed successfully.
 
 ## Modern endpoint already inspected
 
@@ -211,17 +214,9 @@ For each version now:
 6. validate and store the version/generation data;
 7. continue to the next Minecraft version.
 
-Later, when the CurseForge/Modrinth project is ready, implement/use `scripts/build_release.py` to reconstruct complete locale resources and generate **one release JAR per Minecraft version**.
+Later, when the CurseForge/Modrinth project is ready, implement/use `scripts/build_release.py` to reconstruct complete locale resources and generate **one release JAR per Minecraft version**, then retain each validated final JAR under `release-jars/<minecraft-version>/`.
 
-Before publication, each version-specific JAR still needs:
-
-- loader metadata verification;
-- JEI dependency metadata/range;
-- resource-only vs minimal entrypoint/stub decision;
-- Java/runtime requirement verification;
-- complete locale reconstruction from deltas;
-- reproducible contents/hashes;
-- representative in-game test for that exact Minecraft version.
+Before publication, each version-specific JAR still needs loader metadata verification, JEI dependency metadata/range, resource-only vs minimal entrypoint/stub decision, Java/runtime verification, complete reconstruction, reproducible contents/hashes, and an in-game test for that exact Minecraft version.
 
 ## Important files
 
@@ -231,6 +226,7 @@ Before publication, each version-specific JAR still needs:
 - `docs/WORKFLOW.md` — workflow and one-version-per-JAR policy
 - `docs/TRANSLATION_BENCHMARK.md` — 1.8 timing pilot
 - `docs/TRANSLATION_STATUS.md` — language coverage
+- `release-jars/README.md` — retained final-JAR archive policy
 - `upstream/versions.json` — version audit
 - `upstream/generations.json` — generation definitions + JAR policy
 - `upstream/official-locales.json` — partial upstream locale inventory
@@ -254,7 +250,8 @@ Before publication, each version-specific JAR still needs:
 - generic delta reconstruction tooling;
 - `scripts/build_release.py`;
 - version-specific release packaging metadata;
-- final runtime compatibility tests.
+- final runtime compatibility tests;
+- populate `release-jars/<minecraft-version>/` with final validated artifacts when builds begin.
 
 ## Immediate next steps
 
@@ -268,4 +265,4 @@ Before publication, each version-specific JAR still needs:
 
 ## Resume prompt for a future ChatGPT conversation
 
-> Reprends le projet JEI Translation Expansion depuis https://github.com/romaintv20-stee-land-More/jei-translation-expansion. Lis d'abord `PROJECT_STATUS.md`, puis `docs/TRANSLATION_STATUS.md`, `docs/VERSION_MATRIX.md` et `docs/WORKFLOW.md`. Continue l'audit à partir de la prochaine version après 1.8.9. Réutilise les traductions uniquement quand la clé et le sens anglais sont identiques. Politique de distribution fixe : **un JAR par version Minecraft, jamais un JAR multi-version**. Mets `PROJECT_STATUS.md` à jour après chaque changement important.
+> Reprends le projet JEI Translation Expansion depuis https://github.com/romaintv20-stee-land-More/jei-translation-expansion. Lis d'abord `PROJECT_STATUS.md`, puis `docs/TRANSLATION_STATUS.md`, `docs/VERSION_MATRIX.md`, `docs/WORKFLOW.md` et `release-jars/README.md`. Continue l'audit à partir de la prochaine version après 1.8.9. Réutilise les traductions uniquement quand la clé et le sens anglais sont identiques. Politique de distribution fixe : **un JAR par version Minecraft, jamais un JAR multi-version**. Les JARs finaux validés doivent être conservés sous `release-jars/<version Minecraft>/` pour pouvoir être récupérés plus tard. Mets `PROJECT_STATUS.md` à jour après chaque changement important.
