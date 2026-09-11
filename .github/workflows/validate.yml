@@ -23,3 +23,9 @@ jobs:
         run: python scripts/validate_1_8_9_upstream_supplements.py
       - name: Reconstruct and verify Minecraft 1.8.9 complete locales
         run: python scripts/reconstruct_1_8_9.py --check
+      - name: Validate Minecraft 1.9 translation deltas
+        run: python scripts/validate_1_9_delta.py
+      - name: Reconstruct and verify Minecraft 1.9 resources
+        run: python scripts/reconstruct_1_9.py --check
+      - name: Validate Minecraft 1.9 complete resources
+        run: python scripts/validate_1_9_complete.py
