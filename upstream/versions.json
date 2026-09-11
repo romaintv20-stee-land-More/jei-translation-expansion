@@ -12,7 +12,22 @@
       "forge": "11.14.4.1577",
       "language_format": "lang",
       "english_source": "src/main/resources/assets/jei/lang/en_US.lang",
+      "english_key_count": 58,
       "java_source_compatibility": "1.7",
+      "official_locales": ["de_DE", "en_US", "fi_FI", "ko_KR", "ru_RU", "zh_CN"],
+      "verified": true
+    },
+    {
+      "branch": "1.8.9",
+      "minecraft": "1.8.9",
+      "jei": "2.28.18",
+      "loaders": ["forge"],
+      "forge": "11.15.1.1855",
+      "language_format": "lang",
+      "english_source": "src/main/resources/assets/jei/lang/en_US.lang",
+      "english_key_count": 75,
+      "java_source_compatibility": "1.7",
+      "official_locales": ["de_DE", "en_US", "fi_FI", "ko_KR", "ru_RU", "zh_CN"],
       "verified": true
     },
     {
