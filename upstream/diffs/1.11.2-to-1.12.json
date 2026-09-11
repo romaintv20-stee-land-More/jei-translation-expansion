@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "base": {
+    "minecraft": "1.11.2",
+    "jei": "4.5.1",
+    "generation": "g8-mc1.11.2",
+    "source": "upstream/sources/1.11.2/en_us.lang",
+    "key_count": 93
+  },
+  "target": {
+    "minecraft": "1.12",
+    "jei": "4.7.5",
+    "generation": "g9-mc1.12",
+    "upstream_commit": "6bce08ef068fc0d7ce80ef07512caf85ccd4cab4",
+    "source": "upstream/sources/1.12/en_us.lang",
+    "key_count": 93
+  },
+  "unchanged_key_and_value_count": 93,
+  "added_key_count": 0,
+  "added_keys": [],
+  "removed_key_count": 0,
+  "removed_keys": [],
+  "changed_english_value_count": 0,
+  "changed_english_values": {},
+  "reviewed_key_count": 0,
+  "notes": "The pinned JEI 4.7.5 en_us.lang is byte-identical to G8 JEI 4.5.1 (Git blob e6d5b263e4ebf33e36e7477fddb7537c5ace6abe). G9 therefore requires no semantic retranslation; only Minecraft language-scope and JEI upstream ownership changes must be audited."
+}
