@@ -1,0 +1,78 @@
+{
+  "minecraft_version": "1.11.2",
+  "jei_version": "4.5.1",
+  "upstream_commit": "11023c1f4449b82d0b88366001b058e6949b40ab",
+  "base_scope_manifest": "upstream/minecraft-1.11-language-scope.json",
+  "minecraft_asset_index_same_as_1_11": true,
+  "raw_language_count": 95,
+  "selected_scope_count": 72,
+  "selected_scope_changed_from_1_11": false,
+  "selected_scope_reuse_reason": "Minecraft 1.11.2 uses the exact Minecraft 1.11 asset index (id 1.11, SHA-1 c64959fe73672e9b053b157f57b6aba318d0b3b5), so the frozen 72-language selected scope carries forward unchanged.",
+  "runtime_locale_filename_case": "lowercase",
+  "selected_upstream_locale_count": 20,
+  "selected_upstream_complete_locales": ["en_us"],
+  "selected_upstream_complete_locale_count": 1,
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr",
+    "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "pl_pl", "pt_br", "ru_ru",
+    "sv_se", "uk_ua", "zh_cn"
+  ],
+  "selected_upstream_incomplete_locale_count": 19,
+  "jei_upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 52,
+  "addon_full_locales": [
+    "af_za", "ast_es", "az_az", "be_by", "br_fr", "ca_es", "cy_gb", "da_dk",
+    "eo_uy", "et_ee", "eu_es", "fa_ir", "fil_ph", "fo_fo", "fy_nl", "ga_ie",
+    "gd_gb", "gl_es", "gv_im", "haw_us", "hi_in", "hr_hr", "hu_hu", "hy_am",
+    "id_id", "is_is", "ka_ge", "ksh_de", "kw_gb", "la_la", "lb_lu", "li_li",
+    "lv_lv", "mi_nz", "mk_mk", "mn_mn", "ms_my", "mt_mt", "nds_de", "nl_nl",
+    "no_no", "oc_fr", "ro_ro", "se_no", "sk_sk", "sl_si", "so_so", "sq_al",
+    "sr_sp", "th_th", "tr_tr", "vi_vn"
+  ],
+  "documented_full_english_fallback_locales": [
+    "gv_im", "kw_gb", "se_no", "br_fr", "fo_fo", "fy_nl", "gd_gb", "ksh_de",
+    "li_li", "so_so", "haw_us", "mn_mn"
+  ],
+  "documented_full_english_fallback_count": 12,
+  "translated_or_ai_assisted_full_locale_count": 40,
+  "translation_delta": {
+    "base_generation": "g7-mc1.11",
+    "unchanged_key_and_english_value_count": 85,
+    "added_key_count": 7,
+    "changed_english_value_count": 1,
+    "removed_key_count": 1,
+    "reviewed_key_count": 8,
+    "reviewed_keys_use_conservative_english_fallback_when_not_upstream": true
+  },
+  "upstream_supplement_policy": {
+    "preserve_existing_upstream_keys": true,
+    "supplement_only_exact_missing_normal_keys": true,
+    "supplement_locales": [
+      "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr",
+      "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "pl_pl", "pt_br", "ru_ru",
+      "sv_se", "uk_ua", "zh_cn"
+    ],
+    "reuse_rule": "For target missing keys whose English key/value pair is unchanged from G7, reuse the exact G7 project supplement value when one exists. For G8 added/changed meanings, use exact target English fallback when upstream does not provide a translation.",
+    "ownership_changes_from_g7": {
+      "newly_incomplete": ["ru_ru", "sv_se", "uk_ua"],
+      "still_incomplete": ["ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr", "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "pl_pl", "pt_br", "zh_cn"],
+      "still_complete": ["en_us"]
+    },
+    "never_emit_upstream_owned_key": true
+  },
+  "norwegian_policy": {
+    "minecraft_locale": "no_no",
+    "jei_upstream_nonmatching_locale": "nb_no",
+    "action": "Keep no_no as the Minecraft-facing full addon locale. Preserve JEI's nb_no upstream file independently."
+  },
+  "translation_realization": {
+    "generation": "g8-mc1.11.2",
+    "policy": "translations/g8-mc1.11.2/policy.json",
+    "reconstruction_script": "scripts/reconstruct_1_11_2.py",
+    "delta_validator": "scripts/validate_1_11_2_delta.py",
+    "complete_validator": "scripts/validate_1_11_2_complete.py",
+    "status": "implementation-in-progress"
+  },
+  "source_audit": "upstream/minecraft-1.11.2-language-audit.json",
+  "english_diff": "upstream/diffs/1.11-to-1.11.2.json"
+}
