@@ -1,0 +1,20 @@
+# Missing JEI 1.8.9 keys only. Existing upstream de_DE entries are intentionally not duplicated.
+jei.tooltip.show.recipes=Rezepte anzeigen
+jei.tooltip.transfer=Items übertragen
+jei.tooltip.recipe.ore.dict=Akzeptiert beliebig: %s
+jei.tooltip.item.colors=Farben: %s
+key.jei.recipeBack=Vorherige Rezeptseite anzeigen
+config.jei.interface.overlayEnabled=Item-Liste aktiviert
+config.jei.interface.overlayEnabled.comment=Zeige die Item-Liste neben geöffneten Benutzeroberflächen.
+config.jei.search.prefixRequiredForTooltipSearch=# für Tooltip-Suche erforderlich
+config.jei.search.prefixRequiredForTooltipSearch.comment=Benötigt "#" vor einem Wort, um Tooltips zu durchsuchen.
+config.jei.search.prefixRequiredForOreDictSearch=$ für Ore Dictionary erforderlich
+config.jei.search.prefixRequiredForOreDictSearch.comment=Benötigt "$" vor einem Wort, um Ore-Dictionary-Namen zu durchsuchen.
+config.jei.search.prefixRequiredForCreativeTabSearch=%% für Kreativ-Tab-Namen erforderlich
+config.jei.search.prefixRequiredForCreativeTabSearch.comment=Benötigt "%" vor einem Wort, um Namen von Kreativ-Tabs zu durchsuchen.
+config.jei.search.prefixRequiredForColorSearch=^ für Farben erforderlich
+config.jei.search.prefixRequiredForColorSearch.comment=Benötigt "^" vor einem Wort, um nach Item-Farben zu suchen.
+config.jei.advanced.colorSearchEnabled=Farbsuche aktivieren
+config.jei.advanced.colorSearchEnabled.comment=Suche Items nach Farbe und zeige durchsuchbare Item-Farben in Tooltips an.
+gui.jei.editMode.description.hide.mod.id=Ctrl-Shift-Klick, um nach ModId zu verbergen.
+gui.jei.editMode.description.show.mod.id=Nach ModId verborgen. Ctrl-Shift-Klick zum Anzeigen.
