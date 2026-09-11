@@ -22,15 +22,30 @@ The addon adds no gameplay content. It should contain localization resources plu
 
 ## Current phase
 
-**Phase 1 — upstream version/generation audit, with the Minecraft 1.8 language-file stage completed.**
+**Phase 1 — upstream version/generation audit and translation expansion.**
 
-Do not publish a release until version-generation boundaries, loader metadata, Java/runtime requirements and packaging compatibility have been audited.
+The selected translation scope is now complete for **Minecraft 1.8** and **Minecraft 1.8.9**. Continue auditing forward through official JEI branches before building final release JARs.
 
-## Verified oldest starting point
+The user does not plan to publish immediately. It is acceptable and preferred to continue auditing/translating versions first, while recording enough metadata for a later reproducible multi-version JAR build phase.
 
-The official JEI repository has an upstream branch named `1.8`. No older official JEI branch was found during the initial branch audit.
+Do not publish a release until version-generation boundaries, loader metadata, Java/runtime requirements, dependency metadata, resource packaging and representative runtime compatibility have been audited.
 
-For branch `1.8`:
+## Translation policy
+
+1. Protect existing JEI translations by default.
+2. For locales already shipped by JEI, add only missing keys unless an override has been explicitly reviewed and allowlisted.
+3. For absent locales, provide the complete generation translation set.
+4. Reuse translations across generations only when both key and English meaning are unchanged.
+5. Preserve placeholders and technical literals exactly.
+6. Do not migrate renamed keys blindly.
+7. Prefer a documented English fallback over a low-confidence invented translation.
+8. AI-assisted translations are allowed but must undergo automated QA and remain open to community/native-speaker correction.
+9. Focus on real-world primary languages; exclude novelty/fantasy languages and initially defer most regional/orthographic variants.
+10. Copy no unnecessary JEI gameplay/source code; preserve MIT attribution where upstream material is redistributed.
+
+## Minecraft 1.8 / JEI 2.15.0 — translation stage complete
+
+Verified from official upstream branch `1.8`:
 
 - Minecraft: **1.8**
 - JEI: **2.15.0**
@@ -42,23 +57,23 @@ For branch `1.8`:
 - 55 normal translatable keys
 - 3 debug-only description keys explicitly marked upstream as not requiring translation
 - JEI upstream locales: `de_DE`, `en_US`, `fi_FI`, `ko_KR`, `ru_RU`, `zh_CN`
-- JEI's build uses Java source/target compatibility 1.7; final runtime/release Java metadata must still be verified separately
+- Upstream build Java source/target compatibility: `1.7`
 
-Therefore the oldest Minecraft version currently planned for support is **Minecraft 1.8**.
+No older official JEI branch was found in the initial branch audit, so Minecraft 1.8 remains the oldest current support target.
 
-## Minecraft 1.8 language scope — COMPLETE
+### 1.8 language scope
 
 The audited Minecraft 1.8 language set contains 75 language codes when `en_US` is included.
 
-Project scope for this generation:
+Project scope:
 
-- excluded novelty/fantasy: `en_PT`, `qya_AA`, `tlh_AA`
+- novelty/fantasy excluded: `en_PT`, `qya_AA`, `tlh_AA`
 - 12 regional/orthographic variants deferred for now
 - 60 primary languages retained
-- 6 of those already supplied by JEI upstream
+- 6 already supplied by JEI upstream
 - addon target: **54 locale files**
 
-Current result under `translations/g1-mc1.8/`:
+Result under `translations/g1-mc1.8/`:
 
 - **54/54 addon locale files present**
 - **51 translated / AI-assisted locales**
@@ -68,64 +83,160 @@ Current result under `translations/g1-mc1.8/`:
   - `se_NO` — Northern Sami
 - the 3 upstream debug-only strings remain English in every addon locale by design
 
-The exact scope is recorded in `upstream/minecraft-1.8-language-scope.json` and the human-readable status is in `docs/TRANSLATION_STATUS.md`.
+Exact scope: `upstream/minecraft-1.8-language-scope.json`.
 
-## Translation benchmark
+### 1.8 benchmark
 
-A five-language pilot (`fr_FR`, `es_ES`, `it_IT`, `pt_BR`, `nl_NL`) was used to measure translation-stage speed for the small 1.8 schema.
+A five-language pilot (`fr_FR`, `es_ES`, `it_IT`, `pt_BR`, `nl_NL`) measured the small 1.8 translation stage:
 
 - 55 normal translatable keys per locale
 - 275 translated entries in the pilot
-- translation + initial QA measured at **1 minute 36 seconds** for the five pilot locales
+- translation + initial QA: **1 minute 36 seconds** for five locales
 - about **19 seconds per locale** for this small legacy schema
 
-This timing is documented in `docs/TRANSLATION_BENCHMARK.md` and must not be extrapolated directly to modern JEI, whose English localization contains several hundred entries.
+Do not extrapolate this directly to modern JEI, whose English localization contains several hundred entries.
 
-## QA now in repository
+## Minecraft 1.8.9 / JEI 2.28.18 — translation delta complete
 
-`scripts/validate_translations.py` validates the Minecraft 1.8 generation for:
+Verified from official upstream branch `1.8.9`:
+
+- Minecraft: **1.8.9**
+- JEI: **2.28.18**
+- Forge: **11.15.1.1855**
+- Translation format: legacy `.lang`
+- English source: `src/main/resources/assets/jei/lang/en_US.lang`
+- Local source snapshot: `upstream/sources/1.8.9/en_US.lang`
+- 75 localization keys total
+- JEI upstream locales remain: `de_DE`, `en_US`, `fi_FI`, `ko_KR`, `ru_RU`, `zh_CN`
+- Upstream build Java source/target compatibility: `1.7`
+
+### Exact 1.8 -> 1.8.9 localization diff
+
+Compared with the verified 1.8 English source:
+
+- **46 keys** keep both the same identifier and the same English meaning and are safe to reuse;
+- **19 keys added**;
+- **2 keys removed**;
+- **10 existing keys changed English text/meaning**;
+- therefore **29 entries per locale** require a new or explicitly reviewed 1.8.9 translation.
+
+Machine-readable diff: `upstream/diffs/1.8-to-1.8.9.json`.
+
+Because the schema and meanings changed, 1.8.9 is stored as a distinct translation generation rather than being treated as identical to 1.8.
+
+### G2 delta storage
+
+The project intentionally avoids duplicating all 75 strings for every locale.
+
+`translations/g2-mc1.8.9/` contains six TSV batches covering **54/54 addon locale deltas**. Each locale contains exactly the 29 new/changed entries. The 46 proven unchanged translations are inherited from G1 at build time.
+
+At build time, a complete 1.8.9 locale must be reconstructed by:
+
+1. loading the corresponding G1 1.8 locale;
+2. removing the two keys removed upstream;
+3. applying the locale's 29-entry G2 delta;
+4. ordering/validating against `upstream/sources/1.8.9/en_US.lang`;
+5. packaging the resulting complete `.lang` resource.
+
+Current G2 result:
+
+- **54/54 locale deltas present**
+- **51 translated / AI-assisted locale deltas**
+- **3 documented English fallback deltas**: `gv_IM`, `kw_GB`, `se_NO`
+
+The current 1.8.9 translation work deliberately reuses the same 54 primary addon locales selected for 1.8. The exact Mojang 1.8.9 language-asset inventory still needs an independent release-metadata audit before publication; this does not invalidate the verified JEI source/diff or completed translation delta.
+
+## Current localization generations
+
+Generation definitions are machine-readable in `upstream/generations.json`.
+
+### G1 — `g1-mc1.8`
+
+- Minecraft 1.8
+- JEI 2.15.0
+- 58-key source schema
+- full locale files stored under `translations/g1-mc1.8/`
+
+### G2 — `g2-mc1.8.9`
+
+- Minecraft 1.8.9
+- JEI 2.28.18
+- 75-key source schema
+- base generation: G1
+- 46 unchanged translations reusable
+- +19 keys, -2 keys, 10 changed meanings
+- 29-entry locale deltas stored under `translations/g2-mc1.8.9/`
+
+Localization generations are separate from distribution JAR groups. G1 and G2 being distinct does **not** automatically mean two final downloadable JARs are required; that depends on Forge/resource/dependency compatibility and must be decided during packaging audit.
+
+## QA in the repository
+
+### Minecraft 1.8
+
+`scripts/validate_translations.py` validates:
 
 - all 54 expected addon locale files;
 - exact key-set parity with the audited English source;
 - duplicate keys;
 - placeholder parity including `%,d`, `%s`, `%MODNAME`;
-- technical-token preservation including `/give`, `@ModName`, `modId:name[:meta]`, `NBT`, `ItemStack`, `JEI`, `Minecraft`, `mB`, `Ctrl`;
+- technical-token preservation;
 - debug-only strings staying in English;
 - English fallback being limited to the three documented low-confidence locales.
 
-`.github/workflows/validate.yml` runs the validator on push and pull requests.
+### Minecraft 1.8.9
+
+`scripts/validate_1_8_9_delta.py` validates:
+
+- verified 58 -> 75 English-source transition;
+- exact diff shape: +19 added, -2 removed, 10 changed meanings, 46 reusable;
+- all six delta TSV batches;
+- exactly 54 addon locale deltas;
+- exactly 29 delta keys per locale;
+- placeholder parity;
+- important technical literals and search-prefix symbols;
+- the three documented fallback locales;
+- that the target 1.8.9 key set can be reconstructed from G1 plus the verified delta.
+
+`.github/workflows/validate.yml` runs both validators on pushes and pull requests.
 
 ## Modern endpoint already inspected
 
 On upstream branch `26.2`:
 
 - language files are JSON under `Common/src/main/resources/assets/jei/lang/`;
-- `en_us.json` contains several hundred UI/config/tooltips/messages entries;
+- `en_us.json` is about 28.7 KB and contains several hundred UI/config/tooltips/messages entries;
 - existing translations are uneven in completeness;
-- for example, `fr_fr.json` is missing newer English keys and contains older translation structure in places.
+- for example, some existing languages lag behind newer English keys.
 
-This makes JEI suitable for both adding absent languages and filling missing keys in languages already shipped upstream.
+Modern JEI is therefore substantially larger than the 1.8-era translation set and will require more translation/QA time.
 
-## Translation policy
+## JAR / release strategy
 
-1. Protect existing JEI translations by default.
-2. For locales already shipped by JEI, add only missing keys unless an override has been explicitly reviewed and allowlisted.
-3. For absent locales, provide the full generation translation set.
-4. Reuse translations across generations only when both key and English meaning are unchanged.
-5. Preserve placeholders and technical literals exactly.
-6. Do not migrate renamed keys blindly.
-7. Prefer a documented English fallback over a low-confidence invented translation.
-8. AI-assisted translations are allowed but must undergo automated QA and remain open to community/native-speaker correction.
-9. Focus on real-world primary languages; exclude novelty/fantasy languages and initially defer most regional/orthographic variants.
-10. Copy no unnecessary JEI gameplay/source code; preserve MIT attribution where upstream material is redistributed.
+The user intends to keep translating versions now and publish later. That workflow is supported.
 
-## Architecture
+Do **not** stop after every Minecraft version to create a final CurseForge-ready JAR. Instead:
 
-Keep **localization generations** separate from **distribution JAR groups**.
+1. audit the exact upstream JEI branch/version;
+2. snapshot and compare its English localization source;
+3. define or extend a verified localization generation;
+4. translate only new/changed material when safe reuse is proven;
+5. run QA and record loader/Java/dependency metadata;
+6. continue to the next version.
 
-`translations/g1-mc1.8/` currently names the first audited translation set. The final boundary of generation G1 is not yet known: adjacent JEI versions must be compared before deciding whether they can reuse the same translation schema.
+Later, once the CurseForge/Modrinth project is ready, implement/use a generic reproducible build pipeline that reconstructs complete locale resources and produces all required Forge/Fabric/NeoForge JARs in one build phase.
 
-Distribution artifacts should be grouped across Minecraft versions only when loader/resource compatibility is demonstrably safe. Avoid one JAR per Minecraft version where possible.
+Before any publication, still verify:
+
+- loader metadata and minimal entrypoint/stub requirements;
+- JEI required dependency ranges;
+- whether a resource-only JAR is sufficient for each loader era;
+- Minecraft/resource compatibility ranges;
+- Java/runtime requirements;
+- complete-locale reconstruction from deltas;
+- reproducible JAR contents and hashes;
+- representative in-game tests, especially oldest/newest endpoints of any grouped artifact.
+
+A prototype old-Forge JAR should eventually be tested before release, but this does not block continuing translation work now.
 
 ## Important files
 
@@ -133,38 +244,45 @@ Distribution artifacts should be grouped across Minecraft versions only when loa
 - `PROJECT_STATUS.md` — canonical handoff
 - `docs/VERSION_MATRIX.md` — audited version facts
 - `docs/WORKFLOW.md` — project workflow
-- `docs/TRANSLATION_BENCHMARK.md` — translation timing pilot
+- `docs/TRANSLATION_BENCHMARK.md` — 1.8 translation timing pilot
 - `docs/TRANSLATION_STATUS.md` — current language coverage
-- `upstream/versions.json` — machine-readable partial version audit
-- `upstream/generations.json` — generation definitions; still incomplete
+- `upstream/versions.json` — machine-readable verified/partial version audit
+- `upstream/generations.json` — current generation definitions
 - `upstream/official-locales.json` — partial upstream locale inventory
 - `upstream/minecraft-1.8-language-scope.json` — exact 1.8 language scope/status
-- `upstream/sources/1.8/en_US.lang` — audited English source snapshot
-- `translations/g1-mc1.8/` — 54 addon locale files
-- `scripts/validate_translations.py` — current translation QA
-- `.github/workflows/validate.yml` — CI validation
+- `upstream/sources/1.8/en_US.lang` — audited 1.8 English source
+- `upstream/sources/1.8.9/en_US.lang` — audited 1.8.9 English source
+- `upstream/diffs/1.8-to-1.8.9.json` — exact localization diff
+- `translations/g1-mc1.8/` — 54 full G1 addon locale files
+- `translations/g2-mc1.8.9/` — six G2 delta TSV batches covering 54 locales
+- `scripts/validate_translations.py` — G1 QA
+- `scripts/validate_1_8_9_delta.py` — G2/diff QA
+- `.github/workflows/validate.yml` — CI validation for G1 and G2
 - `overrides/approved-overrides.json` — reviewed override allowlist
 - `LICENSE`, `NOTICE` — licensing/attribution
 
-## Still to build
+## Still to build / audit
 
 - `scripts/audit_jei.py`
 - `scripts/compare_keys.py`
+- generic delta reconstruction/build tooling
 - `scripts/build_release.py`
-- verified translation directories for later generations
-- final release packaging/build workflow
+- final loader-specific release packaging/build workflow
+- verified translation generations after 1.8.9
+- exact Mojang language inventories for release metadata where required
+- final runtime compatibility tests
 
 ## Immediate next steps
 
-1. Continue the upstream audit from **Minecraft 1.8.9** and then forward through JEI's historical branches/releases toward `26.2`.
-2. For each relevant branch/version, record Minecraft version, JEI version, loader(s), Java requirement/source compatibility, English localization path/format/key count, and upstream locales.
-3. Compare each adjacent English localization source to determine exact generation boundaries.
-4. Determine whether the completed `g1-mc1.8` translations can be reused partially or fully for 1.8.9 and later versions.
-5. Define verified localization generations in `upstream/generations.json`.
-6. Determine safe grouped distribution JARs.
-7. Only after those audits, build release packaging and runtime-test representative endpoints.
-8. Keep this file updated after every significant change.
+1. Identify and verify the **next official JEI/Minecraft branch after 1.8.9** rather than assuming its target from memory.
+2. Record its exact Minecraft version, JEI version, loader, Forge/other loader version, Java compatibility, English source path/key count and official locales.
+3. Compare its English key/value set with 1.8.9.
+4. Reuse translations only where both key and English meaning remain unchanged.
+5. Translate and QA only the new/changed delta where possible.
+6. Define the next verified generation only if the source comparison requires one.
+7. Continue forward systematically toward modern JEI/26.2.
+8. Keep this file updated after every significant audit, translation generation or release/build decision.
 
 ## Resume prompt for a future ChatGPT conversation
 
-> Reprends le projet JEI Translation Expansion depuis https://github.com/romaintv20-stee-land-More/jei-translation-expansion. Lis d'abord `PROJECT_STATUS.md`, puis `docs/TRANSLATION_STATUS.md`, `docs/VERSION_MATRIX.md`, `docs/WORKFLOW.md` et `docs/TRANSLATION_BENCHMARK.md`. Vérifie l'état actuel de l'upstream `mezz/JustEnoughItems` avant toute modification. Continue à partir des étapes restantes indiquées dans `PROJECT_STATUS.md` et mets ce fichier à jour après chaque changement important.
+> Reprends le projet JEI Translation Expansion depuis https://github.com/romaintv20-stee-land-More/jei-translation-expansion. Lis d'abord `PROJECT_STATUS.md`, puis `docs/TRANSLATION_STATUS.md`, `docs/VERSION_MATRIX.md`, `docs/WORKFLOW.md` et `docs/TRANSLATION_BENCHMARK.md`. Vérifie l'état actuel de l'upstream `mezz/JustEnoughItems` avant toute modification. Continue à partir des étapes restantes indiquées dans `PROJECT_STATUS.md`, réutilise les traductions entre générations seulement quand la clé et le sens anglais sont identiques, et mets `PROJECT_STATUS.md` à jour après chaque changement important.
