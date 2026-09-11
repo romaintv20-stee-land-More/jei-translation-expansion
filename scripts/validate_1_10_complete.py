@@ -49,6 +49,7 @@ def main() -> int:
     audit = json.loads(g5.G5_AUDIT_PATH.read_text(encoding="utf-8"))
     policy = json.loads(POLICY_PATH.read_text(encoding="utf-8"))
     fallback_locales = set(policy["documented_full_english_fallback_locales"])
+    new_fallback_locales = set(policy["new_documented_english_fallback_locales"])
     normal_keys = [key for key in english if not key.startswith(DEBUG_PREFIX)]
 
     with tempfile.TemporaryDirectory(prefix="jei-1.10-complete-qa-") as tmp:
@@ -58,8 +59,16 @@ def main() -> int:
         supplement_dir = output / "supplements" / "assets" / "jei" / "lang"
 
         full_files = sorted(full_dir.glob("*.lang"))
+        full_locales = {path.stem for path in full_files}
+        inherited_full = set(g5.reconstruct_g4_full())
+        expected_full = inherited_full | set(scope["new_addon_full_locales"])
         if full_count != scope["addon_full_locale_count"] or len(full_files) != full_count:
             errors.append("full addon locale count mismatch")
+        if full_locales != expected_full or len(full_locales) != 65:
+            errors.append(
+                f"full addon locale set mismatch: missing={sorted(expected_full - full_locales)}, "
+                f"extra={sorted(full_locales - expected_full)}"
+            )
         if key_count != len(english):
             errors.append("reconstructed full key count mismatch")
 
@@ -80,8 +89,15 @@ def main() -> int:
             elif english_equal == len(normal_keys):
                 errors.append(f"{locale}: unexpected full English fallback")
 
-            if translated[g5.CRAFTING_KEY] != g3_full[locale][g5.CRAFTING_KEY]:
-                errors.append(f"{locale}: craftingTable value was not restored exactly from G3")
+            if locale in g3_full:
+                if translated[g5.CRAFTING_KEY] != g3_full[locale][g5.CRAFTING_KEY]:
+                    errors.append(f"{locale}: craftingTable value was not restored exactly from G3")
+            elif locale in new_fallback_locales:
+                if translated != english:
+                    errors.append(f"{locale}: new G5 documented fallback is not byte-equivalent by key/value to English")
+            else:
+                errors.append(f"{locale}: locale is neither inherited nor a documented new fallback")
+
             for removed in g5.REMOVED_KEYS:
                 if removed in translated:
                     errors.append(f"{locale}: removed G4 key leaked into G5 output: {removed}")
@@ -135,10 +151,14 @@ def main() -> int:
 
     if len(english) != 78 or len(normal_keys) != 75:
         errors.append("G5 target key counts changed unexpectedly")
-    if len(fallback_locales) != 10:
-        errors.append("G5 fallback locale count changed unexpectedly")
-    if policy["new_translation_entries_required"] != 0:
-        errors.append("G5 policy unexpectedly declares new translation work")
+    if len(fallback_locales) != 12:
+        errors.append("G5 fallback locale count must be 12")
+    if new_fallback_locales != {"haw_US", "mn_MN"}:
+        errors.append("G5 new fallback locale set must be haw_US and mn_MN")
+    if policy["new_non_english_translation_entries_required"] != 0:
+        errors.append("G5 policy unexpectedly declares new non-English translation work")
+    if policy["full_addon_locale_count"] != 65:
+        errors.append("G5 policy full addon locale count must be 65")
 
     if errors:
         print(f"FAIL: {len(errors)} Minecraft 1.10 validation error(s)")
@@ -150,9 +170,10 @@ def main() -> int:
     print(f"Complete addon locales: {scope['addon_full_locale_count']}")
     print(f"Translated/AI-assisted complete locales: {policy['translated_or_ai_assisted_full_locale_count']}")
     print(f"Documented complete English fallbacks: {policy['full_english_fallback_locale_count']}")
+    print(f"New fallback locales: {', '.join(sorted(new_fallback_locales))}")
     print(f"Missing-key-only upstream supplements: {scope['upstream_missing_key_supplement_locale_count']}")
     print(f"Complete keys per full locale: {len(english)}")
-    print("New translation entries authored in G5: 0")
+    print("New non-English translation entries authored in G5: 0")
     return 0
 
 
