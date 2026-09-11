@@ -73,61 +73,14 @@
     "unchanged": ["de_DE", "fi_FI", "fr_FR", "ko_KR", "nb_NO", "zh_CN"]
   },
   "jei_upstream_locale_completeness": {
-    "de_DE": {
-      "normal_present": 53,
-      "normal_target": 75,
-      "missing_normal": 22,
-      "handling": "missing-key supplement"
-    },
-    "en_US": {
-      "normal_present": 75,
-      "normal_target": 75,
-      "missing_normal": 0,
-      "handling": "upstream complete"
-    },
-    "fi_FI": {
-      "normal_present": 58,
-      "normal_target": 75,
-      "missing_normal": 17,
-      "handling": "missing-key supplement"
-    },
-    "fr_FR": {
-      "normal_present": 74,
-      "normal_target": 75,
-      "missing_normal": 1,
-      "missing_normal_keys": ["jei.tooltip.cheat.mode"],
-      "handling": "missing-key supplement"
-    },
-    "ko_KR": {
-      "normal_present": 5,
-      "normal_target": 75,
-      "missing_normal": 70,
-      "handling": "missing-key supplement; restore addon-owned Crafting Table translation from G3"
-    },
-    "nb_NO": {
-      "normal_present": 74,
-      "normal_target": 75,
-      "missing_normal": 1,
-      "missing_normal_keys": ["jei.tooltip.cheat.mode"],
-      "handling": "preserve upstream untouched; not the selected Minecraft locale code"
-    },
-    "ru_RU": {
-      "normal_present": 73,
-      "normal_target": 75,
-      "missing_normal": 2,
-      "missing_normal_keys": [
-        "config.jei.advanced.colorSearchEnabled",
-        "config.jei.advanced.colorSearchEnabled.comment"
-      ],
-      "handling": "missing-key supplement"
-    },
-    "zh_CN": {
-      "normal_present": 74,
-      "normal_target": 75,
-      "missing_normal": 1,
-      "missing_normal_keys": ["jei.tooltip.cheat.mode"],
-      "handling": "missing-key supplement"
-    }
+    "de_DE": {"normal_present": 53, "normal_target": 75, "missing_normal": 22, "handling": "missing-key supplement"},
+    "en_US": {"normal_present": 75, "normal_target": 75, "missing_normal": 0, "handling": "upstream complete"},
+    "fi_FI": {"normal_present": 58, "normal_target": 75, "missing_normal": 17, "handling": "missing-key supplement"},
+    "fr_FR": {"normal_present": 74, "normal_target": 75, "missing_normal": 1, "missing_normal_keys": ["jei.tooltip.cheat.mode"], "handling": "missing-key supplement"},
+    "ko_KR": {"normal_present": 5, "normal_target": 75, "missing_normal": 70, "handling": "missing-key supplement; restore addon-owned Crafting Table translation from G3"},
+    "nb_NO": {"normal_present": 74, "normal_target": 75, "missing_normal": 1, "missing_normal_keys": ["jei.tooltip.cheat.mode"], "handling": "preserve upstream untouched; not the selected Minecraft locale code"},
+    "ru_RU": {"normal_present": 73, "normal_target": 75, "missing_normal": 2, "missing_normal_keys": ["config.jei.advanced.colorSearchEnabled", "config.jei.advanced.colorSearchEnabled.comment"], "handling": "missing-key supplement"},
+    "zh_CN": {"normal_present": 74, "normal_target": 75, "missing_normal": 1, "missing_normal_keys": ["jei.tooltip.cheat.mode"], "handling": "missing-key supplement"}
   },
   "selected_scope_implications": {
     "scope_changed_from_minecraft_1_9": true,
@@ -140,14 +93,7 @@
     "new_addon_full_locale_count": 2,
     "new_addon_full_locales": ["haw_US", "mn_MN"],
     "upstream_complete_no_addon_locales": ["en_US"],
-    "upstream_missing_key_supplement_locales": [
-      "de_DE",
-      "fi_FI",
-      "fr_FR",
-      "ko_KR",
-      "ru_RU",
-      "zh_CN"
-    ],
+    "upstream_missing_key_supplement_locales": ["de_DE", "fi_FI", "fr_FR", "ko_KR", "ru_RU", "zh_CN"],
     "upstream_missing_key_supplement_locale_count": 6,
     "jei_upstream_non_minecraft_locale_files": ["nb_NO"]
   },
@@ -170,6 +116,7 @@
   },
   "evidence": {
     "failed_discovery_validation_run": 34641315392,
+    "successful_validation_run": 34641765047,
     "next_transition_commit_message": "Update for Minecraft 1.10.2",
     "minecraft_version_metadata_mirror": "bacondev7/Minecraft-Assets release/1.10/VERSION.md",
     "minecraft_asset_index_mirror": "MultiMC/meta-upstream mojang/assets/1.10.json",
