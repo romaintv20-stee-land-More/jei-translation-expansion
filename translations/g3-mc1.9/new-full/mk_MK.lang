@@ -1,0 +1,98 @@
+# Tooltips
+jei.tooltip.config=Поставки
+jei.tooltip.show.recipes=Прикажи рецепти
+jei.tooltip.show.all.recipes=Прикажи ги сите рецепти
+jei.tooltip.delete.item=Кликни за бришење
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+jei.tooltip.transfer=Пренеси предмети
+jei.tooltip.recipe.ore.dict=Прифаќа било што: %s
+jei.tooltip.item.colors=Бои: %s
+jei.tooltip.shapeless.recipe=Рецепт без форма
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Недостасуваат предмети
+jei.tooltip.error.recipe.transfer.inventory.full=Инвентарот е премногу полн
+
+# Error Messages
+jei.chat.error.command.too.long=JEI мора да биде на серверот за да ја обработи оваа команда во разговорот, бидејќи е предолга за Minecraft да ја испрати.
+
+# Key Bindings
+key.jei.toggleOverlay=Вклучи/исклучи преклоп на списокот со предмети
+key.jei.focusSearch=Избери ја лентата за пребарување
+key.jei.showRecipe=Прикажи рецепт за предметот
+key.jei.showUses=Прикажи употреби на предметот
+key.jei.recipeBack=Прикажи ја претходната страница со рецепти
+
+# Config
+config.jei.default=Стандардно
+config.jei.valid=Валидно
+
+config.jei.title=Поставки за %MODNAME
+
+config.jei.mode=Режим
+config.jei.mode.comment=Промени го режимот во кој работи JEI.
+config.jei.mode.cheatItemsEnabled=Режим за добивање предмети
+config.jei.mode.cheatItemsEnabled.comment=Дава предмети наместо да го прикажува рецептот.
+config.jei.mode.editEnabled=Режим за криење предмети
+config.jei.mode.editEnabled.comment=Скриј и прикажи предмети со кликнување на нив во списокот со предмети.
+
+config.jei.interface=Интерфејс
+config.jei.interface.comment=Опции поврзани со корисничкиот интерфејс.
+config.jei.interface.overlayEnabled=Списокот со предмети е вклучен
+config.jei.interface.overlayEnabled.comment=Прикажи го списокот со предмети покрај отворените интерфејси.
+config.jei.interface.recipeAnimationsEnabled=Анимации на рецепти
+config.jei.interface.recipeAnimationsEnabled.comment=Прикажи анимации на рецепти (оган во печката, ленти за напредок итн.)
+
+config.jei.search=Опции за пребарување
+config.jei.search.comment=Опции поврзани со лентата за пребарување.
+config.jei.search.atPrefixRequiredForModName=Барај @ за име на мод
+config.jei.search.atPrefixRequiredForModName.comment=Бара „@“ пред збор за пребарување според име на мод.
+config.jei.search.prefixRequiredForTooltipSearch=Барај # за опис
+config.jei.search.prefixRequiredForTooltipSearch.comment=Бара „#“ пред збор за пребарување во описите.
+config.jei.search.prefixRequiredForOreDictSearch=Барај $ за речникот на руди
+config.jei.search.prefixRequiredForOreDictSearch.comment=Бара „$“ пред збор за пребарување имиња во речникот на руди.
+config.jei.search.prefixRequiredForCreativeTabSearch=Барај %% за име на креативна картичка
+config.jei.search.prefixRequiredForCreativeTabSearch.comment=Бара „%“ пред збор за пребарување имиња на креативни картички.
+config.jei.search.prefixRequiredForColorSearch=Барај ^ за бои
+config.jei.search.prefixRequiredForColorSearch.comment=Бара „^“ пред збор за пребарување според боја на предмети.
+
+config.jei.advanced=Напредно
+config.jei.advanced.comment=Напредни опции за менување на начинот на кој работи JEI.
+config.jei.advanced.itemBlacklist=Црна листа на предмети
+config.jei.advanced.itemBlacklist.comment=Список на предмети што не треба да се прикажуваат во списокот со предмети. Формат: modId[:name[:meta]]. Режимот за уредување автоматски ќе додава или отстранува записи тука.
+config.jei.advanced.hideMissingModelsEnabled=Скриј предмети со модели што недостасуваат
+config.jei.advanced.hideMissingModelsEnabled.comment=Предметите со модели што недостасуваат ќе бидат скриени од списокот со предмети.
+config.jei.advanced.colorSearchEnabled=Вклучи пребарување по боја
+config.jei.advanced.colorSearchEnabled.comment=Пребарувај предмети по боја и прикажи ги боите по кои може да се пребарува во описите во списокот со предмети.
+config.jei.advanced.debugModeEnabled=Режим за отстранување грешки
+config.jei.advanced.debugModeEnabled.comment=Корисно само за програмерите на JEI; додава илјадници тест-предмети и неколку рецепти за отстранување грешки.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Бриши предмети во режимот за добивање
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Во режимот за добивање, повлечи ItemStack врз списокот со предмети и кликни за да го избришеш. (бара JEI на серверот)
+
+config.jei.addons=Додатоци
+config.jei.addons.comment=Категорија за опции на додатоците за JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Режим за уредување на списокот со предмети на JEI:
+gui.jei.editMode.description.hide=Ctrl-клик за криење.
+gui.jei.editMode.description.show=Скриено. Ctrl-клик за прикажување.
+gui.jei.editMode.description.hide.wild=Ctrl-десен клик за криење со wildcard.
+gui.jei.editMode.description.show.wild=Скриено со Wildcard. Ctrl-десен клик за прикажување.
+gui.jei.editMode.description.hide.mod.id=Ctrl-Shift-клик за криење според ModId.
+gui.jei.editMode.description.show.mod.id=Скриено според ModId. Ctrl-Shift-клик за прикажување.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Работна маса
+gui.jei.category.smelting=Топење
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Гориво
+gui.jei.category.fuel.burnTime=Време на горење: %s
+gui.jei.category.brewing=Варење напивки
+gui.jei.category.brewing.steps=Чекори: %s
+gui.jei.category.itemDescription=Опис
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
