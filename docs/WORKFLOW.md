@@ -89,12 +89,30 @@ Before release for each Minecraft version:
 8. Test the version in-game where practical.
 9. Update `PROJECT_STATUS.md` and `docs/VERSION_MATRIX.md`.
 
-## 8. Current working cadence
+## 8. Retained JAR archive on GitHub
+
+Final validated JARs must also be retained inside the repository under `release-jars/`, grouped by Minecraft version, so they can be retrieved later without rebuilding if needed.
+
+Example:
+
+```text
+release-jars/
+  1.8/
+    jei-translation-expansion-<project-version>-mc1.8-forge.jar
+  1.8.9/
+    jei-translation-expansion-<project-version>-mc1.8.9-forge.jar
+```
+
+If a Minecraft version needs separate loader artifacts, keep them together in that version folder and put the loader in the filename. Do not archive temporary, draft or failed builds.
+
+GitHub Releases may also be used for public distribution, but the retained repository copy under `release-jars/` is the project-side archive of finalized JARs.
+
+## 9. Current working cadence
 
 The project may continue auditing and translating many Minecraft versions before final JAR generation. It is not necessary to stop after each translation stage to publish or finalize the JAR.
 
-When release packaging begins, the build system should generate one complete JAR per audited Minecraft version from the stored full translations/deltas and version metadata.
+When release packaging begins, the build system should generate one complete JAR per audited Minecraft version from the stored full translations/deltas and version metadata, then place validated final copies in `release-jars/<minecraft-version>/`.
 
-## 9. Future-chat continuity
+## 10. Future-chat continuity
 
 `PROJECT_STATUS.md` is the canonical handoff. Every substantial audit, architectural decision, generation addition, release or compatibility change must be summarized there so another conversation can continue without access to prior chat history.
