@@ -82,6 +82,23 @@
       "notes": "This commit is the last Minecraft 1.10 endpoint immediately before c88aa6c5c078586fa23abaa83309d293cd72ea61 updates the branch to Minecraft 1.10.2. It is a distinct target/JAR lineage."
     },
     {
+      "branch": "1.10",
+      "audited_commit": "446af20eaa73d260517f0adc737232437363f78d",
+      "minecraft": "1.10.2",
+      "jei": "3.14.8",
+      "loaders": ["forge"],
+      "forge": "12.18.3.2254",
+      "mcp_mappings": "snapshot_20161111",
+      "language_format": "lang",
+      "english_source": "src/main/resources/assets/jei/lang/en_US.lang",
+      "english_key_count": 87,
+      "java_source_compatibility": "1.6",
+      "java_target_compatibility": "1.6",
+      "official_locales": ["ar_SA", "bg_BG", "cs_CZ", "de_DE", "el_GR", "en_AU", "en_US", "es_ES", "fi_FI", "fr_FR", "he_IL", "it_IT", "ja_JP", "ko_KR", "lt_LT", "nb_NO", "pl_PL", "pt_BR", "ru_RU", "sv_SE", "uk_UA", "zh_CN", "zh_TW"],
+      "verified": true,
+      "notes": "Final endpoint of historical upstream branch 1.10. Minecraft 1.10.2 is a separate release target from 1.10. The branch build explicitly targets Forge 12.18.3.2254 and Java source/target 1.6."
+    },
+    {
       "branch": "26.2",
       "minecraft": "26.2",
       "jei": null,
