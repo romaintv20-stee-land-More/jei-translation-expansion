@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Inställningar
+jei.tooltip.show.all.recipes=Visa alla recept
+jei.tooltip.delete.item=Klicka för att ta bort
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Saknade föremål
+jei.tooltip.error.recipe.transfer.inventory.full=Inventariet är för fullt
+
+# Error Messages
+jei.chat.error.command.too.long=JEI måste vara installerat på servern för att hantera det här chattkommandot, eftersom det är för långt för Minecraft att skicka.
+
+# Key Bindings
+key.jei.toggleOverlay=Visa/dölj föremålslistan (Ctrl + )
+key.jei.showRecipe=Visa föremålets recept
+key.jei.showUses=Visa föremålets användningsområden
+
+# Config
+config.jei.default=Standard
+config.jei.valid=Giltig
+
+config.jei.title=Inställningar för %MODNAME
+
+config.jei.mode=Läge
+config.jei.mode.comment=Ändrar läget som JEI körs i.
+config.jei.mode.cheatItemsEnabled=Fuska fram föremål
+config.jei.mode.cheatItemsEnabled.comment=Ger föremål med /give i stället för att visa receptet.
+config.jei.mode.editEnabled=Redigeringsläge för föremålslistan
+config.jei.mode.editEnabled.comment=Dölj eller visa föremål genom att klicka på dem i föremålslistan.
+
+config.jei.interface=Gränssnitt
+config.jei.interface.comment=Alternativ som rör användargränssnittet.
+config.jei.interface.recipeAnimationsEnabled=Receptanimationer
+config.jei.interface.recipeAnimationsEnabled.comment=Visa receptanimationer (ugnslåga, förloppsindikatorer osv.)
+
+config.jei.search=Sök
+config.jei.search.comment=Alternativ som rör sökfältet.
+config.jei.search.atPrefixRequiredForModName=Använd @ för modnamn
+config.jei.search.atPrefixRequiredForModName.comment=Kräv "@ModName" för att söka efter modnamn i stället för "ModName".
+
+config.jei.advanced=Avancerat
+config.jei.advanced.comment=Avancerade inställningar för att ändra hur JEI fungerar.
+config.jei.advanced.nbtKeyIgnoreList=Lista över ignorerade NBT-nycklar
+config.jei.advanced.nbtKeyIgnoreList.comment=Lista över NBT-nycklar som ska ignoreras när recept hämtas.
+config.jei.advanced.itemBlacklist=Svartlista för föremål
+config.jei.advanced.itemBlacklist.comment=Lista över föremål som inte ska visas i föremålslistan. Format: modId:name[:meta]. Redigeringsläget lägger automatiskt till eller tar bort poster här.
+config.jei.advanced.hideMissingModelsEnabled=Dölj föremål med saknade modeller
+config.jei.advanced.hideMissingModelsEnabled.comment=Föremål med saknade modeller döljs från föremålslistan.
+config.jei.advanced.debugModeEnabled=Felsökningsläge
+config.jei.advanced.debugModeEnabled.comment=Lägger till olika saker för att hjälpa utvecklingen av JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Ta bort föremål i fuskläge
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=I fuskläge drar du en ItemStack över föremålslistan och klickar för att ta bort den. (kräver JEI på servern)
+
+config.jei.addons=Tillägg
+config.jei.addons.comment=Kategori för konfigurationsalternativ för JEI-tillägg.
+
+# Edit Mode
+gui.jei.editMode.description=JEI-redigeringsläge för föremålslistan:
+gui.jei.editMode.description.hide=Ctrl-klicka för att dölja.
+gui.jei.editMode.description.show=Dold. Ctrl-klicka för att visa.
+gui.jei.editMode.description.hide.wild=Ctrl-högerklicka för att dölja med jokertecken.
+gui.jei.editMode.description.show.wild=Dold med jokertecken. Ctrl-högerklicka för att visa.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Arbetsbänk
+gui.jei.category.smelting=Smältning
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Bränsle
+gui.jei.category.fuel.burnTime=Brinntid: %s
+gui.jei.category.brewing=Bryggning
+gui.jei.category.brewing.steps=Steg: %s
+gui.jei.category.itemDescription=Beskrivning
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
