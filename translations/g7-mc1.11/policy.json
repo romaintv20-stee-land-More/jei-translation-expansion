@@ -1,0 +1,37 @@
+{
+  "generation": "g7-mc1.11",
+  "minecraft": "1.11",
+  "jei": "4.1.1",
+  "upstream_commit": "c9fcc36ff0effec2b5239eebd2c9133da04df4bb",
+  "base_generation": "g6-mc1.10.2",
+  "english_source_semantics_changed": false,
+  "english_source_byte_identical_to_base": true,
+  "english_source_git_blob_sha": "75790131d753d64fe0cf98f3ac5c0ee67f6bd545",
+  "reuse_all_87_base_key_values": true,
+  "new_translation_entries_required": 0,
+  "resource_filename_case": "lowercase",
+  "resource_filename_rule": "All emitted Minecraft 1.11 language resources must use lowercase locale filenames such as fr_fr.lang and en_us.lang.",
+  "selected_scope_count": 72,
+  "deferred_new_minecraft_codes": {
+    "io_ido": "Ido is a constructed language and is deferred by the project's primary real-world-language scope policy."
+  },
+  "addon_full_locale_count": 52,
+  "documented_full_english_fallback_locales": [
+    "gv_im", "kw_gb", "se_no", "br_fr", "fo_fo", "fy_nl", "gd_gb", "ksh_de",
+    "li_li", "so_so", "haw_us", "mn_mn"
+  ],
+  "upstream_complete_selected_locales": ["en_us", "ru_ru", "sv_se", "uk_ua"],
+  "upstream_supplement_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr",
+    "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "pl_pl", "pt_br", "zh_cn"
+  ],
+  "persistent_supplement_rule": "For the 15 locales that remain incomplete from G6, reuse the exact G6 project supplement values because every English key/value pair is unchanged.",
+  "de_de_rule": "JEI 4.1.1 de_de is missing 16 keys that JEI 3.14.8 de_DE translated upstream. Reuse those exact pinned G6 upstream translations; do not retranslate them.",
+  "de_de_reuse_file": "translations/g7-mc1.11/de_de-from-g6-upstream.lang",
+  "sv_se_rule": "JEI 4.1.1 sv_se is complete. Emit no addon sv_se file and retire the G6 sv_SE supplement.",
+  "preserve_upstream_existing_keys": true,
+  "supplement_only_exact_missing_keys": true,
+  "debug_keys": "Keep target English values for debug-only description.jei.* entries in full addon files; never add debug-only keys to supplements.",
+  "norwegian_policy": "Minecraft-facing no_no remains a full addon locale. JEI nb_no is preserved independently and is not treated as an alias.",
+  "release_rule": "Minecraft 1.11 must eventually receive its own dedicated JAR; never combine it with 1.11.2 or another Minecraft version."
+}
