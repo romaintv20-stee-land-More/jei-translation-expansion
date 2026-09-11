@@ -146,20 +146,49 @@ Special semantic review:
 
 The successful run validates exactly **63 complete 80-key addon locale files + 6 selected missing-key-only upstream supplements**, including placeholders, technical literals, debug-English policy, documented fallbacks and no-upstream-overwrite guards.
 
-## Current task: next chronological Minecraft/JEI target
+## Minecraft 1.10 / JEI 3.7.1
 
-Minecraft 1.9.4 is complete at the translation/reconstruction stage. Continue chronologically to the next actual upstream target.
+Status: **audit/reconstruction work in progress**.
 
-Required next steps:
+Pinned historical endpoint: `7f4e95d5b7620a0d304aa73243cd9b3f9737e247`, the direct parent of commit `c88aa6c5c078586fa23abaa83309d293cd72ea61` (`Update for Minecraft 1.10.2`).
 
-1. Discover the next relevant historical JEI branch/endpoint after Minecraft 1.9.4.
-2. Pin the exact commit and verify `mcversion`, JEI version, Forge, mappings, Java target, language resource path and official locales.
-3. Fetch its English localization source.
-4. Compare it exactly against G4 / Minecraft 1.9.4.
-5. Audit the target Minecraft vanilla language inventory and apply the existing scope policy.
-6. Reuse G4 translations only for exact unchanged key/English pairs.
-7. Build the next translation generation, exact upstream supplements, deterministic reconstruction and QA.
-8. Update `PROJECT_STATUS.md` after every major milestone.
+Verified build metadata:
+
+- Minecraft `1.10`
+- JEI `3.7.1`
+- Forge `12.18.0.1999-1.10.0`
+- MCP mappings `snapshot_20160518`
+- legacy `.lang`
+- English source path remains `src/main/resources/assets/jei/lang/en_US.lang`
+- JEI locales remain `de_DE`, `en_US`, `fi_FI`, `fr_FR`, `ko_KR`, `nb_NO`, `ru_RU`, `zh_CN`
+
+Preliminary exact English diff from 1.9.4 / G4:
+
+- target has **78 keys = 75 normal + 3 debug-only**;
+- **77 unchanged key/value pairs**;
+- **0 added keys**;
+- **2 removed keys**:
+  - `config.jei.advanced.hideLaggyModelsEnabled`
+  - `config.jei.advanced.hideLaggyModelsEnabled.comment`
+- **1 changed English value**:
+  - `gui.jei.category.craftingTable`: `Crafting` -> `Crafting Table`
+
+This changed value is an exact semantic reversion to the G3 / Minecraft 1.9 meaning, so G5 must reuse the already validated G3 translations rather than creating new translations. In particular, addon-owned `ko_KR` must revert from G4 `제작` to the G3 `제작대` value.
+
+Upstream file SHA comparison against JEI 3.6.8 shows only `en_US` and `ru_RU` changed. `de_DE`, `fi_FI`, `fr_FR`, `ko_KR`, `nb_NO` and `zh_CN` are byte-identical across the pinned 1.9.4 and 1.10 endpoints. The 1.10 `ru_RU` file is complete except for the two color-search keys, so its future supplement should shrink to exactly those two keys.
+
+Next work for 1.10:
+
+1. Verify the Minecraft 1.10 asset-index language inventory against the frozen 1.9/1.9.4 90-code inventory.
+2. Store the pinned English source, exact diff and audit/scope manifests.
+3. Implement G5 as G4 inheritance filtered to the 1.10 key set, with the one changed semantic value reused from G3.
+4. Rebuild the six selected upstream supplements against exact JEI 3.7.1 missing sets.
+5. Add deterministic reconstruction + delta/scope/complete QA to CI.
+6. Record the first green CI run, then continue to Minecraft 1.10.2 as a separate target/JAR lineage.
+
+## Current task
+
+Finish Minecraft 1.10 / JEI 3.7.1 translation/reconstruction QA. Do not create a final runtime JAR unless needed for a later packaging stage. Once CI is green, update this file and continue chronologically to Minecraft 1.10.2.
 
 ## Modern endpoint
 
@@ -180,4 +209,4 @@ Branch `26.2` uses JSON language files at `Common/src/main/resources/assets/jei/
 
 ## Resume prompt
 
-> Reprends JEI Translation Expansion depuis le depot et lis d'abord `PROJECT_STATUS.md`. Minecraft 1.9 / JEI 3.3.3 et Minecraft 1.9.4 / JEI 3.6.8 sont termines au stade traduction/reconstruction. La 1.9.4 est epinglee a `bd9fcad11a8b92d181fc8c2ec976e31c7467799a`, utilise G4, reconstruit 63 locales completes + 6 supplements exacts et passe la validation complete au run `34639831977`. Ne promeus toujours pas la 1.8.9 avant test reel en jeu. Prochaine etape: auditer puis traduire le prochain target Minecraft/JEI chronologique. Regle fixe: un JAR distinct par version Minecraft.
+> Reprends JEI Translation Expansion depuis le depot et lis d'abord `PROJECT_STATUS.md`. Minecraft 1.9 / JEI 3.3.3 et Minecraft 1.9.4 / JEI 3.6.8 sont termines au stade traduction/reconstruction. Minecraft 1.10 / JEI 3.7.1 est epingle au commit `7f4e95d5b7620a0d304aa73243cd9b3f9737e247`; son diff preliminaire G4 -> G5 est 77 paires inchangees, 0 ajout, 2 suppressions et 1 valeur anglaise revenue de `Crafting` a `Crafting Table`. Reutiliser la traduction G3 de cette valeur, notamment `ko_KR=제작대`, et reconstruire les supplements exacts. Ne promeus toujours pas la 1.8.9 avant test reel en jeu. Regle fixe: un JAR distinct par version Minecraft.
