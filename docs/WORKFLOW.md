@@ -17,9 +17,11 @@ The audit should determine:
 
 ## 2. Define localization generations
 
-Create a generation only after key/value comparison. A generation may span several Minecraft versions if the translation schema is compatible.
+Create a generation only after key/value comparison. A generation may inherit translations from an earlier generation when the key and English meaning are unchanged.
 
 If a key keeps the same identifier but its English meaning changes, treat the changed meaning as a new semantic translation state and do not blindly reuse the old translation.
+
+Localization generations are an internal translation/reuse mechanism only. They do not determine how many Minecraft versions a release JAR may target.
 
 ## 3. Translation source strategy
 
@@ -63,30 +65,36 @@ The exact language manifest should be generated from the Minecraft language set 
 
 ## 6. Distribution JAR strategy
 
-Localization generations and distributable JAR groups are independent concepts.
+**Project decision: one Minecraft version per release JAR.**
 
-A JAR may cover multiple Minecraft versions only if all of the following are safe:
+A final JAR must target exactly one Minecraft version. Do not group multiple Minecraft versions into one downloadable artifact, even if their translation schemas are identical or highly compatible.
 
-- loader metadata accepts the range;
-- resource format is compatible;
-- JEI dependency range is correct;
-- translation resources work for all included versions;
-- any minimal entrypoint/stub code works on the full range.
+Translation reuse between versions is still encouraged internally. A later version may inherit unchanged translations from an earlier generation, but its final complete resources are reconstructed and packaged into its own version-specific JAR.
 
-Do not claim a broad version range simply to reduce the number of files.
+Loader support for a given Minecraft version must still be audited. If one physical JAR can safely support all required loaders for that same Minecraft version, that is acceptable; otherwise loader-specific artifacts may be required. In every case, no JAR should claim more than one Minecraft version.
+
+This policy simplifies CurseForge/Modrinth metadata, compatibility claims, testing, troubleshooting and future updates.
 
 ## 7. Release QA
 
-Before release:
+Before release for each Minecraft version:
 
 1. Run translation validators.
-2. Generate coverage report.
-3. Build all JARs reproducibly.
-4. Inspect JAR metadata and resource contents.
-5. Check hashes.
-6. Test representative endpoints in-game where practical, especially the oldest and newest version in a grouped JAR range.
-7. Update `PROJECT_STATUS.md` and `docs/VERSION_MATRIX.md`.
+2. Reconstruct complete locale files from any stored deltas.
+3. Generate a coverage report.
+4. Build that version's JAR reproducibly.
+5. Inspect JAR metadata and resource contents.
+6. Check hashes.
+7. Verify JEI dependency and loader metadata.
+8. Test the version in-game where practical.
+9. Update `PROJECT_STATUS.md` and `docs/VERSION_MATRIX.md`.
 
-## 8. Future-chat continuity
+## 8. Current working cadence
+
+The project may continue auditing and translating many Minecraft versions before final JAR generation. It is not necessary to stop after each translation stage to publish or finalize the JAR.
+
+When release packaging begins, the build system should generate one complete JAR per audited Minecraft version from the stored full translations/deltas and version metadata.
+
+## 9. Future-chat continuity
 
 `PROJECT_STATUS.md` is the canonical handoff. Every substantial audit, architectural decision, generation addition, release or compatibility change must be summarized there so another conversation can continue without access to prior chat history.
