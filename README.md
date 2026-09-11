@@ -31,9 +31,11 @@ If a language cannot be translated with sufficient confidence, the project keeps
 
 ## Current status
 
-Audit and translation work is progressing chronologically through historical JEI/Minecraft versions. The selected translation/reconstruction scopes are complete and CI-validated for **Minecraft 1.8, 1.8.9, 1.9, 1.9.4 and 1.10**. Minecraft 1.10 / JEI 3.7.1 expands the selected project scope to 72 languages after Minecraft adds Hawaiian and Mongolian; its deterministic pipeline validates 65 complete addon locales plus six exact missing-key-only JEI supplements.
+Audit and translation work is progressing chronologically through historical JEI/Minecraft versions. The selected translation/reconstruction scopes are complete and CI-validated for **Minecraft 1.8, 1.8.9, 1.9, 1.9.4, 1.10 and 1.10.2**.
 
-Version-specific runtime/JAR validation may be finalized separately while auditing continues to later Minecraft versions. The next chronological audit target is Minecraft **1.10.2**. The oldest verified JEI branch in the official upstream repository is **Minecraft 1.8**; the modern upstream endpoint is audited separately as the project progresses.
+Minecraft 1.10 / JEI 3.7.1 expands the selected project scope to 72 languages after Minecraft adds Hawaiian and Mongolian. Minecraft 1.10.2 / JEI 3.14.8 keeps that 72-language scope but JEI itself expands to 23 upstream locale files: within the selected scope, 4 locales are complete upstream, 16 receive exact missing-key-only supplements, and 52 remain addon-owned full locale files. G6 is CI-validated by workflow run **34642956606**.
+
+Version-specific runtime/JAR validation may be finalized separately while auditing continues to later Minecraft versions. The next chronological historical JEI/Minecraft target is determined from actual upstream branch history before translation work starts. The oldest verified JEI branch in the official upstream repository is **Minecraft 1.8**; the modern upstream endpoint is audited separately as the project progresses.
 
 For the canonical handoff and exact next steps, read [`PROJECT_STATUS.md`](PROJECT_STATUS.md) first.
 
