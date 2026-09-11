@@ -1,0 +1,4 @@
+# G4 keys missing from JEI 3.6.8 fr_FR. Existing upstream-owned keys are intentionally omitted.
+jei.tooltip.cheat.mode=Mode triche
+config.jei.advanced.hideLaggyModelsEnabled=Masquer les objets aux modèles lents
+config.jei.advanced.hideLaggyModelsEnabled.comment=Les objets dont les modèles provoquent un long délai seront masqués de la liste des objets.
