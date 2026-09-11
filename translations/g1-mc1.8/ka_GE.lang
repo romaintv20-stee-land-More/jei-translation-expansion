@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=პარამეტრები
+jei.tooltip.show.all.recipes=ყველა რეცეპტის ჩვენება
+jei.tooltip.delete.item=წასაშლელად დააწკაპუნეთ
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=აკლებული ნივთები
+jei.tooltip.error.recipe.transfer.inventory.full=ინვენტარი ზედმეტად სავსეა
+
+# Error Messages
+jei.chat.error.command.too.long=ამ ჩატის ბრძანების დასამუშავებლად JEI სერვერზეც უნდა იყოს დაყენებული, რადგან ბრძანება Minecraft-ის გასაგზავნად ზედმეტად გრძელია.
+
+# Key Bindings
+key.jei.toggleOverlay=ნივთების სიის ჩვენება/დამალვა (Ctrl + )
+key.jei.showRecipe=ნივთის რეცეპტის ჩვენება
+key.jei.showUses=ნივთის გამოყენებების ჩვენება
+
+# Config
+config.jei.default=ნაგულისხმევი
+config.jei.valid=მართებული
+
+config.jei.title=%MODNAME-ის პარამეტრები
+
+config.jei.mode=რეჟიმი
+config.jei.mode.comment=ცვლის რეჟიმს, რომელშიც JEI მუშაობს.
+config.jei.mode.cheatItemsEnabled=ნივთების ჩითი
+config.jei.mode.cheatItemsEnabled.comment=რეცეპტის ჩვენების ნაცვლად ნივთებს /give ბრძანებით გაძლევთ.
+config.jei.mode.editEnabled=ნივთების სიის რედაქტირების რეჟიმი
+config.jei.mode.editEnabled.comment=ნივთების სიაში მათზე დაწკაპუნებით დამალეთ ან აჩვენეთ ნივთები.
+
+config.jei.interface=ინტერფეისი
+config.jei.interface.comment=მომხმარებლის ინტერფეისთან დაკავშირებული პარამეტრები.
+config.jei.interface.recipeAnimationsEnabled=რეცეპტების ანიმაციები
+config.jei.interface.recipeAnimationsEnabled.comment=რეცეპტების ანიმაციების ჩვენება (ღუმელის ცეცხლი, პროგრესის ზოლები და ა.შ.)
+
+config.jei.search=ძებნა
+config.jei.search.comment=ძებნის ზოლთან დაკავშირებული პარამეტრები.
+config.jei.search.atPrefixRequiredForModName=მოდის სახელისთვის @-ის გამოყენება
+config.jei.search.atPrefixRequiredForModName.comment=მოდის სახელით საძებნელად "ModName"-ის ნაცვლად მოითხოვს "@ModName"-ს.
+
+config.jei.advanced=გაფართოებული
+config.jei.advanced.comment=JEI-ის მუშაობის შესაცვლელი გაფართოებული პარამეტრები.
+config.jei.advanced.nbtKeyIgnoreList=იგნორირებული NBT გასაღებების სია
+config.jei.advanced.nbtKeyIgnoreList.comment=NBT გასაღებების სია, რომლებიც რეცეპტების მიღებისას უნდა დაიგნოროს.
+config.jei.advanced.itemBlacklist=ნივთების შავი სია
+config.jei.advanced.itemBlacklist.comment=ნივთების სია, რომლებიც ნივთების სიაში არ უნდა გამოჩნდეს. ფორმატი: modId:name[:meta]. რედაქტირების რეჟიმი აქ ჩანაწერებს ავტომატურად დაამატებს ან წაშლის.
+config.jei.advanced.hideMissingModelsEnabled=დაკარგული მოდელის მქონე ნივთების დამალვა
+config.jei.advanced.hideMissingModelsEnabled.comment=დაკარგული მოდელის მქონე ნივთები ნივთების სიიდან დაიმალება.
+config.jei.advanced.debugModeEnabled=გამართვის რეჟიმი
+config.jei.advanced.debugModeEnabled.comment=JEI-ის განვითარებაში დასახმარებლად სხვადასხვა ელემენტს ამატებს.
+config.jei.advanced.deleteItemsInCheatModeEnabled=ჩითის რეჟიმში ნივთების წაშლა
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=ჩითის რეჟიმში გადაიტანეთ ItemStack ნივთების სიაზე და წასაშლელად დააწკაპუნეთ. (სერვერზე JEI საჭიროა)
+
+config.jei.addons=დამატებები
+config.jei.addons.comment=JEI დამატებების კონფიგურაციის პარამეტრების კატეგორია.
+
+# Edit Mode
+gui.jei.editMode.description=JEI ნივთების სიის რედაქტირების რეჟიმი:
+gui.jei.editMode.description.hide=დასამალად Ctrl-დაწკაპუნება.
+gui.jei.editMode.description.show=დამალულია. საჩვენებლად Ctrl-დაწკაპუნება.
+gui.jei.editMode.description.hide.wild=შაბლონით დასამალად Ctrl-მარჯვენა დაწკაპუნება.
+gui.jei.editMode.description.show.wild=შაბლონით დამალულია. საჩვენებლად Ctrl-მარჯვენა დაწკაპუნება.
+
+# Recipe Categories
+gui.jei.category.craftingTable=სამუშაო მაგიდა
+gui.jei.category.smelting=დნობა
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=საწვავი
+gui.jei.category.fuel.burnTime=წვის დრო: %s
+gui.jei.category.brewing=ელექსირების დამზადება
+gui.jei.category.brewing.steps=ნაბიჯები: %s
+gui.jei.category.itemDescription=აღწერა
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
