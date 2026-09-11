@@ -1,0 +1,41 @@
+{
+  "generation": "g8-mc1.11.2",
+  "minecraft": "1.11.2",
+  "jei": "4.5.1",
+  "upstream_commit": "11023c1f4449b82d0b88366001b058e6949b40ab",
+  "base_generation": "g7-mc1.11",
+  "unchanged_key_and_value_count": 85,
+  "added_key_count": 7,
+  "removed_key_count": 1,
+  "changed_english_value_count": 1,
+  "reviewed_keys": [
+    "config.jei.advanced.maxSubtypes",
+    "config.jei.advanced.maxSubtypes.comment",
+    "config.jei.search.resourceIdSearchMode",
+    "config.jei.search.resourceIdSearchMode.comment",
+    "gui.jei.category.itemInformation",
+    "key.jei.nextPage",
+    "key.jei.previousPage",
+    "key.jei.recipeBack"
+  ],
+  "removed_keys": ["gui.jei.category.itemDescription"],
+  "reviewed_key_policy": "For addon-owned full locales, use exact target English for the seven added keys and changed recipeBack meaning unless an exact already-validated semantic translation exists. None is assumed. For upstream supplement locales, emit target English only when one of these reviewed keys is actually missing upstream.",
+  "reuse_rule": "Reuse G7 translations exactly for the 85 unchanged key/value pairs. Do not carry the removed itemDescription key.",
+  "resource_filename_case": "lowercase",
+  "selected_scope_count": 72,
+  "addon_full_locale_count": 52,
+  "documented_full_english_fallback_locales": [
+    "gv_im", "kw_gb", "se_no", "br_fr", "fo_fo", "fy_nl", "gd_gb", "ksh_de",
+    "li_li", "so_so", "haw_us", "mn_mn"
+  ],
+  "upstream_complete_selected_locales": ["en_us"],
+  "upstream_supplement_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr",
+    "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "pl_pl", "pt_br", "ru_ru",
+    "sv_se", "uk_ua", "zh_cn"
+  ],
+  "supplement_reuse_policy": "Filter the deterministic G7 supplement down to target keys that remain missing upstream. For target missing keys that are new/changed in G8 or were not in a G7 supplement, use exact target English fallback.",
+  "debug_keys": "Keep target English values for debug-only description.jei.* entries in full addon files; never add debug-only keys to supplements.",
+  "norwegian_policy": "Minecraft-facing no_no remains a full addon locale. JEI nb_no is preserved independently and is not treated as an alias.",
+  "release_rule": "Minecraft 1.11.2 must receive its own dedicated JAR; never combine it with Minecraft 1.11 or another version."
+}
