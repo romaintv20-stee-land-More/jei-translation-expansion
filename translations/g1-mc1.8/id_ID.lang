@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Pengaturan
+jei.tooltip.show.all.recipes=Tampilkan semua resep
+jei.tooltip.delete.item=Klik untuk menghapus
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Item yang kurang
+jei.tooltip.error.recipe.transfer.inventory.full=Inventaris terlalu penuh
+
+# Error Messages
+jei.chat.error.command.too.long=JEI harus terpasang di server untuk menangani perintah chat ini karena perintahnya terlalu panjang untuk dikirim oleh Minecraft.
+
+# Key Bindings
+key.jei.toggleOverlay=Tampilkan/sembunyikan daftar item (Ctrl + )
+key.jei.showRecipe=Tampilkan resep item
+key.jei.showUses=Tampilkan kegunaan item
+
+# Config
+config.jei.default=Default
+config.jei.valid=Valid
+
+config.jei.title=Pengaturan %MODNAME
+
+config.jei.mode=Mode
+config.jei.mode.comment=Ubah mode yang digunakan JEI.
+config.jei.mode.cheatItemsEnabled=Cheat item
+config.jei.mode.cheatItemsEnabled.comment=Berikan item dengan /give alih-alih menampilkan resep.
+config.jei.mode.editEnabled=Mode edit daftar item
+config.jei.mode.editEnabled.comment=Sembunyikan atau tampilkan item dengan mengkliknya di daftar item.
+
+config.jei.interface=Antarmuka
+config.jei.interface.comment=Opsi yang berkaitan dengan antarmuka pengguna.
+config.jei.interface.recipeAnimationsEnabled=Animasi resep
+config.jei.interface.recipeAnimationsEnabled.comment=Tampilkan animasi resep (api tungku, bilah progres, dll.)
+
+config.jei.search=Pencarian
+config.jei.search.comment=Opsi yang berkaitan dengan bilah pencarian.
+config.jei.search.atPrefixRequiredForModName=Gunakan @ untuk nama mod
+config.jei.search.atPrefixRequiredForModName.comment=Harus menggunakan "@ModName" untuk mencari berdasarkan nama mod alih-alih "ModName".
+
+config.jei.advanced=Lanjutan
+config.jei.advanced.comment=Opsi lanjutan untuk mengubah cara kerja JEI.
+config.jei.advanced.nbtKeyIgnoreList=Daftar kunci NBT yang diabaikan
+config.jei.advanced.nbtKeyIgnoreList.comment=Daftar kunci NBT yang harus diabaikan saat mengambil resep.
+config.jei.advanced.itemBlacklist=Daftar hitam item
+config.jei.advanced.itemBlacklist.comment=Daftar item yang tidak boleh ditampilkan di daftar item. Format: modId:name[:meta]. Mode edit akan otomatis menambah atau menghapus entri di sini.
+config.jei.advanced.hideMissingModelsEnabled=Sembunyikan item dengan model yang hilang
+config.jei.advanced.hideMissingModelsEnabled.comment=Item dengan model yang hilang akan disembunyikan dari daftar item.
+config.jei.advanced.debugModeEnabled=Mode debug
+config.jei.advanced.debugModeEnabled.comment=Menambahkan berbagai hal untuk membantu pengembangan JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Hapus item dalam mode cheat
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=Dalam mode cheat, seret ItemStack ke atas daftar item lalu klik untuk menghapusnya. (memerlukan JEI di server)
+
+config.jei.addons=Addon
+config.jei.addons.comment=Kategori untuk opsi pengaturan addon JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Mode edit daftar item JEI:
+gui.jei.editMode.description.hide=Ctrl-klik untuk menyembunyikan.
+gui.jei.editMode.description.show=Tersembunyi. Ctrl-klik untuk menampilkan.
+gui.jei.editMode.description.hide.wild=Ctrl-klik kanan untuk menyembunyikan dengan wildcard.
+gui.jei.editMode.description.show.wild=Tersembunyi dengan wildcard. Ctrl-klik kanan untuk menampilkan.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Meja kerja
+gui.jei.category.smelting=Peleburan
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Bahan bakar
+gui.jei.category.fuel.burnTime=Waktu bakar: %s
+gui.jei.category.brewing=Peracikan
+gui.jei.category.brewing.steps=Langkah: %s
+gui.jei.category.itemDescription=Deskripsi
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
