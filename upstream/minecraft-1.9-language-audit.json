@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "audit_date": "2026-09-11",
-  "status": "verified-raw-scope-policy-review-pending",
+  "status": "verified-raw-scope-policy-final",
   "minecraft": "1.9",
   "jei": "3.3.3",
   "jei_upstream_commit": "b2ffe6bd7734d093006de99f9dc99b2b77ce780d",
@@ -24,14 +24,14 @@
     "carried_deferred_variants_present": [
       "en_AU", "en_CA", "en_GB", "es_AR", "es_MX", "es_UY", "es_VE", "fr_CA", "nn_NO", "pt_PT", "val_ES", "zh_TW"
     ],
-    "obvious_new_primary_candidates": [
+    "new_primary_languages_selected": [
       "be_BY", "br_FR", "fo_FO", "fy_NL", "gd_GB", "ksh_DE", "li_LI", "mk_MK", "so_SO", "sq_AL"
     ],
-    "obvious_new_deferred_variant_candidates": ["en_NZ"],
-    "obvious_new_novelty_candidates": ["en_UD", "lol_US"],
-    "new_constructed_language_codes_requiring_explicit_policy_decision": ["jbo_EN", "tzl_TZL"],
-    "scope_count_if_only_obvious_primary_candidates_are_added": 70,
-    "scope_count_if_jbo_EN_and_tzl_TZL_are_also_retained": 72
+    "new_deferred_variant_codes": ["en_NZ"],
+    "new_novelty_exclusions": ["en_UD", "lol_US"],
+    "new_constructed_language_codes_deferred": ["jbo_EN", "tzl_TZL"],
+    "selected_scope_count": 70,
+    "policy_decision": "jbo_EN (Lojban) and tzl_TZL (Talossan) are constructed languages and are deferred under the initial real-world primary-language policy."
   },
   "norwegian_reconciliation": {
     "minecraft_has_no_NO": true,
@@ -62,6 +62,15 @@
     "upstream_locale_not_present_in_minecraft_1_9_asset_codes": ["nb_NO"],
     "minecraft_locale_absent_from_jei_upstream": ["no_NO"]
   },
+  "translation_realization": {
+    "scope_manifest": "upstream/minecraft-1.9-language-scope.json",
+    "selected_scope_count": 70,
+    "addon_full_locale_count": 63,
+    "upstream_supplement_locale_count": 5,
+    "new_full_ai_assisted_locales": ["be_BY", "mk_MK", "sq_AL"],
+    "new_full_english_fallback_locales": ["br_FR", "fo_FO", "fy_NL", "gd_GB", "ksh_DE", "li_LI", "so_SO"],
+    "successful_validation_run": 34638556534
+  },
   "automation": {
     "script": "scripts/audit_1_9.py",
     "workflow": ".github/workflows/audit-1.9.yml",
@@ -70,8 +79,8 @@
     "artifact_name": "minecraft-1.9-language-audit"
   },
   "notes": [
-    "The generated workflow artifact contains the exact missing-key lists for every upstream JEI locale and can be regenerated with scripts/audit_1_9.py.",
-    "The raw Minecraft 1.9 language inventory is verified. Final selected project scope remains open only for the two newly observed constructed-language codes jbo_EN and tzl_TZL; all other new codes have an obvious classification under the existing project policy.",
-    "New primary languages that did not exist in the Minecraft 1.8 project scope require full 1.9 translations rather than a three-key delta inherited from G2."
+    "The raw Minecraft 1.9 language inventory and JEI upstream locale completeness are verified against the pinned JEI 3.3.3 snapshot.",
+    "The final selected scope is 70 languages. jbo_EN and tzl_TZL are explicitly deferred as constructed languages rather than left undecided.",
+    "New primary languages that did not exist in the Minecraft 1.8 project scope require either a full 1.9 translation or an explicit documented English fallback; the current realization is recorded in translations/g3-mc1.9/new-full-policy.json."
   ]
 }
