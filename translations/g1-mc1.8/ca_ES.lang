@@ -1,0 +1,79 @@
+# Tooltips
+jei.tooltip.config=Configuració
+jei.tooltip.show.all.recipes=Mostra totes les receptes
+jei.tooltip.delete.item=Fes clic per suprimir
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.liquid.amount=%,d mB
+
+# Error Tooltips
+jei.tooltip.error.recipe.transfer.missing=Falten objectes
+jei.tooltip.error.recipe.transfer.inventory.full=L'inventari és massa ple
+
+# Error Messages
+jei.chat.error.command.too.long=JEI ha d'estar instal·lat al servidor per gestionar aquesta ordre de xat, perquè és massa llarga perquè Minecraft l'enviï.
+
+# Key Bindings
+key.jei.toggleOverlay=Mostra/amaga la llista d'objectes (Ctrl + )
+key.jei.showRecipe=Mostra la recepta de l'objecte
+key.jei.showUses=Mostra els usos de l'objecte
+
+# Config
+config.jei.default=Per defecte
+config.jei.valid=Vàlid
+
+config.jei.title=Configuració de %MODNAME
+
+config.jei.mode=Mode
+config.jei.mode.comment=Canvia el mode en què funciona JEI.
+config.jei.mode.cheatItemsEnabled=Trampa d'objectes
+config.jei.mode.cheatItemsEnabled.comment=Dona objectes amb /give en lloc de mostrar la recepta.
+config.jei.mode.editEnabled=Mode d'edició de la llista d'objectes
+config.jei.mode.editEnabled.comment=Amaga o mostra objectes fent-hi clic a la llista d'objectes.
+
+config.jei.interface=Interfície
+config.jei.interface.comment=Opcions relacionades amb la interfície d'usuari.
+config.jei.interface.recipeAnimationsEnabled=Animacions de receptes
+config.jei.interface.recipeAnimationsEnabled.comment=Mostra animacions de receptes (foc del forn, barres de progrés, etc.)
+
+config.jei.search=Cerca
+config.jei.search.comment=Opcions relacionades amb la barra de cerca.
+config.jei.search.atPrefixRequiredForModName=Utilitza @ per al nom del mod
+config.jei.search.atPrefixRequiredForModName.comment=Requereix "@ModName" per cercar pel nom del mod en lloc de "ModName".
+
+config.jei.advanced=Avançat
+config.jei.advanced.comment=Opcions de configuració avançades per canviar el funcionament de JEI.
+config.jei.advanced.nbtKeyIgnoreList=Llista de claus NBT ignorades
+config.jei.advanced.nbtKeyIgnoreList.comment=Llista de claus NBT que s'han d'ignorar en obtenir receptes.
+config.jei.advanced.itemBlacklist=Llista negra d'objectes
+config.jei.advanced.itemBlacklist.comment=Llista d'objectes que no s'han de mostrar a la llista d'objectes. Format: modId:name[:meta]. El mode d'edició hi afegirà o eliminarà entrades automàticament.
+config.jei.advanced.hideMissingModelsEnabled=Amaga objectes amb models absents
+config.jei.advanced.hideMissingModelsEnabled.comment=Els objectes amb models absents s'amagaran de la llista d'objectes.
+config.jei.advanced.debugModeEnabled=Mode de depuració
+config.jei.advanced.debugModeEnabled.comment=Afegeix elements diversos per ajudar al desenvolupament de JEI.
+config.jei.advanced.deleteItemsInCheatModeEnabled=Suprimeix objectes en mode trampa
+config.jei.advanced.deleteItemsInCheatModeEnabled.comment=En mode trampa, arrossega un ItemStack sobre la llista d'objectes i fes clic per suprimir-lo. (requereix JEI al servidor)
+
+config.jei.addons=Complements
+config.jei.addons.comment=Categoria per a les opcions de configuració dels complements de JEI.
+
+# Edit Mode
+gui.jei.editMode.description=Mode d'edició de la llista d'objectes de JEI:
+gui.jei.editMode.description.hide=Ctrl-clic per amagar.
+gui.jei.editMode.description.show=Amagat. Ctrl-clic per mostrar.
+gui.jei.editMode.description.hide.wild=Ctrl-clic dret per amagar amb comodí.
+gui.jei.editMode.description.show.wild=Amagat amb comodí. Ctrl-clic dret per mostrar.
+
+# Recipe Categories
+gui.jei.category.craftingTable=Taula de treball
+gui.jei.category.smelting=Fosa
+gui.jei.category.smelting.experience=%s XP
+gui.jei.category.fuel=Combustible
+gui.jei.category.fuel.burnTime=Temps de combustió: %s
+gui.jei.category.brewing=Alquímia
+gui.jei.category.brewing.steps=Passos: %s
+gui.jei.category.itemDescription=Descripció
+
+# DEBUG (for debug mode, do not need translation)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
