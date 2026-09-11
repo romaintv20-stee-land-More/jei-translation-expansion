@@ -6,14 +6,18 @@
   "target_key_count": 78,
   "normal_key_count": 75,
   "debug_key_count": 3,
-  "full_addon_locale_count": 63,
-  "new_translation_entries_required": 0,
+  "selected_scope_count": 72,
+  "full_addon_locale_count": 65,
+  "inherited_full_addon_locale_count": 63,
+  "new_full_addon_locales": ["haw_US", "mn_MN"],
+  "new_non_english_translation_entries_required": 0,
+  "new_documented_english_fallback_locales": ["haw_US", "mn_MN"],
   "removed_keys": [
     "config.jei.advanced.hideLaggyModelsEnabled",
     "config.jei.advanced.hideLaggyModelsEnabled.comment"
   ],
   "semantic_reversion_keys": ["gui.jei.category.craftingTable"],
-  "semantic_reversion_rule": "Restore each addon-owned value for gui.jei.category.craftingTable from the validated G3 Minecraft 1.9 resource because the target English value is again exactly Crafting Table.",
+  "semantic_reversion_rule": "Restore each inherited addon-owned value for gui.jei.category.craftingTable from the validated G3 Minecraft 1.9 resource because the target English value is again exactly Crafting Table.",
   "documented_full_english_fallback_locales": [
     "gv_IM",
     "kw_GB",
@@ -24,10 +28,12 @@
     "gd_GB",
     "ksh_DE",
     "li_LI",
-    "so_SO"
+    "so_SO",
+    "haw_US",
+    "mn_MN"
   ],
   "translated_or_ai_assisted_full_locale_count": 53,
-  "full_english_fallback_locale_count": 10,
+  "full_english_fallback_locale_count": 12,
   "upstream_missing_key_supplement_locales": [
     "de_DE",
     "fi_FI",
@@ -38,12 +44,16 @@
   ],
   "upstream_supplement_rule": "Start from the exact G4 supplement, remove keys absent from the 1.10 English target, then restore any addon-owned changed-semantic key from G3. Existing JEI 3.7.1 upstream keys must never be emitted by the addon.",
   "special_cases": {
+    "haw_US": "New Minecraft 1.10 primary language selected by policy. Use an explicit complete English fallback because reliable technical Hawaiian translation is not guaranteed in this pass.",
+    "mn_MN": "New Minecraft 1.10 primary language selected by policy. Use an explicit complete English fallback because reliable technical Mongolian translation is not guaranteed in this pass.",
+    "de_AT": "New Minecraft 1.10 language code but deferred as a regional German variant.",
+    "swg_de": "New Minecraft 1.10 language code identified as Oschtallgaierisch and deferred as a regional German/Swabian variety.",
     "ko_KR": "Restore gui.jei.category.craftingTable from G3: 제작대. Do not retain the G4 generic-Crafting value 제작.",
     "ru_RU": "JEI 3.7.1 upstream owns every selected normal key except config.jei.advanced.colorSearchEnabled and its comment; supplement exactly those two.",
     "fr_FR": "The two hideLaggyModels keys no longer exist in the target, leaving only jei.tooltip.cheat.mode missing upstream.",
     "zh_CN": "The two hideLaggyModels keys no longer exist in the target, leaving only jei.tooltip.cheat.mode missing upstream."
   },
   "debug_policy": "The three upstream DEBUG description keys remain in English for all complete addon locales.",
-  "fallback_policy": "The same ten documented complete English fallback locales remain fallbacks. No new fallback locale is introduced by G5.",
+  "fallback_policy": "Retain the ten existing documented complete English fallbacks and add haw_US plus mn_MN as two new explicit complete English fallbacks. Prefer these documented fallbacks over invented low-confidence translations.",
   "source_diff": "upstream/diffs/1.9.4-to-1.10.json"
 }
