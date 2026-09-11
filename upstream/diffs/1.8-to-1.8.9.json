@@ -1,0 +1,79 @@
+{
+  "from_minecraft": "1.8",
+  "to_minecraft": "1.8.9",
+  "from_jei": "2.15.0",
+  "to_jei": "2.28.18",
+  "from_key_count": 58,
+  "to_key_count": 75,
+  "added_key_count": 19,
+  "removed_key_count": 2,
+  "changed_english_value_count": 10,
+  "reuse_unchanged_key_count": 46,
+  "added_keys": [
+    "config.jei.advanced.colorSearchEnabled",
+    "config.jei.advanced.colorSearchEnabled.comment",
+    "config.jei.interface.overlayEnabled",
+    "config.jei.interface.overlayEnabled.comment",
+    "config.jei.search.prefixRequiredForColorSearch",
+    "config.jei.search.prefixRequiredForColorSearch.comment",
+    "config.jei.search.prefixRequiredForCreativeTabSearch",
+    "config.jei.search.prefixRequiredForCreativeTabSearch.comment",
+    "config.jei.search.prefixRequiredForOreDictSearch",
+    "config.jei.search.prefixRequiredForOreDictSearch.comment",
+    "config.jei.search.prefixRequiredForTooltipSearch",
+    "config.jei.search.prefixRequiredForTooltipSearch.comment",
+    "gui.jei.editMode.description.hide.mod.id",
+    "gui.jei.editMode.description.show.mod.id",
+    "jei.tooltip.item.colors",
+    "jei.tooltip.recipe.ore.dict",
+    "jei.tooltip.show.recipes",
+    "jei.tooltip.transfer",
+    "key.jei.recipeBack"
+  ],
+  "removed_keys": [
+    "config.jei.advanced.nbtKeyIgnoreList",
+    "config.jei.advanced.nbtKeyIgnoreList.comment"
+  ],
+  "changed_english_values": {
+    "config.jei.advanced.debugModeEnabled.comment": {
+      "from": "Adds random things to help with JEI development.",
+      "to": "Only useful for JEI developers, adds thousands of test items and some debug recipes."
+    },
+    "config.jei.advanced.hideMissingModelsEnabled": {
+      "from": "Hide Missing Item Models",
+      "to": "Hide Items with Missing Models"
+    },
+    "config.jei.advanced.itemBlacklist.comment": {
+      "from": "List of items that should not be displayed in the item list. Format: modId:name[:meta]. Edit Mode will automatically add or remove entries here.",
+      "to": "List of items that should not be displayed in the item list. Format: modId[:name[:meta]]. Edit Mode will automatically add or remove entries here."
+    },
+    "config.jei.mode.cheatItemsEnabled": {
+      "from": "Item Cheating",
+      "to": "Item Cheating Mode"
+    },
+    "config.jei.mode.cheatItemsEnabled.comment": {
+      "from": "/give items instead of showing the recipe.",
+      "to": "Give items instead of showing the recipe."
+    },
+    "config.jei.mode.editEnabled": {
+      "from": "Item List Edit Mode",
+      "to": "Item Hiding Mode"
+    },
+    "config.jei.search": {
+      "from": "Search",
+      "to": "Search Options"
+    },
+    "config.jei.search.atPrefixRequiredForModName": {
+      "from": "Use @ for Mod Name",
+      "to": "Require @ for Mod Name"
+    },
+    "config.jei.search.atPrefixRequiredForModName.comment": {
+      "from": "Require \"@ModName\" to search by mod name instead of \"ModName\".",
+      "to": "Require \"@\" in front of a word to search by mod name."
+    },
+    "gui.jei.category.smelting.experience": {
+      "from": "%s Exp.",
+      "to": "%s XP"
+    }
+  }
+}
