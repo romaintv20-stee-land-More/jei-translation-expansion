@@ -49,3 +49,5 @@ jobs:
         run: python scripts/reconstruct_1_10_2.py --check
       - name: Validate Minecraft 1.10.2 complete resources
         run: python scripts/validate_1_10_2_complete.py
+      - name: Audit Minecraft 1.11 / JEI 4.1.1 endpoint
+        run: python scripts/audit_1_11.py
