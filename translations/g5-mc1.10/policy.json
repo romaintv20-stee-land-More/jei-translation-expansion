@@ -1,0 +1,49 @@
+{
+  "minecraft": "1.10",
+  "jei": "3.7.1",
+  "base_generation": "g4-mc1.9.4",
+  "semantic_reversion_source_generation": "g3-mc1.9",
+  "target_key_count": 78,
+  "normal_key_count": 75,
+  "debug_key_count": 3,
+  "full_addon_locale_count": 63,
+  "new_translation_entries_required": 0,
+  "removed_keys": [
+    "config.jei.advanced.hideLaggyModelsEnabled",
+    "config.jei.advanced.hideLaggyModelsEnabled.comment"
+  ],
+  "semantic_reversion_keys": ["gui.jei.category.craftingTable"],
+  "semantic_reversion_rule": "Restore each addon-owned value for gui.jei.category.craftingTable from the validated G3 Minecraft 1.9 resource because the target English value is again exactly Crafting Table.",
+  "documented_full_english_fallback_locales": [
+    "gv_IM",
+    "kw_GB",
+    "se_NO",
+    "br_FR",
+    "fo_FO",
+    "fy_NL",
+    "gd_GB",
+    "ksh_DE",
+    "li_LI",
+    "so_SO"
+  ],
+  "translated_or_ai_assisted_full_locale_count": 53,
+  "full_english_fallback_locale_count": 10,
+  "upstream_missing_key_supplement_locales": [
+    "de_DE",
+    "fi_FI",
+    "fr_FR",
+    "ko_KR",
+    "ru_RU",
+    "zh_CN"
+  ],
+  "upstream_supplement_rule": "Start from the exact G4 supplement, remove keys absent from the 1.10 English target, then restore any addon-owned changed-semantic key from G3. Existing JEI 3.7.1 upstream keys must never be emitted by the addon.",
+  "special_cases": {
+    "ko_KR": "Restore gui.jei.category.craftingTable from G3: 제작대. Do not retain the G4 generic-Crafting value 제작.",
+    "ru_RU": "JEI 3.7.1 upstream owns every selected normal key except config.jei.advanced.colorSearchEnabled and its comment; supplement exactly those two.",
+    "fr_FR": "The two hideLaggyModels keys no longer exist in the target, leaving only jei.tooltip.cheat.mode missing upstream.",
+    "zh_CN": "The two hideLaggyModels keys no longer exist in the target, leaving only jei.tooltip.cheat.mode missing upstream."
+  },
+  "debug_policy": "The three upstream DEBUG description keys remain in English for all complete addon locales.",
+  "fallback_policy": "The same ten documented complete English fallback locales remain fallbacks. No new fallback locale is introduced by G5.",
+  "source_diff": "upstream/diffs/1.9.4-to-1.10.json"
+}
