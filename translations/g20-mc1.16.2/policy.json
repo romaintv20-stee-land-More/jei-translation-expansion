@@ -1,0 +1,66 @@
+{
+  "generation": "g20-mc1.16.2",
+  "minecraft": "1.16.2",
+  "jei": "7.3.2",
+  "pinned_commit": "df46cefb0ade79851101fd32b065a34115fee70c",
+  "resource_format": "json",
+  "selected_scope_count": 88,
+  "addon_full_locale_count": 67,
+  "selected_upstream_complete_locale_count": 2,
+  "selected_upstream_incomplete_locale_count": 19,
+  "documented_full_english_fallback_count": 28,
+  "translated_or_ai_assisted_full_locale_count": 39,
+  "english_diff": {
+    "unchanged_key_and_value_count": 110,
+    "added_key_count": 4,
+    "removed_key_count": 0,
+    "changed_english_value_count": 0,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 4,
+    "added_keys": [
+      "config.jei",
+      "config.jei.search.searchAdvancedTooltips",
+      "gui.jei.category.smelting.time.seconds",
+      "jei.message.ftbguilib"
+    ]
+  },
+  "translation_reuse": {
+    "rule": "Reuse a translation only when the localization key and English source value are both exactly identical.",
+    "base_generation": "g19-mc1.16.1",
+    "reuse_unchanged_g19_semantics": true,
+    "cross_key_reuse_allowed": false
+  },
+  "new_meaning_policy": {
+    "rule": "For each of the four added G20 keys, preserve pinned JEI 7.3.2 upstream translation where upstream owns the key; otherwise emit exact target English.",
+    "keys": [
+      "config.jei",
+      "config.jei.search.searchAdvancedTooltips",
+      "gui.jei.category.smelting.time.seconds",
+      "jei.message.ftbguilib"
+    ]
+  },
+  "scope_change": {
+    "selected_scope_changed": false,
+    "raw_language_count": 125,
+    "selected_scope_count": 88
+  },
+  "ownership_change": {
+    "newly_complete_upstream": ["pt_br"],
+    "complete_to_incomplete": ["ja_jp", "pl_pl"],
+    "complete_count": 2,
+    "supplement_count": 19,
+    "addon_full_count": 67
+  },
+  "upstream_policy": {
+    "preserve_existing_upstream_keys": true,
+    "emit_only_missing_normal_keys": true,
+    "emit_debug_keys_in_supplements": false,
+    "runtime_json_stack_merge_must_be_tested_before_release_jar_promotion": true
+  },
+  "fallback_policy": {
+    "unchanged_meanings": "inherit exact G19 combined value",
+    "new_meanings": "exact target English when project-owned",
+    "debug_keys_in_full_files": "exact target English",
+    "documented_full_fallback_locales": "remain exact target English"
+  }
+}
