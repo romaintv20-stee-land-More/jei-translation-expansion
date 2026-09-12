@@ -13,9 +13,13 @@ BASE_SCOPE = ROOT / "upstream" / "minecraft-1.14.4-language-scope.json"
 DIFF_PATH = ROOT / "upstream" / "diffs" / "1.14.4-to-1.15.1.json"
 PINNED_COMMIT = "381a0d7df6ffd282f9eda4da41a299fdbea02352"
 RAW_BASE = f"https://raw.githubusercontent.com/mezz/JustEnoughItems/{PINNED_COMMIT}/src/main/resources/assets/jei/lang"
-CONTENTS_URL = "https://api.github.com/repos/mezz/JustEnoughItems/contents/src/main/resources/assets/jei/lang?ref=" + PINNED_COMMIT
 VERSION_MANIFEST = "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json"
 DEBUG_PREFIX = "description.jei."
+UPSTREAM_LOCALES = (
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_au", "en_us", "es_es",
+    "fi_fi", "fr_fr", "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "nb_no",
+    "pl_pl", "pt_br", "ru_ru", "sv_se", "tr_tr", "uk_ua", "zh_cn", "zh_tw",
+)
 
 
 def fetch_bytes(url: str) -> bytes:
@@ -76,12 +80,7 @@ def main() -> int:
     if actual_counts != frozen_counts:
         errors.append(f"frozen G16->G17 diff counts {frozen_counts} differ from live endpoint {actual_counts}")
 
-    listing = fetch_json(CONTENTS_URL)
-    upstream_locales = sorted(
-        Path(item["name"]).stem.lower()
-        for item in listing
-        if item.get("type") == "file" and item.get("name", "").endswith(".json")
-    )
+    upstream_locales = list(UPSTREAM_LOCALES)
     completeness: dict[str, dict] = {}
     for locale in upstream_locales:
         values = parse_jei_json_bytes(fetch_bytes(f"{RAW_BASE}/{locale}.json"))
