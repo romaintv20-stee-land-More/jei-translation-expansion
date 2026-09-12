@@ -1,0 +1,21 @@
+{
+  "base_minecraft": "1.14.4",
+  "target_minecraft": "1.15.1",
+  "base_jei": "6.0.1",
+  "target_jei": "6.0.0",
+  "resource_format": "json",
+  "base_key_count": 109,
+  "target_key_count": 109,
+  "base_normal_key_count": 106,
+  "target_normal_key_count": 106,
+  "unchanged_key_and_value_count": 109,
+  "added_key_count": 0,
+  "removed_key_count": 0,
+  "changed_english_value_count": 0,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 0,
+  "added_keys": [],
+  "removed_keys": [],
+  "changed_english_values": {},
+  "notes": "G17 pinned English is expected to be semantically identical to G16. The audit script independently verifies all 109 parsed JEI key/value pairs against the final Minecraft 1.15.1 endpoint before scope or ownership is frozen."
+}
