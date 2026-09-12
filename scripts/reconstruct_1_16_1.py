@@ -1,0 +1,193 @@
+#!/usr/bin/env python3
+"""Reconstruct Minecraft 1.16.1 / JEI 7.0.1 JSON language resources."""
+from __future__ import annotations
+
+import argparse
+import json
+import shutil
+import tempfile
+import urllib.request
+from functools import lru_cache
+from pathlib import Path
+
+import reconstruct_1_15_2 as g18
+
+ROOT = Path(__file__).resolve().parents[1]
+BASE_SOURCE = ROOT / "upstream" / "sources" / "1.15.2" / "en_us.json"
+TARGET_SOURCE = ROOT / "upstream" / "sources" / "1.16.1" / "en_us.json"
+SCOPE_PATH = ROOT / "upstream" / "minecraft-1.16.1-language-scope.json"
+DIFF_PATH = ROOT / "upstream" / "diffs" / "1.15.2-to-1.16.1.json"
+POLICY_PATH = ROOT / "translations" / "g19-mc1.16.1" / "policy.json"
+DEFAULT_OUTPUT = ROOT / "build" / "reconstructed" / "1.16.1"
+DEBUG_PREFIX = "description.jei."
+G19_COMMIT = "0a0dbfac9c53124d82a602301d466dbf2c5e3e97"
+RAW_JSON_TEMPLATE = "https://raw.githubusercontent.com/mezz/JustEnoughItems/{commit}/src/main/resources/assets/jei/lang/{locale}.json"
+CHANGED_KEYS = {
+    "jei.tooltip.liquid.amount",
+    "jei.tooltip.liquid.amount.with.capacity",
+}
+NEW_LOCALE = "fur_it"
+
+parse_json_text = g18.parse_json_text
+parse_json = g18.parse_json
+write_json = g18.write_json
+
+
+@lru_cache(maxsize=None)
+def fetch_upstream_json(commit: str, locale: str) -> dict[str, str]:
+    url = RAW_JSON_TEMPLATE.format(commit=commit, locale=locale)
+    request = urllib.request.Request(url, headers={"User-Agent": "JEI-Translation-Expansion-G19-reconstruct"})
+    with urllib.request.urlopen(request, timeout=30) as response:
+        return parse_json_text(response.read().decode("utf-8"))
+
+
+def reconstruct_g18_full() -> dict[str, dict[str, str]]:
+    target = g18.parse_json(g18.TARGET_SOURCE)
+    scope = json.loads(g18.SCOPE_PATH.read_text(encoding="utf-8"))
+    return g18.reconstruct_full(target, scope)
+
+
+def reconstruct_g18_supplements() -> dict[str, dict[str, str]]:
+    target = g18.parse_json(g18.TARGET_SOURCE)
+    scope = json.loads(g18.SCOPE_PATH.read_text(encoding="utf-8"))
+    return g18.reconstruct_supplements(target, scope)
+
+
+def g18_selected_locales() -> set[str]:
+    scope = json.loads(g18.SCOPE_PATH.read_text(encoding="utf-8"))
+    return (
+        set(scope["addon_full_locales"])
+        | set(scope["selected_upstream_complete_locales"])
+        | set(scope["selected_upstream_incomplete_locales"])
+    )
+
+
+def g18_combined_locale(
+    locale: str,
+    full: dict[str, dict[str, str]],
+    supplements: dict[str, dict[str, str]],
+) -> dict[str, str]:
+    if locale in full:
+        return dict(full[locale])
+    if locale not in g18_selected_locales():
+        raise KeyError(locale)
+    values = dict(g18.fetch_upstream_json(g18.G18_COMMIT, locale))
+    if locale in supplements:
+        overlap = set(values) & set(supplements[locale])
+        if overlap:
+            raise ValueError(f"{locale}: G18 supplement overlaps upstream keys: {sorted(overlap)}")
+        values.update(supplements[locale])
+    return values
+
+
+def reconstruct_full(target: dict[str, str], scope: dict) -> dict[str, dict[str, str]]:
+    expected = set(scope["addon_full_locales"])
+    if len(expected) != 67:
+        raise ValueError(f"G19 expected 67 addon-owned full locales, got {len(expected)}")
+    g18_full = reconstruct_g18_full()
+    if expected - {NEW_LOCALE} != set(g18_full):
+        raise ValueError("G19 inherited addon-full locale set differs from G18")
+    result: dict[str, dict[str, str]] = {}
+    for locale in sorted(expected):
+        if locale == NEW_LOCALE:
+            result[locale] = dict(target)
+            continue
+        values = dict(g18_full[locale])
+        for key in CHANGED_KEYS:
+            values[key] = target[key]
+        result[locale] = values
+    return result
+
+
+def reconstruct_supplements(target: dict[str, str], scope: dict) -> dict[str, dict[str, str]]:
+    normal_keys = {key for key in target if not key.startswith(DEBUG_PREFIX)}
+    expected = set(scope["selected_upstream_incomplete_locales"])
+    if len(expected) != 18:
+        raise ValueError(f"G19 expected 18 supplement locales, got {len(expected)}")
+    g18_full = reconstruct_g18_full()
+    g18_supplements = reconstruct_g18_supplements()
+    result: dict[str, dict[str, str]] = {}
+    for locale in sorted(expected):
+        upstream = fetch_upstream_json(G19_COMMIT, locale)
+        missing = normal_keys - set(upstream)
+        combined = g18_combined_locale(locale, g18_full, g18_supplements)
+        values: dict[str, str] = {}
+        for key in target:
+            if key not in missing:
+                continue
+            if key in CHANGED_KEYS:
+                values[key] = target[key]
+            else:
+                values[key] = combined[key]
+        result[locale] = values
+    return result
+
+
+def reconstruct_all(output: Path, clean: bool = True) -> tuple[int, int, int]:
+    base = parse_json(BASE_SOURCE)
+    target = parse_json(TARGET_SOURCE)
+    scope = json.loads(SCOPE_PATH.read_text(encoding="utf-8"))
+    diff = json.loads(DIFF_PATH.read_text(encoding="utf-8"))
+    policy = json.loads(POLICY_PATH.read_text(encoding="utf-8"))
+
+    normal_count = len([key for key in target if not key.startswith(DEBUG_PREFIX)])
+    if (len(base), len(target), normal_count) != (110, 110, 107):
+        raise ValueError(f"G19 source counts changed: base={len(base)} target={len(target)} normal={normal_count}")
+    if set(base) != set(target):
+        raise ValueError("G19 must keep the exact G18 key set")
+    changed = {key for key in base if base[key] != target[key]}
+    if changed != CHANGED_KEYS:
+        raise ValueError(f"G19 changed unexpected English values: {sorted(changed)}")
+    if target["jei.tooltip.liquid.amount"] != "%s mB":
+        raise ValueError("G19 liquid amount target placeholder changed")
+    if target["jei.tooltip.liquid.amount.with.capacity"] != "%s / %s mB":
+        raise ValueError("G19 liquid amount-with-capacity target placeholders changed")
+    if (
+        diff["unchanged_key_and_value_count"], diff["added_key_count"],
+        diff["removed_key_count"], diff["changed_english_value_count"]
+    ) != (108, 0, 0, 2):
+        raise ValueError("G19 frozen English diff counts changed")
+    if not policy["translation_reuse"]["reuse_unchanged_g18_semantics"]:
+        raise ValueError("G19 policy must require exact G18 inheritance for unchanged meanings")
+
+    full = reconstruct_full(target, scope)
+    supplements = reconstruct_supplements(target, scope)
+    if (len(full), len(supplements), len(target)) != (67, 18, 110):
+        raise ValueError(f"G19 reconstruction counts changed: full={len(full)} supplements={len(supplements)} keys={len(target)}")
+
+    if clean and output.exists():
+        shutil.rmtree(output)
+    full_dir = output / "full" / "assets" / "jei" / "lang"
+    supplement_dir = output / "supplements" / "assets" / "jei" / "lang"
+    full_dir.mkdir(parents=True, exist_ok=True)
+    supplement_dir.mkdir(parents=True, exist_ok=True)
+    for locale, values in sorted(full.items()):
+        write_json(full_dir / f"{locale}.json", values)
+    for locale, values in sorted(supplements.items()):
+        write_json(supplement_dir / f"{locale}.json", values)
+    return len(full), len(supplements), len(target)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--check", action="store_true")
+    args = parser.parse_args()
+    if args.check:
+        with tempfile.TemporaryDirectory(prefix="jei-1.16.1-reconstruct-") as tmp:
+            full_count, supplement_count, key_count = reconstruct_all(Path(tmp))
+        print("PASS: Minecraft 1.16.1 deterministic JSON reconstruction")
+    else:
+        full_count, supplement_count, key_count = reconstruct_all(args.output)
+        print(f"Output: {args.output}")
+    print(f"Full addon locales: {full_count}")
+    print(f"Missing-key-only upstream supplements: {supplement_count}")
+    print(f"Keys per complete locale: {key_count}")
+    print("All 108 unchanged G18 semantics are inherited exactly")
+    print("Changed liquid placeholders use exact G19 target English wherever project-owned")
+    print("fur_it uses documented complete target-English fallback")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
