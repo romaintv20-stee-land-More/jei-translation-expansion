@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-12",
+  "status": "verified-source-scope-and-upstream-ownership",
+  "minecraft": "1.12.1",
+  "jei": "4.7.8",
+  "jei_upstream_branch": "1.12",
+  "jei_upstream_commit": "7f4160ed969fad85e8c4a14809c66402c51592b2",
+  "build_metadata": {
+    "forge": "14.22.0.2452",
+    "mcp_mappings": "snapshot_20170811",
+    "java_source_compatibility": "1.8",
+    "java_target_compatibility": "1.8",
+    "language_format": "lang",
+    "locale_filename_case": "lowercase",
+    "english_source_path": "src/main/resources/assets/jei/lang/en_us.lang"
+  },
+  "minecraft_asset_index": {
+    "id": "1.12",
+    "sha1": "a21e1ded1a24ea1548dd8db0cf30b6acb02655a9",
+    "url": "https://piston-meta.mojang.com/v1/packages/a21e1ded1a24ea1548dd8db0cf30b6acb02655a9/1.12.json",
+    "raw_language_count_including_en_us": 107,
+    "same_as_minecraft_1_12": true,
+    "added_codes_since_1_12": [],
+    "removed_codes_since_1_12": []
+  },
+  "jei_english": {
+    "key_count": 93,
+    "normal_key_count": 90,
+    "debug_only_key_count": 3
+  },
+  "english_diff_from_1_12": {
+    "unchanged_key_and_value_count": 93,
+    "added_key_count": 0,
+    "removed_key_count": 0,
+    "changed_english_value_count": 0,
+    "manifest": "upstream/diffs/1.12-to-1.12.1.json"
+  },
+  "jei_language_resources_changed_from_1_12_endpoint": false,
+  "jei_upstream_locale_count": 23,
+  "selected_scope_count": 80,
+  "selected_upstream_complete_locales": ["en_us", "ja_jp"],
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr",
+    "he_il", "it_it", "ko_kr", "lt_lt", "pl_pl", "pt_br", "ru_ru", "sv_se",
+    "uk_ua", "zh_cn"
+  ],
+  "upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 60,
+  "ownership_same_as_1_12": true,
+  "reconstruction_rule": "All G10 full addon locales and missing-key-only supplements are exact G9 reconstruction outputs because the English source, Minecraft asset index, JEI language resource files and ownership partition are unchanged.",
+  "validation": {
+    "live_audit_script": "scripts/audit_1_12_1.py",
+    "initial_live_audit_run": 34668208487
+  }
+}
