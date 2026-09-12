@@ -49,6 +49,16 @@ def language_codes(asset_index: dict) -> set[str]:
     } | {"en_us"}
 
 
+def language_metadata(asset_index: dict) -> dict[str, dict]:
+    obj = asset_index.get("objects", {}).get("minecraft/lang/languages.json")
+    if not obj or "hash" not in obj:
+        return {}
+    sha1 = obj["hash"]
+    url = f"https://resources.download.minecraft.net/{sha1[:2]}/{sha1}"
+    raw = fetch_json(url)
+    return {str(code).lower(): info for code, info in raw.items()}
+
+
 def main() -> int:
     errors: list[str] = []
     base = parse_lang(BASE_SOURCE)
@@ -102,6 +112,7 @@ def main() -> int:
 
     base_codes = language_codes(base_asset) if base_asset else set()
     target_codes = language_codes(target_asset) if target_asset else set()
+    target_language_metadata = language_metadata(target_asset) if target_asset else {}
     added_mc = sorted(target_codes - base_codes)
     removed_mc = sorted(base_codes - target_codes)
     missing_inherited = sorted(inherited - target_codes)
@@ -112,6 +123,7 @@ def main() -> int:
     inherited_complete = sorted(locale for locale in inherited_upstream if not completeness[locale]["missing"])
     inherited_incomplete = sorted(locale for locale in inherited_upstream if completeness[locale]["missing"])
     inherited_full = sorted(inherited - set(upstream_locales))
+    unselected_minecraft = sorted(target_codes - inherited)
 
     print("Minecraft 1.12.2 / JEI 4.16.5 final localization audit")
     print(f"Pinned commit: {PINNED_COMMIT}")
@@ -142,6 +154,13 @@ def main() -> int:
     print(f"Added codes since 1.12.1: {', '.join(added_mc) or '(none)'}")
     print(f"Removed codes since 1.12.1: {', '.join(removed_mc) or '(none)'}")
     print(f"Inherited selected scope: {len(inherited)}")
+    print(f"Unselected Minecraft codes ({len(unselected_minecraft)}):")
+    for code in unselected_minecraft:
+        info = target_language_metadata.get(code, {})
+        name = info.get("name", "?")
+        region = info.get("region", "?")
+        bidirectional = info.get("bidirectional", False)
+        print(f"  {code}: name={name!r} region={region!r} bidirectional={bidirectional}")
     print(f"Inherited selected upstream complete ({len(inherited_complete)}): {', '.join(inherited_complete)}")
     print(f"Inherited selected upstream incomplete ({len(inherited_incomplete)}): {', '.join(inherited_incomplete)}")
     print(f"Inherited addon-owned full locales ({len(inherited_full)}): {', '.join(inherited_full)}")
