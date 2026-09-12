@@ -1,0 +1,43 @@
+{
+  "generation": "g13-mc1.13.2",
+  "minecraft": "1.13.2",
+  "jei": "5.0.0",
+  "pinned_commit": "2d16f4210cbae340ad76b483b4aa8b461561e86f",
+  "resource_format": "json",
+  "selected_scope_count": 87,
+  "addon_full_locale_count": 66,
+  "selected_upstream_complete_locale_count": 2,
+  "selected_upstream_incomplete_locale_count": 19,
+  "documented_full_english_fallback_count": 27,
+  "translated_or_ai_assisted_full_locale_count": 39,
+  "new_selected_primary_languages": ["bar", "kk_kz", "moh_ca", "tt_ru"],
+  "new_full_english_fallback_locales": ["bar", "kk_kz", "moh_ca", "tt_ru"],
+  "english_diff": {
+    "unchanged_key_and_value_count": 101,
+    "added_key_count": 1,
+    "removed_key_count": 0,
+    "changed_english_value_count": 4,
+    "changed_debug_only_key_count": 1,
+    "reviewed_normal_added_or_changed_key_count": 4
+  },
+  "translation_reuse": {
+    "rule": "Reuse a translation only when the localization key and English source value are both exactly identical.",
+    "base_generation": "g12-mc1.13",
+    "unchanged_semantics_reuse_g12": true,
+    "cross_key_reuse_allowed": false,
+    "readded_toggleEditMode_reuses_older_translation": false,
+    "reason_toggleEditMode": "The G13 English value 'Toggle Hide/Edit Mode' does not exactly match the older G11 value, so target English is used when project-owned.",
+    "placeholder_changed_keys": ["gui.jei.editMode.description.hide", "gui.jei.editMode.description.hide.wild"]
+  },
+  "upstream_policy": {
+    "preserve_existing_upstream_keys": true,
+    "emit_only_missing_normal_keys": true,
+    "emit_debug_keys_in_supplements": false,
+    "runtime_json_stack_merge_must_be_tested_before_release_jar_promotion": true
+  },
+  "fallback_policy": {
+    "new_or_changed_meaning_without_exact_base_match": "exact target English",
+    "debug_keys_in_full_files": "exact target English",
+    "new_languages": "complete target English until a reliable reviewed translation exists"
+  }
+}
