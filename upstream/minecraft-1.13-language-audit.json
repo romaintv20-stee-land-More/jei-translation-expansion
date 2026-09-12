@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-12",
+  "status": "verified-source-scope-and-upstream-ownership",
+  "minecraft": "1.13",
+  "jei": "4.14.4",
+  "jei_upstream_branch": "1.13",
+  "jei_upstream_commit": "380bc11efb548abd804c65b763c911ebf9d06e2c",
+  "build_metadata": {
+    "forge": "24.0.181-1.13-pre",
+    "forge_group": "net.minecraftforge.test",
+    "mappings_channel": "snapshot",
+    "mappings_version": "20180921-1.13",
+    "java_source_compatibility": "1.8",
+    "java_target_compatibility": "1.8",
+    "language_format": "json",
+    "locale_filename_case": "lowercase",
+    "english_source_path": "src/main/resources/assets/jei/lang/en_us.json"
+  },
+  "minecraft_asset_index": {
+    "id": "1.13",
+    "sha1": "2175b85e150c64f7ed285e7624b87c18cd992497",
+    "url": "https://piston-meta.mojang.com/v1/packages/2175b85e150c64f7ed285e7624b87c18cd992497/1.13.json",
+    "raw_language_count_including_en_us": 113,
+    "previous_raw_language_count": 107,
+    "added_codes_since_1_12_2": ["brb", "enp", "enws", "ksh", "nuk", "ovd", "swg", "sxu", "szl"],
+    "removed_codes_since_1_12_2": ["de_alg", "en_ws", "ksh_de"]
+  },
+  "locale_code_migration": {
+    "ksh_de": "ksh",
+    "reason": "Minecraft 1.13 replaces the previous Kölsch locale code ksh_de with ksh; this is treated as the same selected language identity for translation inheritance."
+  },
+  "new_selected_primary_languages": ["nuk", "ovd", "szl"],
+  "new_deferred_codes": {
+    "regional_or_dialect_variants": ["brb", "swg", "sxu"],
+    "constructed_or_stylized_english": ["enp", "enws"]
+  },
+  "jei_english": {
+    "resource_format": "json",
+    "key_count": 105,
+    "normal_key_count": 102,
+    "debug_only_key_count": 3
+  },
+  "english_diff_from_1_12_2": {
+    "unchanged_key_and_value_count": 59,
+    "added_key_count": 4,
+    "removed_key_count": 14,
+    "changed_english_value_count": 42,
+    "changed_debug_only_key_count": 3,
+    "reviewed_normal_added_or_changed_key_count": 43,
+    "manifest": "upstream/diffs/1.12.2-to-1.13.json"
+  },
+  "jei_upstream_locale_count": 24,
+  "jei_upstream_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_au", "en_us", "es_es",
+    "fi_fi", "fr_fr", "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "nb_no",
+    "pl_pl", "pt_br", "ru_ru", "sv_se", "tr_tr", "uk_ua", "zh_cn", "zh_tw"
+  ],
+  "selected_scope_count": 83,
+  "selected_upstream_complete_locales": [
+    "de_de", "en_us", "fr_fr", "ja_jp", "pl_pl", "pt_br", "ru_ru", "sv_se", "zh_cn"
+  ],
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "el_gr", "es_es", "fi_fi", "he_il", "it_it",
+    "ko_kr", "lt_lt", "tr_tr", "uk_ua"
+  ],
+  "upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 62,
+  "ownership_changes_from_1_12_2": {
+    "upstream_incomplete_to_addon_full": ["hu_hu", "id_id", "no_no", "vi_vn"],
+    "upstream_incomplete_to_complete": ["de_de", "fr_fr", "ja_jp", "pl_pl", "pt_br", "ru_ru", "sv_se", "zh_cn"],
+    "remaining_upstream_incomplete": ["ar_sa", "bg_bg", "cs_cz", "el_gr", "es_es", "fi_fi", "he_il", "it_it", "ko_kr", "lt_lt", "tr_tr", "uk_ua"],
+    "locale_code_rename": {"ksh_de": "ksh"}
+  },
+  "reconstruction_policy": {
+    "same_key_same_g11_english": "Reuse the exact G11 combined-locale value.",
+    "same_key_exact_g10_english_reversion": "If G12 differs from G11 but exactly matches G10 English for the same key, reuse the exact G10 combined-locale value.",
+    "other_added_or_changed_meanings": "Use exact G12 target English fallback when project-owned and no validated exact-target upstream translation exists.",
+    "renamed_keys": "Never transfer translations across a renamed key solely because the concept is related; Tag keys do not inherit Ore Dictionary keys.",
+    "ksh_locale_rename": "Use ksh_de as the historical locale identity for ksh, subject to the same exact key + English semantic checks.",
+    "new_languages": "nuk, ovd and szl begin as documented full-English fallbacks.",
+    "debug_only": "Use exact G12 English in full addon JSON and never emit debug-only keys in supplements."
+  },
+  "validation": {
+    "live_audit_script": "scripts/audit_1_13.py",
+    "initial_live_audit_run": 34669012302
+  }
+}
