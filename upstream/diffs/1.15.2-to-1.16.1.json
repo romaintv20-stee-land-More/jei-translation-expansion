@@ -1,0 +1,30 @@
+{
+  "base_minecraft": "1.15.2",
+  "target_minecraft": "1.16.1",
+  "base_jei": "6.0.2",
+  "target_jei": "7.0.1",
+  "resource_format": "json",
+  "base_key_count": 110,
+  "target_key_count": 110,
+  "base_normal_key_count": 107,
+  "target_normal_key_count": 107,
+  "unchanged_key_and_value_count": 108,
+  "added_key_count": 0,
+  "removed_key_count": 0,
+  "changed_english_value_count": 2,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 2,
+  "added_keys": [],
+  "removed_keys": [],
+  "changed_english_values": {
+    "jei.tooltip.liquid.amount": {
+      "from": "%,d mB",
+      "to": "%s mB"
+    },
+    "jei.tooltip.liquid.amount.with.capacity": {
+      "from": "%,d / %,d mB",
+      "to": "%s / %s mB"
+    }
+  },
+  "notes": "Provisional frozen delta from the pinned sources. The G19 endpoint audit independently verifies the exact key/value delta before reconstruction; changed liquid-amount placeholders are non-reusable semantics and must use target-safe values unless exact target upstream translation exists."
+}
