@@ -1,0 +1,45 @@
+{
+  "generation": "g14-mc1.14.2",
+  "minecraft": "1.14.2",
+  "jei": "6.0.0",
+  "pinned_commit": "f1fd2f1d20cf86d9644e907a641f99873b4d8888",
+  "resource_format": "json",
+  "selected_scope_count": 91,
+  "addon_full_locale_count": 70,
+  "selected_upstream_complete_locale_count": 2,
+  "selected_upstream_incomplete_locale_count": 19,
+  "documented_full_english_fallback_count": 31,
+  "translated_or_ai_assisted_full_locale_count": 39,
+  "new_selected_primary_languages": ["ba_ru", "scn", "tl_ph", "yi_de"],
+  "new_full_english_fallback_locales": ["ba_ru", "scn", "tl_ph", "yi_de"],
+  "english_diff": {
+    "unchanged_key_and_value_count": 106,
+    "added_key_count": 3,
+    "removed_key_count": 0,
+    "changed_english_value_count": 0,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 3
+  },
+  "translation_reuse": {
+    "rule": "Reuse a translation only when the localization key and English source value are both exactly identical.",
+    "base_generation": "g13-mc1.13.2",
+    "unchanged_semantics_reuse_g13": true,
+    "cross_key_reuse_allowed": false,
+    "added_keys": [
+      "gui.jei.category.blasting",
+      "gui.jei.category.campfire",
+      "gui.jei.category.smoking"
+    ]
+  },
+  "upstream_policy": {
+    "preserve_existing_upstream_keys": true,
+    "emit_only_missing_normal_keys": true,
+    "emit_debug_keys_in_supplements": false,
+    "runtime_json_stack_merge_must_be_tested_before_release_jar_promotion": true
+  },
+  "fallback_policy": {
+    "new_meaning_without_exact_base_match": "exact target English",
+    "debug_keys_in_full_files": "exact target English",
+    "new_languages": "complete target English until a reliable reviewed translation exists"
+  }
+}
