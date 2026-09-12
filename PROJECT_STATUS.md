@@ -11,7 +11,7 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 - Existing JEI upstream locale keys are preserved. For incomplete upstream locales, emit only the exact missing normal keys unless a deliberate override is explicitly approved.
 - Preserve placeholders and fixed technical literals exactly.
 - Prefer exact target-English fallback over uncertain technical translation.
-- Constructed/novelty languages and most regional variants remain outside the selected primary-language scope.
+- Constructed/novelty languages, historical/non-primary forms, and most regional variants remain outside the selected primary-language scope unless explicitly reviewed otherwise.
 - Runtime-tested final artifacts go only to `release-jars/<minecraft-version>/`.
 - Translation/reconstruction QA does **not** imply runtime validation or release promotion.
 - Minecraft 1.13+ missing-key-only JSON supplements remain runtime merge-test-gated before release promotion.
@@ -36,6 +36,8 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G13 | 1.13.2 | 5.0.0 | `2d16f42` | 106 | 87 | 66 | 19 | 2 | `34671958137` |
 | G14 | 1.14.2 | 6.0.0 | `f1fd2f1` | 109 | 91 | 70 | 19 | 2 | `34677329178` |
 | G15 | 1.14.3 | 6.0.0 | `9e7de1d` | 109 | 91 | 70 | 18 | 3 | `34677627657` |
+| G16 | 1.14.4 | 6.0.1 | `de8b6a1` | 109 | 91 | 70 | 16 | 5 | `34678167977` |
+| G17 | 1.15.1 | 6.0.0 | `381a0d7` | 109 | 87 | 66 | 16 | 5 | `34709161680` |
 
 ## G13 — Minecraft 1.13.2 / JEI 5.0.0
 
@@ -53,112 +55,118 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 
 ## G14 — Minecraft 1.14.2 / JEI 6.0.0
 
-Endpoint:
 - pin `f1fd2f1d20cf86d9644e907a641f99873b4d8888`
-- Forge `26.0.63`
-- mappings `snapshot / 20190615-1.14.2`
-- Java 8
+- Forge `26.0.63`, mappings `snapshot / 20190615-1.14.2`, Java 8
 - JSON lowercase language resources
+- 109 keys = 106 normal + 3 debug
+- G13→G14 = 106 unchanged + 3 added cooking-category keys; no removals or changed meanings
+- Minecraft raw/selected = 126 / 91
+- selected additions: `ba_ru`, `scn`, `tl_ph`, `yi_de`
+- deferred: `es_ec`, `esan`, `isv`, `got_de`
+- ownership = 70 addon-full + 19 supplements + 2 complete upstream
+- 31 documented full-English fallbacks; 39 translated/AI-assisted full locales
+- run `34677329178` green
 
-English/source delta:
-- 109 semantic keys = 106 normal + 3 debug
-- G13→G14 = **106 unchanged, 3 added, 0 removed, 0 changed**
-- added categories: `gui.jei.category.blasting`, `gui.jei.category.campfire`, `gui.jei.category.smoking`
-- all 106 G13 semantics are exact-reuse eligible; the three new categories use exact target English when project-owned
+## G15 — Minecraft 1.14.3 / JEI 6.0.0
 
-Minecraft scope:
-- asset index id `1.14`, SHA1 `43b2f3021fe9f7d768378de95538e22da3ee8301`
-- raw language inventory = 126
-- new selected primary languages: `ba_ru`, `scn`, `tl_ph`, `yi_de`
-- deferred: regional `es_ec`, `esan`; constructed `isv`; historical/nonprimary `got_de`
-- selected scope = 91
+- pin `9e7de1d9b5115053b85ed59558f841edcb6e5414`
+- Forge `27.0.17`, mappings `snapshot / 20190630-1.14.3`, Java 8
+- same English blob as G14: `d9b1fa673aaf7ca233650da01d117b8bc9b4a76d`
+- 109/109 semantics unchanged from G14
+- same Minecraft asset index as G14: id `1.14`, SHA1 `43b2f3021fe9f7d768378de95538e22da3ee8301`
+- raw/selected = 126 / 91
+- ownership = 70 addon-full + 18 supplements + 3 complete upstream (`en_us`, `pl_pl`, `pt_br`)
+- `pt_br` supplement retired because JEI upstream becomes complete
+- run `34677627657` green
 
-Ownership:
-- 70 addon-full JSON locales
-- 19 exact missing-key-only supplements
-- 2 complete selected upstream locales: `en_us`, `pl_pl`
-- 31 documented full-English fallback locales
-- 39 inherited translated/AI-assisted full locales
+## G16 — Minecraft 1.14.4 / JEI 6.0.1
 
-G14 files:
-- `upstream/sources/1.14.2/en_us.json`
-- `upstream/diffs/1.13.2-to-1.14.2.json`
-- `upstream/minecraft-1.14.2-language-audit.json`
-- `upstream/minecraft-1.14.2-language-scope.json`
-- `translations/g14-mc1.14.2/policy.json`
-- `scripts/audit_1_14_2.py`
-- `scripts/reconstruct_1_14_2.py`
-- `scripts/validate_1_14_2_delta.py`
-- `scripts/validate_1_14_2_complete.py`
+- final branch `1.14` endpoint `de8b6a10eba45899be1c62694c9f27a435ae8c2c`
+- Forge `28.1.85`, mappings `20191105-1.14.3`, Java 8
+- same English blob as G14/G15: `d9b1fa673aaf7ca233650da01d117b8bc9b4a76d`
+- 109 keys = 106 normal + 3 debug; G15→G16 = 109 unchanged, 0 added/removed/changed
+- same Minecraft asset index as G14/G15: id `1.14`, SHA1 `43b2f3021fe9f7d768378de95538e22da3ee8301`
+- raw/selected = 126 / 91
+- ownership = 70 addon-full + 16 supplements + 5 complete upstream (`de_de`, `en_us`, `pl_pl`, `pt_br`, `ru_ru`)
+- `de_de` and `ru_ru` supplements retired because JEI upstream becomes complete
+- 31 documented full-English fallbacks; 39 translated/AI-assisted full locales
+- full G1→G16 run `34678167977` green
 
-Full G1→G14 CI run **34677329178** is green.
-
-## Latest completed milestone — G15 Minecraft 1.14.3 / JEI 6.0.0
+## Latest completed milestone — G17 Minecraft 1.15.1 / JEI 6.0.0
 
 Endpoint:
-- pin `9e7de1d9b5115053b85ed59558f841edcb6e5414`
-- Forge `27.0.17`
-- mappings `snapshot / 20190630-1.14.3`
+- final Minecraft 1.15.1 commit `381a0d7df6ffd282f9eda4da41a299fdbea02352`
+- the next commit `b674c7c1d50c4b3726790b1851b40037182067c6` explicitly transitions to Minecraft 1.15.2
+- Forge `30.0.15`
+- mappings `snapshot / 20191105-1.14.3`
 - Java 8
 - JSON lowercase language resources
 
 English/source delta:
-- upstream `en_us.json` is byte-identical to G14 (blob `d9b1fa673aaf7ca233650da01d117b8bc9b4a76d`)
-- 109 semantic keys = 106 normal + 3 debug
-- G14→G15 = **109 unchanged, 0 added, 0 removed, 0 changed**
-- no new semantic translation work; all G14 values are exact-reuse eligible
+- pinned source blob remains `d9b1fa673aaf7ca233650da01d117b8bc9b4a76d`
+- 109 keys = 106 normal + 3 debug
+- G16→G17 = **109 unchanged, 0 added, 0 removed, 0 changed**
+- all G16 semantic values are exact-reuse eligible
 
 Minecraft scope:
-- exact same asset index as G14: id `1.14`, SHA1 `43b2f3021fe9f7d768378de95538e22da3ee8301`
-- raw/selected = 126 / 91
-- no added or removed Minecraft language codes
+- asset index id `1.15`, SHA1 `58c12b1e2878e0a78719778acb803746450b3f1c`
+- raw language inventory drops from 126 to 122
+- added codes: `lmo`, `lzh`, `rpr`, `zh_hk`
+- selected new primary language: `lmo` (Lombard)
+- deferred: `lzh` (historical/literary), `rpr` (historical orthography), `zh_hk` (regional variant)
+- removed codes: `got_de`, `kab_kab`, `moh_ca`, `nuk`, `oj_ca`, `scn`, `swg`, `tzl_tzl`
+- previously selected locales removed by Minecraft: `kab_kab`, `moh_ca`, `nuk`, `oj_ca`, `scn`
+- selected scope = 87
 
-Ownership:
-- 70 addon-full JSON locales
-- 18 exact missing-key-only supplements
-- 3 complete selected upstream locales: `en_us`, `pl_pl`, `pt_br`
-- `pt_br` becomes complete upstream and its G14 supplement is retired
-- 31 documented full-English fallback locales
-- 39 translated/AI-assisted full locales
+Ownership/reconstruction:
+- 66 addon-full locales = 65 surviving G16 full locales + new `lmo`
+- 16 exact missing-key-only supplements
+- 5 complete selected upstream locales: `de_de`, `en_us`, `pl_pl`, `pt_br`, `ru_ru`
+- 27 documented full-English fallback locales; `lmo` is the new exact-English fallback
+- 39 translated/AI-assisted full locales remain intact
+- `sv_se` upstream regresses by losing `Smoking`, `Blasting`, and `Campfire Cooking`; those exact Swedish G16 upstream values are preserved in the G17 supplement instead of falling back to English
 
-G15 files:
-- `upstream/sources/1.14.3/en_us.json`
-- `upstream/diffs/1.14.2-to-1.14.3.json`
-- `upstream/minecraft-1.14.3-language-audit.json`
-- `upstream/minecraft-1.14.3-language-scope.json`
-- `translations/g15-mc1.14.3/policy.json`
-- `scripts/audit_1_14_3.py`
-- `scripts/reconstruct_1_14_3.py`
-- `scripts/validate_1_14_3_delta.py`
-- `scripts/validate_1_14_3_complete.py`
+Validation:
+- isolated endpoint audit run `34708848506` green
+- isolated full G17 audit/scope/reconstruction/QA run `34709070904` green
+- definitive full G1→G17 CI run **`34709161680`** green
+- GitHub API directory-listing dependencies were removed from G15/G16/G17 audit scripts after an anonymous API 403; pinned raw locale contents remain checked live
 
-Full G1→G15 CI run **34677627657** is green.
+G17 files:
+- `upstream/sources/1.15.1/en_us.json`
+- `upstream/diffs/1.14.4-to-1.15.1.json`
+- `upstream/minecraft-1.15.1-language-audit.json`
+- `upstream/minecraft-1.15.1-language-scope.json`
+- `translations/g17-mc1.15.1/policy.json`
+- `scripts/audit_1_15_1.py`
+- `scripts/reconstruct_1_15_1.py`
+- `scripts/validate_1_15_1_delta.py`
+- `scripts/validate_1_15_1_complete.py`
 
-## Current task — G16 Minecraft 1.14.4 / JEI 6.0.1
+## Current task — G18 Minecraft 1.15.2 / JEI 6.0.2
 
-Pinned final branch `1.14` endpoint:
-- commit `de8b6a10eba45899be1c62694c9f27a435ae8c2c`
-- Minecraft `1.14.4`
-- JEI `6.0.1`
-- Forge `28.1.85`
-- mappings `20191105-1.14.3`
-- Java 8 expected from unchanged build setup
-- JSON languages
+Historical endpoint already identified:
+- the first Minecraft 1.16 transition commit is `b6c3363868fc6cd39950d980eb5dabb143fdd8bb` (`Update JEI to 1.16 (#1988)`)
+- its parent, and therefore the final Minecraft 1.15.2 endpoint, is `1ea77203d8b731c99cea68166b02afeb3d9c6176`
+- Minecraft `1.15.2`
+- JEI `6.0.2`
+- Forge `31.1.43`
+- mappings `snapshot / 20200411-1.15.1`
+- Java 8
+- JSON lowercase language resources
+- pinned English blob SHA `1cdebf187dacca64bc4a73c73537d674e2941beb`
 
-Already verified:
-- final `en_us.json` uses the same upstream blob `d9b1fa673aaf7ca233650da01d117b8bc9b4a76d` as G14/G15
-- G15→G16 English semantics are therefore 109 unchanged, 0 added, 0 removed, 0 changed
-- `upstream/sources/1.14.4/en_us.json` and `upstream/diffs/1.14.3-to-1.14.4.json` are pinned
-- `scripts/audit_1_14_4.py` is implemented
-- audit CI has been wired and is currently running; use its final output before freezing scope/ownership
+Pre-audit observation only — not yet frozen:
+- compared with G17, the final 1.15.2 English source visibly adds `gui.jei.category.stoneCutter = "Stonecutting"`
+- exact source diff, Mojang language inventory, scope classification, and JEI upstream completeness must be verified by the G18 audit before reconstruction
 
 Immediate next steps:
-1. finish the pinned G16 audit and extract Mojang asset/language inventory plus JEI upstream completeness;
-2. freeze G16 audit/scope/policy manifests;
-3. implement deterministic G15 inheritance with ownership recomputed against JEI 6.0.1;
-4. run full G1→G16 CI;
-5. synchronize `upstream/versions.json`, `upstream/generations.json`, README, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` through G16;
-6. identify the next chronological JEI branch/version after 1.14.4.
+1. pin `upstream/sources/1.15.2/en_us.json` and exact G17→G18 diff;
+2. implement/run the pinned G18 endpoint audit against Mojang and JEI upstream;
+3. freeze G18 scope/ownership/policy;
+4. reconstruct exact reusable G17 semantics and review only genuinely new/changed meanings;
+5. add G18 delta/reconstruction/complete QA to main CI and require a green full run;
+6. synchronize `upstream/versions.json`, `upstream/generations.json`, README, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` through the latest completed generation.
 
 ## Release gates still open
 
