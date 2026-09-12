@@ -1,4 +1,4 @@
-name: Audit G20 endpoint
+name: Validate G20 endpoint
 
 on:
   push:
@@ -16,3 +16,9 @@ jobs:
           python-version: '3.12'
       - name: Audit final Minecraft 1.16.2 / JEI 7.3.2 endpoint
         run: python scripts/audit_1_16_2.py
+      - name: Validate Minecraft 1.16.2 source scope and upstream ownership
+        run: python scripts/validate_1_16_2_delta.py
+      - name: Reconstruct and verify Minecraft 1.16.2 resources
+        run: python scripts/reconstruct_1_16_2.py --check
+      - name: Validate Minecraft 1.16.2 complete resources
+        run: python scripts/validate_1_16_2_complete.py
