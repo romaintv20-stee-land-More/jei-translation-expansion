@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-09-11",
+  "last_updated": "2026-09-12",
   "upstream_repository": "mezz/JustEnoughItems",
   "audit_status": "partial",
   "versions": [
@@ -131,6 +131,40 @@
       "official_locales": ["ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_au", "en_us", "es_es", "fi_fi", "fr_fr", "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "nb_no", "pl_pl", "pt_br", "ru_ru", "sv_se", "uk_ua", "zh_cn", "zh_tw"],
       "verified": true,
       "notes": "Final endpoint of historical upstream branch 1.11. Minecraft 1.11.2 is a distinct release target from 1.11 and must receive its own JAR."
+    },
+    {
+      "branch": "1.12",
+      "audited_commit": "6bce08ef068fc0d7ce80ef07512caf85ccd4cab4",
+      "minecraft": "1.12",
+      "jei": "4.7.5",
+      "loaders": ["forge"],
+      "forge": "14.21.1.2413",
+      "mcp_mappings": "snapshot_20170714",
+      "language_format": "lang",
+      "english_source": "src/main/resources/assets/jei/lang/en_us.lang",
+      "english_key_count": 93,
+      "java_source_compatibility": "1.8",
+      "java_target_compatibility": "1.8",
+      "official_locales": ["ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_au", "en_us", "es_es", "fi_fi", "fr_fr", "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "nb_no", "pl_pl", "pt_br", "ru_ru", "sv_se", "uk_ua", "zh_cn", "zh_tw"],
+      "verified": true,
+      "notes": "Last Minecraft 1.12 endpoint immediately before e1a1524c9cd9ce17f847be468dcd58950fa10f9f updates the branch to Minecraft 1.12.1. G9 expands the selected project scope to 80 real-world languages."
+    },
+    {
+      "branch": "1.12",
+      "audited_commit": "7f4160ed969fad85e8c4a14809c66402c51592b2",
+      "minecraft": "1.12.1",
+      "jei": "4.7.8",
+      "loaders": ["forge"],
+      "forge": "14.22.0.2452",
+      "mcp_mappings": "snapshot_20170811",
+      "language_format": "lang",
+      "english_source": "src/main/resources/assets/jei/lang/en_us.lang",
+      "english_key_count": 93,
+      "java_source_compatibility": "1.8",
+      "java_target_compatibility": "1.8",
+      "official_locales": ["ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_au", "en_us", "es_es", "fi_fi", "fr_fr", "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "nb_no", "pl_pl", "pt_br", "ru_ru", "sv_se", "uk_ua", "zh_cn", "zh_tw"],
+      "verified": true,
+      "notes": "Last Minecraft 1.12.1 endpoint immediately before a339af3fceb142be5398ef856f81e3c89413349e updates the branch to Minecraft 1.12.2. Minecraft 1.12.1 reuses the exact 1.12 asset index and JEI language resources, so G10 is exact G9 localization inheritance."
     },
     {
       "branch": "26.2",
