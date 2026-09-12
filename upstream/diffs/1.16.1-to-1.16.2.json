@@ -1,0 +1,26 @@
+{
+  "base_minecraft": "1.16.1",
+  "target_minecraft": "1.16.2",
+  "base_jei": "7.0.1",
+  "target_jei": "7.3.2",
+  "resource_format": "json",
+  "base_key_count": 110,
+  "target_key_count": 114,
+  "base_normal_key_count": 107,
+  "target_normal_key_count": 111,
+  "unchanged_key_and_value_count": 110,
+  "added_key_count": 4,
+  "removed_key_count": 0,
+  "changed_english_value_count": 0,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 4,
+  "added_keys": [
+    "config.jei",
+    "config.jei.search.searchAdvancedTooltips",
+    "gui.jei.category.smelting.time.seconds",
+    "jei.message.ftbguilib"
+  ],
+  "removed_keys": [],
+  "changed_english_values": {},
+  "notes": "Provisional frozen delta from pinned G19/G20 sources. The G20 endpoint audit independently verifies exact key/value counts and sets before reconstruction. New project-owned meanings use exact target-English fallback unless exact pinned upstream translation exists."
+}
