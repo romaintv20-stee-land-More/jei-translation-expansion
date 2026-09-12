@@ -1,0 +1,25 @@
+{
+  "base_minecraft": "1.13.2",
+  "target_minecraft": "1.14.2",
+  "base_jei": "5.0.0",
+  "target_jei": "6.0.0",
+  "resource_format": "json",
+  "base_key_count": 106,
+  "target_key_count": 109,
+  "base_normal_key_count": 103,
+  "target_normal_key_count": 106,
+  "unchanged_key_and_value_count": 106,
+  "added_key_count": 3,
+  "removed_key_count": 0,
+  "changed_english_value_count": 0,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 3,
+  "added_keys": [
+    "gui.jei.category.blasting",
+    "gui.jei.category.campfire",
+    "gui.jei.category.smoking"
+  ],
+  "removed_keys": [],
+  "changed_english_values": {},
+  "notes": "G14 is an additive JSON delta. All 106 G13 semantic key/value pairs are unchanged and eligible for exact inheritance. The three new 1.14 cooking categories use exact target English whenever the project owns the missing value."
+}
