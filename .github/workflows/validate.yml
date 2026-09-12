@@ -75,3 +75,9 @@ jobs:
         run: python scripts/validate_1_12_complete.py
       - name: Audit Minecraft 1.12.1 / JEI 4.7.8 endpoint
         run: python scripts/audit_1_12_1.py
+      - name: Validate Minecraft 1.12.1 source scope and upstream ownership
+        run: python scripts/validate_1_12_1_delta.py
+      - name: Reconstruct and verify Minecraft 1.12.1 resources
+        run: python scripts/reconstruct_1_12_1.py --check
+      - name: Validate Minecraft 1.12.1 complete resources
+        run: python scripts/validate_1_12_1_complete.py
