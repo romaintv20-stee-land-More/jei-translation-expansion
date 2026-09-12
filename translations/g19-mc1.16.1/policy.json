@@ -1,0 +1,56 @@
+{
+  "generation": "g19-mc1.16.1",
+  "minecraft": "1.16.1",
+  "jei": "7.0.1",
+  "pinned_commit": "0a0dbfac9c53124d82a602301d466dbf2c5e3e97",
+  "resource_format": "json",
+  "selected_scope_count": 88,
+  "addon_full_locale_count": 67,
+  "selected_upstream_complete_locale_count": 3,
+  "selected_upstream_incomplete_locale_count": 18,
+  "documented_full_english_fallback_count": 28,
+  "translated_or_ai_assisted_full_locale_count": 39,
+  "english_diff": {
+    "unchanged_key_and_value_count": 108,
+    "added_key_count": 0,
+    "removed_key_count": 0,
+    "changed_english_value_count": 2,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 2,
+    "changed_keys": ["jei.tooltip.liquid.amount", "jei.tooltip.liquid.amount.with.capacity"]
+  },
+  "translation_reuse": {
+    "rule": "Reuse a translation only when the localization key and English source value are both exactly identical.",
+    "base_generation": "g18-mc1.15.2",
+    "reuse_unchanged_g18_semantics": true,
+    "cross_key_reuse_allowed": false
+  },
+  "changed_meaning_policy": {
+    "jei.tooltip.liquid.amount": "Placeholder changed from %,d to %s. Preserve pinned G19 upstream value where upstream owns it; otherwise use exact target English '%s mB'.",
+    "jei.tooltip.liquid.amount.with.capacity": "Placeholders changed from %,d/%,d to %s/%s. Preserve pinned G19 upstream value where upstream owns it; otherwise use exact target English '%s / %s mB'."
+  },
+  "scope_change": {
+    "new_selected_primary_languages": ["fur_it"],
+    "deferred_regional_or_dialect_variants": ["swg"],
+    "deferred_constructed_languages": ["tok"]
+  },
+  "ownership_change": {
+    "new_addon_full_locales": ["fur_it"],
+    "complete_count": 3,
+    "supplement_count": 18,
+    "addon_full_count": 67
+  },
+  "upstream_policy": {
+    "preserve_existing_upstream_keys": true,
+    "emit_only_missing_normal_keys": true,
+    "emit_debug_keys_in_supplements": false,
+    "runtime_json_stack_merge_must_be_tested_before_release_jar_promotion": true
+  },
+  "fallback_policy": {
+    "unchanged_meanings": "inherit exact G18 combined value",
+    "changed_liquid_placeholder_meanings": "exact target English when project-owned",
+    "new_friulian_full_locale": "exact target English until validated translation is available",
+    "debug_keys_in_full_files": "exact target English",
+    "documented_full_fallback_locales": "remain exact target English"
+  }
+}
