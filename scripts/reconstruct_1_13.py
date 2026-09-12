@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 import tempfile
 import urllib.request
@@ -26,6 +27,14 @@ G12_COMMIT = "380bc11efb548abd804c65b763c911ebf9d06e2c"
 RAW_JSON_TEMPLATE = "https://raw.githubusercontent.com/mezz/JustEnoughItems/{commit}/src/main/resources/assets/jei/lang/{locale}.json"
 LOCALE_ALIASES = {"ksh": "ksh_de"}
 NEW_G12_LANGUAGES = {"nuk", "ovd", "szl"}
+PLACEHOLDER_RE = re.compile(r"%(?:MODNAME|CTRL|,d|\d+\$[sdif]|[sdif]|%)")
+TECHNICAL_TOKENS = (
+    "JEI",
+    "Minecraft",
+    "/give",
+    "modId[:name[:meta]]",
+    "mB",
+)
 
 
 def parse_lang(path: Path) -> dict[str, str]:
@@ -122,6 +131,16 @@ def historical_locale(locale: str) -> str:
     return LOCALE_ALIASES.get(locale, locale)
 
 
+def safe_historical_candidate(target_value: str, candidate: str) -> bool:
+    """Reject inherited values that lose runtime placeholders or fixed technical literals."""
+    if sorted(PLACEHOLDER_RE.findall(target_value)) != sorted(PLACEHOLDER_RE.findall(candidate)):
+        return False
+    for token in TECHNICAL_TOKENS:
+        if token in target_value and token not in candidate:
+            return False
+    return True
+
+
 def resolve_historical_value(
     locale: str,
     key: str,
@@ -139,12 +158,12 @@ def resolve_historical_value(
     source_locale = historical_locale(locale)
     if source_locale in g11_selected_locales() and base.get(key) == target_value:
         combined = g11_combined_locale(source_locale, g11_full, g11_supplements)
-        if key in combined:
+        if key in combined and safe_historical_candidate(target_value, combined[key]):
             return combined[key], "g11-exact-semantic"
 
     if source_locale in g10_selected_locales() and historical.get(key) == target_value:
         combined = g11.g10_combined_locale(source_locale, g10_full, g10_supplements)
-        if key in combined:
+        if key in combined and safe_historical_candidate(target_value, combined[key]):
             return combined[key], "g10-exact-semantic-reversion"
 
     return target_value, "target-English"
@@ -319,6 +338,7 @@ def main() -> int:
     print(f"Keys per complete locale: {key_count}")
     print("Resource format: JSON")
     print("Exact semantics reuse G11 first, then exact G10 semantic reversions")
+    print("Historical values that lose placeholders/technical literals are rejected")
     print("Other changed/new project-owned meanings use target-English fallback")
     return 0
 
