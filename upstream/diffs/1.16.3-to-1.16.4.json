@@ -1,0 +1,21 @@
+{
+  "base_minecraft": "1.16.3",
+  "target_minecraft": "1.16.4",
+  "base_jei": "7.6.0",
+  "target_jei": "7.6.1",
+  "resource_format": "json",
+  "base_key_count": 114,
+  "target_key_count": 114,
+  "base_normal_key_count": 111,
+  "target_normal_key_count": 111,
+  "unchanged_key_and_value_count": 114,
+  "added_key_count": 0,
+  "removed_key_count": 0,
+  "changed_english_value_count": 0,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 0,
+  "added_keys": [],
+  "removed_keys": [],
+  "changed_english_values": {},
+  "notes": "Provisional frozen delta from byte-identical pinned G21/G22 English sources. The G22 endpoint audit independently verifies exact source equality, Minecraft language inventory, and JEI upstream ownership before reconstruction."
+}
