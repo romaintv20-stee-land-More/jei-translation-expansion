@@ -1,0 +1,21 @@
+{
+  "base_minecraft": "1.14.2",
+  "target_minecraft": "1.14.3",
+  "base_jei": "6.0.0",
+  "target_jei": "6.0.0",
+  "resource_format": "json",
+  "base_key_count": 109,
+  "target_key_count": 109,
+  "base_normal_key_count": 106,
+  "target_normal_key_count": 106,
+  "unchanged_key_and_value_count": 109,
+  "added_key_count": 0,
+  "removed_key_count": 0,
+  "changed_english_value_count": 0,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 0,
+  "added_keys": [],
+  "removed_keys": [],
+  "changed_english_values": {},
+  "notes": "G15 English is byte-identical to G14. All 109 semantic key/value pairs are eligible for exact inheritance; only upstream locale ownership changes because pt_br becomes complete upstream."
+}
