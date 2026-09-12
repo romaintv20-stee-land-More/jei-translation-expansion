@@ -32,80 +32,77 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G10 | 1.12.1 | 4.7.8 | `7f4160e` | 93 | 80 | 60 | 18 | 2 | `34668344181` |
 | G11 | 1.12.2 | 4.16.5 | `f98331a` | 115 | 80 | 55 | 24 | 1 | `34668803121` |
 | G12 | 1.13 | 4.14.4 | `380bc11` | 105 | 83 | 62 | 12 | 9 | `34671542080` |
+| G13 | 1.13.2 | 5.0.0 | `2d16f42` | 106 | 87 | 66 | 19 | 2 | `34671958137` |
 
-## Latest completed milestone — G12 Minecraft 1.13
+## Latest completed milestone — G13 Minecraft 1.13.2
 
 Endpoint:
-- Minecraft `1.13`
-- JEI `4.14.4`
-- commit `380bc11efb548abd804c65b763c911ebf9d06e2c`
-- Forge `24.0.181-1.13-pre`, group `net.minecraftforge.test`
-- mappings `snapshot` / `20180921-1.13`
-- Java 8
-- language format **JSON**, lowercase locale filenames
-
-Source/diff:
-- `upstream/sources/1.13/en_us.json`
-- 105 semantic keys = 102 normal + 3 debug
-- G11→G12 = 59 unchanged, 4 added, 14 removed, 42 changed
-- 43 normal added/changed meanings reviewed
-- `upstream/diffs/1.12.2-to-1.13.json`
-
-Minecraft scope:
-- asset SHA `2175b85e150c64f7ed285e7624b87c18cd992497`
-- raw language inventory = 113
-- runtime locale rename `ksh_de` → `ksh`
-- new selected primary languages: `nuk`, `ovd`, `szl`
-- selected project scope = 83
-
-Ownership:
-- 62 addon-owned full JSON locales
-- 12 exact missing-key-only JSON supplements
-- 9 selected locales complete upstream
-- 23 documented complete-English fallback locales
-- 39 translated/AI-assisted addon-full locales
-
-Reconstruction policy:
-1. Reuse exact G11 combined value only when key + English value are identical.
-2. If G12 differs from G11 but exactly returns to the same key/value found in G10, reuse the exact G10 combined value.
-3. Otherwise use exact G12 English for project-owned missing meanings.
-4. Never reuse across renamed keys; Tag keys do not inherit Ore Dictionary keys.
-5. Reject historical values that lose placeholders or fixed literals such as `JEI`, `Minecraft`, `/give`, `mB`, or required format tokens.
-
-Scripts:
-- `scripts/audit_1_13.py`
-- `scripts/reconstruct_1_13.py`
-- `scripts/validate_1_13_delta.py`
-- `scripts/validate_1_13_complete.py`
-
-Full G1→G12 CI run **34671542080** is green.
-
-## Current task — G13 Minecraft 1.13.2
-
-The upstream `1.13` branch jumps directly from 1.13 to 1.13.2 at transition commit `a05771ea4ff870381302afe76d5c2298e0a1efe8`. No distinct 1.13.1 JEI endpoint has been found.
-
-Previously observed final branch HEAD candidate:
-`2d16f4210cbae340ad76b483b4aa8b461561e86f`
-
-Previously observed build metadata at that candidate:
 - Minecraft `1.13.2`
 - JEI `5.0.0`
-- Forge `25.0.85`
-- Forge group `net.minecraftforge`
-- MCP mappings `20180921-1.13`
+- final branch `1.13` HEAD `2d16f4210cbae340ad76b483b4aa8b461561e86f`
+- Forge `25.0.85`, group `net.minecraftforge`
+- mappings `snapshot` / `20180921-1.13`
+- Java 8
+- JSON languages, lowercase locale filenames
+
+English source/diff:
+- `upstream/sources/1.13.2/en_us.json`
+- 106 semantic keys = 103 normal + 3 debug
+- G12→G13 = 101 unchanged, 1 added, 0 removed, 4 changed
+- 1 changed key is debug-only; 4 normal added/changed meanings are reviewed
+- `upstream/diffs/1.13-to-1.13.2.json`
+
+Minecraft scope:
+- asset index id `1.13.1`
+- asset SHA `a8ef90d58d4a170f85e3439470c99c25aa8e988b`
+- raw language inventory = 118
+- new selected primary languages: `bar`, `kk_kz`, `moh_ca`, `tt_ru`
+- `fra_de` deferred as a regional/dialect German variety
+- selected scope = 87
+
+Ownership:
+- 66 addon-owned full JSON locales
+- 19 exact missing-key-only JSON supplements
+- 2 complete selected upstream locales: `en_us`, `pl_pl`
+- seven G12-complete upstream locales (`de_de`, `fr_fr`, `ja_jp`, `pt_br`, `ru_ru`, `sv_se`, `zh_cn`) become supplements because JEI 5.0.0 lacks only the re-added `key.jei.toggleEditMode`
+- 27 documented complete-English fallback locales
+- 39 translated/AI-assisted addon-full locales
+
+Semantic/reconstruction rules:
+1. Reuse the 101 G12 values only when key + English value are exactly unchanged.
+2. `key.jei.toggleEditMode` uses target English when project-owned; its G13 English does not exactly match the older G11 value.
+3. `gui.jei.editMode.description.hide` and `.hide.wild` changed from literal `%CTRL` to runtime placeholder `%s`; no G12 value may be reused.
+4. Changed/new project-owned meanings use exact target English fallback.
+5. Supplements remain missing-key-only and never override upstream-owned JEI keys.
+
+G13 files:
+- `scripts/audit_1_13_2.py`
+- `scripts/reconstruct_1_13_2.py`
+- `scripts/validate_1_13_2_delta.py`
+- `scripts/validate_1_13_2_complete.py`
+- `upstream/minecraft-1.13.2-language-audit.json`
+- `upstream/minecraft-1.13.2-language-scope.json`
+- `translations/g13-mc1.13.2/policy.json`
+
+Full G1→G13 CI run **34671958137** is green.
+
+## Current task — Minecraft 1.14.x
+
+Historical upstream branch `1.14` currently ends at:
+- HEAD `de8b6a10eba45899be1c62694c9f27a435ae8c2c`
+- Minecraft `1.14.4`
+- JEI `6.0.1`
+- Forge `28.1.85`
+- mappings `20191105-1.14.3`
 - JSON languages
 
-### Immediate next actions
-
-1. Re-verify branch `1.13` HEAD and final 1.13.2 build metadata.
-2. Pin final `en_us.json` and compute exact G12→G13 semantic diff.
-3. Audit Minecraft 1.13.2 asset index and language inventory/scope changes.
-4. Audit final JEI JSON locale ownership/completeness.
-5. Freeze `upstream/minecraft-1.13.2-language-audit.json`, scope, diff and G13 policy.
-6. Add deterministic reconstruction + QA to CI and obtain a green run.
-7. Update canonical manifests/docs, then continue chronologically.
+Do **not** assume the whole branch is one Minecraft target. Immediate next work:
+1. inspect branch history for transitions among 1.14 / 1.14.1 / 1.14.2 / 1.14.3 / 1.14.4;
+2. pin the last commit for each actual Minecraft version represented by JEI;
+3. start the next chronological generation from the earliest real endpoint after 1.13.2;
+4. audit English diff, Mojang language inventory, JEI ownership, reconstruction and CI for each endpoint separately.
 
 ## Release gates still open
 
-- Minecraft 1.8.9 prototype JAR has not yet received the required real client runtime validation.
+- Minecraft 1.8.9 prototype JAR still requires a real client runtime validation.
 - Minecraft 1.13+ missing-key-only JSON supplements require a real runtime resource-stack merge test before promotion to their version-specific release JAR.
