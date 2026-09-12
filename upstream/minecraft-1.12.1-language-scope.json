@@ -1,0 +1,50 @@
+{
+  "minecraft_version": "1.12.1",
+  "jei_version": "4.7.8",
+  "upstream_commit": "7f4160ed969fad85e8c4a14809c66402c51592b2",
+  "base_scope_manifest": "upstream/minecraft-1.12-language-scope.json",
+  "minecraft_asset_index_same_as_1_12": true,
+  "raw_language_count": 107,
+  "selected_scope_count": 80,
+  "selected_scope_changed_from_1_12": false,
+  "runtime_locale_filename_case": "lowercase",
+  "selected_upstream_locale_count": 20,
+  "selected_upstream_complete_locales": ["en_us", "ja_jp"],
+  "selected_upstream_complete_locale_count": 2,
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr",
+    "he_il", "it_it", "ko_kr", "lt_lt", "pl_pl", "pt_br", "ru_ru", "sv_se",
+    "uk_ua", "zh_cn"
+  ],
+  "selected_upstream_incomplete_locale_count": 18,
+  "jei_upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 60,
+  "addon_full_locales": [
+    "af_za", "ast_es", "az_az", "be_by", "br_fr", "bs_ba", "ca_es", "cy_gb",
+    "da_dk", "eo_uy", "et_ee", "eu_es", "fa_ir", "fil_ph", "fo_fo", "fy_nl",
+    "ga_ie", "gd_gb", "gl_es", "gv_im", "haw_us", "hi_in", "hr_hr", "hu_hu",
+    "hy_am", "id_id", "ig_ng", "is_is", "ka_ge", "kab_kab", "kn_in", "ksh_de",
+    "kw_gb", "la_la", "lb_lu", "li_li", "lv_lv", "mi_nz", "mk_mk", "mn_mn",
+    "ms_my", "mt_mt", "nds_de", "nl_nl", "no_no", "oc_fr", "oj_ca", "ro_ro",
+    "se_no", "sk_sk", "sl_si", "so_so", "sq_al", "sr_sp", "ta_in", "th_th",
+    "tr_tr", "vec_it", "vi_vn", "yo_ng"
+  ],
+  "documented_full_english_fallback_locales": [
+    "br_fr", "bs_ba", "fo_fo", "fy_nl", "gd_gb", "gv_im", "haw_us", "ig_ng",
+    "kab_kab", "kn_in", "ksh_de", "kw_gb", "li_li", "mn_mn", "oj_ca", "se_no",
+    "so_so", "ta_in", "vec_it", "yo_ng"
+  ],
+  "documented_full_english_fallback_count": 20,
+  "translated_or_ai_assisted_full_locale_count": 40,
+  "translation_delta": {
+    "base_generation": "g9-mc1.12",
+    "unchanged_key_and_english_value_count": 93,
+    "added_key_count": 0,
+    "changed_english_value_count": 0,
+    "removed_key_count": 0,
+    "new_semantic_translation_entry_count": 0
+  },
+  "ownership_change_from_g9": "none",
+  "source_audit": "upstream/minecraft-1.12.1-language-audit.json",
+  "english_diff": "upstream/diffs/1.12-to-1.12.1.json"
+}
