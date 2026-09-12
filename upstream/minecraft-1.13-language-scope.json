@@ -1,0 +1,80 @@
+{
+  "minecraft_version": "1.13",
+  "jei_version": "4.14.4",
+  "upstream_commit": "380bc11efb548abd804c65b763c911ebf9d06e2c",
+  "base_scope_manifest": "upstream/minecraft-1.12.2-language-scope.json",
+  "raw_language_count": 113,
+  "selected_scope_count": 83,
+  "selected_scope_changed_from_1_12_2": true,
+  "runtime_locale_filename_case": "lowercase",
+  "resource_format": "json",
+  "selected_locale_code_renames": {"ksh_de": "ksh"},
+  "new_selected_primary_languages": ["nuk", "ovd", "szl"],
+  "new_selected_primary_language_count": 3,
+  "deferred_minecraft_codes": {
+    "regional_or_orthographic_variants": [
+      "brb", "de_at", "de_ch", "en_au", "en_ca", "en_gb", "en_nz",
+      "es_ar", "es_cl", "es_mx", "es_uy", "es_ve", "fr_ca", "nl_be",
+      "nn_no", "pt_pt", "swg", "sxu", "val_es", "zh_tw"
+    ],
+    "constructed_languages": ["enp", "io_en", "jbo_en", "tzl_tzl"],
+    "novelty_or_fictional_styles": ["en_pt", "en_ud", "enws", "lol_us", "qya_aa", "tlh_aa"]
+  },
+  "selected_upstream_locale_count": 21,
+  "selected_upstream_complete_locales": [
+    "de_de", "en_us", "fr_fr", "ja_jp", "pl_pl", "pt_br", "ru_ru", "sv_se", "zh_cn"
+  ],
+  "selected_upstream_complete_locale_count": 9,
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "el_gr", "es_es", "fi_fi", "he_il", "it_it",
+    "ko_kr", "lt_lt", "tr_tr", "uk_ua"
+  ],
+  "selected_upstream_incomplete_locale_count": 12,
+  "jei_upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 62,
+  "addon_full_locales": [
+    "af_za", "ast_es", "az_az", "be_by", "br_fr", "bs_ba", "ca_es", "cy_gb",
+    "da_dk", "eo_uy", "et_ee", "eu_es", "fa_ir", "fil_ph", "fo_fo", "fy_nl",
+    "ga_ie", "gd_gb", "gl_es", "gv_im", "haw_us", "hi_in", "hr_hr", "hu_hu",
+    "hy_am", "id_id", "ig_ng", "is_is", "ka_ge", "kab_kab", "kn_in", "ksh",
+    "kw_gb", "la_la", "lb_lu", "li_li", "lv_lv", "mi_nz", "mk_mk", "mn_mn",
+    "ms_my", "mt_mt", "nds_de", "nl_nl", "no_no", "nuk", "oc_fr", "oj_ca",
+    "ovd", "ro_ro", "se_no", "sk_sk", "sl_si", "so_so", "sq_al", "sr_sp",
+    "szl", "ta_in", "th_th", "vec_it", "vi_vn", "yo_ng"
+  ],
+  "documented_full_english_fallback_locales": [
+    "br_fr", "bs_ba", "fo_fo", "fy_nl", "gd_gb", "gv_im", "haw_us", "ig_ng",
+    "kab_kab", "kn_in", "ksh", "kw_gb", "li_li", "mn_mn", "nuk", "oj_ca",
+    "ovd", "se_no", "so_so", "szl", "ta_in", "vec_it", "yo_ng"
+  ],
+  "documented_full_english_fallback_count": 23,
+  "translated_or_ai_assisted_full_locale_count": 39,
+  "translation_delta": {
+    "base_generation": "g11-mc1.12.2",
+    "historical_reversion_generation": "g10-mc1.12.1",
+    "unchanged_key_and_english_value_count": 59,
+    "added_key_count": 4,
+    "changed_english_value_count": 42,
+    "changed_debug_only_key_count": 3,
+    "removed_key_count": 14,
+    "reviewed_normal_added_or_changed_key_count": 43,
+    "project_owned_nonreusable_meanings_use_target_english_fallback": true
+  },
+  "ownership_changes_from_g11": {
+    "upstream_incomplete_to_addon_full": ["hu_hu", "id_id", "no_no", "vi_vn"],
+    "upstream_incomplete_to_complete": ["de_de", "fr_fr", "ja_jp", "pl_pl", "pt_br", "ru_ru", "sv_se", "zh_cn"],
+    "remaining_complete": ["en_us"],
+    "locale_code_rename": {"ksh_de": "ksh"}
+  },
+  "upstream_supplement_policy": {
+    "preserve_existing_upstream_keys": true,
+    "supplement_only_exact_missing_normal_keys": true,
+    "reuse_exact_g11_semantics": true,
+    "reuse_exact_g10_semantic_reversions": true,
+    "other_added_or_changed_meanings_use_target_english_fallback": true,
+    "never_emit_upstream_owned_key": true,
+    "runtime_merge_requires_validation_before_jar_promotion": true
+  },
+  "source_audit": "upstream/minecraft-1.13-language-audit.json",
+  "english_diff": "upstream/diffs/1.12.2-to-1.13.json"
+}
