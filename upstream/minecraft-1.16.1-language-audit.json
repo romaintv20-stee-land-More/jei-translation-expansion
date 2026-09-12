@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-12",
+  "status": "verified-source-scope-and-upstream-ownership",
+  "minecraft": "1.16.1",
+  "jei": "7.0.1",
+  "jei_upstream_branch": "1.16",
+  "jei_upstream_commit": "0a0dbfac9c53124d82a602301d466dbf2c5e3e97",
+  "build_metadata": {
+    "forge": "32.0.47",
+    "forge_group": "net.minecraftforge",
+    "mappings_channel": "snapshot",
+    "mappings_version": "20200514-1.16",
+    "java_source_compatibility": "1.8",
+    "java_target_compatibility": "1.8",
+    "language_format": "json",
+    "locale_filename_case": "lowercase",
+    "english_source_path": "src/main/resources/assets/jei/lang/en_us.json"
+  },
+  "minecraft_asset_index": {
+    "id": "1.16",
+    "sha1": "f3c4aa96e12951cd2781b3e1c0e8ab82bf719cf2",
+    "url": "https://piston-meta.mojang.com/v1/packages/f3c4aa96e12951cd2781b3e1c0e8ab82bf719cf2/1.16.json",
+    "raw_language_count_including_en_us": 125,
+    "previous_raw_language_count": 122,
+    "added_codes_since_1.15.2": ["fur_it", "swg", "tok"],
+    "removed_codes_since_1.15.2": [],
+    "inherited_selected_codes_absent": []
+  },
+  "jei_english": {
+    "resource_format": "json",
+    "key_count": 110,
+    "normal_key_count": 107,
+    "debug_only_key_count": 3,
+    "pinned_blob_sha": "a0af1c7ea689ae0d34da4c5680c4109c6911a1a7"
+  },
+  "english_diff_from_1.15.2": {
+    "unchanged_key_and_value_count": 108,
+    "added_key_count": 0,
+    "removed_key_count": 0,
+    "changed_english_value_count": 2,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 2,
+    "changed_keys": ["jei.tooltip.liquid.amount", "jei.tooltip.liquid.amount.with.capacity"],
+    "manifest": "upstream/diffs/1.15.2-to-1.16.1.json"
+  },
+  "jei_upstream_locale_count": 24,
+  "jei_upstream_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_au", "en_us", "es_es",
+    "fi_fi", "fr_fr", "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "nb_no",
+    "pl_pl", "pt_br", "ru_ru", "sv_se", "tr_tr", "uk_ua", "zh_cn", "zh_tw"
+  ],
+  "selected_scope_count": 88,
+  "selected_upstream_complete_locales": ["en_us", "ja_jp", "pl_pl"],
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr",
+    "he_il", "it_it", "ko_kr", "lt_lt", "pt_br", "ru_ru", "sv_se", "tr_tr",
+    "uk_ua", "zh_cn"
+  ],
+  "upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 67,
+  "scope_changes_from_1.15.2": {
+    "new_selected_primary_languages": ["fur_it"],
+    "new_deferred_regional_or_dialect_variants": ["swg"],
+    "new_deferred_constructed_languages": ["tok"]
+  },
+  "ownership_changes_from_1.15.2": {
+    "new_addon_full_locales": ["fur_it"],
+    "complete_count": 3,
+    "supplement_count": 18,
+    "addon_full_count": 67
+  },
+  "reconstruction_policy": {
+    "unchanged_meanings": "Reuse exact G18 combined-locale values for all 108 unchanged key/value pairs.",
+    "changed_liquid_placeholders": "Do not reuse G18 locale values for the two changed liquid amount keys; use exact target English where project-owned and preserve pinned G19 upstream values where upstream owns the keys.",
+    "new_friulian_locale": "Use exact target English for the complete fur_it addon resource until validated translation is available.",
+    "upstream_supplements": "Emit only exact missing normal keys and never override a pinned G19 upstream key.",
+    "debug_only": "Use exact target English in full addon JSON and never emit debug-only keys in supplements."
+  },
+  "validation": {
+    "live_audit_script": "scripts/audit_1_16_1.py",
+    "isolated_live_audit_run": 34712048789,
+    "isolated_live_audit_job": 103602447050
+  }
+}
