@@ -44,8 +44,7 @@
       "java_source_compatibility": "1.7",
       "java_target_compatibility": "1.7",
       "official_locales": ["de_DE", "en_US", "fi_FI", "fr_FR", "ko_KR", "nb_NO", "ru_RU", "zh_CN"],
-      "verified": true,
-      "notes": "The branch later transitions to Minecraft 1.9.4. This Minecraft 1.9 endpoint is deliberately pinned to the last 1.9 commit immediately before transition commit d6b11a003a4a10702a36f8a97fa28cae883c9360."
+      "verified": true
     },
     {
       "branch": "1.9",
@@ -61,8 +60,7 @@
       "java_source_compatibility": "1.7",
       "java_target_compatibility": "1.7",
       "official_locales": ["de_DE", "en_US", "fi_FI", "fr_FR", "ko_KR", "nb_NO", "ru_RU", "zh_CN"],
-      "verified": true,
-      "notes": "This is the current HEAD of the historical upstream branch 1.9 and is explicitly Minecraft 1.9.4 / JEI 3.6.8. It is a separate release target from Minecraft 1.9 and must receive its own JAR."
+      "verified": true
     },
     {
       "branch": "1.10",
@@ -78,8 +76,7 @@
       "java_source_compatibility": "1.7",
       "java_target_compatibility": "1.7",
       "official_locales": ["de_DE", "en_US", "fi_FI", "fr_FR", "ko_KR", "nb_NO", "ru_RU", "zh_CN"],
-      "verified": true,
-      "notes": "This commit is the last Minecraft 1.10 endpoint immediately before c88aa6c5c078586fa23abaa83309d293cd72ea61 updates the branch to Minecraft 1.10.2. It is a distinct target/JAR lineage."
+      "verified": true
     },
     {
       "branch": "1.10",
@@ -95,8 +92,7 @@
       "java_source_compatibility": "1.6",
       "java_target_compatibility": "1.6",
       "official_locales": ["ar_SA", "bg_BG", "cs_CZ", "de_DE", "el_GR", "en_AU", "en_US", "es_ES", "fi_FI", "fr_FR", "he_IL", "it_IT", "ja_JP", "ko_KR", "lt_LT", "nb_NO", "pl_PL", "pt_BR", "ru_RU", "sv_SE", "uk_UA", "zh_CN", "zh_TW"],
-      "verified": true,
-      "notes": "Final endpoint of historical upstream branch 1.10. Minecraft 1.10.2 is a separate release target from 1.10. The branch build explicitly targets Forge 12.18.3.2254 and Java source/target 1.6."
+      "verified": true
     },
     {
       "branch": "1.11",
@@ -112,8 +108,7 @@
       "java_source_compatibility": "1.6",
       "java_target_compatibility": "1.6",
       "official_locales": ["ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_au", "en_us", "es_es", "fi_fi", "fr_fr", "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "nb_no", "pl_pl", "pt_br", "ru_ru", "sv_se", "uk_ua", "zh_cn", "zh_tw"],
-      "verified": true,
-      "notes": "Last Minecraft 1.11 endpoint immediately before transition commit 72c7ea7cf2e7f5243e1d7179aaa10fad038574bf updates the branch to Minecraft 1.11.2. Locale resource filenames are lowercase from this generation onward."
+      "verified": true
     },
     {
       "branch": "1.11",
@@ -129,8 +124,7 @@
       "java_source_compatibility": "1.6",
       "java_target_compatibility": "1.6",
       "official_locales": ["ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_au", "en_us", "es_es", "fi_fi", "fr_fr", "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "nb_no", "pl_pl", "pt_br", "ru_ru", "sv_se", "uk_ua", "zh_cn", "zh_tw"],
-      "verified": true,
-      "notes": "Final endpoint of historical upstream branch 1.11. Minecraft 1.11.2 is a distinct release target from 1.11 and must receive its own JAR."
+      "verified": true
     },
     {
       "branch": "1.12",
@@ -146,8 +140,7 @@
       "java_source_compatibility": "1.8",
       "java_target_compatibility": "1.8",
       "official_locales": ["ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_au", "en_us", "es_es", "fi_fi", "fr_fr", "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "nb_no", "pl_pl", "pt_br", "ru_ru", "sv_se", "uk_ua", "zh_cn", "zh_tw"],
-      "verified": true,
-      "notes": "Last Minecraft 1.12 endpoint immediately before e1a1524c9cd9ce17f847be468dcd58950fa10f9f updates the branch to Minecraft 1.12.1. G9 expands the selected project scope to 80 real-world languages."
+      "verified": true
     },
     {
       "branch": "1.12",
@@ -163,8 +156,7 @@
       "java_source_compatibility": "1.8",
       "java_target_compatibility": "1.8",
       "official_locales": ["ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_au", "en_us", "es_es", "fi_fi", "fr_fr", "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "nb_no", "pl_pl", "pt_br", "ru_ru", "sv_se", "uk_ua", "zh_cn", "zh_tw"],
-      "verified": true,
-      "notes": "Last Minecraft 1.12.1 endpoint immediately before a339af3fceb142be5398ef856f81e3c89413349e updates the branch to Minecraft 1.12.2. Minecraft 1.12.1 reuses the exact 1.12 asset index and JEI language resources, so G10 is exact G9 localization inheritance."
+      "verified": true
     },
     {
       "branch": "1.12",
@@ -173,7 +165,8 @@
       "jei": "4.16.5",
       "loaders": ["forge"],
       "forge": "14.23.5.2860",
-      "mcp_mappings": "stable_39-1.12",
+      "mcp_mapping_channel": "stable",
+      "mcp_mapping_version": "39",
       "language_format": "lang",
       "english_source": "src/main/resources/assets/jei/lang/en_us.lang",
       "english_key_count": 115,
@@ -181,7 +174,26 @@
       "java_target_compatibility": "1.8",
       "official_locales": ["ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_us", "es_es", "fi_fi", "fr_fr", "he_il", "hu_hu", "id_id", "it_it", "ja_jp", "kk_kz", "ko_kr", "lt_lt", "no_no", "pl_pl", "pt_br", "pt_pt", "ru_ru", "sv_se", "tr_tr", "uk_ua", "vi_vn", "zh_cn", "zh_tw"],
       "verified": true,
-      "notes": "Final endpoint of the normal historical upstream branch 1.12. The separate 1.12-FG3 branch ends earlier at JEI 4.15.0 and is not the canonical final lineage. G11 keeps the 80-language selected Minecraft scope, expands JEI upstream ownership to 28 locale files, and is CI-validated by run 34668803121."
+      "notes": "Final endpoint of the normal historical upstream branch 1.12. The separate 1.12-FG3 branch is not the canonical final lineage."
+    },
+    {
+      "branch": "1.13",
+      "audited_commit": "380bc11efb548abd804c65b763c911ebf9d06e2c",
+      "minecraft": "1.13",
+      "jei": "4.14.4",
+      "loaders": ["forge"],
+      "forge": "24.0.181-1.13-pre",
+      "forge_group": "net.minecraftforge.test",
+      "mcp_mapping_channel": "snapshot",
+      "mcp_mapping_version": "20180921-1.13",
+      "language_format": "json",
+      "english_source": "src/main/resources/assets/jei/lang/en_us.json",
+      "english_key_count": 105,
+      "java_source_compatibility": "1.8",
+      "java_target_compatibility": "1.8",
+      "official_locales": ["ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_au", "en_us", "es_es", "fi_fi", "fr_fr", "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "nb_no", "pl_pl", "pt_br", "ru_ru", "sv_se", "tr_tr", "uk_ua", "zh_cn", "zh_tw"],
+      "verified": true,
+      "notes": "Last Minecraft 1.13 endpoint. The next upstream transition commit a05771ea4ff870381302afe76d5c2298e0a1efe8 jumps directly to Minecraft 1.13.2; no separate 1.13.1 JEI endpoint is defined. This generation is the project transition from .lang to JSON language resources."
     },
     {
       "branch": "26.2",
