@@ -1,0 +1,80 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-13",
+  "status": "verified-source-scope-and-upstream-ownership",
+  "minecraft": "1.16.4",
+  "jei": "7.6.1",
+  "jei_upstream_branch": "1.16",
+  "jei_upstream_commit": "8255a01a6db0980f6e03b2b4d9d5f376bef7fd25",
+  "build_metadata": {
+    "forge": "35.0.2",
+    "forge_group": "net.minecraftforge",
+    "mappings_channel": "snapshot",
+    "mappings_version": "20201028-1.16.3",
+    "java_source_compatibility": "1.8",
+    "java_target_compatibility": "1.8",
+    "language_format": "json",
+    "locale_filename_case": "lowercase",
+    "english_source_path": "src/main/resources/assets/jei/lang/en_us.json"
+  },
+  "minecraft_asset_index": {
+    "id": "1.16",
+    "sha1": "f3c4aa96e12951cd2781b3e1c0e8ab82bf719cf2",
+    "url": "https://piston-meta.mojang.com/v1/packages/f3c4aa96e12951cd2781b3e1c0e8ab82bf719cf2/1.16.json",
+    "raw_language_count_including_en_us": 125,
+    "previous_raw_language_count": 125,
+    "added_codes_since_1.16.3": [],
+    "removed_codes_since_1.16.3": [],
+    "inherited_selected_codes_absent": []
+  },
+  "jei_english": {
+    "resource_format": "json",
+    "key_count": 114,
+    "normal_key_count": 111,
+    "debug_only_key_count": 3,
+    "pinned_blob_sha": "ec04c5e8545308efdba9f7de6de8ae50e804946b"
+  },
+  "english_diff_from_1.16.3": {
+    "unchanged_key_and_value_count": 114,
+    "added_key_count": 0,
+    "removed_key_count": 0,
+    "changed_english_value_count": 0,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 0,
+    "added_keys": [],
+    "manifest": "upstream/diffs/1.16.3-to-1.16.4.json"
+  },
+  "jei_upstream_locale_count": 24,
+  "selected_scope_count": 88,
+  "selected_upstream_complete_locales": ["en_us", "pl_pl", "pt_br", "ru_ru", "sv_se"],
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr",
+    "he_il", "it_it", "ja_jp", "ko_kr", "lt_lt", "tr_tr", "uk_ua", "zh_cn"
+  ],
+  "upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 67,
+  "scope_changes_from_1.16.3": {
+    "selected_scope_changed": false,
+    "new_selected_primary_languages": [],
+    "removed_selected_languages": []
+  },
+  "ownership_changes_from_1.16.3": {
+    "newly_complete_upstream": ["pl_pl", "ru_ru"],
+    "complete_to_incomplete": [],
+    "complete_count": 5,
+    "supplement_count": 16,
+    "addon_full_count": 67
+  },
+  "reconstruction_policy": {
+    "unchanged_meanings": "Reuse exact G21 combined-locale values for all 114 unchanged key/value pairs.",
+    "new_meanings": "None; the G22 English source is semantically identical to G21.",
+    "upstream_supplements": "Emit only exact missing normal keys and never override a pinned G22 upstream key.",
+    "ownership_change": "Retire G21 pl_pl and ru_ru supplements because pinned JEI 7.6.1 now provides all 111 normal keys upstream.",
+    "debug_only": "Use exact inherited G21 values in full addon JSON and never emit debug-only keys in supplements."
+  },
+  "validation": {
+    "live_audit_script": "scripts/audit_1_16_4.py",
+    "isolated_live_audit_run": 34724798647,
+    "isolated_live_audit_job": 103636944902
+  }
+}
