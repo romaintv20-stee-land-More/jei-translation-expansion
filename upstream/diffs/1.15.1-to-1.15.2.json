@@ -1,0 +1,21 @@
+{
+  "base_minecraft": "1.15.1",
+  "target_minecraft": "1.15.2",
+  "base_jei": "6.0.0",
+  "target_jei": "6.0.2",
+  "resource_format": "json",
+  "base_key_count": 109,
+  "target_key_count": 110,
+  "base_normal_key_count": 106,
+  "target_normal_key_count": 107,
+  "unchanged_key_and_value_count": 109,
+  "added_key_count": 1,
+  "removed_key_count": 0,
+  "changed_english_value_count": 0,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 1,
+  "added_keys": ["gui.jei.category.stoneCutter"],
+  "removed_keys": [],
+  "changed_english_values": {},
+  "notes": "Provisional frozen delta from the pinned sources: all 109 G17 key/value pairs are unchanged and G18 adds one normal recipe-category key, gui.jei.category.stoneCutter=Stonecutting. The G18 endpoint audit independently verifies this before reconstruction."
+}
