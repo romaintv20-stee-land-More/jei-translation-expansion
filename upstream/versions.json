@@ -167,6 +167,23 @@
       "notes": "Last Minecraft 1.12.1 endpoint immediately before a339af3fceb142be5398ef856f81e3c89413349e updates the branch to Minecraft 1.12.2. Minecraft 1.12.1 reuses the exact 1.12 asset index and JEI language resources, so G10 is exact G9 localization inheritance."
     },
     {
+      "branch": "1.12",
+      "audited_commit": "f98331af6b1f7d59da01beecacd681c16dd548b9",
+      "minecraft": "1.12.2",
+      "jei": "4.16.5",
+      "loaders": ["forge"],
+      "forge": "14.23.5.2860",
+      "mcp_mappings": "stable_39-1.12",
+      "language_format": "lang",
+      "english_source": "src/main/resources/assets/jei/lang/en_us.lang",
+      "english_key_count": 115,
+      "java_source_compatibility": "1.8",
+      "java_target_compatibility": "1.8",
+      "official_locales": ["ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_us", "es_es", "fi_fi", "fr_fr", "he_il", "hu_hu", "id_id", "it_it", "ja_jp", "kk_kz", "ko_kr", "lt_lt", "no_no", "pl_pl", "pt_br", "pt_pt", "ru_ru", "sv_se", "tr_tr", "uk_ua", "vi_vn", "zh_cn", "zh_tw"],
+      "verified": true,
+      "notes": "Final endpoint of the normal historical upstream branch 1.12. The separate 1.12-FG3 branch ends earlier at JEI 4.15.0 and is not the canonical final lineage. G11 keeps the 80-language selected Minecraft scope, expands JEI upstream ownership to 28 locale files, and is CI-validated by run 34668803121."
+    },
+    {
       "branch": "26.2",
       "minecraft": "26.2",
       "jei": null,
