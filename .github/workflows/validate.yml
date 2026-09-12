@@ -129,3 +129,5 @@ jobs:
         run: python scripts/reconstruct_1_14_4.py --check
       - name: Validate Minecraft 1.14.4 complete resources
         run: python scripts/validate_1_14_4_complete.py
+      - name: Audit final Minecraft 1.15.1 / JEI 6.0.0 endpoint
+        run: python scripts/audit_1_15_1.py
