@@ -169,3 +169,11 @@ jobs:
         run: python scripts/reconstruct_1_16_3.py --check
       - name: Validate Minecraft 1.16.3 complete resources
         run: python scripts/validate_1_16_3_complete.py
+      - name: Audit final Minecraft 1.16.4 / JEI 7.6.1 endpoint
+        run: python scripts/audit_1_16_4.py
+      - name: Validate Minecraft 1.16.4 source scope and upstream ownership
+        run: python scripts/validate_1_16_4_delta.py
+      - name: Reconstruct and verify Minecraft 1.16.4 resources
+        run: python scripts/reconstruct_1_16_4.py --check
+      - name: Validate Minecraft 1.16.4 complete resources
+        run: python scripts/validate_1_16_4_complete.py
