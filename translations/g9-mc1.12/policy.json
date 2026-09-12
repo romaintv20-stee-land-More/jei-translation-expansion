@@ -1,0 +1,36 @@
+{
+  "generation": "g9-mc1.12",
+  "minecraft": "1.12",
+  "jei": "4.7.5",
+  "upstream_commit": "6bce08ef068fc0d7ce80ef07512caf85ccd4cab4",
+  "base_generation": "g8-mc1.11.2",
+  "unchanged_key_and_value_count": 93,
+  "added_key_count": 0,
+  "removed_key_count": 0,
+  "changed_english_value_count": 0,
+  "new_semantic_translation_entry_count": 0,
+  "reuse_rule": "Reuse G8 translations exactly for all 93 JEI key/value pairs because the pinned English source is byte-identical.",
+  "resource_filename_case": "lowercase",
+  "selected_scope_count": 80,
+  "new_selected_primary_languages": [
+    "bs_ba", "ig_ng", "kab_kab", "kn_in", "oj_ca", "ta_in", "vec_it", "yo_ng"
+  ],
+  "new_selected_realization": "The eight newly selected real-world languages use documented complete English fallbacks in G9 rather than low-confidence invented technical translations. They remain selected and can be replaced by reviewed translations later without changing ownership.",
+  "addon_full_locale_count": 60,
+  "documented_full_english_fallback_locales": [
+    "br_fr", "bs_ba", "fo_fo", "fy_nl", "gd_gb", "gv_im", "haw_us", "ig_ng",
+    "kab_kab", "kn_in", "ksh_de", "kw_gb", "li_li", "mn_mn", "oj_ca", "se_no",
+    "so_so", "ta_in", "vec_it", "yo_ng"
+  ],
+  "upstream_complete_selected_locales": ["en_us", "ja_jp"],
+  "upstream_supplement_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr",
+    "he_il", "it_it", "ko_kr", "lt_lt", "pl_pl", "pt_br", "ru_ru", "sv_se",
+    "uk_ua", "zh_cn"
+  ],
+  "supplement_reuse_policy": "Reuse exact G8 project supplement values for unchanged missing keys. ja_jp is now complete upstream and emits no addon file. sv_se lost four upstream translations; recover those exact values from the pinned G8 upstream file instead of falling back to English.",
+  "sv_se_recovery_source": "translations/g9-mc1.12/sv_se-from-g8-upstream.lang",
+  "debug_keys": "Keep target English values for debug-only description.jei.* entries in full addon files; never add debug-only keys to supplements.",
+  "norwegian_policy": "Minecraft-facing no_no remains a full addon locale. JEI nb_no is preserved independently and is not treated as an alias.",
+  "release_rule": "Minecraft 1.12 must receive its own dedicated JAR; never combine it with Minecraft 1.12.1, 1.12.2 or another version."
+}
