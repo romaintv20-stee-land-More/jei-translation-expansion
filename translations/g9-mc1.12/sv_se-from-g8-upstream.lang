@@ -1,0 +1,4 @@
+config.jei.search.resourceIdSearchMode=&Resurs-ID
+config.jei.search.resourceIdSearchMode.comment=Sök efter resurs-ID (prefix: &)
+key.jei.previousPage=Visa föregående sida
+key.jei.nextPage=Visa nästa sida
