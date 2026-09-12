@@ -1,0 +1,14 @@
+{
+  "base_minecraft": "1.12",
+  "target_minecraft": "1.12.1",
+  "base_jei": "4.7.5",
+  "target_jei": "4.7.8",
+  "base_key_count": 93,
+  "target_key_count": 93,
+  "unchanged_key_and_value_count": 93,
+  "added_keys": [],
+  "removed_keys": [],
+  "changed_english_values": [],
+  "reviewed_added_or_changed_keys": [],
+  "notes": "The pinned Minecraft 1.12 and 1.12.1 JEI English sources are byte-identical, so G10 requires no new semantic translation entries."
+}
