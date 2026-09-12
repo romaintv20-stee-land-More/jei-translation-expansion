@@ -1,137 +1,81 @@
 # Translation Status
 
-This file summarizes completed localization generations. Exact endpoint metadata lives in `upstream/versions.json`; generation/reuse metadata lives in `upstream/generations.json`. The fixed distribution rule is **one Minecraft version per final JAR**.
+This file summarizes completed localization generations. Exact endpoint metadata lives in `upstream/versions.json`; generation/reuse metadata lives in `upstream/generations.json`. Fixed rule: **one Minecraft version per final JAR**.
 
 ## Completed generations
 
-| Generation | Minecraft | JEI | Keys | Selected scope | Addon full locales | Exact upstream supplements | Complete selected upstream | CI |
+| Generation | Minecraft | JEI | Keys | Selected scope | Addon full | Supplements | Complete upstream | CI |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
-| G1 | 1.8 | 2.15.0 | 58 | 60 | 54 | — | 6 JEI files audited | validator complete |
-| G2 | 1.8.9 | 2.28.18 | 75 | inherited | 54 | 5 | 1 (`en_US`) | prototype `34632859235` |
+| G1 | 1.8 | 2.15.0 | 58 | 60 | 54 | — | 6 JEI files audited | complete |
+| G2 | 1.8.9 | 2.28.18 | 75 | inherited | 54 | 5 | 1 | prototype `34632859235` |
 | G3 | 1.9 | 3.3.3 | 77 | 70 | 63 | 5 | 1 | `34638556534` |
 | G4 | 1.9.4 | 3.6.8 | 80 | 70 | 63 | 6 | 1 | `34639831977` |
 | G5 | 1.10 | 3.7.1 | 78 | 72 | 65 | 6 | 1 | `34641765047` |
 | G6 | 1.10.2 | 3.14.8 | 87 | 72 | 52 | 16 | 4 | `34642956606` |
 | G7 | 1.11 | 4.1.1 | 87 | 72 | 52 | 16 | 4 | `34644034423` |
 | G8 | 1.11.2 | 4.5.1 | 93 | 72 | 52 | 19 | 1 | `34644712028` |
+| G9 | 1.12 | 4.7.5 | 93 | 80 | 60 | 18 | 2 | `34668113754` |
+| G10 | 1.12.1 | 4.7.8 | 93 | 80 | 60 | 18 | 2 | `34668344181` |
+| G11 | 1.12.2 | 4.16.5 | 115 | 80 | 55 | 24 | 1 | `34668803121` |
+| G12 | 1.13 | 4.14.4 | 105 | 83 | 62 | 12 | 9 | `34671542080` |
 
-## G1 — Minecraft 1.8 / JEI 2.15.0
+All rows marked by a CI run are complete at the **translation/reconstruction QA** stage, not automatically runtime-tested JAR releases.
 
-Status: **selected scope complete**.
+## G9 — Minecraft 1.12 / JEI 4.7.5
 
-- 58 keys = 55 normal + 3 debug-only.
-- 54 addon-owned full locales.
-- 51 translated / AI-assisted + 3 documented English fallbacks (`gv_IM`, `kw_GB`, `se_NO`).
+- Pinned `6bce08ef068fc0d7ce80ef07512caf85ccd4cab4`.
+- English source is semantically identical to G8: 93/93 unchanged.
+- Minecraft raw language inventory grows from 95 to 107.
+- Selected scope expands to 80 with eight new real-world languages: `bs_ba`, `ig_ng`, `kab_kab`, `kn_in`, `oj_ca`, `ta_in`, `vec_it`, `yo_ng`.
+- Ownership: 60 addon full + 18 exact supplements + complete upstream `en_us`, `ja_jp`.
+- New selected languages begin as documented English fallbacks.
 
-## G2 — Minecraft 1.8.9 / JEI 2.28.18
+## G10 — Minecraft 1.12.1 / JEI 4.7.8
 
-Status: **selected translation scope complete; reproducible prototype JAR builds; real runtime test pending**.
+- Pinned `7f4160ed969fad85e8c4a14809c66402c51592b2`.
+- Same 93-key English source, same Minecraft asset index, same JEI language ownership as G9.
+- G10 resources are exact deterministic G9 localization inheritance.
 
-- G1→G2: 46 unchanged, 19 added, 2 removed, 10 changed English values.
-- 54 reconstructed addon full locales.
-- Exact supplements for `de_DE`, `fi_FI`, `ko_KR`, `ru_RU`, `zh_CN`.
-- Prototype run **34632859235**; JAR SHA-256 `029d6cdcc0f83b098a8b96f423e8fefef6722e8c0db9cd205ef33bf23e22a1e0`.
-- Do not promote to `release-jars/1.8.9/` before real client runtime validation.
+## G11 — Minecraft 1.12.2 / JEI 4.16.5
 
-## G3 — Minecraft 1.9 / JEI 3.3.3
+- Pinned final normal-branch endpoint `f98331af6b1f7d59da01beecacd681c16dd548b9`.
+- Forge `14.23.5.2860`; RetroFuturaGradle mappings `stable` / `39`; Java 8.
+- 115 keys = 112 normal + 3 debug.
+- G10→G11: 41 unchanged, 33 added, 11 removed, 41 changed; 71 normal added/changed meanings reviewed.
+- Selected scope remains 80.
+- Ownership becomes 55 addon full + 24 supplements + `en_us` complete upstream.
+- Only exact unchanged semantics are inherited. Missing changed/new meanings use exact target-English fallback instead of guessed technical translations.
 
-Status: **selected 70-language scope complete; CI green**.
+## G12 — Minecraft 1.13 / JEI 4.14.4
 
-Pinned commit `b2ffe6bd7734d093006de99f9dc99b2b77ce780d`.
-
-- 77 keys = 74 normal + 3 debug.
-- G2→G3: 74 unchanged, 2 added, 0 removed, 1 changed.
-- 63 addon full locales = 53 translated/AI-assisted + 10 documented English fallbacks.
-- 5 exact upstream supplements.
-- CI **34638556534**.
-
-## G4 — Minecraft 1.9.4 / JEI 3.6.8
-
-Status: **selected 70-language scope complete; CI green**.
-
-Pinned commit `bd9fcad11a8b92d181fc8c2ec976e31c7467799a`.
-
-- 80 keys = 77 normal + 3 debug.
-- G3→G4: 76 unchanged, 3 added, 0 removed, 1 changed.
-- Minecraft asset index/scope unchanged from 1.9.
-- 63 addon full locales + 6 exact supplements.
-- G4 rebuilds supplements from exact current upstream missing sets instead of blindly inheriting old supplement files.
-- CI **34639831977**.
-
-## G5 — Minecraft 1.10 / JEI 3.7.1
-
-Status: **selected 72-language scope complete; CI green**.
-
-Pinned commit `7f4e95d5b7620a0d304aa73243cd9b3f9737e247`.
-
-- 78 keys = 75 normal + 3 debug.
-- G4→G5: 77 unchanged, 0 added, 2 removed, 1 changed.
-- `Crafting` → `Crafting Table` is an exact semantic return to G3, so G3 translations are reused.
-- Minecraft raw inventory grows from 90 to 94; `haw_US` and `mn_MN` join the selected scope, while `de_AT` and `swg_de` remain deferred variants.
-- 65 addon full locales + 6 exact supplements.
-- 12 documented full-English fallback locales total.
-- CI **34641765047**.
-
-## G6 — Minecraft 1.10.2 / JEI 3.14.8
-
-Status: **selected 72-language scope complete; CI green**.
-
-Pinned final branch endpoint `446af20eaa73d260517f0adc737232437363f78d`.
-
-- Forge `12.18.3.2254`; MCP `snapshot_20161111`; Java source/target `1.6`.
-- 87 keys = 84 normal + 3 debug.
-- G5→G6: 53 unchanged, 25 added, 16 removed, 9 changed.
-- `Crafting Table` → `Crafting` reuses the exact G4 semantic translation; the other newly reviewed meanings use documented target-English fallback when no validated translation exists.
-- Minecraft raw/selected = 94 / 72.
-- JEI expands to 23 upstream locale files.
-- 52 addon full locales + 16 exact supplements; `de_DE`, `en_US`, `ru_RU`, `uk_UA` are complete upstream.
-- CI **34642956606**.
-
-## G7 — Minecraft 1.11 / JEI 4.1.1
-
-Status: **selected 72-language scope complete; CI green**.
-
-Pinned endpoint `c9fcc36ff0effec2b5239eebd2c9133da04df4bb`, immediately before the branch transitions to 1.11.2.
-
-- Forge `13.19.1.2188`; MCP `snapshot_20161205`; Java source/target `1.6`.
-- JEI resource locale filenames switch to lowercase (`en_us.lang`).
-- 87 keys, byte-identical to G6: **87 unchanged, 0 added, 0 removed, 0 changed**.
-- Minecraft raw inventory grows to 95 only because of `io_ido`; Ido is deferred as a constructed language, so selected scope remains 72.
-- Ownership: 52 addon full locales + 16 supplements + 4 complete upstream (`en_us`, `ru_ru`, `sv_se`, `uk_ua`).
-- `de_de` becomes incomplete; its 16 vanished JEI translations are preserved exactly from pinned G6 upstream in `translations/g7-mc1.11/de_de-from-g6-upstream.lang`.
-- `sv_se` becomes complete, so its older supplement is retired.
-- CI **34644034423**.
-
-## G8 — Minecraft 1.11.2 / JEI 4.5.1
-
-Status: **selected 72-language scope complete; CI green**.
-
-Pinned final branch endpoint `11023c1f4449b82d0b88366001b058e6949b40ab`.
-
-- Forge `13.20.0.2315`; MCP `snapshot_20170425`; Java source/target `1.6`.
-- 93 keys = 90 normal + 3 debug.
-- G7→G8: **85 unchanged, 7 added, 1 removed, 1 changed**.
-- Added keys cover max-subtype configuration, ResourceId search, item information and previous/next-page controls; `key.jei.recipeBack` changes meaning to “Show Previously Viewed Recipe”.
-- Minecraft 1.11.2 reuses the exact Minecraft 1.11 asset index: raw/selected remains 95 / 72.
-- 52 addon full locales + **19 exact supplements**; `en_us` is the only selected upstream locale complete in JEI 4.5.1.
-- The 85 unchanged meanings inherit G7 exactly. The 8 reviewed G8 meanings use documented target-English fallback only when project-owned and not translated upstream.
-- QA contains an anti-loss assertion: an unchanged key newly missing upstream may not silently fall back to English if a G7 project translation should exist.
-- CI **34644712028**.
+- Pinned `380bc11efb548abd804c65b763c911ebf9d06e2c`, immediately before the branch jumps to 1.13.2.
+- Forge `24.0.181-1.13-pre`; mappings `snapshot` / `20180921-1.13`; Java 8.
+- First project generation using **JSON** language resources.
+- 105 semantic keys = 102 normal + 3 debug. JSON `_comment` entries are metadata, not localization keys.
+- G11→G12: 59 unchanged, 4 added, 14 removed, 42 changed; 43 normal added/changed meanings reviewed.
+- Minecraft raw language inventory = 113. `ksh_de` migrates to `ksh`; `nuk`, `ovd`, `szl` join the selected scope, bringing it to 83.
+- Ownership: 62 addon full + 12 missing-key-only JSON supplements + 9 complete selected upstream locales.
+- 23 complete English fallback locales; 39 translated/AI-assisted addon-full locales.
+- Reuse policy searches exact G11 semantics first, then exact G10 semantic reversions. It never transfers translations across renamed keys, so Tag keys do not inherit removed Ore Dictionary keys.
+- The reconstruction also rejects historical values that lose placeholders or fixed technical literals. This caught and safely replaced one old `no_no` value that omitted `JEI`.
+- Full QA green on run **34671542080**.
 
 Files:
-
-- `upstream/diffs/1.11-to-1.11.2.json`
-- `upstream/minecraft-1.11.2-language-audit.json`
-- `upstream/minecraft-1.11.2-language-scope.json`
-- `translations/g8-mc1.11.2/policy.json`
-- `scripts/reconstruct_1_11_2.py`
-- `scripts/validate_1_11_2_delta.py`
-- `scripts/validate_1_11_2_complete.py`
+- `upstream/sources/1.13/en_us.json`
+- `upstream/diffs/1.12.2-to-1.13.json`
+- `upstream/minecraft-1.13-language-audit.json`
+- `upstream/minecraft-1.13-language-scope.json`
+- `translations/g12-mc1.13/policy.json`
+- `scripts/reconstruct_1_13.py`
+- `scripts/validate_1_13_delta.py`
+- `scripts/validate_1_13_complete.py`
 
 ## Next version
 
-G8 is complete. The next historical upstream family is `1.12`, but upstream contains both `1.12` and `1.12-FG3`. Their actual history/build metadata must be audited before G9 is assigned to a Minecraft version.
+G12 is complete at translation/reconstruction stage. Next chronological target is **Minecraft 1.13.2 / JEI 5.0.0** on the same historical upstream branch. There is no separate 1.13.1 endpoint in the audited branch history.
 
-## Release limitation
+## Release limitations
 
-Chronological translation/reconstruction auditing may continue before runtime-tested release JARs are finalized. Final distribution remains strictly **one Minecraft version per JAR**.
+- G2/1.8.9 still requires a real client runtime test before promotion to `release-jars/1.8.9/`.
+- Starting with G12, partial JSON supplements must also receive a real runtime merge test before their version-specific JAR is promoted.
+- Chronological translation auditing can continue independently of those runtime release gates.
