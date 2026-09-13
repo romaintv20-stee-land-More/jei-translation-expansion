@@ -2,9 +2,11 @@
 """Exploratory audit for final Minecraft 1.18 / JEI 9.0.0 localization endpoint."""
 from __future__ import annotations
 
+import io
 import json
 import urllib.parse
 import urllib.request
+import zipfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,11 +18,10 @@ RAW_ROOT = f"https://raw.githubusercontent.com/mezz/JustEnoughItems/{PINNED_COMM
 RAW_LANG = f"{RAW_ROOT}/src/main/resources/assets/jei/lang"
 GITHUB_LANG_API = "https://api.github.com/repos/mezz/JustEnoughItems/contents/src/main/resources/assets/jei/lang"
 VERSION_MANIFEST = "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json"
-ASSET_OBJECT_ROOT = "https://resources.download.minecraft.net"
 DEBUG_PREFIX = "description.jei."
 
 
-def fetch_bytes(url: str) -> bytes:
+def fetch_bytes(url: str, timeout: int = 30) -> bytes:
     request = urllib.request.Request(
         url,
         headers={
@@ -28,7 +29,7 @@ def fetch_bytes(url: str) -> bytes:
             "Accept": "application/vnd.github+json",
         },
     )
-    with urllib.request.urlopen(request, timeout=30) as response:
+    with urllib.request.urlopen(request, timeout=timeout) as response:
         return response.read()
 
 
@@ -75,17 +76,29 @@ def language_codes(asset_index: dict) -> set[str]:
     return codes
 
 
-def declared_language_codes(asset_index: dict) -> set[str]:
-    obj = asset_index.get("objects", {}).get("minecraft/lang/languages.json")
-    if not obj or not obj.get("hash"):
-        raise ValueError("asset index has no minecraft/lang/languages.json object")
-    digest = str(obj["hash"])
-    data = fetch_json(f"{ASSET_OBJECT_ROOT}/{digest[:2]}/{digest}")
-    if not isinstance(data, dict):
-        raise ValueError("languages.json is not a JSON object")
-    codes = {str(code).lower() for code in data}
-    codes.add("en_us")
-    return codes
+def client_language_registry(version_meta: dict) -> tuple[set[str], tuple[str, ...]]:
+    client_url = version_meta.get("downloads", {}).get("client", {}).get("url")
+    if not client_url:
+        raise ValueError("version metadata has no client download URL")
+    jar = fetch_bytes(client_url, timeout=90)
+    with zipfile.ZipFile(io.BytesIO(jar)) as archive:
+        candidates = tuple(sorted(
+            name for name in archive.namelist()
+            if name.lower().endswith("languages.json") or name.lower().endswith("language.json")
+        ))
+        if not candidates:
+            return set(), ()
+        for name in candidates:
+            try:
+                raw = json.loads(archive.read(name).decode("utf-8"))
+            except Exception:
+                continue
+            if isinstance(raw, dict) and raw:
+                codes = {str(code).lower() for code in raw}
+                if any("_" in code for code in codes):
+                    codes.add("en_us")
+                    return codes, candidates
+        return set(), candidates
 
 
 def main() -> int:
@@ -162,16 +175,13 @@ def main() -> int:
     base_codes = language_codes(base_asset) if base_asset else set()
     target_codes = language_codes(target_asset) if target_asset else set()
     try:
-        base_declared = declared_language_codes(base_asset) if base_asset else set()
-        target_declared = declared_language_codes(target_asset) if target_asset else set()
+        client_registry, registry_candidates = client_language_registry(target_meta) if target_meta else (set(), ())
     except Exception as exc:
-        errors.append(f"failed to read declared Minecraft languages.json inventory: {exc}")
-        base_declared = target_declared = set()
+        client_registry, registry_candidates = set(), ()
+        print(f"Client language registry inspection warning: {exc}")
 
     added_mc = sorted(target_codes - base_codes)
     removed_mc = sorted(base_codes - target_codes)
-    added_declared = sorted(target_declared - base_declared)
-    removed_declared = sorted(base_declared - target_declared)
     inherited_missing = sorted(inherited - target_codes)
     inherited_present = inherited & target_codes
     new_candidates = sorted(target_codes - inherited)
@@ -203,10 +213,9 @@ def main() -> int:
     print(f"Minecraft language asset-file codes: 1.17.1={len(base_codes)} 1.18={len(target_codes)}")
     print(f"Added asset-file codes since 1.17.1 ({len(added_mc)}): {', '.join(added_mc) or '(none)'}")
     print(f"Removed asset-file codes since 1.17.1 ({len(removed_mc)}): {', '.join(removed_mc) or '(none)'}")
-    print(f"Minecraft declared languages.json codes: 1.17.1={len(base_declared)} 1.18={len(target_declared)}")
-    print(f"Added declared codes since 1.17.1 ({len(added_declared)}): {', '.join(added_declared) or '(none)'}")
-    print(f"Removed declared codes since 1.17.1 ({len(removed_declared)}): {', '.join(removed_declared) or '(none)'}")
-    print(f"Asset-file-only target codes ({len(target_codes-target_declared)}): {', '.join(sorted(target_codes-target_declared)) or '(none)'}")
+    print(f"Client JAR language registry candidates: {', '.join(registry_candidates) or '(none)'}")
+    print(f"Client JAR declared language codes ({len(client_registry)}): {', '.join(sorted(client_registry)) or '(none)'}")
+    print(f"ry_ua present in client JAR registry: {'ry_ua' in client_registry}")
     print(f"Inherited selected codes absent from 1.18 ({len(inherited_missing)}): {', '.join(inherited_missing) or '(none)'}")
     print(f"Inherited selected codes still present: {len(inherited_present)}")
     print(f"New Minecraft asset-file codes outside inherited selected scope ({len(new_candidates)}): {', '.join(new_candidates) or '(none)'}")
