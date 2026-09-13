@@ -1,0 +1,55 @@
+{
+  "generation": "g32-mc1.19.4",
+  "minecraft": "1.19.4",
+  "jei": "13.1.0",
+  "pinned_commit": "b5b00557f5df18c35e545e3cc8cd65ca4b975ba1",
+  "resource_format": "json",
+  "selected_scope_count": 88,
+  "addon_full_locale_count": 66,
+  "selected_upstream_complete_locale_count": 2,
+  "selected_upstream_incomplete_locale_count": 20,
+  "documented_full_english_fallback_count": 29,
+  "translated_or_ai_assisted_full_locale_count": 37,
+  "english_diff": {
+    "unchanged_key_and_value_count": 156,
+    "added_key_count": 0,
+    "removed_key_count": 0,
+    "changed_english_value_count": 0,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 0
+  },
+  "translation_reuse": {
+    "rule": "Reuse a translation only when the localization key and English source value are both exactly identical.",
+    "base_generation": "g31-mc1.19.3",
+    "reuse_unchanged_g31_semantics": true,
+    "cross_key_reuse_allowed": false
+  },
+  "scope_change": {
+    "selected_scope_changed": false,
+    "selected_scope_count": 88,
+    "new_selected_primary_languages": [],
+    "removed_selected_languages": [],
+    "decoupled_asset_handling": "Do not retroactively add later languages exposed by the live decoupled asset index."
+  },
+  "ownership_change": {
+    "newly_complete_upstream": ["uk_ua"],
+    "complete_to_incomplete": [],
+    "complete_count": 2,
+    "supplement_count": 20,
+    "addon_full_count": 66
+  },
+  "upstream_policy": {
+    "preserve_existing_upstream_keys": true,
+    "emit_only_missing_normal_keys": true,
+    "emit_debug_keys_in_supplements": false,
+    "unchanged_missing_key_values": "reuse exact G31 combined value",
+    "cross_key_reuse_allowed": false,
+    "retire_supplement_when_upstream_becomes_complete": true,
+    "runtime_json_stack_merge_must_be_tested_before_release_jar_promotion": true
+  },
+  "fallback_policy": {
+    "unchanged_meanings": "inherit exact G31 reconstructed value",
+    "debug_keys_in_existing_full_files": "inherit exact G31 values because all six debug key/value pairs are unchanged",
+    "documented_full_fallback_locales": "same 29 locales as G31"
+  }
+}
