@@ -7,7 +7,14 @@ on:
     paths:
       - '.github/workflows/audit-g26.yml'
       - 'scripts/audit_1_18_1.py'
+      - 'scripts/validate_1_18_1_delta.py'
+      - 'scripts/reconstruct_1_18_1.py'
+      - 'scripts/validate_1_18_1_complete.py'
       - 'upstream/sources/1.18.1/en_us.json'
+      - 'upstream/diffs/1.18-to-1.18.1.json'
+      - 'upstream/minecraft-1.18.1-language-audit.json'
+      - 'upstream/minecraft-1.18.1-language-scope.json'
+      - 'translations/g26-mc1.18.1/policy.json'
 
 jobs:
   audit:
@@ -21,3 +28,9 @@ jobs:
           python-version: '3.12'
       - name: Audit final Minecraft 1.18.1 / JEI 9.4.1 endpoint
         run: python scripts/audit_1_18_1.py
+      - name: Validate Minecraft 1.18.1 source scope and upstream ownership
+        run: python scripts/validate_1_18_1_delta.py
+      - name: Reconstruct and verify Minecraft 1.18.1 resources
+        run: python scripts/reconstruct_1_18_1.py --check
+      - name: Validate Minecraft 1.18.1 complete resources
+        run: python scripts/validate_1_18_1_complete.py
