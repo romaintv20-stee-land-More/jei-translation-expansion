@@ -42,132 +42,83 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G19 | 1.16.1 | 7.0.1 | `0a0dbfa` | 110 | 88 | 67 | 18 | 3 | `34712320469` |
 | G20 | 1.16.2 | 7.3.2 | `df46cef` | 114 | 88 | 67 | 19 | 2 | `34712876829` |
 | G21 | 1.16.3 | 7.6.0 | `130181a` | 114 | 88 | 67 | 18 | 3 | `34724333790` |
-| G22 | 1.16.4 | 7.6.1 | `8255a01` | 114 | 88 | 67 | 16 | 5 | isolated `34724953978`; canonical pending |
+| G22 | 1.16.4 | 7.6.1 | `8255a01` | 114 | 88 | 67 | 16 | 5 | `34742453589` |
+| G23 | 1.16.5 | 7.7.1 | `f6bd6ea` | 119 | 88 | 66 | 15 | 7 | `34743463506` |
 
-## G19 — Minecraft 1.16.1 / JEI 7.0.1
+## G22 — Minecraft 1.16.4 / JEI 7.6.1 — completed
 
-- final endpoint `0a0dbfac9c53124d82a602301d466dbf2c5e3e97`
-- Forge `32.0.47`, mappings `snapshot / 20200514-1.16`, Java 8
-- 110 keys = 107 normal + 3 debug
-- G18→G19 = 108 unchanged + 2 changed placeholder values; old values for those two keys are not reused
-- Minecraft raw/selected = 125 / 88; new selected primary language `fur_it`
-- ownership = 67 addon-full + 18 supplements + 3 complete upstream (`en_us`, `ja_jp`, `pl_pl`)
-- definitive full G1→G19 CI `34712320469` green
-
-## G20 — Minecraft 1.16.2 / JEI 7.3.2 — completed
-
-Endpoint/build:
-- final endpoint `df46cefb0ade79851101fd32b065a34115fee70c`
-- Forge `33.0.19`
-- mappings `snapshot / 20200723-1.16.1`
-- Java 8
-- JSON lowercase language resources
-
-English/source delta:
-- pinned English blob `ec04c5e8545308efdba9f7de6de8ae50e804946b`
-- 114 keys = 111 normal + 3 debug
-- G19→G20 = **110 unchanged + 4 added**, no removed or changed values
-- added keys:
-  - `config.jei`
-  - `config.jei.search.searchAdvancedTooltips`
-  - `gui.jei.category.smelting.time.seconds`
-  - `jei.message.ftbguilib`
-- unchanged meanings inherit exact G19 values; newly project-owned meanings use exact G20 target English
-
-Minecraft scope/ownership:
-- asset index id `1.16`, SHA1 `f3c4aa96e12951cd2781b3e1c0e8ab82bf719cf2`
-- raw/selected = 125 / 88, unchanged from G19
-- ownership = 67 addon-full + 19 supplements + 2 complete upstream (`en_us`, `pt_br`)
-- `pt_br` becomes complete upstream; `ja_jp` and `pl_pl` become incomplete and require supplements
-- 28 documented complete-English fallback locales; 39 translated/AI-assisted full locales
-
-Validation:
-- isolated audit `34712596596` green
-- isolated audit/scope/reconstruction/complete QA `34712762163` green
-- definitive full G1→G20 CI **`34712876829`** green
-
-## G21 — Minecraft 1.16.3 / JEI 7.6.0 — completed
-
-Endpoint/build:
-- final endpoint `130181aa9ee3762c6accd7614a03d932486710f9`
-- next transition commit `b2717092173303cd8861c2487a36ecffb0bae5b8` explicitly changes Minecraft 1.16.3 → 1.16.4
-- Forge `34.1.0`
-- mappings `snapshot / 20200723-1.16.1`
-- Java 8
-- JSON lowercase resources
-
-English/source delta:
-- pinned English blob remains `ec04c5e8545308efdba9f7de6de8ae50e804946b`
-- 114 keys = 111 normal + 3 debug
-- G20→G21 = **114 unchanged**, no added, removed, or changed values
-- all project-owned translation values therefore inherit exact G20 semantics
-
-Minecraft scope/ownership:
-- Minecraft 1.16.2 and 1.16.3 share the same `1.16` asset index SHA1 `f3c4aa96e12951cd2781b3e1c0e8ab82bf719cf2`
-- raw/selected = 125 / 88; no codes added or removed
-- JEI still ships 24 upstream locale files
-- ownership = 67 addon-full + 18 supplements + 3 complete upstream (`en_us`, `pt_br`, `sv_se`)
-- `sv_se` becomes complete upstream, so the G20 Swedish supplement is retired
-- `zh_tw` improves to 110/111 normal keys but remains outside selected primary scope
-- 28 documented complete-English fallback locales; 39 translated/AI-assisted full locales
-
-Validation:
-- isolated endpoint audit `34724024760` green
-- isolated full audit/scope/reconstruction/complete QA `34724150364` green
-- definitive full G1→G21 CI **`34724333790`** green
-
-## G22 — Minecraft 1.16.4 / JEI 7.6.1 — isolated QA complete
-
-Endpoint/build:
 - final endpoint `8255a01a6db0980f6e03b2b4d9d5f376bef7fd25`
-- transition commit `c24d5f203d41ea277418928f74b954ed297b9123` explicitly changes Minecraft 1.16.4 → 1.16.5
-- Forge `35.0.2`
-- mappings `snapshot / 20201028-1.16.3`
-- Java 8
+- Forge `35.0.2`, mappings `snapshot / 20201028-1.16.3`, Java 8
+- 114 keys = 111 normal + 3 debug; G21→G22 = **114 unchanged**
+- Minecraft raw/selected = **125 / 88**, unchanged from G21
+- ownership = **67 addon-full + 16 supplements + 5 complete upstream**
+- complete upstream: `en_us`, `pl_pl`, `pt_br`, `ru_ru`, `sv_se`
+- isolated endpoint audit `34724798647` green
+- isolated complete QA `34724953978` green
+- definitive full G1→G22 CI **`34742453589`** green
+
+## G23 — Minecraft 1.16.5 / JEI 7.7.1 — completed
+
+Endpoint/build:
+- final endpoint `f6bd6ea033084f3d18ad256c9921641dcbd0330f`
+- the next port commit `75d2fd9ec0d5e911bfdaf8e4be9ac5ff4b860024` has this commit as its parent
+- Forge `36.2.0`
+- mappings `official / 1.16.5`
+- Java 8 via Gradle toolchain
 - JSON lowercase resources
 
 English/source delta:
-- pinned English blob remains `ec04c5e8545308efdba9f7de6de8ae50e804946b`
-- 114 keys = 111 normal + 3 debug
-- G21→G22 = **114 unchanged**, no added, removed, or changed values
-- all project-owned values inherit exact G21 semantics
+- 119 keys = **113 normal + 6 debug**
+- G22→G23 = **113 unchanged + 6 added + 1 removed + 0 changed values**
+- added: `description.jei.debug.formatting.1`, `.2`, `.3`, `jei.message.ftblibrary`, `key.jei.nextCategory`, `key.jei.previousCategory`
+- removed: `jei.message.ftbguilib`
+- no cross-key reuse from `ftbguilib` to `ftblibrary`; new project-owned meanings use exact target English
 
 Minecraft scope/ownership:
-- Minecraft 1.16.3 and 1.16.4 use the same `1.16` asset index SHA1 `f3c4aa96e12951cd2781b3e1c0e8ab82bf719cf2`
-- raw/selected = 125 / 88; no language codes added or removed
-- JEI ships the same 24 upstream locale files
-- ownership = 67 addon-full + 16 supplements + 5 complete upstream (`en_us`, `pl_pl`, `pt_br`, `ru_ru`, `sv_se`)
-- `pl_pl` and `ru_ru` become complete upstream, retiring their G21 supplements
-- `ja_jp` remains incomplete by exactly `gui.jei.category.smelting.time.seconds`
-- `zh_tw` remains 110/111 normal keys but outside selected primary scope
-- 28 documented complete-English fallback locales; 39 translated/AI-assisted full locales
+- Minecraft 1.16.4 and 1.16.5 share asset index id `1.16`, SHA1 `f3c4aa96e12951cd2781b3e1c0e8ab82bf719cf2`
+- raw/selected = **125 / 88**, unchanged
+- JEI ships **25** upstream JSON locales; `id_id` is newly upstream-owned
+- ownership = **66 addon-full + 15 supplements + 7 complete upstream**
+- complete upstream: `en_us`, `it_it`, `ko_kr`, `ru_ru`, `sv_se`, `tr_tr`, `zh_cn`
+- newly complete from G22: `it_it`, `ko_kr`, `tr_tr`, `zh_cn`
+- `pl_pl` and `pt_br` become incomplete again because each lacks the two new category-navigation keys
+- `id_id` moves from addon-full to upstream-incomplete and needs only `jei.message.ftblibrary`
+- `ja_jp` lacks smelting time plus the two new category-navigation keys
+- 28 documented full-English fallback locales; 38 translated/AI-assisted full locales
 
 Validation:
-- isolated endpoint audit **`34724798647`** green
-- isolated full audit/scope/reconstruction/complete QA **`34724953978`** green
-- integrated into `.github/workflows/validate.yml`; definitive full G1→G22 CI pending on the clean head
+- first isolated audit `34743108957` failed only because the Java detector expected the old Java declaration syntax
+- corrected isolated endpoint audit **`34743169568`** green
+- isolated full audit/scope/reconstruction/complete QA **`34743332585`** green
+- definitive full G1→G23 CI **`34743463506`** green
 
-G22 files:
-- `upstream/sources/1.16.4/en_us.json`
-- `upstream/diffs/1.16.3-to-1.16.4.json`
-- `upstream/minecraft-1.16.4-language-audit.json`
-- `upstream/minecraft-1.16.4-language-scope.json`
-- `translations/g22-mc1.16.4/policy.json`
-- `scripts/audit_1_16_4.py`
-- `scripts/reconstruct_1_16_4.py`
-- `scripts/validate_1_16_4_delta.py`
-- `scripts/validate_1_16_4_complete.py`
+G23 files:
+- `upstream/sources/1.16.5/en_us.json`
+- `upstream/diffs/1.16.4-to-1.16.5.json`
+- `upstream/minecraft-1.16.5-language-audit.json`
+- `upstream/minecraft-1.16.5-language-scope.json`
+- `translations/g23-mc1.16.5/policy.json`
+- `scripts/audit_1_16_5.py`
+- `scripts/reconstruct_1_16_5.py`
+- `scripts/validate_1_16_5_delta.py`
+- `scripts/validate_1_16_5_complete.py`
 
-## Current next target — G23 Minecraft 1.16.5
+## Current next target — G24 Minecraft 1.17.1 / JEI 8.3.0
 
-Do not freeze G23 until the clean full G1→G22 gate is green. The 1.16.5 transition begins at commit `c24d5f203d41ea277418928f74b954ed297b9123`; the exact final 1.16.5 endpoint, JEI version, Forge version, mappings, English source delta, Minecraft language inventory and upstream ownership must be pinned from history before reconstruction.
+Historical boundary is already pinned in read-only research:
+- commit `75d2fd9ec0d5e911bfdaf8e4be9ac5ff4b860024`, titled `Port to 1.17`, actually changes the build directly from **Minecraft 1.16.5 to 1.17.1**; do not invent a distinct Minecraft 1.17 JEI generation
+- the later transition commit `2df668b5ac4a8473b9837ad2785d0f5a4fb845a6`, `Initial port to Minecraft 1.18`, has parent **`ff99d00a9e412e8c29dbbcdf24b437f93f72e4d7`**
+- therefore the final Minecraft 1.17.1 endpoint is **`ff99d00a9e412e8c29dbbcdf24b437f93f72e4d7`**
+- endpoint build: Minecraft `1.17.1`, JEI `8.3.0`, Forge `37.0.104`, mappings `official / 1.17.1`, Java 16
+- pinned final English blob SHA: `abd5d9b6b1e17f61ddcdc0b2a20e7f6d3f604b7e`
+- English localization changes substantially from G23; G24 must use a fresh audit and semantic delta, not whole-file inheritance
 
 Immediate next steps:
-1. remove the temporary `.github/workflows/audit-g22.yml` workflow;
-2. require a green canonical full G1→G22 CI from the resulting clean head;
-3. update this file with that canonical G22 run ID;
-4. determine and audit the exact final Minecraft 1.16.5 endpoint as G23;
-5. continue chronologically after G23.
+1. store the exact pinned `1.17.1/en_us.json` source;
+2. run an isolated G24 endpoint audit that computes the G23→G24 delta directly before freezing a diff manifest;
+3. audit Minecraft 1.17.1 language inventory and JEI upstream ownership;
+4. freeze G24 diff/scope/policy from the audit output;
+5. reconstruct and validate G24, integrate into the main workflow, remove the temporary audit workflow, then require a green full G1→G24 gate.
 
 ## Documentation synchronization debt
 
