@@ -26,20 +26,11 @@ Translations may be created or assisted with AI, but AI output is not treated as
 
 ## Current status
 
-The selected translation/reconstruction scopes are complete and CI-validated for:
+The selected translation/reconstruction scopes are complete and CI-validated from **Minecraft 1.8 through Minecraft 1.18.2** (G1-G27). Version-specific **1.0.0 static-validated JAR candidates** are built separately from runtime release promotion.
 
-`1.8` → `1.8.9` → `1.9` → `1.9.4` → `1.10` → `1.10.2` → `1.11` → `1.11.2`.
+Minecraft 1.19 / G28 has isolated QA complete but still requires its clean canonical full-history gate before it is treated as completed for packaging.
 
-Latest completed generations:
-
-- **G7 — Minecraft 1.11 / JEI 4.1.1**: 87 keys, all semantically identical to G6; Minecraft adds only deferred constructed language `io_ido`; selected scope remains 72; 52 full addon locales + 16 exact supplements; CI **34644034423**.
-- **G8 — Minecraft 1.11.2 / JEI 4.5.1**: 93 keys; G7→G8 = 85 unchanged, 7 added, 1 removed, 1 changed; selected scope remains 72; 52 full addon locales + 19 exact supplements, with `en_us` the only selected locale complete upstream; CI **34644712028**.
-
-From Minecraft 1.11 onward JEI uses lowercase locale resource filenames such as `en_us.lang`.
-
-Historical auditing now continues with the **Minecraft 1.12 branch family**. Exact branch history and patch-version endpoints are verified before creating the next generation.
-
-Runtime-tested final JAR promotion is tracked separately from chronological translation auditing. Final artifacts belong under `release-jars/<minecraft-version>/` only after the required runtime validation.
+Runtime-tested final JAR promotion is tracked separately from chronological translation auditing. Final artifacts belong under `release-jars/<minecraft-version>/` only after the required runtime validation. Starting with Minecraft 1.13, missing-key-only JSON supplements remain runtime merge-test-gated before final promotion.
 
 For the canonical handoff and exact next task, always read [`PROJECT_STATUS.md`](PROJECT_STATUS.md) first.
 
@@ -58,6 +49,9 @@ upstream/
 overrides/
   approved-overrides.json
 scripts/
+packaging/
+  completed-versions.json
+  ...
 docs/
   VERSION_MATRIX.md
   TRANSLATION_STATUS.md
