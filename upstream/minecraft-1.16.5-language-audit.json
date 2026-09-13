@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-13",
+  "status": "verified-source-scope-and-upstream-ownership",
+  "minecraft": "1.16.5",
+  "jei": "7.7.1",
+  "jei_upstream_branch": "1.16",
+  "jei_upstream_commit": "f6bd6ea033084f3d18ad256c9921641dcbd0330f",
+  "build_metadata": {
+    "forge": "36.2.0",
+    "forge_group": "net.minecraftforge",
+    "mappings_channel": "official",
+    "mappings_version": "1.16.5",
+    "java_toolchain": "8",
+    "language_format": "json",
+    "locale_filename_case": "lowercase",
+    "english_source_path": "src/main/resources/assets/jei/lang/en_us.json"
+  },
+  "minecraft_asset_index": {
+    "id": "1.16",
+    "sha1": "f3c4aa96e12951cd2781b3e1c0e8ab82bf719cf2",
+    "url": "https://piston-meta.mojang.com/v1/packages/f3c4aa96e12951cd2781b3e1c0e8ab82bf719cf2/1.16.json",
+    "raw_language_count_including_en_us": 125,
+    "previous_raw_language_count": 125,
+    "added_codes_since_1.16.4": [],
+    "removed_codes_since_1.16.4": [],
+    "inherited_selected_codes_absent": []
+  },
+  "jei_english": {
+    "resource_format": "json",
+    "key_count": 119,
+    "normal_key_count": 113,
+    "debug_only_key_count": 6,
+    "pinned_blob_sha": "2196a431bdefd50982647625ecf77742116a3c8e"
+  },
+  "english_diff_from_1.16.4": {
+    "unchanged_key_and_value_count": 113,
+    "added_key_count": 6,
+    "removed_key_count": 1,
+    "changed_english_value_count": 0,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 3,
+    "added_keys": [
+      "description.jei.debug.formatting.1",
+      "description.jei.debug.formatting.2",
+      "description.jei.debug.formatting.3",
+      "jei.message.ftblibrary",
+      "key.jei.nextCategory",
+      "key.jei.previousCategory"
+    ],
+    "removed_keys": ["jei.message.ftbguilib"],
+    "manifest": "upstream/diffs/1.16.4-to-1.16.5.json"
+  },
+  "jei_upstream_locale_count": 25,
+  "selected_scope_count": 88,
+  "selected_upstream_complete_locales": [
+    "en_us", "it_it", "ko_kr", "ru_ru", "sv_se", "tr_tr", "zh_cn"
+  ],
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr",
+    "he_il", "id_id", "ja_jp", "lt_lt", "pl_pl", "pt_br", "uk_ua"
+  ],
+  "upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 66,
+  "scope_changes_from_1.16.4": {
+    "selected_scope_changed": false,
+    "new_selected_primary_languages": [],
+    "removed_selected_languages": []
+  },
+  "ownership_changes_from_1.16.4": {
+    "newly_complete_upstream": ["it_it", "ko_kr", "tr_tr", "zh_cn"],
+    "complete_to_incomplete": ["pl_pl", "pt_br"],
+    "addon_full_to_upstream_incomplete": ["id_id"],
+    "complete_count": 7,
+    "supplement_count": 15,
+    "addon_full_count": 66
+  },
+  "reconstruction_policy": {
+    "unchanged_meanings": "Reuse exact G22 combined-locale values for the 113 unchanged key/value pairs where the locale remains project-owned for that key.",
+    "new_meanings": "Use exact G23 target English for the three new normal meanings unless pinned upstream already owns them. Do not cross-key reuse jei.message.ftbguilib for jei.message.ftblibrary.",
+    "removed_meanings": "Drop jei.message.ftbguilib because it is absent from the G23 target source.",
+    "upstream_supplements": "Emit only exact missing normal keys and never override a pinned G23 upstream key.",
+    "ownership_change": "Move id_id from addon-full to upstream-incomplete; retire supplements for it_it, ko_kr, tr_tr and zh_cn; restore missing-key-only supplements for pl_pl and pt_br.",
+    "debug_only": "Use exact G23 target English for the three newly added debug formatting keys in full addon JSON and never emit debug-only keys in supplements."
+  },
+  "validation": {
+    "live_audit_script": "scripts/audit_1_16_5.py",
+    "isolated_live_audit_run": 34743169568,
+    "isolated_live_audit_job": 103686229175
+  }
+}
