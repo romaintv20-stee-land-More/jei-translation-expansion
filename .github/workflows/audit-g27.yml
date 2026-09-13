@@ -1,0 +1,19 @@
+name: Audit G27 Minecraft 1.18.2
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  audit-g27:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit Minecraft 1.18.2 / JEI 10.1.0 endpoint
+        run: python scripts/audit_1_18_2.py
