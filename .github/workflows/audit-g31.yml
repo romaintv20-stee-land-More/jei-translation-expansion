@@ -1,0 +1,36 @@
+name: Validate G31 Minecraft 1.19.3
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g31-mc1.19.3']
+    paths:
+      - 'scripts/audit_1_19_3.py'
+      - 'scripts/validate_1_19_3_delta.py'
+      - 'scripts/reconstruct_1_19_3.py'
+      - 'scripts/validate_1_19_3_complete.py'
+      - 'upstream/sources/1.19.3/en_us.json'
+      - 'upstream/diffs/1.19.2-to-1.19.3.json'
+      - 'upstream/minecraft-1.19.3-language-audit.json'
+      - 'upstream/minecraft-1.19.3-language-scope.json'
+      - 'translations/g31-mc1.19.3/policy.json'
+      - '.github/workflows/audit-g31.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit final Minecraft 1.19.3 / JEI 12.3.0 endpoint
+        run: python scripts/audit_1_19_3.py
+      - name: Validate Minecraft 1.19.3 source scope and upstream ownership
+        run: python scripts/validate_1_19_3_delta.py
+      - name: Reconstruct and verify Minecraft 1.19.3 resources
+        run: python scripts/reconstruct_1_19_3.py --check
+      - name: Validate Minecraft 1.19.3 complete resources
+        run: python scripts/validate_1_19_3_complete.py

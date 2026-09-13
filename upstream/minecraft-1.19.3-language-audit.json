@@ -1,0 +1,97 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-14",
+  "status": "verified-source-scope-and-upstream-ownership",
+  "minecraft": "1.19.3",
+  "jei": "12.3.0",
+  "jei_upstream_commit": "739fde73225d006c83af22db04c5723d9c539dc7",
+  "build_metadata": {
+    "forge": "44.1.5",
+    "forge_group": "net.minecraftforge",
+    "mappings_channel": "parchment",
+    "mappings_version": "1.18.2-2022.07.10-1.19.3",
+    "java_toolchain": "17",
+    "language_format": "json",
+    "locale_filename_case": "lowercase",
+    "english_source_path": "Common/src/main/resources/assets/jei/lang/en_us.json"
+  },
+  "minecraft_asset_index": {
+    "id": "2",
+    "sha1": "909daaf41d8477693cd3c871c823f68455e064ab",
+    "url": "https://piston-meta.mojang.com/v1/packages/909daaf41d8477693cd3c871c823f68455e064ab/2.json",
+    "raw_language_count_including_en_us": 143,
+    "previous_raw_language_count": 124,
+    "live_added_codes_since_1.19.2": [
+      "be_latn", "cv_cu", "fr_ch", "go_fr", "got_de", "hal_ua", "hn_no", "ky_kg", "lo_la",
+      "nah", "pls", "qcb_es", "qid", "sah_sah", "sr_cs", "tzo_mx", "uz_uz", "vp_vl", "vro"
+    ],
+    "removed_codes_since_1.19.2": [],
+    "inherited_selected_codes_absent": [],
+    "decoupled_asset_warning": "The Minecraft 1.19.3 language asset index is live/decoupled and exposes languages added after the historical release. Historical scope is therefore frozen separately."
+  },
+  "historical_language_scope": {
+    "new_selected_primary_languages": ["nah", "ry_ua"],
+    "notes": "Nahuatl and Rusyn entered the user-facing Minecraft language set during the 1.19.3 development cycle. Rusyn was already present as an asset-only code in the 1.19.2 asset pool, so it does not appear in the live asset-index delta.",
+    "later_live_asset_codes_not_attributed_to_g31": [
+      "be_latn", "cv_cu", "fr_ch", "go_fr", "got_de", "hal_ua", "hn_no", "ky_kg", "lo_la",
+      "pls", "qcb_es", "qid", "sah_sah", "sr_cs", "tzo_mx", "uz_uz", "vp_vl", "vro"
+    ]
+  },
+  "client_language_registry_investigation": {
+    "client_jar_registry_candidates": [],
+    "explicit_registry_found": false,
+    "decision": "Use historical release evidence plus the decoupled asset pool; absence of an explicit registry in the final client JAR is not treated as proof that a language was unavailable."
+  },
+  "jei_english": {
+    "resource_format": "json",
+    "key_count": 156,
+    "normal_key_count": 150,
+    "debug_only_key_count": 6,
+    "pinned_blob_sha": "6a6889b9c02c0ae9c1322abb3007162ee59ffb97"
+  },
+  "english_diff_from_1.19.2": {
+    "unchanged_key_and_value_count": 153,
+    "added_key_count": 3,
+    "removed_key_count": 0,
+    "changed_english_value_count": 0,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 3,
+    "added_keys": [
+      "config.jei.advanced.addBookmarksToFront",
+      "config.jei.advanced.addBookmarksToFront.comment",
+      "jei.message.config.folder"
+    ],
+    "manifest": "upstream/diffs/1.19.2-to-1.19.3.json"
+  },
+  "jei_upstream_locale_count": 25,
+  "selected_scope_count": 88,
+  "selected_upstream_complete_locales": ["en_us"],
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr", "he_il",
+    "id_id", "it_it", "ja_jp", "ko_kr", "lt_lt", "pl_pl", "pt_br", "ru_ru", "sv_se",
+    "tr_tr", "uk_ua", "zh_cn"
+  ],
+  "upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 66,
+  "scope_changes_from_1.19.2": {
+    "selected_scope_changed": true,
+    "new_selected_primary_languages": ["nah", "ry_ua"],
+    "removed_selected_languages": [],
+    "selected_scope_count": 88
+  },
+  "ownership_changes_from_1.19.2": {
+    "newly_complete_upstream": [],
+    "complete_to_incomplete": ["bg_bg", "pl_pl"],
+    "newly_upstream_from_addon_full": [],
+    "no_longer_upstream": [],
+    "new_addon_full_locales": ["nah", "ry_ua"],
+    "complete_count": 1,
+    "supplement_count": 21,
+    "addon_full_count": 66
+  },
+  "validation": {
+    "live_audit_script": "scripts/audit_1_19_3.py",
+    "isolated_validation_run": null,
+    "isolated_validation_job": null
+  }
+}
