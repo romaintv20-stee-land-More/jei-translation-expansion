@@ -1,0 +1,30 @@
+{
+  "from_minecraft": "1.19.2",
+  "to_minecraft": "1.19.3",
+  "from_jei": "11.5.0",
+  "to_jei": "12.3.0",
+  "from_source": "upstream/sources/1.19.2/en_us.json",
+  "to_source": "upstream/sources/1.19.3/en_us.json",
+  "unchanged_key_and_value_count": 153,
+  "added_key_count": 3,
+  "removed_key_count": 0,
+  "changed_english_value_count": 0,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 3,
+  "added_keys": [
+    "config.jei.advanced.addBookmarksToFront",
+    "config.jei.advanced.addBookmarksToFront.comment",
+    "jei.message.config.folder"
+  ],
+  "added_english_values": {
+    "config.jei.advanced.addBookmarksToFront": "Prepend New Bookmarks",
+    "config.jei.advanced.addBookmarksToFront.comment": "When true, adds new bookmarks to the front of the bookmark list. When false, adds new bookmarks to the end of the bookmark list",
+    "jei.message.config.folder": "Click here to open the JEI config folder"
+  },
+  "removed_keys": [],
+  "changed_english_values": {},
+  "review": {
+    "status": "reviewed",
+    "notes": "G31 keeps all 153 G30 key/value semantics unchanged and adds three new normal JEI strings."
+  }
+}
