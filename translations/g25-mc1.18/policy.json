@@ -1,0 +1,54 @@
+{
+  "generation": "g25-mc1.18",
+  "minecraft": "1.18",
+  "jei": "9.0.0",
+  "pinned_commit": "2df668b5ac4a8473b9837ad2785d0f5a4fb845a6",
+  "resource_format": "json",
+  "selected_scope_count": 86,
+  "addon_full_locale_count": 64,
+  "selected_upstream_complete_locale_count": 1,
+  "selected_upstream_incomplete_locale_count": 21,
+  "documented_full_english_fallback_count": 27,
+  "translated_or_ai_assisted_full_locale_count": 37,
+  "english_diff": {
+    "unchanged_key_and_value_count": 141,
+    "added_key_count": 0,
+    "removed_key_count": 0,
+    "changed_english_value_count": 0,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 0
+  },
+  "translation_reuse": {
+    "rule": "Reuse a translation only when the localization key and English source value are both exactly identical.",
+    "base_generation": "g24-mc1.17.1",
+    "reuse_unchanged_g24_semantics": true,
+    "all_g25_meanings": "inherit exact G24 value because all 141 key/value pairs are identical",
+    "cross_key_reuse_allowed": false,
+    "removed_keys_are_not_emitted": true
+  },
+  "scope_change": {
+    "selected_scope_changed": false,
+    "raw_language_count": 124,
+    "selected_scope_count": 86,
+    "removed_selected_languages": [],
+    "deferred_new_languages": ["ry_ua"]
+  },
+  "ownership_change": {
+    "complete_to_incomplete": [],
+    "complete_count": 1,
+    "supplement_count": 21,
+    "addon_full_count": 64
+  },
+  "upstream_policy": {
+    "preserve_existing_upstream_keys": true,
+    "emit_only_missing_normal_keys": true,
+    "emit_debug_keys_in_supplements": false,
+    "retire_supplement_when_upstream_becomes_complete": true,
+    "runtime_json_stack_merge_must_be_tested_before_release_jar_promotion": true
+  },
+  "fallback_policy": {
+    "all_unchanged_meanings": "inherit exact G24 reconstructed or combined value",
+    "debug_keys_in_full_files": "inherit exact G24 value",
+    "documented_full_fallback_locales": "exact target English for all target keys"
+  }
+}
