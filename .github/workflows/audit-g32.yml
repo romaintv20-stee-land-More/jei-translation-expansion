@@ -1,4 +1,4 @@
-name: Audit G32 Minecraft 1.19.4
+name: Validate G32 Minecraft 1.19.4
 
 on:
   workflow_dispatch:
@@ -6,10 +6,18 @@ on:
     branches: ['work/g32-mc1.19.4']
     paths:
       - 'scripts/audit_1_19_4.py'
+      - 'scripts/validate_1_19_4_delta.py'
+      - 'scripts/reconstruct_1_19_4.py'
+      - 'scripts/validate_1_19_4_complete.py'
+      - 'upstream/sources/1.19.4/en_us.json'
+      - 'upstream/diffs/1.19.3-to-1.19.4.json'
+      - 'upstream/minecraft-1.19.4-language-audit.json'
+      - 'upstream/minecraft-1.19.4-language-scope.json'
+      - 'translations/g32-mc1.19.4/policy.json'
       - '.github/workflows/audit-g32.yml'
 
 jobs:
-  audit:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,3 +28,9 @@ jobs:
           python-version: '3.12'
       - name: Audit final Minecraft 1.19.4 / JEI 13.1.0 endpoint
         run: python scripts/audit_1_19_4.py
+      - name: Validate Minecraft 1.19.4 source scope and upstream ownership
+        run: python scripts/validate_1_19_4_delta.py
+      - name: Reconstruct and verify Minecraft 1.19.4 resources
+        run: python scripts/reconstruct_1_19_4.py --check
+      - name: Validate Minecraft 1.19.4 complete resources
+        run: python scripts/validate_1_19_4_complete.py
