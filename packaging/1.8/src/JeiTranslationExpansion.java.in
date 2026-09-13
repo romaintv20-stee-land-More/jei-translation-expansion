@@ -1,0 +1,21 @@
+package io.github.romaintv20.jeitranslationexpansion;
+
+import net.minecraftforge.fml.common.Mod;
+
+@Mod(
+    modid = JeiTranslationExpansion.MOD_ID,
+    name = JeiTranslationExpansion.NAME,
+    version = JeiTranslationExpansion.VERSION,
+    clientSideOnly = true,
+    acceptedMinecraftVersions = "[1.8]",
+    acceptableRemoteVersions = "*",
+    dependencies = "required-after:Forge@[11.14.0.1269,);required-after:JEI@[2.15.0]"
+)
+public final class JeiTranslationExpansion {
+    public static final String MOD_ID = "jei_translation_expansion";
+    public static final String NAME = "JEI Translation Expansion";
+    public static final String VERSION = "@PROJECT_VERSION@";
+
+    private JeiTranslationExpansion() {
+    }
+}
