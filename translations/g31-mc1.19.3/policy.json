@@ -1,0 +1,67 @@
+{
+  "generation": "g31-mc1.19.3",
+  "minecraft": "1.19.3",
+  "jei": "12.3.0",
+  "pinned_commit": "739fde73225d006c83af22db04c5723d9c539dc7",
+  "resource_format": "json",
+  "selected_scope_count": 88,
+  "addon_full_locale_count": 66,
+  "selected_upstream_complete_locale_count": 1,
+  "selected_upstream_incomplete_locale_count": 21,
+  "documented_full_english_fallback_count": 29,
+  "translated_or_ai_assisted_full_locale_count": 37,
+  "english_diff": {
+    "unchanged_key_and_value_count": 153,
+    "added_key_count": 3,
+    "removed_key_count": 0,
+    "changed_english_value_count": 0,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 3,
+    "added_keys": [
+      "config.jei.advanced.addBookmarksToFront",
+      "config.jei.advanced.addBookmarksToFront.comment",
+      "jei.message.config.folder"
+    ],
+    "removed_keys": []
+  },
+  "translation_reuse": {
+    "rule": "Reuse a translation only when the localization key and English source value are both exactly identical.",
+    "base_generation": "g30-mc1.19.2",
+    "reuse_unchanged_g30_semantics": true,
+    "added_or_changed_project_owned_values": "use exact G31 target English for the three newly introduced meanings",
+    "cross_key_reuse_allowed": false
+  },
+  "scope_change": {
+    "selected_scope_changed": true,
+    "live_raw_language_count": 143,
+    "selected_scope_count": 88,
+    "new_selected_primary_languages": ["nah", "ry_ua"],
+    "removed_selected_languages": [],
+    "decoupled_asset_handling": "Ignore post-1.19.3 languages exposed retroactively by the live decoupled asset index; evaluate each in its historical generation."
+  },
+  "ownership_change": {
+    "newly_complete_upstream": [],
+    "complete_to_incomplete": ["bg_bg", "pl_pl"],
+    "new_addon_full_locales": ["nah", "ry_ua"],
+    "complete_count": 1,
+    "supplement_count": 21,
+    "addon_full_count": 66
+  },
+  "upstream_policy": {
+    "preserve_existing_upstream_keys": true,
+    "emit_only_missing_normal_keys": true,
+    "emit_debug_keys_in_supplements": false,
+    "unchanged_missing_key_values": "reuse exact G30 combined value",
+    "added_or_changed_missing_key_values": "use exact G31 target English",
+    "retire_supplement_when_upstream_becomes_complete": true,
+    "runtime_json_stack_merge_must_be_tested_before_release_jar_promotion": true
+  },
+  "fallback_policy": {
+    "unchanged_meanings": "inherit exact G30 reconstructed value",
+    "new_meanings_for_existing_full_locales": "exact G31 target English until reviewed translation is available",
+    "new_full_locales": ["nah", "ry_ua"],
+    "new_full_locale_values": "exact G31 target English for all keys as documented low-confidence fallback",
+    "debug_keys_in_existing_full_files": "inherit exact G30 values because all six debug key/value pairs are unchanged",
+    "documented_full_fallback_locales": "29 locales; the previous 27 plus nah and ry_ua"
+  }
+}
