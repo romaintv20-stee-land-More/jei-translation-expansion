@@ -45,7 +45,7 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G22 | 1.16.4 | 7.6.1 | `8255a01` | 114 | 88 | 67 | 16 | 5 | `34742453589` |
 | G23 | 1.16.5 | 7.7.1 | `f6bd6ea` | 119 | 88 | 66 | 15 | 7 | `34743463506` |
 | G24 | 1.17.1 | 8.3.0 | `ff99d00` | 141 | 86 | 64 | 21 | 1 | `34744321527` |
-| G25 | 1.18 | 9.0.0 | `2df668b` | 141 | 86 | 64 | 21 | 1 | isolated `34745793615`; canonical pending |
+| G25 | 1.18 | 9.0.0 | `2df668b` | 141 | 86 | 64 | 21 | 1 | `34745954288` |
 
 ## G23 — Minecraft 1.16.5 / JEI 7.7.1 — completed
 
@@ -94,7 +94,7 @@ Validation/files:
 - definitive clean-head full G1→G24 CI **`34744321527`** green
 - files: `upstream/sources/1.17.1/en_us.json`, `upstream/diffs/1.16.5-to-1.17.1.json`, `upstream/minecraft-1.17.1-language-audit.json`, `upstream/minecraft-1.17.1-language-scope.json`, `translations/g24-mc1.17.1/policy.json`, `scripts/audit_1_17_1.py`, `scripts/reconstruct_1_17_1.py`, `scripts/validate_1_17_1_delta.py`, `scripts/validate_1_17_1_complete.py`
 
-## G25 — Minecraft 1.18 / JEI 9.0.0 — isolated QA complete
+## G25 — Minecraft 1.18 / JEI 9.0.0 — completed
 
 Endpoint/build:
 - final endpoint **`2df668b5ac4a8473b9837ad2785d0f5a4fb845a6`**, `Initial port to Minecraft 1.18`
@@ -122,25 +122,25 @@ Validation/files:
 - diagnostic `34745550301` failed only because the attempted `languages.json` asset-index lookup does not exist for this version; the audit method was corrected to inspect the client JAR
 - corrected client-JAR audit **`34745599199`** green; no language registry candidate was found in the client JAR
 - isolated full audit/scope/reconstruction/complete QA **`34745793615`** green
+- definitive clean-head full G1→G25 CI **`34745954288`** green
 - integrated into `.github/workflows/validate.yml`; temporary `.github/workflows/audit-g25.yml` removed
-- definitive clean-head full G1→G25 gate is pending
 - files: `upstream/sources/1.18/en_us.json`, `upstream/diffs/1.17.1-to-1.18.json`, `upstream/minecraft-1.18-language-audit.json`, `upstream/minecraft-1.18-language-scope.json`, `translations/g25-mc1.18/policy.json`, `scripts/audit_1_18.py`, `scripts/reconstruct_1_18.py`, `scripts/validate_1_18_delta.py`, `scripts/validate_1_18_complete.py`
 
 ## Current next target — G26 Minecraft 1.18.1 / JEI 9.4.1
 
-Do not write G26 generation files until the clean full G1→G25 gate is green.
+G25 is canonically green, so G26 generation work is now open.
 
-Read-only historical research already shows:
-- the port to Minecraft 1.18.2, `e72e49fa7a072755e7f96cad65388205f6a010dc`, has parent **`82a622213dbf2a9df65af4e3cebbccc77ec44deb`**; this is the final 1.18.1 endpoint candidate
+Historical research:
+- the port to Minecraft 1.18.2, `e72e49fa7a072755e7f96cad65388205f6a010dc`, has parent **`82a622213dbf2a9df65af4e3cebbccc77ec44deb`**; this is the final 1.18.1 endpoint
 - endpoint metadata: Minecraft `1.18.1`, JEI `9.4.1`, Forge `39.0.89`, mappings `official / 1.18.1`, Java 17
 - final 1.18.1 English blob SHA is `aa3a3da58dff3d623ee553aca40c7b24c80c2d18`
 - unlike G25, the 1.18.1 English source has meaningful localization changes and therefore requires a fresh semantic delta audit before reconstruction
 
 Immediate next steps:
-1. require a green canonical full G1→G25 CI from the clean head after this status update;
-2. replace the G25 table CI field with that canonical run ID and mark G25 completed;
-3. pin/audit G26 Minecraft 1.18.1 source, language inventory and JEI upstream ownership from endpoint `82a622213...`;
-4. reconstruct/validate G26, then continue chronologically to Minecraft 1.18.2 as a separate generation.
+1. pin the G26 English source at endpoint `82a622213...`;
+2. audit G25→G26 semantic delta, Minecraft 1.18.1 language inventory and JEI upstream ownership;
+3. freeze G26 scope/policy, reconstruct and validate G26;
+4. integrate G26 into the chronological full CI and then continue to Minecraft 1.18.2 as a separate generation.
 
 ## Documentation synchronization debt
 
