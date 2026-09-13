@@ -46,7 +46,7 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G23 | 1.16.5 | 7.7.1 | `f6bd6ea` | 119 | 88 | 66 | 15 | 7 | `34743463506` |
 | G24 | 1.17.1 | 8.3.0 | `ff99d00` | 141 | 86 | 64 | 21 | 1 | `34744321527` |
 | G25 | 1.18 | 9.0.0 | `2df668b` | 141 | 86 | 64 | 21 | 1 | `34745954288` |
-| G26 | 1.18.1 | 9.4.1 | `82a6222` | 149 | 86 | 64 | 21 | 1 | isolated `34747127823`; canonical pending |
+| G26 | 1.18.1 | 9.4.1 | `82a6222` | 149 | 86 | 64 | 21 | 1 | `34747275451` |
 
 ## G23 — Minecraft 1.16.5 / JEI 7.7.1 — completed
 
@@ -85,7 +85,7 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 - isolated full QA **`34745793615`** green
 - definitive clean-head full G1→G25 CI **`34745954288`** green
 
-## G26 — Minecraft 1.18.1 / JEI 9.4.1 — isolated QA complete
+## G26 — Minecraft 1.18.1 / JEI 9.4.1 — completed
 
 Endpoint/build:
 - final endpoint **`82a622213dbf2a9df65af4e3cebbccc77ec44deb`**, the parent of `e72e49fa7a072755e7f96cad65388205f6a010dc` (`Port to 1.18.2 (#2739)`)
@@ -114,23 +114,22 @@ Validation/files:
 - the G25 reconstruction inputs are cached once in the G26 reconstructor to avoid repeated historical reconstruction without changing output semantics
 - integrated into `.github/workflows/validate.yml`
 - temporary `.github/workflows/audit-g26.yml` removed
-- definitive clean-head full G1→G26 gate is pending
+- definitive clean-head full G1→G26 CI **`34747275451`** green
 - files: `upstream/sources/1.18.1/en_us.json`, `upstream/diffs/1.18-to-1.18.1.json`, `upstream/minecraft-1.18.1-language-audit.json`, `upstream/minecraft-1.18.1-language-scope.json`, `translations/g26-mc1.18.1/policy.json`, `scripts/audit_1_18_1.py`, `scripts/reconstruct_1_18_1.py`, `scripts/validate_1_18_1_delta.py`, `scripts/validate_1_18_1_complete.py`
 
 ## Current next target — G27 Minecraft 1.18.2
 
-Do not freeze G27 until the clean full G1→G26 gate is green.
-
-Historical boundary already confirmed:
+Historical boundary confirmed:
 - `e72e49fa7a072755e7f96cad65388205f6a010dc` is `Port to 1.18.2 (#2739)` and has G26 endpoint `82a622213...` as parent
-- this proves Minecraft 1.18.2 is a distinct chronological generation
-- the **final 1.18.2 endpoint still needs to be identified** by locating the next Minecraft-version transition and using its parent; do not use the modern `1.18` branch HEAD as a historical endpoint
+- `5b2e71f...` is the subsequent `Update for Minecraft 1.19`; its parent is therefore the final Minecraft 1.18.2 endpoint **`530ef6c8d604370bef850f3656a28beab56cbfba`**
+- direct endpoint metadata confirms Minecraft `1.18.2`, JEI specification version **`10.1.0`**, Forge **`40.0.24`**, and Java **17**
+- JEI was refactored to a multi-module layout in this generation; locate and pin the exact `en_us.json` blob from the endpoint tree rather than assuming the former monolithic resource path
 
 Immediate next steps:
-1. require a green canonical full G1→G26 CI from the clean head after this status update;
-2. replace the G26 table CI field with that canonical run ID and mark G26 completed;
-3. identify the exact final Minecraft 1.18.2 endpoint, then audit its build/source/scope/ownership;
-4. continue chronologically one Minecraft version per generation.
+1. resolve the exact G27 English resource path/blob at `530ef6c8...` from the Git tree;
+2. audit G26→G27 source delta plus Minecraft 1.18.2 language scope and JEI upstream ownership;
+3. reconstruct/validate G27 with the fixed key+English reuse rule;
+4. integrate G27 into the chronological main workflow and require a clean full G1→G27 gate.
 
 ## Documentation synchronization debt
 
