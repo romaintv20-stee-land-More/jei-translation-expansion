@@ -201,3 +201,11 @@ jobs:
         run: python scripts/reconstruct_1_18.py --check
       - name: Validate Minecraft 1.18 complete resources
         run: python scripts/validate_1_18_complete.py
+      - name: Audit final Minecraft 1.18.1 / JEI 9.4.1 endpoint
+        run: python scripts/audit_1_18_1.py
+      - name: Validate Minecraft 1.18.1 source scope and upstream ownership
+        run: python scripts/validate_1_18_1_delta.py
+      - name: Reconstruct and verify Minecraft 1.18.1 resources
+        run: python scripts/reconstruct_1_18_1.py --check
+      - name: Validate Minecraft 1.18.1 complete resources
+        run: python scripts/validate_1_18_1_complete.py
