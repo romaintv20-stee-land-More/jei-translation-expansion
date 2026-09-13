@@ -1,0 +1,58 @@
+{
+  "generation": "g27-mc1.18.2",
+  "minecraft": "1.18.2",
+  "jei": "10.1.0",
+  "pinned_commit": "530ef6c8d604370bef850f3656a28beab56cbfba",
+  "resource_format": "json",
+  "selected_scope_count": 86,
+  "addon_full_locale_count": 64,
+  "selected_upstream_complete_locale_count": 1,
+  "selected_upstream_incomplete_locale_count": 21,
+  "documented_full_english_fallback_count": 27,
+  "translated_or_ai_assisted_full_locale_count": 37,
+  "english_diff": {
+    "unchanged_key_and_value_count": 149,
+    "added_key_count": 5,
+    "removed_key_count": 0,
+    "changed_english_value_count": 0,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 5
+  },
+  "translation_reuse": {
+    "rule": "Reuse a translation only when the localization key and English source value are both exactly identical.",
+    "base_generation": "g26-mc1.18.1",
+    "reuse_unchanged_g26_semantics": true,
+    "added_or_changed_project_owned_values": "exact target English unless separately reviewed",
+    "cross_key_reuse_allowed": false,
+    "removed_keys_are_not_emitted": true
+  },
+  "scope_change": {
+    "selected_scope_changed": false,
+    "raw_language_count": 124,
+    "selected_scope_count": 86,
+    "removed_selected_languages": [],
+    "deferred_new_languages": ["ry_ua"]
+  },
+  "ownership_change": {
+    "newly_complete_upstream": [],
+    "complete_to_incomplete": [],
+    "complete_count": 1,
+    "supplement_count": 21,
+    "addon_full_count": 64
+  },
+  "upstream_policy": {
+    "preserve_existing_upstream_keys": true,
+    "emit_only_missing_normal_keys": true,
+    "emit_debug_keys_in_supplements": false,
+    "unchanged_missing_key_values": "reuse exact G26 combined value",
+    "added_or_changed_missing_key_values": "exact G27 target English",
+    "retire_supplement_when_upstream_becomes_complete": true,
+    "runtime_json_stack_merge_must_be_tested_before_release_jar_promotion": true
+  },
+  "fallback_policy": {
+    "unchanged_meanings": "inherit exact G26 reconstructed value",
+    "added_or_changed_meanings": "exact G27 target English",
+    "debug_keys_in_full_files": "inherit exact G26 values because all six debug key/value pairs are unchanged",
+    "documented_full_fallback_locales": "exact target English for all target keys"
+  }
+}
