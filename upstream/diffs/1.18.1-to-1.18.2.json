@@ -1,0 +1,34 @@
+{
+  "from_minecraft": "1.18.1",
+  "to_minecraft": "1.18.2",
+  "from_jei": "9.4.1",
+  "to_jei": "10.1.0",
+  "from_source": "upstream/sources/1.18.1/en_us.json",
+  "to_source": "upstream/sources/1.18.2/en_us.json",
+  "unchanged_key_and_value_count": 149,
+  "added_key_count": 5,
+  "removed_key_count": 0,
+  "changed_english_value_count": 0,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 5,
+  "added_keys": [
+    "jei.key.combo.alt",
+    "jei.key.combo.command",
+    "jei.key.combo.control",
+    "jei.key.combo.shift",
+    "key.jei.closeRecipeGui"
+  ],
+  "added_english_values": {
+    "jei.key.combo.alt": "ALT + %s",
+    "jei.key.combo.command": "CMD + %s",
+    "jei.key.combo.control": "CTRL + %s",
+    "jei.key.combo.shift": "SHIFT + %s",
+    "key.jei.closeRecipeGui": "Close Recipes GUI"
+  },
+  "removed_keys": [],
+  "changed_english_values": {},
+  "review": {
+    "status": "reviewed",
+    "notes": "G27 keeps every G26 key and English value exactly unchanged. The only semantic delta is five new normal keys: four key-combination labels and the Close Recipes GUI binding."
+  }
+}
