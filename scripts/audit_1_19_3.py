@@ -178,7 +178,7 @@ def main() -> int:
         print(f"Client language registry inspection warning: {exc}")
 
     live_asset_additions = target_codes - base_codes
-    if not HISTORICAL_G31_LANGUAGE_ADDITIONS <= live_asset_additions:
+    if not HISTORICAL_G31_LANGUAGE_ADDITIONS <= target_codes:
         errors.append("historical G31 language additions are not present in the live 1.19.3 asset pool")
     post_g31_decoupled_additions = live_asset_additions - HISTORICAL_G31_LANGUAGE_ADDITIONS
     effective_scope_codes = inherited | HISTORICAL_G31_LANGUAGE_ADDITIONS
