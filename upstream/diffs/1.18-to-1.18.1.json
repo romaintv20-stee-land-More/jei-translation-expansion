@@ -1,0 +1,52 @@
+{
+  "base_minecraft": "1.18",
+  "target_minecraft": "1.18.1",
+  "base_jei": "9.0.0",
+  "target_jei": "9.4.1",
+  "resource_format": "json",
+  "base_key_count": 141,
+  "target_key_count": 149,
+  "base_normal_key_count": 135,
+  "target_normal_key_count": 143,
+  "unchanged_key_and_value_count": 124,
+  "added_key_count": 11,
+  "removed_key_count": 3,
+  "changed_english_value_count": 14,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 25,
+  "added_keys": [
+    "jei.key.category.dev.tools",
+    "jei.key.category.edit.mode",
+    "jei.key.category.hover.config.button",
+    "jei.message.copy.recipe.id.failure",
+    "jei.message.copy.recipe.id.success",
+    "jei.tooltip.cheat.mode.how.to.disable.hover.config.button.hotkey",
+    "key.jei.cheatOneItem2",
+    "key.jei.copy.recipe.id",
+    "key.jei.toggleCheatModeConfigButton",
+    "key.jei.toggleHideIngredient",
+    "key.jei.toggleWildcardHideIngredient"
+  ],
+  "removed_keys": [
+    "jei.tooltip.cheat.mode.how.to.disable.no.hotkey",
+    "key.jei.ctrl",
+    "key.jei.ctrl.mac"
+  ],
+  "changed_english_values": {
+    "gui.jei.editMode.description.hide": {"from": "%s-click to hide", "to": "%s to hide"},
+    "gui.jei.editMode.description.hide.wild": {"from": "%s-right-click to hide by wildcard", "to": "%s to hide by wildcard"},
+    "key.jei.cheatItemStack": {"from": "Cheat 1 stack of items", "to": "Cheat 1 stack"},
+    "key.jei.cheatItemStack2": {"from": "Cheat 1 stack of items", "to": "Cheat 1 stack"},
+    "key.jei.clearSearchBar": {"from": "Clear the Search Filter", "to": "Clear Search Filter"},
+    "key.jei.nextCategory": {"from": "Show Next Recipe Category", "to": "Next Recipe Category"},
+    "key.jei.nextPage": {"from": "Show Next Page", "to": "Next Page"},
+    "key.jei.nextRecipePage": {"from": "Show Next Recipe Page", "to": "Next Recipe Page"},
+    "key.jei.nextSearch": {"from": "Next Search in History", "to": "Next Search"},
+    "key.jei.previousCategory": {"from": "Show Previous Recipe Category", "to": "Previous Recipe Category"},
+    "key.jei.previousPage": {"from": "Show Previous Page", "to": "Previous Page"},
+    "key.jei.previousRecipePage": {"from": "Show Previous Recipe Page", "to": "Previous Recipe Page"},
+    "key.jei.previousSearch": {"from": "Previous Search in History", "to": "Previous Search"},
+    "key.jei.recipeBack": {"from": "Show Previously Viewed Recipe", "to": "Previous Recipe"}
+  },
+  "notes": "Frozen from isolated pinned-endpoint audit 34746723993. Only the 124 exact unchanged key+English pairs may inherit G25 translation values. All 25 added/changed normal meanings use exact G26 target English for project-owned output unless separately reviewed. Removed keys are never emitted and cross-key reuse is forbidden."
+}
