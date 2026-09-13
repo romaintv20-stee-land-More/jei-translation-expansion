@@ -1,0 +1,21 @@
+{
+  "base_minecraft": "1.17.1",
+  "target_minecraft": "1.18",
+  "base_jei": "8.3.0",
+  "target_jei": "9.0.0",
+  "resource_format": "json",
+  "base_key_count": 141,
+  "target_key_count": 141,
+  "base_normal_key_count": 135,
+  "target_normal_key_count": 135,
+  "unchanged_key_and_value_count": 141,
+  "added_key_count": 0,
+  "removed_key_count": 0,
+  "changed_english_value_count": 0,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 0,
+  "added_keys": [],
+  "removed_keys": [],
+  "changed_english_values": {},
+  "notes": "Frozen G24-to-G25 delta from the pinned final Minecraft 1.18 / JEI 9.0.0 English source. The English JSON blob is identical to G24: all 141 key/value semantics are inherited exactly."
+}
