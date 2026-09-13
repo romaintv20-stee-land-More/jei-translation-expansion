@@ -44,7 +44,8 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G21 | 1.16.3 | 7.6.0 | `130181a` | 114 | 88 | 67 | 18 | 3 | `34724333790` |
 | G22 | 1.16.4 | 7.6.1 | `8255a01` | 114 | 88 | 67 | 16 | 5 | `34742453589` |
 | G23 | 1.16.5 | 7.7.1 | `f6bd6ea` | 119 | 88 | 66 | 15 | 7 | `34743463506` |
-| G24 | 1.17.1 | 8.3.0 | `ff99d00` | 141 | 86 | 64 | 21 | 1 | isolated `34744097497`; canonical pending |
+| G24 | 1.17.1 | 8.3.0 | `ff99d00` | 141 | 86 | 64 | 21 | 1 | `34744321527` |
+| G25 | 1.18 | 9.0.0 | `2df668b` | 141 | 86 | 64 | 21 | 1 | isolated `34745793615`; canonical pending |
 
 ## G23 — Minecraft 1.16.5 / JEI 7.7.1 — completed
 
@@ -61,7 +62,7 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 - isolated full QA `34743332585` green
 - definitive full G1→G23 CI **`34743463506`** green
 
-## G24 — Minecraft 1.17.1 / JEI 8.3.0 — isolated QA complete
+## G24 — Minecraft 1.17.1 / JEI 8.3.0 — completed
 
 Historical endpoint/build:
 - commit `75d2fd9ec0d5e911bfdaf8e4be9ac5ff4b860024`, titled `Port to 1.17`, actually jumps directly from Minecraft 1.16.5 to **1.17.1**; there is no separate Minecraft 1.17 generation to invent
@@ -77,45 +78,69 @@ English/source delta:
 - all added/changed project-owned meanings use exact G24 target English
 - removed keys are not emitted and cross-key reuse is forbidden
 
-Minecraft scope:
-- asset index changes to id `1.17`, SHA1 `f425401a00adf0112fde624ee80c66333530f8a1`
-- raw language inventory **125 → 123**
-- added code: `zlm_arab`
-- removed codes: `gv_im`, `mi_nz`, `swg`
-- `gv_im` and `mi_nz` were selected, so selected scope **88 → 86**
+Minecraft scope/ownership:
+- asset index id `1.17`, SHA1 `f425401a00adf0112fde624ee80c66333530f8a1`
+- raw language inventory **125 → 123**; added `zlm_arab`; removed `gv_im`, `mi_nz`, `swg`
+- selected scope **88 → 86** because selected `gv_im` and `mi_nz` were removed
 - `zlm_arab` is deferred as a Malay Jawi/Arabic-script variant because primary Malay `ms_my` is already selected
-
-JEI ownership:
 - JEI still ships 25 upstream JSON locales
 - ownership = **64 addon-full + 21 supplements + 1 complete upstream**
 - only selected complete upstream locale: `en_us`
-- `it_it`, `ko_kr`, `ru_ru`, `sv_se`, `tr_tr`, `zh_cn` all move from complete to incomplete upstream
 - 27 documented complete-English fallback full locales; 37 translated/AI-assisted full locales
 
 Validation/files:
-- exploratory endpoint/source/scope audit **`34743938626`** green
-- isolated complete audit/scope/reconstruction/QA **`34744097497`** green
-- integrated into `.github/workflows/validate.yml`
-- temporary `.github/workflows/audit-g24.yml` removed
-- definitive clean-head full G1→G24 gate is pending
+- exploratory audit **`34743938626`** green
+- isolated complete QA **`34744097497`** green
+- definitive clean-head full G1→G24 CI **`34744321527`** green
 - files: `upstream/sources/1.17.1/en_us.json`, `upstream/diffs/1.16.5-to-1.17.1.json`, `upstream/minecraft-1.17.1-language-audit.json`, `upstream/minecraft-1.17.1-language-scope.json`, `translations/g24-mc1.17.1/policy.json`, `scripts/audit_1_17_1.py`, `scripts/reconstruct_1_17_1.py`, `scripts/validate_1_17_1_delta.py`, `scripts/validate_1_17_1_complete.py`
 
-## Current next target — G25 Minecraft 1.18
+## G25 — Minecraft 1.18 / JEI 9.0.0 — isolated QA complete
 
-Do not freeze G25 until the clean full G1→G24 gate is green.
+Endpoint/build:
+- final endpoint **`2df668b5ac4a8473b9837ad2785d0f5a4fb845a6`**, `Initial port to Minecraft 1.18`
+- `11170466754e1065e25a6769d70bcfbffbb36130` explicitly updates 1.18 → 1.18.1 and has `2df668b5...` as parent, confirming the 1.18 boundary
+- Minecraft `1.18`, JEI `9.0.0`, Forge `38.0.14`, mappings `official / 1.18`, Java 17
+- pinned English blob SHA remains `abd5d9b6b1e17f61ddcdc0b2a20e7f6d3f604b7e`
+
+English/source delta:
+- 141 keys = **135 normal + 6 debug**
+- G24→G25 = **141 unchanged + 0 added + 0 removed + 0 changed**
+- the English source is semantically identical to G24, so every project-owned G25 value must inherit the exact G24 value
+- JEI's 25 upstream locale files at the pinned 1.18 port endpoint are also unchanged from G24 for the selected upstream locales
+
+Minecraft scope/ownership:
+- asset index id `1.18`, SHA1 `d31a2e85ae149dd1b1a7070b22cb8887892fda6c`
+- raw language asset-file inventory **123 → 124**
+- added asset-file code: `ry_ua`; removed: none
+- `ry_ua` is Rusyn, but at this endpoint only its asset-file presence is confirmed; no explicit language registry file exists in the 1.18 client JAR, so it is deferred until a user-facing introduction point is verified
+- all 86 inherited selected locales remain present; selected scope stays **86**
+- ownership stays **64 addon-full + 21 supplements + 1 complete upstream** (`en_us`)
+- 27 documented complete-English fallback full locales; 37 translated/AI-assisted full locales
+
+Validation/files:
+- first exploratory audit **`34745471460`** green
+- diagnostic `34745550301` failed only because the attempted `languages.json` asset-index lookup does not exist for this version; the audit method was corrected to inspect the client JAR
+- corrected client-JAR audit **`34745599199`** green; no language registry candidate was found in the client JAR
+- isolated full audit/scope/reconstruction/complete QA **`34745793615`** green
+- integrated into `.github/workflows/validate.yml`; temporary `.github/workflows/audit-g25.yml` removed
+- definitive clean-head full G1→G25 gate is pending
+- files: `upstream/sources/1.18/en_us.json`, `upstream/diffs/1.17.1-to-1.18.json`, `upstream/minecraft-1.18-language-audit.json`, `upstream/minecraft-1.18-language-scope.json`, `translations/g25-mc1.18/policy.json`, `scripts/audit_1_18.py`, `scripts/reconstruct_1_18.py`, `scripts/validate_1_18_delta.py`, `scripts/validate_1_18_complete.py`
+
+## Current next target — G26 Minecraft 1.18.1 / JEI 9.4.1
+
+Do not write G26 generation files until the clean full G1→G25 gate is green.
 
 Read-only historical research already shows:
-- `2df668b5ac4a8473b9837ad2785d0f5a4fb845a6` is `Initial port to Minecraft 1.18`
-- `11170466754e1065e25a6769d70bcfbffbb36130` explicitly updates Minecraft 1.18 → 1.18.1 and has parent `2df668b5...`
-- therefore the final Minecraft 1.18 endpoint is **`2df668b5ac4a8473b9837ad2785d0f5a4fb845a6`**
-- its transition diff identifies Minecraft `1.18`, Forge `38.0.14`, JEI version `9.0.0`
-- Minecraft 1.18.1 and 1.18.2 also have distinct later transitions and must remain separate generations
+- the port to Minecraft 1.18.2, `e72e49fa7a072755e7f96cad65388205f6a010dc`, has parent **`82a622213dbf2a9df65af4e3cebbccc77ec44deb`**; this is the final 1.18.1 endpoint candidate
+- endpoint metadata: Minecraft `1.18.1`, JEI `9.4.1`, Forge `39.0.89`, mappings `official / 1.18.1`, Java 17
+- final 1.18.1 English blob SHA is `aa3a3da58dff3d623ee553aca40c7b24c80c2d18`
+- unlike G25, the 1.18.1 English source has meaningful localization changes and therefore requires a fresh semantic delta audit before reconstruction
 
 Immediate next steps:
-1. require a green canonical full G1→G24 CI from the clean head after this status update;
-2. replace the G24 table CI field with that canonical run ID and mark G24 completed;
-3. audit exact G25 Minecraft 1.18 build/source/scope/ownership from endpoint `2df668b5...`;
-4. continue chronologically through 1.18.1 and 1.18.2 as separate generations if their endpoint audits confirm them.
+1. require a green canonical full G1→G25 CI from the clean head after this status update;
+2. replace the G25 table CI field with that canonical run ID and mark G25 completed;
+3. pin/audit G26 Minecraft 1.18.1 source, language inventory and JEI upstream ownership from endpoint `82a622213...`;
+4. reconstruct/validate G26, then continue chronologically to Minecraft 1.18.2 as a separate generation.
 
 ## Documentation synchronization debt
 
