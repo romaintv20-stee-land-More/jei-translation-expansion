@@ -6,7 +6,7 @@ on:
       version:
         description: Prototype project version
         required: false
-        default: 0.1.0-ci
+        default: 1.0.0
   push:
     branches: [main]
     paths:
@@ -40,7 +40,7 @@ jobs:
         env:
           INPUT_VERSION: ${{ github.event.inputs.version }}
         run: |
-          VERSION="${INPUT_VERSION:-0.1.0-ci}"
+          VERSION="${INPUT_VERSION:-1.0.0}"
           python scripts/build_1_8.py --version "$VERSION"
 
       - name: Inspect JAR and Forge entrypoint bytecode
@@ -59,6 +59,7 @@ jobs:
           grep -Fq 'acceptedMinecraftVersions' build/javap-1.8.txt
           grep -Fq '[1.8]' build/javap-1.8.txt
           grep -Fq 'required-after:Forge@[11.14.0.1269,);required-after:JEI@[2.15.0]' build/javap-1.8.txt
+          grep -Fq '1.0.0' build/javap-1.8.txt
           sha256sum "$JAR"
 
       - name: Upload prototype artifact
