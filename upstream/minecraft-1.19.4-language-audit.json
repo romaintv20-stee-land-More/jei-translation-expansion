@@ -1,0 +1,69 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-14",
+  "status": "verified-source-scope-and-upstream-ownership",
+  "minecraft": "1.19.4",
+  "jei": "13.1.0",
+  "jei_upstream_commit": "b5b00557f5df18c35e545e3cc8cd65ca4b975ba1",
+  "build_metadata": {
+    "forge": "45.0.40",
+    "forge_group": "net.minecraftforge",
+    "mappings_channel": "parchment",
+    "mappings_version": "1.19.3-2023.03.12-1.19.4",
+    "java_toolchain": "17",
+    "language_format": "json",
+    "locale_filename_case": "lowercase",
+    "english_source_path": "Common/src/main/resources/assets/jei/lang/en_us.json"
+  },
+  "language_scope": {
+    "selected_scope_count": 88,
+    "changed_from_1.19.3": false,
+    "new_selected_primary_languages": [],
+    "removed_selected_languages": [],
+    "decoupled_assets": true,
+    "release_note": "Minecraft 1.19.4 keeps the selected historical language membership unchanged; 23w07a sorted en_us.json alphanumerically by key."
+  },
+  "jei_english": {
+    "resource_format": "json",
+    "key_count": 156,
+    "normal_key_count": 150,
+    "debug_only_key_count": 6,
+    "pinned_blob_sha": "6a6889b9c02c0ae9c1322abb3007162ee59ffb97"
+  },
+  "english_diff_from_1.19.3": {
+    "unchanged_key_and_value_count": 156,
+    "added_key_count": 0,
+    "removed_key_count": 0,
+    "changed_english_value_count": 0,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 0,
+    "manifest": "upstream/diffs/1.19.3-to-1.19.4.json"
+  },
+  "jei_upstream_locale_count": 25,
+  "selected_scope_count": 88,
+  "selected_upstream_complete_locales": ["en_us", "uk_ua"],
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr", "he_il",
+    "id_id", "it_it", "ja_jp", "ko_kr", "lt_lt", "pl_pl", "pt_br", "ru_ru", "sv_se",
+    "tr_tr", "zh_cn"
+  ],
+  "upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 66,
+  "ownership_changes_from_1.19.3": {
+    "newly_complete_upstream": ["uk_ua"],
+    "complete_to_incomplete": [],
+    "newly_upstream_from_addon_full": [],
+    "no_longer_upstream": [],
+    "new_addon_full_locales": [],
+    "complete_count": 2,
+    "supplement_count": 20,
+    "addon_full_count": 66
+  },
+  "validation": {
+    "exploratory_audit_run": 34786467954,
+    "exploratory_audit_job": 103802754025,
+    "result": "success",
+    "complete_validation_run": null,
+    "complete_validation_job": null
+  }
+}
