@@ -19,8 +19,9 @@ VERSION_MANIFEST = "https://piston-meta.mojang.com/mc/game/version_manifest_v2.j
 DEBUG_PREFIX = "description.jei."
 UPSTREAM_LOCALES = (
     "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "en_au", "en_us", "es_es",
-    "fi_fi", "fr_fr", "he_il", "id_id", "it_it", "ja_jp", "ko_kr", "lt_lt",
-    "nb_no", "pl_pl", "pt_br", "ru_ru", "sv_se", "tr_tr", "uk_ua", "zh_cn", "zh_tw",
+    "fi_fi", "fr_fr", "he_il", "id_id", "it_it", "ja_jp", "kk_kz", "ko_kr",
+    "lt_lt", "nb_no", "pl_pl", "pt_br", "ru_ru", "sv_se", "tr_tr", "uk_ua",
+    "zh_cn", "zh_tw",
 )
 
 
