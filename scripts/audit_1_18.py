@@ -16,6 +16,7 @@ RAW_ROOT = f"https://raw.githubusercontent.com/mezz/JustEnoughItems/{PINNED_COMM
 RAW_LANG = f"{RAW_ROOT}/src/main/resources/assets/jei/lang"
 GITHUB_LANG_API = "https://api.github.com/repos/mezz/JustEnoughItems/contents/src/main/resources/assets/jei/lang"
 VERSION_MANIFEST = "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json"
+ASSET_OBJECT_ROOT = "https://resources.download.minecraft.net"
 DEBUG_PREFIX = "description.jei."
 
 
@@ -70,6 +71,19 @@ def language_codes(asset_index: dict) -> set[str]:
             continue
         if path.suffix in {".lang", ".json"}:
             codes.add(path.stem.lower())
+    codes.add("en_us")
+    return codes
+
+
+def declared_language_codes(asset_index: dict) -> set[str]:
+    obj = asset_index.get("objects", {}).get("minecraft/lang/languages.json")
+    if not obj or not obj.get("hash"):
+        raise ValueError("asset index has no minecraft/lang/languages.json object")
+    digest = str(obj["hash"])
+    data = fetch_json(f"{ASSET_OBJECT_ROOT}/{digest[:2]}/{digest}")
+    if not isinstance(data, dict):
+        raise ValueError("languages.json is not a JSON object")
+    codes = {str(code).lower() for code in data}
     codes.add("en_us")
     return codes
 
@@ -147,8 +161,17 @@ def main() -> int:
 
     base_codes = language_codes(base_asset) if base_asset else set()
     target_codes = language_codes(target_asset) if target_asset else set()
+    try:
+        base_declared = declared_language_codes(base_asset) if base_asset else set()
+        target_declared = declared_language_codes(target_asset) if target_asset else set()
+    except Exception as exc:
+        errors.append(f"failed to read declared Minecraft languages.json inventory: {exc}")
+        base_declared = target_declared = set()
+
     added_mc = sorted(target_codes - base_codes)
     removed_mc = sorted(base_codes - target_codes)
+    added_declared = sorted(target_declared - base_declared)
+    removed_declared = sorted(base_declared - target_declared)
     inherited_missing = sorted(inherited - target_codes)
     inherited_present = inherited & target_codes
     new_candidates = sorted(target_codes - inherited)
@@ -177,12 +200,16 @@ def main() -> int:
         print(f"Minecraft 1.17.1 asset index: id={ba.get('id')} sha1={ba.get('sha1')} url={ba.get('url')}")
         print(f"Minecraft 1.18 asset index: id={ta.get('id')} sha1={ta.get('sha1')} url={ta.get('url')}")
         print(f"Asset index identical: {ba.get('sha1') == ta.get('sha1')}")
-    print(f"Minecraft language codes: 1.17.1={len(base_codes)} 1.18={len(target_codes)}")
-    print(f"Added codes since 1.17.1 ({len(added_mc)}): {', '.join(added_mc) or '(none)'}")
-    print(f"Removed codes since 1.17.1 ({len(removed_mc)}): {', '.join(removed_mc) or '(none)'}")
+    print(f"Minecraft language asset-file codes: 1.17.1={len(base_codes)} 1.18={len(target_codes)}")
+    print(f"Added asset-file codes since 1.17.1 ({len(added_mc)}): {', '.join(added_mc) or '(none)'}")
+    print(f"Removed asset-file codes since 1.17.1 ({len(removed_mc)}): {', '.join(removed_mc) or '(none)'}")
+    print(f"Minecraft declared languages.json codes: 1.17.1={len(base_declared)} 1.18={len(target_declared)}")
+    print(f"Added declared codes since 1.17.1 ({len(added_declared)}): {', '.join(added_declared) or '(none)'}")
+    print(f"Removed declared codes since 1.17.1 ({len(removed_declared)}): {', '.join(removed_declared) or '(none)'}")
+    print(f"Asset-file-only target codes ({len(target_codes-target_declared)}): {', '.join(sorted(target_codes-target_declared)) or '(none)'}")
     print(f"Inherited selected codes absent from 1.18 ({len(inherited_missing)}): {', '.join(inherited_missing) or '(none)'}")
     print(f"Inherited selected codes still present: {len(inherited_present)}")
-    print(f"New Minecraft codes outside inherited selected scope ({len(new_candidates)}): {', '.join(new_candidates) or '(none)'}")
+    print(f"New Minecraft asset-file codes outside inherited selected scope ({len(new_candidates)}): {', '.join(new_candidates) or '(none)'}")
     print(f"Inherited selected upstream complete ({len(selected_complete)}): {', '.join(selected_complete)}")
     print(f"Inherited selected upstream incomplete ({len(selected_incomplete)}): {', '.join(selected_incomplete)}")
     print(f"Inherited addon-owned full locales still present ({len(selected_full)}): {', '.join(selected_full)}")
