@@ -1,0 +1,64 @@
+{
+  "generation": "g23-mc1.16.5",
+  "minecraft": "1.16.5",
+  "jei": "7.7.1",
+  "pinned_commit": "f6bd6ea033084f3d18ad256c9921641dcbd0330f",
+  "resource_format": "json",
+  "selected_scope_count": 88,
+  "addon_full_locale_count": 66,
+  "selected_upstream_complete_locale_count": 7,
+  "selected_upstream_incomplete_locale_count": 15,
+  "documented_full_english_fallback_count": 28,
+  "translated_or_ai_assisted_full_locale_count": 38,
+  "english_diff": {
+    "unchanged_key_and_value_count": 113,
+    "added_key_count": 6,
+    "removed_key_count": 1,
+    "changed_english_value_count": 0,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 3,
+    "added_keys": [
+      "description.jei.debug.formatting.1",
+      "description.jei.debug.formatting.2",
+      "description.jei.debug.formatting.3",
+      "jei.message.ftblibrary",
+      "key.jei.nextCategory",
+      "key.jei.previousCategory"
+    ],
+    "removed_keys": ["jei.message.ftbguilib"]
+  },
+  "translation_reuse": {
+    "rule": "Reuse a translation only when the localization key and English source value are both exactly identical.",
+    "base_generation": "g22-mc1.16.4",
+    "reuse_unchanged_g22_semantics": true,
+    "cross_key_reuse_allowed": false,
+    "ftbguilib_to_ftblibrary_reuse_allowed": false
+  },
+  "scope_change": {
+    "selected_scope_changed": false,
+    "raw_language_count": 125,
+    "selected_scope_count": 88
+  },
+  "ownership_change": {
+    "newly_complete_upstream": ["it_it", "ko_kr", "tr_tr", "zh_cn"],
+    "complete_to_incomplete": ["pl_pl", "pt_br"],
+    "addon_full_to_upstream_incomplete": ["id_id"],
+    "complete_count": 7,
+    "supplement_count": 15,
+    "addon_full_count": 66
+  },
+  "upstream_policy": {
+    "preserve_existing_upstream_keys": true,
+    "emit_only_missing_normal_keys": true,
+    "emit_debug_keys_in_supplements": false,
+    "retire_supplement_when_upstream_becomes_complete": true,
+    "runtime_json_stack_merge_must_be_tested_before_release_jar_promotion": true
+  },
+  "fallback_policy": {
+    "unchanged_meanings": "inherit exact G22 combined value",
+    "new_normal_meanings": "use exact G23 target English unless pinned upstream already owns the key",
+    "removed_meanings": "omit from all G23 generated resources",
+    "new_debug_keys_in_full_files": "use exact G23 target English",
+    "documented_full_fallback_locales": "remain exact target English"
+  }
+}
