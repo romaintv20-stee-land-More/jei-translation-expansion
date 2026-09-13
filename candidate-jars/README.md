@@ -1,5 +1,5 @@
 # Static-validated JAR candidates
 
-This directory contains 29 version-specific JEI Translation Expansion 1.0.0 candidates.
+This directory contains 30 version-specific JEI Translation Expansion 1.0.0 candidates, currently through Minecraft 1.19.2.
 
-These files have passed the project static/reconstruction QA. They are kept outside `release-jars/` until the version-specific runtime gates are complete.
+These files have passed the project static/reconstruction QA. They remain outside `release-jars/` until their version-specific runtime gates are complete.
