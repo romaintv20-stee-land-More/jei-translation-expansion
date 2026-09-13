@@ -1,0 +1,21 @@
+name: Audit G28 Minecraft 1.19
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'scripts/audit_1_19.py'
+      - 'upstream/sources/1.19/en_us.json'
+      - '.github/workflows/audit-g28.yml'
+  workflow_dispatch:
+
+jobs:
+  audit-g28:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit G28 endpoint
+        run: python scripts/audit_1_19.py
