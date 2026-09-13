@@ -1,0 +1,102 @@
+name: Build completed 1.0.0 JARs
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'packaging/completed-versions.json'
+      - 'scripts/build_completed_jar.py'
+      - '.github/workflows/build-completed-jars.yml'
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      versions: ${{ steps.matrix.outputs.versions }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: matrix
+        name: Read completed version matrix
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, os
+          data = json.load(open('packaging/completed-versions.json', encoding='utf-8'))
+          versions = [item['minecraft'] for item in data['versions']]
+          assert len(versions) == 27, versions
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as out:
+              out.write('versions=' + json.dumps(versions, separators=(',', ':')) + '\n')
+          PY
+
+  build:
+    needs: prepare
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 4
+      matrix:
+        minecraft: ${{ fromJSON(needs.prepare.outputs.versions) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Java 17 builder
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Build static-validated 1.0.0 candidate
+        run: python scripts/build_completed_jar.py --minecraft '${{ matrix.minecraft }}' --version 1.0.0
+
+      - name: Inspect output
+        shell: bash
+        run: |
+          JAR=$(find 'build/completed-jars/${{ matrix.minecraft }}' -maxdepth 1 -name '*.jar' -type f)
+          test -n "$JAR"
+          test "$(printf '%s\n' "$JAR" | wc -l)" -eq 1
+          unzip -t "$JAR"
+          sha256sum "$JAR"
+
+      - name: Upload version JAR
+        uses: actions/upload-artifact@v4
+        with:
+          name: jei-translation-expansion-1.0.0-mc${{ matrix.minecraft }}
+          path: build/completed-jars/${{ matrix.minecraft }}/*.jar
+          if-no-files-found: error
+          retention-days: 30
+
+  bundle:
+    needs: build
+    if: ${{ always() && needs.build.result == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all version artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: jei-translation-expansion-1.0.0-mc*
+          path: completed-jars
+          merge-multiple: true
+
+      - name: Verify complete bundle
+        shell: bash
+        run: |
+          COUNT=$(find completed-jars -maxdepth 1 -name '*.jar' -type f | wc -l)
+          test "$COUNT" -eq 27
+          sha256sum completed-jars/*.jar | sort -k2 > completed-jars/SHA256SUMS.txt
+          printf 'JEI Translation Expansion 1.0.0\n27 static-validated version-specific candidates: Minecraft 1.8 through 1.18.2.\nRuntime release gates remain separate.\n' > completed-jars/README.txt
+          cat completed-jars/SHA256SUMS.txt
+
+      - name: Upload combined bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: jei-translation-expansion-1.0.0-completed-versions
+          path: completed-jars/
+          if-no-files-found: error
+          retention-days: 30
