@@ -9,6 +9,9 @@ on:
       - 'scripts/build_completed_jar.py'
       - '.github/workflows/build-completed-jars.yml'
 
+permissions:
+  contents: write
+
 jobs:
   prepare:
     runs-on: ubuntu-latest
@@ -24,7 +27,8 @@ jobs:
           import json, os
           data = json.load(open('packaging/completed-versions.json', encoding='utf-8'))
           versions = [item['minecraft'] for item in data['versions']]
-          assert len(versions) == 27, versions
+          assert versions, versions
+          assert len(versions) == len(set(versions)), versions
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as out:
               out.write('versions=' + json.dumps(versions, separators=(',', ':')) + '\n')
           PY
@@ -72,11 +76,90 @@ jobs:
           if-no-files-found: error
           retention-days: 30
 
-  bundle:
-    needs: build
+  persist:
+    needs: [prepare, build]
     if: ${{ always() && needs.build.result == 'success' }}
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download all version artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: jei-translation-expansion-1.0.0-mc*
+          path: downloaded-jars
+          merge-multiple: true
+
+      - name: Store candidates in repository tree
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import shutil
+          from pathlib import Path
+
+          root = Path('.')
+          incoming = root / 'downloaded-jars'
+          candidate_root = root / 'candidate-jars'
+          config = json.load(open('packaging/completed-versions.json', encoding='utf-8'))
+          versions = [item['minecraft'] for item in config['versions']]
+          jars = sorted(incoming.glob('*.jar'))
+          if len(jars) != len(versions):
+              raise SystemExit(f'expected {len(versions)} JARs, got {len(jars)}')
+
+          by_version = {}
+          for jar in jars:
+              matched = [v for v in versions if f'-mc{v}-forge.jar' in jar.name]
+              if len(matched) != 1:
+                  raise SystemExit(f'cannot resolve Minecraft version for {jar.name}: {matched}')
+              by_version[matched[0]] = jar
+
+          for version in versions:
+              if version not in by_version:
+                  raise SystemExit(f'missing JAR for Minecraft {version}')
+              dest_dir = candidate_root / version
+              dest_dir.mkdir(parents=True, exist_ok=True)
+              for old in dest_dir.glob('*.jar'):
+                  old.unlink()
+              shutil.copy2(by_version[version], dest_dir / by_version[version].name)
+
+          checksums = []
+          for version in versions:
+              jar = next((candidate_root / version).glob('*.jar'))
+              digest = hashlib.sha256(jar.read_bytes()).hexdigest()
+              checksums.append(f'{digest}  {jar.as_posix()}')
+          (candidate_root / 'SHA256SUMS.txt').write_text('\n'.join(checksums) + '\n', encoding='utf-8')
+          (candidate_root / 'README.md').write_text(
+              '# Static-validated JAR candidates\n\n'
+              f'This directory contains {len(versions)} version-specific JEI Translation Expansion 1.0.0 candidates.\n\n'
+              'These files have passed the project static/reconstruction QA. They are kept outside `release-jars/` until the version-specific runtime gates are complete.\n',
+              encoding='utf-8',
+          )
+          PY
+
+      - name: Commit candidate JARs to GitHub
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add candidate-jars
+          if git diff --cached --quiet; then
+            echo 'Candidate JARs are already current.'
+          else
+            git commit -m 'Store completed 1.0.0 JAR candidates'
+            git push
+          fi
+
+  bundle:
+    needs: [prepare, build]
+    if: ${{ always() && needs.build.result == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Download all version artifacts
         uses: actions/download-artifact@v4
         with:
@@ -87,10 +170,11 @@ jobs:
       - name: Verify complete bundle
         shell: bash
         run: |
+          EXPECTED=$(python -c "import json; print(len(json.load(open('packaging/completed-versions.json', encoding='utf-8'))['versions']))")
           COUNT=$(find completed-jars -maxdepth 1 -name '*.jar' -type f | wc -l)
-          test "$COUNT" -eq 27
+          test "$COUNT" -eq "$EXPECTED"
           sha256sum completed-jars/*.jar | sort -k2 > completed-jars/SHA256SUMS.txt
-          printf 'JEI Translation Expansion 1.0.0\n27 static-validated version-specific candidates: Minecraft 1.8 through 1.18.2.\nRuntime release gates remain separate.\n' > completed-jars/README.txt
+          printf 'JEI Translation Expansion 1.0.0\n%s static-validated version-specific candidates, currently through Minecraft 1.19.\nRuntime release gates remain separate.\n' "$EXPECTED" > completed-jars/README.txt
           cat completed-jars/SHA256SUMS.txt
 
       - name: Upload combined bundle
