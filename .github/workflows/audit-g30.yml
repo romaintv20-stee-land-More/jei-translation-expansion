@@ -1,0 +1,22 @@
+name: Audit G30 Minecraft 1.19.2
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g30-mc1.19.2']
+    paths:
+      - 'scripts/audit_1_19_2.py'
+      - '.github/workflows/audit-g30.yml'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit final Minecraft 1.19.2 / JEI 11.5.0 endpoint
+        run: python scripts/audit_1_19_2.py
