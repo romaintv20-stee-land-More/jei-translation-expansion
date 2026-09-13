@@ -1,0 +1,22 @@
+{
+  "from_minecraft": "1.19.1",
+  "to_minecraft": "1.19.2",
+  "from_jei": "11.2.0",
+  "to_jei": "11.5.0",
+  "from_source": "upstream/sources/1.19.1/en_us.json",
+  "to_source": "upstream/sources/1.19.2/en_us.json",
+  "unchanged_key_and_value_count": 153,
+  "added_key_count": 0,
+  "removed_key_count": 0,
+  "changed_english_value_count": 0,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 0,
+  "added_keys": [],
+  "added_english_values": {},
+  "removed_keys": [],
+  "changed_english_values": {},
+  "review": {
+    "status": "reviewed",
+    "notes": "G30 keeps all 153 G29 localization key/value semantics exactly unchanged."
+  }
+}
