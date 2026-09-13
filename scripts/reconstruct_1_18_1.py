@@ -36,18 +36,21 @@ def fetch_upstream_json(commit: str, locale: str) -> dict[str, str]:
         return parse_json_text(response.read().decode("utf-8"))
 
 
+@lru_cache(maxsize=1)
 def reconstruct_g25_full() -> dict[str, dict[str, str]]:
     target = g25.parse_json(g25.TARGET_SOURCE)
     scope = json.loads(g25.SCOPE_PATH.read_text(encoding="utf-8"))
     return g25.reconstruct_full(target, scope)
 
 
+@lru_cache(maxsize=1)
 def reconstruct_g25_supplements() -> dict[str, dict[str, str]]:
     target = g25.parse_json(g25.TARGET_SOURCE)
     scope = json.loads(g25.SCOPE_PATH.read_text(encoding="utf-8"))
     return g25.reconstruct_supplements(target, scope)
 
 
+@lru_cache(maxsize=None)
 def g25_combined_locale(locale: str) -> dict[str, str]:
     values = dict(g25.fetch_upstream_json(g25.G25_COMMIT, locale))
     supplements = reconstruct_g25_supplements()
