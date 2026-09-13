@@ -1,0 +1,30 @@
+{
+  "base_minecraft": "1.16.4",
+  "target_minecraft": "1.16.5",
+  "base_jei": "7.6.1",
+  "target_jei": "7.7.1",
+  "resource_format": "json",
+  "base_key_count": 114,
+  "target_key_count": 119,
+  "base_normal_key_count": 111,
+  "target_normal_key_count": 113,
+  "unchanged_key_and_value_count": 113,
+  "added_key_count": 6,
+  "removed_key_count": 1,
+  "changed_english_value_count": 0,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 3,
+  "added_keys": [
+    "description.jei.debug.formatting.1",
+    "description.jei.debug.formatting.2",
+    "description.jei.debug.formatting.3",
+    "jei.message.ftblibrary",
+    "key.jei.nextCategory",
+    "key.jei.previousCategory"
+  ],
+  "removed_keys": [
+    "jei.message.ftbguilib"
+  ],
+  "changed_english_values": {},
+  "notes": "Provisional frozen G22-to-G23 delta from the pinned final Minecraft 1.16.5 / JEI 7.7.1 English source. The endpoint audit must independently verify these counts and keys before reconstruction. The renamed FTB library message is treated as a new key, not cross-key translation reuse."
+}
