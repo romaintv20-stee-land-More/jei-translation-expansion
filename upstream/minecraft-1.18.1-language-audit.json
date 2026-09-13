@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-13",
+  "status": "verified-source-scope-and-upstream-ownership",
+  "minecraft": "1.18.1",
+  "jei": "9.4.1",
+  "jei_upstream_commit": "82a622213dbf2a9df65af4e3cebbccc77ec44deb",
+  "build_metadata": {
+    "forge": "39.0.89",
+    "forge_group": "net.minecraftforge",
+    "mappings_channel": "official",
+    "mappings_version": "1.18.1",
+    "java_toolchain": "17",
+    "language_format": "json",
+    "locale_filename_case": "lowercase",
+    "english_source_path": "src/main/resources/assets/jei/lang/en_us.json"
+  },
+  "minecraft_asset_index": {
+    "id": "1.18",
+    "sha1": "d31a2e85ae149dd1b1a7070b22cb8887892fda6c",
+    "url": "https://piston-meta.mojang.com/v1/packages/d31a2e85ae149dd1b1a7070b22cb8887892fda6c/1.18.json",
+    "raw_language_count_including_en_us": 124,
+    "previous_raw_language_count": 124,
+    "added_codes_since_1.18": [],
+    "removed_codes_since_1.18": [],
+    "inherited_selected_codes_absent": []
+  },
+  "client_language_registry_investigation": {
+    "client_jar_registry_candidates": [],
+    "explicit_registry_found": false,
+    "ry_ua_explicitly_registered_in_client_jar": false,
+    "decision": "keep ry_ua deferred for G26 because Minecraft 1.18.1 uses the same asset index as 1.18 and no explicit user-facing language registry was found in the client JAR"
+  },
+  "jei_english": {
+    "resource_format": "json",
+    "key_count": 149,
+    "normal_key_count": 143,
+    "debug_only_key_count": 6,
+    "pinned_blob_sha": "aa3a3da58dff3d623ee553aca40c7b24c80c2d18"
+  },
+  "english_diff_from_1.18": {
+    "unchanged_key_and_value_count": 124,
+    "added_key_count": 11,
+    "removed_key_count": 3,
+    "changed_english_value_count": 14,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 25,
+    "manifest": "upstream/diffs/1.18-to-1.18.1.json"
+  },
+  "jei_upstream_locale_count": 25,
+  "selected_scope_count": 86,
+  "selected_upstream_complete_locales": ["en_us"],
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr",
+    "he_il", "id_id", "it_it", "ja_jp", "ko_kr", "lt_lt", "pl_pl", "pt_br",
+    "ru_ru", "sv_se", "tr_tr", "uk_ua", "zh_cn"
+  ],
+  "upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 64,
+  "scope_changes_from_1.18": {
+    "selected_scope_changed": false,
+    "new_selected_primary_languages": [],
+    "removed_selected_languages": [],
+    "deferred_new_languages": {
+      "ry_ua": "Rusyn remains asset-file-only for the audited 1.18.1 client; keep deferred until a user-facing introduction is confirmed"
+    }
+  },
+  "ownership_changes_from_1.18": {
+    "newly_complete_upstream": [],
+    "complete_to_incomplete": [],
+    "newly_upstream_from_addon_full": [],
+    "no_longer_upstream": [],
+    "complete_count": 1,
+    "supplement_count": 21,
+    "addon_full_count": 64
+  },
+  "validation": {
+    "live_audit_script": "scripts/audit_1_18_1.py",
+    "isolated_live_audit_run": 34746723993,
+    "isolated_live_audit_job": 103695888834
+  }
+}
