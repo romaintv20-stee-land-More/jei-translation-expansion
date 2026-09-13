@@ -107,7 +107,11 @@ def main() -> int:
     ):
         if token not in props:
             errors.append(f"pinned G23 gradle.properties missing {token}")
-    if "JavaVersion.VERSION_1_8" not in build:
+    java8_markers = (
+        "JavaVersion.VERSION_1_8",
+        "java.toolchain.languageVersion = JavaLanguageVersion.of(8)",
+    )
+    if not any(marker in build for marker in java8_markers):
         errors.append("pinned G23 build metadata no longer confirms Java 8")
     if "mappings channel: 'official', version: project.mcversion" not in build and 'mappings channel: "official", version: project.mcversion' not in build:
         errors.append("pinned G23 build metadata no longer confirms official 1.16.5 mappings")
