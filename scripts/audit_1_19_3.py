@@ -26,6 +26,7 @@ EXPECTED_NEW_KEYS = {
     "config.jei.advanced.addBookmarksToFront.comment",
     "jei.message.config.folder",
 }
+EXPECTED_NEW_REGISTERED_LANGUAGES = {"nah", "ry_ua"}
 
 
 def fetch_bytes(url: str, timeout: int = 30) -> bytes:
@@ -66,16 +67,39 @@ def language_codes(asset_index: dict) -> set[str]:
 
 
 def client_language_registry(version_meta: dict) -> tuple[set[str], tuple[str, ...]]:
+    """Read the user-facing vanilla language registry from the client JAR.
+
+    Minecraft's language list is stored in the root pack.mcmeta under the
+    ``language`` section. Older exploratory code only searched for
+    languages.json and therefore missed the authoritative registry.
+    """
     url = version_meta.get("downloads", {}).get("client", {}).get("url")
     if not url:
         raise ValueError("version metadata has no client download URL")
     jar = fetch_bytes(url, timeout=90)
     with zipfile.ZipFile(io.BytesIO(jar)) as archive:
+        names = archive.namelist()
         candidates = tuple(sorted(
-            name for name in archive.namelist()
-            if name.lower().endswith("languages.json") or name.lower().endswith("language.json")
+            name for name in names
+            if name == "pack.mcmeta"
+            or name.lower().endswith("languages.json")
+            or name.lower().endswith("language.json")
         ))
+
+        if "pack.mcmeta" in names:
+            try:
+                raw = json.loads(archive.read("pack.mcmeta").decode("utf-8"))
+                language = raw.get("language", {}) if isinstance(raw, dict) else {}
+                if isinstance(language, dict) and language:
+                    codes = {str(code).lower() for code in language}
+                    codes.add("en_us")
+                    return codes, candidates
+            except Exception:
+                pass
+
         for name in candidates:
+            if name == "pack.mcmeta":
+                continue
             try:
                 raw = json.loads(archive.read(name).decode("utf-8"))
             except Exception:
@@ -157,8 +181,18 @@ def main() -> int:
         client_registry, registry_candidates = set(), ()
         print(f"Client language registry inspection warning: {exc}")
 
-    inherited_missing = sorted(inherited - target_codes)
-    inherited_present = inherited & target_codes
+    if not client_registry:
+        errors.append("Minecraft 1.19.3 client JAR has no readable user-facing language registry")
+    effective_codes = client_registry or target_codes
+    registered_new_vs_g30_assets = effective_codes - base_codes
+    if registered_new_vs_g30_assets != EXPECTED_NEW_REGISTERED_LANGUAGES:
+        errors.append(
+            "unexpected newly registered G31 languages: "
+            + ", ".join(sorted(registered_new_vs_g30_assets))
+        )
+
+    inherited_missing = sorted(inherited - effective_codes)
+    inherited_present = inherited & effective_codes
     upstream_set = set(UPSTREAM_LOCALES)
     selected_upstream = sorted(inherited_present & upstream_set)
     selected_complete = sorted(x for x in selected_upstream if not completeness[x]["missing"])
@@ -188,10 +222,11 @@ def main() -> int:
     print(f"Removed asset-file codes since 1.19.2 ({len(base_codes-target_codes)}): {', '.join(sorted(base_codes-target_codes)) or '(none)'}")
     print(f"Client JAR language registry candidates: {', '.join(registry_candidates) or '(none)'}")
     print(f"Client JAR declared language codes ({len(client_registry)}): {', '.join(sorted(client_registry)) or '(none)'}")
+    print(f"Newly registered G31 languages vs 1.19.2 assets ({len(registered_new_vs_g30_assets)}): {', '.join(sorted(registered_new_vs_g30_assets)) or '(none)'}")
     print(f"ry_ua present in client JAR registry: {'ry_ua' in client_registry}")
-    print(f"Inherited selected codes absent from 1.19.3 ({len(inherited_missing)}): {', '.join(inherited_missing) or '(none)'}")
-    print(f"Inherited selected codes still present: {len(inherited_present)}")
-    print(f"Minecraft codes outside inherited selected scope ({len(target_codes-inherited)}): {', '.join(sorted(target_codes-inherited)) or '(none)'}")
+    print(f"Inherited selected codes absent from 1.19.3 registry ({len(inherited_missing)}): {', '.join(inherited_missing) or '(none)'}")
+    print(f"Inherited selected codes still registered: {len(inherited_present)}")
+    print(f"Registered Minecraft codes outside inherited selected scope ({len(effective_codes-inherited)}): {', '.join(sorted(effective_codes-inherited)) or '(none)'}")
     print(f"Selected upstream complete ({len(selected_complete)}): {', '.join(selected_complete)}")
     print(f"Selected upstream incomplete ({len(selected_incomplete)}): {', '.join(selected_incomplete)}")
     print(f"Selected addon-owned full locales ({len(selected_full)}): {', '.join(selected_full)}")
