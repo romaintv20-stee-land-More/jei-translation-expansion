@@ -1,0 +1,172 @@
+name: Refresh G14-G39 candidate JARs
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['maintenance/refresh-g14-g39-candidates']
+    paths:
+      - '.github/workflows/refresh-g14-g39-candidates.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        minecraft:
+          - '1.14.2'
+          - '1.14.3'
+          - '1.14.4'
+          - '1.15.1'
+          - '1.15.2'
+          - '1.16.1'
+          - '1.16.2'
+          - '1.16.3'
+          - '1.16.4'
+          - '1.16.5'
+          - '1.17.1'
+          - '1.18'
+          - '1.18.1'
+          - '1.18.2'
+          - '1.19'
+          - '1.19.1'
+          - '1.19.2'
+          - '1.19.3'
+          - '1.19.4'
+          - '1.20'
+          - '1.20.1'
+          - '1.20.2'
+          - '1.20.4'
+          - '1.20.6'
+          - '1.21'
+          - '1.21.1'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Build static-validated candidate
+        shell: bash
+        run: |
+          MC='${{ matrix.minecraft }}'
+          LOADER=$(python - "$MC" <<'PY'
+          import json, sys
+          mc = sys.argv[1]
+          data = json.load(open('packaging/completed-versions.json', encoding='utf-8'))
+          cfg = next(item for item in data['versions'] if item['minecraft'] == mc)
+          print(cfg.get('loader', 'forge'))
+          PY
+          )
+          if [ "$LOADER" = 'neoforge' ]; then
+            python scripts/build_completed_neoforge_jar.py --minecraft "$MC" --version 1.0.0 --output-dir "refresh-out/$MC"
+          else
+            python scripts/build_completed_jar_java21.py --minecraft "$MC" --version 1.0.0 --output-dir "refresh-out/$MC"
+          fi
+          JAR=$(find "refresh-out/$MC" -maxdepth 1 -name '*.jar' -type f)
+          test -n "$JAR"
+          test "$(printf '%s\n' "$JAR" | wc -l)" -eq 1
+          unzip -t "$JAR"
+          sha256sum "$JAR"
+
+      - name: Upload refreshed candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: refreshed-mc${{ matrix.minecraft }}
+          path: refresh-out/${{ matrix.minecraft }}/*.jar
+          if-no-files-found: error
+          retention-days: 7
+
+  persist:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout maintenance branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download refreshed candidates
+        uses: actions/download-artifact@v4
+        with:
+          pattern: refreshed-mc*
+          path: refreshed
+          merge-multiple: true
+
+      - name: Replace affected candidate JARs and verify inventory
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import shutil
+          from pathlib import Path
+
+          root = Path('.')
+          refreshed = root / 'refreshed'
+          data = json.loads((root / 'packaging/completed-versions.json').read_text(encoding='utf-8'))
+          affected = [
+              item for item in data['versions']
+              if 14 <= int(item['generation'][1:]) <= 39
+          ]
+          assert len(affected) == 26, len(affected)
+
+          for cfg in affected:
+              mc = cfg['minecraft']
+              matches = list(refreshed.glob(f'jei-translation-expansion-1.0.0-mc{mc}-*.jar'))
+              if len(matches) != 1:
+                  raise SystemExit(f'{mc}: expected one refreshed JAR, got {matches}')
+              destination = root / 'candidate-jars' / mc
+              destination.mkdir(parents=True, exist_ok=True)
+              for old in destination.glob('*.jar'):
+                  old.unlink()
+              shutil.copy2(matches[0], destination / matches[0].name)
+
+          candidate_jars = sorted((root / 'candidate-jars').glob('*/*.jar'))
+          if len(candidate_jars) != len(data['versions']):
+              raise SystemExit(
+                  f"candidate inventory mismatch: {len(candidate_jars)} JARs for {len(data['versions'])} completed versions"
+              )
+          PY
+
+          find candidate-jars -mindepth 2 -maxdepth 2 -name '*.jar' -type f -print0 \
+            | sort -z \
+            | xargs -0 sha256sum > candidate-jars/SHA256SUMS.txt
+
+          COUNT=$(find candidate-jars -mindepth 2 -maxdepth 2 -name '*.jar' -type f | wc -l)
+          LATEST=$(python - <<'PY'
+          import json
+          data = json.load(open('packaging/completed-versions.json', encoding='utf-8'))
+          print(data['versions'][-1]['minecraft'])
+          PY
+          )
+          printf '# Static-validated JAR candidates\n\nThis directory contains %s version-specific JEI Translation Expansion 1.0.0 candidates, currently through Minecraft %s.\n\nThese files have passed the project static/reconstruction QA. They remain outside `release-jars/` until their version-specific runtime gates are complete.\n' "$COUNT" "$LATEST" > candidate-jars/README.md
+
+          test "$COUNT" -eq 39
+          git status --short candidate-jars
+
+      - name: Commit refreshed candidates
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add candidate-jars
+          if git diff --cached --quiet; then
+            echo 'All affected candidate JARs were already reproducible and current.'
+            exit 0
+          fi
+          git commit -m 'Refresh G14-G39 candidate JARs after token-safety fix'
+          git pull --rebase origin maintenance/refresh-g14-g39-candidates
+          git push origin HEAD:maintenance/refresh-g14-g39-candidates
