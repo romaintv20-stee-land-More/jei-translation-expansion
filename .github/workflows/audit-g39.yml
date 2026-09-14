@@ -6,6 +6,7 @@ on:
     branches: ['work/g39-mc1.21.1']
     paths:
       - 'scripts/audit_1_21_1.py'
+      - 'scripts/audit_1_21_1_backports.py'
       - '.github/workflows/audit-g39.yml'
 
 jobs:
@@ -20,3 +21,5 @@ jobs:
           python-version: '3.12'
       - name: Audit final Minecraft 1.21.1 / JEI 19.21.1 endpoint
         run: python scripts/audit_1_21_1.py
+      - name: Audit exact later-JEI translation backports
+        run: python scripts/audit_1_21_1_backports.py
