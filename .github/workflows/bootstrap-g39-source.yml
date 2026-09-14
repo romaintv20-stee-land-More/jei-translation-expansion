@@ -1,0 +1,31 @@
+name: Bootstrap G39 source
+
+on:
+  push:
+    branches: ['work/g39-mc1.21.1']
+    paths:
+      - '.github/workflows/bootstrap-g39-source.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  pin-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/g39-mc1.21.1
+      - name: Pin JEI 19.21.1 English source
+        run: |
+          mkdir -p upstream/sources/1.21.1
+          curl -fL 'https://raw.githubusercontent.com/mezz/JustEnoughItems/28eb51f58d2798512a2ef75cf8b29189228573ad/Common/src/main/resources/assets/jei/lang/en_us.json' -o upstream/sources/1.21.1/en_us.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add upstream/sources/1.21.1/en_us.json
+          if git diff --cached --quiet; then
+            echo 'Pinned source already present'
+          else
+            git commit -m 'Pin G39 Minecraft 1.21.1 English source'
+            git push origin HEAD:work/g39-mc1.21.1
+          fi
