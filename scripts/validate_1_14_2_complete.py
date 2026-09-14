@@ -18,11 +18,22 @@ def placeholders(value: str) -> Counter[str]:
     return Counter(PLACEHOLDER_RE.findall(value))
 
 
+def contains_technical_token(value: str, token: str) -> bool:
+    """Match standalone alphanumeric technical tokens without substring false positives.
+
+    For example, the unit token ``mB`` must match ``%s mB`` but not the letters
+    spanning ``ItemBlock``.
+    """
+    if token.isalnum():
+        return re.search(rf"(?<![A-Za-z0-9_]){re.escape(token)}(?![A-Za-z0-9_])", value) is not None
+    return token in value
+
+
 def validate_value(locale: str, key: str, english: str, translated: str, errors: list[str]) -> None:
     if placeholders(translated) != placeholders(english):
         errors.append(f"{locale}: placeholder mismatch for {key}")
     for token in TECHNICAL_TOKENS:
-        if token in english and token not in translated:
+        if contains_technical_token(english, token) and not contains_technical_token(translated, token):
             errors.append(f"{locale}: missing technical token {token!r} in {key}")
     if key.startswith(g14.DEBUG_PREFIX) and translated != english:
         errors.append(f"{locale}: debug-only key must remain exact target English: {key}")
