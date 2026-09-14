@@ -1,0 +1,54 @@
+{
+  "generation": "g33-mc1.20",
+  "minecraft": "1.20",
+  "jei": "14.0.0",
+  "pinned_commit": "aa6e14229c0c44cd685ac6b4d1d7f513360da18a",
+  "resource_format": "json",
+  "selected_scope_count": 90,
+  "addon_full_locale_count": 68,
+  "selected_upstream_complete_locale_count": 2,
+  "selected_upstream_incomplete_locale_count": 20,
+  "documented_full_english_fallback_count": 31,
+  "translated_or_ai_assisted_full_locale_count": 37,
+  "english_diff": {
+    "base_generation": "g32-mc1.19.4",
+    "unchanged_key_and_value_count": 156,
+    "added_key_count": 0,
+    "removed_key_count": 0,
+    "changed_english_value_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 0
+  },
+  "translation_reuse": {
+    "rule": "Reuse a translation only when the localization key and English source value are both exactly identical.",
+    "base_generation": "g32-mc1.19.4",
+    "reuse_unchanged_g32_semantics": true,
+    "cross_key_reuse_allowed": false
+  },
+  "scope_change": {
+    "changed": true,
+    "new_selected_primary_languages": ["lo_la", "sah_sah"],
+    "removed_selected_languages": [],
+    "reason": "Minecraft Java 1.20 added Lao and Yakut to the historical primary-language set."
+  },
+  "ownership_change": {
+    "newly_complete_upstream": [],
+    "complete_to_incomplete": [],
+    "new_addon_full_locales": ["lo_la", "sah_sah"],
+    "complete_count": 2,
+    "supplement_count": 20,
+    "addon_full_count": 68
+  },
+  "upstream_policy": {
+    "preserve_existing_upstream_keys": true,
+    "supplement_only_exact_missing_normal_keys": true,
+    "never_override_upstream_key": true,
+    "retire_supplement_when_upstream_becomes_complete": true
+  },
+  "fallback_policy": {
+    "documented_full_english_fallback_allowed": true,
+    "inherited_g32_full_locales_preserve_exact_values": true,
+    "new_fallback_locales": ["lo_la", "sah_sah"],
+    "new_fallback_reason": "No trusted reviewed JEI-specific Lao/Yakut translation corpus is available for this historical generation; complete English fallback is used explicitly rather than inventing low-confidence translations.",
+    "fallback_locales_are_complete": true
+  }
+}

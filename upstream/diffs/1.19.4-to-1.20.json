@@ -1,0 +1,22 @@
+{
+  "from_minecraft": "1.19.4",
+  "to_minecraft": "1.20",
+  "from_jei": "13.1.0",
+  "to_jei": "14.0.0",
+  "from_source": "upstream/sources/1.19.4/en_us.json",
+  "to_source": "upstream/sources/1.20/en_us.json",
+  "unchanged_key_and_value_count": 156,
+  "added_key_count": 0,
+  "removed_key_count": 0,
+  "changed_english_value_count": 0,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 0,
+  "added_keys": [],
+  "added_english_values": {},
+  "removed_keys": [],
+  "changed_english_values": {},
+  "review": {
+    "status": "reviewed",
+    "notes": "The final JEI 14.0.0 English localization content is exactly unchanged from the pinned JEI 13.1.0 G32 source: 156 unchanged key/value pairs."
+  }
+}
