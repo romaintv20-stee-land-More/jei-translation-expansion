@@ -81,8 +81,8 @@ def main() -> int:
     props = fetch_text(f"{RAW_ROOT}/gradle.properties")
     forge_build = fetch_text(f"{RAW_ROOT}/Forge/build.gradle.kts")
     for token in (
-        "modJavaVersion=17", "minecraftVersion=1.20", "forgeVersion=46.0.8",
-        "parchmentVersionForge=1.19.3-2023.03.12-1.20", "specificationVersion=14.0.0",
+        "modJavaVersion=17", "minecraftVersion=1.20", "forgeVersion=46.0.1",
+        "parchmentVersionForge=1.19.3-2023.03.12-1.19.4", "specificationVersion=14.0.0",
     ):
         if token not in props:
             errors.append(f"pinned G33 gradle.properties missing {token}")
@@ -141,7 +141,7 @@ def main() -> int:
 
     print("Minecraft 1.20 / JEI 14.0.0 final localization exploratory audit")
     print(f"Pinned commit: {PINNED_COMMIT}")
-    print("Build: Minecraft 1.20 / Forge 46.0.8 / Parchment 1.19.3-2023.03.12-1.20 / Java 17")
+    print("Build: Minecraft 1.20 / Forge 46.0.1 / Parchment 1.19.3-2023.03.12-1.19.4 / Java 17")
     print(f"G32 English: {len(base)} total / {len(base_normal)} normal / {len(base)-len(base_normal)} debug")
     print(f"G33 English: {len(target)} total / {len(target_normal)} normal / {len(target)-len(target_normal)} debug")
     print(f"G32 -> G33 unchanged: {len(unchanged)}")
