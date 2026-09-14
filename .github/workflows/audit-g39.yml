@@ -7,6 +7,7 @@ on:
     paths:
       - 'scripts/audit_1_21_1.py'
       - 'scripts/audit_1_21_1_backports.py'
+      - 'scripts/audit_1_21_1_addon_donors.py'
       - '.github/workflows/audit-g39.yml'
 
 jobs:
@@ -23,3 +24,5 @@ jobs:
         run: python scripts/audit_1_21_1.py
       - name: Audit exact later-JEI translation backports
         run: python scripts/audit_1_21_1_backports.py
+      - name: Audit later-JEI donors for addon-full locales
+        run: python scripts/audit_1_21_1_addon_donors.py
