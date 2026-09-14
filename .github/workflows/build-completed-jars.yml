@@ -8,6 +8,7 @@ on:
       - 'packaging/completed-versions.json'
       - 'scripts/build_completed_jar.py'
       - 'scripts/build_completed_jar_java21.py'
+      - 'scripts/build_completed_jar_neoforge.py'
 
 permissions:
   contents: write
@@ -17,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       minecraft: ${{ steps.latest.outputs.minecraft }}
+      loader: ${{ steps.latest.outputs.loader }}
       expected_count: ${{ steps.latest.outputs.expected_count }}
     steps:
       - uses: actions/checkout@v4
@@ -30,8 +32,12 @@ jobs:
           versions = data['versions']
           assert versions
           assert len({item['minecraft'] for item in versions}) == len(versions)
+          latest = versions[-1]
+          loader = latest.get('loader', 'forge')
+          assert loader in {'forge', 'neoforge'}
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as out:
-              out.write(f"minecraft={versions[-1]['minecraft']}\n")
+              out.write(f"minecraft={latest['minecraft']}\n")
+              out.write(f"loader={loader}\n")
               out.write(f"expected_count={len(versions)}\n")
           PY
 
@@ -54,7 +60,13 @@ jobs:
           java-version: '21'
 
       - name: Build latest static-validated 1.0.0 candidate
-        run: python scripts/build_completed_jar_java21.py --minecraft '${{ needs.prepare.outputs.minecraft }}' --version 1.0.0
+        shell: bash
+        run: |
+          if [ '${{ needs.prepare.outputs.loader }}' = 'neoforge' ]; then
+            python scripts/build_completed_jar_neoforge.py --minecraft '${{ needs.prepare.outputs.minecraft }}' --version 1.0.0
+          else
+            python scripts/build_completed_jar_java21.py --minecraft '${{ needs.prepare.outputs.minecraft }}' --version 1.0.0
+          fi
 
       - name: Inspect output
         shell: bash
@@ -63,6 +75,16 @@ jobs:
           test -n "$JAR"
           test "$(printf '%s\n' "$JAR" | wc -l)" -eq 1
           unzip -t "$JAR"
+          if [ '${{ needs.prepare.outputs.loader }}' = 'neoforge' ]; then
+            case "$JAR" in *-neoforge.jar) ;; *) echo "Expected a NeoForge candidate filename"; exit 1;; esac
+            unzip -l "$JAR" | grep -F 'META-INF/neoforge.mods.toml'
+            if unzip -l "$JAR" | grep -F 'META-INF/mods.toml'; then
+              echo 'Forge mods.toml must not be present in NeoForge candidate'
+              exit 1
+            fi
+          else
+            case "$JAR" in *-forge.jar) ;; *) echo "Expected a Forge candidate filename"; exit 1;; esac
+          fi
           sha256sum "$JAR"
 
       - name: Upload latest version JAR
