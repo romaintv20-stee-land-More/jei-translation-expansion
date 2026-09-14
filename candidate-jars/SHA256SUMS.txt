@@ -29,6 +29,7 @@ bceba79d16b8dcd2f41e994f417e73d1708f40d3540f4dde61539d24b5ee89b3  candidate-jars
 3c2da92f9642ed07ca8423fe8e2f99ae7ff7eecf5119e8d2b0ea77f1fd3a7cc1  candidate-jars/1.20.1/jei-translation-expansion-1.0.0-mc1.20.1-forge.jar
 52b1c3b5f239e35d65446432cc210b83a89952dfb011f0ffb28ec28931d9ec8e  candidate-jars/1.20.2/jei-translation-expansion-1.0.0-mc1.20.2-forge.jar
 22de2c838d20ed9dda7f48df0df70d1df299509f9432ad68476ee720feda721b  candidate-jars/1.20.4/jei-translation-expansion-1.0.0-mc1.20.4-forge.jar
+a0d0126e8ce935a4fcb1dc0dfa7c2a864a3ede4f6b4c9c4eef530d10df0e6fee  candidate-jars/1.20.6/jei-translation-expansion-1.0.0-mc1.20.6-forge.jar
 f07718f00a0675b588c47e9e56b9f327dea29b3d2bb9cd782cba79925720adbf  candidate-jars/1.20/jei-translation-expansion-1.0.0-mc1.20-forge.jar
 7491c008f19daf12c553924068dcdf52e13676598ea922e64b6d0fd35e169c12  candidate-jars/1.8.9/jei-translation-expansion-1.0.0-mc1.8.9-forge.jar
 3df7215150c50357ff4e4f1c4893e46524b938eed03b56f20d7303dbb50e16ed  candidate-jars/1.8/jei-translation-expansion-1.0.0-mc1.8-forge.jar
