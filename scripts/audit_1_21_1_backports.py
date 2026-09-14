@@ -10,8 +10,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 TARGET = ROOT / "upstream" / "sources" / "1.21.1" / "en_us.json"
 G39_COMMIT = "28eb51f58d2798512a2ef75cf8b29189228573ad"
-# Later mainline JEI snapshot after the 1.21.10 port; used only as a translation donor.
-DONOR_COMMIT = "5593dfe99114c057f018d959bf4c147a70462fef"
+# Current mainline JEI snapshot at audit time; used only as a translation donor.
+DONOR_COMMIT = "f93563ca4965d511bd07d4f041b3a6ddd1158ef0"
 LANG_PATH = "Common/src/main/resources/assets/jei/lang/{locale}.json"
 SELECTED_INCOMPLETE = (
     "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr", "he_il",
@@ -60,6 +60,7 @@ def main() -> int:
     if donor_en is None:
         raise RuntimeError(f"donor English locale unavailable: {donor_en_status}")
     semantically_stable = {k for k in normal if donor_en.get(k) == target[k]}
+    print(f"Donor commit: {DONOR_COMMIT}")
     print(f"G39 normal target keys: {len(normal)}")
     print(f"Exact same key+English semantics in donor snapshot: {len(semantically_stable)}")
     total = 0
