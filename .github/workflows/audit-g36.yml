@@ -1,0 +1,37 @@
+name: Validate G36 Minecraft 1.20.4
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g36-mc1.20.4']
+    paths:
+      - 'scripts/audit_1_20_4.py'
+      - 'scripts/reconstruct_1_20_4.py'
+      - 'scripts/validate_1_20_4_delta.py'
+      - 'scripts/validate_1_20_4_complete.py'
+      - 'upstream/sources/1.20.4/en_us.json'
+      - 'upstream/diffs/1.20.2-to-1.20.4.json'
+      - 'upstream/minecraft-1.20.4-language-scope.json'
+      - 'upstream/minecraft-1.20.4-language-audit.json'
+      - 'translations/g36-mc1.20.4/policy.json'
+      - 'translations/g36-mc1.20.4/semantic-delta.json'
+      - '.github/workflows/audit-g36.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit final Minecraft 1.20.4 / JEI 17.3.0 endpoint
+        run: python scripts/audit_1_20_4.py
+      - name: Validate Minecraft 1.20.4 source scope ownership and semantic delta
+        run: python scripts/validate_1_20_4_delta.py
+      - name: Reconstruct and verify Minecraft 1.20.4 resources
+        run: python scripts/reconstruct_1_20_4.py --check
+      - name: Validate Minecraft 1.20.4 complete resources
+        run: python scripts/validate_1_20_4_complete.py

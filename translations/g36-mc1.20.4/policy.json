@@ -1,0 +1,51 @@
+{
+  "generation": "g36-mc1.20.4",
+  "minecraft": "1.20.4",
+  "jei": "17.3.0",
+  "pinned_commit": "282f6faecfd71545243be0a94703bdde90eac4e7",
+  "resource_format": "json",
+  "selected_scope_count": 90,
+  "addon_full_locale_count": 67,
+  "selected_upstream_complete_locale_count": 1,
+  "selected_upstream_incomplete_locale_count": 22,
+  "documented_full_english_fallback_count": 31,
+  "translated_or_ai_assisted_full_locale_count": 36,
+  "english_diff": {
+    "base_generation": "g35-mc1.20.2",
+    "unchanged_key_and_value_count": 155,
+    "added_key_count": 1,
+    "removed_key_count": 0,
+    "changed_english_value_count": 1,
+    "reviewed_normal_added_or_changed_key_count": 2,
+    "added_keys": ["jei.tooltip.error.render.crash"],
+    "changed_keys": ["jei.tooltip.error.crash"]
+  },
+  "translation_reuse": {
+    "rule": "Reuse a translation only when the localization key and English source value are both exactly identical.",
+    "base_generation": "g35-mc1.20.2",
+    "reuse_unchanged_g35_semantics": true,
+    "cross_key_reuse_allowed": false,
+    "changed_or_added_keys_require_reviewed_delta": true
+  },
+  "ownership_change": {
+    "newly_complete_upstream": [],
+    "complete_to_incomplete": ["uk_ua"],
+    "newly_upstream_from_addon_full": ["hu_hu"],
+    "removed_addon_full_locales": ["hu_hu"],
+    "complete_count": 1,
+    "supplement_count": 22,
+    "addon_full_count": 67
+  },
+  "upstream_policy": {
+    "preserve_existing_upstream_keys": true,
+    "supplement_only_exact_missing_normal_keys": true,
+    "never_override_upstream_key": true,
+    "retire_supplement_when_upstream_becomes_complete": true
+  },
+  "fallback_policy": {
+    "documented_full_english_fallback_allowed": true,
+    "fallback_locales_are_complete": true,
+    "changed_and_added_g36_semantics_use_exact_english_in_fallback_locales": true
+  },
+  "reviewed_delta_file": "translations/g36-mc1.20.4/semantic-delta.json"
+}
