@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "generation": "g36-mc1.20.4",
+  "source_english": {
+    "jei.tooltip.error.crash": "This ingredient crashed when getting its tooltip. Please see the client logs for detailed information.",
+    "jei.tooltip.error.render.crash": "This ingredient crashed when being rendered. Please see the client logs for detailed information."
+  },
+  "note": "AI-assisted reviewed semantic delta for the only two new/changed normal G36 meanings. Documented fallback locales intentionally use exact English and are not duplicated here. Upstream-owned keys are never overridden; supplement entries are consumed only when the pinned upstream locale is missing the key.",
+  "locales": {
+    "af_za": {
+      "jei.tooltip.error.crash": "Hierdie bestanddeel het 'n fout veroorsaak toe sy nutswenk verkry is. Sien asseblief die kliëntlogboeke vir gedetailleerde inligting.",
+      "jei.tooltip.error.render.crash": "Hierdie bestanddeel het 'n fout veroorsaak terwyl dit gerender is. Sien asseblief die kliëntlogboeke vir gedetailleerde inligting."
+    },
+    "ast_es": {
+      "jei.tooltip.error.crash": "Esti ingrediente falló al obtener la so descripción emerxente. Mira los rexistros del cliente pa información detallada.",
+      "jei.tooltip.error.render.crash": "Esti ingrediente falló al renderizase. Mira los rexistros del cliente pa información detallada."
+    },
+    "az_az": {
+      "jei.tooltip.error.crash": "Bu inqrediyentin ipucu mətni alınarkən xəta baş verdi. Ətraflı məlumat üçün müştəri jurnallarına baxın.",
+      "jei.tooltip.error.render.crash": "Bu inqrediyent render edilərkən xəta baş verdi. Ətraflı məlumat üçün müştəri jurnallarına baxın."
+    },
+    "be_by": {
+      "jei.tooltip.error.crash": "Пры атрыманні падказкі для гэтага інгрэдыента адбыўся збой. Падрабязную інфармацыю глядзіце ў журналах кліента.",
+      "jei.tooltip.error.render.crash": "Пры адлюстраванні гэтага інгрэдыента адбыўся збой. Падрабязную інфармацыю глядзіце ў журналах кліента."
+    },
+    "ca_es": {
+      "jei.tooltip.error.crash": "Aquest ingredient ha fallat en obtenir-ne la descripció emergent. Consulta els registres del client per obtenir informació detallada.",
+      "jei.tooltip.error.render.crash": "Aquest ingredient ha fallat en renderitzar-se. Consulta els registres del client per obtenir informació detallada."
+    },
+    "cy_gb": {
+      "jei.tooltip.error.crash": "Chwalodd y cynhwysyn hwn wrth gael ei awgrym offer. Gweler logiau'r cleient am wybodaeth fanwl.",
+      "jei.tooltip.error.render.crash": "Chwalodd y cynhwysyn hwn wrth gael ei rendro. Gweler logiau'r cleient am wybodaeth fanwl."
+    },
+    "da_dk": {
+      "jei.tooltip.error.crash": "Denne ingrediens gik ned, da dens værktøjstip blev hentet. Se klientlogfilerne for detaljerede oplysninger.",
+      "jei.tooltip.error.render.crash": "Denne ingrediens gik ned, da den blev renderet. Se klientlogfilerne for detaljerede oplysninger."
+    },
+    "eo_uy": {
+      "jei.tooltip.error.crash": "Ĉi tiu ingredienco paneis dum akiro de ĝia ŝpruchelpilo. Bonvolu vidi la klientajn protokolojn por detalaj informoj.",
+      "jei.tooltip.error.render.crash": "Ĉi tiu ingredienco paneis dum bildigo. Bonvolu vidi la klientajn protokolojn por detalaj informoj."
+    },
+    "et_ee": {
+      "jei.tooltip.error.crash": "Selle koostisosa kohtspikri hankimisel tekkis krahh. Üksikasjalikku teavet vaata kliendi logidest.",
+      "jei.tooltip.error.render.crash": "Selle koostisosa renderdamisel tekkis krahh. Üksikasjalikku teavet vaata kliendi logidest."
+    },
+    "eu_es": {
+      "jei.tooltip.error.crash": "Osagai honek huts egin du bere argibide-testua eskuratzean. Informazio xehatua lortzeko, begiratu bezeroaren erregistroak.",
+      "jei.tooltip.error.render.crash": "Osagai honek huts egin du errendatzean. Informazio xehatua lortzeko, begiratu bezeroaren erregistroak."
+    },
+    "fa_ir": {
+      "jei.tooltip.error.crash": "هنگام دریافت راهنمای این ماده، خطایی رخ داد. برای اطلاعات بیشتر گزارش‌های کلاینت را بررسی کنید.",
+      "jei.tooltip.error.render.crash": "هنگام رندر شدن این ماده، خطایی رخ داد. برای اطلاعات بیشتر گزارش‌های کلاینت را بررسی کنید."
+    },
+    "fil_ph": {
+      "jei.tooltip.error.crash": "Nag-crash ang sangkap na ito habang kinukuha ang tooltip nito. Pakitingnan ang mga log ng client para sa detalyadong impormasyon.",
+      "jei.tooltip.error.render.crash": "Nag-crash ang sangkap na ito habang nire-render. Pakitingnan ang mga log ng client para sa detalyadong impormasyon."
+    },
+    "ga_ie": {
+      "jei.tooltip.error.crash": "Chlis ar an gcomhábhar seo agus a leid uirlise á fáil. Féach ar logaí an chliaint le haghaidh faisnéis mhionsonraithe.",
+      "jei.tooltip.error.render.crash": "Chlis ar an gcomhábhar seo agus é á rindreáil. Féach ar logaí an chliaint le haghaidh faisnéis mhionsonraithe."
+    },
+    "gl_es": {
+      "jei.tooltip.error.crash": "Este ingrediente fallou ao obter a súa información emerxente. Consulta os rexistros do cliente para obter información detallada.",
+      "jei.tooltip.error.render.crash": "Este ingrediente fallou ao renderizarse. Consulta os rexistros do cliente para obter información detallada."
+    },
+    "hi_in": {
+      "jei.tooltip.error.crash": "इस सामग्री का टूलटिप प्राप्त करते समय क्रैश हो गया। विस्तृत जानकारी के लिए क्लाइंट लॉग देखें।",
+      "jei.tooltip.error.render.crash": "इस सामग्री को रेंडर करते समय क्रैश हो गया। विस्तृत जानकारी के लिए क्लाइंट लॉग देखें।"
+    },
+    "hr_hr": {
+      "jei.tooltip.error.crash": "Ovaj se sastojak srušio pri dohvaćanju opisa alata. Za detaljne informacije pogledajte zapisnike klijenta.",
+      "jei.tooltip.error.render.crash": "Ovaj se sastojak srušio tijekom iscrtavanja. Za detaljne informacije pogledajte zapisnike klijenta."
+    },
+    "hy_am": {
+      "jei.tooltip.error.crash": "Այս բաղադրիչի հուշումը ստանալիս խափանում տեղի ունեցավ։ Մանրամասն տեղեկությունների համար դիտեք հաճախորդի մատյանները։",
+      "jei.tooltip.error.render.crash": "Այս բաղադրիչը արտապատկերելիս խափանում տեղի ունեցավ։ Մանրամասն տեղեկությունների համար դիտեք հաճախորդի մատյանները։"
+    },
+    "is_is": {
+      "jei.tooltip.error.crash": "Þetta hráefni hrundi þegar verkfæravísbending þess var sótt. Skoðaðu biðlaraskrárnar fyrir ítarlegar upplýsingar.",
+      "jei.tooltip.error.render.crash": "Þetta hráefni hrundi þegar það var myndgert. Skoðaðu biðlaraskrárnar fyrir ítarlegar upplýsingar."
+    },
+    "ka_ge": {
+      "jei.tooltip.error.crash": "ამ ინგრედიენტის მინიშნების მიღებისას მოხდა ავარია. დეტალური ინფორმაციისთვის იხილეთ კლიენტის ჟურნალი.",
+      "jei.tooltip.error.render.crash": "ამ ინგრედიენტის რენდერისას მოხდა ავარია. დეტალური ინფორმაციისთვის იხილეთ კლიენტის ჟურნალი."
+    },
+    "la_la": {
+      "jei.tooltip.error.crash": "Haec materia corruit dum indicium eius petebatur. Quaeso acta clientis inspice ad informationem accuratiorem.",
+      "jei.tooltip.error.render.crash": "Haec materia corruit dum reddebatur. Quaeso acta clientis inspice ad informationem accuratiorem."
+    },
+    "lb_lu": {
+      "jei.tooltip.error.crash": "Dësen Ingredient ass ofgestierzt, wéi säin Tooltip geluede gouf. Kuck w.e.g. an de Client-Logbicher fir detailléiert Informatiounen.",
+      "jei.tooltip.error.render.crash": "Dësen Ingredient ass ofgestierzt, wéi en gerendert gouf. Kuck w.e.g. an de Client-Logbicher fir detailléiert Informatiounen."
+    },
+    "lv_lv": {
+      "jei.tooltip.error.crash": "Šīs sastāvdaļas rīka padoma iegūšanas laikā radās avārija. Detalizētu informāciju skatiet klienta žurnālos.",
+      "jei.tooltip.error.render.crash": "Šīs sastāvdaļas renderēšanas laikā radās avārija. Detalizētu informāciju skatiet klienta žurnālos."
+    },
+    "mk_mk": {
+      "jei.tooltip.error.crash": "Оваа состојка предизвика пад при вчитувањето на нејзиниот совет. За детални информации погледнете ги дневниците на клиентот.",
+      "jei.tooltip.error.render.crash": "Оваа состојка предизвика пад при исцртувањето. За детални информации погледнете ги дневниците на клиентот."
+    },
+    "ms_my": {
+      "jei.tooltip.error.crash": "Bahan ini mengalami ranap ketika mendapatkan petua alatnya. Sila lihat log klien untuk maklumat terperinci.",
+      "jei.tooltip.error.render.crash": "Bahan ini mengalami ranap ketika dirender. Sila lihat log klien untuk maklumat terperinci."
+    },
+    "mt_mt": {
+      "jei.tooltip.error.crash": "Dan l-ingredjent ikkraxxja meta nkiseb it-tooltip tiegħu. Ara l-logs tal-klijent għal informazzjoni dettaljata.",
+      "jei.tooltip.error.render.crash": "Dan l-ingredjent ikkraxxja waqt li kien qed jiġi rrendjat. Ara l-logs tal-klijent għal informazzjoni dettaljata."
+    },
+    "nds_de": {
+      "jei.tooltip.error.crash": "Disse Zutat is afstört, as de Tooltip haalt warrn schull. Kiek för mehr Informatschonen in de Client-Logs.",
+      "jei.tooltip.error.render.crash": "Disse Zutat is bi't Rendern afstört. Kiek för mehr Informatschonen in de Client-Logs."
+    },
+    "nl_nl": {
+      "jei.tooltip.error.crash": "Dit ingrediënt is gecrasht bij het ophalen van de tooltip. Bekijk de clientlogs voor gedetailleerde informatie.",
+      "jei.tooltip.error.render.crash": "Dit ingrediënt is gecrasht tijdens het renderen. Bekijk de clientlogs voor gedetailleerde informatie."
+    },
+    "no_no": {
+      "jei.tooltip.error.crash": "Denne ingrediensen krasjet da verktøytipset ble hentet. Se klientloggene for detaljert informasjon.",
+      "jei.tooltip.error.render.crash": "Denne ingrediensen krasjet da den ble gjengitt. Se klientloggene for detaljert informasjon."
+    },
+    "oc_fr": {
+      "jei.tooltip.error.crash": "Aqueste ingredient a fracassat en recuperant son infobulla. Consultatz los jornals del client per d'informacions detalhadas.",
+      "jei.tooltip.error.render.crash": "Aqueste ingredient a fracassat en se renderizant. Consultatz los jornals del client per d'informacions detalhadas."
+    },
+    "ro_ro": {
+      "jei.tooltip.error.crash": "Acest ingredient a provocat o eroare la obținerea descrierii sale. Consultă jurnalele clientului pentru informații detaliate.",
+      "jei.tooltip.error.render.crash": "Acest ingredient a provocat o eroare în timpul randării. Consultă jurnalele clientului pentru informații detaliate."
+    },
+    "sk_sk": {
+      "jei.tooltip.error.crash": "Táto ingrediencia zlyhala pri získavaní svojho popisu. Podrobné informácie nájdete v záznamoch klienta.",
+      "jei.tooltip.error.render.crash": "Táto ingrediencia zlyhala pri vykresľovaní. Podrobné informácie nájdete v záznamoch klienta."
+    },
+    "sl_si": {
+      "jei.tooltip.error.crash": "Ta sestavina se je sesula med pridobivanjem opisa. Za podrobne informacije si oglejte dnevnike odjemalca.",
+      "jei.tooltip.error.render.crash": "Ta sestavina se je sesula med izrisovanjem. Za podrobne informacije si oglejte dnevnike odjemalca."
+    },
+    "sq_al": {
+      "jei.tooltip.error.crash": "Ky përbërës dështoi gjatë marrjes së këshillës së tij. Për informacion të detajuar, shih regjistrat e klientit.",
+      "jei.tooltip.error.render.crash": "Ky përbërës dështoi gjatë renderimit. Për informacion të detajuar, shih regjistrat e klientit."
+    },
+    "sr_sp": {
+      "jei.tooltip.error.crash": "Овај састојак је изазвао пад при учитавању описа. За детаљне информације погледајте дневнике клијента.",
+      "jei.tooltip.error.render.crash": "Овај састојак је изазвао пад при исцртавању. За детаљне информације погледајте дневнике клијента."
+    },
+    "th_th": {
+      "jei.tooltip.error.crash": "ส่วนผสมนี้ทำให้เกมขัดข้องขณะดึงคำแนะนำเครื่องมือ โปรดดูบันทึกของไคลเอนต์สำหรับข้อมูลโดยละเอียด",
+      "jei.tooltip.error.render.crash": "ส่วนผสมนี้ทำให้เกมขัดข้องขณะเรนเดอร์ โปรดดูบันทึกของไคลเอนต์สำหรับข้อมูลโดยละเอียด"
+    },
+    "vi_vn": {
+      "jei.tooltip.error.crash": "Thành phần này đã gây lỗi khi lấy chú giải công cụ. Vui lòng xem nhật ký máy khách để biết thông tin chi tiết.",
+      "jei.tooltip.error.render.crash": "Thành phần này đã gây lỗi khi được kết xuất. Vui lòng xem nhật ký máy khách để biết thông tin chi tiết."
+    },
+    "ar_sa": {"jei.tooltip.error.render.crash": "تعطل هذا المكوّن أثناء عرضه. يُرجى مراجعة سجلات العميل للحصول على معلومات مفصلة."},
+    "bg_bg": {"jei.tooltip.error.render.crash": "Тази съставка предизвика срив при изобразяването си. Вижте клиентските дневници за подробна информация."},
+    "cs_cz": {"jei.tooltip.error.render.crash": "Tato ingredience způsobila pád při vykreslování. Podrobné informace najdete v protokolech klienta."},
+    "de_de": {"jei.tooltip.error.render.crash": "Diese Zutat ist beim Rendern abgestürzt. Detaillierte Informationen findest du in den Client-Protokollen."},
+    "el_gr": {"jei.tooltip.error.render.crash": "Αυτό το συστατικό προκάλεσε σφάλμα κατά την απόδοσή του. Δείτε τα αρχεία καταγραφής του client για λεπτομερείς πληροφορίες."},
+    "es_es": {"jei.tooltip.error.render.crash": "Este ingrediente provocó un fallo al renderizarse. Consulta los registros del cliente para obtener información detallada."},
+    "fi_fi": {"jei.tooltip.error.render.crash": "Tämä ainesosa kaatui renderöinnin aikana. Katso tarkemmat tiedot asiakasohjelman lokista."},
+    "fr_fr": {"jei.tooltip.error.render.crash": "Cet ingrédient a provoqué un plantage lors de son rendu. Consultez les journaux du client pour plus d’informations."},
+    "he_il": {"jei.tooltip.error.render.crash": "הרכיב הזה גרם לקריסה בזמן העיבוד. לקבלת מידע מפורט, יש לעיין ביומני הלקוח."},
+    "hu_hu": {"jei.tooltip.error.render.crash": "Ez az összetevő összeomlást okozott a megjelenítés során. Részletes információkért lásd a kliens naplóit."},
+    "id_id": {"jei.tooltip.error.render.crash": "Bahan ini mengalami crash saat dirender. Lihat log klien untuk informasi terperinci."},
+    "it_it": {"jei.tooltip.error.render.crash": "Questo ingrediente ha causato un arresto anomalo durante il rendering. Consulta i log del client per informazioni dettagliate."},
+    "ja_jp": {"jei.tooltip.error.render.crash": "この材料の描画中にクラッシュしました。詳細についてはクライアントログを確認してください。"},
+    "ko_kr": {"jei.tooltip.error.render.crash": "이 재료를 렌더링하는 동안 충돌이 발생했습니다. 자세한 내용은 클라이언트 로그를 확인하세요."},
+    "lt_lt": {"jei.tooltip.error.render.crash": "Atvaizduojant šį ingredientą įvyko strigtis. Išsamesnės informacijos ieškokite kliento žurnaluose."},
+    "pl_pl": {"jei.tooltip.error.render.crash": "Ten składnik spowodował awarię podczas renderowania. Szczegółowe informacje znajdziesz w dziennikach klienta."},
+    "pt_br": {"jei.tooltip.error.render.crash": "Este ingrediente causou uma falha ao ser renderizado. Consulte os logs do cliente para obter informações detalhadas."},
+    "ru_ru": {"jei.tooltip.error.render.crash": "При отрисовке этого ингредиента произошёл сбой. Подробную информацию смотрите в журналах клиента."},
+    "sv_se": {"jei.tooltip.error.render.crash": "Den här ingrediensen kraschade när den renderades. Se klientloggarna för detaljerad information."},
+    "tr_tr": {"jei.tooltip.error.render.crash": "Bu bileşen işlenirken çökme meydana geldi. Ayrıntılı bilgi için istemci günlüklerine bakın."},
+    "uk_ua": {"jei.tooltip.error.render.crash": "Під час відображення цього інгредієнта стався збій. Докладну інформацію дивіться в журналах клієнта."},
+    "zh_cn": {"jei.tooltip.error.render.crash": "渲染此原料时发生崩溃。请查看客户端日志以获取详细信息。"}
+  }
+}
