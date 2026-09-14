@@ -1,4 +1,4 @@
-name: Audit G35 Minecraft 1.20.2
+name: Validate G35 Minecraft 1.20.2
 
 on:
   workflow_dispatch:
@@ -6,10 +6,18 @@ on:
     branches: ['work/g35-mc1.20.2']
     paths:
       - 'scripts/audit_1_20_2.py'
+      - 'scripts/reconstruct_1_20_2.py'
+      - 'scripts/validate_1_20_2_delta.py'
+      - 'scripts/validate_1_20_2_complete.py'
+      - 'upstream/sources/1.20.2/en_us.json'
+      - 'upstream/diffs/1.20.1-to-1.20.2.json'
+      - 'upstream/minecraft-1.20.2-language-scope.json'
+      - 'upstream/minecraft-1.20.2-language-audit.json'
+      - 'translations/g35-mc1.20.2/policy.json'
       - '.github/workflows/audit-g35.yml'
 
 jobs:
-  audit:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,3 +28,9 @@ jobs:
           python-version: '3.12'
       - name: Audit final Minecraft 1.20.2 / JEI 16.0.0 endpoint
         run: python scripts/audit_1_20_2.py
+      - name: Validate Minecraft 1.20.2 source scope and upstream ownership
+        run: python scripts/validate_1_20_2_delta.py
+      - name: Reconstruct and verify Minecraft 1.20.2 resources
+        run: python scripts/reconstruct_1_20_2.py --check
+      - name: Validate Minecraft 1.20.2 complete resources
+        run: python scripts/validate_1_20_2_complete.py
