@@ -1,0 +1,34 @@
+name: Freeze G39 manifests
+
+on:
+  push:
+    branches: ['work/g39-mc1.21.1']
+    paths:
+      - '.github/workflows/freeze-g39-manifests.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/g39-mc1.21.1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Generate frozen G39 manifests
+        run: python scripts/freeze_1_21_1_manifests.py
+      - name: Commit frozen manifests
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add upstream/diffs/1.21-to-1.21.1.json upstream/minecraft-1.21.1-language-scope.json upstream/minecraft-1.21.1-language-audit.json translations/g39-mc1.21.1/policy.json
+          if git diff --cached --quiet; then
+            echo 'G39 manifests already current'
+          else
+            git commit -m 'Freeze G39 Minecraft 1.21.1 manifests'
+            git push origin HEAD:work/g39-mc1.21.1
+          fi
