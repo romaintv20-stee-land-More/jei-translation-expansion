@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 import tempfile
 import urllib.request
@@ -28,6 +29,7 @@ NEW_G14_KEYS = {
     "gui.jei.category.campfire",
     "gui.jei.category.smoking",
 }
+TECHNICAL_TOKENS = g13.g12.TECHNICAL_TOKENS
 
 
 def parse_json_text(text: str) -> dict[str, str]:
@@ -48,6 +50,23 @@ def fetch_upstream_json(commit: str, locale: str) -> dict[str, str]:
 
 def write_json(path: Path, values: dict[str, str]) -> None:
     path.write_text(json.dumps(values, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def contains_technical_token(value: str, token: str) -> bool:
+    """Require fixed alphanumeric technical tokens to remain standalone and exact."""
+    if token.isalnum():
+        return re.search(rf"(?<![A-Za-z0-9_]){re.escape(token)}(?![A-Za-z0-9_])", value) is not None
+    return token in value
+
+
+def safe_historical_candidate(target_value: str, candidate: str) -> bool:
+    """Apply the inherited safety checks plus exact technical-token boundaries."""
+    if not g13.g12.safe_historical_candidate(target_value, candidate):
+        return False
+    for token in TECHNICAL_TOKENS:
+        if contains_technical_token(target_value, token) and not contains_technical_token(candidate, token):
+            return False
+    return True
 
 
 def reconstruct_g13_full() -> dict[str, dict[str, str]]:
@@ -102,7 +121,7 @@ def resolve_value(
     if base.get(key) == target_value and locale in g13_selected_locales():
         combined = g13_combined_locale(locale, g13_full, g13_supplements)
         candidate = combined.get(key)
-        if candidate is not None and g13.g12.safe_historical_candidate(target_value, candidate):
+        if candidate is not None and safe_historical_candidate(target_value, candidate):
             return candidate, "g13-exact-semantic"
     return target_value, "target-English"
 
@@ -220,7 +239,7 @@ def main() -> int:
     print(f"Missing-key-only upstream supplements: {supplement_count}")
     print(f"Keys per complete locale: {key_count}")
     print("Resource format: JSON")
-    print("106 exact G13 semantics are eligible for reuse")
+    print("106 exact G13 semantics are eligible for reuse when placeholder and technical-token safety checks pass")
     print("Three new cooking-category meanings use exact G14 target English when project-owned")
     return 0
 
