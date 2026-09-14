@@ -1,0 +1,61 @@
+{
+  "generation": "g38-mc1.21",
+  "minecraft": "1.21",
+  "jei": "19.8.2",
+  "pinned_commit": "02370235626ddb4e479e13e6cde9b6d5466cd5ff",
+  "resource_format": "json",
+  "selected_scope_count": 90,
+  "addon_full_locale_count": 67,
+  "selected_upstream_complete_locale_count": 2,
+  "selected_upstream_incomplete_locale_count": 21,
+  "documented_full_english_fallback_count": 31,
+  "translated_or_ai_assisted_full_locale_count": 36,
+  "english_diff": {
+    "base_generation": "g37-mc1.20.6",
+    "unchanged_key_and_value_count": 156,
+    "added_key_count": 19,
+    "removed_key_count": 0,
+    "changed_english_value_count": 1,
+    "reviewed_normal_added_or_changed_key_count": 20,
+    "added_keys": [
+      "gui.jei.category.registry.block", "gui.jei.category.registry.fluid", "gui.jei.category.registry.item",
+      "gui.jei.category.tagInformation", "jei.key.mouse.left", "jei.key.mouse.right", "jei.key.shift",
+      "jei.tooltip.bookmarks.recipe", "jei.tooltip.bookmarks.recipe.add", "jei.tooltip.bookmarks.recipe.remove",
+      "jei.tooltip.bookmarks.tooltips.transfer.max.usage", "jei.tooltip.bookmarks.tooltips.transfer.usage",
+      "jei.tooltip.bookmarks.tooltips.usage", "jei.tooltip.recipe.sort.bookmarks.first.disabled",
+      "jei.tooltip.recipe.sort.bookmarks.first.enabled", "jei.tooltip.recipe.sort.craftable.first.disabled",
+      "jei.tooltip.recipe.sort.craftable.first.enabled", "key.jei.maxTransferRecipeBookmark",
+      "key.jei.transferRecipeBookmark"
+    ],
+    "changed_keys": ["jei.tooltip.recipe.tag"]
+  },
+  "translation_reuse": {
+    "rule": "Reuse a translation only when the localization key and English source value are both exactly identical.",
+    "base_generation": "g37-mc1.20.6",
+    "reuse_unchanged_g37_semantics": true,
+    "cross_key_reuse_allowed": false,
+    "changed_or_added_keys_require_reviewed_delta": true
+  },
+  "ownership_change": {
+    "newly_complete_upstream": ["ja_jp"],
+    "complete_to_incomplete": [],
+    "newly_upstream_from_addon_full": [],
+    "removed_addon_full_locales": [],
+    "complete_count": 2,
+    "supplement_count": 21,
+    "addon_full_count": 67
+  },
+  "upstream_policy": {
+    "preserve_existing_upstream_keys": true,
+    "supplement_only_exact_missing_normal_keys": true,
+    "never_override_upstream_key": true,
+    "retire_supplement_when_upstream_becomes_complete": true
+  },
+  "fallback_policy": {
+    "documented_full_english_fallback_allowed": true,
+    "fallback_locales_are_complete": true,
+    "changed_and_added_g38_semantics_use_exact_english_in_fallback_locales": true,
+    "low_confidence_reviewed_delta_may_fall_back_to_exact_english": true
+  },
+  "reviewed_delta_file": "translations/g38-mc1.21/semantic-delta.json"
+}
