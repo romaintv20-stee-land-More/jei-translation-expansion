@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "audit_date": "2026-09-14",
-  "status": "verified-source-scope-and-upstream-ownership",
+  "status": "verified-complete-static-reconstruction",
   "minecraft": "1.20.2",
   "jei": "16.0.0",
   "jei_upstream_commit": "e78fd1951c38770de8462ead2187e565fe2996eb",
@@ -75,7 +75,8 @@
     "exploratory_audit_run": 34876910484,
     "exploratory_audit_job": 104086258894,
     "result": "success",
-    "complete_validation_run": null,
-    "complete_validation_job": null
+    "complete_validation_run": 34877574948,
+    "complete_validation_job": 104088475725,
+    "complete_validation_result": "success"
   }
 }
