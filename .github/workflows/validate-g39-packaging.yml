@@ -1,0 +1,57 @@
+name: Validate G39 NeoForge packaging
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g39-mc1.21.1-packaging']
+    paths:
+      - 'packaging/completed-versions.json'
+      - 'scripts/build_completed_jar_neoforge.py'
+      - '.github/workflows/validate-g39-packaging.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Build G39 NeoForge candidate
+        run: python scripts/build_completed_jar_neoforge.py --minecraft 1.21.1 --version 1.0.0
+      - name: Inspect NeoForge JAR
+        shell: bash
+        run: |
+          JAR=$(find build/completed-jars/1.21.1 -maxdepth 1 -name '*.jar' -type f)
+          test -n "$JAR"
+          test "$(printf '%s\n' "$JAR" | wc -l)" -eq 1
+          case "$JAR" in *jei-translation-expansion-1.0.0-mc1.21.1-neoforge.jar) ;; *) echo "Unexpected filename: $JAR"; exit 1;; esac
+          unzip -t "$JAR"
+          unzip -l "$JAR" | grep -F 'META-INF/neoforge.mods.toml'
+          unzip -l "$JAR" | grep -F 'io/github/romaintv20/jeitranslationexpansion/JeiTranslationExpansion.class'
+          test "$(unzip -Z1 "$JAR" | grep '^assets/jei/lang/.*\.json$' | wc -l)" -eq 88
+          if unzip -Z1 "$JAR" | grep -Fx 'META-INF/mods.toml'; then
+            echo 'Forge metadata leaked into NeoForge JAR'
+            exit 1
+          fi
+          unzip -p "$JAR" META-INF/neoforge.mods.toml | grep -F 'loaderVersion="[4,)"'
+          unzip -p "$JAR" META-INF/neoforge.mods.toml | grep -F 'versionRange="[21.1.116,)"'
+          unzip -p "$JAR" META-INF/neoforge.mods.toml | grep -F 'versionRange="[1.21.1]"'
+          unzip -p "$JAR" META-INF/neoforge.mods.toml | grep -F 'versionRange="[19.21.1]"'
+          unzip -p "$JAR" META-INF/MANIFEST.MF | grep -F 'Implementation-Version: 1.0.0'
+          unzip -p "$JAR" META-INF/MANIFEST.MF | grep -F 'NeoForge-Version: 21.1.116'
+          sha256sum "$JAR"
+      - name: Upload validated candidate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jei-translation-expansion-1.0.0-mc1.21.1-neoforge-validation
+          path: build/completed-jars/1.21.1/*.jar
+          if-no-files-found: error
+          retention-days: 14
