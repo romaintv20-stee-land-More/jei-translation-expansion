@@ -55,74 +55,62 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G31 | 1.19.3 | 12.3.0 | `739fde7` | 156 | 88 | 66 | 21 | 1 | complete; candidate packaged |
 | G32 | 1.19.4 | 13.1.0 | `b5b0055` | 156 | 88 | 66 | 20 | 2 | complete; candidate packaged |
 | G33 | 1.20 | 14.0.0 | `aa6e142` | 156 | 90 | 68 | 20 | 2 | complete; candidate packaged |
+| G34 | 1.20.1 | 15.2.0 | `eecef8a` | 156 | 90 | 68 | 20 | 2 | complete; candidate packaged |
 
 ## Recent canonical milestones
 
-### G29 — Minecraft 1.19.1 / JEI 11.2.0
-
-- final endpoint `90b37d06031c8e113d51e747e3f532f4b9ed047b`
-- Forge `42.0.0`, Parchment `1.18.2-2022.07.10-1.19.1`, Java 17
-- 153 keys = 147 normal + 6 debug
-- G28→G29 = 153 unchanged + 0 added + 1 removed + 0 changed English values
-- selected scope = 86
-- ownership = 64 addon-full + 19 supplements + 3 complete upstream
-
-### G30 — Minecraft 1.19.2 / JEI 11.5.0
-
-- final endpoint `01f613671cb4635a0a5c23b85c40f1d52d0f3d00`
-- Forge `43.0.0`, Parchment `1.18.2-2022.07.10-1.19.2`, Java 17
-- 153 keys = 147 normal + 6 debug
-- G29→G30 = all 153 English key/value pairs unchanged
-- selected scope = 86
-- ownership = 64 addon-full + 19 supplements + 3 complete upstream
-
 ### G31 — Minecraft 1.19.3 / JEI 12.3.0
 
-- final endpoint `739fde73225d006c83af22db04c5723d9c539dc7`
-- Forge `44.1.5`, Parchment `1.18.2-2022.07.10-1.19.3`, Java 17
-- 156 keys = 150 normal + 6 debug
-- G30→G31 = 153 unchanged + 3 added + 0 removed + 0 changed English values
-- historical selected scope grows 86→88 with Nahuatl (`nah`) and Rusyn (`ry_ua`)
+- endpoint `739fde73225d006c83af22db04c5723d9c539dc7`
+- 156 keys = 150 normal + 6 debug; G30→G31 adds 3 normal keys
+- selected historical scope grows 86→88 with Nahuatl (`nah`) and Rusyn (`ry_ua`)
 - ownership = 66 addon-full + 21 supplements + 1 complete upstream
-- `nah` and `ry_ua` use documented complete-English fallback for this historical generation
 
 ### G32 — Minecraft 1.19.4 / JEI 13.1.0
 
-- final endpoint `b5b00557f5df18c35e545e3cc8cd65ca4b975ba1`
-- Forge `45.0.40`, Parchment `1.19.3-2023.03.12-1.19.4`, Java 17
-- 156 keys = 150 normal + 6 debug; all 156 English semantics unchanged from G31
+- endpoint `b5b00557f5df18c35e545e3cc8cd65ca4b975ba1`
+- all 156 English semantics unchanged from G31
 - selected scope remains 88
-- ownership = 66 addon-full + 20 supplements + 2 complete upstream
-- `uk_ua` becomes complete upstream and its supplement is retired
-- isolated complete QA: run `34786663214`, job `103803278959`
+- ownership = 66 addon-full + 20 supplements + 2 complete upstream; `uk_ua` becomes complete upstream
 - candidate: `candidate-jars/1.19.4/jei-translation-expansion-1.0.0-mc1.19.4-forge.jar`
 
 ### G33 — Minecraft 1.20 / JEI 14.0.0
 
-- final endpoint `aa6e14229c0c44cd685ac6b4d1d7f513360da18a`, immediately before the upstream `Bump to 1.20.1` commit
+- endpoint `aa6e14229c0c44cd685ac6b4d1d7f513360da18a`
 - Forge `46.0.1`, Parchment `1.19.3-2023.03.12-1.19.4`, Java 17
-- 156 keys = 150 normal + 6 debug; all 156 English semantics unchanged from G32
+- all 156 English semantics unchanged from G32
 - selected historical scope grows 88→90 with Lao (`lo_la`) and Yakut (`sah_sah`)
-- live decoupled language-asset membership is unchanged (143 files); historical release evidence is used for the Lao/Yakut introduction boundary
 - ownership = 68 addon-full + 20 supplements + 2 complete upstream
-- 37 translated/AI-assisted addon-full locales + 31 documented complete-English fallback locales
-- `lo_la` and `sah_sah` use documented complete-English fallback instead of low-confidence invented JEI terminology
-- complete isolated QA: run `34812895012`, job `103877581451`
-- metadata-recording rerun: run `34813134898`, job `103878260030`, green
+- complete QA run `34812895012`, metadata rerun `34813134898`
 - PR #3 merged as `e78dc4de3f028e8ecc97a288369fa2f73c61eee2`
-- packaging workflow run `34813374412`; G33 candidate persisted successfully
+- packaging run `34813374412` green
 - candidate: `candidate-jars/1.20/jei-translation-expansion-1.0.0-mc1.20-forge.jar`
+
+### G34 — Minecraft 1.20.1 / JEI 15.2.0
+
+- final endpoint `eecef8ae335701b97a6918e20b4dd87966a46dfa`, immediately before `e78fd195...` (`Update to Minecraft 1.20.2`)
+- Forge `47.0.1`, Parchment `1.19.3-2023.03.12-1.20.1`, Java 17
+- 156 keys = 150 normal + 6 debug; **all 156 English semantics unchanged from G33**
+- Minecraft 1.20 and 1.20.1 use the same asset index `5` (`0dd020f0d45d336531ce00c14065ef6dd01b9bc5`) and 143 language files
+- selected scope remains 90; no language additions/removals
+- ownership remains 68 addon-full + 20 supplements + 2 complete upstream (`en_us`, `uk_ua`)
+- 37 translated/AI-assisted addon-full locales + 31 documented complete-English fallback locales
+- isolated complete QA run `34875502127`, job `104081567846`, green
+- metadata-recording rerun `34875868343`, job `104082770963`, green
+- PR #4 merged as `6269b70a3b607ec589b20509a743e7c21e35ea91`
+- packaging run `34876314002` green; build, bundle, and persistence all succeeded
+- candidate: `candidate-jars/1.20.1/jei-translation-expansion-1.0.0-mc1.20.1-forge.jar`
 
 ## Current next target
 
-- **G34 = Minecraft 1.20.1**.
-- The first 1.20.1 upstream commit is `4a9f1cbd2e654d98a3281fa38574b65fb99c7845` (`Bump to 1.20.1`).
-- Resolve the **final** 1.20.1 JEI endpoint immediately before the next Minecraft-version port, then repeat the pinned source/scope/ownership/reconstruction QA workflow.
-- Keep G33 and earlier candidates outside `release-jars/` until their runtime gates are satisfied.
+- **G35 = Minecraft 1.20.2**.
+- first upstream 1.20.2 port commit: `e78fd1951c38770de8462ead2187e565fe2996eb` (`Update to Minecraft 1.20.2`), whose parent is the final G34 endpoint.
+- Resolve the **final** JEI 1.20.2 endpoint before the next Minecraft-version port, then repeat source/scope/ownership/reconstruction QA.
+- Keep G34 and earlier candidates outside `release-jars/` until their runtime gates are satisfied.
 
 ## Documentation synchronization debt
 
-`upstream/versions.json`, `upstream/generations.json`, README, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` still need broad synchronization through the latest completed generations. Chronological generation work remains the primary task, but this debt should be cleared before release packaging.
+`upstream/versions.json`, `upstream/generations.json`, README, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` still need broad synchronization through the latest completed generations. Chronological generation work remains the primary task, but this debt should be cleared before final release packaging.
 
 ## Release gates still open
 
