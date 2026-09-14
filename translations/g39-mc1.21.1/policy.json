@@ -20,11 +20,12 @@
     "review_required_normal_added_or_changed_key_count": 208
   },
   "translation_reuse": {
-    "rule": "Automatic reuse requires the exact same localization key and exact same English source value. Cross-key reuse is forbidden.",
+    "rule": "Automatic reuse requires the exact same localization key and exact same English source value. Cross-key reuse is forbidden, and runtime placeholders/technical literals must remain intact.",
     "base_generation": "g38-mc1.21",
     "reuse_exact_unchanged_g38_semantics": true,
     "cross_key_reuse_allowed": false,
-    "changed_or_added_keys_require_reviewed_g39_treatment": true
+    "changed_or_added_keys_require_reviewed_g39_treatment": true,
+    "runtime_literals_must_be_preserved": true
   },
   "ownership_change": {
     "newly_upstream_from_addon_full": [
@@ -41,12 +42,26 @@
     "fallback_locales_are_complete": true,
     "low_confidence_new_or_changed_semantics_may_use_exact_target_english": true,
     "fallback_must_be_explicit_and_counted": true,
-    "debug_only_keys_remain_exact_target_english": true
+    "debug_only_keys_remain_exact_target_english": true,
+    "unsafe_reuse_or_donor_uses_exact_target_english": true
+  },
+  "runtime_literal_policy": {
+    "placeholder_multiset_must_match": true,
+    "technical_tokens": [
+      "JEI",
+      "Minecraft",
+      "/give",
+      "modId[:name[:meta]]",
+      "mB"
+    ],
+    "standalone_alphanumeric_tokens_use_boundaries": true,
+    "substring_matches_do_not_count": true
   },
   "later_upstream_backport_policy": {
     "allowed_only_if_same_key_and_exact_same_english_value": true,
     "donor_snapshot": "f93563ca4965d511bd07d4f041b3a6ddd1158ef0",
-    "never_override_g39_upstream_owned_key": true
+    "never_override_g39_upstream_owned_key": true,
+    "runtime_literals_must_be_preserved": true
   },
   "translation_status": "in-progress-major-semantic-migration"
 }
