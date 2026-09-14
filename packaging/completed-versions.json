@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project_version": "1.0.0",
-  "note": "G1-G38 are translation/reconstruction complete. These builds are static-validated release candidates until their required runtime gates are complete.",
+  "note": "G1-G39 are translation/reconstruction complete. These builds are static-validated release candidates until their required runtime gates are complete.",
   "versions": [
     {"generation":"G1","minecraft":"1.8","jei":"2.15.0","era":"legacy","jei_modid":"JEI","java_target":7,"format":"lang","full":54,"supplements":0,"keys":58,"reconstruct_mode":"g1-direct"},
     {"generation":"G2","minecraft":"1.8.9","jei":"2.28.18","era":"legacy","jei_modid":"JEI","java_target":7,"format":"lang","full":54,"supplements":5,"keys":75,"reconstruct_mode":"g2-special","reconstruct_script":"scripts/reconstruct_1_8_9.py"},
@@ -40,6 +40,7 @@
     {"generation":"G35","minecraft":"1.20.2","jei":"16.0.0","era":"modern","jei_modid":"jei","java_target":17,"format":"json","full":68,"supplements":20,"keys":156,"reconstruct_script":"scripts/reconstruct_1_20_2.py"},
     {"generation":"G36","minecraft":"1.20.4","jei":"17.3.0","era":"modern","jei_modid":"jei","java_target":17,"format":"json","full":67,"supplements":22,"keys":157,"reconstruct_script":"scripts/reconstruct_1_20_4.py"},
     {"generation":"G37","minecraft":"1.20.6","jei":"18.0.0","era":"modern","jei_modid":"jei","java_target":21,"format":"json","full":67,"supplements":22,"keys":157,"reconstruct_script":"scripts/reconstruct_1_20_6.py"},
-    {"generation":"G38","minecraft":"1.21","jei":"19.8.2","era":"modern","jei_modid":"jei","java_target":21,"format":"json","full":67,"supplements":21,"keys":176,"reconstruct_script":"scripts/reconstruct_1_21.py"}
+    {"generation":"G38","minecraft":"1.21","jei":"19.8.2","era":"modern","jei_modid":"jei","java_target":21,"format":"json","full":67,"supplements":21,"keys":176,"reconstruct_script":"scripts/reconstruct_1_21.py"},
+    {"generation":"G39","minecraft":"1.21.1","jei":"19.21.1","era":"modern","loader":"neoforge","neoforge":"21.1.116","loader_version_range":"[4,)","neoforge_version_range":"[21.1.116,)","jei_modid":"jei","java_target":21,"format":"json","full":64,"supplements":24,"keys":286,"reconstruct_script":"scripts/reconstruct_1_21_1.py"}
   ]
 }
