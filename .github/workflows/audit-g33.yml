@@ -1,4 +1,4 @@
-name: Audit G33 Minecraft 1.20
+name: Validate G33 Minecraft 1.20
 
 on:
   workflow_dispatch:
@@ -6,10 +6,18 @@ on:
     branches: ['work/g33-mc1.20']
     paths:
       - 'scripts/audit_1_20.py'
+      - 'scripts/reconstruct_1_20.py'
+      - 'scripts/validate_1_20_delta.py'
+      - 'scripts/validate_1_20_complete.py'
+      - 'upstream/sources/1.20/en_us.json'
+      - 'upstream/diffs/1.19.4-to-1.20.json'
+      - 'upstream/minecraft-1.20-language-scope.json'
+      - 'upstream/minecraft-1.20-language-audit.json'
+      - 'translations/g33-mc1.20/policy.json'
       - '.github/workflows/audit-g33.yml'
 
 jobs:
-  audit:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,3 +28,9 @@ jobs:
           python-version: '3.12'
       - name: Audit final Minecraft 1.20 / JEI 14.0.0 endpoint
         run: python scripts/audit_1_20.py
+      - name: Validate Minecraft 1.20 source scope and upstream ownership
+        run: python scripts/validate_1_20_delta.py
+      - name: Reconstruct and verify Minecraft 1.20 resources
+        run: python scripts/reconstruct_1_20.py --check
+      - name: Validate Minecraft 1.20 complete resources
+        run: python scripts/validate_1_20_complete.py
