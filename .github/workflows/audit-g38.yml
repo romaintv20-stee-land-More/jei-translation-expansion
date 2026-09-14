@@ -1,4 +1,4 @@
-name: Audit G38 Minecraft 1.21
+name: Validate G38 Minecraft 1.21
 
 on:
   workflow_dispatch:
@@ -6,10 +6,18 @@ on:
     branches: ['work/g38-mc1.21']
     paths:
       - 'scripts/audit_1_21.py'
+      - 'scripts/reconstruct_1_21.py'
+      - 'scripts/validate_1_21_delta.py'
+      - 'scripts/validate_1_21_complete.py'
+      - 'translations/g38-mc1.21/**'
+      - 'upstream/sources/1.21/**'
+      - 'upstream/diffs/1.20.6-to-1.21.json'
+      - 'upstream/minecraft-1.21-language-audit.json'
+      - 'upstream/minecraft-1.21-language-scope.json'
       - '.github/workflows/audit-g38.yml'
 
 jobs:
-  audit:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,3 +28,9 @@ jobs:
           python-version: '3.12'
       - name: Audit final Minecraft 1.21 / JEI 19.8.2 endpoint
         run: python scripts/audit_1_21.py
+      - name: Validate Minecraft 1.21 source scope ownership and semantic delta
+        run: python scripts/validate_1_21_delta.py
+      - name: Reconstruct and verify Minecraft 1.21 resources
+        run: python scripts/reconstruct_1_21.py --check
+      - name: Validate Minecraft 1.21 complete resources
+        run: python scripts/validate_1_21_complete.py
