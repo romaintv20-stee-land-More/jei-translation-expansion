@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-14",
+  "status": "verified-source-scope-and-upstream-ownership",
+  "minecraft": "1.21",
+  "jei": "19.8.2",
+  "jei_upstream_commit": "02370235626ddb4e479e13e6cde9b6d5466cd5ff",
+  "endpoint_resolution": {
+    "first_1_21_commit": "4f54914d4364b102d940a4aac4bd94969a33a429",
+    "final_1_21_commit": "02370235626ddb4e479e13e6cde9b6d5466cd5ff",
+    "next_minecraft_port_commit": "8eb79e0c8f7063fa2a7cc0eb8d31a0c2882532e8",
+    "next_minecraft_version": "1.21.1",
+    "note": "The parent of the 1.21.1 port is the final Minecraft 1.21 endpoint."
+  },
+  "build_metadata": {
+    "forge": "51.0.31",
+    "forge_group": "net.minecraftforge",
+    "neoforge": "21.0.146",
+    "fabric_loader": "0.15.11",
+    "fabric_api": "0.100.8+1.21",
+    "mappings_channel": "official",
+    "mappings_version": "1.21",
+    "upstream_parchment_property": "2024.07.28-1.21",
+    "java_toolchain": "21",
+    "language_format": "json",
+    "locale_filename_case": "lowercase",
+    "english_source_path": "Common/src/main/resources/assets/jei/lang/en_us.json"
+  },
+  "language_scope": {
+    "selected_scope_count": 90,
+    "changed_from_1.20.6": false,
+    "new_selected_primary_languages": [],
+    "removed_selected_languages": [],
+    "decoupled_assets": true
+  },
+  "minecraft_asset_indexes": {
+    "minecraft_1.20.6": {"id": "16", "sha1": "ccf52649de5f7af097d939c9a94640ac695883ea", "language_file_count": 143},
+    "minecraft_1.21": {"id": "17", "sha1": "5f5b25053629ea06987a0b1eb1c34a70f0b67dd8", "language_file_count": 143},
+    "live_language_file_additions": [],
+    "live_language_file_removals": []
+  },
+  "jei_english": {
+    "resource_format": "json",
+    "key_count": 176,
+    "normal_key_count": 170,
+    "debug_only_key_count": 6,
+    "pinned_blob_sha": "9a1a037aba97125f0b9301bb0d61d04d44e3b7a8"
+  },
+  "english_diff_from_1.20.6": {
+    "unchanged_key_and_value_count": 156,
+    "added_key_count": 19,
+    "removed_key_count": 0,
+    "changed_english_value_count": 1,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 20,
+    "added_keys": [
+      "gui.jei.category.registry.block", "gui.jei.category.registry.fluid", "gui.jei.category.registry.item",
+      "gui.jei.category.tagInformation", "jei.key.mouse.left", "jei.key.mouse.right", "jei.key.shift",
+      "jei.tooltip.bookmarks.recipe", "jei.tooltip.bookmarks.recipe.add", "jei.tooltip.bookmarks.recipe.remove",
+      "jei.tooltip.bookmarks.tooltips.transfer.max.usage", "jei.tooltip.bookmarks.tooltips.transfer.usage",
+      "jei.tooltip.bookmarks.tooltips.usage", "jei.tooltip.recipe.sort.bookmarks.first.disabled",
+      "jei.tooltip.recipe.sort.bookmarks.first.enabled", "jei.tooltip.recipe.sort.craftable.first.disabled",
+      "jei.tooltip.recipe.sort.craftable.first.enabled", "key.jei.maxTransferRecipeBookmark",
+      "key.jei.transferRecipeBookmark"
+    ],
+    "changed_keys": ["jei.tooltip.recipe.tag"],
+    "manifest": "upstream/diffs/1.20.6-to-1.21.json"
+  },
+  "jei_upstream_locale_count": 26,
+  "selected_scope_count": 90,
+  "selected_upstream_complete_locales": ["en_us", "ja_jp"],
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr", "he_il",
+    "hu_hu", "id_id", "it_it", "ko_kr", "lt_lt", "pl_pl", "pt_br", "ru_ru", "sv_se",
+    "tr_tr", "uk_ua", "zh_cn"
+  ],
+  "upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 67,
+  "ownership_changes_from_1.20.6": {
+    "newly_complete_upstream": ["ja_jp"],
+    "complete_to_incomplete": [],
+    "newly_upstream_from_addon_full": [],
+    "no_longer_upstream": [],
+    "removed_addon_full_locales": [],
+    "complete_count": 2,
+    "supplement_count": 21,
+    "addon_full_count": 67
+  },
+  "validation": {
+    "exploratory_audit_run": 34902849559,
+    "exploratory_audit_job": 104172603452,
+    "result": "success",
+    "complete_validation_run": null,
+    "complete_validation_job": null
+  }
+}
