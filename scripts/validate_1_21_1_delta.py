@@ -100,10 +100,11 @@ def main() -> int:
         if donor is None:
             continue
         for key in set(donor) & normal:
-            if key not in stable_donor:
-                # It is legal for donor files to contain later semantics, but those values must never be selected.
-                if g39.exact_donor_value(locale, key, target[key]) is not None:
-                    errors.append(f"{locale}: donor resolver accepted non-identical English semantics for {key}")
+            if key not in stable_donor and g39.exact_donor_value(locale, key, target[key]) is not None:
+                errors.append(f"{locale}: donor resolver accepted non-identical English semantics for {key}")
+    for key in target:
+        if key.startswith(g39.DEBUG_PREFIX) and g39.exact_donor_value("en_us", key, target[key]) is not None:
+            errors.append(f"debug-only donor value must never be eligible: {key}")
 
     endpoint = audit["endpoint_resolution"]
     if endpoint["next_minecraft_port_commit"] != "c0d0367841b16fa3a9567c3d93172cbd1f1b578c" or endpoint["next_minecraft_version"] != "1.21.4":
@@ -117,6 +118,10 @@ def main() -> int:
     donor_policy = policy["later_upstream_backport_policy"]
     if not donor_policy["allowed_only_if_same_key_and_exact_same_english_value"]:
         errors.append("G39 donor policy must enforce exact same-key + same-English semantics")
+    if donor_policy["donor_snapshot"] != g39.DONOR_COMMIT:
+        errors.append("G39 policy donor snapshot differs from deterministic reconstruction donor")
+    if not policy["fallback_policy"].get("debug_only_keys_remain_exact_target_english", False):
+        errors.append("G39 policy must keep debug-only keys exact target English")
 
     if errors:
         print(f"FAIL: {len(errors)} Minecraft 1.21.1 source/scope/provenance validation error(s)")
@@ -128,7 +133,7 @@ def main() -> int:
     print("Semantic delta: 76 unchanged + 167 added + 57 removed + 43 changed (2 debug)")
     print("Normal new/changed meanings requiring explicit treatment: 208")
     print("Selected scope: 90 = 64 addon-full + 24 supplements + 2 complete upstream")
-    print("Pinned later-JEI donor provides 253/280 exact key+English semantics; only exact matches are eligible")
+    print("Pinned later-JEI donor provides 253/280 exact key+English semantics; only exact normal-key matches are eligible")
     print("G39 final endpoint is NeoForge-based; Forge-only packaging must not be used")
     return 0
 
