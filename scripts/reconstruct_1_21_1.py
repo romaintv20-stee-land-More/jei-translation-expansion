@@ -3,9 +3,9 @@
 
 Resolution order is deliberately strict:
 1. preserve pinned G39 upstream ownership;
-2. inherit only exact same-key + same-English G38 meanings;
+2. inherit only exact same-key + same-English G38 meanings whose runtime literals stay intact;
 3. for new/changed normal meanings, use a pinned later-JEI donor only when that donor has
-   the exact same key and exact same English source value;
+   the exact same key and exact same English source value and preserves runtime literals;
 4. otherwise use exact G39 English as an explicit safe fallback.
 
 Debug-only JEI description keys always remain exact target English.
@@ -14,10 +14,12 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import shutil
 import tempfile
 import urllib.error
 import urllib.request
+from collections import Counter
 from functools import lru_cache
 from pathlib import Path
 
@@ -34,11 +36,32 @@ DEBUG_PREFIX = "description.jei."
 G39_COMMIT = "28eb51f58d2798512a2ef75cf8b29189228573ad"
 DONOR_COMMIT = "f93563ca4965d511bd07d4f041b3a6ddd1158ef0"
 RAW_JSON_TEMPLATE = "https://raw.githubusercontent.com/mezz/JustEnoughItems/{commit}/Common/src/main/resources/assets/jei/lang/{locale}.json"
+PLACEHOLDER_RE = re.compile(r"%(?:MODNAME|CTRL|,d|\d+\$[sdif]|[sdif]|%)")
+TECHNICAL_TOKENS = ("JEI", "Minecraft", "/give", "modId[:name[:meta]]", "mB")
 
 parse_json_text = g38.parse_json_text
 parse_json = g38.parse_json
 write_json = g38.write_json
 semantic_sets = g38.semantic_sets
+
+
+def placeholders(value: str) -> Counter[str]:
+    return Counter(PLACEHOLDER_RE.findall(value))
+
+
+def contains_technical_token(value: str, token: str) -> bool:
+    if token.isalnum():
+        return re.search(rf"(?<![A-Za-z0-9_]){re.escape(token)}(?![A-Za-z0-9_])", value) is not None
+    return token in value
+
+
+def preserves_runtime_literals(english: str, translated: str) -> bool:
+    if placeholders(translated) != placeholders(english):
+        return False
+    return all(
+        not contains_technical_token(english, token) or contains_technical_token(translated, token)
+        for token in TECHNICAL_TOKENS
+    )
 
 
 @lru_cache(maxsize=None)
@@ -132,7 +155,20 @@ def exact_donor_value(locale: str, key: str, target_english: str) -> str | None:
     values = donor_locale(locale)
     if values is None:
         return None
-    return values.get(key)
+    candidate = values.get(key)
+    if candidate is None or not preserves_runtime_literals(target_english, candidate):
+        return None
+    return candidate
+
+
+def resolve_unchanged(key: str, previous_value: str, target_english: str) -> tuple[str, str]:
+    if key.startswith(DEBUG_PREFIX):
+        if previous_value == target_english:
+            return previous_value, "inherited"
+        return target_english, "english-fallback"
+    if preserves_runtime_literals(target_english, previous_value):
+        return previous_value, "inherited"
+    return target_english, "english-fallback"
 
 
 def resolve_changed_or_added(locale: str, key: str, target_english: str) -> tuple[str, str]:
@@ -178,8 +214,12 @@ def reconstruct_full(target: dict[str, str], scope: dict) -> tuple[dict[str, dic
         inherited_count = donor_count = fallback_count = 0
         for key, english in target.items():
             if key in unchanged:
-                values[key] = old[key]
-                inherited_count += 1
+                value, source = resolve_unchanged(key, old[key], english)
+                values[key] = value
+                if source == "inherited":
+                    inherited_count += 1
+                else:
+                    fallback_count += 1
             elif key in added or key in changed:
                 value, source = resolve_changed_or_added(locale, key, english)
                 values[key] = value
@@ -218,8 +258,12 @@ def reconstruct_supplements(target: dict[str, str], scope: dict) -> tuple[dict[s
             if key in unchanged:
                 if key not in previous_complete:
                     raise ValueError(f"{locale}: unchanged G39 missing key absent from G38 complete view: {key}")
-                values[key] = previous_complete[key]
-                inherited_count += 1
+                value, source = resolve_unchanged(key, previous_complete[key], target[key])
+                values[key] = value
+                if source == "inherited":
+                    inherited_count += 1
+                else:
+                    fallback_count += 1
             elif key in added or key in changed:
                 value, source = resolve_changed_or_added(locale, key, target[key])
                 values[key] = value
@@ -247,7 +291,12 @@ def provenance_summary(full_stats: dict[str, dict[str, int]], supplement_stats: 
         "schema_version": 1,
         "generation": "g39-mc1.21.1",
         "donor_commit": DONOR_COMMIT,
-        "resolution_order": ["pinned-upstream", "exact-g38-inheritance", "exact-later-jei-donor", "exact-g39-english-fallback"],
+        "resolution_order": ["pinned-upstream", "exact-safe-g38-inheritance", "exact-safe-later-jei-donor", "exact-g39-english-fallback"],
+        "literal_safety": {
+            "placeholder_multiset_must_match": True,
+            "technical_tokens_must_be_preserved": list(TECHNICAL_TOKENS),
+            "unsafe_reuse_falls_back_to_exact_english": True,
+        },
         "full_locales": full_stats,
         "supplement_locales": supplement_stats,
         "totals": {
@@ -281,14 +330,20 @@ def reconstruct_all(output: Path, clean: bool = True) -> tuple[int, int, int, di
     reuse = policy["translation_reuse"]
     if not reuse["reuse_exact_unchanged_g38_semantics"] or reuse["cross_key_reuse_allowed"]:
         raise ValueError("G39 policy must require exact G38 reuse and forbid cross-key reuse")
+    if not reuse.get("runtime_literals_must_be_preserved", False):
+        raise ValueError("G39 policy must reject inherited values that lose runtime literals")
     donor_policy = policy["later_upstream_backport_policy"]
     if not donor_policy["allowed_only_if_same_key_and_exact_same_english_value"]:
         raise ValueError("G39 donor policy must require exact key+English semantics")
     if donor_policy["donor_snapshot"] != DONOR_COMMIT:
         raise ValueError("G39 policy donor snapshot differs from deterministic reconstruction donor")
+    if not donor_policy.get("runtime_literals_must_be_preserved", False):
+        raise ValueError("G39 donor policy must reject translations that lose runtime literals")
     fallback_policy = policy["fallback_policy"]
     if not fallback_policy.get("debug_only_keys_remain_exact_target_english", False):
         raise ValueError("G39 policy must keep debug-only keys exact target English")
+    if not fallback_policy.get("unsafe_reuse_or_donor_uses_exact_target_english", False):
+        raise ValueError("G39 policy must use exact target English when literal-safety checks reject reuse")
 
     full, full_stats = reconstruct_full(target, scope)
     supplements, supplement_stats = reconstruct_supplements(target, scope)
@@ -326,11 +381,11 @@ def main() -> int:
     print(f"Full addon locales: {full_count}")
     print(f"Missing-key-only upstream supplements: {supplement_count}")
     print(f"Keys per complete addon locale: {key_count}")
-    print(f"Translated-full exact donor values: {totals['translated_full_donor']}")
-    print(f"Translated-full unresolved values using exact English fallback: {totals['translated_full_english_fallback']}")
-    print(f"Supplement exact donor values: {totals['supplement_donor']}")
-    print(f"Supplement unresolved values using exact English fallback: {totals['supplement_english_fallback']}")
-    print("G39 remains a major semantic migration: English fallbacks are explicit provenance, never counted as translated values.")
+    print(f"Translated-full exact safe donor values: {totals['translated_full_donor']}")
+    print(f"Translated-full explicit English fallbacks: {totals['translated_full_english_fallback']}")
+    print(f"Supplement exact safe donor values: {totals['supplement_donor']}")
+    print(f"Supplement explicit English fallbacks: {totals['supplement_english_fallback']}")
+    print("G39 remains a major semantic migration: unsafe reuse and uncertain values fall back to exact English and are never counted as translated values.")
     return 0
 
 
