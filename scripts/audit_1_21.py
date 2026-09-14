@@ -84,8 +84,8 @@ def main() -> int:
             errors.append(f"pinned G38 gradle.properties missing {token}")
     if 'languageVersion.set(JavaLanguageVersion.of(modJavaVersion))' not in forge_build:
         errors.append("pinned G38 Forge build metadata no longer confirms Java toolchain")
-    if 'mappings("parchment", parchmentVersionForge)' not in forge_build:
-        errors.append("pinned G38 Forge build metadata no longer confirms Parchment mappings")
+    if 'mappings("official", minecraftVersion)' not in forge_build:
+        errors.append("pinned G38 Forge build metadata no longer confirms official mappings")
 
     completeness: dict[str, dict] = {}
     for locale in UPSTREAM_LOCALES:
@@ -134,7 +134,7 @@ def main() -> int:
 
     print("Minecraft 1.21 / JEI 19.8.2 final localization exploratory audit")
     print(f"Pinned commit: {PINNED_COMMIT}")
-    print("Build: Minecraft 1.21 / Forge 51.0.31 / Parchment 2024.07.28-1.21 / Java 21")
+    print("Build: Minecraft 1.21 / Forge 51.0.31 / official mappings / Java 21 (Parchment property 2024.07.28-1.21 is present upstream)")
     print(f"G37 English: {len(base)} total / {len(base_normal)} normal / {len(base)-len(base_normal)} debug")
     print(f"G38 English: {len(target)} total / {len(target_normal)} normal / {len(target)-len(target_normal)} debug")
     print(f"G37 -> G38 unchanged: {len(unchanged)}")
