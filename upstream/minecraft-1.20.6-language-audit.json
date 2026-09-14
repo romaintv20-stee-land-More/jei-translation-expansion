@@ -1,0 +1,85 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-14",
+  "status": "verified-complete-static-reconstruction",
+  "minecraft": "1.20.6",
+  "jei": "18.0.0",
+  "jei_upstream_commit": "7cc7d59043102c4843d422138dd74133edcd7b3c",
+  "endpoint_resolution": {
+    "first_1_20_6_commit": "268a4fbad505dad57f557fa2f4d11471e36a69b9",
+    "final_1_20_6_commit": "7cc7d59043102c4843d422138dd74133edcd7b3c",
+    "next_minecraft_port_commit": "4f54914d4364b102d940a4aac4bd94969a33a429",
+    "next_minecraft_version": "1.21",
+    "note": "The parent of the 1.21 port is the final 1.20.6 endpoint."
+  },
+  "build_metadata": {
+    "forge": "50.1.3",
+    "forge_group": "net.minecraftforge",
+    "neoforge": "20.6.113-beta",
+    "fabric_loader": "0.15.10",
+    "fabric_api": "0.97.8+1.20.6",
+    "mappings_channel": "parchment",
+    "mappings_version": "1.20.6-2024.06.02-1.20.6",
+    "java_toolchain": "21",
+    "language_format": "json",
+    "locale_filename_case": "lowercase",
+    "english_source_path": "Common/src/main/resources/assets/jei/lang/en_us.json"
+  },
+  "language_scope": {
+    "selected_scope_count": 90,
+    "changed_from_1.20.4": false,
+    "new_selected_primary_languages": [],
+    "removed_selected_languages": [],
+    "decoupled_assets": true
+  },
+  "minecraft_asset_indexes": {
+    "minecraft_1.20.4": {"id": "12", "sha1": "90aff2be25f39a9b4df44ff2b52862dc2ab98591", "language_file_count": 143},
+    "minecraft_1.20.6": {"id": "16", "sha1": "ccf52649de5f7af097d939c9a94640ac695883ea", "language_file_count": 143},
+    "live_language_file_additions": [],
+    "live_language_file_removals": []
+  },
+  "jei_english": {
+    "resource_format": "json",
+    "key_count": 157,
+    "normal_key_count": 151,
+    "debug_only_key_count": 6,
+    "pinned_blob_sha": "c9ccca35824c950ea7a7869054b00ddc31e768e5"
+  },
+  "english_diff_from_1.20.4": {
+    "unchanged_key_and_value_count": 157,
+    "added_key_count": 0,
+    "removed_key_count": 0,
+    "changed_english_value_count": 0,
+    "changed_debug_only_key_count": 0,
+    "reviewed_normal_added_or_changed_key_count": 0,
+    "manifest": "upstream/diffs/1.20.4-to-1.20.6.json"
+  },
+  "jei_upstream_locale_count": 26,
+  "selected_scope_count": 90,
+  "selected_upstream_complete_locales": ["en_us"],
+  "selected_upstream_incomplete_locales": [
+    "ar_sa", "bg_bg", "cs_cz", "de_de", "el_gr", "es_es", "fi_fi", "fr_fr", "he_il",
+    "hu_hu", "id_id", "it_it", "ja_jp", "ko_kr", "lt_lt", "pl_pl", "pt_br", "ru_ru",
+    "sv_se", "tr_tr", "uk_ua", "zh_cn"
+  ],
+  "upstream_unselected_or_nonmatching_locales": ["en_au", "nb_no", "zh_tw"],
+  "addon_full_locale_count": 67,
+  "ownership_changes_from_1.20.4": {
+    "newly_complete_upstream": [],
+    "complete_to_incomplete": [],
+    "newly_upstream_from_addon_full": [],
+    "no_longer_upstream": [],
+    "removed_addon_full_locales": [],
+    "complete_count": 1,
+    "supplement_count": 22,
+    "addon_full_count": 67
+  },
+  "validation": {
+    "exploratory_audit_run": 34901038069,
+    "exploratory_audit_job": 104166787578,
+    "result": "success",
+    "complete_validation_run": 34901271715,
+    "complete_validation_job": 104167540561,
+    "complete_validation_result": "success"
+  }
+}

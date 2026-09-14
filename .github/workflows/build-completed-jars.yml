@@ -7,6 +7,7 @@ on:
     paths:
       - 'packaging/completed-versions.json'
       - 'scripts/build_completed_jar.py'
+      - 'scripts/build_completed_jar_java21.py'
 
 permissions:
   contents: write
@@ -46,14 +47,14 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Set up Java 17 builder
+      - name: Set up Java 21 builder
         uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: '17'
+          java-version: '21'
 
       - name: Build latest static-validated 1.0.0 candidate
-        run: python scripts/build_completed_jar.py --minecraft '${{ needs.prepare.outputs.minecraft }}' --version 1.0.0
+        run: python scripts/build_completed_jar_java21.py --minecraft '${{ needs.prepare.outputs.minecraft }}' --version 1.0.0
 
       - name: Inspect output
         shell: bash
