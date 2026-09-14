@@ -34,6 +34,12 @@ def main() -> int:
     if len(fallback_locales) != 30 or len(set(full) - fallback_locales) != 34:
         errors.append("G39 full ownership must remain 30 documented English fallbacks + 34 translated/AI-assisted locales")
 
+    # Regression guard: mB is a standalone unit, not the two letters inside ItemBlock.
+    if g39.contains_technical_token("Lookup ItemBlock Tags", "mB"):
+        errors.append("technical-token matcher falsely detects mB inside ItemBlock")
+    if not g39.contains_technical_token("%s mB", "mB"):
+        errors.append("technical-token matcher does not detect standalone mB unit")
+
     for locale, values in full.items():
         if set(values) != set(target):
             errors.append(f"{locale}: full G39 key set differs from target")
@@ -69,10 +75,15 @@ def main() -> int:
         inherited_count = donor_count = fallback_count = 0
         for key, value in values.items():
             if key in unchanged:
-                expected = old[key]
-                inherited_count += 1
+                expected, source = g39.resolve_unchanged(key, old[key], target[key])
                 if value != expected:
-                    errors.append(f"{locale}: unchanged G39 value differs from exact G38 value for {key}")
+                    errors.append(f"{locale}: unchanged G39 value differs from safe G38 resolution for {key}")
+                if source == "inherited":
+                    inherited_count += 1
+                elif source == "english-fallback":
+                    fallback_count += 1
+                else:
+                    errors.append(f"{locale}: unknown unchanged G39 provenance source {source!r} for {key}")
             elif key in changed_or_added:
                 expected, source = g39.resolve_changed_or_added(locale, key, target[key])
                 if value != expected:
@@ -95,7 +106,7 @@ def main() -> int:
         }
         if stats != expected_stats:
             errors.append(f"{locale}: full provenance stats differ from independently recomputed sources")
-        if inherited_count != 76 or inherited_count + donor_count + fallback_count != 286:
+        if inherited_count + donor_count + fallback_count != 286:
             errors.append(f"{locale}: translated full provenance does not account for exactly 286 target values")
 
     for locale, values in supplements.items():
@@ -116,12 +127,19 @@ def main() -> int:
         inherited_count = donor_count = fallback_count = 0
         for key, value in values.items():
             if key in unchanged:
-                expected = previous_complete.get(key)
-                inherited_count += 1
-                if expected is None:
+                previous = previous_complete.get(key)
+                if previous is None:
                     errors.append(f"{locale}: unchanged supplement key absent from complete G38 view: {key}")
-                elif value != expected:
-                    errors.append(f"{locale}: unchanged supplement differs from exact G38 combined value for {key}")
+                    continue
+                expected, source = g39.resolve_unchanged(key, previous, target[key])
+                if value != expected:
+                    errors.append(f"{locale}: unchanged supplement differs from safe G38 resolution for {key}")
+                if source == "inherited":
+                    inherited_count += 1
+                elif source == "english-fallback":
+                    fallback_count += 1
+                else:
+                    errors.append(f"{locale}: unknown unchanged supplement provenance source {source!r} for {key}")
             elif key in changed_or_added:
                 expected, source = g39.resolve_changed_or_added(locale, key, target[key])
                 if value != expected:
@@ -152,6 +170,16 @@ def main() -> int:
         if ((set(upstream) | set(values)) & normal) != normal:
             errors.append(f"{locale}: upstream + supplement does not cover all normal G39 target keys")
 
+    # Known unsafe candidates that triggered the first complete-QA run must be rejected.
+    pt_key = "jei.config.debug.debug.logSuffixTreeStats.description"
+    if g39.exact_donor_value("pt_br", pt_key, target[pt_key]) is not None:
+        errors.append("pt_br unsafe donor unexpectedly retained a value that drops JEI")
+    lt_key = "key.jei.toggleOverlay"
+    lt_previous = g39.g38_combined_locale("lt_lt")[lt_key]
+    lt_value, lt_source = g39.resolve_unchanged(lt_key, lt_previous, target[lt_key])
+    if lt_source != "english-fallback" or lt_value != target[lt_key]:
+        errors.append("lt_lt unsafe inherited overlay label must fall back to exact G39 English")
+
     complete_set = set(scope["selected_upstream_complete_locales"])
     if complete_set != {"en_us", "ja_jp"}:
         errors.append(f"G39 complete upstream ownership changed: {sorted(complete_set)}")
@@ -171,8 +199,8 @@ def main() -> int:
 
     expected_resolution_order = [
         "pinned-upstream",
-        "exact-g38-inheritance",
-        "exact-later-jei-donor",
+        "exact-safe-g38-inheritance",
+        "exact-safe-later-jei-donor",
         "exact-g39-english-fallback",
     ]
     summary = g39.provenance_summary(full_stats, supplement_stats)
@@ -180,9 +208,13 @@ def main() -> int:
         errors.append("G39 provenance summary donor commit differs from deterministic donor")
     if summary["resolution_order"] != expected_resolution_order:
         errors.append("G39 provenance resolution order changed")
+    literal_safety = summary.get("literal_safety", {})
+    if not literal_safety.get("placeholder_multiset_must_match") or not literal_safety.get("unsafe_reuse_falls_back_to_exact_english"):
+        errors.append("G39 provenance does not document literal-safety fallback rules")
+    if literal_safety.get("technical_tokens_must_be_preserved") != list(g39.TECHNICAL_TOKENS):
+        errors.append("G39 provenance technical-token policy differs from reconstruction")
+
     totals = summary["totals"]
-    if totals["translated_full_inherited"] != 34 * 76:
-        errors.append("G39 translated-full inherited total must be exactly 34 * 76")
     if (
         totals["translated_full_inherited"]
         + totals["translated_full_donor"]
@@ -240,11 +272,11 @@ def main() -> int:
     print("Selected complete upstream locales: 2")
     print("Missing-key-only upstream supplements: 24")
     print("Keys per complete addon locale: 286 (280 normal + 6 debug)")
-    print(f"Translated-full donor values: {totals['translated_full_donor']}")
+    print(f"Translated-full safe donor values: {totals['translated_full_donor']}")
     print(f"Translated-full explicit English fallbacks: {totals['translated_full_english_fallback']}")
-    print(f"Supplement donor values: {totals['supplement_donor']}")
+    print(f"Supplement safe donor values: {totals['supplement_donor']}")
     print(f"Supplement explicit English fallbacks: {totals['supplement_english_fallback']}")
-    print("Every emitted value is independently checked against exact G38 inheritance, exact-semantic donor reuse, or explicit G39 English fallback.")
+    print("Every emitted value is independently checked against safe exact G38 inheritance, safe exact-semantic donor reuse, or explicit G39 English fallback.")
     return 0
 
 
