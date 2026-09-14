@@ -4,9 +4,11 @@
 Resolution order is deliberately strict:
 1. preserve pinned G39 upstream ownership;
 2. inherit only exact same-key + same-English G38 meanings;
-3. for new/changed meanings, use a pinned later-JEI donor only when that donor has
+3. for new/changed normal meanings, use a pinned later-JEI donor only when that donor has
    the exact same key and exact same English source value;
 4. otherwise use exact G39 English as an explicit safe fallback.
+
+Debug-only JEI description keys always remain exact target English.
 """
 from __future__ import annotations
 
@@ -122,6 +124,8 @@ def semantic_partition() -> tuple[set[str], set[str], set[str], set[str]]:
 
 
 def exact_donor_value(locale: str, key: str, target_english: str) -> str | None:
+    if key.startswith(DEBUG_PREFIX):
+        return None
     donor_en = donor_english()
     if donor_en.get(key) != target_english:
         return None
@@ -132,6 +136,8 @@ def exact_donor_value(locale: str, key: str, target_english: str) -> str | None:
 
 
 def resolve_changed_or_added(locale: str, key: str, target_english: str) -> tuple[str, str]:
+    if key.startswith(DEBUG_PREFIX):
+        return target_english, "english-fallback"
     donor = exact_donor_value(locale, key, target_english)
     if donor is not None:
         return donor, "donor"
@@ -278,6 +284,11 @@ def reconstruct_all(output: Path, clean: bool = True) -> tuple[int, int, int, di
     donor_policy = policy["later_upstream_backport_policy"]
     if not donor_policy["allowed_only_if_same_key_and_exact_same_english_value"]:
         raise ValueError("G39 donor policy must require exact key+English semantics")
+    if donor_policy["donor_snapshot"] != DONOR_COMMIT:
+        raise ValueError("G39 policy donor snapshot differs from deterministic reconstruction donor")
+    fallback_policy = policy["fallback_policy"]
+    if not fallback_policy.get("debug_only_keys_remain_exact_target_english", False):
+        raise ValueError("G39 policy must keep debug-only keys exact target English")
 
     full, full_stats = reconstruct_full(target, scope)
     supplements, supplement_stats = reconstruct_supplements(target, scope)
