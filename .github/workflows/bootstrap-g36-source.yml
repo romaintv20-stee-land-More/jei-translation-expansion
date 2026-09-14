@@ -1,0 +1,31 @@
+name: Bootstrap G36 source
+
+on:
+  push:
+    branches: ['work/g36-mc1.20.4']
+    paths:
+      - '.github/workflows/bootstrap-g36-source.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  pin-source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: work/g36-mc1.20.4
+      - name: Pin JEI 17.3.0 English source
+        run: |
+          mkdir -p upstream/sources/1.20.4
+          curl -fL 'https://raw.githubusercontent.com/mezz/JustEnoughItems/282f6faecfd71545243be0a94703bdde90eac4e7/Common/src/main/resources/assets/jei/lang/en_us.json' -o upstream/sources/1.20.4/en_us.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add upstream/sources/1.20.4/en_us.json
+          if git diff --cached --quiet; then
+            echo 'Pinned source already present'
+          else
+            git commit -m 'Pin G36 Minecraft 1.20.4 English source'
+            git push origin HEAD:work/g36-mc1.20.4
+          fi
