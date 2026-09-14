@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "base_minecraft": "1.20.6",
+  "base_jei": "18.0.0",
+  "target_minecraft": "1.21",
+  "target_jei": "19.8.2",
+  "base_key_count": 157,
+  "target_key_count": 176,
+  "target_normal_key_count": 170,
+  "target_debug_only_key_count": 6,
+  "unchanged_key_and_value_count": 156,
+  "added_key_count": 19,
+  "removed_key_count": 0,
+  "changed_english_value_count": 1,
+  "changed_debug_only_key_count": 0,
+  "reviewed_normal_added_or_changed_key_count": 20,
+  "added_keys": [
+    "gui.jei.category.registry.block",
+    "gui.jei.category.registry.fluid",
+    "gui.jei.category.registry.item",
+    "gui.jei.category.tagInformation",
+    "jei.key.mouse.left",
+    "jei.key.mouse.right",
+    "jei.key.shift",
+    "jei.tooltip.bookmarks.recipe",
+    "jei.tooltip.bookmarks.recipe.add",
+    "jei.tooltip.bookmarks.recipe.remove",
+    "jei.tooltip.bookmarks.tooltips.transfer.max.usage",
+    "jei.tooltip.bookmarks.tooltips.transfer.usage",
+    "jei.tooltip.bookmarks.tooltips.usage",
+    "jei.tooltip.recipe.sort.bookmarks.first.disabled",
+    "jei.tooltip.recipe.sort.bookmarks.first.enabled",
+    "jei.tooltip.recipe.sort.craftable.first.disabled",
+    "jei.tooltip.recipe.sort.craftable.first.enabled",
+    "key.jei.maxTransferRecipeBookmark",
+    "key.jei.transferRecipeBookmark"
+  ],
+  "removed_keys": [],
+  "changed_english_values": {
+    "jei.tooltip.recipe.tag": {
+      "before": "Accepts any: %s",
+      "after": "Accepts tag: %s"
+    }
+  },
+  "reuse_rule": "Reuse a translation only when both the localization key and the English source value are exactly identical. The 19 added keys and the one changed English value require reviewed G38 treatment."
+}
