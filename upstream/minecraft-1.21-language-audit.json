@@ -90,7 +90,7 @@
     "exploratory_audit_run": 34902849559,
     "exploratory_audit_job": 104172603452,
     "result": "success",
-    "complete_validation_run": null,
-    "complete_validation_job": null
+    "complete_validation_run": 34903408793,
+    "complete_validation_job": 104174411227
   }
 }
