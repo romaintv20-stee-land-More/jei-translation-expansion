@@ -21,17 +21,31 @@ SELECTED_INCOMPLETE = (
 DEBUG_PREFIX = "description.jei."
 
 
-def fetch(commit: str, locale: str) -> dict[str, str] | None:
-    url = f"https://raw.githubusercontent.com/mezz/JustEnoughItems/{commit}/" + LANG_PATH.format(locale=locale)
-    req = urllib.request.Request(url, headers={"User-Agent": "JEI-Translation-Expansion-G39-backport-audit"})
+def _url(commit: str, locale: str) -> str:
+    return f"https://raw.githubusercontent.com/mezz/JustEnoughItems/{commit}/" + LANG_PATH.format(locale=locale)
+
+
+def fetch_strict(commit: str, locale: str) -> dict[str, str]:
+    req = urllib.request.Request(_url(commit, locale), headers={"User-Agent": "JEI-Translation-Expansion-G39-backport-audit"})
+    with urllib.request.urlopen(req, timeout=30) as response:
+        raw = json.loads(response.read().decode("utf-8"))
+    return {str(k): str(v) for k, v in raw.items() if not str(k).startswith("_")}
+
+
+def fetch_donor(locale: str) -> tuple[dict[str, str] | None, str]:
+    req = urllib.request.Request(_url(DONOR_COMMIT, locale), headers={"User-Agent": "JEI-Translation-Expansion-G39-backport-audit"})
     try:
         with urllib.request.urlopen(req, timeout=30) as response:
-            raw = json.loads(response.read().decode("utf-8"))
+            text = response.read().decode("utf-8")
     except urllib.error.HTTPError as exc:
         if exc.code == 404:
-            return None
+            return None, "absent"
         raise
-    return {str(k): str(v) for k, v in raw.items() if not str(k).startswith("_")}
+    try:
+        raw = json.loads(text)
+    except json.JSONDecodeError as exc:
+        return None, f"invalid-json:{exc.lineno}:{exc.colno}"
+    return ({str(k): str(v) for k, v in raw.items() if not str(k).startswith("_")}, "ok")
 
 
 def parse(path: Path) -> dict[str, str]:
@@ -42,22 +56,22 @@ def parse(path: Path) -> dict[str, str]:
 def main() -> int:
     target = parse(TARGET)
     normal = {k for k in target if not k.startswith(DEBUG_PREFIX)}
-    donor_en = fetch(DONOR_COMMIT, "en_us")
+    donor_en, donor_en_status = fetch_donor("en_us")
     if donor_en is None:
-        raise RuntimeError("donor English locale missing")
+        raise RuntimeError(f"donor English locale unavailable: {donor_en_status}")
     semantically_stable = {k for k in normal if donor_en.get(k) == target[k]}
     print(f"G39 normal target keys: {len(normal)}")
     print(f"Exact same key+English semantics in donor snapshot: {len(semantically_stable)}")
     total = 0
     useful_locales = 0
+    unavailable: list[str] = []
     for locale in SELECTED_INCOMPLETE:
-        current = fetch(G39_COMMIT, locale)
-        if current is None:
-            raise RuntimeError(f"G39 upstream locale unexpectedly missing: {locale}")
+        current = fetch_strict(G39_COMMIT, locale)
         missing = normal - set(current)
-        donor = fetch(DONOR_COMMIT, locale)
+        donor, status = fetch_donor(locale)
         if donor is None:
-            print(f"{locale}: missing={len(missing)} donor=absent backportable=0")
+            unavailable.append(f"{locale}({status})")
+            print(f"{locale}: missing={len(missing)} donor={status} backportable=0 remaining={len(missing)}")
             continue
         backportable = sorted(k for k in missing & semantically_stable if k in donor)
         if backportable:
@@ -68,7 +82,8 @@ def main() -> int:
         if backportable:
             print("  " + ", ".join(backportable))
     print(f"Backportable exact translations total: {total} across {useful_locales} locales")
-    print("PASS: donor audit uses only identical localization key + identical English value")
+    print(f"Unavailable donor locales ({len(unavailable)}): {', '.join(unavailable) or '(none)'}")
+    print("PASS: donor audit uses only identical localization key + identical English value; malformed/absent donor locales are skipped, never trusted")
     return 0
 
 
