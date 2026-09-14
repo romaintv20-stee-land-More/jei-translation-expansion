@@ -40,11 +40,12 @@
     "documented_full_english_fallback_allowed": true,
     "fallback_locales_are_complete": true,
     "low_confidence_new_or_changed_semantics_may_use_exact_target_english": true,
-    "fallback_must_be_explicit_and_counted": true
+    "fallback_must_be_explicit_and_counted": true,
+    "debug_only_keys_remain_exact_target_english": true
   },
   "later_upstream_backport_policy": {
     "allowed_only_if_same_key_and_exact_same_english_value": true,
-    "donor_snapshot": "5593dfe99114c057f018d959bf4c147a70462fef",
+    "donor_snapshot": "f93563ca4965d511bd07d4f041b3a6ddd1158ef0",
     "never_override_g39_upstream_owned_key": true
   },
   "translation_status": "in-progress-major-semantic-migration"
