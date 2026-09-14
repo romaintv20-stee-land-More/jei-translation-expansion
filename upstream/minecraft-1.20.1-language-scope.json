@@ -4,7 +4,7 @@
   "upstream_commit": "eecef8ae335701b97a6918e20b4dd87966a46dfa",
   "base_scope_manifest": "upstream/minecraft-1.20-language-scope.json",
   "raw_language_count": 143,
-  "raw_language_count_note": "Minecraft 1.20.1 uses the same decoupled language asset index as 1.20; no language asset membership change is observed.",
+  "raw_language_count_note": "Minecraft language assets are decoupled and may be republished behind version metadata. The G34 audit observed 143 language files and no membership delta from 1.20; later G35 re-audit still observed the same 143 language-code membership even though the live 1.20.1 asset-index SHA had changed.",
   "selected_scope_count": 90,
   "selected_scope_changed_from_1.20": false,
   "runtime_locale_filename_case": "lowercase",
@@ -32,13 +32,15 @@
   "removed_selected_languages": [],
   "new_selected_primary_languages": [],
   "downloaded": {
-    "base_asset_index_id": "5",
-    "base_asset_index_sha1": "0dd020f0d45d336531ce00c14065ef6dd01b9bc5",
-    "asset_index_id": "5",
-    "asset_index_sha1": "0dd020f0d45d336531ce00c14065ef6dd01b9bc5",
+    "audit_observed_base_asset_index_id": "5",
+    "audit_observed_base_asset_index_sha1": "0dd020f0d45d336531ce00c14065ef6dd01b9bc5",
+    "audit_observed_asset_index_id": "5",
+    "audit_observed_asset_index_sha1": "0dd020f0d45d336531ce00c14065ef6dd01b9bc5",
+    "later_reaudit_asset_index_sha1": "b4e1ddf23ecbcd5190169092bf4737df926ed524",
     "language_asset_file_count": 143,
     "live_language_asset_additions_from_1.20": [],
-    "live_language_asset_removals_from_1.20": []
+    "live_language_asset_removals_from_1.20": [],
+    "mutable_decoupled_asset_warning": "Do not use a later live asset-index SHA as a historical release boundary; selected language membership is frozen separately."
   },
   "documented_full_english_fallback_locales": [
     "ba_ru", "bar", "br_fr", "bs_ba", "fo_fo", "fur_it", "fy_nl", "gd_gb", "haw_us", "ig_ng",
