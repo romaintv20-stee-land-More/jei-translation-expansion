@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project_version": "1.0.0",
-  "note": "G1-G33 are translation/reconstruction complete. These builds are static-validated release candidates until their required runtime gates are complete.",
+  "note": "G1-G34 are translation/reconstruction complete. These builds are static-validated release candidates until their required runtime gates are complete.",
   "versions": [
     {"generation":"G1","minecraft":"1.8","jei":"2.15.0","era":"legacy","jei_modid":"JEI","java_target":7,"format":"lang","full":54,"supplements":0,"keys":58,"reconstruct_mode":"g1-direct"},
     {"generation":"G2","minecraft":"1.8.9","jei":"2.28.18","era":"legacy","jei_modid":"JEI","java_target":7,"format":"lang","full":54,"supplements":5,"keys":75,"reconstruct_mode":"g2-special","reconstruct_script":"scripts/reconstruct_1_8_9.py"},
@@ -35,6 +35,7 @@
     {"generation":"G30","minecraft":"1.19.2","jei":"11.5.0","era":"modern","jei_modid":"jei","java_target":17,"format":"json","full":64,"supplements":19,"keys":153,"reconstruct_script":"scripts/reconstruct_1_19_2.py"},
     {"generation":"G31","minecraft":"1.19.3","jei":"12.3.0","era":"modern","jei_modid":"jei","java_target":17,"format":"json","full":66,"supplements":21,"keys":156,"reconstruct_script":"scripts/reconstruct_1_19_3.py"},
     {"generation":"G32","minecraft":"1.19.4","jei":"13.1.0","era":"modern","jei_modid":"jei","java_target":17,"format":"json","full":66,"supplements":20,"keys":156,"reconstruct_script":"scripts/reconstruct_1_19_4.py"},
-    {"generation":"G33","minecraft":"1.20","jei":"14.0.0","era":"modern","jei_modid":"jei","java_target":17,"format":"json","full":68,"supplements":20,"keys":156,"reconstruct_script":"scripts/reconstruct_1_20.py"}
+    {"generation":"G33","minecraft":"1.20","jei":"14.0.0","era":"modern","jei_modid":"jei","java_target":17,"format":"json","full":68,"supplements":20,"keys":156,"reconstruct_script":"scripts/reconstruct_1_20.py"},
+    {"generation":"G34","minecraft":"1.20.1","jei":"15.2.0","era":"modern","jei_modid":"jei","java_target":17,"format":"json","full":68,"supplements":20,"keys":156,"reconstruct_script":"scripts/reconstruct_1_20_1.py"}
   ]
 }
