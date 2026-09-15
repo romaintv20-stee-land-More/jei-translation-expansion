@@ -19,6 +19,7 @@ jobs:
     outputs:
       minecraft: ${{ steps.latest.outputs.minecraft }}
       loader: ${{ steps.latest.outputs.loader }}
+      java_target: ${{ steps.latest.outputs.java_target }}
       expected_count: ${{ steps.latest.outputs.expected_count }}
     steps:
       - uses: actions/checkout@v4
@@ -34,10 +35,13 @@ jobs:
           assert len({item['minecraft'] for item in versions}) == len(versions)
           latest = versions[-1]
           loader = latest.get('loader', 'forge')
+          java_target = int(latest['java_target'])
           assert loader in {'forge', 'neoforge'}
+          assert java_target in {7, 8, 16, 17, 21, 25}
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as out:
               out.write(f"minecraft={latest['minecraft']}\n")
               out.write(f"loader={loader}\n")
+              out.write(f"java_target={java_target}\n")
               out.write(f"expected_count={len(versions)}\n")
           PY
 
@@ -53,11 +57,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Set up Java 21 builder
+      - name: Set up Java builder
         uses: actions/setup-java@v5
         with:
           distribution: temurin
-          java-version: '21'
+          java-version: '${{ needs.prepare.outputs.java_target }}'
 
       - name: Build latest static-validated 1.0.0 candidate
         shell: bash
