@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate frozen G45 / Minecraft 1.21.9 source, scope, ownership and reuse policy."""
+"""Validate frozen G45 / Minecraft 1.21.9 source, scope, ownership, reuse, and literal-safety policy."""
 from __future__ import annotations
 
 import json
