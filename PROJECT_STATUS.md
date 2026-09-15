@@ -63,6 +63,7 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G39 | 1.21.1 | 19.21.1 | `28eb51f` | 286 | 90 | 64 | 24 | 2 | complete; NeoForge candidate packaged |
 | G40 | 1.21.4 | 20.0.0 | `26845e0` | 288 | 90 | 64 | 25 | 1 | complete; NeoForge candidate packaged |
 | G41 | 1.21.5 | 21.4.0 | `0772287` | 290 | 90 | 65 | 24 | 1 | complete; NeoForge packaging validated |
+| G42 | 1.21.6 | 22.0.0 | `2a57409` | 289 | 90 | 65 | 24 | 1 | exploratory audit green; full QA pending |
 
 ## Recent canonical milestones
 
@@ -102,27 +103,39 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 - NeoForge packaging-validation run `34930428119`, green
 - validated candidate SHA-256: `d07378fa02b78dd7e55c63144030d737a44f1f1dc575a488d88e36915a816638`
 - PR #14 merged to `main` as `a769e41b38ec250625631343d2bff25c81580ae0`
-- canonical `candidate-jars/1.21.5/` persistence is handled by the main packaging workflow and was still queued at the last synchronization point
+- canonical `candidate-jars/1.21.5/` persistence is handled by the main packaging workflow; its prepare job is green and the build job is queued at this synchronization point
+
+### G42 — Minecraft 1.21.6 / JEI 22.0.0 — in progress
+
+- final 1.21.6 mainline endpoint `2a57409c2af0ce9716749a0329166a41cbcf453f`
+- the next Minecraft port is `8a22d93e6e903142c9dbcdf699496f435d1c569d` (`Update to Minecraft 1.21.7`) and its direct parent is the G42 endpoint, so the endpoint boundary is exact
+- build: Minecraft 1.21.6 / NeoForge `21.6.20-beta` / minimum `[21.6.20-beta,)` / Java 21 / JEI `22.0.0`
+- 289 keys = 283 normal + 6 debug
+- G41→G42 semantic delta = 289 unchanged + 0 added + 1 removed + 0 changed-English values
+- removed key: `gui.jei.category.grindstone.experience`; it must not be emitted by G42-owned resources
+- Minecraft live language asset set remains 143 codes with no live additions/removals; selected historical scope remains 90
+- upstream ownership remains 65 addon/full-override + 24 incomplete-upstream supplements + 1 complete upstream (`en_us`)
+- upstream `uk_ua.json` remains malformed and therefore remains a full repair override; it is not layered as a supplement over invalid JSON
+- exploratory audit run `34930755627`, green
+- full frozen-manifest/reconstruction QA run `34931544591` is queued at this synchronization point
+- deterministic G42 NeoForge packaging-validation run `34931774000` is also queued
 
 ## Candidate packaging state
 
 - The canonical candidate inventory on `main` currently contains **40 version-specific 1.0.0 candidates through Minecraft 1.21.4**.
-- G41 / Minecraft 1.21.5 has a green deterministic NeoForge packaging validation; canonical persistence is pending the queued main packaging workflow.
+- G41 / Minecraft 1.21.5 has a green deterministic NeoForge packaging validation; canonical persistence is pending its main packaging build/persist jobs.
 - Candidate JARs are not runtime-promoted finals.
 
 ## Current next target
 
-- **G42 = Minecraft 1.21.6 / JEI 22.0.0**.
-- final 1.21.6 mainline endpoint: `2a57409c2af0ce9716749a0329166a41cbcf453f` (`Update to Minecraft 1.21.6`).
-- the next Minecraft port is `8a22d93e6e903142c9dbcdf699496f435d1c569d` (`Update to Minecraft 1.21.7`) and its direct parent is the G42 endpoint, so the endpoint boundary is exact.
-- build metadata at the endpoint: NeoForge `21.6.20-beta`, Java 21, JEI specification `22.0.0`.
-- preliminary English delta from G41: 289 surviving key/value meanings unchanged, 0 added, 1 removed, 0 changed; removed key is `gui.jei.category.grindstone.experience`.
-- G42 audit/bootstrap/reconstruction validation is in progress on `work/g42-mc1.21.6-audit`.
+- Finish G42 frozen manifest persistence, complete reconstruction QA and deterministic NeoForge packaging validation.
+- After G42 is green and merged, the chronological next target is **G43 = Minecraft 1.21.7**.
+- Preliminary endpoint research already identifies the final 1.21.7 mainline endpoint as `ee33b5d69f6cf9167c32c2e84fdc69fa1b008440`, immediately before `f61efdf5f6604d0d3a55a67cc5d28ec340f189aa` (`Update to Minecraft 1.21.8`). Do not promote this preliminary G43 research to completed status until G42 is finalized and the G43 isolated audit is run.
 - Keep all static candidates outside `release-jars/` until their runtime gates are satisfied.
 
 ## Documentation synchronization debt
 
-`upstream/versions.json`, `upstream/generations.json`, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` still need broad synchronization through the latest completed generations. `README.md` also needs synchronization through G41/G42 once G42 is finalized.
+`README.md`, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` are synchronized through G41 with G42 noted as the active target. `upstream/versions.json` and `upstream/generations.json` remain stale; `scripts/sync_upstream_registries.py` has been added on the G42 branch so they can be regenerated from the canonical completed-target registry once G42 packaging metadata is finalized.
 
 ## Release gates still open
 
