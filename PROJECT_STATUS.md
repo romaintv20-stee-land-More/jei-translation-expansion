@@ -68,7 +68,9 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G44 | 1.21.8 | 24.2.0 | `2f8e4ec` | 305 | 90 | 65 | 24 | 1 | complete; NeoForge candidate packaged |
 | G45 | 1.21.9 | 25.0.1 | `bdfdb4c` | 305 | 90 | 65 | 24 | 1 | complete; NeoForge candidate packaged |
 | G46 | 1.21.10 | 26.2.0 | `621ddf0` | 308 | 90 | 64 | 25 | 1 | complete; NeoForge candidate packaged |
-| G47 | 1.21.11 | 27.38.0 | `4b6e473` | 334 | 90 | 63 | 26 | 1 | complete; maintained branch validated; packaging pending |
+| G47 | 1.21.11 | 27.38.0 | `4b6e473` | 334 | 90 | 63 | 26 | 1 | complete; NeoForge candidate packaged |
+| G48 | 26.1 | 29.2.0 | `16c0e3b` | 309 | 90 | 64 | 25 | 1 | complete; NeoForge candidate packaged |
+| G49 | 26.1.1 | 29.4.0 | `5a2ecc4` | 309 | 90 | 64 | 25 | 1 | complete; NeoForge candidate validated |
 
 ## Recent canonical milestones
 
@@ -183,30 +185,63 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 - 91 upstream-owned values require frozen literal-safety overrides so placeholders and fixed technical literals remain exact
 - the maintained branch has normal CurseForge project `238222` and Modrinth project `u6dRKJwZ` publication configuration, superseding the first-port Maven-only limitation for current maintained releases
 - isolated maintained-endpoint reconstruction validation run `35006503247`, green
-- public candidate packaging remains a separate project step until the maintained-target metadata is merged and the candidate builder is validated
+- dedicated NeoForge candidate packaging is complete and persisted on `main`
+- canonical candidate SHA-256 `9bfb53fd798ed9afc85060072c50bfff980a2ce87cacb6a2aa053cbec833c3d8`
+- candidate: `candidate-jars/1.21.11/jei-translation-expansion-1.0.0-mc1.21.11-neoforge.jar`
+
+
+### G48 — Minecraft 26.1 / JEI 29.2.0
+
+- final exact-26.1 endpoint `16c0e3b3fcb8cd4093617a691de6f3d1c137e1ca`
+- first 26.1 release commit `9de18f504f357be537c5de24cac408b51ca9d8b1`; next patch support commit `b1ebe15147adb0bded6f3e5ccf86b35124fa5929` targets 26.1.1 and directly follows the G48 endpoint
+- build: NeoForge `26.1.0.8-beta`, minimum `[26.1.0.8-beta,)`, Java 25
+- 309 keys = 303 normal + 6 debug
+- G47→G48 semantic delta = 294 unchanged + 9 added + 34 removed + 6 changed-English values
+- selected scope remains 90; ownership = 64 addon-full locales + 25 missing-key/safety-override supplements + 1 complete upstream (`en_us`)
+- all selected upstream JSON files are syntactically valid; `uk_ua` is a valid incomplete supplement locale with 4 missing normal keys
+- 92 frozen upstream-owned values require literal-safety overrides
+- complete finalization/build run `35014496588`, green
+- canonical persistence run `35016479980`, green
+- candidate SHA-256 `1b99b64f7d1696570ac93cd7f5bc721013b1b300a9c308cc4a08612802b921fd`
+- candidate: `candidate-jars/26.1/jei-translation-expansion-1.0.0-mc26.1-neoforge.jar`
+- runtime promotion remains separately gated
+
+### G49 — Minecraft 26.1.1 / JEI 29.4.0
+
+- first 26.1.1 commit `b1ebe15147adb0bded6f3e5ccf86b35124fa5929` directly follows G48; final 26.1.1 endpoint `5a2ecc40c438e9137a8b64b2d9b48c095fc24c23`
+- next patch commit `481a64808dab4ea205772a7289cc766804f5f5d7` targets Minecraft 26.1.2 and directly follows the G49 endpoint
+- build: NeoForge `26.1.1.1-beta`, minimum `[26.1.0.8-beta,)`, Java 25
+- 309 keys = 303 normal + 6 debug
+- G48→G49 semantic delta = 309 unchanged + 0 added + 0 removed + 0 changed-English values
+- selected scope remains 90; ownership = 64 addon-full locales + 25 missing-key/safety-override supplements + 1 complete upstream (`en_us`)
+- Minecraft language membership remains 143 codes with no additions/removals
+- all selected upstream JSON files are syntactically valid; `uk_ua` remains a valid supplement locale with 4 missing normal keys
+- 92 frozen upstream-owned values require literal-safety overrides; cross-key reuse remains forbidden
+- complete isolated reconstruction validation run `35017320214`, green
+- deterministic Java-25 NeoForge finalization/build run `35017623490`, green
+- validated candidate SHA-256 `401e6dea929125a537565d6a54e4a805e976217e97dbb9a31b1d5065cfa9e0d8`
+- canonical candidate persistence will follow merge to `main`; runtime promotion remains separately gated
 
 ## Candidate packaging state
 
-- The canonical candidate inventory on `main` contains **46 version-specific 1.0.0 candidates through Minecraft 1.21.10**.
-- Maintained G47 translation/reconstruction is complete; its 1.21.11 candidate has not yet been added to `candidate-jars/` while packaging metadata is validated separately.
+- The canonical candidate inventory on `main` contains **48 version-specific 1.0.0 candidates through Minecraft 26.1**.
+- G49 / Minecraft 26.1.1 has passed complete static reconstruction and deterministic Java-25 NeoForge candidate validation; canonical persistence follows its merge to `main`.
 - Candidate JARs are not runtime-promoted finals.
 
 ## Current next target
 
-- Maintained G47 / Minecraft 1.21.11 translation auditing is complete and statically validated at JEI 27.38.0.
-- Validate and persist the dedicated G47 NeoForge candidate now that the maintained upstream branch has normal CurseForge/Modrinth publication configuration.
-- After G47 packaging, audit the Minecraft 26.1/26.1.2 maintained line carefully under the one-Minecraft-version-per-JAR rule before assigning G48/G49.
+- Merge G49 and persist `candidate-jars/26.1.1/jei-translation-expansion-1.0.0-mc26.1.1-neoforge.jar`, requiring canonical SHA-256 `401e6dea929125a537565d6a54e4a805e976217e97dbb9a31b1d5065cfa9e0d8`.
+- The chronological next audit target is **G50 = Minecraft 26.1.2**.
+- Mainline first 26.1.2 port `481a64808dab4ea205772a7289cc766804f5f5d7` directly follows G49. The maintained `26.1` branch currently targets 26.1.2 and must be audited for its maintained endpoint before G50 is frozen.
 - Keep all static candidates outside `release-jars/` until their runtime gates are satisfied.
 
 ## Documentation synchronization debt
 
-- `PROJECT_STATUS.md` and `docs/TRANSLATION_STATUS.md` are synchronized through maintained G47 translation/reconstruction.
-- `upstream/versions.json` and `upstream/generations.json` remain packaging-derived and stay synchronized through G46 until G47 is deliberately added to the packaging registry.
-- `README.md` and `docs/VERSION_MATRIX.md` remain aligned to the packaged candidate line through G46 until G47 candidate packaging is completed.
+- `PROJECT_STATUS.md`, `packaging/completed-versions.json`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through validated G49 on the work branch.
+- README / version-matrix / translation-status prose may lag the canonical generation line and should be refreshed before a public documentation release.
 
 ## Release gates still open
 
 - Minecraft 1.8.9 prototype/runtime lineage still requires a real client runtime validation before final release promotion.
 - Minecraft 1.13+ missing-key-only JSON supplements require a real runtime resource-stack merge test before promotion to their version-specific release JAR.
-- G39–G46 NeoForge candidates remain static candidates until their version-specific runtime checks are complete.
-- G47 translation/reconstruction is statically validated; its maintained-branch candidate remains pending separate packaging validation and will remain runtime-gated after creation.
+- NeoForge candidates G39–G49 remain static candidates until their version-specific runtime checks are complete.

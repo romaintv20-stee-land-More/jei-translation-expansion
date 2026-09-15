@@ -1,0 +1,209 @@
+{
+  "schema_version": 1,
+  "generation": "g49-mc26.1.1",
+  "minecraft": "26.1.1",
+  "jei": "29.4.0",
+  "source_commit": "5a2ecc40c438e9137a8b64b2d9b48c095fc24c23",
+  "selected_scope_count": 90,
+  "ownership": {
+    "addon_full": 64,
+    "upstream_supplements": 25,
+    "complete_upstream": 1
+  },
+  "translation_reuse": {
+    "base_generation": "g48-mc26.1",
+    "reuse_exact_unchanged_g48_semantics": true,
+    "all_target_keys_are_unchanged_from_g48": true,
+    "cross_key_reuse_allowed": false,
+    "placeholder_and_technical_literal_safety_required": true,
+    "prefer_target_english_if_reused_value_is_unsafe": true
+  },
+  "upstream_policy": {
+    "preserve_existing_safe_upstream_keys": true,
+    "supplement_missing_keys_plus_explicit_safety_overrides": true,
+    "explicit_upstream_owned_override_keys": {
+      "ar_sa": [
+        "gui.jei.editMode.description",
+        "jei.config",
+        "jei.config.client.advanced.description",
+        "jei.config.client.appearance.centerSearch.description",
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "jei.config.mode.description",
+        "jei.tooltip.config",
+        "jei.tooltip.error.recipe.transfer.no.server",
+        "key.jei.toggleOverlay"
+      ],
+      "bg_bg": [
+        "gui.jei.editMode.description",
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "jei.config.modIdFormat.modName.modNameFormat.description",
+        "key.category.jei.edit.mode"
+      ],
+      "cs_cz": [
+        "jei.config.client.advanced.itemBlacklist.description",
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "key.jei.toggleOverlay"
+      ],
+      "de_de": [
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "jei.tooltip.bookmarks.not.enough.space",
+        "jei.tooltip.not.enough.space",
+        "key.jei.toggleOverlay"
+      ],
+      "el_gr": [
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "key.jei.toggleOverlay"
+      ],
+      "es_es": [
+        "jei.config.client.advanced.itemBlacklist.description",
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "jei.tooltip.not.enough.space"
+      ],
+      "fi_fi": [
+        "jei.config",
+        "jei.config.client.advanced.itemBlacklist.description",
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "jei.tooltip.config",
+        "key.jei.toggleOverlay"
+      ],
+      "fr_fr": [
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "jei.tooltip.bookmarks.not.enough.space",
+        "jei.tooltip.not.enough.space"
+      ],
+      "he_il": [
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "key.jei.toggleOverlay"
+      ],
+      "hu_hu": [
+        "jei.config.client.advanced.itemBlacklist.description",
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description"
+      ],
+      "id_id": [
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "jei.tooltip.bookmarks.not.enough.space"
+      ],
+      "it_it": [
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description"
+      ],
+      "kk_kz": [
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description"
+      ],
+      "ko_kr": [
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "jei.tooltip.bookmarks.not.enough.space",
+        "jei.tooltip.not.enough.space",
+        "key.jei.toggleOverlay"
+      ],
+      "lt_lt": [
+        "jei.config",
+        "jei.config.client.search.description",
+        "jei.tooltip.config"
+      ],
+      "no_no": [
+        "jei.config",
+        "jei.config.client.advanced.itemBlacklist.description",
+        "jei.config.client.search.description",
+        "jei.tooltip.config",
+        "key.jei.toggleOverlay"
+      ],
+      "pl_pl": [
+        "jei.config.client.advanced.itemBlacklist.description",
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "jei.message.missing.recipes.from.server"
+      ],
+      "pt_br": [
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "jei.tooltip.bookmarks.not.enough.space"
+      ],
+      "ru_ru": [
+        "jei.config.client.advanced.itemBlacklist.description",
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "jei.tooltip.liquid.amount",
+        "jei.tooltip.liquid.amount.with.capacity"
+      ],
+      "sv_se": [
+        "gui.jei.editMode.description",
+        "jei.config.client.advanced.itemBlacklist.description",
+        "jei.config.client.search.creativeTabSearchMode"
+      ],
+      "tr_tr": [
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description",
+        "jei.tooltip.bookmarks.not.enough.space",
+        "jei.tooltip.not.enough.space",
+        "key.jei.toggleOverlay"
+      ],
+      "uk_ua": [
+        "jei.tooltip.liquid.amount",
+        "jei.tooltip.liquid.amount.with.capacity"
+      ],
+      "vi_vn": [
+        "jei.config.client.search.creativeTabSearchMode",
+        "jei.config.client.search.description"
+      ],
+      "zh_cn": [
+        "jei.tooltip.bookmarks.not.enough.space"
+      ]
+    },
+    "reuse_exact_g48_combined_value_only_for_same_key_same_english": true,
+    "cross_key_reuse_allowed": false,
+    "never_emit_other_upstream_owned_keys": true,
+    "runtime_merge_requires_validation_before_jar_promotion": true
+  },
+  "documented_full_english_fallback_locales": [
+    "ba_ru",
+    "bar",
+    "br_fr",
+    "bs_ba",
+    "fo_fo",
+    "fur_it",
+    "fy_nl",
+    "gd_gb",
+    "haw_us",
+    "ig_ng",
+    "kn_in",
+    "ksh",
+    "kw_gb",
+    "li_li",
+    "lmo",
+    "lo_la",
+    "mn_mn",
+    "nah",
+    "ovd",
+    "ry_ua",
+    "sah_sah",
+    "se_no",
+    "so_so",
+    "szl",
+    "ta_in",
+    "tl_ph",
+    "tt_ru",
+    "vec_it",
+    "yi_de",
+    "yo_ng"
+  ],
+  "publication_context": {
+    "curse_project_id": "238222",
+    "modrinth_id": "u6dRKJwZ",
+    "public_distribution_configured": true
+  },
+  "runtime_promotion_separate": true
+}

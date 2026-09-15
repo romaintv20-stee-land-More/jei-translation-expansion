@@ -2,7 +2,7 @@
   "schema_version": 1,
   "last_updated": "2026-09-15",
   "upstream_repository": "mezz/JustEnoughItems",
-  "audit_status": "verified-through-g48",
+  "audit_status": "verified-through-g49",
   "versions": [
     {
       "branch": "1.8",
@@ -989,6 +989,23 @@
       "verified": true,
       "audited_commit": "16c0e3b3fcb8cd4093617a691de6f3d1c137e1ca",
       "neoforge": "26.1.0.8-beta",
+      "neoforge_loader_version_range": "[4,)",
+      "neoforge_version_range": "[26.1.0.8-beta,)"
+    },
+    {
+      "generation": "G49",
+      "minecraft": "26.1.1",
+      "jei": "29.4.0",
+      "loaders": [
+        "neoforge"
+      ],
+      "language_format": "json",
+      "english_source": "upstream/sources/26.1.1/en_us.json",
+      "english_key_count": 309,
+      "java_target": 25,
+      "verified": true,
+      "audited_commit": "5a2ecc40c438e9137a8b64b2d9b48c095fc24c23",
+      "neoforge": "26.1.1.1-beta",
       "neoforge_loader_version_range": "[4,)",
       "neoforge_version_range": "[26.1.0.8-beta,)"
     },
