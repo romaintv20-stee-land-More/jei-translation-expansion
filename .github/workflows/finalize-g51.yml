@@ -50,7 +50,6 @@ jobs:
           test -n "$JAR"
           unzip -t "$JAR"
           python - "$JAR" <<'PY'
-          import json
           import sys
           import tomllib
           import zipfile
@@ -68,8 +67,9 @@ jobs:
               assert metadata['loaderVersion'] == '[4,)'
               mods = metadata['mods']
               assert len(mods) == 1
+              assert mods[0]['modId'] == 'jei_translation_expansion'
               assert mods[0]['version'] == '1.0.0'
-              deps = {item['modId']: item for item in metadata['dependencies']['jeitranslationexpansion']}
+              deps = {item['modId']: item for item in metadata['dependencies']['jei_translation_expansion']}
               assert deps['neoforge']['versionRange'] == '[26.2.0.67,)'
               assert deps['minecraft']['versionRange'] == '[26.2]'
               assert deps['jei']['versionRange'] == '[30.32.0]'
