@@ -10,6 +10,9 @@ on:
       - 'upstream/sources/1.21.4/en_us.json'
       - 'upstream/minecraft-1.21.4-language-scope.json'
 
+permissions:
+  contents: read
+
 jobs:
   audit:
     runs-on: ubuntu-latest
@@ -21,4 +24,6 @@ jobs:
         with:
           python-version: '3.12'
       - name: Audit final maintained Minecraft 1.21.5 JEI endpoint
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/audit_1_21_5.py
