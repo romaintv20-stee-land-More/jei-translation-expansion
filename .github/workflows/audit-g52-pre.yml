@@ -6,12 +6,17 @@ on:
     branches: ['work/g52-mc26.3-rc2-audit']
     paths:
       - 'scripts/audit_26_3_rc_2.py'
+      - 'scripts/bootstrap_26_3_rc_2.py'
+      - 'scripts/reconstruct_26_3_rc_2.py'
+      - 'scripts/validate_26_3_rc_2_delta.py'
+      - 'scripts/validate_26_3_rc_2_complete.py'
       - '.github/workflows/audit-g52-pre.yml'
       - 'upstream/sources/26.2/en_us.json'
       - 'upstream/minecraft-26.2-language-scope.json'
+      - 'scripts/reconstruct_26_2.py'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   audit:
@@ -19,6 +24,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -27,3 +34,30 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/audit_26_3_rc_2.py
+      - name: Freeze provisional translation manifests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/bootstrap_26_3_rc_2.py
+      - name: Validate provisional semantic delta
+        run: python scripts/validate_26_3_rc_2_delta.py
+      - name: Validate provisional complete reconstruction
+        run: python scripts/validate_26_3_rc_2_complete.py
+      - name: Persist provisional translation preparation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            upstream/provisional/sources/26.3-rc-2/en_us.json \
+            upstream/provisional/diffs/26.2-to-26.3-rc-2.json \
+            upstream/provisional/minecraft-26.3-rc-2-language-audit.json \
+            upstream/provisional/minecraft-26.3-rc-2-language-scope.json \
+            translations/pre-g52-mc26.3-rc2/policy.json
+          if git diff --cached --quiet; then
+            echo 'Provisional 26.3 RC2 manifests already match.'
+            exit 0
+          fi
+          git commit -m 'Freeze provisional Minecraft 26.3 RC2 translation preparation'
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
