@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-15",
+  "status": "preliminary-preview-not-final-generation",
+  "base": {
+    "minecraft": "26.2",
+    "generation": "G51",
+    "jei_branch": "26.2",
+    "verified_branch_head": "f93563ca4965d511bd07d4f041b3a6ddd1158ef0",
+    "english_key_count": 334
+  },
+  "preview": {
+    "branch": "fabric-26.3-snapshot-7",
+    "commit": "58362ffb5baa95580549d6825811e7363964a271",
+    "minecraft": "26.3-rc-2",
+    "loader": "fabric",
+    "fabric_loader": "0.19.5",
+    "fabric_api": "0.160.4+26.3",
+    "java": 25,
+    "jei_specification_version": "30.32.0",
+    "api_compatibility_minecraft": "26.2",
+    "stable_26_3_branch_present": false,
+    "stable_26_3_branch_head": null
+  },
+  "english": {
+    "target_key_count": 334,
+    "target_normal_key_count": 328,
+    "target_debug_key_count": 6,
+    "unchanged_same_key_same_english_count": 334,
+    "added_key_count": 0,
+    "removed_key_count": 0,
+    "changed_english_value_count": 0,
+    "added_keys": {},
+    "removed_keys": [],
+    "changed_english_values": {}
+  },
+  "scope_preview": {
+    "selected_scope_count": 90,
+    "upstream_locale_file_count": 31,
+    "addon_full_if_frozen_now": 63,
+    "supplements_if_frozen_now": 26,
+    "complete_upstream_if_frozen_now": 1,
+    "complete_upstream_locales": [
+      "en_us"
+    ],
+    "malformed_selected_upstream_locales": {},
+    "incomplete_upstream_missing_counts": {
+      "ar_sa": 263,
+      "bg_bg": 191,
+      "cs_cz": 262,
+      "de_de": 193,
+      "el_gr": 259,
+      "en_us": 0,
+      "es_es": 194,
+      "fi_fi": 260,
+      "fil_ph": 31,
+      "fr_fr": 185,
+      "he_il": 261,
+      "hu_hu": 193,
+      "id_id": 174,
+      "it_it": 19,
+      "ja_jp": 30,
+      "kk_kz": 34,
+      "ko_kr": 170,
+      "lt_lt": 293,
+      "no_no": 267,
+      "pl_pl": 149,
+      "pt_br": 31,
+      "ru_ru": 170,
+      "sv_se": 17,
+      "tr_tr": 222,
+      "uk_ua": 31,
+      "vi_vn": 185,
+      "zh_cn": 25
+    }
+  },
+  "policy": {
+    "register_as_G52_now": false,
+    "package_candidate_now": false,
+    "reason": "Upstream currently targets Minecraft 26.3-rc-2 on a Fabric preview branch, not a stable 26.3 release target.",
+    "next_action": "Re-audit when upstream publishes or moves to a stable Minecraft 26.3 target; only then freeze G52 and decide final loader packaging."
+  }
+}
