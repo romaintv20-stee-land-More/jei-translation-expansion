@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import urllib.request
 from pathlib import Path
 
@@ -24,7 +25,12 @@ DEBUG_PREFIX = "description.jei."
 
 
 def fetch_bytes(url: str, timeout: int = 30) -> bytes:
-    request = urllib.request.Request(url, headers={"User-Agent": "JEI-Translation-Expansion-G41-audit"})
+    headers = {"User-Agent": "JEI-Translation-Expansion-G41-audit"}
+    token = os.getenv("GITHUB_TOKEN")
+    if token and url.startswith("https://api.github.com/"):
+        headers["Authorization"] = f"Bearer {token}"
+        headers["X-GitHub-Api-Version"] = "2022-11-28"
+    request = urllib.request.Request(url, headers=headers)
     with urllib.request.urlopen(request, timeout=timeout) as response:
         return response.read()
 
