@@ -1,0 +1,45 @@
+name: Bootstrap G40 Minecraft 1.21.4
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g40-mc1.21.4-audit']
+    paths:
+      - 'scripts/bootstrap_1_21_4.py'
+      - '.github/workflows/bootstrap-g40.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  bootstrap:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Freeze source, diff, scope, audit, and policy
+        run: python scripts/bootstrap_1_21_4.py
+      - name: Commit frozen G40 manifests
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            upstream/sources/1.21.4/en_us.json \
+            upstream/diffs/1.21.1-to-1.21.4.json \
+            upstream/minecraft-1.21.4-language-audit.json \
+            upstream/minecraft-1.21.4-language-scope.json \
+            translations/g40-mc1.21.4/policy.json
+          if git diff --cached --quiet; then
+            echo 'G40 frozen manifests are already current.'
+            exit 0
+          fi
+          git commit -m 'Freeze G40 Minecraft 1.21.4 source and scope'
+          git pull --rebase origin work/g40-mc1.21.4-audit
+          git push origin HEAD:work/g40-mc1.21.4-audit
