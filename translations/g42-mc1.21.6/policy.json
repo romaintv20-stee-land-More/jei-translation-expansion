@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "generation": "g42-mc1.21.6",
+  "minecraft": "1.21.6",
+  "jei": "22.0.0",
+  "pinned_commit": "2a57409c2af0ce9716749a0329166a41cbcf453f",
+  "base_generation": "g41-mc1.21.5",
+  "selected_scope_count": 90,
+  "english_target_key_count": 289,
+  "normal_target_key_count": 283,
+  "debug_only_key_count": 6,
+  "translation_reuse": {
+    "reuse_exact_unchanged_g41_semantics": true,
+    "same_key_required": true,
+    "same_english_value_required": true,
+    "cross_key_reuse_allowed": false,
+    "runtime_literals_must_be_preserved": true,
+    "uncertain_values_use_exact_english_fallback": true
+  },
+  "removed_semantics": {
+    "count": 1,
+    "keys": [
+      "gui.jei.category.grindstone.experience"
+    ],
+    "must_not_be_emitted": true
+  },
+  "upstream_ownership": {
+    "complete_locales": [
+      "en_us"
+    ],
+    "supplement_locales": [
+      "ar_sa",
+      "bg_bg",
+      "cs_cz",
+      "de_de",
+      "el_gr",
+      "es_es",
+      "fi_fi",
+      "fr_fr",
+      "he_il",
+      "hu_hu",
+      "id_id",
+      "it_it",
+      "ja_jp",
+      "kk_kz",
+      "ko_kr",
+      "lt_lt",
+      "no_no",
+      "pl_pl",
+      "pt_br",
+      "ru_ru",
+      "sv_se",
+      "tr_tr",
+      "vi_vn",
+      "zh_cn"
+    ],
+    "supplements_are_missing_normal_keys_only": true,
+    "supplements_must_not_override_upstream_keys": true
+  },
+  "malformed_upstream_override": {
+    "locales": [
+      "uk_ua"
+    ],
+    "full_override_required": true,
+    "preserve_repaired_upstream_target_normal_values": true,
+    "repair_exact_known_syntax_only": true,
+    "emit_only_target_keys": true
+  },
+  "full_locale_policy": {
+    "addon_full_or_override_count": 65,
+    "documented_full_english_fallback_locales": [
+      "ba_ru",
+      "bar",
+      "br_fr",
+      "bs_ba",
+      "fo_fo",
+      "fur_it",
+      "fy_nl",
+      "gd_gb",
+      "haw_us",
+      "ig_ng",
+      "kn_in",
+      "ksh",
+      "kw_gb",
+      "li_li",
+      "lmo",
+      "lo_la",
+      "mn_mn",
+      "nah",
+      "ovd",
+      "ry_ua",
+      "sah_sah",
+      "se_no",
+      "so_so",
+      "szl",
+      "ta_in",
+      "tl_ph",
+      "tt_ru",
+      "vec_it",
+      "yi_de",
+      "yo_ng"
+    ],
+    "documented_full_english_fallback_count": 30
+  },
+  "runtime_gate": {
+    "static_validation_is_not_runtime_promotion": true,
+    "missing_key_json_supplements_require_resource_stack_merge_test": true,
+    "release_jars_reserved_for_runtime_tested_artifacts": true
+  }
+}
