@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project_version": "1.0.0",
-  "note": "G1-G46 are translation/reconstruction complete. These builds are static-validated release candidates until their required runtime gates are complete.",
+  "note": "G1-G47 are translation/reconstruction complete. These builds are static-validated release candidates until their required runtime gates are complete.",
   "versions": [
     {
       "generation": "G1",
@@ -633,6 +633,23 @@
       "supplements": 25,
       "keys": 308,
       "reconstruct_script": "scripts/reconstruct_1_21_10.py"
+    },
+    {
+      "generation": "G47",
+      "minecraft": "1.21.11",
+      "jei": "27.38.0",
+      "era": "modern",
+      "loader": "neoforge",
+      "neoforge": "21.11.45",
+      "loader_version_range": "[4,)",
+      "neoforge_version_range": "[21.11.44,)",
+      "jei_modid": "jei",
+      "java_target": 21,
+      "format": "json",
+      "full": 63,
+      "supplements": 26,
+      "keys": 334,
+      "reconstruct_script": "scripts/reconstruct_1_21_11.py"
     }
   ]
 }
