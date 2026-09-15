@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "generation": "g44-mc1.21.8",
+  "minecraft": "1.21.8",
+  "jei": "24.2.0",
+  "pinned_commit": "2f8e4ec2c1e607218eae9b1d9272b87a4dcdb1c8",
+  "base_generation": "g43-mc1.21.7",
+  "selected_scope_count": 90,
+  "english_target_key_count": 305,
+  "normal_target_key_count": 299,
+  "debug_only_key_count": 6,
+  "translation_reuse": {
+    "reuse_exact_unchanged_g43_semantics": true,
+    "same_key_required": true,
+    "same_english_value_required": true,
+    "future_donor_commit": "f93563ca4965d511bd07d4f041b3a6ddd1158ef0",
+    "future_donor_allowed_only_for_exact_same_key_same_english": true,
+    "cross_key_reuse_allowed": false,
+    "runtime_literals_must_be_preserved": true,
+    "uncertain_values_use_exact_english_fallback": true
+  },
+  "added_semantics": {
+    "count": 15,
+    "keys": [
+      "jei.config.client.lookupHistory",
+      "jei.config.client.lookupHistory.description",
+      "jei.config.client.lookupHistory.displaySide",
+      "jei.config.client.lookupHistory.displaySide.description",
+      "jei.config.client.lookupHistory.enabled",
+      "jei.config.client.lookupHistory.enabled.description",
+      "jei.config.client.lookupHistory.maxIngredients",
+      "jei.config.client.lookupHistory.maxIngredients.description",
+      "jei.config.client.lookupHistory.maxRows",
+      "jei.config.client.lookupHistory.maxRows.description",
+      "jei.tooltip.bookmarks.disable",
+      "jei.tooltip.bookmarks.enable",
+      "jei.tooltip.lookupHistory.disable",
+      "jei.tooltip.lookupHistory.enable",
+      "jei.tooltip.lookupHistory.usage"
+    ]
+  },
+  "removed_semantics": {
+    "count": 1,
+    "keys": [
+      "jei.tooltip.bookmarks"
+    ],
+    "must_not_be_emitted": true
+  },
+  "upstream_ownership": {
+    "complete_locales": [
+      "en_us"
+    ],
+    "supplement_locales": [
+      "ar_sa",
+      "bg_bg",
+      "cs_cz",
+      "de_de",
+      "el_gr",
+      "es_es",
+      "fi_fi",
+      "fr_fr",
+      "he_il",
+      "hu_hu",
+      "id_id",
+      "it_it",
+      "ja_jp",
+      "kk_kz",
+      "ko_kr",
+      "lt_lt",
+      "no_no",
+      "pl_pl",
+      "pt_br",
+      "ru_ru",
+      "sv_se",
+      "tr_tr",
+      "vi_vn",
+      "zh_cn"
+    ],
+    "supplements_are_missing_normal_keys_only": true,
+    "supplements_must_not_override_upstream_keys": true
+  },
+  "malformed_upstream_override": {
+    "locales": [
+      "uk_ua"
+    ],
+    "full_override_required": true,
+    "repair_is_frozen_and_minimal": true
+  },
+  "runtime_promotion": {
+    "static_validation_is_not_runtime_validation": true,
+    "runtime_merge_test_required": true
+  }
+}

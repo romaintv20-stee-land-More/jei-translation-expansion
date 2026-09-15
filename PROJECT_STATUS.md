@@ -65,6 +65,7 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G41 | 1.21.5 | 21.4.0 | `0772287` | 290 | 90 | 65 | 24 | 1 | complete; NeoForge candidate packaged |
 | G42 | 1.21.6 | 22.0.0 | `2a57409` | 289 | 90 | 65 | 24 | 1 | complete; NeoForge packaging validated |
 | G43 | 1.21.7 | 23.1.0 | `ee33b5d` | 291 | 90 | 65 | 23 | 2 | complete; NeoForge packaging validated |
+| G44 | 1.21.8 | 24.2.0 | `2f8e4ec` | 305 | 90 | 65 | 24 | 1 | complete; NeoForge packaging validated |
 
 ## Recent canonical milestones
 
@@ -116,25 +117,40 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 - deterministic NeoForge package SHA-256 `d6c24f20e8f650c3ee6e52c0c7d6438f2c3972e2271d077fd93802703de82dbd`
 - runtime promotion remains separately gated
 
+### G44 — Minecraft 1.21.8 / JEI 24.2.0
+
+- final 1.21.8 mainline endpoint `2f8e4ec2c1e607218eae9b1d9272b87a4dcdb1c8`
+- next Minecraft port `1f0f90ee84bb771c25e8118b4cf25aeaf9d26726` targets 1.21.9, making this the final 1.21.8 endpoint
+- build: NeoForge `21.8.47`, minimum `[21.8.9,)`, Java 21
+- 305 keys = 299 normal + 6 debug
+- G43→G44 semantic delta = 290 unchanged + 15 added + 1 removed + 0 changed-English values
+- the 15 additions introduce lookup-history configuration/tooltips and split bookmark show/hide tooltips; the old `jei.tooltip.bookmarks` key is removed
+- added-key reuse from future JEI data is allowed only for exact same-key/same-English semantics; cross-key reuse remains forbidden
+- selected scope remains 90; ownership = 65 addon/full-override + 24 missing-key-only supplements + 1 complete upstream (`en_us`)
+- pinned `uk_ua.json` remains malformed and is handled as a deterministic full repair override
+- complete isolated validation run `34937513155`, green
+- deterministic NeoForge package SHA-256 `277074fdea18ac52e2f1e13601cd206dde847195c0253be1486afacc66f2f9fc`
+- runtime promotion remains separately gated
+
 ## Candidate packaging state
 
-- The canonical candidate inventory on `main` contains **42 version-specific 1.0.0 candidates through Minecraft 1.21.6**.
-- G43 has passed complete translation/reconstruction QA and deterministic NeoForge packaging on the work branch; canonical `candidate-jars/1.21.7/` persistence follows merge to `main`.
+- The canonical candidate inventory on `main` contains **43 version-specific 1.0.0 candidates through Minecraft 1.21.7**.
+- G44 has passed complete translation/reconstruction QA and deterministic NeoForge packaging on the work branch; canonical `candidate-jars/1.21.8/` persistence follows merge to `main`.
 - Candidate JARs are not runtime-promoted finals.
 
 ## Current next target
 
-- Merge the completed G43 / Minecraft 1.21.7 work and let the main packaging workflow persist its NeoForge candidate.
-- The chronological next audit target is **G44 = Minecraft 1.21.8**.
+- Merge the completed G44 / Minecraft 1.21.8 work and let the main packaging workflow persist its NeoForge candidate.
+- The chronological next audit target is **G45 = Minecraft 1.21.9**.
 - Keep all static candidates outside `release-jars/` until their runtime gates are satisfied.
 
 ## Documentation synchronization debt
 
-- `PROJECT_STATUS.md`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through completed G43.
-- `README.md`, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` remain synchronized through G42 and should be advanced through G43 before final public release preparation.
+- `PROJECT_STATUS.md`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through completed G44.
+- `README.md`, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` should be synchronized through G44 before final public release preparation.
 
 ## Release gates still open
 
 - Minecraft 1.8.9 prototype/runtime lineage still requires a real client runtime validation before final release promotion.
 - Minecraft 1.13+ missing-key-only JSON supplements require a real runtime resource-stack merge test before promotion to their version-specific release JAR.
-- G39–G43 NeoForge candidates remain static candidates until their version-specific runtime checks are complete.
+- G39–G44 NeoForge candidates remain static candidates until their version-specific runtime checks are complete.
