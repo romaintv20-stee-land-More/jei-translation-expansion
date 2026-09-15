@@ -1,7 +1,7 @@
 {
   "minecraft_version": "1.21.11",
-  "jei_version": "27.3.0",
-  "upstream_commit": "1d37cb1a1cf7139170d214adef128f405b865312",
+  "jei_version": "27.38.0",
+  "upstream_commit": "4b6e47334ac4aaeae51d15facbb38c42cb511321",
   "base_scope_manifest": "upstream/minecraft-1.21.10-language-scope.json",
   "raw_language_count": 143,
   "selected_scope_count": 90,
@@ -20,6 +20,7 @@
     "el_gr",
     "es_es",
     "fi_fi",
+    "fil_ph",
     "fr_fr",
     "he_il",
     "hu_hu",
@@ -39,7 +40,7 @@
     "vi_vn",
     "zh_cn"
   ],
-  "selected_upstream_incomplete_locale_count": 25,
+  "selected_upstream_incomplete_locale_count": 26,
   "malformed_upstream_full_override_locales": [],
   "malformed_upstream_full_override_locale_count": 0,
   "jei_upstream_unselected_or_nonmatching_locales": [
@@ -48,7 +49,7 @@
     "pt_pt",
     "zh_tw"
   ],
-  "addon_full_locale_count": 64,
+  "addon_full_locale_count": 63,
   "addon_full_locales": [
     "af_za",
     "ast_es",
@@ -65,7 +66,6 @@
     "et_ee",
     "eu_es",
     "fa_ir",
-    "fil_ph",
     "fo_fo",
     "fur_it",
     "fy_nl",
@@ -159,23 +159,15 @@
     "yo_ng"
   ],
   "documented_full_english_fallback_count": 30,
-  "translated_or_ai_assisted_full_locale_count": 34,
+  "translated_or_ai_assisted_full_locale_count": 33,
   "translation_delta": {
     "base_generation": "g46-mc1.21.10",
-    "unchanged_key_and_english_value_count": 306,
-    "added_key_count": 2,
-    "removed_key_count": 2,
-    "changed_english_value_count": 0,
+    "unchanged_key_and_english_value_count": 291,
+    "added_key_count": 37,
+    "removed_key_count": 11,
+    "changed_english_value_count": 6,
     "reuse_exact_g46_for_unchanged_meanings": true,
-    "renamed_resource_location_keys_are_not_cross_key_reused": true
-  },
-  "new_key_policy": {
-    "keys": [
-      "jei.config.client.search.identifierSearchMode",
-      "jei.config.client.search.identifierSearchMode.description"
-    ],
-    "project_owned_missing_values_use_exact_target_english": true,
-    "reason": "Identifier is a technical Minecraft/API term and the previous Resource Location keys are different localization IDs; exact English is preferred over unsafe cross-key or uncertain translation reuse."
+    "added_or_changed_project_owned_values_use_exact_target_english": true
   },
   "upstream_literal_safety_overrides": {
     "ar_sa": [
@@ -247,10 +239,10 @@
     ],
     "id_id": [
       "jei.config.client.search.creativeTabSearchMode",
-      "jei.config.client.search.description",
-      "jei.tooltip.bookmarks.not.enough.space"
+      "jei.config.client.search.description"
     ],
     "it_it": [
+      "jei.config.client.advanced.itemBlacklist.description",
       "jei.config.client.search.creativeTabSearchMode",
       "jei.config.client.search.description"
     ],
@@ -284,9 +276,8 @@
       "jei.message.missing.recipes.from.server"
     ],
     "pt_br": [
-      "jei.config.client.search.creativeTabSearchMode",
-      "jei.config.client.search.description",
-      "jei.tooltip.bookmarks.not.enough.space"
+      "jei.config.client.advanced.itemBlacklist.description",
+      "jei.config.debug.debug.logSuffixTreeStats.description"
     ],
     "ru_ru": [
       "jei.config.client.advanced.itemBlacklist.description",
@@ -319,7 +310,7 @@
       "jei.tooltip.bookmarks.not.enough.space"
     ]
   },
-  "upstream_literal_safety_override_count": 92,
+  "upstream_literal_safety_override_count": 91,
   "upstream_supplement_policy": {
     "preserve_existing_safe_upstream_keys": true,
     "supplement_missing_keys_plus_explicit_safety_overrides": true,
@@ -393,10 +384,10 @@
       ],
       "id_id": [
         "jei.config.client.search.creativeTabSearchMode",
-        "jei.config.client.search.description",
-        "jei.tooltip.bookmarks.not.enough.space"
+        "jei.config.client.search.description"
       ],
       "it_it": [
+        "jei.config.client.advanced.itemBlacklist.description",
         "jei.config.client.search.creativeTabSearchMode",
         "jei.config.client.search.description"
       ],
@@ -430,9 +421,8 @@
         "jei.message.missing.recipes.from.server"
       ],
       "pt_br": [
-        "jei.config.client.search.creativeTabSearchMode",
-        "jei.config.client.search.description",
-        "jei.tooltip.bookmarks.not.enough.space"
+        "jei.config.client.advanced.itemBlacklist.description",
+        "jei.config.debug.debug.logSuffixTreeStats.description"
       ],
       "ru_ru": [
         "jei.config.client.advanced.itemBlacklist.description",
@@ -471,9 +461,11 @@
     "runtime_merge_requires_validation_before_jar_promotion": true
   },
   "publication_context": {
-    "upstream_jei_target_is_maven_only": true,
-    "source_commit": "6b615d15ef776abf139339779985a91c59c9c324",
-    "note": "Translation auditing remains valid, but public release packaging must not imply an upstream CurseForge/Modrinth JEI release exists for 1.21.11."
+    "historical_first_port_maven_only_note": true,
+    "maintained_branch_public_distribution_configured": true,
+    "curse_project_id": "238222",
+    "modrinth_id": "u6dRKJwZ",
+    "note": "The first 1.21.11 port was initially marked Maven-only, but the maintained 1.21.11 branch later gained normal CurseForge/Modrinth publication configuration."
   },
   "source_audit": "upstream/minecraft-1.21.11-language-audit.json",
   "english_diff": "upstream/diffs/1.21.10-to-1.21.11.json"
