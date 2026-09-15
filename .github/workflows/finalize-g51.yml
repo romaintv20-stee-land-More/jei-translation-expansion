@@ -1,0 +1,112 @@
+name: Finalize G51 Minecraft 26.2
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g51-mc26.2-audit']
+    paths:
+      - 'scripts/finalize_26_2.py'
+      - '.github/workflows/finalize-g51.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Java 25
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '25'
+
+      - name: Revalidate G51 resources
+        run: |
+          python scripts/validate_26_2_delta.py
+          python scripts/validate_26_2_complete.py
+
+      - name: Register G51 packaging target and registries
+        run: python scripts/finalize_26_2.py --phase register
+
+      - name: Build G51 NeoForge candidate
+        run: python scripts/build_completed_jar_neoforge.py --minecraft 26.2 --version 1.0.0
+
+      - name: Inspect G51 candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR=$(find build/completed-jars/26.2 -maxdepth 1 -name 'jei-translation-expansion-1.0.0-mc26.2-neoforge.jar' -type f)
+          test -n "$JAR"
+          unzip -t "$JAR"
+          python - "$JAR" <<'PY'
+          import json
+          import sys
+          import tomllib
+          import zipfile
+
+          jar = sys.argv[1]
+          with zipfile.ZipFile(jar) as zf:
+              names = zf.namelist()
+              assert len(names) == len(set(names))
+              assert 'META-INF/neoforge.mods.toml' in names
+              assert 'META-INF/mods.toml' not in names
+              assert 'mcmod.info' not in names
+              langs = sorted(name for name in names if name.startswith('assets/jei/lang/') and name.endswith('.json'))
+              assert len(langs) == 89, len(langs)
+              metadata = tomllib.loads(zf.read('META-INF/neoforge.mods.toml').decode('utf-8'))
+              assert metadata['loaderVersion'] == '[4,)'
+              mods = metadata['mods']
+              assert len(mods) == 1
+              assert mods[0]['version'] == '1.0.0'
+              deps = {item['modId']: item for item in metadata['dependencies']['jeitranslationexpansion']}
+              assert deps['neoforge']['versionRange'] == '[26.2.0.67,)'
+              assert deps['minecraft']['versionRange'] == '[26.2]'
+              assert deps['jei']['versionRange'] == '[30.32.0]'
+              manifest = zf.read('META-INF/MANIFEST.MF').decode('utf-8')
+              for token in ('Minecraft-Version: 26.2', 'JEI-Version: 30.32.0', 'NeoForge-Version: 26.2.0.69', 'Java-Version: 25'):
+                  assert token in manifest, token
+          print('PASS: inspected G51 NeoForge candidate metadata and 89 language resources')
+          PY
+          sha256sum "$JAR"
+
+      - name: Synchronize canonical status through validated G51
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR=$(find build/completed-jars/26.2 -maxdepth 1 -name '*.jar' -type f)
+          SHA=$(sha256sum "$JAR" | awk '{print $1}')
+          python scripts/finalize_26_2.py --phase status --sha256 "$SHA" --run-id "$GITHUB_RUN_ID"
+
+      - name: Upload G51 validated candidate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jei-translation-expansion-1.0.0-mc26.2-validated
+          path: build/completed-jars/26.2/*.jar
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Commit G51 completion metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add packaging/completed-versions.json upstream/versions.json upstream/generations.json PROJECT_STATUS.md
+          if git diff --cached --quiet; then
+            echo 'G51 completion metadata already current.'
+            exit 0
+          fi
+          git commit -m 'Finalize G51 Minecraft 26.2 metadata'
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          git push origin "HEAD:$GITHUB_REF_NAME"
