@@ -47,6 +47,7 @@ Verified historical JEI/Minecraft localization endpoints. Branch names alone are
 | G39 | 1.21.1 | 19.21.1 | `28eb51f` | NeoForge | 286 | 90 | 64 | 24 | 2 | complete |
 | G40 | 1.21.4 | 20.0.0 | `26845e0` | NeoForge | 288 | 90 | 64 | 25 | 1 | complete |
 | G41 | 1.21.5 | 21.4.0 | `0772287` | NeoForge | 290 | 90 | 65 | 24 | 1 | complete |
+| G42 | 1.21.6 | 22.0.0 | `2a57409` | NeoForge | 289 | 90 | 65 | 24 | 1 | complete |
 
 ## Important endpoint transitions
 
@@ -57,6 +58,7 @@ Verified historical JEI/Minecraft localization endpoints. Branch names alone are
 - G40 replaces the old generic Fuel category semantic with separate smelting/smoking/blasting fuel categories; cross-key translation reuse is forbidden for that split.
 - G41 uses the later dedicated JEI 1.21.5 branch head `0772287a157beb93f438ee10f88afe402e262856`, not merely the older mainline pre-1.21.6 commit.
 - G41 detects malformed pinned upstream `uk_ua.json`; Ukrainian is therefore a deliberate full repair override instead of a supplement against invalid JSON.
+- G42 returns to the mainline 1.21.6 endpoint. Its English delta from G41 is removal-only: `gui.jei.category.grindstone.experience` is removed while every surviving key/value meaning is unchanged. The malformed `uk_ua` override remains required.
 
 ## Resource-format and runtime gates
 
@@ -69,8 +71,8 @@ Verified historical JEI/Minecraft localization endpoints. Branch names alone are
 
 Completed generations are registered in `packaging/completed-versions.json`. Their deterministic static candidates are persisted one Minecraft version at a time under `candidate-jars/<minecraft-version>/`. Forge and NeoForge candidates use separate loader-correct metadata paths.
 
-At this synchronization point, the canonical repository contains persisted candidates through Minecraft 1.21.4. G41 has passed deterministic NeoForge packaging validation and its canonical 1.21.5 persistence is queued.
+G42 deterministic NeoForge build/inspection is green: 89 emitted language JSON resources and candidate SHA-256 `6a1f0262f68189ae064fbc1909792ae41542af8cfdf6c6f5286e5d703c98fdfb`. Canonical candidate persistence remains a separate `main` packaging step after the generation branch is merged.
 
 ## Current target
 
-G42 is **Minecraft 1.21.6 / JEI 22.0.0**, pinned to `2a57409c2af0ce9716749a0329166a41cbcf453f`. The next 1.21.7 port commit is `8a22d93e6e903142c9dbcdf699496f435d1c569d`, whose direct parent is the G42 endpoint. Preliminary English delta: 289 unchanged surviving meanings, 0 additions, 1 removal (`gui.jei.category.grindstone.experience`), 0 changed-English values.
+The next chronological target after G42 is **G43 = Minecraft 1.21.7**. Preliminary endpoint research identifies `ee33b5d69f6cf9167c32c2e84fdc69fa1b008440` as the final 1.21.7 mainline endpoint immediately before `f61efdf5f6604d0d3a55a67cc5d28ec340f189aa` (`Update to Minecraft 1.21.8`). G43 remains preliminary until its isolated audit begins.
