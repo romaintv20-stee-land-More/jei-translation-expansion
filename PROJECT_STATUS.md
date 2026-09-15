@@ -72,6 +72,7 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G48 | 26.1 | 29.2.0 | `16c0e3b` | 309 | 90 | 64 | 25 | 1 | complete; NeoForge candidate packaged |
 | G49 | 26.1.1 | 29.4.0 | `5a2ecc4` | 309 | 90 | 64 | 25 | 1 | complete; NeoForge candidate validated |
 | G50 | 26.1.2 | 29.37.0 | `d7c73ed` | 334 | 90 | 63 | 26 | 1 | complete; NeoForge candidate validated |
+| G51 | 26.2 | 30.32.0 | `f93563c` | 334 | 90 | 63 | 26 | 1 | complete; NeoForge candidate validated |
 
 ## Recent canonical milestones
 
@@ -240,25 +241,42 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 - deterministic Java-25 NeoForge candidate SHA-256 `cabbd6dfbb9b45d2be04edcf1116e140ed4b3c088fc9204d0c7a85c47f79ae89`
 - runtime promotion remains separately gated
 
+### G51 — Minecraft 26.2 / JEI 30.32.0
+
+- first 26.2 support commit `71d31cea392876a8414426e15f6f31f1b40ca9cc` follows parent `79442458a4bc67ccb7d8925986c2d81e4cd2b7ff`
+- maintained JEI `26.2` branch snapshot pinned at `f93563ca4965d511bd07d4f041b3a6ddd1158ef0` for reproducibility; this is an actively maintained snapshot, not claimed as a historical final endpoint
+- build: NeoForge `26.2.0.69`, minimum `[26.2.0.67,)`, Java 25
+- 334 keys = 328 normal + 6 debug
+- G50→G51 semantic delta = 334 unchanged + 0 added + 0 removed + 0 changed-English values
+- all translation reuse is exact same-key/same-English reuse from G50; cross-key reuse remains forbidden
+- selected scope remains 90; ownership = 63 addon-full locales + 26 missing-key/safety-override supplements + 1 complete upstream (`en_us`)
+- Minecraft language membership remains 143 codes with no additions/removals
+- all selected upstream JSON files are syntactically valid at the pinned snapshot
+- frozen literal-safety overrides preserve placeholders and fixed technical literals for unsafe upstream-owned values
+- isolated complete reconstruction validation run `35022849550`, green
+- deterministic Java-25 NeoForge packaging/finalization run `35023833664`, green
+- validated candidate SHA-256 `b3d3a30c23b4a9c3080ed49781fa51df17c024fdf67bdde6c2d467649230824f`
+- runtime promotion remains separately gated
+
 ## Candidate packaging state
 
-- The canonical candidate inventory on `main` contains **49 version-specific 1.0.0 candidates through Minecraft 26.1.1**.
-- G50 / Minecraft 26.1.2 has passed complete static reconstruction and deterministic Java-25 NeoForge candidate validation; canonical persistence follows its merge to `main`.
+- The canonical candidate inventory on `main` contains **50 version-specific 1.0.0 candidates through Minecraft 26.1.2**.
+- G51 / Minecraft 26.2 has passed complete static reconstruction and deterministic Java-25 NeoForge candidate validation; canonical persistence follows its merge to `main`.
 - Candidate JARs are not runtime-promoted finals.
 
 ## Current next target
 
-- Merge G50 and persist `candidate-jars/26.1.2/jei-translation-expansion-1.0.0-mc26.1.2-neoforge.jar` using the validated candidate digest above.
-- Because JEI still maintains Minecraft 26.1.2 on branch `26.1`, re-audit that branch before declaring a later 26.1.2 snapshot or moving to a subsequent chronological target.
+- Merge G51 and persist `candidate-jars/26.2/jei-translation-expansion-1.0.0-mc26.2-neoforge.jar` using the validated candidate digest above.
+- Because JEI actively maintains Minecraft 26.2 on branch `26.2`, re-audit that branch before declaring a later 26.2 snapshot or selecting the next chronological Minecraft target.
 - Keep all static candidates outside `release-jars/` until their runtime gates are satisfied.
 
 ## Documentation synchronization debt
 
-- `PROJECT_STATUS.md`, `packaging/completed-versions.json`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through validated G50 on the work branch.
+- `PROJECT_STATUS.md`, `packaging/completed-versions.json`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through validated G51 on the work branch.
 - README / version-matrix / translation-status prose may lag the canonical generation line and should be refreshed before a public documentation release.
 
 ## Release gates still open
 
 - Minecraft 1.8.9 prototype/runtime lineage still requires a real client runtime validation before final release promotion.
 - Minecraft 1.13+ missing-key-only JSON supplements require a real runtime resource-stack merge test before promotion to their version-specific release JAR.
-- NeoForge candidates G39–G50 remain static candidates until their version-specific runtime checks are complete.
+- NeoForge candidates G39–G51 remain static candidates until their version-specific runtime checks are complete.

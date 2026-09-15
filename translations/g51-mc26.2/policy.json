@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "generation": "g51-mc26.2",
+  "minecraft": "26.2",
+  "jei": "30.32.0",
+  "source_commit": "f93563ca4965d511bd07d4f041b3a6ddd1158ef0",
+  "selected_scope_count": 90,
+  "ownership": {
+    "addon_full": 63,
+    "upstream_supplements": 26,
+    "complete_upstream": 1
+  },
+  "translation_reuse": {
+    "base_generation": "g50-mc26.1.2",
+    "reuse_only_exact_same_key_same_english": true,
+    "eligible_unchanged_key_count": 334,
+    "cross_key_reuse_allowed": false
+  },
+  "upstream_literal_safety_override_count": 91,
+  "runtime_promotion_separate": true
+}
