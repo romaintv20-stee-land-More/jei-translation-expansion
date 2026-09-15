@@ -1,0 +1,173 @@
+name: Finalize G44 Minecraft 1.21.8
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g44-mc1.21.8-audit']
+    paths:
+      - '.github/workflows/finalize-g44.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Revalidate G44 resources
+        run: |
+          python scripts/validate_1_21_8_delta.py
+          python scripts/validate_1_21_8_complete.py
+
+      - name: Register G44 packaging target
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('packaging/completed-versions.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          assert data['versions'][-1]['generation'] == 'G43'
+          assert not any(v['generation'] == 'G44' for v in data['versions'])
+          data['versions'].append({
+              'generation': 'G44',
+              'minecraft': '1.21.8',
+              'jei': '24.2.0',
+              'era': 'modern',
+              'loader': 'neoforge',
+              'neoforge': '21.8.47',
+              'loader_version_range': '[4,)',
+              'neoforge_version_range': '[21.8.9,)',
+              'jei_modid': 'jei',
+              'java_target': 21,
+              'format': 'json',
+              'full': 65,
+              'supplements': 24,
+              'keys': 305,
+              'reconstruct_script': 'scripts/reconstruct_1_21_8.py',
+          })
+          data['note'] = 'G1-G44 are translation/reconstruction complete. These builds are static-validated release candidates until their required runtime gates are complete.'
+
+          lines = [
+              '{',
+              f'  "schema_version": {data["schema_version"]},',
+              f'  "project_version": {json.dumps(data["project_version"])},',
+              f'  "note": {json.dumps(data["note"])},',
+              '  "versions": [',
+          ]
+          for i, item in enumerate(data['versions']):
+              suffix = ',' if i + 1 < len(data['versions']) else ''
+              lines.append('    ' + json.dumps(item, ensure_ascii=False, separators=(',', ':')) + suffix)
+          lines += ['  ]', '}', '']
+          path.write_text('\n'.join(lines), encoding='utf-8')
+          PY
+
+      - name: Synchronize upstream registries through G44
+        run: python scripts/sync_upstream_registries.py --date 2026-09-15
+
+      - name: Build and inspect G44 NeoForge candidate
+        shell: bash
+        run: |
+          python scripts/build_completed_jar_neoforge.py --minecraft 1.21.8 --version 1.0.0 --output-dir build/g44-package
+          JAR=$(find build/g44-package -maxdepth 1 -name '*.jar' -type f)
+          test -n "$JAR"
+          test "$(printf '%s\n' "$JAR" | wc -l)" -eq 1
+          case "$JAR" in *-mc1.21.8-neoforge.jar) ;; *) echo 'Unexpected G44 filename'; exit 1;; esac
+          unzip -t "$JAR"
+          unzip -l "$JAR" | grep -F 'META-INF/neoforge.mods.toml'
+          if unzip -l "$JAR" | grep -F 'META-INF/mods.toml'; then
+            echo 'Forge metadata leaked into G44 NeoForge JAR'
+            exit 1
+          fi
+          COUNT=$(unzip -Z1 "$JAR" | grep -E '^assets/jei/lang/.*\.json$' | wc -l)
+          test "$COUNT" -eq 89
+          unzip -p "$JAR" META-INF/neoforge.mods.toml > build/g44-package/neoforge.mods.toml
+          grep -F 'versionRange="[1.21.8]"' build/g44-package/neoforge.mods.toml
+          grep -F 'versionRange="[24.2.0]"' build/g44-package/neoforge.mods.toml
+          grep -F 'versionRange="[21.8.9,)"' build/g44-package/neoforge.mods.toml
+          SHA=$(sha256sum "$JAR" | awk '{print $1}')
+          printf '%s\n' "$SHA" > build/g44-package/SHA256.txt
+          echo "G44_SHA=$SHA" >> "$GITHUB_ENV"
+
+      - name: Synchronize canonical status through validated G44
+        shell: bash
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+
+          path = Path('PROJECT_STATUS.md')
+          text = path.read_text(encoding='utf-8')
+          row43 = '| G43 | 1.21.7 | 23.1.0 | `ee33b5d` | 291 | 90 | 65 | 23 | 2 | complete; NeoForge packaging validated |'
+          row44 = '| G44 | 1.21.8 | 24.2.0 | `2f8e4ec` | 305 | 90 | 65 | 24 | 1 | complete; NeoForge packaging validated |'
+          if row44 not in text:
+              if row43 not in text:
+                  raise SystemExit('G43 status row not found')
+              text = text.replace(row43, row43 + '\n' + row44, 1)
+
+          marker = '## Candidate packaging state'
+          if '### G44 — Minecraft 1.21.8 / JEI 24.2.0' not in text:
+              milestone = f'''### G44 — Minecraft 1.21.8 / JEI 24.2.0\n\n- final 1.21.8 mainline endpoint `2f8e4ec2c1e607218eae9b1d9272b87a4dcdb1c8`\n- next Minecraft port `1f0f90ee84bb771c25e8118b4cf25aeaf9d26726` targets 1.21.9, making this the final 1.21.8 endpoint\n- build: NeoForge `21.8.47`, minimum `[21.8.9,)`, Java 21\n- 305 keys = 299 normal + 6 debug\n- G43→G44 semantic delta = 290 unchanged + 15 added + 1 removed + 0 changed-English values\n- the 15 additions introduce lookup-history configuration/tooltips and split bookmark show/hide tooltips; the old `jei.tooltip.bookmarks` key is removed\n- added-key reuse from future JEI data is allowed only for exact same-key/same-English semantics; cross-key reuse remains forbidden\n- selected scope remains 90; ownership = 65 addon/full-override + 24 missing-key-only supplements + 1 complete upstream (`en_us`)\n- pinned `uk_ua.json` remains malformed and is handled as a deterministic full repair override\n- complete isolated validation run `34937513155`, green\n- deterministic NeoForge package SHA-256 `{os.environ['G44_SHA']}`\n- runtime promotion remains separately gated\n\n'''
+              text = text.replace(marker, milestone + marker, 1)
+
+          start = text.index('## Candidate packaging state')
+          end = text.index('## Current next target')
+          candidate = '''## Candidate packaging state\n\n- The canonical candidate inventory on `main` contains **43 version-specific 1.0.0 candidates through Minecraft 1.21.7**.\n- G44 has passed complete translation/reconstruction QA and deterministic NeoForge packaging on the work branch; canonical `candidate-jars/1.21.8/` persistence follows merge to `main`.\n- Candidate JARs are not runtime-promoted finals.\n\n'''
+          text = text[:start] + candidate + text[end:]
+
+          start = text.index('## Current next target')
+          end = text.index('## Documentation synchronization debt')
+          current = '''## Current next target\n\n- Merge the completed G44 / Minecraft 1.21.8 work and let the main packaging workflow persist its NeoForge candidate.\n- The chronological next audit target is **G45 = Minecraft 1.21.9**.\n- Keep all static candidates outside `release-jars/` until their runtime gates are satisfied.\n\n'''
+          text = text[:start] + current + text[end:]
+
+          start = text.index('## Documentation synchronization debt')
+          end = text.index('## Release gates still open')
+          debt = '''## Documentation synchronization debt\n\n- `PROJECT_STATUS.md`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through completed G44.\n- `README.md`, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` should be synchronized through G44 before final public release preparation.\n\n'''
+          text = text[:start] + debt + text[end:]
+          text = text.replace('G39–G43 NeoForge candidates remain static candidates', 'G39–G44 NeoForge candidates remain static candidates')
+          path.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Upload G44 validated candidate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jei-translation-expansion-1.0.0-mc1.21.8-neoforge
+          path: |
+            build/g44-package/*.jar
+            build/g44-package/SHA256.txt
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Commit G44 completion metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          rm -f .github/workflows/finalize-g44.yml
+          git add \
+            packaging/completed-versions.json \
+            upstream/versions.json \
+            upstream/generations.json \
+            PROJECT_STATUS.md \
+            .github/workflows/finalize-g44.yml
+          git commit -m 'Finalize G44 Minecraft 1.21.8 translations and packaging'
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
