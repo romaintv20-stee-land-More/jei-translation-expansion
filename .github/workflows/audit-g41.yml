@@ -1,0 +1,24 @@
+name: Audit G41 Minecraft 1.21.5
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g41-mc1.21.5-audit']
+    paths:
+      - 'scripts/audit_1_21_5.py'
+      - '.github/workflows/audit-g41.yml'
+      - 'upstream/sources/1.21.4/en_us.json'
+      - 'upstream/minecraft-1.21.4-language-scope.json'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit final maintained Minecraft 1.21.5 JEI endpoint
+        run: python scripts/audit_1_21_5.py
