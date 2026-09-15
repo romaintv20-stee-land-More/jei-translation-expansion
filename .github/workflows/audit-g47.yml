@@ -35,7 +35,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Audit final Minecraft 1.21.11 endpoint
+      - name: Audit maintained Minecraft 1.21.11 endpoint
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/audit_1_21_11.py
