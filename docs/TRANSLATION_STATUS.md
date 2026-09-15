@@ -1,81 +1,129 @@
 # Translation Status
 
-This file summarizes completed localization generations. Exact endpoint metadata lives in `upstream/versions.json`; generation/reuse metadata lives in `upstream/generations.json`. Fixed rule: **one Minecraft version per final JAR**.
+This file summarizes completed localization generations. The canonical continuation handoff is `PROJECT_STATUS.md`. Fixed rule: **one Minecraft version per final JAR**.
+
+A generation marked complete here has passed translation/reconstruction QA. That does **not** mean its JAR has passed the separate runtime promotion gate.
 
 ## Completed generations
 
-| Generation | Minecraft | JEI | Keys | Selected scope | Addon full | Supplements | Complete upstream | CI |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| G1 | 1.8 | 2.15.0 | 58 | 60 | 54 | — | 6 JEI files audited | complete |
-| G2 | 1.8.9 | 2.28.18 | 75 | inherited | 54 | 5 | 1 | prototype `34632859235` |
-| G3 | 1.9 | 3.3.3 | 77 | 70 | 63 | 5 | 1 | `34638556534` |
-| G4 | 1.9.4 | 3.6.8 | 80 | 70 | 63 | 6 | 1 | `34639831977` |
-| G5 | 1.10 | 3.7.1 | 78 | 72 | 65 | 6 | 1 | `34641765047` |
-| G6 | 1.10.2 | 3.14.8 | 87 | 72 | 52 | 16 | 4 | `34642956606` |
-| G7 | 1.11 | 4.1.1 | 87 | 72 | 52 | 16 | 4 | `34644034423` |
-| G8 | 1.11.2 | 4.5.1 | 93 | 72 | 52 | 19 | 1 | `34644712028` |
-| G9 | 1.12 | 4.7.5 | 93 | 80 | 60 | 18 | 2 | `34668113754` |
-| G10 | 1.12.1 | 4.7.8 | 93 | 80 | 60 | 18 | 2 | `34668344181` |
-| G11 | 1.12.2 | 4.16.5 | 115 | 80 | 55 | 24 | 1 | `34668803121` |
-| G12 | 1.13 | 4.14.4 | 105 | 83 | 62 | 12 | 9 | `34671542080` |
+| G | Minecraft | JEI | Keys | Selected | Addon full / override | Supplements | Complete upstream | Status |
+|---|---:|---:|---:|---:|---:|---:|---:|---|
+| G1 | 1.8 | 2.15.0 | 58 | 60 | 54 | 0 | audited | complete |
+| G2 | 1.8.9 | 2.28.18 | 75 | inherited | 54 | 5 | 1 | complete |
+| G3 | 1.9 | 3.3.3 | 77 | 70 | 63 | 5 | 1 | complete |
+| G4 | 1.9.4 | 3.6.8 | 80 | 70 | 63 | 6 | 1 | complete |
+| G5 | 1.10 | 3.7.1 | 78 | 72 | 65 | 6 | 1 | complete |
+| G6 | 1.10.2 | 3.14.8 | 87 | 72 | 52 | 16 | 4 | complete |
+| G7 | 1.11 | 4.1.1 | 87 | 72 | 52 | 16 | 4 | complete |
+| G8 | 1.11.2 | 4.5.1 | 93 | 72 | 52 | 19 | 1 | complete |
+| G9 | 1.12 | 4.7.5 | 93 | 80 | 60 | 18 | 2 | complete |
+| G10 | 1.12.1 | 4.7.8 | 93 | 80 | 60 | 18 | 2 | complete |
+| G11 | 1.12.2 | 4.16.5 | 115 | 80 | 55 | 24 | 1 | complete |
+| G12 | 1.13 | 4.14.4 | 105 | 83 | 62 | 12 | 9 | complete |
+| G13 | 1.13.2 | 5.0.0 | 106 | 87 | 66 | 19 | 2 | complete |
+| G14 | 1.14.2 | 6.0.0 | 109 | 91 | 70 | 19 | 2 | complete |
+| G15 | 1.14.3 | 6.0.0 | 109 | 91 | 70 | 18 | 3 | complete |
+| G16 | 1.14.4 | 6.0.1 | 109 | 91 | 70 | 16 | 5 | complete |
+| G17 | 1.15.1 | 6.0.0 | 109 | 87 | 66 | 16 | 5 | complete |
+| G18 | 1.15.2 | 6.0.2 | 110 | 87 | 66 | 18 | 3 | complete |
+| G19 | 1.16.1 | 7.0.1 | 110 | 88 | 67 | 18 | 3 | complete |
+| G20 | 1.16.2 | 7.3.2 | 114 | 88 | 67 | 19 | 2 | complete |
+| G21 | 1.16.3 | 7.6.0 | 114 | 88 | 67 | 18 | 3 | complete |
+| G22 | 1.16.4 | 7.6.1 | 114 | 88 | 67 | 16 | 5 | complete |
+| G23 | 1.16.5 | 7.7.1 | 119 | 88 | 66 | 15 | 7 | complete |
+| G24 | 1.17.1 | 8.3.0 | 141 | 86 | 64 | 21 | 1 | complete |
+| G25 | 1.18 | 9.0.0 | 141 | 86 | 64 | 21 | 1 | complete |
+| G26 | 1.18.1 | 9.4.1 | 149 | 86 | 64 | 21 | 1 | complete |
+| G27 | 1.18.2 | 10.1.0 | 154 | 86 | 64 | 21 | 1 | complete |
+| G28 | 1.19 | 11.1.1 | 154 | 86 | 64 | 19 | 3 | complete |
+| G29 | 1.19.1 | 11.2.0 | 153 | 86 | 64 | 19 | 3 | complete |
+| G30 | 1.19.2 | 11.5.0 | 153 | 86 | 64 | 19 | 3 | complete |
+| G31 | 1.19.3 | 12.3.0 | 156 | 88 | 66 | 21 | 1 | complete |
+| G32 | 1.19.4 | 13.1.0 | 156 | 88 | 66 | 20 | 2 | complete |
+| G33 | 1.20 | 14.0.0 | 156 | 90 | 68 | 20 | 2 | complete |
+| G34 | 1.20.1 | 15.2.0 | 156 | 90 | 68 | 20 | 2 | complete |
+| G35 | 1.20.2 | 16.0.0 | 156 | 90 | 68 | 20 | 2 | complete |
+| G36 | 1.20.4 | 17.3.0 | 157 | 90 | 67 | 22 | 1 | complete |
+| G37 | 1.20.6 | 18.0.0 | 157 | 90 | 67 | 22 | 1 | complete |
+| G38 | 1.21 | 19.8.2 | 176 | 90 | 67 | 21 | 2 | complete |
+| G39 | 1.21.1 | 19.21.1 | 286 | 90 | 64 | 24 | 2 | complete |
+| G40 | 1.21.4 | 20.0.0 | 288 | 90 | 64 | 25 | 1 | complete |
+| G41 | 1.21.5 | 21.4.0 | 290 | 90 | 65 | 24 | 1 | complete |
+| G42 | 1.21.6 | 22.0.0 | 289 | 90 | 65 | 24 | 1 | complete |
 
-All rows marked by a CI run are complete at the **translation/reconstruction QA** stage, not automatically runtime-tested JAR releases.
+## Reuse and ownership rules
 
-## G9 — Minecraft 1.12 / JEI 4.7.5
+- Reuse is permitted only for the **same localization key** when the English value/meaning is identical.
+- Cross-key reuse is forbidden, including apparently related renamed or split semantics.
+- Existing valid JEI target-locale values remain upstream-owned.
+- Incomplete valid upstream locales receive only exact missing **normal** keys; debug-only content is not added through supplements.
+- Every complete addon-owned locale must cover the exact target key set and preserve placeholders and fixed technical literals.
+- If a target-language translation is uncertain, exact target English is preferred over an invented technical translation.
+- Documented full-English fallback locales are explicit policy, not accidental untranslated output.
 
-- Pinned `6bce08ef068fc0d7ce80ef07512caf85ccd4cab4`.
-- English source is semantically identical to G8: 93/93 unchanged.
-- Minecraft raw language inventory grows from 95 to 107.
-- Selected scope expands to 80 with eight new real-world languages: `bs_ba`, `ig_ng`, `kab_kab`, `kn_in`, `oj_ca`, `ta_in`, `vec_it`, `yo_ng`.
-- Ownership: 60 addon full + 18 exact supplements + complete upstream `en_us`, `ja_jp`.
-- New selected languages begin as documented English fallbacks.
+## Modern generation milestones
 
-## G10 — Minecraft 1.12.1 / JEI 4.7.8
+### G31–G35
 
-- Pinned `7f4160ed969fad85e8c4a14809c66402c51592b2`.
-- Same 93-key English source, same Minecraft asset index, same JEI language ownership as G9.
-- G10 resources are exact deterministic G9 localization inheritance.
+- G31 / Minecraft 1.19.3 expands the selected scope to 88 with `nah` and `ry_ua`.
+- G33 / Minecraft 1.20 expands the selected historical scope to 90 with Lao (`lo_la`) and Yakut (`sah_sah`).
+- G33→G35 remains semantically stable at 156 JEI keys while Minecraft/JEI packaging targets advance through 1.20, 1.20.1 and 1.20.2.
 
-## G11 — Minecraft 1.12.2 / JEI 4.16.5
+### G36–G38
 
-- Pinned final normal-branch endpoint `f98331af6b1f7d59da01beecacd681c16dd548b9`.
-- Forge `14.23.5.2860`; RetroFuturaGradle mappings `stable` / `39`; Java 8.
-- 115 keys = 112 normal + 3 debug.
-- G10→G11: 41 unchanged, 33 added, 11 removed, 41 changed; 71 normal added/changed meanings reviewed.
-- Selected scope remains 80.
-- Ownership becomes 55 addon full + 24 supplements + `en_us` complete upstream.
-- Only exact unchanged semantics are inherited. Missing changed/new meanings use exact target-English fallback instead of guessed technical translations.
+- G36 / Minecraft 1.20.4 contains 157 keys and 90 selected languages.
+- G37 / Minecraft 1.20.6 moves the packaging toolchain to Java 21.
+- G38 / Minecraft 1.21 contains 176 keys while retaining the 90-language selected scope.
 
-## G12 — Minecraft 1.13 / JEI 4.14.4
+### G39 — Minecraft 1.21.1 / JEI 19.21.1
 
-- Pinned `380bc11efb548abd804c65b763c911ebf9d06e2c`, immediately before the branch jumps to 1.13.2.
-- Forge `24.0.181-1.13-pre`; mappings `snapshot` / `20180921-1.13`; Java 8.
-- First project generation using **JSON** language resources.
-- 105 semantic keys = 102 normal + 3 debug. JSON `_comment` entries are metadata, not localization keys.
-- G11→G12: 59 unchanged, 4 added, 14 removed, 42 changed; 43 normal added/changed meanings reviewed.
-- Minecraft raw language inventory = 113. `ksh_de` migrates to `ksh`; `nuk`, `ovd`, `szl` join the selected scope, bringing it to 83.
-- Ownership: 62 addon full + 12 missing-key-only JSON supplements + 9 complete selected upstream locales.
-- 23 complete English fallback locales; 39 translated/AI-assisted addon-full locales.
-- Reuse policy searches exact G11 semantics first, then exact G10 semantic reversions. It never transfers translations across renamed keys, so Tag keys do not inherit removed Ore Dictionary keys.
-- The reconstruction also rejects historical values that lose placeholders or fixed technical literals. This caught and safely replaced one old `no_no` value that omitted `JEI`.
-- Full QA green on run **34671542080**.
+- 286 total keys.
+- Ownership: 64 full + 24 supplements + 2 complete upstream.
+- Packaging moves to the dedicated NeoForge candidate path.
+- Full G1→G39 regression validation was green after the historical G14 technical-token boundary correction.
 
-Files:
-- `upstream/sources/1.13/en_us.json`
-- `upstream/diffs/1.12.2-to-1.13.json`
-- `upstream/minecraft-1.13-language-audit.json`
-- `upstream/minecraft-1.13-language-scope.json`
-- `translations/g12-mc1.13/policy.json`
-- `scripts/reconstruct_1_13.py`
-- `scripts/validate_1_13_delta.py`
-- `scripts/validate_1_13_complete.py`
+### G40 — Minecraft 1.21.4 / JEI 20.0.0
 
-## Next version
+- 288 total keys = 282 normal + 6 debug.
+- G39→G40: 285 unchanged, 3 added, 1 removed, 0 changed-English values.
+- The generic Fuel category is replaced by separate smelting, smoking and blasting fuel categories. No translation is copied across those different keys.
+- Ownership: 64 full + 25 supplements + 1 complete upstream (`en_us`).
+- `ja_jp` becomes incomplete because it does not yet contain the three new fuel-category semantics.
+- Translation/reconstruction QA and deterministic NeoForge packaging are green; the canonical candidate is persisted under `candidate-jars/1.21.4/`.
 
-G12 is complete at translation/reconstruction stage. Next chronological target is **Minecraft 1.13.2 / JEI 5.0.0** on the same historical upstream branch. There is no separate 1.13.1 endpoint in the audited branch history.
+### G41 — Minecraft 1.21.5 / JEI 21.4.0
+
+- Final maintained endpoint: `0772287a157beb93f438ee10f88afe402e262856` on the dedicated upstream 1.21.5 branch.
+- 290 total keys = 284 normal + 6 debug.
+- G40→G41: 288 unchanged, 2 added, 0 removed, 0 changed-English values.
+- New semantics: `gui.jei.category.grindstone.experience` and `jei.message.missing.recipes.from.server`.
+- Ownership: 65 addon/full-override + 24 supplements + 1 complete upstream (`en_us`).
+- Pinned upstream `uk_ua.json` is malformed JSON. Ukrainian is therefore emitted as an explicit valid full repair override: known syntax defects are repaired, safe upstream target values are preserved, and only missing same-key semantics are filled from deterministic inheritance/fallback.
+- Full reproducible QA run `34930359475` is green.
+- NeoForge packaging-validation run `34930428119` is green with candidate SHA-256 `d07378fa02b78dd7e55c63144030d737a44f1f1dc575a488d88e36915a816638`.
+- Canonical candidate persistence completed on `main` in run `34930590379`, commit `b8d2e402abbdaf9be33ad2ec42816454f42c8629`.
+
+### G42 — Minecraft 1.21.6 / JEI 22.0.0
+
+- Final mainline endpoint: `2a57409c2af0ce9716749a0329166a41cbcf453f`.
+- The next Minecraft port `8a22d93e6e903142c9dbcdf699496f435d1c569d` targets 1.21.7 and directly follows the G42 endpoint.
+- 289 total keys = 283 normal + 6 debug.
+- G41→G42: 289 surviving meanings unchanged, 0 added, 1 removed, 0 changed-English values.
+- Removed semantic: `gui.jei.category.grindstone.experience`; it is not emitted by G42-owned resources.
+- Selected scope remains 90; Minecraft live language membership remains 143 codes with no additions or removals.
+- Ownership: 65 addon/full-override + 24 missing-key-only supplements + 1 complete upstream (`en_us`).
+- Pinned upstream `uk_ua.json` remains malformed; Ukrainian remains a deterministic full repair override rather than a supplement against invalid upstream JSON.
+- Complete frozen-manifest/reconstruction QA run `34931544591` is green.
+- Deterministic NeoForge candidate build/inspection passed in run `34931774000`; candidate SHA-256 is `6a1f0262f68189ae064fbc1909792ae41542af8cfdf6c6f5286e5d703c98fdfb`.
+- Canonical packaging metadata and registry finalization are being completed before merge.
+
+## Current generation
+
+G42 translation/reconstruction is complete. The chronological next target after G42 merge is **G43 / Minecraft 1.21.7**. Preliminary endpoint research identifies `ee33b5d69f6cf9167c32c2e84fdc69fa1b008440` as the final 1.21.7 mainline endpoint immediately before `f61efdf5f6604d0d3a55a67cc5d28ec340f189aa` (`Update to Minecraft 1.21.8`); G43 remains pending its own isolated audit.
 
 ## Release limitations
 
-- G2/1.8.9 still requires a real client runtime test before promotion to `release-jars/1.8.9/`.
-- Starting with G12, partial JSON supplements must also receive a real runtime merge test before their version-specific JAR is promoted.
-- Chronological translation auditing can continue independently of those runtime release gates.
+- G2 / Minecraft 1.8.9 still requires a real client runtime test before promotion to `release-jars/1.8.9/`.
+- Starting with G12 / Minecraft 1.13, missing-key-only JSON supplements require a real runtime resource-stack merge test before version-specific candidate promotion.
+- NeoForge static candidates are still subject to their version-specific runtime checks.
+- Chronological translation auditing and static candidate generation can continue independently of those runtime release gates.

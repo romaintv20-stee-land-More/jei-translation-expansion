@@ -1,32 +1,59 @@
 {
   "schema_version": 1,
-  "last_updated": "2026-09-12",
-  "status": "partial",
+  "last_updated": "2026-09-15",
+  "status": "complete-through-g42",
   "generations": [
     {
       "id": "g1-mc1.8",
-      "minecraft_versions": ["1.8"],
-      "jei_versions": ["2.15.0"],
+      "minecraft_versions": [
+        "1.8"
+      ],
+      "jei_versions": [
+        "2.15.0"
+      ],
       "source": "upstream/sources/1.8/en_US.lang",
       "key_count": 58,
       "storage": "full-locale-files",
-      "translation_path": "translations/g1-mc1.8"
+      "translation_path": "translations/g1-mc1.8",
+      "resource_format": "lang",
+      "addon_full_locale_count": 54,
+      "upstream_missing_key_supplement_locale_count": 0,
+      "reconstruction_script": null,
+      "loader": "forge",
+      "java_target": 7,
+      "translation_scope_status": "complete-for-selected-scope",
+      "minecraft_language_scope": "upstream/minecraft-1.8-language-scope.json"
     },
     {
       "id": "g2-mc1.8.9",
-      "minecraft_versions": ["1.8.9"],
-      "jei_versions": ["2.28.18"],
+      "minecraft_versions": [
+        "1.8.9"
+      ],
+      "jei_versions": [
+        "2.28.18"
+      ],
       "source": "upstream/sources/1.8.9/en_US.lang",
       "key_count": 75,
       "base_generation": "g1-mc1.8",
       "storage": "delta-from-base",
       "translation_path": "translations/g2-mc1.8.9",
-      "diff_manifest": "upstream/diffs/1.8-to-1.8.9.json"
+      "diff_manifest": "upstream/diffs/1.8-to-1.8.9.json",
+      "resource_format": "lang",
+      "addon_full_locale_count": 54,
+      "upstream_missing_key_supplement_locale_count": 5,
+      "reconstruction_script": "scripts/reconstruct_1_8_9.py",
+      "loader": "forge",
+      "java_target": 7,
+      "translation_scope_status": "complete-for-selected-scope"
     },
     {
       "id": "g3-mc1.9",
-      "minecraft_versions": ["1.9"],
-      "jei_versions": ["3.3.3"],
+      "minecraft_versions": [
+        "1.9"
+      ],
+      "jei_versions": [
+        "3.3.3"
+      ],
       "audited_commit": "b2ffe6bd7734d093006de99f9dc99b2b77ce780d",
       "source": "upstream/sources/1.9/en_US.lang",
       "key_count": 77,
@@ -39,12 +66,21 @@
       "addon_full_locale_count": 63,
       "upstream_missing_key_supplement_locale_count": 5,
       "validation_workflow_run": 34638556534,
-      "translation_scope_status": "complete-for-selected-scope"
+      "translation_scope_status": "complete-for-selected-scope",
+      "resource_format": "lang",
+      "reconstruction_script": "scripts/reconstruct_1_9.py",
+      "loader": "forge",
+      "java_target": 7,
+      "minecraft_language_audit": "upstream/minecraft-1.9-language-audit.json"
     },
     {
       "id": "g4-mc1.9.4",
-      "minecraft_versions": ["1.9.4"],
-      "jei_versions": ["3.6.8"],
+      "minecraft_versions": [
+        "1.9.4"
+      ],
+      "jei_versions": [
+        "3.6.8"
+      ],
       "audited_commit": "bd9fcad11a8b92d181fc8c2ec976e31c7467799a",
       "source": "upstream/sources/1.9.4/en_US.lang",
       "key_count": 80,
@@ -57,12 +93,22 @@
       "addon_full_locale_count": 63,
       "upstream_missing_key_supplement_locale_count": 6,
       "validation_workflow_run": 34639831977,
-      "translation_scope_status": "complete-for-selected-scope"
+      "translation_scope_status": "complete-for-selected-scope",
+      "resource_format": "lang",
+      "reconstruction_script": "scripts/reconstruct_1_9_4.py",
+      "loader": "forge",
+      "java_target": 7,
+      "upstream_complete_selected_locale_count": 1,
+      "minecraft_language_audit": "upstream/minecraft-1.9.4-language-audit.json"
     },
     {
       "id": "g5-mc1.10",
-      "minecraft_versions": ["1.10"],
-      "jei_versions": ["3.7.1"],
+      "minecraft_versions": [
+        "1.10"
+      ],
+      "jei_versions": [
+        "3.7.1"
+      ],
       "audited_commit": "7f4e95d5b7620a0d304aa73243cd9b3f9737e247",
       "source": "upstream/sources/1.10/en_US.lang",
       "key_count": 78,
@@ -76,12 +122,22 @@
       "addon_full_locale_count": 65,
       "upstream_missing_key_supplement_locale_count": 6,
       "validation_workflow_run": 34641765047,
-      "translation_scope_status": "complete-for-selected-scope"
+      "translation_scope_status": "complete-for-selected-scope",
+      "resource_format": "lang",
+      "reconstruction_script": "scripts/reconstruct_1_10.py",
+      "loader": "forge",
+      "java_target": 7,
+      "upstream_complete_selected_locale_count": 1,
+      "minecraft_language_audit": "upstream/minecraft-1.10-language-audit.json"
     },
     {
       "id": "g6-mc1.10.2",
-      "minecraft_versions": ["1.10.2"],
-      "jei_versions": ["3.14.8"],
+      "minecraft_versions": [
+        "1.10.2"
+      ],
+      "jei_versions": [
+        "3.14.8"
+      ],
       "audited_commit": "446af20eaa73d260517f0adc737232437363f78d",
       "source": "upstream/sources/1.10.2/en_US.lang",
       "key_count": 87,
@@ -95,12 +151,21 @@
       "upstream_missing_key_supplement_locale_count": 16,
       "upstream_complete_selected_locale_count": 4,
       "validation_workflow_run": 34642956606,
-      "translation_scope_status": "complete-for-selected-scope"
+      "translation_scope_status": "complete-for-selected-scope",
+      "resource_format": "lang",
+      "reconstruction_script": "scripts/reconstruct_1_10_2.py",
+      "loader": "forge",
+      "java_target": 7,
+      "minecraft_language_audit": "upstream/minecraft-1.10.2-language-audit.json"
     },
     {
       "id": "g7-mc1.11",
-      "minecraft_versions": ["1.11"],
-      "jei_versions": ["4.1.1"],
+      "minecraft_versions": [
+        "1.11"
+      ],
+      "jei_versions": [
+        "4.1.1"
+      ],
       "audited_commit": "c9fcc36ff0effec2b5239eebd2c9133da04df4bb",
       "source": "upstream/sources/1.11/en_us.lang",
       "key_count": 87,
@@ -114,12 +179,21 @@
       "upstream_missing_key_supplement_locale_count": 16,
       "upstream_complete_selected_locale_count": 4,
       "validation_workflow_run": 34644034423,
-      "translation_scope_status": "complete-for-selected-scope"
+      "translation_scope_status": "complete-for-selected-scope",
+      "resource_format": "lang",
+      "reconstruction_script": "scripts/reconstruct_1_11.py",
+      "loader": "forge",
+      "java_target": 7,
+      "minecraft_language_audit": "upstream/minecraft-1.11-language-audit.json"
     },
     {
       "id": "g8-mc1.11.2",
-      "minecraft_versions": ["1.11.2"],
-      "jei_versions": ["4.5.1"],
+      "minecraft_versions": [
+        "1.11.2"
+      ],
+      "jei_versions": [
+        "4.5.1"
+      ],
       "audited_commit": "11023c1f4449b82d0b88366001b058e6949b40ab",
       "source": "upstream/sources/1.11.2/en_us.lang",
       "key_count": 93,
@@ -133,12 +207,21 @@
       "upstream_missing_key_supplement_locale_count": 19,
       "upstream_complete_selected_locale_count": 1,
       "validation_workflow_run": 34644712028,
-      "translation_scope_status": "complete-for-selected-scope"
+      "translation_scope_status": "complete-for-selected-scope",
+      "resource_format": "lang",
+      "reconstruction_script": "scripts/reconstruct_1_11_2.py",
+      "loader": "forge",
+      "java_target": 7,
+      "minecraft_language_audit": "upstream/minecraft-1.11.2-language-audit.json"
     },
     {
       "id": "g9-mc1.12",
-      "minecraft_versions": ["1.12"],
-      "jei_versions": ["4.7.5"],
+      "minecraft_versions": [
+        "1.12"
+      ],
+      "jei_versions": [
+        "4.7.5"
+      ],
       "audited_commit": "6bce08ef068fc0d7ce80ef07512caf85ccd4cab4",
       "source": "upstream/sources/1.12/en_us.lang",
       "key_count": 93,
@@ -160,12 +243,21 @@
       "delta_validator": "scripts/validate_1_12_delta.py",
       "complete_validator": "scripts/validate_1_12_complete.py",
       "validation_workflow_run": 34668113754,
-      "translation_scope_status": "complete-for-selected-scope"
+      "translation_scope_status": "complete-for-selected-scope",
+      "resource_format": "lang",
+      "loader": "forge",
+      "java_target": 8,
+      "minecraft_language_audit": "upstream/minecraft-1.12-language-audit.json",
+      "diff_manifest": "upstream/diffs/1.11.2-to-1.12.json"
     },
     {
       "id": "g10-mc1.12.1",
-      "minecraft_versions": ["1.12.1"],
-      "jei_versions": ["4.7.8"],
+      "minecraft_versions": [
+        "1.12.1"
+      ],
+      "jei_versions": [
+        "4.7.8"
+      ],
       "audited_commit": "7f4160ed969fad85e8c4a14809c66402c51592b2",
       "source": "upstream/sources/1.12.1/en_us.lang",
       "key_count": 93,
@@ -186,12 +278,21 @@
       "delta_validator": "scripts/validate_1_12_1_delta.py",
       "complete_validator": "scripts/validate_1_12_1_complete.py",
       "validation_workflow_run": 34668344181,
-      "translation_scope_status": "complete-for-selected-scope"
+      "translation_scope_status": "complete-for-selected-scope",
+      "resource_format": "lang",
+      "loader": "forge",
+      "java_target": 8,
+      "minecraft_language_audit": "upstream/minecraft-1.12.1-language-audit.json",
+      "diff_manifest": "upstream/diffs/1.12-to-1.12.1.json"
     },
     {
       "id": "g11-mc1.12.2",
-      "minecraft_versions": ["1.12.2"],
-      "jei_versions": ["4.16.5"],
+      "minecraft_versions": [
+        "1.12.2"
+      ],
+      "jei_versions": [
+        "4.16.5"
+      ],
       "audited_commit": "f98331af6b1f7d59da01beecacd681c16dd548b9",
       "source": "upstream/sources/1.12.2/en_us.lang",
       "key_count": 115,
@@ -214,12 +315,20 @@
       "delta_validator": "scripts/validate_1_12_2_delta.py",
       "complete_validator": "scripts/validate_1_12_2_complete.py",
       "validation_workflow_run": 34668803121,
-      "translation_scope_status": "complete-for-selected-scope"
+      "translation_scope_status": "complete-for-selected-scope",
+      "resource_format": "lang",
+      "loader": "forge",
+      "java_target": 8,
+      "minecraft_language_audit": "upstream/minecraft-1.12.2-language-audit.json"
     },
     {
       "id": "g12-mc1.13",
-      "minecraft_versions": ["1.13"],
-      "jei_versions": ["4.14.4"],
+      "minecraft_versions": [
+        "1.13"
+      ],
+      "jei_versions": [
+        "4.14.4"
+      ],
       "audited_commit": "380bc11efb548abd804c65b763c911ebf9d06e2c",
       "source": "upstream/sources/1.13/en_us.json",
       "resource_format": "json",
@@ -238,8 +347,14 @@
       "minecraft_language_scope": "upstream/minecraft-1.13-language-scope.json",
       "minecraft_raw_language_count": 113,
       "selected_scope_count": 83,
-      "locale_code_renames": {"ksh_de": "ksh"},
-      "new_selected_primary_languages": ["nuk", "ovd", "szl"],
+      "locale_code_renames": {
+        "ksh_de": "ksh"
+      },
+      "new_selected_primary_languages": [
+        "nuk",
+        "ovd",
+        "szl"
+      ],
       "addon_full_locale_count": 62,
       "translated_or_ai_assisted_full_locale_count": 39,
       "documented_full_english_fallback_count": 23,
@@ -250,7 +365,771 @@
       "complete_validator": "scripts/validate_1_13_complete.py",
       "validation_workflow_run": 34671542080,
       "translation_scope_status": "complete-for-selected-scope",
-      "notes": "First JSON generation. Exact semantic inheritance searches G11 then exact G10 reversions. Unsafe historical values that lose placeholders or fixed technical literals are rejected. Partial JSON supplements remain runtime-test-gated before JAR promotion."
+      "notes": "First JSON generation. Exact semantic inheritance searches G11 then exact G10 reversions. Unsafe historical values that lose placeholders or fixed technical literals are rejected. Partial JSON supplements remain runtime-test-gated before JAR promotion.",
+      "loader": "forge",
+      "java_target": 8
+    },
+    {
+      "id": "g13-mc1.13.2",
+      "minecraft_versions": [
+        "1.13.2"
+      ],
+      "jei_versions": [
+        "5.0.0"
+      ],
+      "source": "upstream/sources/1.13.2/en_us.json",
+      "resource_format": "json",
+      "key_count": 106,
+      "addon_full_locale_count": 66,
+      "upstream_missing_key_supplement_locale_count": 19,
+      "reconstruction_script": "scripts/reconstruct_1_13_2.py",
+      "loader": "forge",
+      "java_target": 8,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 87,
+      "upstream_complete_selected_locale_count": 2,
+      "audited_commit": "2d16f4210cbae340ad76b483b4aa8b461561e86f",
+      "minecraft_language_scope": "upstream/minecraft-1.13.2-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.13.2-language-audit.json",
+      "base_generation": "g12-mc1.13",
+      "diff_manifest": "upstream/diffs/1.13-to-1.13.2.json"
+    },
+    {
+      "id": "g14-mc1.14.2",
+      "minecraft_versions": [
+        "1.14.2"
+      ],
+      "jei_versions": [
+        "6.0.0"
+      ],
+      "source": "upstream/sources/1.14.2/en_us.json",
+      "resource_format": "json",
+      "key_count": 109,
+      "addon_full_locale_count": 70,
+      "upstream_missing_key_supplement_locale_count": 19,
+      "reconstruction_script": "scripts/reconstruct_1_14_2.py",
+      "loader": "forge",
+      "java_target": 8,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 91,
+      "upstream_complete_selected_locale_count": 2,
+      "audited_commit": "f1fd2f1d20cf86d9644e907a641f99873b4d8888",
+      "minecraft_language_scope": "upstream/minecraft-1.14.2-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.14.2-language-audit.json",
+      "base_generation": "g13-mc1.13.2",
+      "diff_manifest": "upstream/diffs/1.13.2-to-1.14.2.json"
+    },
+    {
+      "id": "g15-mc1.14.3",
+      "minecraft_versions": [
+        "1.14.3"
+      ],
+      "jei_versions": [
+        "6.0.0"
+      ],
+      "source": "upstream/sources/1.14.3/en_us.json",
+      "resource_format": "json",
+      "key_count": 109,
+      "addon_full_locale_count": 70,
+      "upstream_missing_key_supplement_locale_count": 18,
+      "reconstruction_script": "scripts/reconstruct_1_14_3.py",
+      "loader": "forge",
+      "java_target": 8,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 91,
+      "upstream_complete_selected_locale_count": 3,
+      "audited_commit": "9e7de1d9b5115053b85ed59558f841edcb6e5414",
+      "minecraft_language_scope": "upstream/minecraft-1.14.3-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.14.3-language-audit.json",
+      "base_generation": "g14-mc1.14.2",
+      "diff_manifest": "upstream/diffs/1.14.2-to-1.14.3.json"
+    },
+    {
+      "id": "g16-mc1.14.4",
+      "minecraft_versions": [
+        "1.14.4"
+      ],
+      "jei_versions": [
+        "6.0.1"
+      ],
+      "source": "upstream/sources/1.14.4/en_us.json",
+      "resource_format": "json",
+      "key_count": 109,
+      "addon_full_locale_count": 70,
+      "upstream_missing_key_supplement_locale_count": 16,
+      "reconstruction_script": "scripts/reconstruct_1_14_4.py",
+      "loader": "forge",
+      "java_target": 8,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 91,
+      "upstream_complete_selected_locale_count": 5,
+      "audited_commit": "de8b6a10eba45899be1c62694c9f27a435ae8c2c",
+      "minecraft_language_scope": "upstream/minecraft-1.14.4-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.14.4-language-audit.json",
+      "base_generation": "g15-mc1.14.3",
+      "diff_manifest": "upstream/diffs/1.14.3-to-1.14.4.json"
+    },
+    {
+      "id": "g17-mc1.15.1",
+      "minecraft_versions": [
+        "1.15.1"
+      ],
+      "jei_versions": [
+        "6.0.0"
+      ],
+      "source": "upstream/sources/1.15.1/en_us.json",
+      "resource_format": "json",
+      "key_count": 109,
+      "addon_full_locale_count": 66,
+      "upstream_missing_key_supplement_locale_count": 16,
+      "reconstruction_script": "scripts/reconstruct_1_15_1.py",
+      "loader": "forge",
+      "java_target": 8,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 87,
+      "upstream_complete_selected_locale_count": 5,
+      "audited_commit": "381a0d7df6ffd282f9eda4da41a299fdbea02352",
+      "minecraft_language_scope": "upstream/minecraft-1.15.1-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.15.1-language-audit.json",
+      "base_generation": "g16-mc1.14.4",
+      "diff_manifest": "upstream/diffs/1.14.4-to-1.15.1.json"
+    },
+    {
+      "id": "g18-mc1.15.2",
+      "minecraft_versions": [
+        "1.15.2"
+      ],
+      "jei_versions": [
+        "6.0.2"
+      ],
+      "source": "upstream/sources/1.15.2/en_us.json",
+      "resource_format": "json",
+      "key_count": 110,
+      "addon_full_locale_count": 66,
+      "upstream_missing_key_supplement_locale_count": 18,
+      "reconstruction_script": "scripts/reconstruct_1_15_2.py",
+      "loader": "forge",
+      "java_target": 8,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 87,
+      "upstream_complete_selected_locale_count": 3,
+      "audited_commit": "1ea77203d8b731c99cea68166b02afeb3d9c6176",
+      "minecraft_language_scope": "upstream/minecraft-1.15.2-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.15.2-language-audit.json",
+      "base_generation": "g17-mc1.15.1",
+      "diff_manifest": "upstream/diffs/1.15.1-to-1.15.2.json"
+    },
+    {
+      "id": "g19-mc1.16.1",
+      "minecraft_versions": [
+        "1.16.1"
+      ],
+      "jei_versions": [
+        "7.0.1"
+      ],
+      "source": "upstream/sources/1.16.1/en_us.json",
+      "resource_format": "json",
+      "key_count": 110,
+      "addon_full_locale_count": 67,
+      "upstream_missing_key_supplement_locale_count": 18,
+      "reconstruction_script": "scripts/reconstruct_1_16_1.py",
+      "loader": "forge",
+      "java_target": 8,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 88,
+      "upstream_complete_selected_locale_count": 3,
+      "audited_commit": "0a0dbfac9c53124d82a602301d466dbf2c5e3e97",
+      "minecraft_language_scope": "upstream/minecraft-1.16.1-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.16.1-language-audit.json",
+      "base_generation": "g18-mc1.15.2",
+      "diff_manifest": "upstream/diffs/1.15.2-to-1.16.1.json"
+    },
+    {
+      "id": "g20-mc1.16.2",
+      "minecraft_versions": [
+        "1.16.2"
+      ],
+      "jei_versions": [
+        "7.3.2"
+      ],
+      "source": "upstream/sources/1.16.2/en_us.json",
+      "resource_format": "json",
+      "key_count": 114,
+      "addon_full_locale_count": 67,
+      "upstream_missing_key_supplement_locale_count": 19,
+      "reconstruction_script": "scripts/reconstruct_1_16_2.py",
+      "loader": "forge",
+      "java_target": 8,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 88,
+      "upstream_complete_selected_locale_count": 2,
+      "audited_commit": "df46cefb0ade79851101fd32b065a34115fee70c",
+      "minecraft_language_scope": "upstream/minecraft-1.16.2-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.16.2-language-audit.json",
+      "base_generation": "g19-mc1.16.1",
+      "diff_manifest": "upstream/diffs/1.16.1-to-1.16.2.json"
+    },
+    {
+      "id": "g21-mc1.16.3",
+      "minecraft_versions": [
+        "1.16.3"
+      ],
+      "jei_versions": [
+        "7.6.0"
+      ],
+      "source": "upstream/sources/1.16.3/en_us.json",
+      "resource_format": "json",
+      "key_count": 114,
+      "addon_full_locale_count": 67,
+      "upstream_missing_key_supplement_locale_count": 18,
+      "reconstruction_script": "scripts/reconstruct_1_16_3.py",
+      "loader": "forge",
+      "java_target": 8,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 88,
+      "upstream_complete_selected_locale_count": 3,
+      "audited_commit": "130181aa9ee3762c6accd7614a03d932486710f9",
+      "minecraft_language_scope": "upstream/minecraft-1.16.3-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.16.3-language-audit.json",
+      "base_generation": "g20-mc1.16.2",
+      "diff_manifest": "upstream/diffs/1.16.2-to-1.16.3.json"
+    },
+    {
+      "id": "g22-mc1.16.4",
+      "minecraft_versions": [
+        "1.16.4"
+      ],
+      "jei_versions": [
+        "7.6.1"
+      ],
+      "source": "upstream/sources/1.16.4/en_us.json",
+      "resource_format": "json",
+      "key_count": 114,
+      "addon_full_locale_count": 67,
+      "upstream_missing_key_supplement_locale_count": 16,
+      "reconstruction_script": "scripts/reconstruct_1_16_4.py",
+      "loader": "forge",
+      "java_target": 8,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 88,
+      "upstream_complete_selected_locale_count": 5,
+      "audited_commit": "8255a01a6db0980f6e03b2b4d9d5f376bef7fd25",
+      "minecraft_language_scope": "upstream/minecraft-1.16.4-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.16.4-language-audit.json",
+      "base_generation": "g21-mc1.16.3",
+      "diff_manifest": "upstream/diffs/1.16.3-to-1.16.4.json"
+    },
+    {
+      "id": "g23-mc1.16.5",
+      "minecraft_versions": [
+        "1.16.5"
+      ],
+      "jei_versions": [
+        "7.7.1"
+      ],
+      "source": "upstream/sources/1.16.5/en_us.json",
+      "resource_format": "json",
+      "key_count": 119,
+      "addon_full_locale_count": 66,
+      "upstream_missing_key_supplement_locale_count": 15,
+      "reconstruction_script": "scripts/reconstruct_1_16_5.py",
+      "loader": "forge",
+      "java_target": 8,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 88,
+      "upstream_complete_selected_locale_count": 7,
+      "audited_commit": "f6bd6ea033084f3d18ad256c9921641dcbd0330f",
+      "minecraft_language_scope": "upstream/minecraft-1.16.5-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.16.5-language-audit.json",
+      "base_generation": "g22-mc1.16.4",
+      "diff_manifest": "upstream/diffs/1.16.4-to-1.16.5.json"
+    },
+    {
+      "id": "g24-mc1.17.1",
+      "minecraft_versions": [
+        "1.17.1"
+      ],
+      "jei_versions": [
+        "8.3.0"
+      ],
+      "source": "upstream/sources/1.17.1/en_us.json",
+      "resource_format": "json",
+      "key_count": 141,
+      "addon_full_locale_count": 64,
+      "upstream_missing_key_supplement_locale_count": 21,
+      "reconstruction_script": "scripts/reconstruct_1_17_1.py",
+      "loader": "forge",
+      "java_target": 16,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 86,
+      "upstream_complete_selected_locale_count": 1,
+      "audited_commit": "ff99d00a9e412e8c29dbbcdf24b437f93f72e4d7",
+      "minecraft_language_scope": "upstream/minecraft-1.17.1-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.17.1-language-audit.json",
+      "base_generation": "g23-mc1.16.5",
+      "diff_manifest": "upstream/diffs/1.16.5-to-1.17.1.json"
+    },
+    {
+      "id": "g25-mc1.18",
+      "minecraft_versions": [
+        "1.18"
+      ],
+      "jei_versions": [
+        "9.0.0"
+      ],
+      "source": "upstream/sources/1.18/en_us.json",
+      "resource_format": "json",
+      "key_count": 141,
+      "addon_full_locale_count": 64,
+      "upstream_missing_key_supplement_locale_count": 21,
+      "reconstruction_script": "scripts/reconstruct_1_18.py",
+      "loader": "forge",
+      "java_target": 17,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 86,
+      "upstream_complete_selected_locale_count": 1,
+      "audited_commit": "2df668b5ac4a8473b9837ad2785d0f5a4fb845a6",
+      "minecraft_language_scope": "upstream/minecraft-1.18-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.18-language-audit.json",
+      "base_generation": "g24-mc1.17.1",
+      "diff_manifest": "upstream/diffs/1.17.1-to-1.18.json"
+    },
+    {
+      "id": "g26-mc1.18.1",
+      "minecraft_versions": [
+        "1.18.1"
+      ],
+      "jei_versions": [
+        "9.4.1"
+      ],
+      "source": "upstream/sources/1.18.1/en_us.json",
+      "resource_format": "json",
+      "key_count": 149,
+      "addon_full_locale_count": 64,
+      "upstream_missing_key_supplement_locale_count": 21,
+      "reconstruction_script": "scripts/reconstruct_1_18_1.py",
+      "loader": "forge",
+      "java_target": 17,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 86,
+      "upstream_complete_selected_locale_count": 1,
+      "audited_commit": "82a622213dbf2a9df65af4e3cebbccc77ec44deb",
+      "minecraft_language_scope": "upstream/minecraft-1.18.1-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.18.1-language-audit.json",
+      "base_generation": "g25-mc1.18",
+      "diff_manifest": "upstream/diffs/1.18-to-1.18.1.json"
+    },
+    {
+      "id": "g27-mc1.18.2",
+      "minecraft_versions": [
+        "1.18.2"
+      ],
+      "jei_versions": [
+        "10.1.0"
+      ],
+      "source": "upstream/sources/1.18.2/en_us.json",
+      "resource_format": "json",
+      "key_count": 154,
+      "addon_full_locale_count": 64,
+      "upstream_missing_key_supplement_locale_count": 21,
+      "reconstruction_script": "scripts/reconstruct_1_18_2.py",
+      "loader": "forge",
+      "java_target": 17,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 86,
+      "upstream_complete_selected_locale_count": 1,
+      "audited_commit": "530ef6c8d604370bef850f3656a28beab56cbfba",
+      "minecraft_language_scope": "upstream/minecraft-1.18.2-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.18.2-language-audit.json",
+      "base_generation": "g26-mc1.18.1",
+      "diff_manifest": "upstream/diffs/1.18.1-to-1.18.2.json"
+    },
+    {
+      "id": "g28-mc1.19",
+      "minecraft_versions": [
+        "1.19"
+      ],
+      "jei_versions": [
+        "11.1.1"
+      ],
+      "source": "upstream/sources/1.19/en_us.json",
+      "resource_format": "json",
+      "key_count": 154,
+      "addon_full_locale_count": 64,
+      "upstream_missing_key_supplement_locale_count": 19,
+      "reconstruction_script": "scripts/reconstruct_1_19.py",
+      "loader": "forge",
+      "java_target": 17,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 86,
+      "upstream_complete_selected_locale_count": 3,
+      "audited_commit": "91527b7d5fae747455ed7630915c088e3fe0f602",
+      "minecraft_language_scope": "upstream/minecraft-1.19-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.19-language-audit.json",
+      "base_generation": "g27-mc1.18.2",
+      "diff_manifest": "upstream/diffs/1.18.2-to-1.19.json"
+    },
+    {
+      "id": "g29-mc1.19.1",
+      "minecraft_versions": [
+        "1.19.1"
+      ],
+      "jei_versions": [
+        "11.2.0"
+      ],
+      "source": "upstream/sources/1.19.1/en_us.json",
+      "resource_format": "json",
+      "key_count": 153,
+      "addon_full_locale_count": 64,
+      "upstream_missing_key_supplement_locale_count": 19,
+      "reconstruction_script": "scripts/reconstruct_1_19_1.py",
+      "loader": "forge",
+      "java_target": 17,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 86,
+      "upstream_complete_selected_locale_count": 3,
+      "audited_commit": "90b37d06031c8e113d51e747e3f532f4b9ed047b",
+      "minecraft_language_scope": "upstream/minecraft-1.19.1-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.19.1-language-audit.json",
+      "base_generation": "g28-mc1.19",
+      "diff_manifest": "upstream/diffs/1.19-to-1.19.1.json"
+    },
+    {
+      "id": "g30-mc1.19.2",
+      "minecraft_versions": [
+        "1.19.2"
+      ],
+      "jei_versions": [
+        "11.5.0"
+      ],
+      "source": "upstream/sources/1.19.2/en_us.json",
+      "resource_format": "json",
+      "key_count": 153,
+      "addon_full_locale_count": 64,
+      "upstream_missing_key_supplement_locale_count": 19,
+      "reconstruction_script": "scripts/reconstruct_1_19_2.py",
+      "loader": "forge",
+      "java_target": 17,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 86,
+      "upstream_complete_selected_locale_count": 3,
+      "audited_commit": "01f613671cb4635a0a5c23b85c40f1d52d0f3d00",
+      "minecraft_language_scope": "upstream/minecraft-1.19.2-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.19.2-language-audit.json",
+      "base_generation": "g29-mc1.19.1",
+      "diff_manifest": "upstream/diffs/1.19.1-to-1.19.2.json"
+    },
+    {
+      "id": "g31-mc1.19.3",
+      "minecraft_versions": [
+        "1.19.3"
+      ],
+      "jei_versions": [
+        "12.3.0"
+      ],
+      "source": "upstream/sources/1.19.3/en_us.json",
+      "resource_format": "json",
+      "key_count": 156,
+      "addon_full_locale_count": 66,
+      "upstream_missing_key_supplement_locale_count": 21,
+      "reconstruction_script": "scripts/reconstruct_1_19_3.py",
+      "loader": "forge",
+      "java_target": 17,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 88,
+      "upstream_complete_selected_locale_count": 1,
+      "audited_commit": "739fde73225d006c83af22db04c5723d9c539dc7",
+      "minecraft_language_scope": "upstream/minecraft-1.19.3-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.19.3-language-audit.json",
+      "base_generation": "g30-mc1.19.2",
+      "diff_manifest": "upstream/diffs/1.19.2-to-1.19.3.json"
+    },
+    {
+      "id": "g32-mc1.19.4",
+      "minecraft_versions": [
+        "1.19.4"
+      ],
+      "jei_versions": [
+        "13.1.0"
+      ],
+      "source": "upstream/sources/1.19.4/en_us.json",
+      "resource_format": "json",
+      "key_count": 156,
+      "addon_full_locale_count": 66,
+      "upstream_missing_key_supplement_locale_count": 20,
+      "reconstruction_script": "scripts/reconstruct_1_19_4.py",
+      "loader": "forge",
+      "java_target": 17,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 88,
+      "upstream_complete_selected_locale_count": 2,
+      "audited_commit": "b5b00557f5df18c35e545e3cc8cd65ca4b975ba1",
+      "minecraft_language_scope": "upstream/minecraft-1.19.4-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.19.4-language-audit.json",
+      "base_generation": "g31-mc1.19.3",
+      "diff_manifest": "upstream/diffs/1.19.3-to-1.19.4.json"
+    },
+    {
+      "id": "g33-mc1.20",
+      "minecraft_versions": [
+        "1.20"
+      ],
+      "jei_versions": [
+        "14.0.0"
+      ],
+      "source": "upstream/sources/1.20/en_us.json",
+      "resource_format": "json",
+      "key_count": 156,
+      "addon_full_locale_count": 68,
+      "upstream_missing_key_supplement_locale_count": 20,
+      "reconstruction_script": "scripts/reconstruct_1_20.py",
+      "loader": "forge",
+      "java_target": 17,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 90,
+      "upstream_complete_selected_locale_count": 2,
+      "audited_commit": "aa6e14229c0c44cd685ac6b4d1d7f513360da18a",
+      "minecraft_language_scope": "upstream/minecraft-1.20-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.20-language-audit.json",
+      "base_generation": "g32-mc1.19.4",
+      "diff_manifest": "upstream/diffs/1.19.4-to-1.20.json"
+    },
+    {
+      "id": "g34-mc1.20.1",
+      "minecraft_versions": [
+        "1.20.1"
+      ],
+      "jei_versions": [
+        "15.2.0"
+      ],
+      "source": "upstream/sources/1.20.1/en_us.json",
+      "resource_format": "json",
+      "key_count": 156,
+      "addon_full_locale_count": 68,
+      "upstream_missing_key_supplement_locale_count": 20,
+      "reconstruction_script": "scripts/reconstruct_1_20_1.py",
+      "loader": "forge",
+      "java_target": 17,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 90,
+      "upstream_complete_selected_locale_count": 2,
+      "audited_commit": "eecef8ae335701b97a6918e20b4dd87966a46dfa",
+      "minecraft_language_scope": "upstream/minecraft-1.20.1-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.20.1-language-audit.json",
+      "base_generation": "g33-mc1.20",
+      "diff_manifest": "upstream/diffs/1.20-to-1.20.1.json"
+    },
+    {
+      "id": "g35-mc1.20.2",
+      "minecraft_versions": [
+        "1.20.2"
+      ],
+      "jei_versions": [
+        "16.0.0"
+      ],
+      "source": "upstream/sources/1.20.2/en_us.json",
+      "resource_format": "json",
+      "key_count": 156,
+      "addon_full_locale_count": 68,
+      "upstream_missing_key_supplement_locale_count": 20,
+      "reconstruction_script": "scripts/reconstruct_1_20_2.py",
+      "loader": "forge",
+      "java_target": 17,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 90,
+      "upstream_complete_selected_locale_count": 2,
+      "audited_commit": "e78fd1951c38770de8462ead2187e565fe2996eb",
+      "minecraft_language_scope": "upstream/minecraft-1.20.2-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.20.2-language-audit.json",
+      "base_generation": "g34-mc1.20.1",
+      "diff_manifest": "upstream/diffs/1.20.1-to-1.20.2.json"
+    },
+    {
+      "id": "g36-mc1.20.4",
+      "minecraft_versions": [
+        "1.20.4"
+      ],
+      "jei_versions": [
+        "17.3.0"
+      ],
+      "source": "upstream/sources/1.20.4/en_us.json",
+      "resource_format": "json",
+      "key_count": 157,
+      "addon_full_locale_count": 67,
+      "upstream_missing_key_supplement_locale_count": 22,
+      "reconstruction_script": "scripts/reconstruct_1_20_4.py",
+      "loader": "forge",
+      "java_target": 17,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 90,
+      "upstream_complete_selected_locale_count": 1,
+      "audited_commit": "282f6faecfd71545243be0a94703bdde90eac4e7",
+      "minecraft_language_scope": "upstream/minecraft-1.20.4-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.20.4-language-audit.json",
+      "base_generation": "g35-mc1.20.2",
+      "diff_manifest": "upstream/diffs/1.20.2-to-1.20.4.json"
+    },
+    {
+      "id": "g37-mc1.20.6",
+      "minecraft_versions": [
+        "1.20.6"
+      ],
+      "jei_versions": [
+        "18.0.0"
+      ],
+      "source": "upstream/sources/1.20.6/en_us.json",
+      "resource_format": "json",
+      "key_count": 157,
+      "addon_full_locale_count": 67,
+      "upstream_missing_key_supplement_locale_count": 22,
+      "reconstruction_script": "scripts/reconstruct_1_20_6.py",
+      "loader": "forge",
+      "java_target": 21,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 90,
+      "upstream_complete_selected_locale_count": 1,
+      "audited_commit": "7cc7d59043102c4843d422138dd74133edcd7b3c",
+      "minecraft_language_scope": "upstream/minecraft-1.20.6-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.20.6-language-audit.json",
+      "base_generation": "g36-mc1.20.4",
+      "diff_manifest": "upstream/diffs/1.20.4-to-1.20.6.json"
+    },
+    {
+      "id": "g38-mc1.21",
+      "minecraft_versions": [
+        "1.21"
+      ],
+      "jei_versions": [
+        "19.8.2"
+      ],
+      "source": "upstream/sources/1.21/en_us.json",
+      "resource_format": "json",
+      "key_count": 176,
+      "addon_full_locale_count": 67,
+      "upstream_missing_key_supplement_locale_count": 21,
+      "reconstruction_script": "scripts/reconstruct_1_21.py",
+      "loader": "forge",
+      "java_target": 21,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 90,
+      "upstream_complete_selected_locale_count": 2,
+      "audited_commit": "02370235626ddb4e479e13e6cde9b6d5466cd5ff",
+      "minecraft_language_scope": "upstream/minecraft-1.21-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.21-language-audit.json",
+      "base_generation": "g37-mc1.20.6",
+      "diff_manifest": "upstream/diffs/1.20.6-to-1.21.json"
+    },
+    {
+      "id": "g39-mc1.21.1",
+      "minecraft_versions": [
+        "1.21.1"
+      ],
+      "jei_versions": [
+        "19.21.1"
+      ],
+      "source": "upstream/sources/1.21.1/en_us.json",
+      "resource_format": "json",
+      "key_count": 286,
+      "addon_full_locale_count": 64,
+      "upstream_missing_key_supplement_locale_count": 24,
+      "reconstruction_script": "scripts/reconstruct_1_21_1.py",
+      "loader": "neoforge",
+      "java_target": 21,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 90,
+      "upstream_complete_selected_locale_count": 2,
+      "audited_commit": "28eb51f58d2798512a2ef75cf8b29189228573ad",
+      "minecraft_language_scope": "upstream/minecraft-1.21.1-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.21.1-language-audit.json",
+      "base_generation": "g38-mc1.21",
+      "diff_manifest": "upstream/diffs/1.21-to-1.21.1.json",
+      "neoforge": "21.1.116",
+      "neoforge_loader_version_range": "[4,)",
+      "neoforge_version_range": "[21.1.116,)"
+    },
+    {
+      "id": "g40-mc1.21.4",
+      "minecraft_versions": [
+        "1.21.4"
+      ],
+      "jei_versions": [
+        "20.0.0"
+      ],
+      "source": "upstream/sources/1.21.4/en_us.json",
+      "resource_format": "json",
+      "key_count": 288,
+      "addon_full_locale_count": 64,
+      "upstream_missing_key_supplement_locale_count": 25,
+      "reconstruction_script": "scripts/reconstruct_1_21_4.py",
+      "loader": "neoforge",
+      "java_target": 21,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 90,
+      "upstream_complete_selected_locale_count": 1,
+      "audited_commit": "26845e0d2a248b0084481b4a433ef7b32152d4c6",
+      "minecraft_language_scope": "upstream/minecraft-1.21.4-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.21.4-language-audit.json",
+      "base_generation": "g39-mc1.21.1",
+      "diff_manifest": "upstream/diffs/1.21.1-to-1.21.4.json",
+      "neoforge": "21.4.136",
+      "neoforge_loader_version_range": "[4,)",
+      "neoforge_version_range": "[21.4.121,)"
+    },
+    {
+      "id": "g41-mc1.21.5",
+      "minecraft_versions": [
+        "1.21.5"
+      ],
+      "jei_versions": [
+        "21.4.0"
+      ],
+      "source": "upstream/sources/1.21.5/en_us.json",
+      "resource_format": "json",
+      "key_count": 290,
+      "addon_full_locale_count": 65,
+      "upstream_missing_key_supplement_locale_count": 24,
+      "reconstruction_script": "scripts/reconstruct_1_21_5.py",
+      "loader": "neoforge",
+      "java_target": 21,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 90,
+      "upstream_complete_selected_locale_count": 1,
+      "audited_commit": "0772287a157beb93f438ee10f88afe402e262856",
+      "minecraft_language_scope": "upstream/minecraft-1.21.5-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.21.5-language-audit.json",
+      "base_generation": "g40-mc1.21.4",
+      "diff_manifest": "upstream/diffs/1.21.4-to-1.21.5.json",
+      "neoforge": "21.5.75",
+      "neoforge_loader_version_range": "[4,)",
+      "neoforge_version_range": "[21.5.74,)"
+    },
+    {
+      "id": "g42-mc1.21.6",
+      "minecraft_versions": [
+        "1.21.6"
+      ],
+      "jei_versions": [
+        "22.0.0"
+      ],
+      "source": "upstream/sources/1.21.6/en_us.json",
+      "resource_format": "json",
+      "key_count": 289,
+      "addon_full_locale_count": 65,
+      "upstream_missing_key_supplement_locale_count": 24,
+      "reconstruction_script": "scripts/reconstruct_1_21_6.py",
+      "loader": "neoforge",
+      "java_target": 21,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 90,
+      "upstream_complete_selected_locale_count": 1,
+      "audited_commit": "2a57409c2af0ce9716749a0329166a41cbcf453f",
+      "minecraft_language_scope": "upstream/minecraft-1.21.6-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-1.21.6-language-audit.json",
+      "base_generation": "g41-mc1.21.5",
+      "diff_manifest": "upstream/diffs/1.21.5-to-1.21.6.json",
+      "neoforge": "21.6.20-beta",
+      "neoforge_loader_version_range": "[4,)",
+      "neoforge_version_range": "[21.6.20-beta,)"
     }
   ],
   "rules": {
@@ -259,7 +1138,9 @@
     "one_release_jar_per_minecraft_version": true,
     "never_group_multiple_minecraft_versions_in_one_jar": true,
     "translation_reuse_between_versions_is_allowed": true,
-    "delta_generations_must_be_reconstructed_and_validated_before_release": true
+    "delta_generations_must_be_reconstructed_and_validated_before_release": true,
+    "cross_key_reuse_allowed": false,
+    "runtime_promotion_is_separate_from_static_validation": true
   },
-  "notes": "Translation inheritance reduces repeated work but never implies multi-version packaging. Every final Minecraft target must reconstruct, validate, and later receive its own runtime-tested JAR."
+  "notes": "Translation inheritance reduces repeated work but never implies multi-version packaging. Every final Minecraft target reconstructs and validates independently; runtime-tested release promotion remains separate."
 }

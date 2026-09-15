@@ -61,58 +61,65 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G37 | 1.20.6 | 18.0.0 | `7cc7d59` | 157 | 90 | 67 | 22 | 1 | complete; candidate packaged |
 | G38 | 1.21 | 19.8.2 | `0237023` | 176 | 90 | 67 | 21 | 2 | complete; candidate packaged |
 | G39 | 1.21.1 | 19.21.1 | `28eb51f` | 286 | 90 | 64 | 24 | 2 | complete; NeoForge candidate packaged |
-| G40 | 1.21.4 | 20.0.0 | `26845e0` | 288 | 90 | 64 | 25 | 1 | complete; NeoForge packaging validated |
+| G40 | 1.21.4 | 20.0.0 | `26845e0` | 288 | 90 | 64 | 25 | 1 | complete; NeoForge candidate packaged |
+| G41 | 1.21.5 | 21.4.0 | `0772287` | 290 | 90 | 65 | 24 | 1 | complete; NeoForge candidate packaged |
+| G42 | 1.21.6 | 22.0.0 | `2a57409` | 289 | 90 | 65 | 24 | 1 | complete; NeoForge packaging validated |
 
 ## Recent canonical milestones
 
-### G39 — Minecraft 1.21.1 / JEI 19.21.1
+### G41 — Minecraft 1.21.5 / JEI 21.4.0
 
-- final endpoint `28eb51f58d2798512a2ef75cf8b29189228573ad`
-- Minecraft 1.21.1 / NeoForge `21.1.116` / Java 21
-- 286 keys = 280 normal + 6 debug
+- final maintained endpoint `0772287a157beb93f438ee10f88afe402e262856`; the dedicated 1.21.5 branch continued after mainline had moved to 1.21.6
+- Minecraft 1.21.5 / NeoForge `21.5.75` / NeoForge minimum `[21.5.74,)` / Java 21
+- 290 keys = 284 normal + 6 debug
+- G40→G41 semantic delta = 288 unchanged + 2 added + 0 removed + 0 changed-English values
+- added keys: `gui.jei.category.grindstone.experience` and `jei.message.missing.recipes.from.server`
 - selected scope remains 90
-- ownership = 64 addon-full + 24 missing-key-only supplements + 2 complete upstream (`en_us`, `ja_jp`)
-- full clean G1→G39 validation after the G14 technical-token boundary fix: run `34908672666`, green
-- G14→G39 candidate refresh/persist: run `34927435585`, all 26 builds plus persistence green
-- static candidate: `candidate-jars/1.21.1/jei-translation-expansion-1.0.0-mc1.21.1-neoforge.jar`
+- ownership = 65 addon/full-override + 24 missing-key-only supplements + 1 complete upstream (`en_us`)
+- pinned upstream `uk_ua.json` is syntactically malformed; Ukrainian is deliberately emitted as a valid full repair override
+- reproducible full QA run `34930359475`, green
+- NeoForge packaging-validation run `34930428119`, green
+- validated candidate SHA-256 `d07378fa02b78dd7e55c63144030d737a44f1f1dc575a488d88e36915a816638`
+- PR #14 merged to `main` as `a769e41b38ec250625631343d2bff25c81580ae0`
+- canonical candidate persistence completed in run `34930590379`, commit `b8d2e402abbdaf9be33ad2ec42816454f42c8629`
+- candidate: `candidate-jars/1.21.5/jei-translation-expansion-1.0.0-mc1.21.5-neoforge.jar`
 
-### G40 — Minecraft 1.21.4 / JEI 20.0.0
+### G42 — Minecraft 1.21.6 / JEI 22.0.0
 
-- final endpoint `26845e0d2a248b0084481b4a433ef7b32152d4c6`, immediately before the JEI Minecraft 1.21.5 port `2cc5d1e8b7fb4f79c917804d7582bb7c48374499`
-- first 1.21.4 port commit `c0d0367841b16fa3a9567c3d93172cbd1f1b578c`
-- Minecraft 1.21.4 / NeoForge `21.4.136` / NeoForge minimum `[21.4.121,)` / Java 21
-- 288 keys = 282 normal + 6 debug
-- G39→G40 semantic delta = 285 unchanged + 3 added + 1 removed + 0 changed-English values
-- removed key: `gui.jei.category.fuel` (`Fuel`)
-- added keys: `gui.jei.category.smelting_fuel`, `gui.jei.category.smoking_fuel`, `gui.jei.category.blasting_fuel`
-- cross-key reuse from the removed generic Fuel key is explicitly forbidden
-- Minecraft language asset pool remains 143 codes and selected historical scope remains 90
-- ownership = 64 addon-full + 25 missing-key-only supplements + 1 complete upstream (`en_us`)
-- `ja_jp` moves from complete upstream to incomplete upstream and is missing exactly the three new fuel-category keys
-- isolated audit/reconstruction/complete QA run `34928320930`, green
-- G40 NeoForge packaging-validation run `34928413594`, green
-- static candidate SHA-256 from packaging validation: `ac7012f100818024329ef2cf2afce4e0f69477f75a00d885b27f9e0b4aaf4056`
-- packaging validation produced 89 JSON resources = 64 full + 25 supplements and verified exact Minecraft/JEI/NeoForge metadata; canonical candidate persistence follows the main packaging workflow after merge
+- final 1.21.6 mainline endpoint `2a57409c2af0ce9716749a0329166a41cbcf453f`
+- next Minecraft port `8a22d93e6e903142c9dbcdf699496f435d1c569d` targets 1.21.7 and directly follows the G42 endpoint
+- build: NeoForge `21.6.20-beta`, minimum `[21.6.20-beta,)`, Java 21
+- 289 keys = 283 normal + 6 debug
+- G41→G42 semantic delta = 289 unchanged + 0 added + 1 removed + 0 changed-English values
+- removed key: `gui.jei.category.grindstone.experience`; it is not emitted by G42-owned resources
+- selected scope remains 90; Minecraft live language membership remains 143 codes with no additions/removals
+- ownership = 65 addon/full-override + 24 missing-key-only supplements + 1 complete upstream (`en_us`)
+- pinned `uk_ua.json` remains malformed and is handled as a deterministic full repair override
+- complete frozen-manifest/reconstruction QA run `34931544591`, green
+- deterministic NeoForge build/inspection passed in run `34931774000`
+- validated candidate SHA-256 `6a1f0262f68189ae064fbc1909792ae41542af8cfdf6c6f5286e5d703c98fdfb`
+- packaging metadata and synchronized upstream registries are being finalized before merge
 
 ## Candidate packaging state
 
-- The canonical candidate inventory on `main` currently contains **39 version-specific 1.0.0 candidates through Minecraft 1.21.1**.
-- G40 / Minecraft 1.21.4 has a green deterministic NeoForge packaging validation and is ready for canonical persistence after its generation branch is merged.
+- The canonical candidate inventory on `main` now contains **41 version-specific 1.0.0 candidates through Minecraft 1.21.5**.
+- G42 has passed deterministic NeoForge candidate construction and archive/metadata inspection; canonical persistence will follow its merge and main packaging workflow.
 - Candidate JARs are not runtime-promoted finals.
 
 ## Current next target
 
-- **G41 = Minecraft 1.21.5**.
-- first upstream 1.21.5 port commit: `2cc5d1e8b7fb4f79c917804d7582bb7c48374499` (`Update to Minecraft 1.21.5`), whose parent is the final G40 endpoint.
-- Resolve the **final** JEI 1.21.5 endpoint before the next Minecraft-version port, then repeat source/scope/ownership/reconstruction QA.
+- Complete G42 packaging metadata/registry finalization, merge G42, then persist its canonical 1.21.6 candidate on `main`.
+- The chronological next audit target is **G43 = Minecraft 1.21.7**.
+- Preliminary endpoint research identifies final 1.21.7 mainline endpoint `ee33b5d69f6cf9167c32c2e84fdc69fa1b008440`, immediately before `f61efdf5f6604d0d3a55a67cc5d28ec340f189aa` (`Update to Minecraft 1.21.8`). Treat this as preliminary until the isolated G43 audit is run.
 - Keep all static candidates outside `release-jars/` until their runtime gates are satisfied.
 
 ## Documentation synchronization debt
 
-`upstream/versions.json`, `upstream/generations.json`, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` still need broad synchronization through the latest completed generations. `README.md` and this canonical status are synchronized through G40 in the G40 work branch.
+- `README.md`, `docs/VERSION_MATRIX.md`, `docs/TRANSLATION_STATUS.md`, and this canonical status are synchronized through completed G42.
+- `upstream/versions.json` and `upstream/generations.json` are finalized through G42 by `scripts/sync_upstream_registries.py` as part of the G42 metadata-finalization workflow.
 
 ## Release gates still open
 
 - Minecraft 1.8.9 prototype/runtime lineage still requires a real client runtime validation before final release promotion.
 - Minecraft 1.13+ missing-key-only JSON supplements require a real runtime resource-stack merge test before promotion to their version-specific release JAR.
-- G39 and G40 NeoForge candidates also remain static candidates until their version-specific runtime checks are complete.
+- G39–G42 NeoForge candidates remain static candidates until their version-specific runtime checks are complete.
