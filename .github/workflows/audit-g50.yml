@@ -1,0 +1,29 @@
+name: Audit G50 Minecraft 26.1.2
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g50-mc26.1.2-audit']
+    paths:
+      - 'scripts/audit_26_1_2.py'
+      - '.github/workflows/audit-g50.yml'
+      - 'upstream/sources/26.1.1/en_us.json'
+      - 'upstream/minecraft-26.1.1-language-scope.json'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit maintained Minecraft 26.1.2 snapshot
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/audit_26_1_2.py
