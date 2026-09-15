@@ -12,11 +12,16 @@ on:
       - 'scripts/validate_1_21_5_complete.py'
       - '.github/workflows/audit-g41.yml'
       - 'upstream/sources/1.21.4/en_us.json'
+      - 'upstream/sources/1.21.5/en_us.json'
+      - 'upstream/diffs/1.21.4-to-1.21.5.json'
       - 'upstream/minecraft-1.21.4-language-scope.json'
+      - 'upstream/minecraft-1.21.5-language-audit.json'
+      - 'upstream/minecraft-1.21.5-language-scope.json'
+      - 'translations/g41-mc1.21.5/policy.json'
       - 'scripts/reconstruct_1_21_4.py'
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   validate:
@@ -24,40 +29,28 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Exploratory endpoint audit
+      - name: Audit final maintained endpoint
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/audit_1_21_5.py
-      - name: Freeze G41 manifests
+      - name: Recompute frozen manifests
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/bootstrap_1_21_5.py
-      - name: Validate frozen G41 delta
-        run: python scripts/validate_1_21_5_delta.py
-      - name: Validate complete G41 reconstruction
-        run: python scripts/validate_1_21_5_complete.py
-      - name: Persist frozen G41 manifests to work branch
+      - name: Verify frozen manifests are reproducible
         shell: bash
         run: |
-          set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add \
+          git diff --exit-code -- \
             upstream/sources/1.21.5/en_us.json \
             upstream/diffs/1.21.4-to-1.21.5.json \
             upstream/minecraft-1.21.5-language-audit.json \
             upstream/minecraft-1.21.5-language-scope.json \
             translations/g41-mc1.21.5/policy.json
-          if git diff --cached --quiet; then
-            echo "Frozen G41 manifests already match."
-            exit 0
-          fi
-          git commit -m "Freeze G41 Minecraft 1.21.5 manifests"
-          git pull --rebase origin "${GITHUB_REF_NAME}"
-          git push origin "HEAD:${GITHUB_REF_NAME}"
+      - name: Validate frozen G41 delta
+        run: python scripts/validate_1_21_5_delta.py
+      - name: Validate complete G41 reconstruction
+        run: python scripts/validate_1_21_5_complete.py
