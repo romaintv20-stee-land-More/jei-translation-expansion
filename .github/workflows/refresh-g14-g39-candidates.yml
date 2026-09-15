@@ -72,7 +72,7 @@ jobs:
           PY
           )
           if [ "$LOADER" = 'neoforge' ]; then
-            python scripts/build_completed_neoforge_jar.py --minecraft "$MC" --version 1.0.0 --output-dir "refresh-out/$MC"
+            python scripts/build_completed_jar_neoforge.py --minecraft "$MC" --version 1.0.0 --output-dir "refresh-out/$MC"
           else
             python scripts/build_completed_jar_java21.py --minecraft "$MC" --version 1.0.0 --output-dir "refresh-out/$MC"
           fi
