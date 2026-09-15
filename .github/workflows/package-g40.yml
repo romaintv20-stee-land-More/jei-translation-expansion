@@ -1,0 +1,56 @@
+name: Package G40 Minecraft 1.21.4 candidate
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g40-mc1.21.4-audit']
+    paths:
+      - 'packaging/completed-versions.json'
+      - 'scripts/build_completed_jar_neoforge.py'
+      - 'scripts/build_completed_jar.py'
+      - 'scripts/reconstruct_1_21_4.py'
+      - '.github/workflows/package-g40.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Build Minecraft 1.21.4 NeoForge candidate
+        run: python scripts/build_completed_jar_neoforge.py --minecraft 1.21.4 --version 1.0.0
+      - name: Inspect candidate
+        shell: bash
+        run: |
+          JAR=$(find build/completed-jars/1.21.4 -maxdepth 1 -name '*.jar' -type f)
+          test -n "$JAR"
+          test "$(printf '%s\n' "$JAR" | wc -l)" -eq 1
+          case "$JAR" in *-mc1.21.4-neoforge.jar) ;; *) echo 'Unexpected candidate filename'; exit 1;; esac
+          unzip -t "$JAR"
+          unzip -l "$JAR" | grep -F 'META-INF/neoforge.mods.toml'
+          if unzip -l "$JAR" | grep -F 'META-INF/mods.toml'; then
+            echo 'Forge mods.toml leaked into NeoForge candidate'
+            exit 1
+          fi
+          unzip -p "$JAR" META-INF/neoforge.mods.toml | grep -F 'versionRange="[1.21.4]"'
+          unzip -p "$JAR" META-INF/neoforge.mods.toml | grep -F 'versionRange="[20.0.0]"'
+          unzip -p "$JAR" META-INF/neoforge.mods.toml | grep -F 'versionRange="[21.4.121,)"'
+          COUNT=$(unzip -l "$JAR" | awk '$4 ~ /^assets\/jei\/lang\/.*\.json$/ {count++} END {print count+0}')
+          test "$COUNT" -eq 89
+          sha256sum "$JAR"
+      - name: Upload candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: jei-translation-expansion-1.0.0-mc1.21.4-neoforge
+          path: build/completed-jars/1.21.4/*.jar
+          if-no-files-found: error
+          retention-days: 30
