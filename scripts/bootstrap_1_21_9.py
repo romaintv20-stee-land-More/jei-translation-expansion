@@ -23,6 +23,8 @@ DONOR_LANG_API = f"https://api.github.com/repos/mezz/JustEnoughItems/contents/Co
 DEBUG_PREFIX = audit.DEBUG_PREFIX
 EXPECTED_ADDED = audit.NEW_CATEGORY_KEYS
 EXPECTED_REMOVED = audit.OLD_CATEGORY_KEYS
+UPSTREAM_LITERAL_SAFETY_OVERRIDES = {"ar_sa": ["jei.config.client.search.description"]}
+UPSTREAM_LITERAL_SAFETY_OVERRIDE_REASON = "Pinned ar_sa translation omits the fixed technical literal JEI; emit exact target English for this key."
 
 
 def write_json(path: Path, value) -> None:
@@ -178,11 +180,17 @@ def main() -> int:
             "category_key_rename_is_cross_key_reuse": True,
         },
         "exact_future_donor": {"commit": DONOR_COMMIT, "exact_same_key_same_english_added_keys": donor_exact_added, "locale_coverage": donor_coverage},
+        "upstream_literal_safety_overrides": UPSTREAM_LITERAL_SAFETY_OVERRIDES,
+        "upstream_literal_safety_override_reason": UPSTREAM_LITERAL_SAFETY_OVERRIDE_REASON,
         "upstream_supplement_policy": {
-            "preserve_existing_upstream_keys": True, "supplement_only_exact_missing_normal_keys": True,
+            "preserve_existing_upstream_keys": True,
+            "supplement_only_exact_missing_normal_keys": False,
+            "supplement_missing_keys_plus_explicit_safety_overrides": True,
+            "explicit_upstream_owned_override_keys": UPSTREAM_LITERAL_SAFETY_OVERRIDES,
             "reuse_exact_g44_combined_value_only_for_unchanged_key_and_english": True,
             "future_donor_same_key_same_english_reuse_allowed": True,
-            "cross_key_reuse_allowed": False, "never_emit_upstream_owned_key": True,
+            "cross_key_reuse_allowed": False,
+            "never_emit_other_upstream_owned_keys": True,
             "runtime_merge_requires_validation_before_jar_promotion": True,
         },
         "malformed_upstream_override_policy": {
@@ -208,6 +216,8 @@ def main() -> int:
         "selected_upstream_completeness": completeness, "malformed_selected_upstream_locales": sorted(malformed),
         "selected_upstream_complete_locales": complete, "selected_upstream_incomplete_locales": incomplete, "addon_full_locales": addon_full,
         "future_donor_commit": DONOR_COMMIT, "future_donor_exact_added_keys": donor_exact_added, "future_donor_locale_coverage": donor_coverage,
+        "upstream_literal_safety_overrides": UPSTREAM_LITERAL_SAFETY_OVERRIDES,
+        "upstream_literal_safety_override_reason": UPSTREAM_LITERAL_SAFETY_OVERRIDE_REASON,
     }
     write_json(AUDIT_PATH, audit_manifest)
 
@@ -225,6 +235,8 @@ def main() -> int:
             "uncertain_translation_fallback": "exact-target-English",
         },
         "malformed_upstream_full_override_locales": sorted(malformed),
+        "upstream_literal_safety_overrides": UPSTREAM_LITERAL_SAFETY_OVERRIDES,
+        "upstream_literal_safety_override_reason": UPSTREAM_LITERAL_SAFETY_OVERRIDE_REASON,
         "runtime_gate": "static translation/reconstruction validation does not promote candidate to release-jars",
     }
     write_json(POLICY_PATH, policy)

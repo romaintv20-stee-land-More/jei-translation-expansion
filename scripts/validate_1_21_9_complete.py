@@ -64,10 +64,18 @@ def main() -> int:
             upstream = g45.fetch_g45_upstream(locale)
             supplement = g45.parse_json(supplement_dir / f"{locale}.json")
             missing = normal - set(upstream)
-            if set(supplement) != missing:
-                raise ValueError(f"{locale}: G45 supplement is not exactly the missing normal-key set")
-            if set(supplement) & set(upstream):
-                raise ValueError(f"{locale}: G45 supplement overwrites upstream-owned keys")
+            override_keys = set(g45.UPSTREAM_LITERAL_SAFETY_OVERRIDES.get(locale, set()))
+            expected = missing | override_keys
+            if set(supplement) != expected:
+                raise ValueError(f"{locale}: G45 supplement is not exactly missing keys plus approved safety overrides")
+            overlap = set(supplement) & set(upstream)
+            if overlap != override_keys:
+                raise ValueError(f"{locale}: unexpected G45 upstream-owned supplement overlap: {sorted(overlap)}")
+            for key in override_keys:
+                if g45.preserves_runtime_literals(target[key], upstream[key]):
+                    raise ValueError(f"{locale}: approved G45 safety override is no longer required for {key}")
+                if not g45.preserves_runtime_literals(target[key], supplement[key]):
+                    raise ValueError(f"{locale}: G45 safety override remains unsafe for {key}")
             if any(key.startswith(g45.DEBUG_PREFIX) for key in supplement):
                 raise ValueError(f"{locale}: G45 supplement contains debug-only keys")
             if set(supplement) & g45.REMOVED_G45_KEYS:

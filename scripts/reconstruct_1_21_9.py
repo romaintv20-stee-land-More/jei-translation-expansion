@@ -44,6 +44,9 @@ ADDED_G45_KEYS = {
     "key.category.jei.dev.tools",
 }
 MALFORMED_FULL_OVERRIDES = {"uk_ua"}
+UPSTREAM_LITERAL_SAFETY_OVERRIDES = {
+    "ar_sa": {"jei.config.client.search.description"},
+}
 
 parse_json = g44.parse_json
 write_json = g44.write_json
@@ -218,9 +221,20 @@ def reconstruct_supplements(target: dict[str, str], scope: dict) -> tuple[dict[s
     for locale in sorted(expected):
         upstream = fetch_g45_upstream(locale)
         missing = normal - set(upstream)
+        override_keys = set(UPSTREAM_LITERAL_SAFETY_OVERRIDES.get(locale, set()))
+        for key in override_keys:
+            if key not in normal or key not in upstream:
+                raise ValueError(f"{locale}: invalid explicit G45 upstream safety override key {key}")
+            if preserves_runtime_literals(target[key], upstream[key]):
+                raise ValueError(f"{locale}: G45 safety override is no longer needed for {key}")
+        needed = missing | override_keys
         values: dict[str, str] = {}
-        count = {"g44":0,"future-donor":0,"english":0,"upstream-owned":len(normal & set(upstream))}
-        for key in sorted(missing):
+        count = {
+            "g44":0, "future-donor":0, "english":0,
+            "upstream-owned":len(normal & set(upstream)),
+            "upstream-safety-overrides":len(override_keys),
+        }
+        for key in sorted(needed):
             english = target[key]
             if key in unchanged:
                 value, source = resolve_unchanged(locale, key, english)
@@ -230,7 +244,8 @@ def reconstruct_supplements(target: dict[str, str], scope: dict) -> tuple[dict[s
                 raise ValueError(f"{locale}: unresolved G45 supplement key {key}")
             values[key] = value
             count[source] += 1
-        if not values or set(values) & set(upstream) or set(values) & REMOVED_G45_KEYS:
+        overlap = set(values) & set(upstream)
+        if not values or overlap != override_keys or set(values) & REMOVED_G45_KEYS:
             raise ValueError(f"{locale}: invalid G45 supplement ownership")
         result[locale] = values
         stats[locale] = count
