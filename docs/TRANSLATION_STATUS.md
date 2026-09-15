@@ -50,12 +50,15 @@ A generation marked complete here has passed translation/reconstruction QA. That
 | G40 | 1.21.4 | 20.0.0 | 288 | 90 | 64 | 25 | 1 | complete |
 | G41 | 1.21.5 | 21.4.0 | 290 | 90 | 65 | 24 | 1 | complete |
 | G42 | 1.21.6 | 22.0.0 | 289 | 90 | 65 | 24 | 1 | complete |
+| G43 | 1.21.7 | 23.1.0 | 291 | 90 | 65 | 23 | 2 | complete |
+| G44 | 1.21.8 | 24.2.0 | 305 | 90 | 65 | 24 | 1 | complete |
+| G45 | 1.21.9 | 25.0.1 | 305 | 90 | 65 | 24 | 1 | complete |
 
 ## Reuse and ownership rules
 
 - Reuse is permitted only for the **same localization key** when the English value/meaning is identical.
 - Cross-key reuse is forbidden, including apparently related renamed or split semantics.
-- Existing valid JEI target-locale values remain upstream-owned.
+- Existing valid JEI target-locale values remain upstream-owned unless a frozen safety override is explicitly documented.
 - Incomplete valid upstream locales receive only exact missing **normal** keys; debug-only content is not added through supplements.
 - Every complete addon-owned locale must cover the exact target key set and preserve placeholders and fixed technical literals.
 - If a target-language translation is uncertain, exact target English is preferred over an invented technical translation.
@@ -63,63 +66,55 @@ A generation marked complete here has passed translation/reconstruction QA. That
 
 ## Modern generation milestones
 
-### G31–G35
+### G31–G38
 
 - G31 / Minecraft 1.19.3 expands the selected scope to 88 with `nah` and `ry_ua`.
 - G33 / Minecraft 1.20 expands the selected historical scope to 90 with Lao (`lo_la`) and Yakut (`sah_sah`).
-- G33→G35 remains semantically stable at 156 JEI keys while Minecraft/JEI packaging targets advance through 1.20, 1.20.1 and 1.20.2.
+- G33→G35 remains semantically stable at 156 JEI keys while packaging advances through Minecraft 1.20, 1.20.1 and 1.20.2.
+- G36 / Minecraft 1.20.4 contains 157 keys; G37 / Minecraft 1.20.6 moves the toolchain to Java 21; G38 / Minecraft 1.21 contains 176 keys.
 
-### G36–G38
+### G39–G42
 
-- G36 / Minecraft 1.20.4 contains 157 keys and 90 selected languages.
-- G37 / Minecraft 1.20.6 moves the packaging toolchain to Java 21.
-- G38 / Minecraft 1.21 contains 176 keys while retaining the 90-language selected scope.
+- G39 / Minecraft 1.21.1 moves project packaging to NeoForge and contains 286 keys.
+- G40 / Minecraft 1.21.4 replaces the generic Fuel category with separate smelting/smoking/blasting categories; cross-key translation reuse is forbidden for that semantic split.
+- G41 / Minecraft 1.21.5 uses the final maintained 1.21.5 branch endpoint `0772287a157beb93f438ee10f88afe402e262856` and introduces the deterministic full repair override for malformed upstream `uk_ua.json`.
+- G42 / Minecraft 1.21.6 removes `gui.jei.category.grindstone.experience`, leaving 289 keys, while all surviving same-key English meanings remain unchanged.
 
-### G39 — Minecraft 1.21.1 / JEI 19.21.1
+### G43 — Minecraft 1.21.7 / JEI 23.1.0
 
-- 286 total keys.
-- Ownership: 64 full + 24 supplements + 2 complete upstream.
-- Packaging moves to the dedicated NeoForge candidate path.
-- Full G1→G39 regression validation was green after the historical G14 technical-token boundary correction.
+- Final endpoint `ee33b5d69f6cf9167c32c2e84fdc69fa1b008440` is directly followed by the Minecraft 1.21.8 port.
+- 291 keys = 285 normal + 6 debug.
+- G42→G43: 289 unchanged, 2 added, 0 removed, 0 changed-English values.
+- Added keys are `gui.jei.category.grindstone` and `gui.jei.category.grindstone.experience`.
+- Ownership: 65 addon/full-override + 23 supplements + 2 complete upstream (`en_us`, `zh_cn`).
+- Deterministic NeoForge candidate SHA-256: `d6c24f20e8f650c3ee6e52c0c7d6438f2c3972e2271d077fd93802703de82dbd`.
 
-### G40 — Minecraft 1.21.4 / JEI 20.0.0
+### G44 — Minecraft 1.21.8 / JEI 24.2.0
 
-- 288 total keys = 282 normal + 6 debug.
-- G39→G40: 285 unchanged, 3 added, 1 removed, 0 changed-English values.
-- The generic Fuel category is replaced by separate smelting, smoking and blasting fuel categories. No translation is copied across those different keys.
-- Ownership: 64 full + 25 supplements + 1 complete upstream (`en_us`).
-- `ja_jp` becomes incomplete because it does not yet contain the three new fuel-category semantics.
-- Translation/reconstruction QA and deterministic NeoForge packaging are green; the canonical candidate is persisted under `candidate-jars/1.21.4/`.
-
-### G41 — Minecraft 1.21.5 / JEI 21.4.0
-
-- Final maintained endpoint: `0772287a157beb93f438ee10f88afe402e262856` on the dedicated upstream 1.21.5 branch.
-- 290 total keys = 284 normal + 6 debug.
-- G40→G41: 288 unchanged, 2 added, 0 removed, 0 changed-English values.
-- New semantics: `gui.jei.category.grindstone.experience` and `jei.message.missing.recipes.from.server`.
+- Final endpoint `2f8e4ec2c1e607218eae9b1d9272b87a4dcdb1c8` is directly followed by the Minecraft 1.21.9 port.
+- 305 keys = 299 normal + 6 debug.
+- G43→G44: 290 unchanged, 15 added, 1 removed, 0 changed-English values.
+- New semantics add lookup-history configuration/tooltips and split bookmark visibility tooltips; `jei.tooltip.bookmarks` is removed.
 - Ownership: 65 addon/full-override + 24 supplements + 1 complete upstream (`en_us`).
-- Pinned upstream `uk_ua.json` is malformed JSON. Ukrainian is therefore emitted as an explicit valid full repair override: known syntax defects are repaired, safe upstream target values are preserved, and only missing same-key semantics are filled from deterministic inheritance/fallback.
-- Full reproducible QA run `34930359475` is green.
-- NeoForge packaging-validation run `34930428119` is green with candidate SHA-256 `d07378fa02b78dd7e55c63144030d737a44f1f1dc575a488d88e36915a816638`.
-- Canonical candidate persistence completed on `main` in run `34930590379`, commit `b8d2e402abbdaf9be33ad2ec42816454f42c8629`.
+- Deterministic NeoForge candidate SHA-256: `277074fdea18ac52e2f1e13601cd206dde847195c0253be1486afacc66f2f9fc`.
 
-### G42 — Minecraft 1.21.6 / JEI 22.0.0
+### G45 — Minecraft 1.21.9 / JEI 25.0.1
 
-- Final mainline endpoint: `2a57409c2af0ce9716749a0329166a41cbcf453f`.
-- The next Minecraft port `8a22d93e6e903142c9dbcdf699496f435d1c569d` targets 1.21.7 and directly follows the G42 endpoint.
-- 289 total keys = 283 normal + 6 debug.
-- G41→G42: 289 surviving meanings unchanged, 0 added, 1 removed, 0 changed-English values.
-- Removed semantic: `gui.jei.category.grindstone.experience`; it is not emitted by G42-owned resources.
-- Selected scope remains 90; Minecraft live language membership remains 143 codes with no additions or removals.
-- Ownership: 65 addon/full-override + 24 missing-key-only supplements + 1 complete upstream (`en_us`).
-- Pinned upstream `uk_ua.json` remains malformed; Ukrainian remains a deterministic full repair override rather than a supplement against invalid upstream JSON.
-- Complete frozen-manifest/reconstruction QA run `34931544591` is green.
-- Deterministic NeoForge candidate build/inspection passed in run `34931774000`; candidate SHA-256 is `6a1f0262f68189ae064fbc1909792ae41542af8cfdf6c6f5286e5d703c98fdfb`.
-- Canonical packaging metadata and registry finalization are being completed before merge.
+- Final endpoint: `bdfdb4c09026c4fb488805ff729c66ae48ede875`.
+- Direct next port: `0999689eb56a4bb3f7061af263de7aef387f0045` → Minecraft 1.21.10.
+- Build: NeoForge `21.9.2-beta`, minimum `[21.9.2-beta,)`, Java 21.
+- 305 keys = 299 normal + 6 debug.
+- G44→G45: 297 same-key/same-English meanings unchanged, 8 added, 8 removed, 0 changed-English values.
+- The eight changes are key-category ID renames from `jei.key.category.*` to `key.category.jei.*`; no cross-key translation inheritance is allowed.
+- Selected scope remains 90; ownership is 65 addon/full-override + 24 supplements + 1 complete upstream (`en_us`).
+- Pinned upstream `uk_ua.json` remains malformed and is emitted as a deterministic full repair override.
+- A frozen set of 89 upstream-owned values in incomplete locales fails exact placeholder/technical-literal preservation and receives explicit safe same-key overrides; other valid upstream-owned values remain preserved.
+- Complete reconstruction and deterministic NeoForge packaging are green.
+- Candidate SHA-256: `2042e85d9781b93f1b5fd730a77ea9c8b670ad823b9ea1472c28e03aa0632d88`.
 
 ## Current generation
 
-G42 translation/reconstruction is complete. The chronological next target after G42 merge is **G43 / Minecraft 1.21.7**. Preliminary endpoint research identifies `ee33b5d69f6cf9167c32c2e84fdc69fa1b008440` as the final 1.21.7 mainline endpoint immediately before `f61efdf5f6604d0d3a55a67cc5d28ec340f189aa` (`Update to Minecraft 1.21.8`); G43 remains pending its own isolated audit.
+G45 translation/reconstruction and static candidate packaging are complete on its work branch. After merge and canonical candidate persistence, the next chronological audit target is **G46 / Minecraft 1.21.10**.
 
 ## Release limitations
 

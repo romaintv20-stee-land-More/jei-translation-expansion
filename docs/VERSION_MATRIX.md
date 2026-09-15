@@ -48,6 +48,9 @@ Verified historical JEI/Minecraft localization endpoints. Branch names alone are
 | G40 | 1.21.4 | 20.0.0 | `26845e0` | NeoForge | 288 | 90 | 64 | 25 | 1 | complete |
 | G41 | 1.21.5 | 21.4.0 | `0772287` | NeoForge | 290 | 90 | 65 | 24 | 1 | complete |
 | G42 | 1.21.6 | 22.0.0 | `2a57409` | NeoForge | 289 | 90 | 65 | 24 | 1 | complete |
+| G43 | 1.21.7 | 23.1.0 | `ee33b5d` | NeoForge | 291 | 90 | 65 | 23 | 2 | complete |
+| G44 | 1.21.8 | 24.2.0 | `2f8e4ec` | NeoForge | 305 | 90 | 65 | 24 | 1 | complete |
+| G45 | 1.21.9 | 25.0.1 | `bdfdb4c` | NeoForge | 305 | 90 | 65 | 24 | 1 | complete |
 
 ## Important endpoint transitions
 
@@ -56,9 +59,12 @@ Verified historical JEI/Minecraft localization endpoints. Branch names alone are
 - G33→G34 preserves all 156 JEI English meanings while changing the Minecraft/JEI packaging target to 1.20.1 / JEI 15.2.0.
 - G39 is the project packaging transition to NeoForge for Minecraft 1.21.1.
 - G40 replaces the old generic Fuel category semantic with separate smelting/smoking/blasting fuel categories; cross-key translation reuse is forbidden for that split.
-- G41 uses the later dedicated JEI 1.21.5 branch head `0772287a157beb93f438ee10f88afe402e262856`, not merely the older mainline pre-1.21.6 commit.
-- G41 detects malformed pinned upstream `uk_ua.json`; Ukrainian is therefore a deliberate full repair override instead of a supplement against invalid JSON.
-- G42 returns to the mainline 1.21.6 endpoint. Its English delta from G41 is removal-only: `gui.jei.category.grindstone.experience` is removed while every surviving key/value meaning is unchanged. The malformed `uk_ua` override remains required.
+- G41 uses the later dedicated JEI 1.21.5 branch endpoint `0772287a157beb93f438ee10f88afe402e262856` and introduces the deterministic `uk_ua` repair override for malformed upstream JSON.
+- G42 removes `gui.jei.category.grindstone.experience` while preserving all 289 surviving meanings.
+- G43 restores the grindstone category and XP text, reaching 291 keys; `zh_cn` is complete upstream for this target.
+- G44 expands to 305 keys with lookup-history configuration/tooltips and the split bookmark visibility tooltips.
+- G45 keeps 305 keys but renames eight localization IDs from `jei.key.category.*` to `key.category.jei.*`. Because keys changed, no cross-key translation inheritance is used even when the English text is identical.
+- The direct successor to G45 endpoint `bdfdb4c09026c4fb488805ff729c66ae48ede875` is the Minecraft 1.21.10 port `0999689eb56a4bb3f7061af263de7aef387f0045`.
 
 ## Resource-format and runtime gates
 
@@ -71,8 +77,8 @@ Verified historical JEI/Minecraft localization endpoints. Branch names alone are
 
 Completed generations are registered in `packaging/completed-versions.json`. Their deterministic static candidates are persisted one Minecraft version at a time under `candidate-jars/<minecraft-version>/`. Forge and NeoForge candidates use separate loader-correct metadata paths.
 
-G42 deterministic NeoForge build/inspection is green: 89 emitted language JSON resources and candidate SHA-256 `6a1f0262f68189ae064fbc1909792ae41542af8cfdf6c6f5286e5d703c98fdfb`. Canonical candidate persistence remains a separate `main` packaging step after the generation branch is merged.
+G45 deterministic NeoForge build/inspection is green: 89 emitted language JSON resources and candidate SHA-256 `2042e85d9781b93f1b5fd730a77ea9c8b670ad823b9ea1472c28e03aa0632d88`. Canonical candidate persistence follows merge to `main`.
 
 ## Current target
 
-The next chronological target after G42 is **G43 = Minecraft 1.21.7**. Preliminary endpoint research identifies `ee33b5d69f6cf9167c32c2e84fdc69fa1b008440` as the final 1.21.7 mainline endpoint immediately before `f61efdf5f6604d0d3a55a67cc5d28ec340f189aa` (`Update to Minecraft 1.21.8`). G43 remains preliminary until its isolated audit begins.
+The next chronological target after G45 is **G46 = Minecraft 1.21.10**. Its endpoint must be independently audited before translation or packaging work begins.
