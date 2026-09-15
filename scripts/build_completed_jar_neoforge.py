@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build static-validated completed candidates for NeoForge Java-21 targets.
+"""Build static-validated completed candidates for NeoForge Java-21/25 targets.
 
 This wrapper intentionally leaves the historical Forge builder untouched. It reuses the
 same deterministic resource reconstruction and ZIP assembly primitives, but emits a
@@ -17,6 +17,7 @@ from pathlib import Path
 import build_completed_jar as base
 
 NEOFORGE_STUB_ENTRY = "net/neoforged/fml/common/Mod.class"
+SUPPORTED_JAVA_TARGETS = {21, 25}
 
 
 def neoforge_source() -> str:
@@ -66,6 +67,8 @@ def compile_entrypoint(cfg: dict, version: str, work: Path) -> Path:
     classes = work / "classes"
     classes.mkdir(parents=True, exist_ok=True)
     java_target = int(cfg["java_target"])
+    if java_target not in SUPPORTED_JAVA_TARGETS:
+        raise ValueError(f"unsupported NeoForge Java target: {java_target}")
     subprocess.run(
         ["javac", "--release", str(java_target), "-d", str(classes), str(stub), str(source)],
         check=True,
@@ -141,8 +144,9 @@ def neoforge_mods_toml(cfg: dict, version: str) -> bytes:
 def build(cfg: dict, version: str, output_dir: Path) -> tuple[Path, str]:
     if cfg.get("loader") != "neoforge":
         raise ValueError("NeoForge builder can only package NeoForge targets")
-    if int(cfg["java_target"]) != 21:
-        raise ValueError("current NeoForge completed-candidate path is frozen to Java 21")
+    java_target = int(cfg["java_target"])
+    if java_target not in SUPPORTED_JAVA_TARGETS:
+        raise ValueError(f"current NeoForge completed-candidate path does not support Java {java_target}")
     with tempfile.TemporaryDirectory(prefix=f"jei-translation-expansion-{cfg['minecraft']}-neoforge-") as tmp:
         work = Path(tmp)
         full, supplements = base.reconstruct(cfg, work)
@@ -156,6 +160,7 @@ def build(cfg: dict, version: str, output_dir: Path) -> tuple[Path, str]:
             f"Minecraft-Version: {cfg['minecraft']}\r\n"
             f"JEI-Version: {cfg['jei']}\r\n"
             f"NeoForge-Version: {cfg['neoforge']}\r\n"
+            f"Java-Version: {java_target}\r\n"
             "\r\n"
         ).encode("utf-8")
         entries: list[tuple[str, bytes]] = [

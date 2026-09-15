@@ -1,0 +1,68 @@
+name: Validate G48 Minecraft 26.1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g48-mc26.1-audit']
+    paths:
+      - 'scripts/audit_26_1.py'
+      - 'scripts/bootstrap_26_1.py'
+      - 'scripts/reconstruct_26_1.py'
+      - 'scripts/validate_26_1_delta.py'
+      - 'scripts/validate_26_1_complete.py'
+      - '.github/workflows/audit-g48.yml'
+      - 'upstream/sources/1.21.11/en_us.json'
+      - 'upstream/sources/26.1/en_us.json'
+      - 'upstream/diffs/1.21.11-to-26.1.json'
+      - 'upstream/minecraft-1.21.11-language-scope.json'
+      - 'upstream/minecraft-26.1-language-audit.json'
+      - 'upstream/minecraft-26.1-language-scope.json'
+      - 'translations/g48-mc26.1/policy.json'
+      - 'scripts/reconstruct_1_21_11.py'
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit final Minecraft 26.1 endpoint
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/audit_26_1.py
+      - name: Freeze G48 manifests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/bootstrap_26_1.py
+      - name: Validate frozen G48 delta
+        run: python scripts/validate_26_1_delta.py
+      - name: Validate complete G48 reconstruction
+        run: python scripts/validate_26_1_complete.py
+      - name: Persist frozen G48 manifests to work branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            upstream/sources/26.1/en_us.json \
+            upstream/diffs/1.21.11-to-26.1.json \
+            upstream/minecraft-26.1-language-audit.json \
+            upstream/minecraft-26.1-language-scope.json \
+            translations/g48-mc26.1/policy.json
+          if git diff --cached --quiet; then
+            echo 'Frozen G48 manifests already match.'
+            exit 0
+          fi
+          git commit -m 'Freeze G48 Minecraft 26.1 manifests'
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
