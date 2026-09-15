@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "last_updated": "2026-09-15",
-  "status": "complete-through-g47",
+  "status": "complete-through-g48",
   "generations": [
     {
       "id": "g1-mc1.8",
@@ -1270,6 +1270,34 @@
       "neoforge": "21.11.45",
       "neoforge_loader_version_range": "[4,)",
       "neoforge_version_range": "[21.11.44,)"
+    },
+    {
+      "id": "g48-mc26.1",
+      "minecraft_versions": [
+        "26.1"
+      ],
+      "jei_versions": [
+        "29.2.0"
+      ],
+      "source": "upstream/sources/26.1/en_us.json",
+      "resource_format": "json",
+      "key_count": 309,
+      "addon_full_locale_count": 64,
+      "upstream_missing_key_supplement_locale_count": 25,
+      "reconstruction_script": "scripts/reconstruct_26_1.py",
+      "loader": "neoforge",
+      "java_target": 25,
+      "translation_scope_status": "complete-for-selected-scope",
+      "selected_scope_count": 90,
+      "upstream_complete_selected_locale_count": 1,
+      "audited_commit": "16c0e3b3fcb8cd4093617a691de6f3d1c137e1ca",
+      "minecraft_language_scope": "upstream/minecraft-26.1-language-scope.json",
+      "minecraft_language_audit": "upstream/minecraft-26.1-language-audit.json",
+      "base_generation": "g47-mc1.21.11",
+      "diff_manifest": "upstream/diffs/1.21.11-to-26.1.json",
+      "neoforge": "26.1.0.8-beta",
+      "neoforge_loader_version_range": "[4,)",
+      "neoforge_version_range": "[26.1.0.8-beta,)"
     }
   ],
   "rules": {
