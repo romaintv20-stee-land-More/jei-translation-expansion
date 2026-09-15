@@ -1,0 +1,44 @@
+name: Diagnose G45 upstream literal mismatches
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g45-mc1.21.9-audit']
+    paths:
+      - '.github/workflows/diagnose-g45-upstream-literals.yml'
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Freeze temporary manifests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/bootstrap_1_21_9.py
+      - name: Enumerate unsafe upstream-owned values
+        run: |
+          python - <<'PY'
+          import json, sys
+          from pathlib import Path
+          sys.path.insert(0, 'scripts')
+          import reconstruct_1_21_9 as g45
+
+          target = g45.parse_json(g45.TARGET_SOURCE)
+          scope = json.loads(g45.SCOPE_PATH.read_text(encoding='utf-8'))
+          normal = {k for k in target if not k.startswith(g45.DEBUG_PREFIX)}
+          bad = {}
+          for locale in scope['selected_upstream_incomplete_locales']:
+              upstream = g45.fetch_g45_upstream(locale)
+              mismatches = [
+                  key for key in sorted(normal & set(upstream))
+                  if not g45.preserves_runtime_literals(target[key], upstream[key])
+              ]
+              if mismatches:
+                  bad[locale] = mismatches
+          print('G45_UPSTREAM_LITERAL_MISMATCHES=' + json.dumps(bad, ensure_ascii=False, sort_keys=True))
+          print('G45_UPSTREAM_LITERAL_MISMATCH_COUNT=' + str(sum(map(len, bad.values()))))
+          PY
