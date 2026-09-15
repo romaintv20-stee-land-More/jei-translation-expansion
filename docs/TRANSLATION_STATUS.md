@@ -54,6 +54,7 @@ A generation marked complete here has passed translation/reconstruction QA. That
 | G44 | 1.21.8 | 24.2.0 | 305 | 90 | 65 | 24 | 1 | complete |
 | G45 | 1.21.9 | 25.0.1 | 305 | 90 | 65 | 24 | 1 | complete |
 | G46 | 1.21.10 | 26.2.0 | 308 | 90 | 64 | 25 | 1 | complete |
+| G47 | 1.21.11 | 27.3.0 | 308 | 90 | 64 | 25 | 1 | complete; upstream Maven-only |
 
 ## Reuse and ownership rules
 
@@ -125,9 +126,23 @@ A generation marked complete here has passed translation/reconstruction QA. That
 - Complete reconstruction and deterministic NeoForge packaging are green.
 - Candidate SHA-256: `f0370c0a9bd5bc26d98ae624237a0b39a14c275eeaf54964ffd2c8caef223f8d`.
 
+### G47 — Minecraft 1.21.11 / JEI 27.3.0
+
+- First 1.21.11 port: `6b615d15ef776abf139339779985a91c59c9c324`; upstream explicitly states that this target is **Maven-only** for mod developers and is not a normal public JEI release.
+- Final audited endpoint: `1d37cb1a1cf7139170d214adef128f405b865312`; the next port is `d395fda29b10f09b860d5a6221b459050f5071d3` (`26.1-snapshot-1`).
+- Build: NeoForge `21.11.13-beta`, Java 21, JEI specification version `27.3.0`.
+- 308 keys = 302 normal + 6 debug.
+- G46→G47: 306 unchanged, 2 added, 2 removed, 0 changed-English values.
+- The removed `resourceLocationSearchMode` IDs are replaced by new `identifierSearchMode` IDs; no cross-key translation inheritance is allowed. Project-owned missing values use exact target English.
+- Selected scope remains 90; ownership is 64 addon-full + 25 supplements + 1 complete upstream (`en_us`).
+- `uk_ua` is valid and supplement-owned; no malformed selected upstream locale remains.
+- 92 upstream-owned values fail literal-safety checks and are covered by frozen explicit safety overrides.
+- Complete isolated translation/reconstruction validation run `35002838122` is green.
+- No normal public candidate JAR is added to `candidate-jars/` because upstream JEI 1.21.11 is Maven-only; translation completion and public packaging are deliberately kept separate.
+
 ## Current generation
 
-G46 translation/reconstruction and static candidate packaging are complete on its work branch. After merge and canonical candidate persistence, the next chronological audit target is **G47 / Minecraft 1.21.11**, which upstream explicitly marks as Maven-only.
+G47 translation/reconstruction is complete and statically validated. Public candidate packaging is intentionally withheld because upstream JEI 1.21.11 is Maven-only. The next chronological work item must first identify the next **publicly relevant Minecraft/JEI target** rather than treating the upstream `26.1-snapshot-1` development transition as an automatic public generation.
 
 ## Release limitations
 
