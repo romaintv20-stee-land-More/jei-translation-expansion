@@ -10,6 +10,7 @@ on:
       - 'scripts/reconstruct_26_3_rc_2.py'
       - 'scripts/validate_26_3_rc_2_delta.py'
       - 'scripts/validate_26_3_rc_2_complete.py'
+      - 'scripts/build_provisional_26_3_rc_2_fabric_jar.py'
       - '.github/workflows/audit-g52-pre.yml'
       - 'upstream/sources/26.2/en_us.json'
       - 'upstream/minecraft-26.2-language-scope.json'
@@ -42,6 +43,30 @@ jobs:
         run: python scripts/validate_26_3_rc_2_delta.py
       - name: Validate provisional complete reconstruction
         run: python scripts/validate_26_3_rc_2_complete.py
+      - name: Build provisional Fabric resource-only JAR
+        run: python scripts/build_provisional_26_3_rc_2_fabric_jar.py
+      - name: Inspect provisional Fabric JAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR='build/provisional-jars/26.3-rc-2/jei-translation-expansion-1.0.0-mc26.3-rc-2-fabric-provisional.jar'
+          test -f "$JAR"
+          unzip -t "$JAR"
+          unzip -l "$JAR" | grep -F 'fabric.mod.json'
+          if unzip -l "$JAR" | grep -E 'META-INF/(neo)?forge\.mods\.toml|mcmod\.info'; then
+            echo 'Non-Fabric loader metadata must not be present in provisional artifact'
+            exit 1
+          fi
+          COUNT=$(unzip -Z1 "$JAR" | grep '^assets/jei/lang/.*\.json$' | wc -l)
+          test "$COUNT" -eq 89
+          sha256sum "$JAR"
+      - name: Upload provisional QA artifact only
+        uses: actions/upload-artifact@v4
+        with:
+          name: provisional-jei-translation-expansion-mc26.3-rc-2-fabric
+          path: build/provisional-jars/26.3-rc-2/*.jar
+          if-no-files-found: error
+          retention-days: 7
       - name: Persist provisional translation preparation
         shell: bash
         run: |
