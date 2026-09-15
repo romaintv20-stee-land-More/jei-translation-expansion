@@ -32,6 +32,7 @@ bceba79d16b8dcd2f41e994f417e73d1708f40d3540f4dde61539d24b5ee89b3  candidate-jars
 a0d0126e8ce935a4fcb1dc0dfa7c2a864a3ede4f6b4c9c4eef530d10df0e6fee  candidate-jars/1.20.6/jei-translation-expansion-1.0.0-mc1.20.6-forge.jar
 f07718f00a0675b588c47e9e56b9f327dea29b3d2bb9cd782cba79925720adbf  candidate-jars/1.20/jei-translation-expansion-1.0.0-mc1.20-forge.jar
 b0a437b3cfb547ea1fc19d652b915c28b99d31a2c1f36a57c0d4e27468a900b6  candidate-jars/1.21.1/jei-translation-expansion-1.0.0-mc1.21.1-neoforge.jar
+f0370c0a9bd5bc26d98ae624237a0b39a14c275eeaf54964ffd2c8caef223f8d  candidate-jars/1.21.10/jei-translation-expansion-1.0.0-mc1.21.10-neoforge.jar
 ac7012f100818024329ef2cf2afce4e0f69477f75a00d885b27f9e0b4aaf4056  candidate-jars/1.21.4/jei-translation-expansion-1.0.0-mc1.21.4-neoforge.jar
 d07378fa02b78dd7e55c63144030d737a44f1f1dc575a488d88e36915a816638  candidate-jars/1.21.5/jei-translation-expansion-1.0.0-mc1.21.5-neoforge.jar
 6a1f0262f68189ae064fbc1909792ae41542af8cfdf6c6f5286e5d703c98fdfb  candidate-jars/1.21.6/jei-translation-expansion-1.0.0-mc1.21.6-neoforge.jar
