@@ -44,9 +44,6 @@ ADDED_G45_KEYS = {
     "key.category.jei.dev.tools",
 }
 MALFORMED_FULL_OVERRIDES = {"uk_ua"}
-UPSTREAM_LITERAL_SAFETY_OVERRIDES = {
-    "ar_sa": {"jei.config.client.search.description"},
-}
 
 parse_json = g44.parse_json
 write_json = g44.write_json
@@ -221,7 +218,7 @@ def reconstruct_supplements(target: dict[str, str], scope: dict) -> tuple[dict[s
     for locale in sorted(expected):
         upstream = fetch_g45_upstream(locale)
         missing = normal - set(upstream)
-        override_keys = set(UPSTREAM_LITERAL_SAFETY_OVERRIDES.get(locale, set()))
+        override_keys = set(scope.get("upstream_literal_safety_overrides", {}).get(locale, []))
         for key in override_keys:
             if key not in normal or key not in upstream:
                 raise ValueError(f"{locale}: invalid explicit G45 upstream safety override key {key}")

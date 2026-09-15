@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 import audit_1_21_9 as audit
+import reconstruct_1_21_8 as g44
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_SOURCE = ROOT / "upstream" / "sources" / "1.21.8" / "en_us.json"
@@ -23,8 +24,6 @@ DONOR_LANG_API = f"https://api.github.com/repos/mezz/JustEnoughItems/contents/Co
 DEBUG_PREFIX = audit.DEBUG_PREFIX
 EXPECTED_ADDED = audit.NEW_CATEGORY_KEYS
 EXPECTED_REMOVED = audit.OLD_CATEGORY_KEYS
-UPSTREAM_LITERAL_SAFETY_OVERRIDES = {"ar_sa": ["jei.config.client.search.description"]}
-UPSTREAM_LITERAL_SAFETY_OVERRIDE_REASON = "Pinned ar_sa translation omits the fixed technical literal JEI; emit exact target English for this key."
 
 
 def write_json(path: Path, value) -> None:
@@ -140,6 +139,24 @@ def main() -> int:
     if len(fallback_locales) != 30 or "uk_ua" in fallback_locales:
         raise ValueError("G45 documented fallback ownership changed")
 
+    upstream_literal_safety_overrides: dict[str, list[str]] = {}
+    for locale in incomplete:
+        values, repaired = audit.parse_locale(locale)
+        if repaired:
+            raise ValueError(f"{locale}: malformed locale cannot be a G45 supplement")
+        unsafe = [
+            key for key in sorted(normal & set(values))
+            if not g44.preserves_runtime_literals(target[key], values[key])
+        ]
+        if unsafe:
+            upstream_literal_safety_overrides[locale] = unsafe
+    if sum(len(keys) for keys in upstream_literal_safety_overrides.values()) != 89:
+        raise ValueError(f"G45 upstream literal-safety override inventory changed: {upstream_literal_safety_overrides}")
+    upstream_literal_safety_override_reason = (
+        "Pinned upstream translations that fail exact placeholder/technical-literal preservation are "
+        "overridden only for those specific keys with a safe same-key reconstruction or exact target English."
+    )
+
     TARGET_SOURCE.parent.mkdir(parents=True, exist_ok=True)
     TARGET_SOURCE.write_bytes(target_raw)
     write_json(DIFF_PATH, {
@@ -180,13 +197,13 @@ def main() -> int:
             "category_key_rename_is_cross_key_reuse": True,
         },
         "exact_future_donor": {"commit": DONOR_COMMIT, "exact_same_key_same_english_added_keys": donor_exact_added, "locale_coverage": donor_coverage},
-        "upstream_literal_safety_overrides": UPSTREAM_LITERAL_SAFETY_OVERRIDES,
-        "upstream_literal_safety_override_reason": UPSTREAM_LITERAL_SAFETY_OVERRIDE_REASON,
+        "upstream_literal_safety_overrides": upstream_literal_safety_overrides,
+        "upstream_literal_safety_override_reason": upstream_literal_safety_override_reason,
         "upstream_supplement_policy": {
             "preserve_existing_upstream_keys": True,
             "supplement_only_exact_missing_normal_keys": False,
             "supplement_missing_keys_plus_explicit_safety_overrides": True,
-            "explicit_upstream_owned_override_keys": UPSTREAM_LITERAL_SAFETY_OVERRIDES,
+            "explicit_upstream_owned_override_keys": upstream_literal_safety_overrides,
             "reuse_exact_g44_combined_value_only_for_unchanged_key_and_english": True,
             "future_donor_same_key_same_english_reuse_allowed": True,
             "cross_key_reuse_allowed": False,
@@ -216,8 +233,8 @@ def main() -> int:
         "selected_upstream_completeness": completeness, "malformed_selected_upstream_locales": sorted(malformed),
         "selected_upstream_complete_locales": complete, "selected_upstream_incomplete_locales": incomplete, "addon_full_locales": addon_full,
         "future_donor_commit": DONOR_COMMIT, "future_donor_exact_added_keys": donor_exact_added, "future_donor_locale_coverage": donor_coverage,
-        "upstream_literal_safety_overrides": UPSTREAM_LITERAL_SAFETY_OVERRIDES,
-        "upstream_literal_safety_override_reason": UPSTREAM_LITERAL_SAFETY_OVERRIDE_REASON,
+        "upstream_literal_safety_overrides": upstream_literal_safety_overrides,
+        "upstream_literal_safety_override_reason": upstream_literal_safety_override_reason,
     }
     write_json(AUDIT_PATH, audit_manifest)
 
@@ -235,8 +252,8 @@ def main() -> int:
             "uncertain_translation_fallback": "exact-target-English",
         },
         "malformed_upstream_full_override_locales": sorted(malformed),
-        "upstream_literal_safety_overrides": UPSTREAM_LITERAL_SAFETY_OVERRIDES,
-        "upstream_literal_safety_override_reason": UPSTREAM_LITERAL_SAFETY_OVERRIDE_REASON,
+        "upstream_literal_safety_overrides": upstream_literal_safety_overrides,
+        "upstream_literal_safety_override_reason": upstream_literal_safety_override_reason,
         "runtime_gate": "static translation/reconstruction validation does not promote candidate to release-jars",
     }
     write_json(POLICY_PATH, policy)

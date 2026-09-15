@@ -75,7 +75,17 @@ def main() -> int:
         raise ValueError("G45 malformed override ownership changed")
     if scope.get("documented_full_english_fallback_count") != 30:
         raise ValueError("G45 documented fallback count changed")
-    expected_safety_overrides = {"ar_sa": ["jei.config.client.search.description"]}
+    expected_safety_overrides = {}
+    for locale in scope["selected_upstream_incomplete_locales"]:
+        upstream = g45.fetch_g45_upstream(locale)
+        unsafe = [
+            key for key in sorted(normal & set(upstream))
+            if not g45.preserves_runtime_literals(target[key], upstream[key])
+        ]
+        if unsafe:
+            expected_safety_overrides[locale] = unsafe
+    if sum(len(keys) for keys in expected_safety_overrides.values()) != 89:
+        raise ValueError("G45 upstream literal safety override count changed")
     if scope.get("upstream_literal_safety_overrides") != expected_safety_overrides:
         raise ValueError("G45 upstream literal safety override set changed")
     supplement_policy = scope.get("upstream_supplement_policy", {})
@@ -99,7 +109,7 @@ def main() -> int:
         raise ValueError("G45 donor pin changed")
     if reuse.get("future_donor_allowed_only_for_exact_same_key_same_english") is not True:
         raise ValueError("G45 donor semantic guard changed")
-    if policy.get("upstream_literal_safety_overrides") != {"ar_sa": ["jei.config.client.search.description"]}:
+    if policy.get("upstream_literal_safety_overrides") != expected_safety_overrides:
         raise ValueError("G45 policy upstream literal safety override set changed")
 
     donor_en = g45.donor_english()

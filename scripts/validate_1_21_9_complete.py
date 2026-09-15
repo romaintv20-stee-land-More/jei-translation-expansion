@@ -64,7 +64,7 @@ def main() -> int:
             upstream = g45.fetch_g45_upstream(locale)
             supplement = g45.parse_json(supplement_dir / f"{locale}.json")
             missing = normal - set(upstream)
-            override_keys = set(g45.UPSTREAM_LITERAL_SAFETY_OVERRIDES.get(locale, set()))
+            override_keys = set(scope.get("upstream_literal_safety_overrides", {}).get(locale, []))
             expected = missing | override_keys
             if set(supplement) != expected:
                 raise ValueError(f"{locale}: G45 supplement is not exactly missing keys plus approved safety overrides")
