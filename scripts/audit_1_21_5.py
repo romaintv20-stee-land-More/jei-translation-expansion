@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import urllib.request
 from pathlib import Path
 
@@ -22,6 +23,7 @@ LANG_CONTENTS_API = (
 )
 VERSION_MANIFEST = "https://piston-meta.mojang.com/mc/game/version_manifest_v2.json"
 DEBUG_PREFIX = "description.jei."
+EXPECTED_MALFORMED_SELECTED = {"uk_ua"}
 
 
 def fetch_bytes(url: str, timeout: int = 30) -> bytes:
@@ -43,13 +45,34 @@ def fetch_json(url: str):
     return json.loads(fetch_text(url))
 
 
-def parse_json_bytes(data: bytes) -> dict[str, str]:
-    raw = json.loads(data.decode("utf-8"))
+def clean_mapping(raw: dict) -> dict[str, str]:
     return {str(k): str(v) for k, v in raw.items() if not str(k).startswith("_")}
+
+
+def parse_json_bytes(data: bytes) -> dict[str, str]:
+    return clean_mapping(json.loads(data.decode("utf-8")))
 
 
 def parse_json(path: Path) -> dict[str, str]:
     return parse_json_bytes(path.read_bytes())
+
+
+def parse_pinned_upstream_locale(locale: str, data: bytes) -> tuple[dict[str, str], bool]:
+    """Parse a pinned upstream locale, repairing only the frozen known uk_ua syntax defect."""
+    text = data.decode("utf-8")
+    try:
+        return clean_mapping(json.loads(text)), False
+    except json.JSONDecodeError:
+        if locale != "uk_ua":
+            raise
+        repaired = text.replace(
+            '  "jei.alias.villager.spawn.egg": "HMMM"\n  \n  "modmenu.descriptionTranslation.jei"',
+            '  "jei.alias.villager.spawn.egg": "HMMM",\n  \n  "modmenu.descriptionTranslation.jei"',
+        )
+        repaired = re.sub(r",\s*}\s*$", "\n}\n", repaired)
+        if repaired == text:
+            raise ValueError("uk_ua: expected frozen malformed-JSON repair pattern was not found")
+        return clean_mapping(json.loads(repaired)), True
 
 
 def language_codes(asset_index: dict) -> set[str]:
@@ -113,15 +136,24 @@ def main() -> int:
     locales = upstream_locales()
     selected_upstream_candidates = sorted(set(locales) & inherited)
     completeness: dict[str, dict] = {}
+    malformed_selected: set[str] = set()
     for locale in selected_upstream_candidates:
-        values = parse_json_bytes(fetch_bytes(f"{RAW_LANG}/{locale}.json"))
+        values, repaired = parse_pinned_upstream_locale(locale, fetch_bytes(f"{RAW_LANG}/{locale}.json"))
+        if repaired:
+            malformed_selected.add(locale)
         missing = sorted(target_normal - set(values))
         completeness[locale] = {
             "present": len(target_normal & set(values)),
             "target": len(target_normal),
             "missing": missing,
             "extra": sorted(set(values) - set(target)),
+            "malformed_upstream_json": repaired,
         }
+    if malformed_selected != EXPECTED_MALFORMED_SELECTED:
+        errors.append(
+            f"expected malformed selected upstream locales {sorted(EXPECTED_MALFORMED_SELECTED)}, "
+            f"got {sorted(malformed_selected)}"
+        )
 
     manifest = fetch_json(VERSION_MANIFEST)
     base_entry = next((x for x in manifest.get("versions", []) if x.get("id") == "1.21.4"), None)
@@ -144,17 +176,18 @@ def main() -> int:
         errors.append(f"selected G40 language codes absent from 1.21.5 asset pool: {sorted(absent)}")
 
     upstream_set = set(locales)
+    usable_selected_upstream_set = (inherited & upstream_set) - malformed_selected
     base_upstream = (
         set(base_scope["selected_upstream_complete_locales"])
         | set(base_scope["selected_upstream_incomplete_locales"])
     )
     base_full = set(base_scope["addon_full_locales"])
-    selected_upstream = sorted(inherited & upstream_set)
+    selected_upstream = sorted(usable_selected_upstream_set)
     selected_complete = sorted(x for x in selected_upstream if not completeness[x]["missing"])
     selected_incomplete = sorted(x for x in selected_upstream if completeness[x]["missing"])
-    selected_full = sorted(inherited - upstream_set)
-    newly_upstream = sorted(base_full & upstream_set)
-    no_longer_upstream = sorted(base_upstream - upstream_set)
+    selected_full = sorted(inherited - usable_selected_upstream_set)
+    newly_upstream = sorted(base_full & usable_selected_upstream_set)
+    no_longer_usable_upstream = sorted(base_upstream - usable_selected_upstream_set)
 
     print("Minecraft 1.21.5 final maintained JEI localization exploratory audit")
     print(f"Pinned dedicated-branch head: {PINNED_COMMIT}")
@@ -182,18 +215,21 @@ def main() -> int:
     print(f"Live asset removals ({len(live_removed)}): {', '.join(sorted(live_removed)) or '(none)'}")
     print(f"Historical selected language scope inherited: {len(inherited)}")
     print(f"Pinned JEI upstream locale files: {len(locales)}")
-    print(f"Newly JEI-upstream selected locales from G40 addon-full ({len(newly_upstream)}): {', '.join(newly_upstream) or '(none)'}")
-    print(f"No-longer-upstream selected locales from G40 ({len(no_longer_upstream)}): {', '.join(no_longer_upstream) or '(none)'}")
+    print(f"Malformed selected upstream locale files ({len(malformed_selected)}): {', '.join(sorted(malformed_selected)) or '(none)'}")
+    print(f"Forced full overrides due to malformed upstream JSON: {', '.join(sorted(malformed_selected)) or '(none)'}")
+    print(f"Newly usable JEI-upstream selected locales from G40 addon-full ({len(newly_upstream)}): {', '.join(newly_upstream) or '(none)'}")
+    print(f"No-longer-usable upstream selected locales from G40 ({len(no_longer_usable_upstream)}): {', '.join(no_longer_usable_upstream) or '(none)'}")
     print("Selected upstream completeness against normal G41 target keys:")
-    for locale in selected_upstream:
+    for locale in selected_upstream_candidates:
         info = completeness[locale]
+        suffix = " MALFORMED->FORCED-FULL" if info["malformed_upstream_json"] else ""
         print(
             f"  {locale}: {info['present']}/{info['target']} "
-            f"missing={len(info['missing'])} [{', '.join(info['missing'])}] extra={len(info['extra'])}"
+            f"missing={len(info['missing'])} [{', '.join(info['missing'])}] extra={len(info['extra'])}{suffix}"
         )
-    print(f"Selected upstream complete ({len(selected_complete)}): {', '.join(selected_complete) or '(none)'}")
-    print(f"Selected upstream incomplete ({len(selected_incomplete)}): {', '.join(selected_incomplete) or '(none)'}")
-    print(f"Selected addon-owned full locales ({len(selected_full)}): {', '.join(selected_full) or '(none)'}")
+    print(f"Selected usable upstream complete ({len(selected_complete)}): {', '.join(selected_complete) or '(none)'}")
+    print(f"Selected usable upstream incomplete ({len(selected_incomplete)}): {', '.join(selected_incomplete) or '(none)'}")
+    print(f"Selected addon-owned/full-override locales ({len(selected_full)}): {', '.join(selected_full) or '(none)'}")
 
     if errors:
         print(f"FAIL: {len(errors)} audit error(s)")
