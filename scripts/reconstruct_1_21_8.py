@@ -224,9 +224,12 @@ def reconstruct_all(output: Path, clean: bool = True) -> tuple[int, int, int, di
     scope = json.loads(SCOPE_PATH.read_text(encoding="utf-8"))
     diff = json.loads(DIFF_PATH.read_text(encoding="utf-8"))
     policy = json.loads(POLICY_PATH.read_text(encoding="utf-8"))
+    unchanged, added, removed, changed = semantic_partition()
     normal_count = len([k for k in target if not k.startswith(DEBUG_PREFIX)])
     if (len(base), len(target), normal_count) != (291, 305, 299):
         raise ValueError("G44 source counts changed")
+    if (len(unchanged), len(added), len(removed), len(changed)) != (290, 15, 1, 0):
+        raise ValueError("G44 semantic partition changed")
     if (diff.get("unchanged_key_and_value_count"), diff.get("added_key_count"), diff.get("removed_key_count"), diff.get("changed_english_value_count")) != (290, 15, 1, 0):
         raise ValueError("G44 frozen diff changed")
     reuse = policy.get("translation_reuse", {})
