@@ -6,6 +6,7 @@ on:
     branches: ['work/g50-mc26.1.2-audit']
     paths:
       - '.github/workflows/finalize-g50.yml'
+      - 'scripts/finalize_26_1_2.py'
 
 permissions:
   contents: write
@@ -35,56 +36,18 @@ jobs:
           python scripts/validate_26_1_2_delta.py
           python scripts/validate_26_1_2_complete.py
 
-      - name: Register G50 packaging target
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-
-          path = Path('packaging/completed-versions.json')
-          data = json.loads(path.read_text(encoding='utf-8'))
-          expected = {
-              'generation': 'G50',
-              'minecraft': '26.1.2',
-              'jei': '29.37.0',
-              'era': 'modern',
-              'loader': 'neoforge',
-              'neoforge': '26.1.2.99',
-              'loader_version_range': '[4,)',
-              'neoforge_version_range': '[26.1.2.99,)',
-              'jei_modid': 'jei',
-              'java_target': 25,
-              'format': 'json',
-              'full': 63,
-              'supplements': 26,
-              'keys': 334,
-              'reconstruct_script': 'scripts/reconstruct_26_1_2.py',
-          }
-          matches = [x for x in data['versions'] if x.get('generation') == 'G50' or x.get('minecraft') == '26.1.2']
-          if matches:
-              if matches != [expected]:
-                  raise SystemExit(f'Existing G50 packaging metadata differs: {matches}')
-          else:
-              last = data['versions'][-1]
-              if last.get('generation') != 'G49' or last.get('minecraft') != '26.1.1':
-                  raise SystemExit(f'Expected G49 as current latest target, got {last}')
-              data['versions'].append(expected)
-          data['note'] = 'G1-G50 are translation/reconstruction complete. These builds are static-validated release candidates until their required runtime gates are complete.'
-          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
-          PY
-
-      - name: Synchronize upstream registries through G50
-        run: python scripts/sync_upstream_registries.py --date 2026-09-15
+      - name: Register G50 packaging and registries
+        run: python scripts/finalize_26_1_2.py --phase register
 
       - name: Build G50 NeoForge candidate
         run: python scripts/build_completed_jar_neoforge.py --minecraft 26.1.2 --version 1.0.0 --output-dir build/g50-candidate
 
-      - name: Inspect G50 candidate
+      - name: Inspect G50 candidate and update status
         shell: bash
         run: |
           set -euo pipefail
-          JAR=$(find build/g50-candidate -maxdepth 1 -name 'jei-translation-expansion-1.0.0-mc26.1.2-neoforge.jar' -type f)
-          test -n "$JAR"
+          JAR='build/g50-candidate/jei-translation-expansion-1.0.0-mc26.1.2-neoforge.jar'
+          test -f "$JAR"
           unzip -t "$JAR"
           unzip -l "$JAR" | grep -F 'META-INF/neoforge.mods.toml'
           if unzip -l "$JAR" | grep -F 'META-INF/mods.toml'; then
@@ -94,74 +57,8 @@ jobs:
           COUNT=$(unzip -Z1 "$JAR" | grep -c '^assets/jei/lang/.*\.json$')
           test "$COUNT" -eq 89
           SHA=$(sha256sum "$JAR" | awk '{print $1}')
-          echo "G50_SHA256=$SHA" >> "$GITHUB_ENV"
-          echo "G50_JAR=$JAR" >> "$GITHUB_ENV"
           echo "G50 candidate SHA-256: $SHA"
-
-      - name: Synchronize canonical status through G50
-        shell: bash
-        run: |
-          python - <<'PY'
-          import os
-          from pathlib import Path
-
-          path = Path('PROJECT_STATUS.md')
-          text = path.read_text(encoding='utf-8')
-          row49 = '| G49 | 26.1.1 | 29.4.0 | `5a2ecc4` | 309 | 90 | 64 | 25 | 1 | complete; NeoForge candidate validated |'
-          row50 = '| G50 | 26.1.2 | 29.37.0 | `d7c73ed` | 334 | 90 | 63 | 26 | 1 | complete; NeoForge candidate validated |'
-          if row50 not in text:
-              if row49 not in text:
-                  raise SystemExit('G49 table row not found')
-              text = text.replace(row49, row49 + '\n' + row50, 1)
-
-          milestone = f'''### G50 — Minecraft 26.1.2 / JEI 29.37.0
-
-- first 26.1.2 support commit `481a64808dab4ea205772a7289cc766804f5f5d7` directly follows the G49 endpoint
-- maintained JEI `26.1` branch snapshot pinned at `d7c73ed63a7a25a9ad416428eafef3a3dcf0f1c8` for reproducibility; this is a maintained snapshot, not claimed as a historical final endpoint
-- build: NeoForge `26.1.2.99`, minimum `[26.1.2.99,)`, Java 25
-- 334 keys = 328 normal + 6 debug
-- G49→G50 semantic delta = 294 unchanged + 34 added + 9 removed + 6 changed-English values
-- translation reuse remains limited to exact same-key/same-English meanings; the 40 added/changed meanings fall back to exact target English when not already owned by upstream
-- selected scope remains 90; ownership = 63 addon-full locales + 26 missing-key/safety-override supplements + 1 complete upstream (`en_us`)
-- `fil_ph` moves from add-on full ownership to an incomplete upstream supplement locale
-- Minecraft language membership remains 143 codes with no additions/removals
-- all selected upstream JSON files are syntactically valid at the pinned snapshot
-- 91 upstream-owned values require frozen literal-safety overrides so placeholders and fixed technical literals remain exact
-- isolated complete reconstruction validation run `35020580691`, green
-- deterministic Java-25 NeoForge candidate SHA-256 `{os.environ['G50_SHA256']}`
-- runtime promotion remains separately gated
-
-'''
-          marker = '## Candidate packaging state\n'
-          if '### G50 — Minecraft 26.1.2 / JEI 29.37.0' not in text:
-              if marker not in text:
-                  raise SystemExit('Candidate packaging state heading not found')
-              text = text.replace(marker, milestone + marker, 1)
-
-          old_pack = '''- The canonical candidate inventory on `main` contains **48 version-specific 1.0.0 candidates through Minecraft 26.1**.\n- G49 / Minecraft 26.1.1 has passed complete static reconstruction and deterministic Java-25 NeoForge candidate validation; canonical persistence follows its merge to `main`.\n- Candidate JARs are not runtime-promoted finals.'''
-          new_pack = '''- The canonical candidate inventory on `main` contains **49 version-specific 1.0.0 candidates through Minecraft 26.1.1**.\n- G50 / Minecraft 26.1.2 has passed complete static reconstruction and deterministic Java-25 NeoForge candidate validation; canonical persistence follows its merge to `main`.\n- Candidate JARs are not runtime-promoted finals.'''
-          if old_pack in text:
-              text = text.replace(old_pack, new_pack, 1)
-
-          start = text.find('## Current next target\n')
-          end = text.find('\n## Documentation synchronization debt', start)
-          if start < 0 or end < 0:
-              raise SystemExit('Current next target section not found')
-          next_section = '''## Current next target
-
-- Merge G50 and persist `candidate-jars/26.1.2/jei-translation-expansion-1.0.0-mc26.1.2-neoforge.jar` using the validated candidate digest above.
-- Because JEI still maintains Minecraft 26.1.2 on branch `26.1`, re-audit that branch before declaring a later 26.1.2 snapshot or moving to a subsequent chronological target.
-- Keep all static candidates outside `release-jars/` until their runtime gates are satisfied.
-'''
-          text = text[:start] + next_section + text[end:]
-
-          text = text.replace(
-              '`PROJECT_STATUS.md`, `packaging/completed-versions.json`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through validated G49 on the work branch.',
-              '`PROJECT_STATUS.md`, `packaging/completed-versions.json`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through validated G50 on the work branch.'
-          )
-          text = text.replace('NeoForge candidates G39–G49 remain static candidates', 'NeoForge candidates G39–G50 remain static candidates')
-          path.write_text(text, encoding='utf-8')
-          PY
+          python scripts/finalize_26_1_2.py --phase status --sha256 "$SHA"
 
       - name: Upload validated G50 candidate artifact
         uses: actions/upload-artifact@v4
