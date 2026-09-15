@@ -68,7 +68,7 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G44 | 1.21.8 | 24.2.0 | `2f8e4ec` | 305 | 90 | 65 | 24 | 1 | complete; NeoForge candidate packaged |
 | G45 | 1.21.9 | 25.0.1 | `bdfdb4c` | 305 | 90 | 65 | 24 | 1 | complete; NeoForge candidate packaged |
 | G46 | 1.21.10 | 26.2.0 | `621ddf0` | 308 | 90 | 64 | 25 | 1 | complete; NeoForge candidate packaged |
-| G47 | 1.21.11 | 27.3.0 | `1d37cb1` | 308 | 90 | 64 | 25 | 1 | complete; upstream Maven-only; no public candidate |
+| G47 | 1.21.11 | 27.38.0 | `4b6e473` | 334 | 90 | 63 | 26 | 1 | complete; maintained branch validated; packaging pending |
 
 ## Recent canonical milestones
 
@@ -168,43 +168,45 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 - candidate: `candidate-jars/1.21.10/jei-translation-expansion-1.0.0-mc1.21.10-neoforge.jar`
 - runtime promotion remains separately gated
 
-### G47 — Minecraft 1.21.11 / JEI 27.3.0
+### G47 — Minecraft 1.21.11 / JEI 27.38.0
 
-- first 1.21.11 port `6b615d15ef776abf139339779985a91c59c9c324` directly follows G46 and explicitly states that JEI 1.21.11 will be published **only on Maven for mod developers**, not as a normal end-user release
-- final audited 1.21.11 endpoint `1d37cb1a1cf7139170d214adef128f405b865312`
-- next upstream transition `d395fda29b10f09b860d5a6221b459050f5071d3` is `Update to 26.1-snapshot-1`; do not automatically treat that development snapshot as a public Minecraft generation
-- build: NeoForge `21.11.13-beta`, Java 21, JEI specification version `27.3.0`
-- 308 keys = 302 normal + 6 debug
-- G46→G47 semantic delta = 306 unchanged + 2 added + 2 removed + 0 changed-English values
-- the old `jei.config.client.search.resourceLocationSearchMode*` IDs are removed and replaced by new `jei.config.client.search.identifierSearchMode*` IDs; cross-key translation reuse is forbidden even though the concepts are related
-- project-owned missing values for the two Identifier keys use exact target English
-- selected scope remains 90; ownership = 64 addon-full locales + 25 missing-key/safety-override supplements + 1 complete upstream (`en_us`)
-- `uk_ua` is valid upstream and supplement-owned; no malformed selected upstream locale remains
-- frozen upstream literal-safety override count = 92
-- complete isolated validation run `35002838122`, green
-- **no normal public candidate JAR is produced** for G47 because upstream JEI 1.21.11 is Maven-only; translation completion and public packaging are intentionally separate
+- first 1.21.11 port `6b615d15ef776abf139339779985a91c59c9c324` directly follows G46 and historically stated that JEI 1.21.11 would be Maven-only
+- historical mainline 1.21.11 endpoint `1d37cb1a1cf7139170d214adef128f405b865312`; mainline then moves to `d395fda29b10f09b860d5a6221b459050f5071d3` (`26.1-snapshot-1`)
+- maintained dedicated 1.21.11 branch endpoint `4b6e47334ac4aaeae51d15facbb38c42cb511321` is the canonical G47 source because maintenance continued after mainline moved on
+- maintained build: NeoForge `21.11.45`, minimum `[21.11.44,)`, Java 21, JEI specification version `27.38.0`
+- 334 keys = 328 normal + 6 debug
+- G46→maintained-G47 semantic delta = 291 unchanged + 37 added + 11 removed + 6 changed-English values
+- translation inheritance is allowed only for exact same-key/same-English semantics; cross-key reuse remains forbidden
+- project-owned added or changed meanings use exact target English unless a safe target-upstream translation already owns that key
+- selected scope remains 90; ownership = 63 addon-full locales + 26 missing-key/safety-override supplements + 1 complete upstream (`en_us`)
+- all selected upstream JSON files are syntactically valid at the maintained endpoint; `fil_ph` and `uk_ua` are valid incomplete upstream supplement locales
+- 91 upstream-owned values require frozen literal-safety overrides so placeholders and fixed technical literals remain exact
+- the maintained branch has normal CurseForge project `238222` and Modrinth project `u6dRKJwZ` publication configuration, superseding the first-port Maven-only limitation for current maintained releases
+- isolated maintained-endpoint reconstruction validation run `35006503247`, green
+- public candidate packaging remains a separate project step until the maintained-target metadata is merged and the candidate builder is validated
 
 ## Candidate packaging state
 
 - The canonical candidate inventory on `main` contains **46 version-specific 1.0.0 candidates through Minecraft 1.21.10**.
-- G47 translation/reconstruction is complete, but it is intentionally excluded from normal `candidate-jars/` packaging because upstream JEI 1.21.11 is Maven-only.
+- Maintained G47 translation/reconstruction is complete; its 1.21.11 candidate has not yet been added to `candidate-jars/` while packaging metadata is validated separately.
 - Candidate JARs are not runtime-promoted finals.
 
 ## Current next target
 
-- G47 / Minecraft 1.21.11 translation auditing is complete and statically validated.
-- Before assigning G48, identify the next **publicly relevant Minecraft/JEI target** after the Maven-only 1.21.11 line; do not promote `26.1-snapshot-1` merely because it is the next upstream development commit.
+- Maintained G47 / Minecraft 1.21.11 translation auditing is complete and statically validated at JEI 27.38.0.
+- Validate and persist the dedicated G47 NeoForge candidate now that the maintained upstream branch has normal CurseForge/Modrinth publication configuration.
+- After G47 packaging, audit the Minecraft 26.1/26.1.2 maintained line carefully under the one-Minecraft-version-per-JAR rule before assigning G48/G49.
 - Keep all static candidates outside `release-jars/` until their runtime gates are satisfied.
 
 ## Documentation synchronization debt
 
-- `PROJECT_STATUS.md` and `docs/TRANSLATION_STATUS.md` are synchronized through completed G47 translation/reconstruction.
-- `upstream/versions.json` and `upstream/generations.json` remain packaging-derived and are synchronized through publicly packaged G46; G47 is deliberately not inserted through the packaging registry because its upstream target is Maven-only.
-- `README.md` and `docs/VERSION_MATRIX.md` remain aligned to the normal public candidate line through G46; this is intentional until a subsequent public target is identified.
+- `PROJECT_STATUS.md` and `docs/TRANSLATION_STATUS.md` are synchronized through maintained G47 translation/reconstruction.
+- `upstream/versions.json` and `upstream/generations.json` remain packaging-derived and stay synchronized through G46 until G47 is deliberately added to the packaging registry.
+- `README.md` and `docs/VERSION_MATRIX.md` remain aligned to the packaged candidate line through G46 until G47 candidate packaging is completed.
 
 ## Release gates still open
 
 - Minecraft 1.8.9 prototype/runtime lineage still requires a real client runtime validation before final release promotion.
 - Minecraft 1.13+ missing-key-only JSON supplements require a real runtime resource-stack merge test before promotion to their version-specific release JAR.
 - G39–G46 NeoForge candidates remain static candidates until their version-specific runtime checks are complete.
-- G47 has no normal public candidate because upstream JEI 1.21.11 is Maven-only.
+- G47 translation/reconstruction is statically validated; its maintained-branch candidate remains pending separate packaging validation and will remain runtime-gated after creation.
