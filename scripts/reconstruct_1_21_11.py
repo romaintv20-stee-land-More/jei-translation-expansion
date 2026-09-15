@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Reconstruct Minecraft 1.21.11 / JEI 27.3.0 language resources deterministically."""
+"""Reconstruct maintained Minecraft 1.21.11 / JEI 27.38.0 language resources deterministically."""
 from __future__ import annotations
 
 import argparse
@@ -20,15 +20,68 @@ DIFF_PATH = ROOT / "upstream" / "diffs" / "1.21.10-to-1.21.11.json"
 POLICY_PATH = ROOT / "translations" / "g47-mc1.21.11" / "policy.json"
 DEFAULT_OUTPUT = ROOT / "build" / "reconstructed" / "1.21.11"
 DEBUG_PREFIX = "description.jei."
-G47_COMMIT = "1d37cb1a1cf7139170d214adef128f405b865312"
+G47_COMMIT = "4b6e47334ac4aaeae51d15facbb38c42cb511321"
 RAW_JSON_TEMPLATE = "https://raw.githubusercontent.com/mezz/JustEnoughItems/{commit}/Common/src/main/resources/assets/jei/lang/{locale}.json"
+
 ADDED_G47_KEYS = {
+    "gui.jei.search",
+    "jei.config.client.advanced.recipeSyncWarningEnabled",
+    "jei.config.client.advanced.recipeSyncWarningEnabled.description",
+    "jei.config.client.appearance.toastReflowEnabled",
+    "jei.config.client.appearance.toastReflowEnabled.description",
+    "jei.config.client.bookmarkList.layoutMode",
+    "jei.config.client.bookmarkList.layoutMode.description",
+    "jei.config.client.bookmarkList.navigationMode",
+    "jei.config.client.bookmarkList.navigationMode.description",
+    "jei.config.client.bookmarkList.navigationVisibility",
+    "jei.config.client.bookmarkList.navigationVisibility.description",
+    "jei.config.client.bookmarks.bookmarkOutputAsRecipe",
+    "jei.config.client.bookmarks.bookmarkOutputAsRecipe.description",
+    "jei.config.client.ingredientList.layoutMode",
+    "jei.config.client.ingredientList.layoutMode.description",
+    "jei.config.client.ingredientList.navigationMode",
+    "jei.config.client.ingredientList.navigationMode.description",
+    "jei.config.client.ingredientList.navigationVisibility",
+    "jei.config.client.ingredientList.navigationVisibility.description",
+    "jei.config.client.input.recipeSlotCyclingEnabled",
+    "jei.config.client.input.recipeSlotCyclingEnabled.description",
     "jei.config.client.search.identifierSearchMode",
     "jei.config.client.search.identifierSearchMode.description",
+    "jei.config.debug.debug.debugIngredientsEnabled",
+    "jei.config.debug.debug.debugIngredientsEnabled.description",
+    "jei.message.server.recipe.sync.error",
+    "jei.message.server.recipe.sync.jei.missing",
+    "jei.message.server.recipe.sync.unavailable",
+    "jei.message.server.recipe.sync.vanilla",
+    "jei.tooltip.bookmarks.preview.pin.usage",
+    "jei.tooltip.recipe.any",
+    "jei.tooltip.recipe.any_fuel",
+    "jei.tooltip.recipe.slot.options",
+    "key.jei.pauseRecipeCycling",
+    "key.jei.quickMove",
+    "key.jei.recipeForward",
+    "key.jei.shareToChat",
 }
 REMOVED_G46_KEYS = {
+    "jei.config.client.bookmarkList.buttonNavigationVisibility",
+    "jei.config.client.bookmarkList.buttonNavigationVisibility.description",
+    "jei.config.client.ingredientList.buttonNavigationVisibility",
+    "jei.config.client.ingredientList.buttonNavigationVisibility.description",
     "jei.config.client.search.resourceLocationSearchMode",
     "jei.config.client.search.resourceLocationSearchMode.description",
+    "jei.config.debug.debug.crashingTestItemsEnabled",
+    "jei.config.debug.debug.crashingTestItemsEnabled.description",
+    "jei.config.debug.debug.debugMode",
+    "jei.config.debug.debug.debugMode.description",
+    "jei.tooltip.bookmarks.recipe",
+}
+CHANGED_G47_KEYS = {
+    "jei.config.client.tooltips.holdShiftToShowBookmarkTooltipFeatures",
+    "jei.config.client.tooltips.holdShiftToShowBookmarkTooltipFeatures.description",
+    "jei.tooltip.bookmarks.tooltips.usage",
+    "jei.tooltip.recipe.tag",
+    "jei.tooltip.show.all.recipes.hotkey",
+    "jei.tooltip.show.recipes",
 }
 
 parse_json = g46.parse_json
@@ -101,10 +154,10 @@ def semantic_partition() -> tuple[set[str], set[str], set[str], set[str]]:
     base = parse_json(BASE_SOURCE)
     target = parse_json(TARGET_SOURCE)
     unchanged, added, removed, changed = semantic_sets(base, target)
-    if (len(unchanged), len(added), len(removed), len(changed)) != (306, 2, 2, 0):
+    if (len(unchanged), len(added), len(removed), len(changed)) != (291, 37, 11, 6):
         raise ValueError("G47 frozen semantic partition changed")
-    if added != ADDED_G47_KEYS or removed != REMOVED_G46_KEYS:
-        raise ValueError("G47 renamed-key sets changed")
+    if added != ADDED_G47_KEYS or removed != REMOVED_G46_KEYS or changed != CHANGED_G47_KEYS:
+        raise ValueError("G47 frozen semantic key sets changed")
     return unchanged, added, removed, changed
 
 
@@ -116,20 +169,17 @@ def resolve_unchanged(locale: str, key: str, english: str) -> tuple[str, str]:
     return (value, "g46") if preserves_runtime_literals(english, value) else (english, "english")
 
 
-def resolve_added(key: str, english: str) -> tuple[str, str]:
-    if key not in ADDED_G47_KEYS:
-        raise ValueError(f"unexpected G47 added key: {key}")
-    # The old Resource Location localization IDs are different keys. Cross-key reuse is forbidden.
+def resolve_target_owned(key: str, english: str) -> tuple[str, str]:
+    if key not in ADDED_G47_KEYS and key not in CHANGED_G47_KEYS:
+        raise ValueError(f"unexpected G47 target-owned semantic key: {key}")
     return english, "english"
 
 
 def reconstruct_full(target: dict[str, str], scope: dict) -> tuple[dict[str, dict[str, str]], dict[str, dict[str, int]]]:
     unchanged, added, removed, changed = semantic_partition()
-    if changed or added != ADDED_G47_KEYS or removed != REMOVED_G46_KEYS:
-        raise ValueError("G47 full semantic contract changed")
     expected = set(scope["addon_full_locales"])
     fallback = set(scope["documented_full_english_fallback_locales"])
-    if len(expected) != 64 or scope.get("malformed_upstream_full_override_locales") != []:
+    if len(expected) != 63 or scope.get("malformed_upstream_full_override_locales") != []:
         raise ValueError("G47 full ownership changed")
     if len(fallback) != 30 or not fallback <= expected:
         raise ValueError("G47 fallback ownership changed")
@@ -148,8 +198,8 @@ def reconstruct_full(target: dict[str, str], scope: dict) -> tuple[dict[str, dic
                 value, source = english, "english"
             elif key in unchanged:
                 value, source = resolve_unchanged(locale, key, english)
-            elif key in added:
-                value, source = resolve_added(key, english)
+            elif key in added or key in changed:
+                value, source = resolve_target_owned(key, english)
             else:
                 raise ValueError(f"{locale}: unresolved G47 key {key}")
             values[key] = value
@@ -163,11 +213,9 @@ def reconstruct_full(target: dict[str, str], scope: dict) -> tuple[dict[str, dic
 
 def reconstruct_supplements(target: dict[str, str], scope: dict) -> tuple[dict[str, dict[str, str]], dict[str, dict[str, int]]]:
     unchanged, added, removed, changed = semantic_partition()
-    if changed or added != ADDED_G47_KEYS or removed != REMOVED_G46_KEYS:
-        raise ValueError("G47 supplement semantic contract changed")
     normal = {k for k in target if not k.startswith(DEBUG_PREFIX)}
     expected = set(scope["selected_upstream_incomplete_locales"])
-    if len(expected) != 25 or "uk_ua" not in expected:
+    if len(expected) != 26 or "uk_ua" not in expected or "fil_ph" not in expected:
         raise ValueError("G47 supplement ownership changed")
 
     result: dict[str, dict[str, str]] = {}
@@ -191,8 +239,8 @@ def reconstruct_supplements(target: dict[str, str], scope: dict) -> tuple[dict[s
             english = target[key]
             if key in unchanged:
                 value, source = resolve_unchanged(locale, key, english)
-            elif key in added:
-                value, source = resolve_added(key, english)
+            elif key in added or key in changed:
+                value, source = resolve_target_owned(key, english)
             else:
                 raise ValueError(f"{locale}: unresolved G47 supplement key {key}")
             values[key] = value
@@ -214,25 +262,25 @@ def reconstruct_all(output: Path, clean: bool = True) -> tuple[int, int, int, di
     policy = json.loads(POLICY_PATH.read_text(encoding="utf-8"))
     unchanged, added, removed, changed = semantic_partition()
     normal_count = len([k for k in target if not k.startswith(DEBUG_PREFIX)])
-    if (len(base), len(target), normal_count) != (308, 308, 302):
+    if (len(base), len(target), normal_count) != (308, 334, 328):
         raise ValueError("G47 source counts changed")
-    if (len(unchanged), len(added), len(removed), len(changed)) != (306, 2, 2, 0):
+    if (len(unchanged), len(added), len(removed), len(changed)) != (291, 37, 11, 6):
         raise ValueError("G47 semantic partition changed")
     if (
         diff.get("unchanged_key_and_value_count"), diff.get("added_key_count"),
         diff.get("removed_key_count"), diff.get("changed_english_value_count")
-    ) != (306, 2, 2, 0):
+    ) != (291, 37, 11, 6):
         raise ValueError("G47 frozen diff changed")
     reuse = policy.get("translation_reuse", {})
     if not reuse.get("reuse_exact_unchanged_g46_semantics") or reuse.get("cross_key_reuse_allowed") is not False:
         raise ValueError("G47 reuse policy changed")
-    if not reuse.get("project_owned_added_keys_use_exact_target_english"):
-        raise ValueError("G47 added-key fallback policy changed")
+    if not reuse.get("project_owned_added_or_changed_keys_use_exact_target_english"):
+        raise ValueError("G47 added/changed-key fallback policy changed")
 
     full, full_stats = reconstruct_full(target, scope)
     supplements, supplement_stats = reconstruct_supplements(target, scope)
     complete = set(scope["selected_upstream_complete_locales"])
-    if (len(full), len(supplements), len(complete)) != (64, 25, 1) or complete != {"en_us"}:
+    if (len(full), len(supplements), len(complete)) != (63, 26, 1) or complete != {"en_us"}:
         raise ValueError("G47 ownership total changed")
 
     if clean and output.exists():
@@ -249,10 +297,13 @@ def reconstruct_all(output: Path, clean: bool = True) -> tuple[int, int, int, di
     provenance = {
         "schema_version": 1,
         "generation": "g47-mc1.21.11",
+        "upstream_commit": G47_COMMIT,
         "cross_key_reuse_allowed": False,
-        "upstream_jei_target_is_maven_only": True,
+        "maintained_branch_public_distribution_configured": True,
+        "historical_first_port_maven_only_note": True,
         "added_g47_keys": sorted(added),
         "removed_g46_keys": sorted(removed),
+        "changed_g47_keys": sorted(changed),
         "full_locales": full_stats,
         "supplement_locales": supplement_stats,
         "totals": {
@@ -276,12 +327,12 @@ def main() -> int:
     print(f"Full addon locales: {full}")
     print(f"Missing-key/safety-override upstream supplements: {supplements}")
     print(f"Keys per complete locale: {keys}")
-    print("G46 -> G47: 306 unchanged + 2 added + 2 removed + 0 changed")
-    print("The two Identifier keys use exact target English when project-owned; no cross-key Resource Location reuse is allowed")
-    print("Upstream JEI 1.21.11 is Maven-only; this reconstruction validates translations without asserting a public JEI release")
+    print("G46 -> maintained G47: 291 unchanged + 37 added + 11 removed + 6 changed")
+    print("Only exact same-key/same-English G46 semantics are reusable; project-owned added/changed meanings use exact target English")
+    print("The historical first 1.21.11 port was Maven-only, but the maintained 1.21.11 branch has CurseForge and Modrinth publication configured")
     print(f"Provenance totals: {json.dumps(provenance['totals'], sort_keys=True)}")
     if args.check:
-        print("PASS: Minecraft 1.21.11 deterministic reconstruction")
+        print("PASS: maintained Minecraft 1.21.11 deterministic reconstruction")
     return 0
 
 
