@@ -1,0 +1,75 @@
+name: Validate G46 Minecraft 1.21.10
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g46-mc1.21.10-audit']
+    paths:
+      - 'scripts/audit_1_21_10.py'
+      - 'scripts/bootstrap_1_21_10.py'
+      - 'scripts/reconstruct_1_21_10.py'
+      - 'scripts/validate_1_21_10_delta.py'
+      - 'scripts/validate_1_21_10_complete.py'
+      - 'scripts/sync_g46_status.py'
+      - '.github/workflows/audit-g46.yml'
+      - 'upstream/sources/1.21.9/en_us.json'
+      - 'upstream/sources/1.21.10/en_us.json'
+      - 'upstream/diffs/1.21.9-to-1.21.10.json'
+      - 'upstream/minecraft-1.21.9-language-scope.json'
+      - 'upstream/minecraft-1.21.10-language-audit.json'
+      - 'upstream/minecraft-1.21.10-language-scope.json'
+      - 'translations/g46-mc1.21.10/policy.json'
+      - 'scripts/reconstruct_1_21_9.py'
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit final Minecraft 1.21.10 endpoint
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/audit_1_21_10.py
+      - name: Freeze G46 manifests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/bootstrap_1_21_10.py
+      - name: Validate frozen G46 delta
+        run: python scripts/validate_1_21_10_delta.py
+      - name: Reconstruct and verify G46 resources
+        run: python scripts/reconstruct_1_21_10.py --check
+      - name: Validate complete G46 reconstruction
+        run: python scripts/validate_1_21_10_complete.py
+      - name: Synchronize canonical G46 status
+        run: python scripts/sync_g46_status.py
+      - name: Persist frozen G46 manifests and status to work branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            upstream/sources/1.21.10/en_us.json \
+            upstream/diffs/1.21.9-to-1.21.10.json \
+            upstream/minecraft-1.21.10-language-audit.json \
+            upstream/minecraft-1.21.10-language-scope.json \
+            translations/g46-mc1.21.10/policy.json \
+            PROJECT_STATUS.md \
+            docs/TRANSLATION_STATUS.md
+          if git diff --cached --quiet; then
+            echo 'Frozen G46 manifests and status already match.'
+            exit 0
+          fi
+          git commit -m 'Freeze G46 manifests and synchronize status'
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
