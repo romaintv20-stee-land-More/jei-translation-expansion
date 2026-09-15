@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "project_version": "1.0.0",
-  "note": "G1-G49 are translation/reconstruction complete. These builds are static-validated release candidates until their required runtime gates are complete.",
+  "note": "G1-G50 are translation/reconstruction complete. These builds are static-validated release candidates until their required runtime gates are complete.",
   "versions": [
     {
       "generation": "G1",
@@ -651,7 +651,56 @@
       "keys": 334,
       "reconstruct_script": "scripts/reconstruct_1_21_11.py"
     },
-    {"generation":"G48","minecraft":"26.1","jei":"29.2.0","era":"modern","loader":"neoforge","neoforge":"26.1.0.8-beta","loader_version_range":"[4,)","neoforge_version_range":"[26.1.0.8-beta,)","jei_modid":"jei","java_target":25,"format":"json","full":64,"supplements":25,"keys":309,"reconstruct_script":"scripts/reconstruct_26_1.py"},
-    {"generation":"G49","minecraft":"26.1.1","jei":"29.4.0","era":"modern","loader":"neoforge","neoforge":"26.1.1.1-beta","loader_version_range":"[4,)","neoforge_version_range":"[26.1.0.8-beta,)","jei_modid":"jei","java_target":25,"format":"json","full":64,"supplements":25,"keys":309,"reconstruct_script":"scripts/reconstruct_26_1_1.py"}
+    {
+      "generation": "G48",
+      "minecraft": "26.1",
+      "jei": "29.2.0",
+      "era": "modern",
+      "loader": "neoforge",
+      "neoforge": "26.1.0.8-beta",
+      "loader_version_range": "[4,)",
+      "neoforge_version_range": "[26.1.0.8-beta,)",
+      "jei_modid": "jei",
+      "java_target": 25,
+      "format": "json",
+      "full": 64,
+      "supplements": 25,
+      "keys": 309,
+      "reconstruct_script": "scripts/reconstruct_26_1.py"
+    },
+    {
+      "generation": "G49",
+      "minecraft": "26.1.1",
+      "jei": "29.4.0",
+      "era": "modern",
+      "loader": "neoforge",
+      "neoforge": "26.1.1.1-beta",
+      "loader_version_range": "[4,)",
+      "neoforge_version_range": "[26.1.0.8-beta,)",
+      "jei_modid": "jei",
+      "java_target": 25,
+      "format": "json",
+      "full": 64,
+      "supplements": 25,
+      "keys": 309,
+      "reconstruct_script": "scripts/reconstruct_26_1_1.py"
+    },
+    {
+      "generation": "G50",
+      "minecraft": "26.1.2",
+      "jei": "29.37.0",
+      "era": "modern",
+      "loader": "neoforge",
+      "neoforge": "26.1.2.99",
+      "loader_version_range": "[4,)",
+      "neoforge_version_range": "[26.1.2.99,)",
+      "jei_modid": "jei",
+      "java_target": 25,
+      "format": "json",
+      "full": 63,
+      "supplements": 26,
+      "keys": 334,
+      "reconstruct_script": "scripts/reconstruct_26_1_2.py"
+    }
   ]
 }
