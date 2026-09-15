@@ -1,0 +1,100 @@
+name: Fix G45 upstream literal safety
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g45-mc1.21.9-audit']
+    paths:
+      - '.github/workflows/fix-g45-upstream-literal-safety.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Apply narrow G45 ar_sa safety override
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path: str, old: str, new: str) -> None:
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              if old not in text:
+                  raise SystemExit(f'{path}: expected patch anchor not found')
+              if text.count(old) != 1:
+                  raise SystemExit(f'{path}: patch anchor is not unique')
+              p.write_text(text.replace(old, new, 1), encoding='utf-8')
+
+          # Reconstruction: permit exactly one explicit upstream-owned safety override.
+          replace_once(
+              'scripts/reconstruct_1_21_9.py',
+              'MALFORMED_FULL_OVERRIDES = {"uk_ua"}\n',
+              'MALFORMED_FULL_OVERRIDES = {"uk_ua"}\nUPSTREAM_LITERAL_SAFETY_OVERRIDES = {\n    "ar_sa": {"jei.config.client.search.description"},\n}\n',
+          )
+          replace_once(
+              'scripts/reconstruct_1_21_9.py',
+              '''        upstream = fetch_g45_upstream(locale)\n        missing = normal - set(upstream)\n        values: dict[str, str] = {}\n        count = {"g44":0,"future-donor":0,"english":0,"upstream-owned":len(normal & set(upstream))}\n        for key in sorted(missing):\n            english = target[key]\n            if key in unchanged:\n                value, source = resolve_unchanged(locale, key, english)\n            elif key in added:\n                value, source = resolve_added(locale, key, english)\n            else:\n                raise ValueError(f"{locale}: unresolved G45 supplement key {key}")\n            values[key] = value\n            count[source] += 1\n        if not values or set(values) & set(upstream) or set(values) & REMOVED_G45_KEYS:\n            raise ValueError(f"{locale}: invalid G45 supplement ownership")\n''',
+              '''        upstream = fetch_g45_upstream(locale)\n        missing = normal - set(upstream)\n        override_keys = set(UPSTREAM_LITERAL_SAFETY_OVERRIDES.get(locale, set()))\n        for key in override_keys:\n            if key not in normal or key not in upstream:\n                raise ValueError(f"{locale}: invalid explicit G45 upstream safety override key {key}")\n            if preserves_runtime_literals(target[key], upstream[key]):\n                raise ValueError(f"{locale}: G45 safety override is no longer needed for {key}")\n        needed = missing | override_keys\n        values: dict[str, str] = {}\n        count = {\n            "g44":0, "future-donor":0, "english":0,\n            "upstream-owned":len(normal & set(upstream)),\n            "upstream-safety-overrides":len(override_keys),\n        }\n        for key in sorted(needed):\n            english = target[key]\n            if key in unchanged:\n                value, source = resolve_unchanged(locale, key, english)\n            elif key in added:\n                value, source = resolve_added(locale, key, english)\n            else:\n                raise ValueError(f"{locale}: unresolved G45 supplement key {key}")\n            values[key] = value\n            count[source] += 1\n        overlap = set(values) & set(upstream)\n        if not values or overlap != override_keys or set(values) & REMOVED_G45_KEYS:\n            raise ValueError(f"{locale}: invalid G45 supplement ownership")\n''',
+          )
+
+          # Complete validator: supplements are missing keys plus explicitly approved safety overrides.
+          replace_once(
+              'scripts/validate_1_21_9_complete.py',
+              '''            missing = normal - set(upstream)\n            if set(supplement) != missing:\n                raise ValueError(f"{locale}: G45 supplement is not exactly the missing normal-key set")\n            if set(supplement) & set(upstream):\n                raise ValueError(f"{locale}: G45 supplement overwrites upstream-owned keys")\n''',
+              '''            missing = normal - set(upstream)\n            override_keys = set(g45.UPSTREAM_LITERAL_SAFETY_OVERRIDES.get(locale, set()))\n            expected = missing | override_keys\n            if set(supplement) != expected:\n                raise ValueError(f"{locale}: G45 supplement is not exactly missing keys plus approved safety overrides")\n            overlap = set(supplement) & set(upstream)\n            if overlap != override_keys:\n                raise ValueError(f"{locale}: unexpected G45 upstream-owned supplement overlap: {sorted(overlap)}")\n            for key in override_keys:\n                if g45.preserves_runtime_literals(target[key], upstream[key]):\n                    raise ValueError(f"{locale}: approved G45 safety override is no longer required for {key}")\n                if not g45.preserves_runtime_literals(target[key], supplement[key]):\n                    raise ValueError(f"{locale}: G45 safety override remains unsafe for {key}")\n''',
+          )
+
+          # Bootstrap: freeze and disclose the narrow exception instead of claiming pure missing-key-only ownership.
+          replace_once(
+              'scripts/bootstrap_1_21_9.py',
+              'EXPECTED_REMOVED = audit.OLD_CATEGORY_KEYS\n',
+              'EXPECTED_REMOVED = audit.OLD_CATEGORY_KEYS\nUPSTREAM_LITERAL_SAFETY_OVERRIDES = {"ar_sa": ["jei.config.client.search.description"]}\nUPSTREAM_LITERAL_SAFETY_OVERRIDE_REASON = "Pinned ar_sa translation omits the fixed technical literal JEI; emit exact target English for this key."\n',
+          )
+          replace_once(
+              'scripts/bootstrap_1_21_9.py',
+              '''        "upstream_supplement_policy": {\n            "preserve_existing_upstream_keys": True, "supplement_only_exact_missing_normal_keys": True,\n            "reuse_exact_g44_combined_value_only_for_unchanged_key_and_english": True,\n            "future_donor_same_key_same_english_reuse_allowed": True,\n            "cross_key_reuse_allowed": False, "never_emit_upstream_owned_key": True,\n            "runtime_merge_requires_validation_before_jar_promotion": True,\n        },\n''',
+              '''        "upstream_literal_safety_overrides": UPSTREAM_LITERAL_SAFETY_OVERRIDES,\n        "upstream_literal_safety_override_reason": UPSTREAM_LITERAL_SAFETY_OVERRIDE_REASON,\n        "upstream_supplement_policy": {\n            "preserve_existing_upstream_keys": True,\n            "supplement_only_exact_missing_normal_keys": False,\n            "supplement_missing_keys_plus_explicit_safety_overrides": True,\n            "explicit_upstream_owned_override_keys": UPSTREAM_LITERAL_SAFETY_OVERRIDES,\n            "reuse_exact_g44_combined_value_only_for_unchanged_key_and_english": True,\n            "future_donor_same_key_same_english_reuse_allowed": True,\n            "cross_key_reuse_allowed": False,\n            "never_emit_other_upstream_owned_keys": True,\n            "runtime_merge_requires_validation_before_jar_promotion": True,\n        },\n''',
+          )
+          replace_once(
+              'scripts/bootstrap_1_21_9.py',
+              '''        "future_donor_commit": DONOR_COMMIT, "future_donor_exact_added_keys": donor_exact_added, "future_donor_locale_coverage": donor_coverage,\n    }\n''',
+              '''        "future_donor_commit": DONOR_COMMIT, "future_donor_exact_added_keys": donor_exact_added, "future_donor_locale_coverage": donor_coverage,\n        "upstream_literal_safety_overrides": UPSTREAM_LITERAL_SAFETY_OVERRIDES,\n        "upstream_literal_safety_override_reason": UPSTREAM_LITERAL_SAFETY_OVERRIDE_REASON,\n    }\n''',
+          )
+          replace_once(
+              'scripts/bootstrap_1_21_9.py',
+              '''        "malformed_upstream_full_override_locales": sorted(malformed),\n        "runtime_gate": "static translation/reconstruction validation does not promote candidate to release-jars",\n''',
+              '''        "malformed_upstream_full_override_locales": sorted(malformed),\n        "upstream_literal_safety_overrides": UPSTREAM_LITERAL_SAFETY_OVERRIDES,\n        "upstream_literal_safety_override_reason": UPSTREAM_LITERAL_SAFETY_OVERRIDE_REASON,\n        "runtime_gate": "static translation/reconstruction validation does not promote candidate to release-jars",\n''',
+          )
+
+          # Delta validator: require the exception to stay exact and narrow.
+          replace_once(
+              'scripts/validate_1_21_9_delta.py',
+              '''    if scope.get("documented_full_english_fallback_count") != 30:\n        raise ValueError("G45 documented fallback count changed")\n''',
+              '''    if scope.get("documented_full_english_fallback_count") != 30:\n        raise ValueError("G45 documented fallback count changed")\n    expected_safety_overrides = {"ar_sa": ["jei.config.client.search.description"]}\n    if scope.get("upstream_literal_safety_overrides") != expected_safety_overrides:\n        raise ValueError("G45 upstream literal safety override set changed")\n    supplement_policy = scope.get("upstream_supplement_policy", {})\n    if supplement_policy.get("supplement_missing_keys_plus_explicit_safety_overrides") is not True:\n        raise ValueError("G45 explicit supplement safety-override policy missing")\n    if supplement_policy.get("explicit_upstream_owned_override_keys") != expected_safety_overrides:\n        raise ValueError("G45 explicit upstream-owned override key set changed")\n    if supplement_policy.get("never_emit_other_upstream_owned_keys") is not True:\n        raise ValueError("G45 supplement policy no longer protects other upstream-owned keys")\n''',
+          )
+          replace_once(
+              'scripts/validate_1_21_9_delta.py',
+              '''    if reuse.get("future_donor_allowed_only_for_exact_same_key_same_english") is not True:\n        raise ValueError("G45 donor semantic guard changed")\n''',
+              '''    if reuse.get("future_donor_allowed_only_for_exact_same_key_same_english") is not True:\n        raise ValueError("G45 donor semantic guard changed")\n    if policy.get("upstream_literal_safety_overrides") != {"ar_sa": ["jei.config.client.search.description"]}:\n        raise ValueError("G45 policy upstream literal safety override set changed")\n''',
+          )
+          PY
+
+          git diff --check
+          git diff -- scripts/reconstruct_1_21_9.py scripts/validate_1_21_9_complete.py scripts/bootstrap_1_21_9.py scripts/validate_1_21_9_delta.py
+      - name: Commit fix
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add scripts/reconstruct_1_21_9.py scripts/validate_1_21_9_complete.py scripts/bootstrap_1_21_9.py scripts/validate_1_21_9_delta.py
+          git commit -m 'Handle G45 upstream technical-literal safety override'
+          git pull --rebase origin work/g45-mc1.21.9-audit
+          git push origin HEAD:work/g45-mc1.21.9-audit
