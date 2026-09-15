@@ -1,0 +1,47 @@
+name: Validate G40 Minecraft 1.21.4
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g40-mc1.21.4-audit']
+    paths:
+      - 'scripts/audit_1_21_4.py'
+      - 'scripts/bootstrap_1_21_4.py'
+      - 'scripts/reconstruct_1_21_4.py'
+      - 'scripts/validate_1_21_4_delta.py'
+      - 'scripts/validate_1_21_4_complete.py'
+      - 'translations/g40-mc1.21.4/**'
+      - 'upstream/sources/1.21.4/**'
+      - 'upstream/diffs/1.21.1-to-1.21.4.json'
+      - 'upstream/minecraft-1.21.4-language-audit.json'
+      - 'upstream/minecraft-1.21.4-language-scope.json'
+      - '.github/workflows/audit-g40.yml'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit final Minecraft 1.21.4 / JEI 20.0.0 endpoint
+        run: python scripts/audit_1_21_4.py
+      - name: Verify frozen G40 bootstrap is reproducible
+        shell: bash
+        run: |
+          python scripts/bootstrap_1_21_4.py
+          git diff --exit-code -- \
+            upstream/sources/1.21.4/en_us.json \
+            upstream/diffs/1.21.1-to-1.21.4.json \
+            upstream/minecraft-1.21.4-language-audit.json \
+            upstream/minecraft-1.21.4-language-scope.json \
+            translations/g40-mc1.21.4/policy.json
+      - name: Validate Minecraft 1.21.4 source scope ownership and semantic policy
+        run: python scripts/validate_1_21_4_delta.py
+      - name: Reconstruct and verify Minecraft 1.21.4 resources
+        run: python scripts/reconstruct_1_21_4.py --check
+      - name: Validate Minecraft 1.21.4 complete resources
+        run: python scripts/validate_1_21_4_complete.py

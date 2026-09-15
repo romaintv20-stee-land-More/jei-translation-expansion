@@ -26,9 +26,11 @@ Translations may be created or assisted with AI, but AI output is not treated as
 
 ## Current status
 
-The selected translation/reconstruction scopes are complete and CI-validated from **Minecraft 1.8 through Minecraft 1.18.2** (G1-G27). Version-specific **1.0.0 static-validated JAR candidates** are built separately from runtime release promotion.
+The selected translation/reconstruction scopes are complete and CI-validated from **Minecraft 1.8 through Minecraft 1.21.4** (**G1-G40**).
 
-Minecraft 1.19 / G28 has isolated QA complete but still requires its clean canonical full-history gate before it is treated as completed for packaging.
+Each completed Minecraft target receives its own **JEI Translation Expansion 1.0.0 static-validated JAR candidate**. Forge is used for the historical Forge targets; the current Minecraft 1.21.1 and 1.21.4 targets use their dedicated NeoForge packaging path. Static candidates live under `candidate-jars/<minecraft-version>/` after canonical packaging persistence.
+
+**G40 / Minecraft 1.21.4 / JEI 20.0.0** is pinned to JEI commit `26845e0d2a248b0084481b4a433ef7b32152d4c6`. It contains 288 English keys, keeps the 90-language selected scope, and reconstructs 64 addon-full locales plus 25 missing-key-only upstream supplements; `en_us` is the single complete selected upstream locale. Its isolated translation/reconstruction QA and NeoForge candidate packaging are green.
 
 Runtime-tested final JAR promotion is tracked separately from chronological translation auditing. Final artifacts belong under `release-jars/<minecraft-version>/` only after the required runtime validation. Starting with Minecraft 1.13, missing-key-only JSON supplements remain runtime merge-test-gated before final promotion.
 
@@ -51,7 +53,8 @@ overrides/
 scripts/
 packaging/
   completed-versions.json
-  ...
+candidate-jars/
+  <minecraft-version>/
 docs/
   VERSION_MATRIX.md
   TRANSLATION_STATUS.md
