@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate complete reconstructed Minecraft 1.21.11 / JEI 27.3.0 language resources."""
+"""Validate complete reconstructed maintained Minecraft 1.21.11 / JEI 27.38.0 language resources."""
 from __future__ import annotations
 
 import json
@@ -23,15 +23,15 @@ def main() -> int:
     fallback = set(scope["documented_full_english_fallback_locales"])
     overrides = {locale: set(keys) for locale, keys in scope.get("upstream_literal_safety_overrides", {}).items()}
 
-    if (len(expected_full), len(expected_supp), len(expected_complete)) != (64, 25, 1) or expected_complete != {"en_us"}:
+    if (len(expected_full), len(expected_supp), len(expected_complete)) != (63, 26, 1) or expected_complete != {"en_us"}:
         raise ValueError("G47 frozen ownership changed")
-    if "uk_ua" not in expected_supp or scope.get("malformed_upstream_full_override_locales") != []:
+    if not {"uk_ua", "fil_ph"} <= expected_supp or scope.get("malformed_upstream_full_override_locales") != []:
         raise ValueError("G47 selected upstream validity/ownership changed")
 
     with tempfile.TemporaryDirectory(prefix="jei-g47-complete-") as tmp:
         output = Path(tmp)
         full_count, supp_count, key_count, provenance = g47.reconstruct_all(output)
-        if (full_count, supp_count, key_count) != (64, 25, 308):
+        if (full_count, supp_count, key_count) != (63, 26, 334):
             raise ValueError(f"G47 reconstruction counts changed: {full_count}/{supp_count}/{key_count}")
 
         full_dir = output / "full" / "assets" / "jei" / "lang"
@@ -41,6 +41,7 @@ def main() -> int:
         if full_files != expected_full or supp_files != expected_supp:
             raise ValueError("G47 reconstructed locale file sets differ from frozen ownership")
 
+        target_owned = g47.ADDED_G47_KEYS | g47.CHANGED_G47_KEYS
         for locale in sorted(expected_full):
             values = load_json(full_dir / f"{locale}.json")
             if set(values) != set(target) or set(values) & g47.REMOVED_G46_KEYS:
@@ -50,9 +51,9 @@ def main() -> int:
             for key, english in target.items():
                 if not g47.preserves_runtime_literals(english, values[key]):
                     raise ValueError(f"{locale}: G47 full value breaks runtime literals for {key}")
-            for key in g47.ADDED_G47_KEYS:
-                if values[key] != target[key]:
-                    raise ValueError(f"{locale}: project-owned G47 Identifier key is not exact target English: {key}")
+            for key in target_owned:
+                if not key.startswith(g47.DEBUG_PREFIX) and values[key] != target[key]:
+                    raise ValueError(f"{locale}: project-owned added/changed G47 key is not exact target English: {key}")
 
         for locale in sorted(expected_supp):
             upstream = g47.fetch_g47_upstream(locale)
@@ -78,9 +79,9 @@ def main() -> int:
             for key in normal:
                 if not g47.preserves_runtime_literals(target[key], combined[key]):
                     raise ValueError(f"{locale}: G47 combined value breaks runtime literals for {key}")
-            for key in g47.ADDED_G47_KEYS & set(supplement):
+            for key in target_owned & set(supplement):
                 if supplement[key] != target[key]:
-                    raise ValueError(f"{locale}: project-owned missing Identifier key is not exact target English: {key}")
+                    raise ValueError(f"{locale}: project-owned missing/overridden target-owned key is not exact target English: {key}")
 
         upstream_en = g47.fetch_g47_upstream("en_us")
         if not normal <= set(upstream_en):
@@ -91,23 +92,29 @@ def main() -> int:
 
         if provenance.get("cross_key_reuse_allowed") is not False:
             raise ValueError("G47 provenance permits cross-key reuse")
-        if provenance.get("upstream_jei_target_is_maven_only") is not True:
-            raise ValueError("G47 provenance lost Maven-only publication context")
+        if provenance.get("maintained_branch_public_distribution_configured") is not True:
+            raise ValueError("G47 provenance lost maintained public-distribution context")
+        if provenance.get("historical_first_port_maven_only_note") is not True:
+            raise ValueError("G47 provenance lost historical Maven-only note")
+        if provenance.get("upstream_commit") != g47.G47_COMMIT:
+            raise ValueError("G47 provenance endpoint mismatch")
         if set(provenance.get("added_g47_keys", [])) != g47.ADDED_G47_KEYS:
             raise ValueError("G47 provenance added-key set changed")
         if set(provenance.get("removed_g46_keys", [])) != g47.REMOVED_G46_KEYS:
             raise ValueError("G47 provenance removed-key set changed")
+        if set(provenance.get("changed_g47_keys", [])) != g47.CHANGED_G47_KEYS:
+            raise ValueError("G47 provenance changed-key set changed")
         if provenance.get("totals", {}).get("upstream-safety-overrides") != scope.get("upstream_literal_safety_override_count"):
             raise ValueError("G47 provenance safety-override total mismatch")
 
-    print("PASS: Minecraft 1.21.11 complete deterministic reconstruction")
-    print("Full addon locales: 64")
-    print("Upstream supplement locales: 25")
+    print("PASS: maintained Minecraft 1.21.11 complete deterministic reconstruction")
+    print("Full addon locales: 63")
+    print("Upstream supplement locales: 26")
     print("Complete upstream locales: 1 (en_us)")
-    print("Keys per complete addon locale: 308")
+    print("Keys per complete addon locale: 334")
     print("All emitted/combined values preserve required placeholders and technical literals")
-    print("Identifier localization IDs are treated as new keys; no Resource Location cross-key reuse occurred")
-    print("Upstream JEI 1.21.11 is Maven-only; public packaging remains a separate decision")
+    print("Added/changed project-owned meanings use exact target English; cross-key reuse is forbidden")
+    print("Historical first port was Maven-only; maintained branch now has CurseForge + Modrinth publishing configured")
     return 0
 
 
