@@ -53,6 +53,7 @@ A generation marked complete here has passed translation/reconstruction QA. That
 | G43 | 1.21.7 | 23.1.0 | 291 | 90 | 65 | 23 | 2 | complete |
 | G44 | 1.21.8 | 24.2.0 | 305 | 90 | 65 | 24 | 1 | complete |
 | G45 | 1.21.9 | 25.0.1 | 305 | 90 | 65 | 24 | 1 | complete |
+| G46 | 1.21.10 | 26.2.0 | 308 | 90 | 64 | 25 | 1 | complete |
 
 ## Reuse and ownership rules
 
@@ -112,9 +113,21 @@ A generation marked complete here has passed translation/reconstruction QA. That
 - Complete reconstruction and deterministic NeoForge packaging are green.
 - Candidate SHA-256: `2042e85d9781b93f1b5fd730a77ea9c8b670ad823b9ea1472c28e03aa0632d88`.
 
+### G46 — Minecraft 1.21.10 / JEI 26.2.0
+
+- Final endpoint: `621ddf003a8eceffcba0fd808a955e280f87a4c0`.
+- Direct next port: `6b615d15ef776abf139339779985a91c59c9c324` → Minecraft 1.21.11; upstream marks that target Maven-only.
+- Build: NeoForge `21.10.64`, minimum `[21.9.2-beta,)`, Java 21.
+- 308 keys = 302 normal + 6 debug.
+- G45→G46: 305 unchanged, 3 added, 0 removed, 0 changed-English values.
+- Selected scope remains 90; ownership is 64 addon-full + 25 supplements + 1 complete upstream (`en_us`).
+- `uk_ua` is valid upstream again and is supplement-owned rather than a full repair override.
+- Complete reconstruction and deterministic NeoForge packaging are green.
+- Candidate SHA-256: `f0370c0a9bd5bc26d98ae624237a0b39a14c275eeaf54964ffd2c8caef223f8d`.
+
 ## Current generation
 
-G45 translation/reconstruction and static candidate packaging are complete on its work branch. After merge and canonical candidate persistence, the next chronological audit target is **G46 / Minecraft 1.21.10**.
+G46 translation/reconstruction and static candidate packaging are complete on its work branch. After merge and canonical candidate persistence, the next chronological audit target is **G47 / Minecraft 1.21.11**, which upstream explicitly marks as Maven-only.
 
 ## Release limitations
 

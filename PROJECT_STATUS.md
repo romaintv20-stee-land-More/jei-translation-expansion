@@ -67,6 +67,7 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G43 | 1.21.7 | 23.1.0 | `ee33b5d` | 291 | 90 | 65 | 23 | 2 | complete; NeoForge packaging validated |
 | G44 | 1.21.8 | 24.2.0 | `2f8e4ec` | 305 | 90 | 65 | 24 | 1 | complete; NeoForge packaging validated |
 | G45 | 1.21.9 | 25.0.1 | `bdfdb4c` | 305 | 90 | 65 | 24 | 1 | complete; NeoForge packaging validated |
+| G46 | 1.21.10 | 26.2.0 | `621ddf0` | 308 | 90 | 64 | 25 | 1 | complete; NeoForge packaging validated |
 
 ## Recent canonical milestones
 
@@ -149,25 +150,40 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 - deterministic NeoForge candidate SHA-256 `2042e85d9781b93f1b5fd730a77ea9c8b670ad823b9ea1472c28e03aa0632d88`
 - runtime promotion remains separately gated
 
+### G46 — Minecraft 1.21.10 / JEI 26.2.0
+
+- final 1.21.10 mainline endpoint `621ddf003a8eceffcba0fd808a955e280f87a4c0`
+- next Minecraft port `6b615d15ef776abf139339779985a91c59c9c324` targets 1.21.11 and is directly parented by the G46 endpoint; upstream explicitly marks 1.21.11 as Maven-only
+- build: NeoForge `21.10.64`, minimum `[21.9.2-beta,)`, Java 21
+- 308 keys = 302 normal + 6 debug
+- G45→G46 semantic delta = 305 unchanged + 3 added + 0 removed + 0 changed-English values
+- added keys: `jei.config.client.tooltips.enableRecipesGuiIngredientsSummary`, `jei.config.client.tooltips.enableRecipesGuiIngredientsSummary.description`, and `jei.tooltip.recipe.tooltips.craft.ingredients`
+- selected scope remains 90; ownership = 64 addon-full locales + 25 missing-key/safety-override supplements + 1 complete upstream (`en_us`)
+- `uk_ua` is valid upstream again in G46 and returns to supplement ownership instead of a full repair override
+- 92 frozen upstream-owned values require literal-safety overrides; all emitted/combined values preserve required placeholders and fixed technical literals
+- deterministic NeoForge candidate SHA-256 `f0370c0a9bd5bc26d98ae624237a0b39a14c275eeaf54964ffd2c8caef223f8d`
+- final packaging-validation run `34964123873`, green
+- runtime promotion remains separately gated
+
 ## Candidate packaging state
 
-- The canonical candidate inventory on `main` contains **44 version-specific 1.0.0 candidates through Minecraft 1.21.8**.
-- G45 has passed complete translation/reconstruction QA and deterministic NeoForge packaging on the work branch; canonical `candidate-jars/1.21.9/` persistence follows merge to `main`.
+- The canonical candidate inventory on `main` contains **45 version-specific 1.0.0 candidates through Minecraft 1.21.9**.
+- G46 has passed complete translation/reconstruction QA and deterministic NeoForge packaging on the work branch; canonical `candidate-jars/1.21.10/` persistence follows merge to `main`.
 - Candidate JARs are not runtime-promoted finals.
 
 ## Current next target
 
-- Merge the completed G45 / Minecraft 1.21.9 work and let the main packaging workflow persist its NeoForge candidate.
-- The chronological next audit target is **G46 = Minecraft 1.21.10**.
+- Merge the completed G46 / Minecraft 1.21.10 work and let the main packaging workflow persist its NeoForge candidate.
+- The chronological next audit target is **G47 = Minecraft 1.21.11**; upstream explicitly states that this JEI target is Maven-only, so translation auditing and public packaging must remain distinct decisions.
 - Keep all static candidates outside `release-jars/` until their runtime gates are satisfied.
 
 ## Documentation synchronization debt
 
-- `PROJECT_STATUS.md`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through completed G45.
+- `PROJECT_STATUS.md`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through completed G46.
 - `README.md`, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` should be synchronized through G45 before final public release preparation.
 
 ## Release gates still open
 
 - Minecraft 1.8.9 prototype/runtime lineage still requires a real client runtime validation before final release promotion.
 - Minecraft 1.13+ missing-key-only JSON supplements require a real runtime resource-stack merge test before promotion to their version-specific release JAR.
-- G39–G45 NeoForge candidates remain static candidates until their version-specific runtime checks are complete.
+- G39–G46 NeoForge candidates remain static candidates until their version-specific runtime checks are complete.
