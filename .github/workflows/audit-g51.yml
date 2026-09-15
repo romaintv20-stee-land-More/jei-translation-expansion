@@ -1,4 +1,4 @@
-name: Audit G51 Minecraft 26.2
+name: Validate G51 Minecraft 26.2
 
 on:
   workflow_dispatch:
@@ -6,19 +6,31 @@ on:
     branches: ['work/g51-mc26.2-audit']
     paths:
       - 'scripts/audit_26_2.py'
+      - 'scripts/bootstrap_26_2.py'
+      - 'scripts/reconstruct_26_2.py'
+      - 'scripts/validate_26_2_delta.py'
+      - 'scripts/validate_26_2_complete.py'
       - '.github/workflows/audit-g51.yml'
       - 'upstream/sources/26.1.2/en_us.json'
+      - 'upstream/sources/26.2/en_us.json'
+      - 'upstream/diffs/26.1.2-to-26.2.json'
       - 'upstream/minecraft-26.1.2-language-scope.json'
+      - 'upstream/minecraft-26.2-language-audit.json'
+      - 'upstream/minecraft-26.2-language-scope.json'
+      - 'translations/g51-mc26.2/policy.json'
+      - 'scripts/reconstruct_26_1_2.py'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
-  audit:
+  validate:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -27,3 +39,30 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/audit_26_2.py
+      - name: Freeze G51 manifests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/bootstrap_26_2.py
+      - name: Validate frozen G51 delta
+        run: python scripts/validate_26_2_delta.py
+      - name: Validate complete G51 reconstruction
+        run: python scripts/validate_26_2_complete.py
+      - name: Persist frozen G51 manifests to work branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            upstream/sources/26.2/en_us.json \
+            upstream/diffs/26.1.2-to-26.2.json \
+            upstream/minecraft-26.2-language-audit.json \
+            upstream/minecraft-26.2-language-scope.json \
+            translations/g51-mc26.2/policy.json
+          if git diff --cached --quiet; then
+            echo 'Frozen G51 manifests already match.'
+            exit 0
+          fi
+          git commit -m 'Freeze G51 Minecraft 26.2 manifests'
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
