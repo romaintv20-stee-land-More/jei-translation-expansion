@@ -130,7 +130,7 @@ A generation marked complete here has passed translation/reconstruction QA. That
 - Selected scope remains 90; ownership is 65 addon/full-override + 23 missing-key-only supplements + 2 complete upstream (`en_us`, `zh_cn`).
 - Pinned upstream `uk_ua.json` remains malformed and is emitted as a deterministic full repair override.
 - Isolated frozen-manifest/reconstruction validation run `34934366667` is green.
-- Final packaging validation run `34936216979` is green with 88 emitted language resources and candidate SHA-256 `0ca07362ac8802b440d59904092bd357463844421aa4b856ec17659b8011cf2a`.
+- Final packaging validation run `34936216979` is green with 88 emitted language resources and candidate SHA-256 `d6c24f20e8f650c3ee6e52c0c7d6438f2c3972e2271d077fd93802703de82dbd`.
 
 ## Current generation
 
