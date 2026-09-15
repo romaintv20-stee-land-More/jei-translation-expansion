@@ -49,6 +49,7 @@ A generation marked complete here has passed translation/reconstruction QA. That
 | G39 | 1.21.1 | 19.21.1 | 286 | 90 | 64 | 24 | 2 | complete |
 | G40 | 1.21.4 | 20.0.0 | 288 | 90 | 64 | 25 | 1 | complete |
 | G41 | 1.21.5 | 21.4.0 | 290 | 90 | 65 | 24 | 1 | complete |
+| G42 | 1.21.6 | 22.0.0 | 289 | 90 | 65 | 24 | 1 | complete |
 
 ## Reuse and ownership rules
 
@@ -100,12 +101,25 @@ A generation marked complete here has passed translation/reconstruction QA. That
 - Pinned upstream `uk_ua.json` is malformed JSON. Ukrainian is therefore emitted as an explicit valid full repair override: known syntax defects are repaired, safe upstream target values are preserved, and only missing same-key semantics are filled from deterministic inheritance/fallback.
 - Full reproducible QA run `34930359475` is green.
 - NeoForge packaging-validation run `34930428119` is green with candidate SHA-256 `d07378fa02b78dd7e55c63144030d737a44f1f1dc575a488d88e36915a816638`.
+- Canonical candidate persistence completed on `main` in run `34930590379`, commit `b8d2e402abbdaf9be33ad2ec42816454f42c8629`.
+
+### G42 — Minecraft 1.21.6 / JEI 22.0.0
+
+- Final mainline endpoint: `2a57409c2af0ce9716749a0329166a41cbcf453f`.
+- The next Minecraft port `8a22d93e6e903142c9dbcdf699496f435d1c569d` targets 1.21.7 and directly follows the G42 endpoint.
+- 289 total keys = 283 normal + 6 debug.
+- G41→G42: 289 surviving meanings unchanged, 0 added, 1 removed, 0 changed-English values.
+- Removed semantic: `gui.jei.category.grindstone.experience`; it is not emitted by G42-owned resources.
+- Selected scope remains 90; Minecraft live language membership remains 143 codes with no additions or removals.
+- Ownership: 65 addon/full-override + 24 missing-key-only supplements + 1 complete upstream (`en_us`).
+- Pinned upstream `uk_ua.json` remains malformed; Ukrainian remains a deterministic full repair override rather than a supplement against invalid upstream JSON.
+- Complete frozen-manifest/reconstruction QA run `34931544591` is green.
+- Deterministic NeoForge candidate build/inspection passed in run `34931774000`; candidate SHA-256 is `6a1f0262f68189ae064fbc1909792ae41542af8cfdf6c6f5286e5d703c98fdfb`.
+- Canonical packaging metadata and registry finalization are being completed before merge.
 
 ## Current generation
 
-G42 targets **Minecraft 1.21.6 / JEI 22.0.0** at `2a57409c2af0ce9716749a0329166a41cbcf453f`. Its next-version boundary is exact because Minecraft 1.21.7 port commit `8a22d93e6e903142c9dbcdf699496f435d1c569d` directly follows that endpoint.
-
-Preliminary frozen English delta: 289 surviving meanings unchanged, 0 added, 1 removed, 0 changed-English values. The removed key is `gui.jei.category.grindstone.experience`. Full scope/ownership/reconstruction validation is in progress on `work/g42-mc1.21.6-audit`.
+G42 translation/reconstruction is complete. The chronological next target after G42 merge is **G43 / Minecraft 1.21.7**. Preliminary endpoint research identifies `ee33b5d69f6cf9167c32c2e84fdc69fa1b008440` as the final 1.21.7 mainline endpoint immediately before `f61efdf5f6604d0d3a55a67cc5d28ec340f189aa` (`Update to Minecraft 1.21.8`); G43 remains pending its own isolated audit.
 
 ## Release limitations
 
