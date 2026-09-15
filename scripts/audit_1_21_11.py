@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the final Minecraft 1.21.11 / JEI 27.3.0 endpoint before freezing G47 manifests."""
+"""Audit the maintained Minecraft 1.21.11 JEI endpoint before freezing G47 manifests."""
 from __future__ import annotations
 
 import json
@@ -12,8 +12,11 @@ BASE_SOURCE = ROOT / "upstream" / "sources" / "1.21.10" / "en_us.json"
 BASE_SCOPE = ROOT / "upstream" / "minecraft-1.21.10-language-scope.json"
 BASE_ENDPOINT = "621ddf003a8eceffcba0fd808a955e280f87a4c0"
 FIRST_PORT_COMMIT = "6b615d15ef776abf139339779985a91c59c9c324"
-PINNED_COMMIT = "1d37cb1a1cf7139170d214adef128f405b865312"
-NEXT_PORT_COMMIT = "d395fda29b10f09b860d5a6221b459050f5071d3"
+MAINLINE_1_21_11_ENDPOINT = "1d37cb1a1cf7139170d214adef128f405b865312"
+MAINLINE_NEXT_PORT_COMMIT = "d395fda29b10f09b860d5a6221b459050f5071d3"
+# The dedicated 1.21.11 branch continued to receive maintenance after mainline moved to 26.1.
+# Follow the same endpoint policy used for other maintained version branches (for example G41).
+PINNED_COMMIT = "4b6e47334ac4aaeae51d15facbb38c42cb511321"
 RAW_ROOT = f"https://raw.githubusercontent.com/mezz/JustEnoughItems/{PINNED_COMMIT}"
 RAW_LANG = f"{RAW_ROOT}/Common/src/main/resources/assets/jei/lang"
 LANG_API = f"https://api.github.com/repos/mezz/JustEnoughItems/contents/Common/src/main/resources/assets/jei/lang?ref={PINNED_COMMIT}"
@@ -87,27 +90,29 @@ def main() -> int:
     first_message = first_port.get("commit", {}).get("message", "")
     if "Minecraft 1.21.11" not in first_message:
         raise ValueError("first G47 port commit no longer identifies Minecraft 1.21.11")
-    if "not be published except on Maven" not in first_message:
-        raise ValueError("G47 upstream Maven-only publication note changed or disappeared")
 
-    next_port = fetch_json(COMMIT_API.format(commit=NEXT_PORT_COMMIT))
-    assert_single_parent(next_port, PINNED_COMMIT, "26.1-snapshot-1 port")
-    if "26.1-snapshot-1" not in next_port.get("commit", {}).get("message", ""):
-        raise ValueError("next port no longer identifies 26.1-snapshot-1")
+    # Record the historical mainline handoff, but do not mistake it for the end of the maintained
+    # 1.21.11 branch. The dedicated branch is hundreds of commits ahead of this point.
+    mainline_next = fetch_json(COMMIT_API.format(commit=MAINLINE_NEXT_PORT_COMMIT))
+    assert_single_parent(mainline_next, MAINLINE_1_21_11_ENDPOINT, "26.1-snapshot-1 mainline port")
+    if "26.1-snapshot-1" not in mainline_next.get("commit", {}).get("message", ""):
+        raise ValueError("mainline next port no longer identifies 26.1-snapshot-1")
 
     props = fetch_text(f"{RAW_ROOT}/gradle.properties")
     required = (
         "modJavaVersion=21",
         "minecraftVersion=1.21.11",
         "minecraftVersionRange=[1.21.11]",
-        "neoforgeVersion=21.11.13-beta",
+        "neoforgeVersion=21.11.45",
         "neoforgeLoaderVersionRange=[4,)",
-        "neoforgeVersionRange=[21.11.13-beta,)",
-        "specificationVersion=27.3.0",
+        "neoforgeVersionRange=[21.11.44,)",
+        "curseProjectId=238222",
+        "modrinthId=u6dRKJwZ",
+        "specificationVersion=27.38.0",
     )
     for token in required:
         if token not in props:
-            raise ValueError(f"pinned G47 gradle.properties missing {token}")
+            raise ValueError(f"maintained G47 gradle.properties missing {token}")
 
     target = clean(json.loads(fetch_text(f"{RAW_LANG}/en_us.json")))
     normal = {k for k in target if not k.startswith(DEBUG_PREFIX)}
@@ -152,10 +157,12 @@ def main() -> int:
     if selected - target_codes:
         raise ValueError(f"selected locales absent from Minecraft 1.21.11: {sorted(selected-target_codes)}")
 
-    print("PASS: exploratory G47 Minecraft 1.21.11 / JEI 27.3.0 audit")
-    print(f"First port: {FIRST_PORT_COMMIT} (direct child of G46; Maven-only upstream target)")
-    print(f"Endpoint: {PINNED_COMMIT}")
-    print(f"Next port: {NEXT_PORT_COMMIT} (26.1-snapshot-1, direct child)")
+    print("PASS: exploratory G47 maintained Minecraft 1.21.11 audit")
+    print(f"First port: {FIRST_PORT_COMMIT} (direct child of G46)")
+    print(f"Historical mainline endpoint: {MAINLINE_1_21_11_ENDPOINT}")
+    print(f"Maintained branch endpoint: {PINNED_COMMIT}")
+    print(f"Mainline next port: {MAINLINE_NEXT_PORT_COMMIT} (26.1-snapshot-1)")
+    print("Publication metadata: CurseForge and Modrinth publishing are configured on the maintained branch")
     print(f"English: base={len(base)} target={len(target)} normal={len(normal)} debug={len(target)-len(normal)}")
     print(f"Semantic delta: unchanged={len(unchanged)} added={len(added)} removed={len(removed)} changed={len(changed)}")
     print("Added keys: " + json.dumps(added, ensure_ascii=False))
