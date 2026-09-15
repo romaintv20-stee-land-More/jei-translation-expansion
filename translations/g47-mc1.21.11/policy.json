@@ -1,0 +1,23 @@
+{
+  "schema_version": 1,
+  "generation": "g47-mc1.21.11",
+  "minecraft": "1.21.11",
+  "jei": "27.3.0",
+  "selected_scope_count": 90,
+  "translation_reuse": {
+    "reuse_exact_unchanged_g46_semantics": true,
+    "cross_key_reuse_allowed": false,
+    "renamed_resource_location_to_identifier_keys_are_new_semantics_for_translation_ownership": true,
+    "project_owned_added_keys_use_exact_target_english": true
+  },
+  "upstream_policy": {
+    "preserve_safe_upstream_owned_values": true,
+    "supplement_missing_normal_keys_only_except_frozen_literal_safety_overrides": true,
+    "literal_safety_override_count": 92
+  },
+  "publication_context": {
+    "upstream_jei_1_21_11_is_maven_only": true,
+    "do_not_claim_public_curseforge_or_modrinth_jei_dependency": true
+  },
+  "runtime_promotion_separate": true
+}
