@@ -1,6 +1,6 @@
 # JEI Translation Expansion — Canonical Project Status
 
-Last synchronized: **2026-09-14**
+Last synchronized: **2026-09-15**
 
 This file is the canonical handoff for continuing the historical JEI localization audit chronologically.
 
@@ -56,63 +56,63 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G32 | 1.19.4 | 13.1.0 | `b5b0055` | 156 | 88 | 66 | 20 | 2 | complete; candidate packaged |
 | G33 | 1.20 | 14.0.0 | `aa6e142` | 156 | 90 | 68 | 20 | 2 | complete; candidate packaged |
 | G34 | 1.20.1 | 15.2.0 | `eecef8a` | 156 | 90 | 68 | 20 | 2 | complete; candidate packaged |
+| G35 | 1.20.2 | 16.0.0 | `e78fd19` | 156 | 90 | 68 | 20 | 2 | complete; candidate packaged |
+| G36 | 1.20.4 | 17.3.0 | `282f6fa` | 157 | 90 | 67 | 22 | 1 | complete; candidate packaged |
+| G37 | 1.20.6 | 18.0.0 | `7cc7d59` | 157 | 90 | 67 | 22 | 1 | complete; candidate packaged |
+| G38 | 1.21 | 19.8.2 | `0237023` | 176 | 90 | 67 | 21 | 2 | complete; candidate packaged |
+| G39 | 1.21.1 | 19.21.1 | `28eb51f` | 286 | 90 | 64 | 24 | 2 | complete; NeoForge candidate packaged |
+| G40 | 1.21.4 | 20.0.0 | `26845e0` | 288 | 90 | 64 | 25 | 1 | complete; NeoForge packaging validated |
 
 ## Recent canonical milestones
 
-### G31 — Minecraft 1.19.3 / JEI 12.3.0
+### G39 — Minecraft 1.21.1 / JEI 19.21.1
 
-- endpoint `739fde73225d006c83af22db04c5723d9c539dc7`
-- 156 keys = 150 normal + 6 debug; G30→G31 adds 3 normal keys
-- selected historical scope grows 86→88 with Nahuatl (`nah`) and Rusyn (`ry_ua`)
-- ownership = 66 addon-full + 21 supplements + 1 complete upstream
+- final endpoint `28eb51f58d2798512a2ef75cf8b29189228573ad`
+- Minecraft 1.21.1 / NeoForge `21.1.116` / Java 21
+- 286 keys = 280 normal + 6 debug
+- selected scope remains 90
+- ownership = 64 addon-full + 24 missing-key-only supplements + 2 complete upstream (`en_us`, `ja_jp`)
+- full clean G1→G39 validation after the G14 technical-token boundary fix: run `34908672666`, green
+- G14→G39 candidate refresh/persist: run `34927435585`, all 26 builds plus persistence green
+- static candidate: `candidate-jars/1.21.1/jei-translation-expansion-1.0.0-mc1.21.1-neoforge.jar`
 
-### G32 — Minecraft 1.19.4 / JEI 13.1.0
+### G40 — Minecraft 1.21.4 / JEI 20.0.0
 
-- endpoint `b5b00557f5df18c35e545e3cc8cd65ca4b975ba1`
-- all 156 English semantics unchanged from G31
-- selected scope remains 88
-- ownership = 66 addon-full + 20 supplements + 2 complete upstream; `uk_ua` becomes complete upstream
-- candidate: `candidate-jars/1.19.4/jei-translation-expansion-1.0.0-mc1.19.4-forge.jar`
+- final endpoint `26845e0d2a248b0084481b4a433ef7b32152d4c6`, immediately before the JEI Minecraft 1.21.5 port `2cc5d1e8b7fb4f79c917804d7582bb7c48374499`
+- first 1.21.4 port commit `c0d0367841b16fa3a9567c3d93172cbd1f1b578c`
+- Minecraft 1.21.4 / NeoForge `21.4.136` / NeoForge minimum `[21.4.121,)` / Java 21
+- 288 keys = 282 normal + 6 debug
+- G39→G40 semantic delta = 285 unchanged + 3 added + 1 removed + 0 changed-English values
+- removed key: `gui.jei.category.fuel` (`Fuel`)
+- added keys: `gui.jei.category.smelting_fuel`, `gui.jei.category.smoking_fuel`, `gui.jei.category.blasting_fuel`
+- cross-key reuse from the removed generic Fuel key is explicitly forbidden
+- Minecraft language asset pool remains 143 codes and selected historical scope remains 90
+- ownership = 64 addon-full + 25 missing-key-only supplements + 1 complete upstream (`en_us`)
+- `ja_jp` moves from complete upstream to incomplete upstream and is missing exactly the three new fuel-category keys
+- isolated audit/reconstruction/complete QA run `34928320930`, green
+- G40 NeoForge packaging-validation run `34928413594`, green
+- static candidate SHA-256 from packaging validation: `ac7012f100818024329ef2cf2afce4e0f69477f75a00d885b27f9e0b4aaf4056`
+- packaging validation produced 89 JSON resources = 64 full + 25 supplements and verified exact Minecraft/JEI/NeoForge metadata; canonical candidate persistence follows the main packaging workflow after merge
 
-### G33 — Minecraft 1.20 / JEI 14.0.0
+## Candidate packaging state
 
-- endpoint `aa6e14229c0c44cd685ac6b4d1d7f513360da18a`
-- Forge `46.0.1`, Parchment `1.19.3-2023.03.12-1.19.4`, Java 17
-- all 156 English semantics unchanged from G32
-- selected historical scope grows 88→90 with Lao (`lo_la`) and Yakut (`sah_sah`)
-- ownership = 68 addon-full + 20 supplements + 2 complete upstream
-- complete QA run `34812895012`, metadata rerun `34813134898`
-- PR #3 merged as `e78dc4de3f028e8ecc97a288369fa2f73c61eee2`
-- packaging run `34813374412` green
-- candidate: `candidate-jars/1.20/jei-translation-expansion-1.0.0-mc1.20-forge.jar`
-
-### G34 — Minecraft 1.20.1 / JEI 15.2.0
-
-- final endpoint `eecef8ae335701b97a6918e20b4dd87966a46dfa`, immediately before `e78fd195...` (`Update to Minecraft 1.20.2`)
-- Forge `47.0.1`, Parchment `1.19.3-2023.03.12-1.20.1`, Java 17
-- 156 keys = 150 normal + 6 debug; **all 156 English semantics unchanged from G33**
-- Minecraft 1.20 and 1.20.1 use the same asset index `5` (`0dd020f0d45d336531ce00c14065ef6dd01b9bc5`) and 143 language files
-- selected scope remains 90; no language additions/removals
-- ownership remains 68 addon-full + 20 supplements + 2 complete upstream (`en_us`, `uk_ua`)
-- 37 translated/AI-assisted addon-full locales + 31 documented complete-English fallback locales
-- isolated complete QA run `34875502127`, job `104081567846`, green
-- metadata-recording rerun `34875868343`, job `104082770963`, green
-- PR #4 merged as `6269b70a3b607ec589b20509a743e7c21e35ea91`
-- packaging run `34876314002` green; build, bundle, and persistence all succeeded
-- candidate: `candidate-jars/1.20.1/jei-translation-expansion-1.0.0-mc1.20.1-forge.jar`
+- The canonical candidate inventory on `main` currently contains **39 version-specific 1.0.0 candidates through Minecraft 1.21.1**.
+- G40 / Minecraft 1.21.4 has a green deterministic NeoForge packaging validation and is ready for canonical persistence after its generation branch is merged.
+- Candidate JARs are not runtime-promoted finals.
 
 ## Current next target
 
-- **G35 = Minecraft 1.20.2**.
-- first upstream 1.20.2 port commit: `e78fd1951c38770de8462ead2187e565fe2996eb` (`Update to Minecraft 1.20.2`), whose parent is the final G34 endpoint.
-- Resolve the **final** JEI 1.20.2 endpoint before the next Minecraft-version port, then repeat source/scope/ownership/reconstruction QA.
-- Keep G34 and earlier candidates outside `release-jars/` until their runtime gates are satisfied.
+- **G41 = Minecraft 1.21.5**.
+- first upstream 1.21.5 port commit: `2cc5d1e8b7fb4f79c917804d7582bb7c48374499` (`Update to Minecraft 1.21.5`), whose parent is the final G40 endpoint.
+- Resolve the **final** JEI 1.21.5 endpoint before the next Minecraft-version port, then repeat source/scope/ownership/reconstruction QA.
+- Keep all static candidates outside `release-jars/` until their runtime gates are satisfied.
 
 ## Documentation synchronization debt
 
-`upstream/versions.json`, `upstream/generations.json`, README, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` still need broad synchronization through the latest completed generations. Chronological generation work remains the primary task, but this debt should be cleared before final release packaging.
+`upstream/versions.json`, `upstream/generations.json`, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` still need broad synchronization through the latest completed generations. `README.md` and this canonical status are synchronized through G40 in the G40 work branch.
 
 ## Release gates still open
 
-- Minecraft 1.8.9 prototype JAR still requires a real client runtime validation.
+- Minecraft 1.8.9 prototype/runtime lineage still requires a real client runtime validation before final release promotion.
 - Minecraft 1.13+ missing-key-only JSON supplements require a real runtime resource-stack merge test before promotion to their version-specific release JAR.
+- G39 and G40 NeoForge candidates also remain static candidates until their version-specific runtime checks are complete.
