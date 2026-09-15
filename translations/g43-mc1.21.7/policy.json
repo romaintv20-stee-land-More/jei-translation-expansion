@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "generation": "g43-mc1.21.7",
+  "minecraft": "1.21.7",
+  "jei": "23.1.0",
+  "pinned_commit": "ee33b5d69f6cf9167c32c2e84fdc69fa1b008440",
+  "base_generation": "g42-mc1.21.6",
+  "selected_scope_count": 90,
+  "english_target_key_count": 291,
+  "normal_target_key_count": 285,
+  "debug_only_key_count": 6,
+  "translation_reuse": {
+    "reuse_exact_unchanged_g42_semantics": true,
+    "same_key_required": true,
+    "same_english_value_required": true,
+    "cross_key_reuse_allowed": false,
+    "historical_same_key_same_english_reuse_allowed": true,
+    "runtime_literals_must_be_preserved": true,
+    "uncertain_values_use_exact_english_fallback": true
+  },
+  "added_semantics": {
+    "count": 2,
+    "keys": [
+      "gui.jei.category.grindstone",
+      "gui.jei.category.grindstone.experience"
+    ],
+    "fresh_translation_required_or_english_fallback": [
+      "gui.jei.category.grindstone"
+    ],
+    "exact_historical_same_key_reuse_permitted": [
+      "gui.jei.category.grindstone.experience"
+    ],
+    "historical_source_generation": "g41-mc1.21.5"
+  },
+  "upstream_ownership": {
+    "complete_locales": [
+      "en_us",
+      "zh_cn"
+    ],
+    "supplement_locales": [
+      "ar_sa",
+      "bg_bg",
+      "cs_cz",
+      "de_de",
+      "el_gr",
+      "es_es",
+      "fi_fi",
+      "fr_fr",
+      "he_il",
+      "hu_hu",
+      "id_id",
+      "it_it",
+      "ja_jp",
+      "kk_kz",
+      "ko_kr",
+      "lt_lt",
+      "no_no",
+      "pl_pl",
+      "pt_br",
+      "ru_ru",
+      "sv_se",
+      "tr_tr",
+      "vi_vn"
+    ],
+    "supplements_are_missing_normal_keys_only": true,
+    "supplements_must_not_override_upstream_keys": true
+  },
+  "malformed_upstream_override": {
+    "locales": [
+      "uk_ua"
+    ],
+    "full_override_required": true,
+    "repair_is_minimal_and_deterministic": true
+  },
+  "release_gate": {
+    "static_reconstruction_is_not_runtime_promotion": true,
+    "runtime_resource_stack_merge_test_required": true
+  }
+}

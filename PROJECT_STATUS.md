@@ -64,6 +64,7 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G40 | 1.21.4 | 20.0.0 | `26845e0` | 288 | 90 | 64 | 25 | 1 | complete; NeoForge candidate packaged |
 | G41 | 1.21.5 | 21.4.0 | `0772287` | 290 | 90 | 65 | 24 | 1 | complete; NeoForge candidate packaged |
 | G42 | 1.21.6 | 22.0.0 | `2a57409` | 289 | 90 | 65 | 24 | 1 | complete; NeoForge packaging validated |
+| G43 | 1.21.7 | 23.1.0 | `ee33b5d` | 291 | 90 | 65 | 23 | 2 | complete; NeoForge packaging validated |
 
 ## Recent canonical milestones
 
@@ -100,26 +101,40 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 - validated candidate SHA-256 `6a1f0262f68189ae064fbc1909792ae41542af8cfdf6c6f5286e5d703c98fdfb`
 - packaging metadata and synchronized upstream registries are being finalized before merge
 
+### G43 — Minecraft 1.21.7 / JEI 23.1.0
+
+- final 1.21.7 mainline endpoint `ee33b5d69f6cf9167c32c2e84fdc69fa1b008440`
+- next Minecraft port `f61efdf5f6604d0d3a55a67cc5d28ec340f189aa` targets 1.21.8 and directly follows the G43 endpoint
+- build: NeoForge `21.7.15-beta`, minimum `[21.7.15-beta,)`, Java 21
+- 291 keys = 285 normal + 6 debug
+- G42→G43 semantic delta = 289 unchanged + 2 added + 0 removed + 0 changed-English values
+- added keys: `gui.jei.category.grindstone` and `gui.jei.category.grindstone.experience`
+- the reintroduced grindstone-experience key may reuse G41 only for exact same-key/same-English semantics; cross-key reuse remains forbidden
+- selected scope remains 90; ownership = 65 addon/full-override + 23 missing-key-only supplements + 2 complete upstream (`en_us`, `zh_cn`)
+- pinned `uk_ua.json` remains malformed and is handled as a deterministic full repair override
+- complete isolated validation run `34934366667`, green
+- deterministic NeoForge package SHA-256 `d6c24f20e8f650c3ee6e52c0c7d6438f2c3972e2271d077fd93802703de82dbd`
+- runtime promotion remains separately gated
+
 ## Candidate packaging state
 
-- The canonical candidate inventory on `main` now contains **41 version-specific 1.0.0 candidates through Minecraft 1.21.5**.
-- G42 has passed deterministic NeoForge candidate construction and archive/metadata inspection; canonical persistence will follow its merge and main packaging workflow.
+- The canonical candidate inventory on `main` contains **42 version-specific 1.0.0 candidates through Minecraft 1.21.6**.
+- G43 has passed complete translation/reconstruction QA and deterministic NeoForge packaging on the work branch; canonical `candidate-jars/1.21.7/` persistence follows merge to `main`.
 - Candidate JARs are not runtime-promoted finals.
 
 ## Current next target
 
-- Complete G42 packaging metadata/registry finalization, merge G42, then persist its canonical 1.21.6 candidate on `main`.
-- The chronological next audit target is **G43 = Minecraft 1.21.7**.
-- Preliminary endpoint research identifies final 1.21.7 mainline endpoint `ee33b5d69f6cf9167c32c2e84fdc69fa1b008440`, immediately before `f61efdf5f6604d0d3a55a67cc5d28ec340f189aa` (`Update to Minecraft 1.21.8`). Treat this as preliminary until the isolated G43 audit is run.
+- Merge the completed G43 / Minecraft 1.21.7 work and let the main packaging workflow persist its NeoForge candidate.
+- The chronological next audit target is **G44 = Minecraft 1.21.8**.
 - Keep all static candidates outside `release-jars/` until their runtime gates are satisfied.
 
 ## Documentation synchronization debt
 
-- `README.md`, `docs/VERSION_MATRIX.md`, `docs/TRANSLATION_STATUS.md`, and this canonical status are synchronized through completed G42.
-- `upstream/versions.json` and `upstream/generations.json` are finalized through G42 by `scripts/sync_upstream_registries.py` as part of the G42 metadata-finalization workflow.
+- `PROJECT_STATUS.md`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through completed G43.
+- `README.md`, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` remain synchronized through G42 and should be advanced through G43 before final public release preparation.
 
 ## Release gates still open
 
 - Minecraft 1.8.9 prototype/runtime lineage still requires a real client runtime validation before final release promotion.
 - Minecraft 1.13+ missing-key-only JSON supplements require a real runtime resource-stack merge test before promotion to their version-specific release JAR.
-- G39–G42 NeoForge candidates remain static candidates until their version-specific runtime checks are complete.
+- G39–G43 NeoForge candidates remain static candidates until their version-specific runtime checks are complete.

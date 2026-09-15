@@ -1,0 +1,69 @@
+name: Validate G43 Minecraft 1.21.7
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g43-mc1.21.7-audit']
+    paths:
+      - 'scripts/audit_1_21_7.py'
+      - 'scripts/bootstrap_1_21_7.py'
+      - 'scripts/reconstruct_1_21_7.py'
+      - 'scripts/validate_1_21_7_delta.py'
+      - 'scripts/validate_1_21_7_complete.py'
+      - '.github/workflows/audit-g43.yml'
+      - 'upstream/sources/1.21.6/en_us.json'
+      - 'upstream/sources/1.21.7/en_us.json'
+      - 'upstream/diffs/1.21.6-to-1.21.7.json'
+      - 'upstream/minecraft-1.21.6-language-scope.json'
+      - 'upstream/minecraft-1.21.7-language-audit.json'
+      - 'upstream/minecraft-1.21.7-language-scope.json'
+      - 'translations/g43-mc1.21.7/policy.json'
+      - 'scripts/reconstruct_1_21_6.py'
+      - 'scripts/reconstruct_1_21_5.py'
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit final Minecraft 1.21.7 endpoint
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/audit_1_21_7.py
+      - name: Freeze G43 manifests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/bootstrap_1_21_7.py
+      - name: Validate frozen G43 delta
+        run: python scripts/validate_1_21_7_delta.py
+      - name: Validate complete G43 reconstruction
+        run: python scripts/validate_1_21_7_complete.py
+      - name: Persist frozen G43 manifests to work branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            upstream/sources/1.21.7/en_us.json \
+            upstream/diffs/1.21.6-to-1.21.7.json \
+            upstream/minecraft-1.21.7-language-audit.json \
+            upstream/minecraft-1.21.7-language-scope.json \
+            translations/g43-mc1.21.7/policy.json
+          if git diff --cached --quiet; then
+            echo 'Frozen G43 manifests already match.'
+            exit 0
+          fi
+          git commit -m 'Freeze G43 Minecraft 1.21.7 manifests'
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
