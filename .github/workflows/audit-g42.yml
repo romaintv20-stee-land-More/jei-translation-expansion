@@ -1,0 +1,29 @@
+name: Audit G42 Minecraft 1.21.6
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g42-mc1.21.6-audit']
+    paths:
+      - 'scripts/audit_1_21_6.py'
+      - '.github/workflows/audit-g42.yml'
+      - 'upstream/sources/1.21.5/en_us.json'
+      - 'upstream/minecraft-1.21.5-language-scope.json'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit Minecraft 1.21.6 endpoint
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/audit_1_21_6.py
