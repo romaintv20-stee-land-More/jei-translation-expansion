@@ -26,13 +26,11 @@ Translations may be created or assisted with AI, but AI output is not treated as
 
 ## Current status
 
-The selected translation/reconstruction scopes are complete and CI-validated from **Minecraft 1.8 through Minecraft 1.21.5** (**G1-G41**).
+The selected translation/reconstruction scopes are complete and CI-validated from **Minecraft 1.8 through Minecraft 1.21.6** (**G1-G42**).
 
 Each completed Minecraft target receives its own **JEI Translation Expansion 1.0.0 static-validated JAR candidate**. Forge is used for the historical Forge targets; current 1.21.x targets use their dedicated NeoForge packaging path. Static candidates live under `candidate-jars/<minecraft-version>/` after canonical packaging persistence.
 
-**G41 / Minecraft 1.21.5 / JEI 21.4.0** is pinned to final maintained JEI commit `0772287a157beb93f438ee10f88afe402e262856`. It contains 290 English keys, keeps the 90-language selected scope, and reconstructs 65 addon/full-override locales plus 24 missing-key-only upstream supplements; `en_us` is the single complete selected upstream locale. The pinned upstream Ukrainian file is malformed JSON, so `uk_ua` is deliberately emitted as a valid full repair override instead of a supplement against broken upstream data. Full reconstruction QA and NeoForge candidate packaging are green.
-
-**G42 / Minecraft 1.21.6 / JEI 22.0.0** is currently being audited on its exact mainline endpoint. The preliminary semantic delta from G41 is removal-only: 289 surviving key/value meanings remain unchanged and `gui.jei.category.grindstone.experience` is removed.
+**G42 / Minecraft 1.21.6 / JEI 22.0.0** is pinned to JEI commit `2a57409c2af0ce9716749a0329166a41cbcf453f`, whose direct successor is the Minecraft 1.21.7 port. It contains 289 English keys (283 normal + 6 debug), keeps the 90-language selected scope, and reconstructs 65 addon/full-override locales plus 24 missing-key-only upstream supplements; `en_us` is the single complete selected upstream locale. G41→G42 is a removal-only semantic delta: the surviving 289 key/value meanings are unchanged and `gui.jei.category.grindstone.experience` is removed. The pinned upstream Ukrainian file remains malformed JSON, so `uk_ua` remains an explicit valid full repair override. Full reconstruction QA is green, and the deterministic NeoForge candidate build/inspection produced 89 language resources with SHA-256 `6a1f0262f68189ae064fbc1909792ae41542af8cfdf6c6f5286e5d703c98fdfb`.
 
 Runtime-tested final JAR promotion is tracked separately from chronological translation auditing. Final artifacts belong under `release-jars/<minecraft-version>/` only after the required runtime validation. Starting with Minecraft 1.13, missing-key-only JSON supplements remain runtime merge-test-gated before final promotion.
 
