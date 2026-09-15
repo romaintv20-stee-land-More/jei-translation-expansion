@@ -1,0 +1,56 @@
+name: Validate G41 Minecraft 1.21.5
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g41-mc1.21.5-audit']
+    paths:
+      - 'scripts/audit_1_21_5.py'
+      - 'scripts/bootstrap_1_21_5.py'
+      - 'scripts/reconstruct_1_21_5.py'
+      - 'scripts/validate_1_21_5_delta.py'
+      - 'scripts/validate_1_21_5_complete.py'
+      - '.github/workflows/audit-g41.yml'
+      - 'upstream/sources/1.21.4/en_us.json'
+      - 'upstream/sources/1.21.5/en_us.json'
+      - 'upstream/diffs/1.21.4-to-1.21.5.json'
+      - 'upstream/minecraft-1.21.4-language-scope.json'
+      - 'upstream/minecraft-1.21.5-language-audit.json'
+      - 'upstream/minecraft-1.21.5-language-scope.json'
+      - 'translations/g41-mc1.21.5/policy.json'
+      - 'scripts/reconstruct_1_21_4.py'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit final maintained endpoint
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/audit_1_21_5.py
+      - name: Recompute frozen manifests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/bootstrap_1_21_5.py
+      - name: Verify frozen manifests are reproducible
+        shell: bash
+        run: |
+          git diff --exit-code -- \
+            upstream/sources/1.21.5/en_us.json \
+            upstream/diffs/1.21.4-to-1.21.5.json \
+            upstream/minecraft-1.21.5-language-audit.json \
+            upstream/minecraft-1.21.5-language-scope.json \
+            translations/g41-mc1.21.5/policy.json
+      - name: Validate frozen G41 delta
+        run: python scripts/validate_1_21_5_delta.py
+      - name: Validate complete G41 reconstruction
+        run: python scripts/validate_1_21_5_complete.py
