@@ -1,0 +1,43 @@
+name: Preliminary Minecraft 26.3 RC audit
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/next-mc26.3-preaudit']
+    paths:
+      - 'scripts/preaudit_26_3.py'
+      - '.github/workflows/preaudit-26.3.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  preaudit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit current 26.2 head and 26.3 RC preview
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/preaudit_26_3.py
+      - name: Persist preliminary preview manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add upstream/previews/minecraft-26.3-rc2-preaudit.json
+          if git diff --cached --quiet; then
+            echo 'Preview manifest already current.'
+            exit 0
+          fi
+          git commit -m 'Record preliminary Minecraft 26.3 RC audit'
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
