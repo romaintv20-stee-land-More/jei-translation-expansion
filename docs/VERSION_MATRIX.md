@@ -73,7 +73,7 @@ Verified historical JEI/Minecraft localization endpoints. Branch names alone are
 
 Completed generations are registered in `packaging/completed-versions.json`. Their deterministic static candidates are persisted one Minecraft version at a time under `candidate-jars/<minecraft-version>/`. Forge and NeoForge candidates use separate loader-correct metadata paths.
 
-G43 deterministic NeoForge build/inspection is green: 88 emitted language JSON resources and candidate SHA-256 `0ca07362ac8802b440d59904092bd357463844421aa4b856ec17659b8011cf2a`. Canonical candidate persistence remains a separate `main` packaging step after the generation branch is merged.
+G43 deterministic NeoForge build/inspection is green: 88 emitted language JSON resources and candidate SHA-256 `d6c24f20e8f650c3ee6e52c0c7d6438f2c3972e2271d077fd93802703de82dbd`. Canonical candidate persistence remains a separate `main` packaging step after the generation branch is merged.
 
 ## Current target
 
