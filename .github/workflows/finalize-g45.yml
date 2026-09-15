@@ -1,0 +1,222 @@
+name: Finalize G45 Minecraft 1.21.9
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g45-mc1.21.9-audit']
+    paths:
+      - '.github/workflows/finalize-g45.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Revalidate G45 resources
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/audit_1_21_9.py
+          python scripts/bootstrap_1_21_9.py
+          python scripts/validate_1_21_9_delta.py
+          python scripts/validate_1_21_9_complete.py
+
+      - name: Register G45 packaging target
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('packaging/completed-versions.json')
+          data = json.loads(path.read_text(encoding='utf-8'))
+          expected = {
+              'generation': 'G45',
+              'minecraft': '1.21.9',
+              'jei': '25.0.1',
+              'era': 'modern',
+              'loader': 'neoforge',
+              'neoforge': '21.9.2-beta',
+              'loader_version_range': '[4,)',
+              'neoforge_version_range': '[21.9.2-beta,)',
+              'jei_modid': 'jei',
+              'java_target': 21,
+              'format': 'json',
+              'full': 65,
+              'supplements': 24,
+              'keys': 305,
+              'reconstruct_script': 'scripts/reconstruct_1_21_9.py',
+          }
+          versions = data['versions']
+          matches = [item for item in versions if item.get('generation') == 'G45' or item.get('minecraft') == '1.21.9']
+          if matches:
+              if len(matches) != 1 or matches[0] != expected or versions[-1] != expected:
+                  raise SystemExit(f'Existing G45 packaging metadata differs from frozen target: {matches}')
+          else:
+              if versions[-1].get('generation') != 'G44' or versions[-1].get('minecraft') != '1.21.8':
+                  raise SystemExit(f'Expected G44 as prior completed target, got {versions[-1]}')
+              versions.append(expected)
+          data['note'] = 'G1-G45 are translation/reconstruction complete. These builds are static-validated release candidates until their required runtime gates are complete.'
+          path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print('PASS: registered G45 / Minecraft 1.21.9 packaging target')
+          PY
+
+      - name: Synchronize upstream registries through G45
+        run: python scripts/sync_upstream_registries.py --date 2026-09-15
+
+      - name: Build G45 NeoForge candidate
+        run: python scripts/build_completed_jar_neoforge.py --minecraft 1.21.9 --version 1.0.0
+
+      - name: Inspect G45 candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR=$(find build/completed-jars/1.21.9 -maxdepth 1 -name '*.jar' -type f)
+          test -n "$JAR"
+          test "$(printf '%s\n' "$JAR" | wc -l)" -eq 1
+          case "$JAR" in *jei-translation-expansion-1.0.0-mc1.21.9-neoforge.jar) ;; *) echo "Unexpected G45 filename: $JAR"; exit 1;; esac
+          unzip -t "$JAR"
+          python - "$JAR" <<'PY'
+          import sys, tomllib, zipfile
+          jar = sys.argv[1]
+          with zipfile.ZipFile(jar) as zf:
+              names = zf.namelist()
+              assert len(names) == len(set(names)), 'duplicate archive path'
+              assert 'META-INF/neoforge.mods.toml' in names
+              assert 'META-INF/mods.toml' not in names
+              meta = tomllib.loads(zf.read('META-INF/neoforge.mods.toml').decode('utf-8'))
+              assert meta['loaderVersion'] == '[4,)'
+              mod = meta['mods'][0]
+              assert mod['modId'] == 'jeitranslationexpansion'
+              assert mod['version'] == '1.0.0'
+              deps = {d['modId']: d for d in meta['dependencies']['jeitranslationexpansion']}
+              assert deps['neoforge']['versionRange'] == '[21.9.2-beta,)'
+              assert deps['minecraft']['versionRange'] == '[1.21.9]'
+              assert deps['jei']['versionRange'] == '[25.0.1]'
+              langs = [n for n in names if n.startswith('assets/jei/lang/') and n.endswith('.json')]
+              assert len(langs) == 89, len(langs)
+          print('PASS: G45 NeoForge archive metadata and 89 language resources verified')
+          PY
+          sha256sum "$JAR" | tee g45-candidate-sha256.txt
+
+      - name: Synchronize canonical status through G45
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          status = Path('PROJECT_STATUS.md')
+          text = status.read_text(encoding='utf-8')
+          table_anchor = '| G44 | 1.21.8 | 24.2.0 | `2f8e4ec` | 305 | 90 | 65 | 24 | 1 | complete; NeoForge packaging validated |\n'
+          g45_line = '| G45 | 1.21.9 | 25.0.1 | `bdfdb4c` | 305 | 90 | 65 | 24 | 1 | complete; NeoForge packaging validated |\n'
+          if g45_line not in text:
+              if table_anchor not in text:
+                  raise SystemExit('PROJECT_STATUS G44 table anchor missing')
+              text = text.replace(table_anchor, table_anchor + g45_line, 1)
+
+          sha_line = Path('g45-candidate-sha256.txt').read_text(encoding='utf-8').strip().split()[0]
+          milestone = f'''### G45 — Minecraft 1.21.9 / JEI 25.0.1
+
+- final 1.21.9 mainline endpoint `bdfdb4c09026c4fb488805ff729c66ae48ede875`
+- next Minecraft port `0999689eb56a4bb3f7061af263de7aef387f0045` targets 1.21.10 and directly follows the G45 endpoint
+- build: NeoForge `21.9.2-beta`, minimum `[21.9.2-beta,)`, Java 21
+- 305 keys = 299 normal + 6 debug
+- G44→G45 semantic delta = 297 unchanged + 8 added + 8 removed + 0 changed-English values
+- eight JEI key-category localization IDs move from `jei.key.category.*` to `key.category.jei.*`; matching English meanings do not permit cross-key translation reuse
+- selected scope remains 90; ownership = 65 addon/full-override + 24 supplement locales + 1 complete upstream (`en_us`)
+- pinned `uk_ua.json` remains malformed and is handled as a deterministic full repair override
+- 89 pinned upstream-owned values across incomplete locales fail exact placeholder/technical-literal preservation; only this frozen key set receives explicit safe same-key/English overrides, while all other upstream-owned keys remain preserved
+- exact future-donor reuse for the eight added IDs is allowed only for same key + same English semantics
+- complete fixed reconstruction QA run `34959813095`, green
+- deterministic NeoForge candidate SHA-256 `{sha_line}`
+- runtime promotion remains separately gated
+
+'''
+          if '### G45 — Minecraft 1.21.9 / JEI 25.0.1' not in text:
+              anchor = '## Candidate packaging state\n'
+              if anchor not in text:
+                  raise SystemExit('PROJECT_STATUS candidate section anchor missing')
+              text = text.replace(anchor, milestone + anchor, 1)
+
+          text = re.sub(
+              r'- The canonical candidate inventory on `main` contains \*\*\d+ version-specific 1\.0\.0 candidates through Minecraft [^*]+\*\*\.\n',
+              '- The canonical candidate inventory on `main` contains **44 version-specific 1.0.0 candidates through Minecraft 1.21.8**.\n',
+              text,
+              count=1,
+          )
+          text = re.sub(
+              r'- G44 has passed complete translation/reconstruction QA and deterministic NeoForge packaging on the work branch; canonical `candidate-jars/1\.21\.8/` persistence follows merge to `main`\.\n',
+              '- G45 has passed complete translation/reconstruction QA and deterministic NeoForge packaging on the work branch; canonical `candidate-jars/1.21.9/` persistence follows merge to `main`.\n',
+              text,
+              count=1,
+          )
+          start = text.index('## Current next target\n')
+          end = text.index('## Documentation synchronization debt\n', start)
+          current = '''## Current next target
+
+- Merge the completed G45 / Minecraft 1.21.9 work and let the main packaging workflow persist its NeoForge candidate.
+- The chronological next audit target is **G46 = Minecraft 1.21.10**.
+- Keep all static candidates outside `release-jars/` until their runtime gates are satisfied.
+
+'''
+          text = text[:start] + current + text[end:]
+          text = text.replace(
+              '- `PROJECT_STATUS.md`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through completed G44.',
+              '- `PROJECT_STATUS.md`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through completed G45.'
+          )
+          text = text.replace(
+              '- `README.md`, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` should be synchronized through G44 before final public release preparation.',
+              '- `README.md`, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` should be synchronized through G45 before final public release preparation.'
+          )
+          text = text.replace('G39–G44 NeoForge candidates', 'G39–G45 NeoForge candidates')
+          status.write_text(text, encoding='utf-8')
+          print('PASS: PROJECT_STATUS synchronized through validated G45')
+          PY
+
+      - name: Upload validated G45 candidate artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: jei-translation-expansion-1.0.0-mc1.21.9-validated
+          path: |
+            build/completed-jars/1.21.9/*.jar
+            g45-candidate-sha256.txt
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Commit G45 completion metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          git rm -f .github/workflows/finalize-g45.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            packaging/completed-versions.json \
+            upstream/versions.json \
+            upstream/generations.json \
+            upstream/sources/1.21.9/en_us.json \
+            upstream/diffs/1.21.8-to-1.21.9.json \
+            upstream/minecraft-1.21.9-language-audit.json \
+            upstream/minecraft-1.21.9-language-scope.json \
+            translations/g45-mc1.21.9/policy.json \
+            PROJECT_STATUS.md
+          git commit -m 'Complete G45 Minecraft 1.21.9 metadata and packaging'
+          git pull --rebase origin work/g45-mc1.21.9-audit
+          git push origin HEAD:work/g45-mc1.21.9-audit
