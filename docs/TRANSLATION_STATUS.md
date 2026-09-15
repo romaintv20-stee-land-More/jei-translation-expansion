@@ -50,6 +50,7 @@ A generation marked complete here has passed translation/reconstruction QA. That
 | G40 | 1.21.4 | 20.0.0 | 288 | 90 | 64 | 25 | 1 | complete |
 | G41 | 1.21.5 | 21.4.0 | 290 | 90 | 65 | 24 | 1 | complete |
 | G42 | 1.21.6 | 22.0.0 | 289 | 90 | 65 | 24 | 1 | complete |
+| G43 | 1.21.7 | 23.1.0 | 291 | 90 | 65 | 23 | 2 | complete-static / runtime gate open |
 
 ## Reuse and ownership rules
 
@@ -115,11 +116,25 @@ A generation marked complete here has passed translation/reconstruction QA. That
 - Pinned upstream `uk_ua.json` remains malformed; Ukrainian remains a deterministic full repair override rather than a supplement against invalid upstream JSON.
 - Complete frozen-manifest/reconstruction QA run `34931544591` is green.
 - Deterministic NeoForge candidate build/inspection passed in run `34931774000`; candidate SHA-256 is `6a1f0262f68189ae064fbc1909792ae41542af8cfdf6c6f5286e5d703c98fdfb`.
-- Canonical packaging metadata and registry finalization are being completed before merge.
+- Canonical candidate persistence completed on `main` in run `34933530083`.
+
+### G43 — Minecraft 1.21.7 / JEI 23.1.0
+
+- Final mainline endpoint: `ee33b5d69f6cf9167c32c2e84fdc69fa1b008440`.
+- The next Minecraft port `f61efdf5f6604d0d3a55a67cc5d28ec340f189aa` targets Minecraft 1.21.8 and directly follows the G43 endpoint.
+- Build metadata: NeoForge `21.7.15-beta`, minimum `[21.7.15-beta,)`, Java 21.
+- 291 total keys = 285 normal + 6 debug.
+- G42→G43: 289 unchanged, 2 added, 0 removed, 0 changed-English values.
+- Added semantics: `gui.jei.category.grindstone` and `gui.jei.category.grindstone.experience`.
+- The experience key is reused historically only from G41 because the same key and exact English value match; no cross-key reuse is allowed.
+- Selected scope remains 90; ownership is 65 addon/full-override + 23 missing-key-only supplements + 2 complete upstream (`en_us`, `zh_cn`).
+- Pinned upstream `uk_ua.json` remains malformed and is emitted as a deterministic full repair override.
+- Isolated frozen-manifest/reconstruction validation run `34934366667` is green.
+- Final packaging validation run `34936216979` is green with 88 emitted language resources and candidate SHA-256 `0ca07362ac8802b440d59904092bd357463844421aa4b856ec17659b8011cf2a`.
 
 ## Current generation
 
-G42 translation/reconstruction is complete. The chronological next target after G42 merge is **G43 / Minecraft 1.21.7**. Preliminary endpoint research identifies `ee33b5d69f6cf9167c32c2e84fdc69fa1b008440` as the final 1.21.7 mainline endpoint immediately before `f61efdf5f6604d0d3a55a67cc5d28ec340f189aa` (`Update to Minecraft 1.21.8`); G43 remains pending its own isolated audit.
+G43 translation/reconstruction and static NeoForge candidate packaging are complete. The chronological next target is **G44 / Minecraft 1.21.8**. The first upstream 1.21.8 port commit is `f61efdf5f6604d0d3a55a67cc5d28ec340f189aa`; its final endpoint must be resolved before any translation reuse decision is made.
 
 ## Release limitations
 
