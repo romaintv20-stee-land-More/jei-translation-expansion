@@ -64,6 +64,37 @@ def fetch_g46_upstream(locale: str) -> dict[str, str]:
 
 
 @lru_cache(maxsize=1)
+def g45_scope() -> dict:
+    return json.loads(g45.SCOPE_PATH.read_text(encoding="utf-8"))
+
+
+@lru_cache(maxsize=1)
+def g45_full() -> dict[str, dict[str, str]]:
+    values, _ = g45.reconstruct_full(parse_json(g45.TARGET_SOURCE), g45_scope())
+    return values
+
+
+@lru_cache(maxsize=1)
+def g45_supplements() -> dict[str, dict[str, str]]:
+    values, _ = g45.reconstruct_supplements(parse_json(g45.TARGET_SOURCE), g45_scope())
+    return values
+
+
+@lru_cache(maxsize=None)
+def g45_combined_locale(locale: str) -> dict[str, str]:
+    scope = g45_scope()
+    if locale in g45_full():
+        return dict(g45_full()[locale])
+    if locale in set(scope["selected_upstream_complete_locales"]):
+        return g45.fetch_g45_upstream(locale)
+    if locale in set(scope["selected_upstream_incomplete_locales"]):
+        combined = dict(g45.fetch_g45_upstream(locale))
+        combined.update(g45_supplements()[locale])
+        return combined
+    raise KeyError(f"{locale}: not selected in G45")
+
+
+@lru_cache(maxsize=1)
 def semantic_partition() -> tuple[set[str], set[str], set[str], set[str]]:
     base = parse_json(BASE_SOURCE)
     target = parse_json(TARGET_SOURCE)
@@ -81,36 +112,32 @@ def donor_english() -> dict[str, str]:
 
 
 def resolve_unchanged(locale: str, key: str, english: str) -> tuple[str, str]:
-    previous = g45.g45_combined_locale(locale)
+    previous = g45_combined_locale(locale)
     if key not in previous:
         raise ValueError(f"{locale}: unchanged G46 key absent from G45 complete view: {key}")
     value = previous[key]
-    if preserves_runtime_literals(english, value):
-        return value, "g45"
-    return english, "english"
+    return (value, "g45") if preserves_runtime_literals(english, value) else (english, "english")
 
 
 def resolve_added(locale: str, key: str, english: str) -> tuple[str, str]:
-    donor_en = donor_english()
-    if donor_en.get(key) != english:
-        return english, "english"
-    donor = fetch_locale(DONOR_COMMIT, locale)
-    value = donor.get(key)
-    if value is not None and preserves_runtime_literals(english, value):
-        return value, "future-donor"
+    if donor_english().get(key) == english:
+        donor = fetch_locale(DONOR_COMMIT, locale)
+        value = donor.get(key)
+        if value is not None and preserves_runtime_literals(english, value):
+            return value, "future-donor"
     return english, "english"
 
 
 def reconstruct_full(target: dict[str, str], scope: dict) -> tuple[dict[str, dict[str, str]], dict[str, dict[str, int]]]:
     unchanged, added, removed, changed = semantic_partition()
     if changed or removed or added != ADDED_G46_KEYS:
-        raise ValueError("G46 full reconstruction semantic contract changed")
+        raise ValueError("G46 full semantic contract changed")
     expected = set(scope["addon_full_locales"])
     fallback = set(scope["documented_full_english_fallback_locales"])
     if len(expected) != 64 or scope.get("malformed_upstream_full_override_locales") != []:
         raise ValueError("G46 full ownership changed")
     if len(fallback) != 30 or not fallback <= expected or "uk_ua" in expected:
-        raise ValueError("G46 documented full-English fallback ownership changed")
+        raise ValueError("G46 fallback ownership changed")
 
     result: dict[str, dict[str, str]] = {}
     stats: dict[str, dict[str, int]] = {}
@@ -129,7 +156,7 @@ def reconstruct_full(target: dict[str, str], scope: dict) -> tuple[dict[str, dic
             elif key in added:
                 value, source = resolve_added(locale, key, english)
             else:
-                raise ValueError(f"{locale}: unresolved G46 target key {key}")
+                raise ValueError(f"{locale}: unresolved G46 key {key}")
             values[key] = value
             count[source] += 1
         if set(values) != set(target):
@@ -155,17 +182,11 @@ def reconstruct_supplements(target: dict[str, str], scope: dict) -> tuple[dict[s
         missing = normal - set(upstream)
         override_keys = set(scope.get("upstream_literal_safety_overrides", {}).get(locale, []))
         for key in override_keys:
-            if key not in normal or key not in upstream:
-                raise ValueError(f"{locale}: invalid explicit G46 upstream safety override key {key}")
-            if preserves_runtime_literals(target[key], upstream[key]):
-                raise ValueError(f"{locale}: G46 safety override is no longer needed for {key}")
+            if key not in normal or key not in upstream or preserves_runtime_literals(target[key], upstream[key]):
+                raise ValueError(f"{locale}: invalid/unneeded G46 safety override {key}")
         needed = missing | override_keys
         values: dict[str, str] = {}
-        count = {
-            "g45": 0, "future-donor": 0, "english": 0,
-            "upstream-owned": len(normal & set(upstream)),
-            "upstream-safety-overrides": len(override_keys),
-        }
+        count = {"g45": 0, "future-donor": 0, "english": 0, "upstream-owned": len(normal & set(upstream)), "upstream-safety-overrides": len(override_keys)}
         for key in sorted(needed):
             english = target[key]
             if key in unchanged:
@@ -176,11 +197,10 @@ def reconstruct_supplements(target: dict[str, str], scope: dict) -> tuple[dict[s
                 raise ValueError(f"{locale}: unresolved G46 supplement key {key}")
             values[key] = value
             count[source] += 1
-        overlap = set(values) & set(upstream)
-        if not values or overlap != override_keys:
+        if not values or (set(values) & set(upstream)) != override_keys:
             raise ValueError(f"{locale}: invalid G46 supplement ownership")
         if any(key.startswith(DEBUG_PREFIX) for key in values):
-            raise ValueError(f"{locale}: G46 supplement contains debug-only key")
+            raise ValueError(f"{locale}: debug key in G46 supplement")
         result[locale] = values
         stats[locale] = count
     return result, stats
@@ -204,12 +224,12 @@ def reconstruct_all(output: Path, clean: bool = True) -> tuple[int, int, int, di
     if not reuse.get("reuse_exact_unchanged_g45_semantics") or reuse.get("cross_key_reuse_allowed") is not False:
         raise ValueError("G46 reuse policy changed")
     if reuse.get("future_donor_commit") != DONOR_COMMIT or not reuse.get("future_donor_allowed_only_for_exact_same_key_same_english"):
-        raise ValueError("G46 exact future-donor policy changed")
+        raise ValueError("G46 donor policy changed")
 
     full, full_stats = reconstruct_full(target, scope)
     supplements, supplement_stats = reconstruct_supplements(target, scope)
     complete = set(scope["selected_upstream_complete_locales"])
-    if (len(full), len(supplements), len(complete)) != (64, 25, 1) or len(full) + len(supplements) + len(complete) != 90:
+    if (len(full), len(supplements), len(complete)) != (64, 25, 1):
         raise ValueError("G46 ownership total changed")
 
     if clean and output.exists():
