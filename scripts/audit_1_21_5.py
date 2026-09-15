@@ -101,18 +101,6 @@ def main() -> int:
         if token not in props:
             errors.append(f"pinned G41 gradle.properties missing {token}")
 
-    locales = upstream_locales()
-    completeness: dict[str, dict] = {}
-    for locale in locales:
-        values = parse_json_bytes(fetch_bytes(f"{RAW_LANG}/{locale}.json"))
-        missing = sorted(target_normal - set(values))
-        completeness[locale] = {
-            "present": len(target_normal & set(values)),
-            "target": len(target_normal),
-            "missing": missing,
-            "extra": sorted(set(values) - set(target)),
-        }
-
     base_scope = json.loads(BASE_SCOPE.read_text(encoding="utf-8"))
     inherited = (
         set(base_scope["addon_full_locales"])
@@ -121,6 +109,19 @@ def main() -> int:
     )
     if len(inherited) != 90:
         errors.append(f"expected G40 selected scope 90, got {len(inherited)}")
+
+    locales = upstream_locales()
+    selected_upstream_candidates = sorted(set(locales) & inherited)
+    completeness: dict[str, dict] = {}
+    for locale in selected_upstream_candidates:
+        values = parse_json_bytes(fetch_bytes(f"{RAW_LANG}/{locale}.json"))
+        missing = sorted(target_normal - set(values))
+        completeness[locale] = {
+            "present": len(target_normal & set(values)),
+            "target": len(target_normal),
+            "missing": missing,
+            "extra": sorted(set(values) - set(target)),
+        }
 
     manifest = fetch_json(VERSION_MANIFEST)
     base_entry = next((x for x in manifest.get("versions", []) if x.get("id") == "1.21.4"), None)
@@ -183,8 +184,8 @@ def main() -> int:
     print(f"Pinned JEI upstream locale files: {len(locales)}")
     print(f"Newly JEI-upstream selected locales from G40 addon-full ({len(newly_upstream)}): {', '.join(newly_upstream) or '(none)'}")
     print(f"No-longer-upstream selected locales from G40 ({len(no_longer_upstream)}): {', '.join(no_longer_upstream) or '(none)'}")
-    print("Upstream completeness against normal G41 target keys:")
-    for locale in locales:
+    print("Selected upstream completeness against normal G41 target keys:")
+    for locale in selected_upstream:
         info = completeness[locale]
         print(
             f"  {locale}: {info['present']}/{info['target']} "
