@@ -45,3 +45,4 @@ d6c24f20e8f650c3ee6e52c0c7d6438f2c3972e2271d077fd93802703de82dbd  candidate-jars
 3df7215150c50357ff4e4f1c4893e46524b938eed03b56f20d7303dbb50e16ed  candidate-jars/1.8/jei-translation-expansion-1.0.0-mc1.8-forge.jar
 dd8bab5040169f24a1881e2fd222a53fdac638701be50a29403d23a43c4c8fd2  candidate-jars/1.9.4/jei-translation-expansion-1.0.0-mc1.9.4-forge.jar
 e565f330588ef0b235343d67b2a0932712da2606077d069e4d25ed6a49f5466f  candidate-jars/1.9/jei-translation-expansion-1.0.0-mc1.9-forge.jar
+1b99b64f7d1696570ac93cd7f5bc721013b1b300a9c308cc4a08612802b921fd  candidate-jars/26.1/jei-translation-expansion-1.0.0-mc26.1-neoforge.jar
