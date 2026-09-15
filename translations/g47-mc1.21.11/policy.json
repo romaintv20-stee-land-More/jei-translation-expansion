@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "generation": "g47-mc1.21.11",
+  "minecraft": "1.21.11",
+  "jei": "27.38.0",
+  "upstream_commit": "4b6e47334ac4aaeae51d15facbb38c42cb511321",
+  "selected_scope_count": 90,
+  "ownership": {
+    "addon_full": 63,
+    "supplements": 26,
+    "complete_upstream": 1
+  },
+  "english_diff": {
+    "unchanged": 291,
+    "added": 37,
+    "removed": 11,
+    "changed": 6
+  },
+  "translation_reuse": {
+    "reuse_exact_unchanged_g46_semantics": true,
+    "same_key_required": true,
+    "same_english_required": true,
+    "cross_key_reuse_allowed": false,
+    "project_owned_added_or_changed_keys_use_exact_target_english": true,
+    "removed_keys_must_not_be_emitted": true,
+    "safe_target_upstream_values_remain_upstream_owned": true
+  },
+  "upstream_literal_safety_overrides": {
+    "ar_sa": [
+      "gui.jei.editMode.description",
+      "jei.config",
+      "jei.config.client.advanced.description",
+      "jei.config.client.appearance.centerSearch.description",
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description",
+      "jei.config.mode.description",
+      "jei.tooltip.config",
+      "jei.tooltip.error.recipe.transfer.no.server",
+      "key.jei.toggleOverlay"
+    ],
+    "bg_bg": [
+      "gui.jei.editMode.description",
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description",
+      "jei.config.modIdFormat.modName.modNameFormat.description",
+      "key.category.jei.edit.mode"
+    ],
+    "cs_cz": [
+      "jei.config.client.advanced.itemBlacklist.description",
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description",
+      "key.jei.toggleOverlay"
+    ],
+    "de_de": [
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description",
+      "jei.tooltip.bookmarks.not.enough.space",
+      "jei.tooltip.not.enough.space",
+      "key.jei.toggleOverlay"
+    ],
+    "el_gr": [
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description",
+      "key.jei.toggleOverlay"
+    ],
+    "es_es": [
+      "jei.config.client.advanced.itemBlacklist.description",
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description",
+      "jei.tooltip.not.enough.space"
+    ],
+    "fi_fi": [
+      "jei.config",
+      "jei.config.client.advanced.itemBlacklist.description",
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description",
+      "jei.tooltip.config",
+      "key.jei.toggleOverlay"
+    ],
+    "fr_fr": [
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description",
+      "jei.tooltip.bookmarks.not.enough.space",
+      "jei.tooltip.not.enough.space"
+    ],
+    "he_il": [
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description",
+      "key.jei.toggleOverlay"
+    ],
+    "hu_hu": [
+      "jei.config.client.advanced.itemBlacklist.description",
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description"
+    ],
+    "id_id": [
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description"
+    ],
+    "it_it": [
+      "jei.config.client.advanced.itemBlacklist.description",
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description"
+    ],
+    "kk_kz": [
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description"
+    ],
+    "ko_kr": [
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description",
+      "jei.tooltip.bookmarks.not.enough.space",
+      "jei.tooltip.not.enough.space",
+      "key.jei.toggleOverlay"
+    ],
+    "lt_lt": [
+      "jei.config",
+      "jei.config.client.search.description",
+      "jei.tooltip.config"
+    ],
+    "no_no": [
+      "jei.config",
+      "jei.config.client.advanced.itemBlacklist.description",
+      "jei.config.client.search.description",
+      "jei.tooltip.config",
+      "key.jei.toggleOverlay"
+    ],
+    "pl_pl": [
+      "jei.config.client.advanced.itemBlacklist.description",
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description",
+      "jei.message.missing.recipes.from.server"
+    ],
+    "pt_br": [
+      "jei.config.client.advanced.itemBlacklist.description",
+      "jei.config.debug.debug.logSuffixTreeStats.description"
+    ],
+    "ru_ru": [
+      "jei.config.client.advanced.itemBlacklist.description",
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description",
+      "jei.tooltip.liquid.amount",
+      "jei.tooltip.liquid.amount.with.capacity"
+    ],
+    "sv_se": [
+      "gui.jei.editMode.description",
+      "jei.config.client.advanced.itemBlacklist.description",
+      "jei.config.client.search.creativeTabSearchMode"
+    ],
+    "tr_tr": [
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description",
+      "jei.tooltip.bookmarks.not.enough.space",
+      "jei.tooltip.not.enough.space",
+      "key.jei.toggleOverlay"
+    ],
+    "uk_ua": [
+      "jei.tooltip.liquid.amount",
+      "jei.tooltip.liquid.amount.with.capacity"
+    ],
+    "vi_vn": [
+      "jei.config.client.search.creativeTabSearchMode",
+      "jei.config.client.search.description"
+    ],
+    "zh_cn": [
+      "jei.tooltip.bookmarks.not.enough.space"
+    ]
+  },
+  "publication_context": {
+    "historical_first_port_maven_only_note": true,
+    "maintained_branch_public_distribution_configured": true,
+    "curse_project_id": "238222",
+    "modrinth_id": "u6dRKJwZ",
+    "note": "The first 1.21.11 port was initially marked Maven-only, but the maintained 1.21.11 branch later gained normal CurseForge/Modrinth publication configuration."
+  },
+  "runtime_merge_gate_required": true
+}

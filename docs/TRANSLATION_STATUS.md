@@ -54,6 +54,7 @@ A generation marked complete here has passed translation/reconstruction QA. That
 | G44 | 1.21.8 | 24.2.0 | 305 | 90 | 65 | 24 | 1 | complete |
 | G45 | 1.21.9 | 25.0.1 | 305 | 90 | 65 | 24 | 1 | complete |
 | G46 | 1.21.10 | 26.2.0 | 308 | 90 | 64 | 25 | 1 | complete |
+| G47 | 1.21.11 | 27.38.0 | 334 | 90 | 63 | 26 | 1 | complete; maintained branch validated |
 
 ## Reuse and ownership rules
 
@@ -125,9 +126,25 @@ A generation marked complete here has passed translation/reconstruction QA. That
 - Complete reconstruction and deterministic NeoForge packaging are green.
 - Candidate SHA-256: `f0370c0a9bd5bc26d98ae624237a0b39a14c275eeaf54964ffd2c8caef223f8d`.
 
+### G47 — Minecraft 1.21.11 / JEI 27.38.0
+
+- First 1.21.11 port: `6b615d15ef776abf139339779985a91c59c9c324`; it historically stated that this line would be Maven-only.
+- Historical mainline endpoint: `1d37cb1a1cf7139170d214adef128f405b865312`; mainline next moves to `d395fda29b10f09b860d5a6221b459050f5071d3` (`26.1-snapshot-1`).
+- Maintained dedicated 1.21.11 endpoint: `4b6e47334ac4aaeae51d15facbb38c42cb511321`.
+- Build: NeoForge `21.11.45`, minimum `[21.11.44,)`, Java 21, JEI specification version `27.38.0`.
+- 334 keys = 328 normal + 6 debug.
+- G46→maintained-G47: 291 unchanged, 37 added, 11 removed, 6 changed-English values.
+- Only exact same-key/same-English meanings may inherit G46 translations; cross-key reuse is forbidden. Project-owned added/changed meanings use exact target English when no safe target-upstream value owns the key.
+- Selected scope remains 90; ownership is 63 addon-full + 26 missing-key/safety-override supplements + 1 complete upstream (`en_us`).
+- All selected upstream JSON files are valid at the maintained endpoint; `fil_ph` and `uk_ua` are valid incomplete upstream locales.
+- 91 upstream-owned values require frozen literal-safety overrides.
+- The maintained branch has normal CurseForge project `238222` and Modrinth project `u6dRKJwZ` publication configuration, so the historical first-port Maven-only note no longer describes the maintained branch's current distribution configuration.
+- Complete isolated maintained-endpoint validation run `35006503247` is green.
+- Candidate packaging remains separate until the maintained G47 metadata is merged and the NeoForge candidate build is validated.
+
 ## Current generation
 
-G46 translation/reconstruction and static candidate packaging are complete on its work branch. After merge and canonical candidate persistence, the next chronological audit target is **G47 / Minecraft 1.21.11**, which upstream explicitly marks as Maven-only.
+Maintained G47 translation/reconstruction is complete and statically validated at JEI 27.38.0. The next step is to validate and persist its dedicated NeoForge candidate, then audit the Minecraft 26.1/26.1.2 maintained line under the one-Minecraft-version-per-JAR rule before assigning the next generation(s).
 
 ## Release limitations
 
