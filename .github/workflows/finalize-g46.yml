@@ -39,7 +39,7 @@ jobs:
       - name: Build G46 NeoForge candidate
         run: |
           rm -rf build/g46-candidate
-          python scripts/build_completed_neoforge_jar.py --minecraft 1.21.10 --version 1.0.0 --output-dir build/g46-candidate
+          python scripts/build_completed_jar_neoforge.py --minecraft 1.21.10 --version 1.0.0 --output-dir build/g46-candidate
       - name: Inspect G46 candidate
         shell: bash
         run: |
