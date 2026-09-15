@@ -1,4 +1,4 @@
-name: Audit G44 Minecraft 1.21.8
+name: Audit and freeze G44 Minecraft 1.21.8
 
 on:
   workflow_dispatch:
@@ -6,12 +6,13 @@ on:
     branches: ['work/g44-mc1.21.8-audit']
     paths:
       - 'scripts/audit_1_21_8.py'
+      - 'scripts/bootstrap_1_21_8.py'
       - '.github/workflows/audit-g44.yml'
       - 'upstream/sources/1.21.7/en_us.json'
       - 'upstream/minecraft-1.21.7-language-scope.json'
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   audit:
@@ -19,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
@@ -27,3 +30,26 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python scripts/audit_1_21_8.py
+      - name: Freeze G44 manifests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/bootstrap_1_21_8.py
+      - name: Persist frozen G44 manifests
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            upstream/sources/1.21.8/en_us.json \
+            upstream/diffs/1.21.7-to-1.21.8.json \
+            upstream/minecraft-1.21.8-language-audit.json \
+            upstream/minecraft-1.21.8-language-scope.json \
+            translations/g44-mc1.21.8/policy.json
+          if git diff --cached --quiet; then
+            echo 'Frozen G44 manifests already match.'
+            exit 0
+          fi
+          git commit -m 'Freeze G44 Minecraft 1.21.8 manifests'
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
