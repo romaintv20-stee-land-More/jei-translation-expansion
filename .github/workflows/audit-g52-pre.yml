@@ -1,0 +1,29 @@
+name: Audit provisional G52 Minecraft 26.3 RC2
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g52-mc26.3-rc2-audit']
+    paths:
+      - 'scripts/audit_26_3_rc_2.py'
+      - '.github/workflows/audit-g52-pre.yml'
+      - 'upstream/sources/26.2/en_us.json'
+      - 'upstream/minecraft-26.2-language-scope.json'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit provisional Minecraft 26.3 RC2 target
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/audit_26_3_rc_2.py
