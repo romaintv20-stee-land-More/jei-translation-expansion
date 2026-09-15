@@ -1,0 +1,88 @@
+name: Audit provisional G52 Minecraft 26.3 RC2
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g52-mc26.3-rc2-audit']
+    paths:
+      - 'scripts/audit_26_3_rc_2.py'
+      - 'scripts/bootstrap_26_3_rc_2.py'
+      - 'scripts/reconstruct_26_3_rc_2.py'
+      - 'scripts/validate_26_3_rc_2_delta.py'
+      - 'scripts/validate_26_3_rc_2_complete.py'
+      - 'scripts/build_provisional_26_3_rc_2_fabric_jar.py'
+      - '.github/workflows/audit-g52-pre.yml'
+      - 'upstream/sources/26.2/en_us.json'
+      - 'upstream/minecraft-26.2-language-scope.json'
+      - 'scripts/reconstruct_26_2.py'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit provisional Minecraft 26.3 RC2 target
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/audit_26_3_rc_2.py
+      - name: Freeze provisional translation manifests
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python scripts/bootstrap_26_3_rc_2.py
+      - name: Validate provisional semantic delta
+        run: python scripts/validate_26_3_rc_2_delta.py
+      - name: Validate provisional complete reconstruction
+        run: python scripts/validate_26_3_rc_2_complete.py
+      - name: Build provisional Fabric resource-only JAR
+        run: python scripts/build_provisional_26_3_rc_2_fabric_jar.py
+      - name: Inspect provisional Fabric JAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR='build/provisional-jars/26.3-rc-2/jei-translation-expansion-1.0.0-mc26.3-rc-2-fabric-provisional.jar'
+          test -f "$JAR"
+          unzip -t "$JAR"
+          unzip -l "$JAR" | grep -F 'fabric.mod.json'
+          if unzip -l "$JAR" | grep -E 'META-INF/(neo)?forge\.mods\.toml|mcmod\.info'; then
+            echo 'Non-Fabric loader metadata must not be present in provisional artifact'
+            exit 1
+          fi
+          COUNT=$(unzip -Z1 "$JAR" | grep '^assets/jei/lang/.*\.json$' | wc -l)
+          test "$COUNT" -eq 89
+          sha256sum "$JAR"
+      - name: Upload provisional QA artifact only
+        uses: actions/upload-artifact@v4
+        with:
+          name: provisional-jei-translation-expansion-mc26.3-rc-2-fabric
+          path: build/provisional-jars/26.3-rc-2/*.jar
+          if-no-files-found: error
+          retention-days: 7
+      - name: Persist provisional translation preparation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add \
+            upstream/provisional/sources/26.3-rc-2/en_us.json \
+            upstream/provisional/diffs/26.2-to-26.3-rc-2.json \
+            upstream/provisional/minecraft-26.3-rc-2-language-audit.json \
+            upstream/provisional/minecraft-26.3-rc-2-language-scope.json \
+            translations/pre-g52-mc26.3-rc2/policy.json
+          if git diff --cached --quiet; then
+            echo 'Provisional 26.3 RC2 manifests already match.'
+            exit 0
+          fi
+          git commit -m 'Freeze provisional Minecraft 26.3 RC2 translation preparation'
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
