@@ -1,0 +1,41 @@
+name: Freeze maintained G39 translation delta
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['maintenance/g39-maintained-1.21.1']
+    paths:
+      - 'scripts/freeze_1_21_1_maintained_delta.py'
+      - '.github/workflows/freeze-g39-maintained-delta.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Freeze maintained source and review delta
+        run: python scripts/freeze_1_21_1_maintained_delta.py
+      - name: Commit frozen maintenance data
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add maintenance/1.21.1-jei-19.56.0/en_us.json maintenance/1.21.1-jei-19.56.0/translation-review.json
+          if git diff --cached --quiet; then
+            echo 'Maintained source and review delta are already current.'
+            exit 0
+          fi
+          git commit -m 'Freeze maintained JEI 19.56.0 translation delta'
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
