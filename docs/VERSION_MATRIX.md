@@ -51,6 +51,12 @@ Verified historical JEI/Minecraft localization endpoints. Branch names alone are
 | G43 | 1.21.7 | 23.1.0 | `ee33b5d` | NeoForge | 291 | 90 | 65 | 23 | 2 | complete |
 | G44 | 1.21.8 | 24.2.0 | `2f8e4ec` | NeoForge | 305 | 90 | 65 | 24 | 1 | complete |
 | G45 | 1.21.9 | 25.0.1 | `bdfdb4c` | NeoForge | 305 | 90 | 65 | 24 | 1 | complete |
+| G46 | 1.21.10 | 26.2.0 | `621ddf0` | NeoForge | 308 | 90 | 64 | 25 | 1 | complete |
+| G47 | 1.21.11 | 27.38.0 | `4b6e473` | NeoForge | 334 | 90 | 63 | 26 | 1 | complete |
+| G48 | 26.1 | 29.2.0 | `16c0e3b` | NeoForge | 309 | 90 | 64 | 25 | 1 | complete |
+| G49 | 26.1.1 | 29.4.0 | `5a2ecc4` | NeoForge | 309 | 90 | 64 | 25 | 1 | complete |
+| G50 | 26.1.2 | 29.37.0 | `d7c73ed` | NeoForge | 334 | 90 | 63 | 26 | 1 | complete |
+| G51 | 26.2 | 30.32.0 | `f93563c` | NeoForge | 334 | 90 | 63 | 26 | 1 | complete |
 
 ## Important endpoint transitions
 
@@ -75,10 +81,10 @@ Verified historical JEI/Minecraft localization endpoints. Branch names alone are
 
 ## Candidate packaging
 
-Completed generations are registered in `packaging/completed-versions.json`. Their deterministic static candidates are persisted one Minecraft version at a time under `candidate-jars/<minecraft-version>/`. Forge and NeoForge candidates use separate loader-correct metadata paths.
+Completed generations are registered in `packaging/completed-versions.json`. Their deterministic static candidates are persisted one Minecraft version at a time under `candidate-jars/<minecraft-version>/`.
 
-G45 deterministic NeoForge build/inspection is green: 89 emitted language JSON resources and candidate SHA-256 `2042e85d9781b93f1b5fd730a77ea9c8b670ad823b9ea1472c28e03aa0632d88`. Canonical candidate persistence follows merge to `main`.
+G51 / Minecraft 26.2 is the latest completed target. Its Java-25 NeoForge candidate is persisted as `candidate-jars/26.2/jei-translation-expansion-1.0.0-mc26.2-neoforge.jar` with SHA-256 `b3d3a30c23b4a9c3080ed49781fa51df17c024fdf67bdde6c2d467649230824f`. The canonical inventory contains 51 version-specific candidates.
 
 ## Current target
 
-The next chronological target after G45 is **G46 = Minecraft 1.21.10**. Its endpoint must be independently audited before translation or packaging work begins.
+Minecraft 26.3 is a final release, but JEI currently has no exact final 26.3 branch/target. The only matching upstream branch remains `fabric-26.3-snapshot-7` at `58362ffb5baa95580549d6825811e7363964a271`, still targeting Minecraft `26.3-rc-2`. The provisional translation reconstruction is prepared but is not G52 and is not a publishable candidate. The next chronological target is **G52 = Minecraft 26.3** once an exact final JEI 26.3 endpoint and loader state are available for audit.

@@ -55,6 +55,10 @@ A generation marked complete here has passed translation/reconstruction QA. That
 | G45 | 1.21.9 | 25.0.1 | 305 | 90 | 65 | 24 | 1 | complete |
 | G46 | 1.21.10 | 26.2.0 | 308 | 90 | 64 | 25 | 1 | complete |
 | G47 | 1.21.11 | 27.38.0 | 334 | 90 | 63 | 26 | 1 | complete; maintained branch validated |
+| G48 | 26.1 | 29.2.0 | 309 | 90 | 64 | 25 | 1 | complete |
+| G49 | 26.1.1 | 29.4.0 | 309 | 90 | 64 | 25 | 1 | complete |
+| G50 | 26.1.2 | 29.37.0 | 334 | 90 | 63 | 26 | 1 | complete |
+| G51 | 26.2 | 30.32.0 | 334 | 90 | 63 | 26 | 1 | complete |
 
 ## Reuse and ownership rules
 
@@ -144,7 +148,9 @@ A generation marked complete here has passed translation/reconstruction QA. That
 
 ## Current generation
 
-Maintained G47 translation/reconstruction is complete and statically validated at JEI 27.38.0. The next step is to validate and persist its dedicated NeoForge candidate, then audit the Minecraft 26.1/26.1.2 maintained line under the one-Minecraft-version-per-JAR rule before assigning the next generation(s).
+G51 / Minecraft 26.2 / JEI 30.32.0 is complete, statically validated, and canonically packaged. It contains 334 keys, keeps the selected scope at 90, and uses ownership 63 addon-full + 26 missing-key/safety-override supplements + 1 complete upstream locale (`en_us`). Its candidate SHA-256 is `b3d3a30c23b4a9c3080ed49781fa51df17c024fdf67bdde6c2d467649230824f`.
+
+Minecraft 26.3 is now final on the Minecraft side, and the 90 selected locales remain present in its final language assets. JEI still has no exact final 26.3 target: `fabric-26.3-snapshot-7` remains pinned at `58362ffb5baa95580549d6825811e7363964a271` and targets `26.3-rc-2`. Existing provisional reconstruction is therefore preparation only; G52 remains unregistered until the exact final JEI endpoint and loader state can be audited.
 
 ## Release limitations
 

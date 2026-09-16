@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-16",
+  "status": "minecraft-26.3-final-jei-exact-target-pending",
+  "not_a_completed_generation": true,
+  "g52_registration_allowed": false,
+  "minecraft": {
+    "version": "26.3",
+    "manifest_type": "release",
+    "release_time": "2026-09-15T11:23:02+00:00",
+    "asset_index_id": "34",
+    "asset_index_sha1": "d8492bc61d32a4874c77daa03c0cba9201e9b83b",
+    "language_asset_file_count": 143,
+    "language_additions_from_26_2": [],
+    "language_removals_from_26_2": [],
+    "selected_scope_count": 90,
+    "selected_scope_still_present": true
+  },
+  "base_g51": {
+    "minecraft": "26.2",
+    "pinned_jei_commit": "f93563ca4965d511bd07d4f041b3a6ddd1158ef0",
+    "current_26_2_branch_head": "f93563ca4965d511bd07d4f041b3a6ddd1158ef0",
+    "branch_moved_since_g51_pin": false,
+    "asset_index_id": "32",
+    "asset_index_sha1": "d6540f46a8fec49e45fb7312cdcf401a8e4e15ff",
+    "language_asset_file_count": 143
+  },
+  "jei": {
+    "exact_26_3_branch_present": false,
+    "exact_26_3_branch_head": null,
+    "exact_26_3_minecraft_version": null,
+    "preview_branch": "fabric-26.3-snapshot-7",
+    "preview_expected_pin": "58362ffb5baa95580549d6825811e7363964a271",
+    "preview_current_head": "58362ffb5baa95580549d6825811e7363964a271",
+    "preview_branch_moved": false,
+    "preview_minecraft_version": "26.3-rc-2",
+    "preview_specification_version": "30.32.0",
+    "preview_fabric_loader": "0.19.5",
+    "preview_fabric_api": "0.160.4+26.3",
+    "matching_26_3_branches": [
+      "fabric-26.3-snapshot-7"
+    ],
+    "exact_publishable_target_available": false
+  },
+  "decision": {
+    "minecraft_side_ready": true,
+    "translation_groundwork_ready": true,
+    "complete_g52_now": false,
+    "reason": "Minecraft 26.3 is final, but JEI still has no exact final 26.3 target. Keep the RC2/Fabric work provisional and do not publish or register G52 yet."
+  }
+}

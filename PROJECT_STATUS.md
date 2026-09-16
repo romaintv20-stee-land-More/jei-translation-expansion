@@ -258,25 +258,40 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 - validated candidate SHA-256 `b3d3a30c23b4a9c3080ed49781fa51df17c024fdf67bdde6c2d467649230824f`
 - runtime promotion remains separately gated
 
+### G52 readiness — Minecraft 26.3 final / exact JEI target pending
+
+- Minecraft Java 26.3 is a final release in Mojang's version manifest, released 2026-09-15.
+- Final 26.3 language assets remain at 143 locale files with no additions/removals relative to Minecraft 26.2; all 90 selected project locales remain present.
+- The maintained JEI `26.2` branch still points to the frozen G51 pin `f93563ca4965d511bd07d4f041b3a6ddd1158ef0`.
+- JEI currently exposes no exact `26.3` branch. The only matching branch remains `fabric-26.3-snapshot-7` at `58362ffb5baa95580549d6825811e7363964a271` and still targets `minecraftVersion=26.3-rc-2` with Fabric loader `0.19.5` / Fabric API `0.160.4+26.3`.
+- Existing provisional 26.3 RC2 translation groundwork remains valid preparation only: 334 exact unchanged English semantics, selected scope 90, provisional ownership 63 full + 26 supplements + 1 complete upstream, and deterministic reconstruction already validated.
+- **Do not register G52 or persist a 26.3 candidate JAR until JEI exposes an exact final Minecraft 26.3 target and its loader/publication state is re-audited.**
+- Stable-release readiness audit run `35064326868` is green; frozen report: `upstream/provisional/minecraft-26.3-release-readiness.json`.
+
 ## Candidate packaging state
 
-- The canonical candidate inventory on `main` contains **50 version-specific 1.0.0 candidates through Minecraft 26.1.2**.
-- G51 / Minecraft 26.2 has passed complete static reconstruction and deterministic Java-25 NeoForge candidate validation; canonical persistence follows its merge to `main`.
+- The canonical candidate inventory on `main` contains **51 version-specific 1.0.0 candidates through Minecraft 26.2**.
+- G51 / Minecraft 26.2 is canonically persisted at `candidate-jars/26.2/jei-translation-expansion-1.0.0-mc26.2-neoforge.jar`.
+- G51 persisted SHA-256: `b3d3a30c23b4a9c3080ed49781fa51df17c024fdf67bdde6c2d467649230824f`.
+- G52 is deliberately not registered and has no candidate JAR while exact final JEI 26.3 support is unavailable.
 - Candidate JARs are not runtime-promoted finals.
 
 ## Current next target
 
-- Merge G51 and persist `candidate-jars/26.2/jei-translation-expansion-1.0.0-mc26.2-neoforge.jar` using the validated candidate digest above.
-- Because JEI actively maintains Minecraft 26.2 on branch `26.2`, re-audit that branch before declaring a later 26.2 snapshot or selecting the next chronological Minecraft target.
+- Keep G51 frozen at JEI `30.32.0` / `f93563ca4965d511bd07d4f041b3a6ddd1158ef0` unless the maintained 26.2 branch moves and a later 26.2 snapshot is deliberately re-audited.
+- Minecraft 26.3 itself is now final, so the next chronological generation remains **G52 = Minecraft 26.3**, but completion is blocked on an exact final JEI 26.3 target.
+- Re-run `scripts/audit_26_3_release_readiness.py` when JEI branch state changes. As soon as an exact 26.3 target appears, perform a fresh endpoint/loader/upstream-ownership audit before translating, packaging, or registering G52.
+- Keep the existing RC2/Fabric artifact QA-only and outside `candidate-jars/`.
 - Keep all static candidates outside `release-jars/` until their runtime gates are satisfied.
 
 ## Documentation synchronization debt
 
-- `PROJECT_STATUS.md`, `packaging/completed-versions.json`, `upstream/versions.json`, and `upstream/generations.json` are synchronized through validated G51 on the work branch.
-- README / version-matrix / translation-status prose may lag the canonical generation line and should be refreshed before a public documentation release.
+- `PROJECT_STATUS.md`, `README.md`, `docs/VERSION_MATRIX.md`, and `docs/TRANSLATION_STATUS.md` are synchronized through completed G51 plus the stable-Minecraft-26.3 / JEI-target-pending readiness state.
+- `packaging/completed-versions.json`, `upstream/versions.json`, and `upstream/generations.json` remain canonical only through completed G51; provisional G52 data stays under `upstream/provisional/` and is intentionally excluded from completed registries.
 
 ## Release gates still open
 
 - Minecraft 1.8.9 prototype/runtime lineage still requires a real client runtime validation before final release promotion.
 - Minecraft 1.13+ missing-key-only JSON supplements require a real runtime resource-stack merge test before promotion to their version-specific release JAR.
 - NeoForge candidates G39–G51 remain static candidates until their version-specific runtime checks are complete.
+- Provisional 26.3 RC2/Fabric work is QA-only and is not a release candidate.

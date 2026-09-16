@@ -1,0 +1,62 @@
+name: Synchronize G51 and Minecraft 26.3 readiness status
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g52-mc26.3-release-readiness']
+    paths:
+      - 'scripts/sync_post_g51_status.py'
+      - '.github/workflows/sync-g52-readiness-status.yml'
+      - 'upstream/provisional/minecraft-26.3-release-readiness.json'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Synchronize public documentation
+        run: python scripts/sync_post_g51_status.py
+
+      - name: Validate synchronized status
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -F 'Minecraft 1.8 through Minecraft 26.2' README.md
+          grep -F '51 version-specific 1.0.0 candidates through Minecraft 26.2' PROJECT_STATUS.md
+          grep -F '| G51 | 26.2 | 30.32.0 |' docs/VERSION_MATRIX.md
+          grep -F '| G51 | 26.2 | 30.32.0 |' docs/TRANSLATION_STATUS.md
+          grep -F 'G52 = Minecraft 26.3' PROJECT_STATUS.md
+          grep -F 'JEI has not yet exposed an exact final 26.3 target' README.md
+          grep -F 'G1-G51' packaging/completed-versions.json
+          if grep -F '"generation": "G52"' packaging/completed-versions.json; then
+            echo 'G52 must not be registered while exact final JEI 26.3 support is unavailable.'
+            exit 1
+          fi
+          test ! -d candidate-jars/26.3
+
+      - name: Persist synchronized documentation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add README.md PROJECT_STATUS.md docs/VERSION_MATRIX.md docs/TRANSLATION_STATUS.md
+          if git diff --cached --quiet; then
+            echo 'Public status documentation already matches.'
+            exit 0
+          fi
+          git commit -m 'Synchronize public status through G51 and 26.3 readiness'
+          git pull --rebase origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
