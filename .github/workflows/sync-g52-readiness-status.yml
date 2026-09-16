@@ -38,7 +38,7 @@ jobs:
           grep -F '| G51 | 26.2 | 30.32.0 |' docs/VERSION_MATRIX.md
           grep -F '| G51 | 26.2 | 30.32.0 |' docs/TRANSLATION_STATUS.md
           grep -F 'G52 = Minecraft 26.3' PROJECT_STATUS.md
-          grep -F 'no exact final 26.3 target' README.md
+          grep -F 'JEI has not yet exposed an exact final 26.3 target' README.md
           grep -F 'G1-G51' packaging/completed-versions.json
           if grep -F '"generation": "G52"' packaging/completed-versions.json; then
             echo 'G52 must not be registered while exact final JEI 26.3 support is unavailable.'
