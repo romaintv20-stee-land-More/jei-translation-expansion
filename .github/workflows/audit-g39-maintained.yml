@@ -1,0 +1,42 @@
+name: Audit maintained G39 Minecraft 1.21.1
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['maintenance/g39-maintained-1.21.1']
+    paths:
+      - 'scripts/audit_1_21_1_maintained.py'
+      - '.github/workflows/audit-g39-maintained.yml'
+      - 'upstream/sources/**/en_us.json'
+      - 'upstream/minecraft-1.21.1-language-scope.json'
+      - 'packaging/completed-versions.json'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit maintained JEI 1.21.1 branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/audit_1_21_1_maintained.py | tee maintained-1.21.1-audit.txt
+      - name: Upload maintained audit report
+        uses: actions/upload-artifact@v4
+        with:
+          name: maintained-g39-audit
+          path: |
+            build/maintained-1.21.1-audit.json
+            maintained-1.21.1-audit.txt
+          if-no-files-found: error
+          retention-days: 14
