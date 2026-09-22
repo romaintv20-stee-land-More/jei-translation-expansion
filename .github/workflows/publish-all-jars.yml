@@ -1,0 +1,63 @@
+name: Publish all JEI Translation Expansion JARs
+
+on:
+  push:
+    branches:
+      - codex/publish-all-jars-2026-09-22
+    paths:
+      - .github/workflows/publish-all-jars.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-all-jei-translation-expansion-jars
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Publish one GitHub release per Minecraft version
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          mapfile -t jars < <(find candidate-jars -mindepth 2 -maxdepth 2 -type f -name '*.jar' | sort -V)
+          if [[ ${#jars[@]} -ne 51 ]]; then
+            echo "Expected exactly 51 candidate JARs, found ${#jars[@]}" >&2
+            exit 1
+          fi
+
+          for jar in "${jars[@]}"; do
+            mc="$(basename "$(dirname "$jar")")"
+            filename="$(basename "$jar")"
+            case "$filename" in
+              *-neoforge.jar) loader="NeoForge"; loader_slug="neoforge" ;;
+              *-forge.jar) loader="Forge"; loader_slug="forge" ;;
+              *) echo "Unknown loader in $filename" >&2; exit 1 ;;
+            esac
+
+            tag="v1.0.0-mc${mc}-${loader_slug}"
+            title="JEI Translation Expansion 1.0.0 - Minecraft ${mc} (${loader})"
+            notes_file="$(mktemp)"
+            printf '%s\n\n%s\n\n%s\n' \
+              "JEI Translation Expansion 1.0.0 for Minecraft ${mc}." \
+              "Mod loader: ${loader}. Install it alongside the matching version of Just Enough Items (JEI)." \
+              "This is an unofficial localization companion and is not affiliated with or endorsed by the JEI project." > "$notes_file"
+
+            if gh release view "$tag" >/dev/null 2>&1; then
+              gh release edit "$tag" --title "$title" --notes-file "$notes_file" --latest=false
+              gh release upload "$tag" "$jar" --clobber
+            else
+              gh release create "$tag" "$jar" --target main --title "$title" --notes-file "$notes_file" --latest=false
+            fi
+            rm -f "$notes_file"
+          done
+
+          latest_tag="v1.0.0-mc26.2-neoforge"
+          gh release edit "$latest_tag" --latest
