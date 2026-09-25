@@ -73,7 +73,7 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 | G49 | 26.1.1 | 29.4.0 | `5a2ecc4` | 309 | 90 | 64 | 25 | 1 | complete; NeoForge candidate validated |
 | G50 | 26.1.2 | 29.37.0 | `d7c73ed` | 334 | 90 | 63 | 26 | 1 | complete; NeoForge candidate validated |
 | G51 | 26.2 | 30.32.0 | `f93563c` | 334 | 90 | 63 | 26 | 1 | complete; NeoForge candidate validated |
-| G52 | 26.3 | 31.7.0 | `0aed0ce` | 584 | 90 | 63 | 26 | 1 | complete; reconstruction validated; candidate CI pending |
+| G52 | 26.3 | 31.7.0 | `0aed0ce` | 584 | 90 | 63 | 26 | 1 | complete; NeoForge candidate statically validated; runtime gate open |
 
 ## Recent canonical milestones
 
@@ -268,18 +268,19 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 - Minecraft 26.3 has 143 language assets; the selected 90-locale scope remains unchanged.
 - Ownership: 63 add-on-full locales + 26 upstream missing-key/safety-override supplements + 1 upstream-complete locale (`en_us`); 30 documented full-English fallbacks remain explicit.
 - All selected upstream files at the pinned commit parse successfully. 143 unsafe upstream-owned values are repaired by frozen runtime-literal safety overrides.
-- Local deterministic reconstruction and full coverage/placeholder QA passed. CI Java-25 NeoForge candidate build is required before binary persistence.
+- Local deterministic reconstruction and full coverage/placeholder QA passed. Dedicated Java-25 CI validation run `36175584057` and canonical candidate packaging run `36175677131` are green.
+- Persisted G52 candidate: `candidate-jars/26.3/jei-translation-expansion-1.0.0-mc26.3-neoforge.jar`; SHA-256 `3cdfd40342ab8e8128f8d940b5eeb5464a36b2d0f3e9596445a2488cd32ca1e9` (845,501 bytes).
 - Runtime resource-stack merge and client in-game testing remain separate release gates.
 
 ## Candidate packaging state
 
-- G1–G51: 51 previously persisted static-validated candidates through Minecraft 26.2.
-- G52 / Minecraft 26.3 is now registered with reproducible source and validated translation reconstruction. Its Java-25 NeoForge JAR is produced and persisted after CI packaging checks.
+- The repository now contains **52 version-specific static-validated candidates through Minecraft 26.3**.
+- G52 Java-25 NeoForge candidate: `candidate-jars/26.3/jei-translation-expansion-1.0.0-mc26.3-neoforge.jar`; SHA-256 `3cdfd40342ab8e8128f8d940b5eeb5464a36b2d0f3e9596445a2488cd32ca1e9`. CI audit, rebuild, JAR integrity, class version, manifest and dependency checks passed.
 - Candidate JARs remain outside `release-jars/` until version-specific in-game merge and runtime tests are complete.
 
 ## Current next target
 
-- Complete G52's CI packaging and pin the validated candidate SHA-256.
+- G52 CI packaging is complete and its candidate SHA-256 is pinned at `3cdfd40342ab8e8128f8d940b5eeb5464a36b2d0f3e9596445a2488cd32ca1e9`; keep this artifact outside runtime-promoted final releases.
 - Review translations for new and English-changed JEI 26.3 keys. English fallback is currently used wherever a verified translation is unavailable.
 - Verify JEI + NeoForge 26.3 in-game resource-stack merging before promoting the candidate to a final release.
 - Select G53 only after a later exact Minecraft/JEI target is audited.
@@ -287,7 +288,7 @@ This file is the canonical handoff for continuing the historical JEI localizatio
 ## Documentation synchronization debt
 
 - G52 source/scope/diff/policy/packaging/registry files and documentation are synchronized through the pinned Minecraft 26.3 branch.
-- Revisit the release-notes and candidate-digest references after the Java-25 CI build, and keep all runtime-promotion claims blocked until tested.
+- Candidate persistence, SHA-256 and build validation are documented. Native-language review for 304 added / 87 English-changed keys and real in-game merge testing remain open.
 
 ## Release gates still open
 

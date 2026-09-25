@@ -151,7 +151,7 @@ A generation marked complete here has passed translation/reconstruction QA. That
 
 G52 / Minecraft 26.3 / JEI 31.7.0 has passed deterministic translation/reconstruction QA. The selected scope remains 90 languages, with 63 add-on-full locales, 26 upstream supplements and one upstream-complete locale. It contains 584 keys (578 normal and 6 debug), including 304 new keys and 87 changed-English values relative to G51. Only 193 identical source meanings may inherit earlier translations. New or changed text uses English fallback when upstream translations are absent; native-language review remains open.
 
-The exact upstream JEI 26.3 commit is `0aed0ce0d09b56923469d1074100f02ed0a45b13`. Java-25 NeoForge candidate packaging and in-game resource-stack merge testing remain separate gates.
+The exact upstream JEI 26.3 commit is `0aed0ce0d09b56923469d1074100f02ed0a45b13`. Java-25 NeoForge static packaging passed and candidate `candidate-jars/26.3/jei-translation-expansion-1.0.0-mc26.3-neoforge.jar` is persisted (SHA-256 `3cdfd40342ab8e8128f8d940b5eeb5464a36b2d0f3e9596445a2488cd32ca1e9`). In-game resource-stack merge testing remains a separate release gate.
 
 ## Release limitations
 

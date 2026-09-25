@@ -26,17 +26,15 @@ Translations may be created or assisted with AI, but AI output is not treated as
 
 ## Current status
 
-The selected translation/reconstruction scopes are complete and CI-validated from **Minecraft 1.8 through Minecraft 26.2** (**G1-G51**).
+The selected translation/reconstruction scopes are QA-complete from **Minecraft 1.8 through Minecraft 26.3** (**G1–G52**). Each Minecraft target receives its own 1.0.0 static-validated candidate JAR; the modern 26.x NeoForge line uses Java 25.
 
-Each completed Minecraft target receives its own **JEI Translation Expansion 1.0.0 static-validated JAR candidate**. Forge is used for historical Forge targets, NeoForge for the completed modern NeoForge targets, and the 26.x line uses Java 25 where required. Static candidates live under `candidate-jars/<minecraft-version>/` after canonical packaging persistence.
+**G52 / Minecraft 26.3 / JEI 31.7.0 (31.7.x-compatible)** is pinned to JEI commit `0aed0ce0d09b56923469d1074100f02ed0a45b13`. It covers 90 selected languages with 584 keys: 63 add-on-owned complete resource files, 26 JEI missing-key/safety-override supplements, and upstream `en_us`. Only 193 unchanged key+English meanings inherit the G51 translations; new/changed texts receive explicit English fallbacks if JEI lacks a verified translation. These texts still need native-language review.
 
-**G51 / Minecraft 26.2 / JEI 30.32.0** is frozen at maintained JEI branch commit `f93563ca4965d511bd07d4f041b3a6ddd1158ef0`. It contains 334 keys (328 normal + 6 debug), keeps the 90-language selected scope, and reconstructs 63 addon-full locales plus 26 missing-key/safety-override supplements; `en_us` is the single complete selected upstream locale. All 334 English semantics are unchanged from G50. Its canonical NeoForge candidate is `candidate-jars/26.2/jei-translation-expansion-1.0.0-mc26.2-neoforge.jar` with SHA-256 `b3d3a30c23b4a9c3080ed49781fa51df17c024fdf67bdde6c2d467649230824f`.
-
-Minecraft **26.3 is now a final release**, but JEI has not yet exposed an exact final 26.3 target. The only matching JEI branch remains the provisional Fabric branch `fabric-26.3-snapshot-7`, pinned at `58362ffb5baa95580549d6825811e7363964a271`, and still targets `26.3-rc-2`. Translation groundwork is prepared and validated, but **G52 is intentionally not registered and no 26.3 candidate is published** until an exact final JEI 26.3 endpoint and loader state can be audited.
+The Java-25 NeoForge candidate is stored at [`candidate-jars/26.3/jei-translation-expansion-1.0.0-mc26.3-neoforge.jar`](candidate-jars/26.3/jei-translation-expansion-1.0.0-mc26.3-neoforge.jar) (SHA-256 `3cdfd40342ab8e8128f8d940b5eeb5464a36b2d0f3e9596445a2488cd32ca1e9`, 845,501 bytes). Dedicated G52 static tests and canonical packaging CI passed.
 
 Runtime-tested final JAR promotion is tracked separately from chronological translation auditing. Final artifacts belong under `release-jars/<minecraft-version>/` only after the required runtime validation. Starting with Minecraft 1.13, missing-key-only JSON supplements remain runtime merge-test-gated before final promotion.
 
-**G52 / Minecraft 26.3** is registered against the exact JEI 26.3 NeoForge branch (Java 25, 584 keys and 90 selected languages). New or changed text uses explicit English fallback pending translation review. Static packaging and in-game release gates remain separate.
+**G52 has a persisted static candidate and complete source/key-coverage QA**. It is not a runtime-tested final release. In-game merging and native-language review remain open.
 
 For the canonical handoff and exact next task, always read [`PROJECT_STATUS.md`](PROJECT_STATUS.md) first.
 
