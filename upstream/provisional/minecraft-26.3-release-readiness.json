@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "audit_date": "2026-09-16",
-  "status": "minecraft-26.3-final-jei-exact-target-pending",
+  "status": "minecraft-26.3-final-jei-exact-target-available",
   "not_a_completed_generation": true,
   "g52_registration_allowed": false,
   "minecraft": {
@@ -9,7 +9,7 @@
     "manifest_type": "release",
     "release_time": "2026-09-15T11:23:02+00:00",
     "asset_index_id": "34",
-    "asset_index_sha1": "d8492bc61d32a4874c77daa03c0cba9201e9b83b",
+    "asset_index_sha1": "32a06dd28a0a8a981f4a1dffbdb3931f3075ca6c",
     "language_asset_file_count": 143,
     "language_additions_from_26_2": [],
     "language_removals_from_26_2": [],
@@ -19,16 +19,16 @@
   "base_g51": {
     "minecraft": "26.2",
     "pinned_jei_commit": "f93563ca4965d511bd07d4f041b3a6ddd1158ef0",
-    "current_26_2_branch_head": "f93563ca4965d511bd07d4f041b3a6ddd1158ef0",
-    "branch_moved_since_g51_pin": false,
+    "current_26_2_branch_head": "6e9f6effa3acb69c21f9c5a342a133d40d7bfd38",
+    "branch_moved_since_g51_pin": true,
     "asset_index_id": "32",
-    "asset_index_sha1": "d6540f46a8fec49e45fb7312cdcf401a8e4e15ff",
+    "asset_index_sha1": "52695890153d94cf946455da532806db8c530831",
     "language_asset_file_count": 143
   },
   "jei": {
-    "exact_26_3_branch_present": false,
-    "exact_26_3_branch_head": null,
-    "exact_26_3_minecraft_version": null,
+    "exact_26_3_branch_present": true,
+    "exact_26_3_branch_head": "0aed0ce0d09b56923469d1074100f02ed0a45b13",
+    "exact_26_3_minecraft_version": "26.3",
     "preview_branch": "fabric-26.3-snapshot-7",
     "preview_expected_pin": "58362ffb5baa95580549d6825811e7363964a271",
     "preview_current_head": "58362ffb5baa95580549d6825811e7363964a271",
@@ -38,14 +38,15 @@
     "preview_fabric_loader": "0.19.5",
     "preview_fabric_api": "0.160.4+26.3",
     "matching_26_3_branches": [
+      "26.3",
       "fabric-26.3-snapshot-7"
     ],
-    "exact_publishable_target_available": false
+    "exact_publishable_target_available": true
   },
   "decision": {
     "minecraft_side_ready": true,
     "translation_groundwork_ready": true,
     "complete_g52_now": false,
-    "reason": "Minecraft 26.3 is final, but JEI still has no exact final 26.3 target. Keep the RC2/Fabric work provisional and do not publish or register G52 yet."
+    "reason": "An exact JEI Minecraft 26.3 target is now visible; run a fresh exact G52 endpoint/loader audit before registration."
   }
 }

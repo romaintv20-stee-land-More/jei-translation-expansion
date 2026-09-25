@@ -94,6 +94,7 @@ def neoforge_mods_toml(cfg: dict, version: str) -> bytes:
     missing = [key for key in required if not cfg.get(key)]
     if missing:
         raise ValueError(f"NeoForge packaging config missing: {', '.join(missing)}")
+    jei_range = cfg.get("jei_version_range", "[" + cfg["jei"] + "]")
     text = (
         'modLoader="javafml"\n'
         f'loaderVersion="{cfg["loader_version_range"]}"\n'
@@ -123,7 +124,7 @@ def neoforge_mods_toml(cfg: dict, version: str) -> bytes:
         f'[[dependencies.{base.MOD_ID}]]\n'
         f'modId="{cfg["jei_modid"]}"\n'
         'type="required"\n'
-        f'versionRange="[{cfg["jei"]}]"\n'
+        f'versionRange="{jei_range}"\n'
         'ordering="AFTER"\n'
         'side="CLIENT"\n'
     )

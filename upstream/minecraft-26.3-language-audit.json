@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "audit_date": "2026-09-25",
+  "status": "verified-exact-pinned-jei-26.3-branch-source-and-locale-ownership",
+  "minecraft": "26.3",
+  "jei": "31.7.0",
+  "upstream_commit": "0aed0ce0d09b56923469d1074100f02ed0a45b13",
+  "upstream_branch": "26.3",
+  "build": {
+    "neoforge": "26.3.0.7-beta",
+    "minimum_neoforge": "[26.3.0.1-beta,)",
+    "java": 25,
+    "neoforge_loader_version_range": "[4,)"
+  },
+  "english_keys": {
+    "base": 334,
+    "target": 584,
+    "normal": 578,
+    "debug": 6,
+    "unchanged": 193,
+    "added": 304,
+    "removed": 54,
+    "changed": 87
+  },
+  "languages": {
+    "selected": 90,
+    "addon_full": 63,
+    "supplements": 26,
+    "upstream_complete": 1,
+    "upstream_safety_overrides": 143
+  },
+  "source_version_is_branch_specification": true,
+  "translation_quality_note": "New or English-changed source keys require translation review; English fallbacks do not imply native-language completion.",
+  "runtime_merge_test_passed": false,
+  "minecraft_asset_index_sha1": "32a06dd28a0a8a981f4a1dffbdb3931f3075ca6c",
+  "minecraft_language_asset_file_count": 143
+}

@@ -59,6 +59,7 @@ A generation marked complete here has passed translation/reconstruction QA. That
 | G49 | 26.1.1 | 29.4.0 | 309 | 90 | 64 | 25 | 1 | complete |
 | G50 | 26.1.2 | 29.37.0 | 334 | 90 | 63 | 26 | 1 | complete |
 | G51 | 26.2 | 30.32.0 | 334 | 90 | 63 | 26 | 1 | complete |
+| G52 | 26.3 | 31.7.0 | 584 | 90 | 63 | 26 | 1 | complete; English fallback for new/changed keys |
 
 ## Reuse and ownership rules
 
@@ -148,9 +149,9 @@ A generation marked complete here has passed translation/reconstruction QA. That
 
 ## Current generation
 
-G51 / Minecraft 26.2 / JEI 30.32.0 is complete, statically validated, and canonically packaged. It contains 334 keys, keeps the selected scope at 90, and uses ownership 63 addon-full + 26 missing-key/safety-override supplements + 1 complete upstream locale (`en_us`). Its candidate SHA-256 is `b3d3a30c23b4a9c3080ed49781fa51df17c024fdf67bdde6c2d467649230824f`.
+G52 / Minecraft 26.3 / JEI 31.7.0 has passed deterministic translation/reconstruction QA. The selected scope remains 90 languages, with 63 add-on-full locales, 26 upstream supplements and one upstream-complete locale. It contains 584 keys (578 normal and 6 debug), including 304 new keys and 87 changed-English values relative to G51. Only 193 identical source meanings may inherit earlier translations. New or changed text uses English fallback when upstream translations are absent; native-language review remains open.
 
-Minecraft 26.3 is now final on the Minecraft side, and the 90 selected locales remain present in its final language assets. JEI still has no exact final 26.3 target: `fabric-26.3-snapshot-7` remains pinned at `58362ffb5baa95580549d6825811e7363964a271` and targets `26.3-rc-2`. Existing provisional reconstruction is therefore preparation only; G52 remains unregistered until the exact final JEI endpoint and loader state can be audited.
+The exact upstream JEI 26.3 commit is `0aed0ce0d09b56923469d1074100f02ed0a45b13`. Java-25 NeoForge candidate packaging and in-game resource-stack merge testing remain separate gates.
 
 ## Release limitations
 

@@ -1,0 +1,100 @@
+name: Validate G52 Minecraft 26.3 NeoForge
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ['work/g52-mc26.3-final']
+    paths:
+      - '.github/workflows/audit-g52.yml'
+      - 'scripts/audit_26_3.py'
+      - 'scripts/bootstrap_26_3.py'
+      - 'scripts/reconstruct_26_3.py'
+      - 'scripts/validate_26_3.py'
+      - 'scripts/build_completed_jar_neoforge.py'
+      - 'scripts/build_completed_jar.py'
+      - 'upstream/sources/26.3/en_us.json'
+      - 'upstream/diffs/26.2-to-26.3.json'
+      - 'upstream/minecraft-26.3-language-scope.json'
+      - 'upstream/minecraft-26.3-language-audit.json'
+      - 'upstream/provisional/minecraft-26.3-release-readiness.json'
+      - 'translations/g52-mc26.3/policy.json'
+      - 'packaging/completed-versions.json'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up Java 25
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '25'
+      - name: Audit pinned final Minecraft 26.3 JEI endpoint
+        run: python scripts/audit_26_3.py
+      - name: Verify frozen G52 source, scope, delta and policy
+        run: python scripts/bootstrap_26_3.py --verify
+      - name: Validate complete deterministic G52 reconstruction
+        run: python scripts/validate_26_3.py
+      - name: Build Java 25 NeoForge static candidate
+        run: python scripts/build_completed_jar_neoforge.py --minecraft 26.3 --version 1.0.0
+      - name: Inspect candidate structure and metadata
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib
+          import json
+          import struct
+          import tomllib
+          import zipfile
+          from pathlib import Path
+          jar=Path('build/completed-jars/26.3/jei-translation-expansion-1.0.0-mc26.3-neoforge.jar')
+          assert jar.is_file()
+          with zipfile.ZipFile(jar) as zf:
+              assert zf.testzip() is None
+              names=zf.namelist()
+              assert len(names)==len(set(names))
+              assert 'META-INF/neoforge.mods.toml' in names
+              assert 'META-INF/mods.toml' not in names
+              assert 'mcmod.info' not in names
+              assert 'net/neoforged/fml/common/Mod.class' not in names
+              entry='io/github/romaintv20/jeitranslationexpansion/JeiTranslationExpansion.class'
+              assert entry in names
+              assert struct.unpack('>H',zf.read(entry)[6:8])[0]==69
+              langs={Path(p).stem for p in names if p.startswith('assets/jei/lang/') and p.endswith('.json')}
+              scope=json.loads(Path('upstream/minecraft-26.3-language-scope.json').read_text(encoding='utf-8'))
+              full=set(scope['addon_full_locales'])
+              supp=set(scope['selected_upstream_incomplete_locales'])
+              assert langs==full|supp and (len(full),len(supp),len(langs))==(63,26,89)
+              for locale in full:
+                  data=json.loads(zf.read(f'assets/jei/lang/{locale}.json'))
+                  assert len(data)==584,(locale,len(data))
+              meta=tomllib.loads(zf.read('META-INF/neoforge.mods.toml').decode('utf-8'))
+              assert meta['loaderVersion']=='[4,)'
+              assert meta['mods'][0]['modId']=='jei_translation_expansion'
+              deps={x['modId']:x for x in meta['dependencies']['jei_translation_expansion']}
+              assert deps['minecraft']['versionRange']=='[26.3]'
+              assert deps['neoforge']['versionRange']=='[26.3.0.1-beta,)'
+              assert deps['jei']['versionRange']=='[31.7.0,31.8.0)'
+              manifest=zf.read('META-INF/MANIFEST.MF').decode('utf-8')
+              for item in ('Minecraft-Version: 26.3','JEI-Version: 31.7.0','NeoForge-Version: 26.3.0.7-beta','Java-Version: 25'):
+                  assert item in manifest,item
+          print('PASS: inspected Java25 NeoForge JAR, 89 resource files and dependency metadata')
+          print('SHA-256:',hashlib.sha256(jar.read_bytes()).hexdigest())
+          PY
+      - name: Upload static candidate for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: jei-translation-expansion-1.0.0-mc26.3-neoforge-static-candidate
+          path: build/completed-jars/26.3/*.jar
+          retention-days: 30
+          if-no-files-found: error
