@@ -36,7 +36,7 @@ Minecraft **26.3 is now a final release**, but JEI has not yet exposed an exact 
 
 Runtime-tested final JAR promotion is tracked separately from chronological translation auditing. Final artifacts belong under `release-jars/<minecraft-version>/` only after the required runtime validation. Starting with Minecraft 1.13, missing-key-only JSON supplements remain runtime merge-test-gated before final promotion.
 
-The next chronological generation remains **G52 / Minecraft 26.3**, pending exact final JEI 26.3 support.
+**G52 / Minecraft 26.3** is registered against the exact JEI 26.3 NeoForge branch (Java 25, 584 keys and 90 selected languages). New or changed text uses explicit English fallback pending translation review. Static packaging and in-game release gates remain separate.
 
 For the canonical handoff and exact next task, always read [`PROJECT_STATUS.md`](PROJECT_STATUS.md) first.
 

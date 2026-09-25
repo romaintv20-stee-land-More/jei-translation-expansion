@@ -57,6 +57,7 @@ Verified historical JEI/Minecraft localization endpoints. Branch names alone are
 | G49 | 26.1.1 | 29.4.0 | `5a2ecc4` | NeoForge | 309 | 90 | 64 | 25 | 1 | complete |
 | G50 | 26.1.2 | 29.37.0 | `d7c73ed` | NeoForge | 334 | 90 | 63 | 26 | 1 | complete |
 | G51 | 26.2 | 30.32.0 | `f93563c` | NeoForge | 334 | 90 | 63 | 26 | 1 | complete |
+| G52 | 26.3 | 31.7.0 | `0aed0ce` | NeoForge | 584 | 90 | 63 | 26 | 1 | complete; new/changed text uses English fallback |
 
 ## Important endpoint transitions
 
@@ -69,6 +70,7 @@ Verified historical JEI/Minecraft localization endpoints. Branch names alone are
 - G42 removes `gui.jei.category.grindstone.experience` while preserving all 289 surviving meanings.
 - G43 restores the grindstone category and XP text, reaching 291 keys; `zh_cn` is complete upstream for this target.
 - G44 expands to 305 keys with lookup-history configuration/tooltips and the split bookmark visibility tooltips.
+- G52 expands from 334 to 584 keys (304 added, 54 removed, 87 changed-English values); only 193 exact identical meanings are eligible for G51 reuse. Its 90-language resource coverage includes explicit English fallbacks for new/changed texts pending translation review.
 - G45 keeps 305 keys but renames eight localization IDs from `jei.key.category.*` to `key.category.jei.*`. Because keys changed, no cross-key translation inheritance is used even when the English text is identical.
 - The direct successor to G45 endpoint `bdfdb4c09026c4fb488805ff729c66ae48ede875` is the Minecraft 1.21.10 port `0999689eb56a4bb3f7061af263de7aef387f0045`.
 
@@ -81,10 +83,10 @@ Verified historical JEI/Minecraft localization endpoints. Branch names alone are
 
 ## Candidate packaging
 
-Completed generations are registered in `packaging/completed-versions.json`. Their deterministic static candidates are persisted one Minecraft version at a time under `candidate-jars/<minecraft-version>/`.
+Completed generations are registered in `packaging/completed-versions.json`. Static candidates are stored one Minecraft version at a time under `candidate-jars/<minecraft-version>/`.
 
-G51 / Minecraft 26.2 is the latest completed target. Its Java-25 NeoForge candidate is persisted as `candidate-jars/26.2/jei-translation-expansion-1.0.0-mc26.2-neoforge.jar` with SHA-256 `b3d3a30c23b4a9c3080ed49781fa51df17c024fdf67bdde6c2d467649230824f`. The canonical inventory contains 51 version-specific candidates.
+G52 / Minecraft 26.3 is now registered as generation 52, using pinned JEI source `0aed0ce0d09b56923469d1074100f02ed0a45b13`, NeoForge 26.3.0.7-beta, Java 25 and 584 English translation keys. The 90-language reconstruction passed static validation. Its candidate JAR is built and persisted by the CI packaging workflow; runtime release promotion remains separate.
 
 ## Current target
 
-Minecraft 26.3 is a final release, but JEI currently has no exact final 26.3 branch/target. The only matching upstream branch remains `fabric-26.3-snapshot-7` at `58362ffb5baa95580549d6825811e7363964a271`, still targeting Minecraft `26.3-rc-2`. The provisional translation reconstruction is prepared but is not G52 and is not a publishable candidate. The next chronological target is **G52 = Minecraft 26.3** once an exact final JEI 26.3 endpoint and loader state are available for audit.
+G52's 304 added keys and 87 English-changed values require translation review where upstream JEI has no suitable localized text. The project deliberately emits English fallback rather than reuse mismatched meanings. The Minecraft 26.3 in-game JEI resource-stack merge test is still required before `release-jars/26.3/` promotion.
