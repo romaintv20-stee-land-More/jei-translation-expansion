@@ -1,0 +1,238 @@
+{
+  "minecraft": "1.8.8",
+  "upstream_jei": "2.12.0.49",
+  "status": "source_only_unreviewed_not_packaged",
+  "addon_locale_count": 54,
+  "full_english_key_count": 56,
+  "reusable_semantically_unchanged_source_keys": 56,
+  "source_keys_requiring_new_translation": 0,
+  "changed_or_new_english_keys": [],
+  "official_upstream_languages": {
+    "de_de": 46,
+    "en_us": 56,
+    "fi_fi": 5,
+    "ko_kr": 5,
+    "ru_ru": 21,
+    "zh_cn": 23
+  },
+  "policy": "No source-meaning changed translation reuse; original upstream locale keys remain first priority.",
+  "locale_stats": {
+    "af_ZA": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "ar_SA": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "ast_ES": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "az_AZ": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "bg_BG": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "ca_ES": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "cs_CZ": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "cy_GB": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "da_DK": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "el_GR": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "eo_UY": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "es_ES": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "et_EE": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "eu_ES": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "fa_IR": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "fil_PH": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "fr_FR": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "ga_IE": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "gl_ES": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "gv_IM": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "he_IL": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "hi_IN": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "hr_HR": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "hu_HU": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "hy_AM": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "id_ID": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "is_IS": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "it_IT": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "ja_JP": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "ka_GE": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "kw_GB": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "la_LA": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "lb_LU": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "lt_LT": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "lv_LV": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "mi_NZ": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "ms_MY": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "mt_MT": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "nds_DE": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "nl_NL": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "no_NO": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "oc_FR": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "pl_PL": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "pt_BR": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "ro_RO": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "se_NO": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "sk_SK": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "sl_SI": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "sr_SP": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "sv_SE": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "th_TH": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "tr_TR": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "uk_UA": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    },
+    "vi_VN": {
+      "unchanged_english_key_reuse": 56,
+      "needs_translation_english_fallback": 0
+    }
+  },
+  "no_jar_generated": true
+}
