@@ -15,6 +15,8 @@ import net.minecraft.client.resources.Language;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.common.Mod;
 
 /**
  * Draft integration for Forge 1.16.5 LanguageScreen.
@@ -23,6 +25,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
  * This file MUST be compiled and tested with the actual Minecraft/Forge
  * 1.16.5 classpath before packaging. It is NOT part of a released JAR.
  */
+@Mod.EventBusSubscriber(modid="jei_translation_expansion", value=Dist.CLIENT)
 public final class LanguageSearchForge1165 {
     private LanguageSearchForge1165() {}
 
