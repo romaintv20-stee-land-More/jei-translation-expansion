@@ -49,6 +49,12 @@ def test_language_search():
   assert event_name in body,(version,event_name)
   assert "LanguageListFilter" in body
   assert "instanceof EditBox" in body
+  if version in ("1.18.2","1.19.2"):
+   assert 'getDeclaredField("language")' in body
+   assert "LanguageInfo" in body
+   assert 'getDeclaredField("code")' not in body
+  if version in ("1.20.1","1.21.4"):
+   assert 'getDeclaredField("code")' in body
   assert next(x for x in m["minecraft_targets"] if x["minecraft"]==version)["status"]=="source_prepared_uncompiled"
  assert len([x for x in m["minecraft_targets"] if "source_prepared" in x["status"]])==18
  assert len([x for x in m["minecraft_targets"] if x["status"]=="pending_versioned_gui_adapter"])==30
