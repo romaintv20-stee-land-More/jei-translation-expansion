@@ -240,6 +240,10 @@ jobs:
         with:
           distribution: temurin
           java-version: '21'
+      - name: Install Java source parser (runner-only, no mod build)
+        run: python -m pip install tree-sitter tree-sitter-java
+      - name: Parse all staged Java search adapters (no JAR)
+        run: python scripts/validate_java_language_search_syntax.py
       - name: Validate 53-target matrix and staged client adapters
         run: python scripts/validate_all_language_search_targets.py
       - name: Compile/test pure Java language search model (no Minecraft classpath)
