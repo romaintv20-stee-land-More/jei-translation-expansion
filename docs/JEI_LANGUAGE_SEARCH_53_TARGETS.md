@@ -2,7 +2,7 @@
 
 **Source-only project. No JAR has been built or released.**
 
-The official JEI project supports **Minecraft 1.8.8**, and the previous 52-version JEI Translation Expansion matrix omitted it between Minecraft 1.8 and 1.8.9. See [official JEI 2.0.0](https://modrinth.com/mod/jei/version/2.0.0). The search matrix now tracks 53 distinct Minecraft targets, while the release/translation inventory correctly still has only 52 completed generations.
+The official JEI project supports **Minecraft 1.8.8**, and the previous 52-version JEI Translation Expansion matrix omitted it between Minecraft 1.8 and 1.8.9. See [official JEI 2.12.0.49](https://www.curseforge.com/minecraft/mc-mods/jei/files/2271876). The search matrix now tracks 53 distinct Minecraft targets, while the release/translation inventory correctly still has only 52 completed generations.
 
 ## Current source-only progress
 
