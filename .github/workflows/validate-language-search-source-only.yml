@@ -33,6 +33,8 @@ jobs:
           fi
       - name: Validate search matcher, 53-version matrix and 26.3 G53 proposal
         run: python scripts/validate_staged_jei_search_and_g53.py
+      - name: Validate all 53 Minecraft search targets (no JAR)
+        run: python scripts/validate_all_language_search_targets.py
       - name: Validate all 20 staged JEI translation generations
         run: python scripts/validate_all_staged_published_jei.py
       - name: Preserve release freeze
