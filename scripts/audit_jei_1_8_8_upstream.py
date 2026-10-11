@@ -91,6 +91,7 @@ def main():
             "scope": "audit only; no release JAR, no translation candidate generated",
         }
         print(json.dumps(result, ensure_ascii=False, indent=2))
+        print("BASELINE_EN188_JSON:" + json.dumps(english, ensure_ascii=False, sort_keys=True))
         print("PASS: official JEI 1.8.8 audited in memory, no JAR written")
 
 
