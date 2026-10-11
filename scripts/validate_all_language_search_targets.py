@@ -21,7 +21,7 @@ assert [target["minecraft"] for target in TARGETS if target["minecraft"] != "1.8
     record["minecraft"] for record in BUILT
 ]
 missing = next(t for t in TARGETS if t["minecraft"] == "1.8.8")
-assert missing["upstream_jei"] == "2.0.0"
+assert missing["upstream_jei"] == "2.12.0.49"
 assert "pending" in missing["status"]
 assert all(t["status"] == "native" for t in TARGETS if t["minecraft"].startswith("26."))
 assert MATRIX["completed_translation_generations"] == 52
