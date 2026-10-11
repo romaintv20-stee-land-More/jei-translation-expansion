@@ -65,7 +65,7 @@ public final class LanguageSearchMatcherCheck {
   javac=shutil.which("javac")
   if not javac:
    raise RuntimeError("JDK with javac required for matcher tests")
-  subprocess.run([javac,"--release","7","-d",str(d),str(p),str(q)],check=True)
+  subprocess.run([javac,"--release","8","-d",str(d),str(p),str(q)],check=True)
   subprocess.run([shutil.which("java"),"-cp",str(d),"LanguageSearchMatcherCheck"],check=True)
  print("SEARCH TARGET MATRIX PASS",len(m["minecraft_targets"]),"targets (52 existing + 1.8.8 pending)")
 def test_staged_translations():
