@@ -248,3 +248,30 @@ jobs:
         run: python scripts/validate_all_staged_published_jei.py
       - name: Audit official JEI 1.8.8 languages in memory (no JAR output)
         run: python scripts/audit_jei_1_8_8_upstream.py
+
+
+  stage-missing-jei188-locales:
+    name: Stage JEI 1.8.8 translation sources on PR branch (NO JAR)
+    if: ${{ github.event_name == 'pull_request' && github.head_ref == 'feature/jei-language-search-all-versions-including-1.8.8' && github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Reuse only verified unchanged keys from Minecraft 1.8
+        run: python scripts/stage_jei_1_8_8.py --write --check
+      - name: Commit staged .lang source files without generating any JAR
+        run: |
+          git add translations/staged-mc1.8.8
+          if git diff --cached --quiet; then
+            echo "Already staged and up to date."
+            exit 0
+          fi
+          git -c user.name='JEI source stage bot' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Stage JEI 1.8.8 language source drafts (no JAR)'
+          git push origin "HEAD:refs/heads/${{ github.head_ref }}"
