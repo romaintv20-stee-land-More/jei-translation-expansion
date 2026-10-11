@@ -191,7 +191,7 @@
       "minecraft": "1.19.2",
       "java_target": 17,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.19.3",
@@ -380,6 +380,13 @@
       "family": "modern_1_21_to_1_21_11",
       "version": "1.21.4",
       "file": "features/language-search/neoforge_1_21_4/io/github/romaintv20/jeitranslationexpansion/search/neoforge1214/LanguageSearchNeoForge1214.java",
+      "status": "source_only_uncompiled",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.19.2",
+      "file": "features/language-search/forge_1_19_2/io/github/romaintv20/jeitranslationexpansion/search/forge1192/LanguageSearchForge1192.java",
       "status": "source_only_uncompiled",
       "targets": 1
     }
