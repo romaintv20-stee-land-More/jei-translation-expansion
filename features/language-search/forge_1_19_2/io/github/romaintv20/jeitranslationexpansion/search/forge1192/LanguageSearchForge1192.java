@@ -11,6 +11,7 @@ import net.minecraft.client.gui.components.ObjectSelectionList;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.screens.LanguageSelectScreen;
 import net.minecraft.client.gui.screens.Screen;
+import net.minecraft.client.resources.language.LanguageInfo;
 import net.minecraft.network.chat.Component;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.ScreenEvent;
@@ -46,16 +47,22 @@ public final class LanguageSearchForge1192 {
         final List<Object> displayed = rows(list);
         final List<Object> original = new ArrayList<Object>(displayed);
         final List<String> codes = new ArrayList<String>();
+        final List<String> nativeNames = new ArrayList<String>();
         try {
+            // In Minecraft 1.19.2 each vanilla language row has a
+            // LanguageInfo field named "language", NOT a String "code".
             for (Object row : original) {
-                Field field = row.getClass().getDeclaredField("code");
+                Field field = row.getClass().getDeclaredField("language");
                 field.setAccessible(true);
                 Object raw = field.get(row);
-                if (!(raw instanceof String)) return;
-                codes.add((String)raw);
+                if (!(raw instanceof LanguageInfo)) return;
+                LanguageInfo info = (LanguageInfo)raw;
+                if (info.getCode() == null || info.getCode().isEmpty()) return;
+                codes.add(info.getCode());
+                nativeNames.add(info.getName() + " " + info.getRegion());
             }
         } catch (ReflectiveOperationException | SecurityException ex) {
-            return; // Unsupported mapping; do not disturb the vanilla UI.
+            return; // Unknown screen mapping: do not modify the vanilla list.
         }
         LanguageListFilter<Object> model = new LanguageListFilter<Object>(
             original, new LanguageListFilter.RowReader<Object>() {
@@ -63,7 +70,7 @@ public final class LanguageSearchForge1192 {
                     return codes.get(original.indexOf(row));
                 }
                 @Override public String nativeName(Object row) {
-                    return "";
+                    return nativeNames.get(original.indexOf(row));
                 }
             });
         if (!model.canModify(displayed)) return;
