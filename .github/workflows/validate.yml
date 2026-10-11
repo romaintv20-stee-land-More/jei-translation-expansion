@@ -225,3 +225,24 @@ jobs:
         run: python scripts/reconstruct_1_19.py --check
       - name: Validate Minecraft 1.19 complete resources
         run: python scripts/validate_1_19_complete.py
+
+
+  search-source-only:
+    name: Validate search sources and 53-target coverage (NO JARs)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Validate 53-target matrix and staged client adapters
+        run: python scripts/validate_all_language_search_targets.py
+      - name: Compile/test pure Java language search model (no Minecraft classpath)
+        run: python scripts/validate_staged_jei_search_and_g53.py
+      - name: Validate staged translations (NO JAR build)
+        run: python scripts/validate_all_staged_published_jei.py
