@@ -173,7 +173,7 @@
       "minecraft": "1.18.2",
       "java_target": 17,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.19",
@@ -215,7 +215,7 @@
       "minecraft": "1.20.1",
       "java_target": 17,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.20.2",
@@ -251,7 +251,7 @@
       "minecraft": "1.21.4",
       "java_target": 21,
       "adapter_family": "modern_1_21_to_1_21_11",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.21.5",
@@ -336,7 +336,7 @@
   "project_target_count": 53,
   "completed_translation_generations": 52,
   "sources_only": true,
-  "audit_note": "1.8.8 now tracked as the 53rd distinct Minecraft target but is NOT yet a completed translation generation. Legacy GUI adapter source has been added; no JAR is built.",
+  "audit_note": "53 distinct Minecraft targets (includes 1.8.8 pending translations). Java-only matcher and row filtering layer added. Staged version-specific GUI sources are uncompiled; do not package JARs.",
   "search_adapters": [
     {
       "family": "legacy_1_8_to_1_12",
@@ -361,6 +361,27 @@
       "file": null,
       "status": "use_minecraft_native",
       "targets": 5
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.18.2",
+      "file": "features/language-search/forge_1_18_2/io/github/romaintv20/jeitranslationexpansion/search/forge1182/LanguageSearchForge1182.java",
+      "status": "source_only_uncompiled",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.20.1",
+      "file": "features/language-search/forge_1_20_1/io/github/romaintv20/jeitranslationexpansion/search/forge1201/LanguageSearchForge1201.java",
+      "status": "source_only_uncompiled",
+      "targets": 1
+    },
+    {
+      "family": "modern_1_21_to_1_21_11",
+      "version": "1.21.4",
+      "file": "features/language-search/neoforge_1_21_4/io/github/romaintv20/jeitranslationexpansion/search/neoforge1214/LanguageSearchNeoForge1214.java",
+      "status": "source_only_uncompiled",
+      "targets": 1
     }
   ]
 }
