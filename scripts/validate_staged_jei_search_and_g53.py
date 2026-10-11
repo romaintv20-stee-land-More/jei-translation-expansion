@@ -8,8 +8,10 @@ G53=ROOT/"translations/g53-mc26.3-31.10.0.63"
 def test_language_search():
  cfg=json.loads((ROOT/"packaging/completed-versions.json").read_text(encoding="utf-8"))["versions"]
  m=json.loads((FEATURE/"target-matrix.json").read_text(encoding="utf-8"))
- assert len(m["minecraft_targets"])==len(cfg)==52
- assert [t["minecraft"] for t in m["minecraft_targets"]]==[t["minecraft"] for t in cfg]
+ assert len(cfg)==52
+ assert len(m["minecraft_targets"])==53
+ assert m["minecraft_targets"][1]["minecraft"]=="1.8.8"
+ assert [t["minecraft"] for t in m["minecraft_targets"] if t["minecraft"]!="1.8.8"]==[t["minecraft"] for t in cfg]
  assert sum(t["status"]=="native" for t in m["minecraft_targets"])==5
  p=next((FEATURE/"common").rglob("LanguageSearchMatcher.java"))
  assert p.exists()
@@ -49,7 +51,7 @@ public final class LanguageSearchMatcherCheck {
    raise RuntimeError("JDK with javac required for matcher tests")
   subprocess.run([javac,"--release","8","-d",str(d),str(p),str(q)],check=True)
   subprocess.run([shutil.which("java"),"-cp",str(d),"LanguageSearchMatcherCheck"],check=True)
- print("SEARCH TARGET MATRIX PASS",len(cfg),"targets")
+ print("SEARCH TARGET MATRIX PASS",len(m["minecraft_targets"]),"targets (52 existing + 1.8.8 pending)")
 def test_staged_translations():
  audit=json.loads((G53/"audit.json").read_text(encoding="utf-8"))
  english=json.loads((G53/"upstream/en_us.json").read_text(encoding="utf-8"))
