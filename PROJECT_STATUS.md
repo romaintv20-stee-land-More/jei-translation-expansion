@@ -1,12 +1,18 @@
 # JEI Translation Expansion — Canonical Project Status
 
-## 2026-10-11 work in progress (NO JAR BUILDS)
+## 2026-10-11 staged source work (NO MOD JAR BUILDS)
 
-**Correction:** JEI 2.0.0 also supports Minecraft 1.8.8, missing from our historical list. The language-search target list now has 53 Minecraft versions (52 completed generations and 1 pending 1.8.8 target). Legacy Forge source adapter has been prepared but not yet integrated or tested.
+- **53 Minecraft targets** tracked (including missing Minecraft **1.8.8**), **52 historical translation generations** still the released target inventory, plus new source-only 1.8.8 stage.
+- **48 non-native Minecraft language search Java source drafts** stored on GitHub, **5 Minecraft 26.x targets retain native search**, 0 missing source drafts.
+- These GUI sources have **not all been compiled against exact Minecraft/Forge/NeoForge APIs**, are **not wired into production JAR builders**, and **have not been tested in-game**. Never describe them as functional until validated.
+- 40 Java search source files successfully parsed in GitHub Actions; Java-only matcher and row-identity filter unit tests pass.
+- Forge **Minecraft 1.20.1 source successfully compiled** with genuine Forge 47.3.0/Minecraft 1.20.1 client dependencies using CI `compileJava` only (run [38175703496](https://github.com/romaintv20-stee-land-More/jei-translation-expansion/actions/runs/38175703496)); no mod JAR generated. Further Forge version matrix tests are queued.
+- **20 updated original JEI generations**, **1,694 staged locale source files** pass structural/placeholder checks. Newly changed English meanings have English fallbacks pending linguistic review.
+- **JEI 1.8.8 final official version 2.12.0.49** (NOT early beta 2.0.0) audited from official upstream in-memory: 56 unchanged English keys. Its **54 non-official locales were safely staged** from prior approved 1.8 translations. Six original upstream locales remain priority, some partial.
+- Sources reside only on GitHub in [draft PR #33](https://github.com/romaintv20-stee-land-More/jei-translation-expansion/pull/33), not on the user's PC. No new JAR/ZIP or release was made. **Public release remains 1.0.0.**
+- The user expressly requested not to build any mod JAR before additional planned feature work. Compilation-only class checks are allowed; packaging and real in-game tests are postponed.
 
-
-See [docs/JEI_2026-10-11_WIP.md](docs/JEI_2026-10-11_WIP.md) for the 52-target publication audit, 20 staged translation updates, and the phased language-search implementation. User expressly prohibited any new JAR before discussing another feature. **1.0.0 remains the current release; source-only changes are not release-promoted.**
-
+See [docs/JEI_LANGUAGE_SEARCH_53_TARGETS.md](docs/JEI_LANGUAGE_SEARCH_53_TARGETS.md) and [docs/JEI_2026-10-11_WIP.md](docs/JEI_2026-10-11_WIP.md).
 
 Last synchronized: **2026-09-25**
 
