@@ -6,34 +6,42 @@ The official JEI project supports **Minecraft 1.8.8**, and the previous 52-versi
 
 ## Current source-only progress
 
-| Status | Minecraft versions | Count |
+All 53 distinct Minecraft targets have an explicit source route:
+
+| Status | Targets | Count |
 |---|---|---:|
-| Draft legacy Forge list-search source (uncompiled) | 1.8, **1.8.8**, 1.8.9, 1.9, 1.9.4, 1.10, 1.10.2, 1.11, 1.11.2, 1.12, 1.12.1, 1.12.2 | 12 |
-| Draft Forge search sources (uncompiled) | 1.16.5, **1.18.2**, **1.19.2**, **1.20.1** | 4 |
-| Draft NeoForge search sources (uncompiled) | 1.21.1, **1.21.4** | 2 |
-| Minecraft's built-in search preserved | 26.1, 26.1.1, 26.1.2, 26.2, 26.3 | 5 |
-| Still missing version-specific GUI adapter source | All other listed Minecraft targets | 30 |
-| **Total tracked** | | **53** |
+| Draft search adapter source stored on this PR branch | Minecraft 1.8–1.21.11 (including 1.8.8) | 48 |
+| Use the game's native search, no duplicate input | Minecraft 26.1, 26.1.1, 26.1.2, 26.2, 26.3 | 5 |
+| **Missing source draft** | | **0** |
+| **Runtime-verified client adapters** | | **0** |
+| **Total** | | **53** |
 
-The **18 source-prepared targets are NOT compiled or functional in release JARs**.
-The 1.8.8 target's official 56-key English inventory is now audited and saved; its complementary translations still need to be prepared. 26.x keeps
-Minecraft's own language search, avoiding duplicate widgets.
+These are **source-only drafts**, NOT 48 compiled or working Minecraft
+versions. They require target-specific API checking, client compilation
+and real Minecraft testing before any search functionality can be
+considered complete. They are deliberately not wired into the JAR builders.
 
-New Java-only shared filter: `LanguageListFilter.java`; it keeps the original
-vanilla row objects and row order and restores them when a query is cleared.
-Its Java source and tests run in GitHub PR validation. The actual Forge/NeoForge
-GUI adapters still require their exact client classpaths and in-game tests.
+The 30 newest draft variants are stored under
+`features/language-search/drafts/mc<version>/`. They were adapted
+from neighboring API versions and **must not be packaged unverified**.
+The shared matcher and `LanguageListFilter` preserve original row
+identity and ordering, and their Java-only smoke tests pass in CI.
 
-The last official **JEI 1.8.8 version is 2.12.0.49**, published on 22 December
-2015 ([CurseForge file 2271876](https://www.curseforge.com/minecraft/mc-mods/jei/files/2271876)),
-not the initial JEI 2.0.0 beta. The source audit found **56 English keys** and 6 official locale files (German 46, Finnish 5, Korean 5, Russian 21, Simplified Chinese 23, English 56). The verified English source and SHA-256 are saved under `upstream/sources/1.8.8/`.
+### Recovered missing Minecraft 1.8.8 translation generation
 
-
-The Forge **1.18.2 and 1.19.2** draft adapters now correctly read the
-vanilla `LanguageInfo` row field (`code`, native name and region). Forge
-**1.20.1** and NeoForge **1.21.4** instead expose a direct String `code`
-field. These distinctions are checked statically in GitHub CI; real client
-compilation is still outstanding.
+- Upstream: JEI 2.12.0.49, official CurseForge file 2271876, audited
+  SHA-256 in `upstream/sources/1.8.8/provenance.json`.
+- Exactly **56 English keys**, all semantically byte-for-byte unchanged from
+  the preceding 1.8 generation.
+- All **54 previously approved JEI 1.8 fallback locales** were therefore
+  safely reconstructed into `translations/staged-mc1.8.8/`. No translated
+  meaning was guessed or re-used after a source-English change.
+- The upstream JEI 1.8.8 JAR already includes `de_de`, `en_us`,
+  `fi_fi`, `ko_kr`, `ru_ru`, and `zh_cn`. Their existing translations
+  retain priority; some upstream files are partial and their missing keys
+  still need separate coverage decisions.
+- This is **staged text only**. The 1.8.8 version is not inserted into the
+  completed-build matrix, and no JAR is generated.
 
 ### Rules
 
@@ -58,4 +66,13 @@ compilation is still outstanding.
 
 ### Still unfinished
 
-30 GUI adapters, full version-specific client compilation, runtime focus/render/input tests, coexistence tests, 1.8.8 fallback translation generation, two earlier unpublished/uncorroborated original JEI audit targets, and human review of newly added translations. All remain prerequisites to the next release.
+Exact-version API review and compilation of 48 draft adapters, runtime focus/render/input tests, coexistence tests, supplementary keys missing from upstream 1.8.8 official locales, two earlier unpublished/uncorroborated original JEI audit targets, and human review of newly added translations. All remain prerequisites to the next release.
+
+## CI validation contract
+
+- All 53 targets must have a source draft or use native Minecraft search.
+- Every draft Java file is parsed by Tree-sitter Java. This proves **syntax only**, never API compatibility.
+- A Java-only test verifies the common filter preserves language-row identity and ordering when searching and clearing.
+- The 20 updated JEI generations and their 1,694 staged translation files are validated for keys and formatting.
+- The new 1.8.8 locale stage is deterministic and checked against the official English baseline.
+- No source-only CI job runs `jar`, creates a release artifact or alters the public 1.0.0 release.
