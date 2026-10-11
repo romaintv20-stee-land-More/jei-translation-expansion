@@ -19,6 +19,22 @@ def test_language_search():
  b=next((FEATURE/"mc1_21_1").rglob("LanguageSearchEvents1211.java"))
  assert 'ModList.get().isLoaded("steel_and_more")' in a.read_text(encoding="utf-8")
  assert "instanceof EditBox" in a.read_text(encoding="utf-8")
+ legacy=next((FEATURE/"legacy_1_8_to_1_12").rglob("LanguageSearchLegacyForge.java"))
+ body=legacy.read_text(encoding="utf-8")
+ for required in (
+     "GuiScreenEvent.InitGuiEvent.Post",
+     "GuiScreenEvent.KeyboardInputEvent.Pre",
+     "GuiScreenEvent.MouseInputEvent.Pre",
+     "GuiScreenEvent.DrawScreenEvent.Post",
+     "GuiScreenEvent.ActionPerformedEvent.Pre",
+     "LanguageSearchMatcher.matches(",
+     "CONTROLS.put(screen",
+     "slot.setDimensions",
+ ):
+     assert required in body, required
+ assert all(t["status"]=="native" for t in m["minecraft_targets"] if t["minecraft"].startswith("26."))
+ assert any(t["minecraft"]=="1.8.8" and "pending" in t["status"] for t in m["minecraft_targets"])
+
  assert 'modid="jei_translation_expansion"' in b.read_text(encoding="utf-8")
  java=r"""
 import io.github.romaintv20.jeitranslationexpansion.search.LanguageSearchMatcher;
@@ -49,7 +65,7 @@ public final class LanguageSearchMatcherCheck {
   javac=shutil.which("javac")
   if not javac:
    raise RuntimeError("JDK with javac required for matcher tests")
-  subprocess.run([javac,"--release","8","-d",str(d),str(p),str(q)],check=True)
+  subprocess.run([javac,"--release","7","-d",str(d),str(p),str(q)],check=True)
   subprocess.run([shutil.which("java"),"-cp",str(d),"LanguageSearchMatcherCheck"],check=True)
  print("SEARCH TARGET MATRIX PASS",len(m["minecraft_targets"]),"targets (52 existing + 1.8.8 pending)")
 def test_staged_translations():
