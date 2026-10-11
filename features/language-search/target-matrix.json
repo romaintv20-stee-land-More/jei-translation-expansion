@@ -86,67 +86,89 @@
       "minecraft": "1.13",
       "java_target": 8,
       "adapter_family": "forge_1_13_to_1_16",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_13/io/github/romaintv20/jeitranslationexpansion/search/forge113/LanguageSearchForge113.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.13.2",
       "java_target": 8,
       "adapter_family": "forge_1_13_to_1_16",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_13_2/io/github/romaintv20/jeitranslationexpansion/search/forge1132/LanguageSearchForge1132.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.14.2",
       "java_target": 8,
       "adapter_family": "forge_1_13_to_1_16",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_14_2/io/github/romaintv20/jeitranslationexpansion/search/forge1142/LanguageSearchForge1142.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.14.3",
       "java_target": 8,
       "adapter_family": "forge_1_13_to_1_16",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_14_3/io/github/romaintv20/jeitranslationexpansion/search/forge1143/LanguageSearchForge1143.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.14.4",
       "java_target": 8,
       "adapter_family": "forge_1_13_to_1_16",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_14_4/io/github/romaintv20/jeitranslationexpansion/search/forge1144/LanguageSearchForge1144.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.15.1",
       "java_target": 8,
       "adapter_family": "forge_1_13_to_1_16",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_15_1/io/github/romaintv20/jeitranslationexpansion/search/forge1151/LanguageSearchForge1151.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.15.2",
       "java_target": 8,
       "adapter_family": "forge_1_13_to_1_16",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_15_2/io/github/romaintv20/jeitranslationexpansion/search/forge1152/LanguageSearchForge1152.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.16.1",
       "java_target": 8,
       "adapter_family": "forge_1_13_to_1_16",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_16_1/io/github/romaintv20/jeitranslationexpansion/search/forge1161/LanguageSearchForge1161.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.16.2",
       "java_target": 8,
       "adapter_family": "forge_1_13_to_1_16",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_16_2/io/github/romaintv20/jeitranslationexpansion/search/forge1162/LanguageSearchForge1162.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.16.3",
       "java_target": 8,
       "adapter_family": "forge_1_13_to_1_16",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_16_3/io/github/romaintv20/jeitranslationexpansion/search/forge1163/LanguageSearchForge1163.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.16.4",
       "java_target": 8,
       "adapter_family": "forge_1_13_to_1_16",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_16_4/io/github/romaintv20/jeitranslationexpansion/search/forge1164/LanguageSearchForge1164.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.16.5",
@@ -158,19 +180,25 @@
       "minecraft": "1.17.1",
       "java_target": 16,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_17_1/io/github/romaintv20/jeitranslationexpansion/search/forge1171/LanguageSearchForge1171.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.18",
       "java_target": 17,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_18/io/github/romaintv20/jeitranslationexpansion/search/forge118/LanguageSearchForge118.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.18.1",
       "java_target": 17,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_18_1/io/github/romaintv20/jeitranslationexpansion/search/forge1181/LanguageSearchForge1181.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.18.2",
@@ -182,13 +210,17 @@
       "minecraft": "1.19",
       "java_target": 17,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_19/io/github/romaintv20/jeitranslationexpansion/search/forge119/LanguageSearchForge119.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.19.1",
       "java_target": 17,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_19_1/io/github/romaintv20/jeitranslationexpansion/search/forge1191/LanguageSearchForge1191.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.19.2",
@@ -200,19 +232,25 @@
       "minecraft": "1.19.3",
       "java_target": 17,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_19_3/io/github/romaintv20/jeitranslationexpansion/search/forge1193/LanguageSearchForge1193.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.19.4",
       "java_target": 17,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_19_4/io/github/romaintv20/jeitranslationexpansion/search/forge1194/LanguageSearchForge1194.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.20",
       "java_target": 17,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_20/io/github/romaintv20/jeitranslationexpansion/search/forge120/LanguageSearchForge120.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.20.1",
@@ -224,25 +262,33 @@
       "minecraft": "1.20.2",
       "java_target": 17,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_20_2/io/github/romaintv20/jeitranslationexpansion/search/forge1202/LanguageSearchForge1202.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.20.4",
       "java_target": 17,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_20_4/io/github/romaintv20/jeitranslationexpansion/search/forge1204/LanguageSearchForge1204.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.20.6",
       "java_target": 21,
       "adapter_family": "forge_1_17_to_1_20",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_20_6/io/github/romaintv20/jeitranslationexpansion/search/forge1206/LanguageSearchForge1206.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.21",
       "java_target": 21,
       "adapter_family": "modern_1_21_to_1_21_11",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_21/io/github/romaintv20/jeitranslationexpansion/search/forge121/LanguageSearchForge121.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.21.1",
@@ -260,43 +306,57 @@
       "minecraft": "1.21.5",
       "java_target": 21,
       "adapter_family": "modern_1_21_to_1_21_11",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_21_5/io/github/romaintv20/jeitranslationexpansion/search/neoforge1215/LanguageSearchNeoForge1215.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.21.6",
       "java_target": 21,
       "adapter_family": "modern_1_21_to_1_21_11",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_21_6/io/github/romaintv20/jeitranslationexpansion/search/neoforge1216/LanguageSearchNeoForge1216.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.21.7",
       "java_target": 21,
       "adapter_family": "modern_1_21_to_1_21_11",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_21_7/io/github/romaintv20/jeitranslationexpansion/search/neoforge1217/LanguageSearchNeoForge1217.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.21.8",
       "java_target": 21,
       "adapter_family": "modern_1_21_to_1_21_11",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_21_8/io/github/romaintv20/jeitranslationexpansion/search/neoforge1218/LanguageSearchNeoForge1218.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.21.9",
       "java_target": 21,
       "adapter_family": "modern_1_21_to_1_21_11",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_21_9/io/github/romaintv20/jeitranslationexpansion/search/neoforge1219/LanguageSearchNeoForge1219.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.21.10",
       "java_target": 21,
       "adapter_family": "modern_1_21_to_1_21_11",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_21_10/io/github/romaintv20/jeitranslationexpansion/search/neoforge12110/LanguageSearchNeoForge12110.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "1.21.11",
       "java_target": 21,
       "adapter_family": "modern_1_21_to_1_21_11",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled",
+      "adapter_source_path": "features/language-search/drafts/mc1_21_11/io/github/romaintv20/jeitranslationexpansion/search/neoforge12111/LanguageSearchNeoForge12111.java",
+      "source_note": "Draft from neighboring Minecraft/loader API; must compile and be tested against exact-version GUI before release."
     },
     {
       "minecraft": "26.1",
@@ -339,7 +399,7 @@
   "project_target_count": 53,
   "completed_translation_generations": 52,
   "sources_only": true,
-  "audit_note": "53 distinct Minecraft targets (includes 1.8.8 pending translations). Java-only matcher and row filtering layer added. Staged version-specific GUI sources are uncompiled; do not package JARs.",
+  "audit_note": "All 53 Minecraft versions now have a source plan: 48 non-native language-search adapter sources staged (NONE proven to compile or run in game); 5 native Minecraft 26.x searches. No JAR output authorized. Minecraft 1.8.8 additionally has 56-key official source and staged fallback generator.",
   "search_adapters": [
     {
       "family": "legacy_1_8_to_1_12",
@@ -392,6 +452,219 @@
       "file": "features/language-search/forge_1_19_2/io/github/romaintv20/jeitranslationexpansion/search/forge1192/LanguageSearchForge1192.java",
       "status": "source_only_uncompiled",
       "targets": 1
+    },
+    {
+      "family": "forge_1_13_to_1_16",
+      "version": "1.13",
+      "file": "features/language-search/drafts/mc1_13/io/github/romaintv20/jeitranslationexpansion/search/forge113/LanguageSearchForge113.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_13_to_1_16",
+      "version": "1.13.2",
+      "file": "features/language-search/drafts/mc1_13_2/io/github/romaintv20/jeitranslationexpansion/search/forge1132/LanguageSearchForge1132.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_13_to_1_16",
+      "version": "1.14.2",
+      "file": "features/language-search/drafts/mc1_14_2/io/github/romaintv20/jeitranslationexpansion/search/forge1142/LanguageSearchForge1142.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_13_to_1_16",
+      "version": "1.14.3",
+      "file": "features/language-search/drafts/mc1_14_3/io/github/romaintv20/jeitranslationexpansion/search/forge1143/LanguageSearchForge1143.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_13_to_1_16",
+      "version": "1.14.4",
+      "file": "features/language-search/drafts/mc1_14_4/io/github/romaintv20/jeitranslationexpansion/search/forge1144/LanguageSearchForge1144.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_13_to_1_16",
+      "version": "1.15.1",
+      "file": "features/language-search/drafts/mc1_15_1/io/github/romaintv20/jeitranslationexpansion/search/forge1151/LanguageSearchForge1151.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_13_to_1_16",
+      "version": "1.15.2",
+      "file": "features/language-search/drafts/mc1_15_2/io/github/romaintv20/jeitranslationexpansion/search/forge1152/LanguageSearchForge1152.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_13_to_1_16",
+      "version": "1.16.1",
+      "file": "features/language-search/drafts/mc1_16_1/io/github/romaintv20/jeitranslationexpansion/search/forge1161/LanguageSearchForge1161.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_13_to_1_16",
+      "version": "1.16.2",
+      "file": "features/language-search/drafts/mc1_16_2/io/github/romaintv20/jeitranslationexpansion/search/forge1162/LanguageSearchForge1162.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_13_to_1_16",
+      "version": "1.16.3",
+      "file": "features/language-search/drafts/mc1_16_3/io/github/romaintv20/jeitranslationexpansion/search/forge1163/LanguageSearchForge1163.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_13_to_1_16",
+      "version": "1.16.4",
+      "file": "features/language-search/drafts/mc1_16_4/io/github/romaintv20/jeitranslationexpansion/search/forge1164/LanguageSearchForge1164.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.17.1",
+      "file": "features/language-search/drafts/mc1_17_1/io/github/romaintv20/jeitranslationexpansion/search/forge1171/LanguageSearchForge1171.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.18",
+      "file": "features/language-search/drafts/mc1_18/io/github/romaintv20/jeitranslationexpansion/search/forge118/LanguageSearchForge118.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.18.1",
+      "file": "features/language-search/drafts/mc1_18_1/io/github/romaintv20/jeitranslationexpansion/search/forge1181/LanguageSearchForge1181.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.19",
+      "file": "features/language-search/drafts/mc1_19/io/github/romaintv20/jeitranslationexpansion/search/forge119/LanguageSearchForge119.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.19.1",
+      "file": "features/language-search/drafts/mc1_19_1/io/github/romaintv20/jeitranslationexpansion/search/forge1191/LanguageSearchForge1191.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.19.3",
+      "file": "features/language-search/drafts/mc1_19_3/io/github/romaintv20/jeitranslationexpansion/search/forge1193/LanguageSearchForge1193.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.19.4",
+      "file": "features/language-search/drafts/mc1_19_4/io/github/romaintv20/jeitranslationexpansion/search/forge1194/LanguageSearchForge1194.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.20",
+      "file": "features/language-search/drafts/mc1_20/io/github/romaintv20/jeitranslationexpansion/search/forge120/LanguageSearchForge120.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.20.2",
+      "file": "features/language-search/drafts/mc1_20_2/io/github/romaintv20/jeitranslationexpansion/search/forge1202/LanguageSearchForge1202.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.20.4",
+      "file": "features/language-search/drafts/mc1_20_4/io/github/romaintv20/jeitranslationexpansion/search/forge1204/LanguageSearchForge1204.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "forge_1_17_to_1_20",
+      "version": "1.20.6",
+      "file": "features/language-search/drafts/mc1_20_6/io/github/romaintv20/jeitranslationexpansion/search/forge1206/LanguageSearchForge1206.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "modern_1_21_to_1_21_11",
+      "version": "1.21",
+      "file": "features/language-search/drafts/mc1_21/io/github/romaintv20/jeitranslationexpansion/search/forge121/LanguageSearchForge121.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "modern_1_21_to_1_21_11",
+      "version": "1.21.5",
+      "file": "features/language-search/drafts/mc1_21_5/io/github/romaintv20/jeitranslationexpansion/search/neoforge1215/LanguageSearchNeoForge1215.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "modern_1_21_to_1_21_11",
+      "version": "1.21.6",
+      "file": "features/language-search/drafts/mc1_21_6/io/github/romaintv20/jeitranslationexpansion/search/neoforge1216/LanguageSearchNeoForge1216.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "modern_1_21_to_1_21_11",
+      "version": "1.21.7",
+      "file": "features/language-search/drafts/mc1_21_7/io/github/romaintv20/jeitranslationexpansion/search/neoforge1217/LanguageSearchNeoForge1217.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "modern_1_21_to_1_21_11",
+      "version": "1.21.8",
+      "file": "features/language-search/drafts/mc1_21_8/io/github/romaintv20/jeitranslationexpansion/search/neoforge1218/LanguageSearchNeoForge1218.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "modern_1_21_to_1_21_11",
+      "version": "1.21.9",
+      "file": "features/language-search/drafts/mc1_21_9/io/github/romaintv20/jeitranslationexpansion/search/neoforge1219/LanguageSearchNeoForge1219.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "modern_1_21_to_1_21_11",
+      "version": "1.21.10",
+      "file": "features/language-search/drafts/mc1_21_10/io/github/romaintv20/jeitranslationexpansion/search/neoforge12110/LanguageSearchNeoForge12110.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
+    },
+    {
+      "family": "modern_1_21_to_1_21_11",
+      "version": "1.21.11",
+      "file": "features/language-search/drafts/mc1_21_11/io/github/romaintv20/jeitranslationexpansion/search/neoforge12111/LanguageSearchNeoForge12111.java",
+      "status": "draft_uncompiled_unverified",
+      "targets": 1
     }
-  ]
+  ],
+  "search_source_targets_total": 48,
+  "native_search_targets_total": 5,
+  "runtime_verified_search_targets_total": 0
 }
