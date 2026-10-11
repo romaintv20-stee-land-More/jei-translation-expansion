@@ -22,6 +22,19 @@ assert [target["minecraft"] for target in TARGETS if target["minecraft"] != "1.8
 ]
 missing = next(t for t in TARGETS if t["minecraft"] == "1.8.8")
 assert missing["upstream_jei"] == "2.12.0.49"
+source_188 = ROOT / "upstream/sources/1.8.8/en_us.lang"
+provenance_188 = json.loads((ROOT/"upstream/sources/1.8.8/provenance.json").read_text(encoding="utf-8"))
+english_188 = dict(
+    line.split("=",1) for line in source_188.read_text(encoding="utf-8").splitlines()
+    if line and not line.startswith("#") and "=" in line
+)
+assert len(english_188)==56
+assert provenance_188["source_keys"]==56
+assert provenance_188["official_sha256"]=="ae95a7a3d02a16b5e1144cdc833d0b25c551053738d5ac36a667c04ad2cb4d96"
+assert sum(provenance_188["upstream_languages"].values())>56
+assert set(provenance_188["upstream_languages"])=={"de_de","en_us","fi_fi","ko_kr","ru_ru","zh_cn"}
+assert missing["upstream_language_source"]=="upstream/sources/1.8.8/en_us.lang"
+
 assert "pending" in missing["status"]
 assert all(t["status"] == "native" for t in TARGETS if t["minecraft"].startswith("26."))
 assert MATRIX["completed_translation_generations"] == 52
