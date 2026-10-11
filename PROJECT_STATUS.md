@@ -2,6 +2,9 @@
 
 ## 2026-10-11 work in progress (NO JAR BUILDS)
 
+**Correction:** JEI 2.0.0 also supports Minecraft 1.8.8, missing from our historical list. The language-search target list now has 53 Minecraft versions (52 completed generations and 1 pending 1.8.8 target). Legacy Forge source adapter has been prepared but not yet integrated or tested.
+
+
 See [docs/JEI_2026-10-11_WIP.md](docs/JEI_2026-10-11_WIP.md) for the 52-target publication audit, 20 staged translation updates, and the phased language-search implementation. User expressly prohibited any new JAR before discussing another feature. **1.0.0 remains the current release; source-only changes are not release-promoted.**
 
 
