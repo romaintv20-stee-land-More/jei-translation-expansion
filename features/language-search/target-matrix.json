@@ -11,6 +11,15 @@
       "status": "pending_versioned_gui_adapter"
     },
     {
+      "minecraft": "1.8.8",
+      "java_target": 7,
+      "adapter_family": "legacy_1_8_to_1_12",
+      "status": "pending_upstream_locale_audit_and_gui_compile",
+      "upstream_jei": "2.0.0",
+      "source": "https://modrinth.com/mod/jei/version/2.0.0",
+      "coverage_note": "Official JEI supports Minecraft 1.8.8; not part of previously completed G1-G52 inventory."
+    },
+    {
       "minecraft": "1.8.9",
       "java_target": 7,
       "adapter_family": "legacy_1_8_to_1_12",
@@ -323,5 +332,9 @@
     "Do not package the 1.21.1 NeoForge code in legacy Forge JARs.",
     "Preserve native 26.x language search and B&M co-existence.",
     "One Minecraft version per JAR."
-  ]
+  ],
+  "project_target_count": 53,
+  "completed_translation_generations": 52,
+  "sources_only": true,
+  "audit_note": "1.8.8 now tracked as the 53rd distinct Minecraft target but is NOT yet a completed translation generation. Legacy GUI adapter source has been added; no JAR is built."
 }
