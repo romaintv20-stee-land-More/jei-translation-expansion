@@ -56,8 +56,8 @@ def test_language_search():
   if version in ("1.20.1","1.21.4"):
    assert 'getDeclaredField("code")' in body
   assert next(x for x in m["minecraft_targets"] if x["minecraft"]==version)["status"]=="source_prepared_uncompiled"
- assert len([x for x in m["minecraft_targets"] if "source_prepared" in x["status"]])==18
- assert len([x for x in m["minecraft_targets"] if x["status"]=="pending_versioned_gui_adapter"])==30
+ assert len([x for x in m["minecraft_targets"] if "source_prepared" in x["status"]])==48
+ assert len([x for x in m["minecraft_targets"] if x["status"]=="pending_versioned_gui_adapter"])==0
 
 
  assert 'modid="jei_translation_expansion"' in b.read_text(encoding="utf-8")
