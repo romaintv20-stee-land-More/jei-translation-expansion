@@ -1,0 +1,51 @@
+name: JEI language search source checks (NO JAR)
+
+on:
+  push:
+    branches:
+      - feature/jei-language-search-all-versions-including-1.8.8
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  source-only-validation:
+    name: Validate 53-target search plan and staged language sources
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - name: Ensure this commit contains no new JAR/ZIP artifacts
+        run: |
+          if git diff --name-only HEAD^ HEAD -- '*.jar' '*.zip' '*.class' | grep -q .; then
+            echo "ERROR: Source-only staging must not create binary build artifacts."
+            exit 1
+          fi
+      - name: Validate search matcher, 53-version matrix and 26.3 G53 proposal
+        run: python scripts/validate_staged_jei_search_and_g53.py
+      - name: Validate all 20 staged JEI translation generations
+        run: python scripts/validate_all_staged_published_jei.py
+      - name: Preserve release freeze
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=json.loads(Path("packaging/completed-versions.json").read_text(encoding="utf-8"))
+          matrix=json.loads(Path("features/language-search/target-matrix.json").read_text(encoding="utf-8"))
+          assert root["project_version"]=="1.0.0"
+          assert len(root["versions"])==52
+          assert len(matrix["minecraft_targets"])==53
+          assert all(e["minecraft"]!="1.8.8" for e in root["versions"])
+          assert matrix["minecraft_targets"][1]["minecraft"]=="1.8.8"
+          print("PASS: no release promotion or JAR generation")
+          PY
