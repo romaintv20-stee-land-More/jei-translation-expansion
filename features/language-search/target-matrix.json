@@ -15,9 +15,10 @@
       "java_target": 7,
       "adapter_family": "legacy_1_8_to_1_12",
       "status": "source_prepared_pending_upstream_translation_audit_and_gui_compile",
-      "upstream_jei": "2.0.0",
-      "source": "https://modrinth.com/mod/jei/version/2.0.0",
-      "coverage_note": "Official JEI supports Minecraft 1.8.8; not part of previously completed G1-G52 inventory."
+      "upstream_jei": "2.12.0.49",
+      "source": "https://www.curseforge.com/minecraft/mc-mods/jei/files/2271876",
+      "coverage_note": "Minecraft 1.8.8 was absent from the 52 completed releases. Last official 1.8.8 JEI release 2.12.0.49 from December 22 2015 needs its own English key inventory and supported locale audit before release.",
+      "upstream_curseforge_file_id": 2271876
     },
     {
       "minecraft": "1.8.9",
