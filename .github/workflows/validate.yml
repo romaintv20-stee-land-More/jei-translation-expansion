@@ -246,3 +246,5 @@ jobs:
         run: python scripts/validate_staged_jei_search_and_g53.py
       - name: Validate staged translations (NO JAR build)
         run: python scripts/validate_all_staged_published_jei.py
+      - name: Audit official JEI 1.8.8 languages in memory (no JAR output)
+        run: python scripts/audit_jei_1_8_8_upstream.py
