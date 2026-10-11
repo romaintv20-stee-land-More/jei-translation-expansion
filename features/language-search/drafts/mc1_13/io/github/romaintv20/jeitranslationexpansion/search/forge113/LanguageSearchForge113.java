@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiLanguage;
 import net.minecraft.client.gui.GuiScreen;
@@ -61,7 +62,7 @@ public final class LanguageSearchForge113 {
                 });
             if (!filter.canModify(codes)) return;
             GuiTextField input=new GuiTextField(
-                17287, screen.mc.fontRenderer,
+                17287, fontFromScreen(screen),
                 screen.width/2-126,34,224,20
             );
             input.setMaxStringLength(96);
@@ -123,6 +124,17 @@ public final class LanguageSearchForge113 {
             if(result instanceof Character)return (Character)result;
         }catch(ReflectiveOperationException ignored){}
         return fallback;
+    }
+
+    private static FontRenderer fontFromScreen(GuiScreen screen)
+            throws ReflectiveOperationException {
+        for(Field f:GuiScreen.class.getDeclaredFields()){
+            if(!FontRenderer.class.isAssignableFrom(f.getType()))continue;
+            f.setAccessible(true);
+            Object value=f.get(screen);
+            if(value instanceof FontRenderer)return (FontRenderer)value;
+        }
+        throw new NoSuchFieldException("Language screen font field not available");
     }
 
     private static GuiSlot languageList(GuiScreen screen)
