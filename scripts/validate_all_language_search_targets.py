@@ -67,6 +67,6 @@ for target in TARGETS:
         assert source.is_file(),(target["minecraft"],source)
         java=source.read_text(encoding="utf-8")
         assert "class LanguageSearch" in java
-        assert "source" in target["source_note"].lower() or "Draft" in java,(target["minecraft"],source)
+        assert "draft" in target["source_note"].lower() or "draft" in java.lower(),(target["minecraft"],source)
 print(f"PASS 53 target records: {staged} source-only adapters, {native} native search, {pending} missing source drafts; 0 runtime-verified adapters")
 print("PASS release freeze: 52 already-completed translations; 1.8.8 pending; no JARs created")
