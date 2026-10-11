@@ -16,7 +16,7 @@ The official JEI project supports **Minecraft 1.8.8**, and the previous 52-versi
 | **Total tracked** | | **53** |
 
 The **18 source-prepared targets are NOT compiled or functional in release JARs**.
-The 1.8.8 target additionally needs a localization inventory. 26.x keeps
+The 1.8.8 target's official 56-key English inventory is now audited and saved; its complementary translations still need to be prepared. 26.x keeps
 Minecraft's own language search, avoiding duplicate widgets.
 
 New Java-only shared filter: `LanguageListFilter.java`; it keeps the original
@@ -26,7 +26,14 @@ GUI adapters still require their exact client classpaths and in-game tests.
 
 The last official **JEI 1.8.8 version is 2.12.0.49**, published on 22 December
 2015 ([CurseForge file 2271876](https://www.curseforge.com/minecraft/mc-mods/jei/files/2271876)),
-not the initial JEI 2.0.0 beta. The 1.8.8 language audit is pending.
+not the initial JEI 2.0.0 beta. The source audit found **56 English keys** and 6 official locale files (German 46, Finnish 5, Korean 5, Russian 21, Simplified Chinese 23, English 56). The verified English source and SHA-256 are saved under `upstream/sources/1.8.8/`.
+
+
+The Forge **1.18.2 and 1.19.2** draft adapters now correctly read the
+vanilla `LanguageInfo` row field (`code`, native name and region). Forge
+**1.20.1** and NeoForge **1.21.4** instead expose a direct String `code`
+field. These distinctions are checked statically in GitHub CI; real client
+compilation is still outstanding.
 
 ### Rules
 
@@ -36,7 +43,7 @@ not the initial JEI 2.0.0 beta. The 1.8.8 language audit is pending.
 - Detect an existing search input, especially Beyond & More, and do not add another.
 - Respect API and Java-generation differences, including Java 7 for early Forge builds.
 - Compile and test each Minecraft/loader target separately; do not claim universal compatibility on the strength of a shared matcher.
-- Only add Minecraft 1.8.8 to the packaging version list after its upstream language audit and version-specific metadata have been completed.
+- Only add Minecraft 1.8.8 to the packaging version list after its complementary fallback translations, exact-version loader metadata and in-game tests have been completed.
 - Do not generate, upload or publish any JAR without the user's next authorization.
 
 ### Files
@@ -51,4 +58,4 @@ not the initial JEI 2.0.0 beta. The 1.8.8 language audit is pending.
 
 ### Still unfinished
 
-30 GUI adapters, full version-specific client compilation, runtime focus/render/input tests, coexistence tests, upstream 1.8.8 language audit, two earlier unpublished/uncorroborated original JEI audit targets, and human review of newly added translations. All remain prerequisites to the next release.
+30 GUI adapters, full version-specific client compilation, runtime focus/render/input tests, coexistence tests, 1.8.8 fallback translation generation, two earlier unpublished/uncorroborated original JEI audit targets, and human review of newly added translations. All remain prerequisites to the next release.
