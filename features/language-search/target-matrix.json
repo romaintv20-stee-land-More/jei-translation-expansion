@@ -8,13 +8,13 @@
       "minecraft": "1.8",
       "java_target": 7,
       "adapter_family": "legacy_1_8_to_1_12",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.8.8",
       "java_target": 7,
       "adapter_family": "legacy_1_8_to_1_12",
-      "status": "pending_upstream_locale_audit_and_gui_compile",
+      "status": "source_prepared_pending_upstream_translation_audit_and_gui_compile",
       "upstream_jei": "2.0.0",
       "source": "https://modrinth.com/mod/jei/version/2.0.0",
       "coverage_note": "Official JEI supports Minecraft 1.8.8; not part of previously completed G1-G52 inventory."
@@ -23,61 +23,61 @@
       "minecraft": "1.8.9",
       "java_target": 7,
       "adapter_family": "legacy_1_8_to_1_12",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.9",
       "java_target": 7,
       "adapter_family": "legacy_1_8_to_1_12",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.9.4",
       "java_target": 7,
       "adapter_family": "legacy_1_8_to_1_12",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.10",
       "java_target": 7,
       "adapter_family": "legacy_1_8_to_1_12",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.10.2",
       "java_target": 7,
       "adapter_family": "legacy_1_8_to_1_12",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.11",
       "java_target": 7,
       "adapter_family": "legacy_1_8_to_1_12",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.11.2",
       "java_target": 7,
       "adapter_family": "legacy_1_8_to_1_12",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.12",
       "java_target": 8,
       "adapter_family": "legacy_1_8_to_1_12",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.12.1",
       "java_target": 8,
       "adapter_family": "legacy_1_8_to_1_12",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.12.2",
       "java_target": 8,
       "adapter_family": "legacy_1_8_to_1_12",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.13",
@@ -149,7 +149,7 @@
       "minecraft": "1.16.5",
       "java_target": 8,
       "adapter_family": "forge_1_13_to_1_16",
-      "status": "pending_versioned_gui_adapter"
+      "status": "source_prepared_uncompiled"
     },
     {
       "minecraft": "1.17.1",
@@ -336,5 +336,31 @@
   "project_target_count": 53,
   "completed_translation_generations": 52,
   "sources_only": true,
-  "audit_note": "1.8.8 now tracked as the 53rd distinct Minecraft target but is NOT yet a completed translation generation. Legacy GUI adapter source has been added; no JAR is built."
+  "audit_note": "1.8.8 now tracked as the 53rd distinct Minecraft target but is NOT yet a completed translation generation. Legacy GUI adapter source has been added; no JAR is built.",
+  "search_adapters": [
+    {
+      "family": "legacy_1_8_to_1_12",
+      "file": "features/language-search/legacy_1_8_to_1_12/io/github/romaintv20/jeitranslationexpansion/search/legacy/LanguageSearchLegacyForge.java",
+      "status": "source_only_uncompiled",
+      "targets": 12
+    },
+    {
+      "family": "forge_1_16_5",
+      "file": "features/language-search/forge_1_16_5/io/github/romaintv20/jeitranslationexpansion/search/forge1165/LanguageSearchForge1165.java",
+      "status": "source_only_uncompiled",
+      "targets": 1
+    },
+    {
+      "family": "neoforge_1_21_1",
+      "file": "features/language-search/mc1_21_1/io/github/romaintv20/jeitranslationexpansion/search/LanguageSearch1211.java",
+      "status": "source_only_uncompiled",
+      "targets": 1
+    },
+    {
+      "family": "native_26_x",
+      "file": null,
+      "status": "use_minecraft_native",
+      "targets": 5
+    }
+  ]
 }
