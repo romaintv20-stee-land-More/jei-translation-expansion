@@ -14,3 +14,12 @@ No JAR is generated, no UI support is claimed for untested versions.
 - Legacy Forge 1.8-1.12.2 search adapter source: `legacy_1_8_to_1_12/.../LanguageSearchLegacyForge.java`. This hooks `GuiLanguage` and filters the existing `GuiSlot` code list, preserving vanilla language selection.
 - The legacy adapter is **source-only**, has not been compiled against every Forge GUI API, and is not bundled by any builder. It must be registered in a suitable versioned client mod entrypoint only after testing.
 - Each Minecraft version must have its own corresponding release artifact once the user explicitly authorizes JAR builds.
+
+## Progress through October 11, 2026
+
+- **53 Minecraft targets**: **18 draft adapter sources**, 5 Minecraft-native searches, **30 still missing adapters**.
+- API-aware draft client adapters: Forge 1.18.2 (`InitScreenEvent.Post`), Forge 1.19.2/1.20.1 (`Init.Post`), NeoForge 1.21.4 (new options screen and list sizing).
+- `common/LanguageListFilter.java` preserves existing entry objects, original order and selection compatibility; its Java-only behavior is tested by GitHub PR CI.
+- These Minecraft GUI class sources have **not** been compiled against target Forge/NeoForge or tested in game, and are **not packaged in any mod**.
+- Minecraft 1.8.8 reference updated to JEI 2.12.0.49 (final CurseForge file 2271876). English/locale audit pending.
+- Release 1.0.0 unchanged; user requested **NO JAR output** until further feature work is discussed.
