@@ -1,0 +1,15 @@
+# Generated staged fallback; awaiting runtime validation.
+config.jei.advanced.optimizeMemoryUsage=Optimize Memory Usage
+config.jei.advanced.optimizeMemoryUsage.comment=Enable JEI memory usage optimizations.
+config.jei.search.searchAdvancedTooltips.comment=Search in advanced tooltips (visible with F3 + H).
+config.jei.searchColors=Search Colors
+config.jei.searchColors.comment=Config options related to searching for colors of items in JEI.
+config.jei.searchColors.searchColors=Search Colors
+config.jei.searchColors.searchColors.comment=Color values to search for.
+jei.chat.error.command.too.long=JEI must be installed on the server to handle this chat command, it is too long for Minecraft to send.
+jei.chat.error.no.cheat.permission.2=Permission is given to players who can /give items or are in the creative mode.
+jei.message.copy.recipe.id.failure=Failed to copy the recipe ID to the clipboard because the ID is unknown
+jei.message.copy.recipe.id.success=The following recipe ID was copied to the clipboard: %s
+key.jei.closeRecipeGui=Close Recipes GUI
+key.jei.copy.recipe.id=Copy Recipe ID to Clipboard
+key.jei.pauseRecipeCycling=Pause Recipe Cycling

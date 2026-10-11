@@ -1,0 +1,123 @@
+{
+  "minecraft": "26.3",
+  "generation": "G52",
+  "previous_jei": "31.7.0",
+  "status": "verified_published_jar",
+  "published_jei": "31.10.0.63",
+  "published_date": "2026-10-10T07:23:05.219331Z",
+  "published_loader": "neoforge",
+  "version_id": "sG36f9tq",
+  "download_url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/sG36f9tq/jei-26.3-neoforge-31.10.0.63.jar",
+  "upstream_sha512": "9617a84c744b698220f5912317744dc0afe9655c361639dd95866a91d8b76d8c167546bdf571b694d32ad91aea94a930974c4b8852fb35075a0563c7a19e47ff",
+  "jar_sha256": "778e4d5cde1549fd23c3f955a290b5f0c20f1d3bfd43ad0bd2a0d9461461332a",
+  "english_path": "assets/jei/lang/en_us.json",
+  "previous_keys": 584,
+  "current_keys": 614,
+  "added": {
+    "jei.config.client.ingredientList.compactInventoryEffects": "Compact Inventory Effects When Needed",
+    "jei.config.client.ingredientList.compactInventoryEffects.description": "Use compact status effect icons when the full bars would overlap JEI. Disable to let JEI move around the full bars instead.",
+    "jei.config.client.ingredientList.compactInventoryEffects.value.false.description": "Let Minecraft choose the status effect bar size.",
+    "jei.config.client.ingredientList.compactInventoryEffects.value.true.description": "Compact status effects only when they overlap JEI.",
+    "jei.config.client.input.keyBindings": "Key Bindings",
+    "jei.config.client.input.keyBindings.description": "Keyboard and mouse shortcuts for JEI actions.",
+    "jei.config.client.input.mouse": "Mouse",
+    "jei.config.client.input.mouse.description": "Options for dragging and resizing with the mouse.",
+    "jei.config.client.input.scrolling": "Scrolling",
+    "jei.config.client.input.scrolling.description": "Options for mouse-wheel scrolling.",
+    "jei.config.client.lists.drawBackground.background": "Background",
+    "jei.config.client.lists.drawBackground.background.description": "Show the lists with the standard panel background.",
+    "jei.config.client.lists.drawBackground.border_only": "Border Only",
+    "jei.config.client.lists.drawBackground.border_only.description": "Show a border around the lists with a transparent interior.",
+    "jei.config.client.lists.drawBackground.grid": "Background with Grid",
+    "jei.config.client.lists.drawBackground.grid.description": "Show a panel background with a grid of ingredient slots.",
+    "jei.config.client.lists.drawBackground.none": "None",
+    "jei.config.client.lists.drawBackground.none.description": "Show the lists without borders or backgrounds.",
+    "jei.config.client.lists.shrinkToFit": "Shrink to Fit",
+    "jei.config.client.lists.shrinkToFit.description": "Reduce the height of the ingredient and bookmark lists when fewer rows are needed to show all ingredients.",
+    "jei.config.client.recipes.appearance": "Appearance",
+    "jei.config.client.recipes.appearance.description": "Options for recipe screen size and ingredient animations.",
+    "jei.config.client.recipes.maxRecipeGuiColumns": "Maximum Recipe Columns",
+    "jei.config.client.recipes.maxRecipeGuiColumns.description": "Limit how many columns of recipes can appear when the recipe screen is wide enough. Drag its edges or corners to make room for more columns.",
+    "jei.config.client.recipes.navigationMode": "Recipe Navigation Mode",
+    "jei.config.client.recipes.navigationMode.description": "Choose how to move through recipes within a category. Categories always use pages.",
+    "jei.config.client.recipes.navigationMode.paged": "Paged",
+    "jei.config.client.recipes.navigationMode.paged.description": "Use page buttons to move through recipes.",
+    "jei.config.client.recipes.navigationMode.scrolling": "Scrolling",
+    "jei.config.client.recipes.navigationMode.scrolling.description": "Use the mouse wheel or scroll bar to move through recipes within the selected category.",
+    "jei.config.client.search.completion": "Completion",
+    "jei.config.client.search.completion.description": "Options for suggestions shown while typing in the search bar.",
+    "jei.config.client.search.matching": "Matching",
+    "jei.config.client.search.matching.description": "Choose which ingredient details and alternate names are searched.",
+    "jei.config.server": "JEI Server Config",
+    "jei.config.server.permissions": "Server Cheat Permissions",
+    "jei.config.server.permissions.description": "Choose who can use JEI cheat mode on this server.",
+    "jei.config.server.permissions.enableCheatModeForCreative": "Allow Cheat Mode in Creative Mode",
+    "jei.config.server.permissions.enableCheatModeForCreative.description": "Allow players in Creative Mode to use JEI cheat mode.",
+    "jei.config.server.permissions.enableCheatModeForGive": "Allow Cheat Mode with Give Permission",
+    "jei.config.server.permissions.enableCheatModeForGive.description": "Allow players who can use the /give command to use JEI cheat mode.",
+    "jei.config.server.permissions.enableCheatModeForOp": "Allow Cheat Mode for Operators",
+    "jei.config.server.permissions.enableCheatModeForOp.description": "Allow players with operator status (/op) to use JEI cheat mode."
+  },
+  "removed": {
+    "jei.config.client.lists.darkModeEnabled": "Dark Mode",
+    "jei.config.client.lists.darkModeEnabled.description": "Use JEI's bundled dark interface theme. The selection is saved with Minecraft's resource packs and reloads immediately.",
+    "jei.config.client.lists.darkModeEnabled.value.false.description": "Use JEI's default interface theme.",
+    "jei.config.client.lists.darkModeEnabled.value.true.description": "Use JEI's dark theme.",
+    "jei.config.client.lists.drawBackground.value.false.description": "Hide the backgrounds behind both lists.",
+    "jei.config.client.lists.drawBackground.value.true.description": "Draw backgrounds behind both lists.",
+    "jei.configuration.server.enableCheatModeForCreative": "Allow Cheat Mode in Creative Mode",
+    "jei.configuration.server.enableCheatModeForCreative.tooltip": "Allow players in Creative Mode to use JEI cheat mode.",
+    "jei.configuration.server.enableCheatModeForGive": "Allow Cheat Mode with Give Permission",
+    "jei.configuration.server.enableCheatModeForGive.tooltip": "Allow players who can use the /give command to use JEI cheat mode.",
+    "jei.configuration.server.enableCheatModeForOp": "Allow Cheat Mode for Operators",
+    "jei.configuration.server.enableCheatModeForOp.tooltip": "Allow players with operator status (/op) to use JEI cheat mode.",
+    "jei.resourcePack.darkMode": "JEI: Dark Mode"
+  },
+  "changed_english_values": {
+    "jei.config.client.lists": {
+      "from": "Interface & Lists",
+      "to": "Lists"
+    },
+    "jei.config.client.lists.description": {
+      "from": "Options for JEI's interface, ingredient list, and bookmark list.",
+      "to": "Options shared by the ingredient and bookmark lists."
+    },
+    "jei.config.client.lists.drawBackground": {
+      "from": "Show Background",
+      "to": "Background Style"
+    },
+    "jei.config.client.lists.drawBackground.description": {
+      "from": "Show a background behind the ingredient and bookmark lists.",
+      "to": "Choose the background behind the ingredient, bookmark, and lookup history lists."
+    },
+    "jei.config.client.lists.navigationVisibility": {
+      "from": "List Navigation",
+      "to": "Navigation Visibility"
+    },
+    "jei.config.client.lists.navigationVisibility.auto_hide.description": {
+      "from": "Show navigation controls only when a list overflows.",
+      "to": "Show navigation controls and recipe scrollbars only when their contents overflow."
+    },
+    "jei.config.client.lists.navigationVisibility.description": {
+      "from": "Choose when navigation controls are shown for both lists.",
+      "to": "Choose when navigation controls are shown for the ingredient and bookmark lists. Also sets the default for recipe scrollbars."
+    },
+    "jei.config.client.lists.navigationVisibility.disabled.description": {
+      "from": "Hide navigation controls for both lists.",
+      "to": "Hide navigation controls and recipe scrollbars."
+    },
+    "jei.config.client.lists.navigationVisibility.enabled.description": {
+      "from": "Always show navigation controls for both lists.",
+      "to": "Always show navigation controls and recipe scrollbars."
+    },
+    "jei.config.client.lookupHistory": {
+      "from": "Lookup History",
+      "to": "History"
+    },
+    "jei.config.client.lookups": {
+      "from": "Lookups & History",
+      "to": "Lookups"
+    }
+  },
+  "needs_update": true
+}

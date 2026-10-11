@@ -1,0 +1,507 @@
+{
+  "added": {
+    "jei.tooltip.recipe.by": "Recipe By: %s"
+  },
+  "changed_english_values": {},
+  "current_jei": "4.7.11.102",
+  "locale_counts": {
+    "af_za": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "ar_sa": {
+      "added_english_fallback": 1,
+      "english_fallback": 9,
+      "ownership": "supplement",
+      "reused": 24,
+      "upstream_owned": 61
+    },
+    "ast_es": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "az_az": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "be_by": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "bg_bg": {
+      "added_english_fallback": 1,
+      "english_fallback": 2,
+      "ownership": "supplement",
+      "reused": 29,
+      "upstream_owned": 63
+    },
+    "br_fr": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "bs_ba": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "ca_es": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "cs_cz": {
+      "added_english_fallback": 1,
+      "english_fallback": 2,
+      "ownership": "supplement",
+      "reused": 26,
+      "upstream_owned": 66
+    },
+    "cy_gb": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "da_dk": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "de_de": {
+      "added_english_fallback": 1,
+      "english_fallback": 2,
+      "ownership": "supplement",
+      "reused": 6,
+      "upstream_owned": 86
+    },
+    "el_gr": {
+      "added_english_fallback": 1,
+      "english_fallback": 7,
+      "ownership": "supplement",
+      "reused": 23,
+      "upstream_owned": 64
+    },
+    "eo_uy": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "es_es": {
+      "added_english_fallback": 1,
+      "english_fallback": 4,
+      "ownership": "supplement",
+      "reused": 29,
+      "upstream_owned": 61
+    },
+    "et_ee": {
+      "added_english_fallback": 1,
+      "english_fallback": 2,
+      "ownership": "full",
+      "reused": 92
+    },
+    "eu_es": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "fa_ir": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "fi_fi": {
+      "added_english_fallback": 1,
+      "english_fallback": 7,
+      "ownership": "supplement",
+      "reused": 8,
+      "upstream_owned": 79
+    },
+    "fil_ph": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "fo_fo": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "fr_fr": {
+      "added_english_fallback": 1,
+      "english_fallback": 3,
+      "ownership": "supplement",
+      "reused": 32,
+      "upstream_owned": 59
+    },
+    "fy_nl": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "ga_ie": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "gd_gb": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "gl_es": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "gv_im": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "haw_us": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "he_il": {
+      "added_english_fallback": 1,
+      "english_fallback": 2,
+      "ownership": "supplement",
+      "reused": 21,
+      "upstream_owned": 71
+    },
+    "hi_in": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "hr_hr": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "hu_hu": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "hy_am": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "id_id": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "ig_ng": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "is_is": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "it_it": {
+      "added_english_fallback": 1,
+      "english_fallback": 2,
+      "ownership": "supplement",
+      "reused": 24,
+      "upstream_owned": 68
+    },
+    "ka_ge": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "kab_kab": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "kn_in": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "ko_kr": {
+      "added_english_fallback": 1,
+      "english_fallback": 3,
+      "ownership": "supplement",
+      "reused": 21,
+      "upstream_owned": 70
+    },
+    "ksh_de": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "kw_gb": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "la_la": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "lb_lu": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "li_li": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "lt_lt": {
+      "added_english_fallback": 1,
+      "english_fallback": 8,
+      "ownership": "supplement",
+      "reused": 31,
+      "upstream_owned": 55
+    },
+    "lv_lv": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "mi_nz": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "mk_mk": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "mn_mn": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "ms_my": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "mt_mt": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "nds_de": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "nl_nl": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "no_no": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "oc_fr": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "oj_ca": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "pl_pl": {
+      "added_english_fallback": 1,
+      "english_fallback": 4,
+      "ownership": "supplement",
+      "reused": 24,
+      "upstream_owned": 66
+    },
+    "pt_br": {
+      "added_english_fallback": 1,
+      "english_fallback": 2,
+      "ownership": "supplement",
+      "reused": 20,
+      "upstream_owned": 72
+    },
+    "ro_ro": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "ru_ru": {
+      "added_english_fallback": 1,
+      "english_fallback": 4,
+      "ownership": "supplement",
+      "reused": 6,
+      "upstream_owned": 84
+    },
+    "se_no": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "sk_sk": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "sl_si": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "so_so": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "sq_al": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "sr_sp": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "sv_se": {
+      "added_english_fallback": 1,
+      "english_fallback": 6,
+      "ownership": "supplement",
+      "reused": 6,
+      "upstream_owned": 82
+    },
+    "ta_in": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "th_th": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "tr_tr": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "uk_ua": {
+      "added_english_fallback": 1,
+      "english_fallback": 4,
+      "ownership": "supplement",
+      "reused": 6,
+      "upstream_owned": 84
+    },
+    "vec_it": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "vi_vn": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "yo_ng": {
+      "added_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "full",
+      "reused": 93
+    },
+    "zh_cn": {
+      "added_english_fallback": 1,
+      "english_fallback": 3,
+      "ownership": "supplement",
+      "reused": 16,
+      "upstream_owned": 75
+    }
+  },
+  "minecraft": "1.12.1",
+  "old_jei": "4.7.8",
+  "policy": "Only exact same English text is reused. Official keys never overridden. English fallback for changed/new keys.",
+  "removed": {},
+  "source_only": true,
+  "totals": {
+    "added_english_fallback": 78,
+    "english_fallback": 135,
+    "reused": 5931,
+    "upstream_owned": 1266
+  },
+  "upstream_jar_sha256": "f81645f0bba0bda27e8b1dd01b6858497efef698a0612e5e47657a0fa988e2c7"
+}

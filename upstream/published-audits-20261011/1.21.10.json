@@ -1,0 +1,20 @@
+{
+  "minecraft": "1.21.10",
+  "generation": "G46",
+  "previous_jei": "26.2.0",
+  "status": "verified_published_jar",
+  "published_jei": "26.3.0.31",
+  "published_date": "2026-07-11T11:34:01.833947Z",
+  "published_loader": "neoforge",
+  "version_id": "O2CbqrXh",
+  "download_url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/O2CbqrXh/jei-1.21.10-neoforge-26.3.0.31.jar",
+  "upstream_sha512": "60c7932448411b994ea8b91438ad78ed4d152cef54eb7695b6aa1bb62aec7add302b65608f2fd7861982777aab3e3706ea7b0f7226fd543abfbcae8b58de6850",
+  "jar_sha256": "762ab018eeaffcb62e9888d0898609769a2803e77a98ff411c751f1ae21fecee",
+  "english_path": "assets/jei/lang/en_us.json",
+  "previous_keys": 308,
+  "current_keys": 308,
+  "added": {},
+  "removed": {},
+  "changed_english_values": {},
+  "needs_update": false
+}

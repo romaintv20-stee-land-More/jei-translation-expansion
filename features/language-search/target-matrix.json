@@ -1,0 +1,327 @@
+{
+  "schema": 1,
+  "project": "JEI Translation Expansion",
+  "status": "SOURCE ONLY; no active release JAR. GUI adapter compilation and in-game tests required",
+  "strategy": "Shared language matcher, separate adapter per Minecraft GUI generation, never duplicate Minecraft or Beyond & More search.",
+  "minecraft_targets": [
+    {
+      "minecraft": "1.8",
+      "java_target": 7,
+      "adapter_family": "legacy_1_8_to_1_12",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.8.9",
+      "java_target": 7,
+      "adapter_family": "legacy_1_8_to_1_12",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.9",
+      "java_target": 7,
+      "adapter_family": "legacy_1_8_to_1_12",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.9.4",
+      "java_target": 7,
+      "adapter_family": "legacy_1_8_to_1_12",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.10",
+      "java_target": 7,
+      "adapter_family": "legacy_1_8_to_1_12",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.10.2",
+      "java_target": 7,
+      "adapter_family": "legacy_1_8_to_1_12",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.11",
+      "java_target": 7,
+      "adapter_family": "legacy_1_8_to_1_12",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.11.2",
+      "java_target": 7,
+      "adapter_family": "legacy_1_8_to_1_12",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.12",
+      "java_target": 8,
+      "adapter_family": "legacy_1_8_to_1_12",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.12.1",
+      "java_target": 8,
+      "adapter_family": "legacy_1_8_to_1_12",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.12.2",
+      "java_target": 8,
+      "adapter_family": "legacy_1_8_to_1_12",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.13",
+      "java_target": 8,
+      "adapter_family": "forge_1_13_to_1_16",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.13.2",
+      "java_target": 8,
+      "adapter_family": "forge_1_13_to_1_16",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.14.2",
+      "java_target": 8,
+      "adapter_family": "forge_1_13_to_1_16",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.14.3",
+      "java_target": 8,
+      "adapter_family": "forge_1_13_to_1_16",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.14.4",
+      "java_target": 8,
+      "adapter_family": "forge_1_13_to_1_16",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.15.1",
+      "java_target": 8,
+      "adapter_family": "forge_1_13_to_1_16",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.15.2",
+      "java_target": 8,
+      "adapter_family": "forge_1_13_to_1_16",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.16.1",
+      "java_target": 8,
+      "adapter_family": "forge_1_13_to_1_16",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.16.2",
+      "java_target": 8,
+      "adapter_family": "forge_1_13_to_1_16",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.16.3",
+      "java_target": 8,
+      "adapter_family": "forge_1_13_to_1_16",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.16.4",
+      "java_target": 8,
+      "adapter_family": "forge_1_13_to_1_16",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.16.5",
+      "java_target": 8,
+      "adapter_family": "forge_1_13_to_1_16",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.17.1",
+      "java_target": 16,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.18",
+      "java_target": 17,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.18.1",
+      "java_target": 17,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.18.2",
+      "java_target": 17,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.19",
+      "java_target": 17,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.19.1",
+      "java_target": 17,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.19.2",
+      "java_target": 17,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.19.3",
+      "java_target": 17,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.19.4",
+      "java_target": 17,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.20",
+      "java_target": 17,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.20.1",
+      "java_target": 17,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.20.2",
+      "java_target": 17,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.20.4",
+      "java_target": 17,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.20.6",
+      "java_target": 21,
+      "adapter_family": "forge_1_17_to_1_20",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.21",
+      "java_target": 21,
+      "adapter_family": "modern_1_21_to_1_21_11",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.21.1",
+      "java_target": 21,
+      "adapter_family": "neoforge_1_21_1",
+      "status": "source_prepared_uncompiled"
+    },
+    {
+      "minecraft": "1.21.4",
+      "java_target": 21,
+      "adapter_family": "modern_1_21_to_1_21_11",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.21.5",
+      "java_target": 21,
+      "adapter_family": "modern_1_21_to_1_21_11",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.21.6",
+      "java_target": 21,
+      "adapter_family": "modern_1_21_to_1_21_11",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.21.7",
+      "java_target": 21,
+      "adapter_family": "modern_1_21_to_1_21_11",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.21.8",
+      "java_target": 21,
+      "adapter_family": "modern_1_21_to_1_21_11",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.21.9",
+      "java_target": 21,
+      "adapter_family": "modern_1_21_to_1_21_11",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.21.10",
+      "java_target": 21,
+      "adapter_family": "modern_1_21_to_1_21_11",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "1.21.11",
+      "java_target": 21,
+      "adapter_family": "modern_1_21_to_1_21_11",
+      "status": "pending_versioned_gui_adapter"
+    },
+    {
+      "minecraft": "26.1",
+      "java_target": 25,
+      "adapter_family": "native_search_do_not_patch",
+      "status": "native"
+    },
+    {
+      "minecraft": "26.1.1",
+      "java_target": 25,
+      "adapter_family": "native_search_do_not_patch",
+      "status": "native"
+    },
+    {
+      "minecraft": "26.1.2",
+      "java_target": 25,
+      "adapter_family": "native_search_do_not_patch",
+      "status": "native"
+    },
+    {
+      "minecraft": "26.2",
+      "java_target": 25,
+      "adapter_family": "native_search_do_not_patch",
+      "status": "native"
+    },
+    {
+      "minecraft": "26.3",
+      "java_target": 25,
+      "adapter_family": "native_search_do_not_patch",
+      "status": "native"
+    }
+  ],
+  "safety_requirements": [
+    "Do not publish search until each adapter compiles against exact Minecraft and loader.",
+    "Never alter JEI ingredient search; target only Minecraft language selection.",
+    "Do not package the 1.21.1 NeoForge code in legacy Forge JARs.",
+    "Preserve native 26.x language search and B&M co-existence.",
+    "One Minecraft version per JAR."
+  ]
+}

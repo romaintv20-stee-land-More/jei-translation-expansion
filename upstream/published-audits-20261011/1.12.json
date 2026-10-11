@@ -1,0 +1,22 @@
+{
+  "minecraft": "1.12",
+  "generation": "G9",
+  "previous_jei": "4.7.5",
+  "status": "verified_published_jar",
+  "published_jei": "4.7.11.102",
+  "published_date": "2023-01-27T05:35:09.680818Z",
+  "published_loader": "forge",
+  "version_id": "1mvokYOU",
+  "download_url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/1mvokYOU/jei_1.12.2-4.7.11.102.jar",
+  "upstream_sha512": "cd5543ff1b786650b9aad26ece0df311d8c1b7b21a31abb8d2733404a4ff7064656b98cc1aa5a2da56609a2be0e718485d671bfac6db9f5fe3a70c8445cadf81",
+  "jar_sha256": "f81645f0bba0bda27e8b1dd01b6858497efef698a0612e5e47657a0fa988e2c7",
+  "english_path": "assets/jei/lang/en_us.lang",
+  "previous_keys": 93,
+  "current_keys": 94,
+  "added": {
+    "jei.tooltip.recipe.by": "Recipe By: %s"
+  },
+  "removed": {},
+  "changed_english_values": {},
+  "needs_update": true
+}

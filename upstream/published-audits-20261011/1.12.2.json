@@ -1,0 +1,31 @@
+{
+  "minecraft": "1.12.2",
+  "generation": "G11",
+  "previous_jei": "4.16.5",
+  "status": "verified_published_jar",
+  "published_jei": "4.22.0.1035",
+  "published_date": "2026-09-24T15:09:35.199205Z",
+  "published_loader": "forge",
+  "version_id": "BQ4twf0Y",
+  "download_url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/BQ4twf0Y/jei_1.12.2-4.22.0.1035.jar",
+  "upstream_sha512": "25b9ac36ee24e587eae2b2bd3d7a0dd76ca7c9cfa6909c9b152529b46a4238f371a111abd1b5e0e1e3c7bc9c220d8466a3b19e23a77b52c4dfd24ff3579c65be",
+  "jar_sha256": "e592b0019aa0cd32716d085cc7c934287f157bd23e6e0bd0febeccef7fe17537",
+  "english_path": "assets/jei/lang/en_us.lang",
+  "previous_keys": 115,
+  "current_keys": 120,
+  "added": {
+    "jei.message.copy.recipe.id.failure": "Failed to copy the recipe ID to the clipboard because the ID is unknown",
+    "jei.message.copy.recipe.id.success": "The following recipe ID was copied to the clipboard: %s",
+    "key.jei.closeRecipeGui": "Close Recipes GUI",
+    "key.jei.copy.recipe.id": "Copy Recipe ID to Clipboard",
+    "key.jei.pauseRecipeCycling": "Pause Recipe Cycling"
+  },
+  "removed": {},
+  "changed_english_values": {
+    "jei.tooltip.show.recipes": {
+      "from": "Show Recipes",
+      "to": "Show all recipes"
+    }
+  },
+  "needs_update": true
+}

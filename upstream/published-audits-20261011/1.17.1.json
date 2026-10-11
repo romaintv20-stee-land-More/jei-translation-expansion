@@ -1,0 +1,40 @@
+{
+  "minecraft": "1.17.1",
+  "generation": "G24",
+  "previous_jei": "8.3.0",
+  "status": "verified_published_jar",
+  "published_jei": "8.3.1.1002",
+  "published_date": "2023-01-27T06:01:14.484019Z",
+  "published_loader": "forge",
+  "version_id": "opG3j70F",
+  "download_url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/opG3j70F/jei-1.17.1-8.3.1.1002.jar",
+  "upstream_sha512": "3c34b774a4743490765ca8e6440939a03ddb2706539eb6e7b928646dd79bd4abe39e0409e1dfd46b479277a4e3b7b31c561c4bc980386a99d79842712e400c13",
+  "jar_sha256": "c63c24e0c20ec060ba9fabb1db465d42cee2b6227c78f3b724852d488c4255cd",
+  "english_path": "assets/jei/lang/en_us.json",
+  "previous_keys": 141,
+  "current_keys": 144,
+  "added": {
+    "jei.key.category.edit.mode": "JEI (Edit Mode)",
+    "jei.tooltip.cheat.mode.how.to.disable.hover.config.button.hotkey": "%s here to toggle it.",
+    "key.jei.cheatOneItem2": "Cheat 1 item",
+    "key.jei.toggleCheatModeConfigButton": "Toggle Cheat Mode (when hovering over config button)",
+    "key.jei.toggleHideIngredient": "Hide an ingredient",
+    "key.jei.toggleWildcardHideIngredient": "Hide an ingredient using wildcard matching"
+  },
+  "removed": {
+    "jei.tooltip.cheat.mode.how.to.disable.no.hotkey": "%s-click here to toggle it.",
+    "key.jei.ctrl": "CTRL",
+    "key.jei.ctrl.mac": "CMD"
+  },
+  "changed_english_values": {
+    "gui.jei.editMode.description.hide": {
+      "from": "%s-click to hide",
+      "to": "%s to hide"
+    },
+    "gui.jei.editMode.description.hide.wild": {
+      "from": "%s-right-click to hide by wildcard",
+      "to": "%s to hide by wildcard"
+    }
+  },
+  "needs_update": true
+}

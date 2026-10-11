@@ -1,0 +1,6 @@
+{
+  "gui.jei.editMode.description.hide": "%s-Click to hide.",
+  "gui.jei.editMode.description.hide.wild": "%s-Right-Click to hide by wildcard.",
+  "jei.chat.error.command.too.long": "JEI must be installed on the server to handle this chat command, it is too long for Minecraft to send.",
+  "jei.tooltip.cheat.mode.how.to.disable.no.hotkey": "%s-Click here to toggle it."
+}

@@ -1,0 +1,22 @@
+{
+  "minecraft": "1.9",
+  "generation": "G3",
+  "previous_jei": "3.3.3",
+  "status": "verified_published_jar",
+  "published_jei": "3.4.4.208",
+  "published_date": "2023-01-27T05:22:56.401074Z",
+  "published_loader": "forge",
+  "version_id": "y8ZRUI5i",
+  "download_url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/y8ZRUI5i/jei_1.9.4-3.4.4.208.jar",
+  "upstream_sha512": "f1126c94d724260b5f04ba679dcefcb9ec6cb4d29f17e34207c43b0fe51a4c75dd314d8bcf2f50acd2fb9191a2c64978e458cad98af3b87e48f45d584ca804a5",
+  "jar_sha256": "7264c7ac0b197c3bad530c764a2b5c4b73772310fb005bbaa8fd4b524fd2ef23",
+  "english_path": "assets/jei/lang/en_US.lang",
+  "previous_keys": 77,
+  "current_keys": 78,
+  "added": {
+    "jei.tooltip.cheat.mode": "Cheat Mode"
+  },
+  "removed": {},
+  "changed_english_values": {},
+  "needs_update": true
+}

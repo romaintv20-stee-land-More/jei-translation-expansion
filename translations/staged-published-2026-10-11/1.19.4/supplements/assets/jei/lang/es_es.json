@@ -1,0 +1,10 @@
+{
+  "gui.jei.editMode.description.hide.wild": "Press \"%s\" to hide by wildcard.",
+  "jei.message.config.folder": "Or click here to open the JEI config folder instead",
+  "jei.tooltip.not.enough.space": "The area on the right-hand side of this screen is too small for the JEI ingredient list overlay to display.",
+  "key.jei.cheatItemStack": "Cheat 1 Stack",
+  "key.jei.cheatItemStack2": "Cheat 1 Stack",
+  "key.jei.cheatOneItem": "Cheat 1 Item",
+  "key.jei.cheatOneItem2": "Cheat 1 Item",
+  "key.jei.closeRecipeGui": "Close Recipes GUI"
+}

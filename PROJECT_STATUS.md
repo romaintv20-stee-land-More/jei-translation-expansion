@@ -1,5 +1,10 @@
 # JEI Translation Expansion — Canonical Project Status
 
+## 2026-10-11 work in progress (NO JAR BUILDS)
+
+See [docs/JEI_2026-10-11_WIP.md](docs/JEI_2026-10-11_WIP.md) for the 52-target publication audit, 20 staged translation updates, and the phased language-search implementation. User expressly prohibited any new JAR before discussing another feature. **1.0.0 remains the current release; source-only changes are not release-promoted.**
+
+
 Last synchronized: **2026-09-25**
 
 This file is the canonical handoff for continuing the historical JEI localization audit chronologically.

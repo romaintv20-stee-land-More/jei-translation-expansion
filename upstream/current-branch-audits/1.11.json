@@ -1,0 +1,28 @@
+{
+  "minecraft": "1.11",
+  "generation": "G7",
+  "status": "compared_branch_head",
+  "source": "src/main/resources/assets/jei/lang/en_us.lang",
+  "baseline_keys": 87,
+  "current_keys": 93,
+  "added": {
+    "config.jei.advanced.maxSubtypes": "Max Item Subtypes",
+    "config.jei.advanced.maxSubtypes.comment": "Items with more than this many subtypes will not be displayed in JEI.",
+    "config.jei.search.resourceIdSearchMode": "&ResourceId",
+    "config.jei.search.resourceIdSearchMode.comment": "Search mode for resources ids (prefix: &)",
+    "gui.jei.category.itemInformation": "Information",
+    "key.jei.nextPage": "Show Next Page",
+    "key.jei.previousPage": "Show Previous Page"
+  },
+  "removed": {
+    "gui.jei.category.itemDescription": "Description"
+  },
+  "changed_english_values": {
+    "key.jei.recipeBack": {
+      "previous": "Show Previous Recipe Page",
+      "current": "Show Previously Viewed Recipe"
+    }
+  },
+  "needs_translation_review": true,
+  "warning": "Source branch head is not necessarily a published JEI JAR or the endpoint of a maintained branch."
+}
