@@ -39,6 +39,7 @@ def test_language_search():
  source_files = {
   "1.18.2": ("forge_1_18_2", "ScreenEvent.InitScreenEvent.Post"),
   "1.20.1": ("forge_1_20_1", "ScreenEvent.Init.Post"),
+  "1.19.2": ("forge_1_19_2", "ScreenEvent.Init.Post"),
   "1.21.4": ("neoforge_1_21_4", "ScreenEvent.Init.Post"),
  }
  for version,(folder,event_name) in source_files.items():
@@ -49,8 +50,8 @@ def test_language_search():
   assert "LanguageListFilter" in body
   assert "instanceof EditBox" in body
   assert next(x for x in m["minecraft_targets"] if x["minecraft"]==version)["status"]=="source_prepared_uncompiled"
- assert len([x for x in m["minecraft_targets"] if "source_prepared" in x["status"]])==17
- assert len([x for x in m["minecraft_targets"] if x["status"]=="pending_versioned_gui_adapter"])==31
+ assert len([x for x in m["minecraft_targets"] if "source_prepared" in x["status"]])==18
+ assert len([x for x in m["minecraft_targets"] if x["status"]=="pending_versioned_gui_adapter"])==30
 
 
  assert 'modid="jei_translation_expansion"' in b.read_text(encoding="utf-8")
