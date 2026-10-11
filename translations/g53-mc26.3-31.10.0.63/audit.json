@@ -1,0 +1,867 @@
+{
+  "added_keys": {
+    "jei.config.client.ingredientList.compactInventoryEffects": "Compact Inventory Effects When Needed",
+    "jei.config.client.ingredientList.compactInventoryEffects.description": "Use compact status effect icons when the full bars would overlap JEI. Disable to let JEI move around the full bars instead.",
+    "jei.config.client.ingredientList.compactInventoryEffects.value.false.description": "Let Minecraft choose the status effect bar size.",
+    "jei.config.client.ingredientList.compactInventoryEffects.value.true.description": "Compact status effects only when they overlap JEI.",
+    "jei.config.client.input.keyBindings": "Key Bindings",
+    "jei.config.client.input.keyBindings.description": "Keyboard and mouse shortcuts for JEI actions.",
+    "jei.config.client.input.mouse": "Mouse",
+    "jei.config.client.input.mouse.description": "Options for dragging and resizing with the mouse.",
+    "jei.config.client.input.scrolling": "Scrolling",
+    "jei.config.client.input.scrolling.description": "Options for mouse-wheel scrolling.",
+    "jei.config.client.lists.drawBackground.background": "Background",
+    "jei.config.client.lists.drawBackground.background.description": "Show the lists with the standard panel background.",
+    "jei.config.client.lists.drawBackground.border_only": "Border Only",
+    "jei.config.client.lists.drawBackground.border_only.description": "Show a border around the lists with a transparent interior.",
+    "jei.config.client.lists.drawBackground.grid": "Background with Grid",
+    "jei.config.client.lists.drawBackground.grid.description": "Show a panel background with a grid of ingredient slots.",
+    "jei.config.client.lists.drawBackground.none": "None",
+    "jei.config.client.lists.drawBackground.none.description": "Show the lists without borders or backgrounds.",
+    "jei.config.client.lists.shrinkToFit": "Shrink to Fit",
+    "jei.config.client.lists.shrinkToFit.description": "Reduce the height of the ingredient and bookmark lists when fewer rows are needed to show all ingredients.",
+    "jei.config.client.recipes.appearance": "Appearance",
+    "jei.config.client.recipes.appearance.description": "Options for recipe screen size and ingredient animations.",
+    "jei.config.client.recipes.maxRecipeGuiColumns": "Maximum Recipe Columns",
+    "jei.config.client.recipes.maxRecipeGuiColumns.description": "Limit how many columns of recipes can appear when the recipe screen is wide enough. Drag its edges or corners to make room for more columns.",
+    "jei.config.client.recipes.navigationMode": "Recipe Navigation Mode",
+    "jei.config.client.recipes.navigationMode.description": "Choose how to move through recipes within a category. Categories always use pages.",
+    "jei.config.client.recipes.navigationMode.paged": "Paged",
+    "jei.config.client.recipes.navigationMode.paged.description": "Use page buttons to move through recipes.",
+    "jei.config.client.recipes.navigationMode.scrolling": "Scrolling",
+    "jei.config.client.recipes.navigationMode.scrolling.description": "Use the mouse wheel or scroll bar to move through recipes within the selected category.",
+    "jei.config.client.search.completion": "Completion",
+    "jei.config.client.search.completion.description": "Options for suggestions shown while typing in the search bar.",
+    "jei.config.client.search.matching": "Matching",
+    "jei.config.client.search.matching.description": "Choose which ingredient details and alternate names are searched.",
+    "jei.config.server": "JEI Server Config",
+    "jei.config.server.permissions": "Server Cheat Permissions",
+    "jei.config.server.permissions.description": "Choose who can use JEI cheat mode on this server.",
+    "jei.config.server.permissions.enableCheatModeForCreative": "Allow Cheat Mode in Creative Mode",
+    "jei.config.server.permissions.enableCheatModeForCreative.description": "Allow players in Creative Mode to use JEI cheat mode.",
+    "jei.config.server.permissions.enableCheatModeForGive": "Allow Cheat Mode with Give Permission",
+    "jei.config.server.permissions.enableCheatModeForGive.description": "Allow players who can use the /give command to use JEI cheat mode.",
+    "jei.config.server.permissions.enableCheatModeForOp": "Allow Cheat Mode for Operators",
+    "jei.config.server.permissions.enableCheatModeForOp.description": "Allow players with operator status (/op) to use JEI cheat mode."
+  },
+  "changed_values": {
+    "jei.config.client.lists": {
+      "new": "Lists",
+      "old": "Interface & Lists"
+    },
+    "jei.config.client.lists.description": {
+      "new": "Options shared by the ingredient and bookmark lists.",
+      "old": "Options for JEI's interface, ingredient list, and bookmark list."
+    },
+    "jei.config.client.lists.drawBackground": {
+      "new": "Background Style",
+      "old": "Show Background"
+    },
+    "jei.config.client.lists.drawBackground.description": {
+      "new": "Choose the background behind the ingredient, bookmark, and lookup history lists.",
+      "old": "Show a background behind the ingredient and bookmark lists."
+    },
+    "jei.config.client.lists.navigationVisibility": {
+      "new": "Navigation Visibility",
+      "old": "List Navigation"
+    },
+    "jei.config.client.lists.navigationVisibility.auto_hide.description": {
+      "new": "Show navigation controls and recipe scrollbars only when their contents overflow.",
+      "old": "Show navigation controls only when a list overflows."
+    },
+    "jei.config.client.lists.navigationVisibility.description": {
+      "new": "Choose when navigation controls are shown for the ingredient and bookmark lists. Also sets the default for recipe scrollbars.",
+      "old": "Choose when navigation controls are shown for both lists."
+    },
+    "jei.config.client.lists.navigationVisibility.disabled.description": {
+      "new": "Hide navigation controls and recipe scrollbars.",
+      "old": "Hide navigation controls for both lists."
+    },
+    "jei.config.client.lists.navigationVisibility.enabled.description": {
+      "new": "Always show navigation controls and recipe scrollbars.",
+      "old": "Always show navigation controls for both lists."
+    },
+    "jei.config.client.lookupHistory": {
+      "new": "History",
+      "old": "Lookup History"
+    },
+    "jei.config.client.lookups": {
+      "new": "Lookups",
+      "old": "Lookups & History"
+    }
+  },
+  "english_values_changed": 11,
+  "files": {
+    "af_za": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/af_za.json",
+    "ar_sa": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/ar_sa.json",
+    "ast_es": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/ast_es.json",
+    "az_az": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/az_az.json",
+    "ba_ru": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/ba_ru.json",
+    "bar": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/bar.json",
+    "be_by": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/be_by.json",
+    "bg_bg": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/bg_bg.json",
+    "br_fr": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/br_fr.json",
+    "bs_ba": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/bs_ba.json",
+    "ca_es": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/ca_es.json",
+    "cs_cz": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/cs_cz.json",
+    "cy_gb": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/cy_gb.json",
+    "da_dk": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/da_dk.json",
+    "de_de": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/de_de.json",
+    "el_gr": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/el_gr.json",
+    "eo_uy": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/eo_uy.json",
+    "es_es": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/es_es.json",
+    "et_ee": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/et_ee.json",
+    "eu_es": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/eu_es.json",
+    "fa_ir": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/fa_ir.json",
+    "fi_fi": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/fi_fi.json",
+    "fil_ph": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/fil_ph.json",
+    "fo_fo": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/fo_fo.json",
+    "fr_fr": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/fr_fr.json",
+    "fur_it": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/fur_it.json",
+    "fy_nl": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/fy_nl.json",
+    "ga_ie": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/ga_ie.json",
+    "gd_gb": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/gd_gb.json",
+    "gl_es": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/gl_es.json",
+    "haw_us": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/haw_us.json",
+    "he_il": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/he_il.json",
+    "hi_in": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/hi_in.json",
+    "hr_hr": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/hr_hr.json",
+    "hu_hu": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/hu_hu.json",
+    "hy_am": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/hy_am.json",
+    "id_id": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/id_id.json",
+    "ig_ng": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/ig_ng.json",
+    "is_is": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/is_is.json",
+    "it_it": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/it_it.json",
+    "ja_jp": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/ja_jp.json",
+    "ka_ge": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/ka_ge.json",
+    "kk_kz": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/kk_kz.json",
+    "kn_in": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/kn_in.json",
+    "ko_kr": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/ko_kr.json",
+    "ksh": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/ksh.json",
+    "kw_gb": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/kw_gb.json",
+    "la_la": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/la_la.json",
+    "lb_lu": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/lb_lu.json",
+    "li_li": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/li_li.json",
+    "lmo": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/lmo.json",
+    "lo_la": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/lo_la.json",
+    "lt_lt": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/lt_lt.json",
+    "lv_lv": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/lv_lv.json",
+    "mk_mk": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/mk_mk.json",
+    "mn_mn": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/mn_mn.json",
+    "ms_my": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/ms_my.json",
+    "mt_mt": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/mt_mt.json",
+    "nah": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/nah.json",
+    "nds_de": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/nds_de.json",
+    "nl_nl": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/nl_nl.json",
+    "no_no": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/no_no.json",
+    "oc_fr": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/oc_fr.json",
+    "ovd": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/ovd.json",
+    "pl_pl": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/pl_pl.json",
+    "pt_br": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/pt_br.json",
+    "ro_ro": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/ro_ro.json",
+    "ru_ru": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/ru_ru.json",
+    "ry_ua": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/ry_ua.json",
+    "sah_sah": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/sah_sah.json",
+    "se_no": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/se_no.json",
+    "sk_sk": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/sk_sk.json",
+    "sl_si": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/sl_si.json",
+    "so_so": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/so_so.json",
+    "sq_al": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/sq_al.json",
+    "sr_sp": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/sr_sp.json",
+    "sv_se": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/sv_se.json",
+    "szl": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/szl.json",
+    "ta_in": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/ta_in.json",
+    "th_th": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/th_th.json",
+    "tl_ph": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/tl_ph.json",
+    "tr_tr": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/tr_tr.json",
+    "tt_ru": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/tt_ru.json",
+    "uk_ua": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/uk_ua.json",
+    "vec_it": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/vec_it.json",
+    "vi_vn": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/vi_vn.json",
+    "yi_de": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/yi_de.json",
+    "yo_ng": "translations/g53-mc26.3-31.10.0.63/full/assets/jei/lang/yo_ng.json",
+    "zh_cn": "translations/g53-mc26.3-31.10.0.63/supplements/assets/jei/lang/zh_cn.json"
+  },
+  "jei_version": "31.10.0.63",
+  "keys_added": 43,
+  "keys_new": 614,
+  "keys_old": 584,
+  "keys_removed": 13,
+  "locales": {
+    "af_za": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "ar_sa": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 500,
+      "upstream_owned": 60
+    },
+    "ast_es": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "az_az": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "ba_ru": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "bar": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "be_by": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "bg_bg": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 426,
+      "upstream_owned": 134
+    },
+    "br_fr": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "bs_ba": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "ca_es": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "cs_cz": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 495,
+      "upstream_owned": 65
+    },
+    "cy_gb": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "da_dk": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "de_de": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 430,
+      "upstream_owned": 130
+    },
+    "el_gr": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 491,
+      "upstream_owned": 69
+    },
+    "eo_uy": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "es_es": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 430,
+      "upstream_owned": 130
+    },
+    "et_ee": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "eu_es": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "fa_ir": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "fi_fi": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 495,
+      "upstream_owned": 65
+    },
+    "fil_ph": {
+      "english_fallback": 52,
+      "fallback_modified_english": 9,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 312,
+      "upstream_owned": 250
+    },
+    "fo_fo": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "fr_fr": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 423,
+      "upstream_owned": 137
+    },
+    "fur_it": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "fy_nl": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "ga_ie": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "gd_gb": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "gl_es": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "haw_us": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "he_il": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 493,
+      "upstream_owned": 67
+    },
+    "hi_in": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "hr_hr": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "hu_hu": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 430,
+      "upstream_owned": 130
+    },
+    "hy_am": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "id_id": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 411,
+      "upstream_owned": 149
+    },
+    "ig_ng": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "is_is": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "it_it": {
+      "english_fallback": 52,
+      "fallback_modified_english": 9,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 311,
+      "upstream_owned": 251
+    },
+    "ja_jp": {
+      "english_fallback": 52,
+      "fallback_modified_english": 9,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 311,
+      "upstream_owned": 251
+    },
+    "ka_ge": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "kk_kz": {
+      "english_fallback": 52,
+      "fallback_modified_english": 9,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 315,
+      "upstream_owned": 247
+    },
+    "kn_in": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "ko_kr": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 409,
+      "upstream_owned": 151
+    },
+    "ksh": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "kw_gb": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "la_la": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "lb_lu": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "li_li": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "lmo": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "lo_la": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "lt_lt": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 523,
+      "upstream_owned": 37
+    },
+    "lv_lv": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "mk_mk": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "mn_mn": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "ms_my": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "mt_mt": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "nah": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "nds_de": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "nl_nl": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "no_no": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 499,
+      "upstream_owned": 61
+    },
+    "oc_fr": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "ovd": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "pl_pl": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 387,
+      "upstream_owned": 173
+    },
+    "pt_br": {
+      "english_fallback": 52,
+      "fallback_modified_english": 9,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 313,
+      "upstream_owned": 249
+    },
+    "ro_ro": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "ru_ru": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 409,
+      "upstream_owned": 151
+    },
+    "ry_ua": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "sah_sah": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "se_no": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "sk_sk": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "sl_si": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "so_so": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "sq_al": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "sr_sp": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "sv_se": {
+      "english_fallback": 52,
+      "fallback_modified_english": 9,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 307,
+      "upstream_owned": 255
+    },
+    "szl": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "ta_in": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "th_th": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "tl_ph": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "tr_tr": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 458,
+      "upstream_owned": 102
+    },
+    "tt_ru": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "uk_ua": {
+      "english_fallback": 52,
+      "fallback_modified_english": 9,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 314,
+      "upstream_owned": 248
+    },
+    "vec_it": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "vi_vn": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 421,
+      "upstream_owned": 139
+    },
+    "yi_de": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "yo_ng": {
+      "english_fallback": 54,
+      "fallback_modified_english": 11,
+      "fallback_new_key": 43,
+      "ownership": "full",
+      "safe_reused": 560
+    },
+    "zh_cn": {
+      "english_fallback": 52,
+      "fallback_modified_english": 9,
+      "fallback_new_key": 43,
+      "ownership": "supplement",
+      "safe_reused": 309,
+      "upstream_owned": 253
+    }
+  },
+  "policy": "Same key and identical source English value only; upstream official translation first; English fallback on unsafe/unknown translation; no cross-key reuse",
+  "removed_keys": {
+    "jei.config.client.lists.darkModeEnabled": "Dark Mode",
+    "jei.config.client.lists.darkModeEnabled.description": "Use JEI's bundled dark interface theme. The selection is saved with Minecraft's resource packs and reloads immediately.",
+    "jei.config.client.lists.darkModeEnabled.value.false.description": "Use JEI's default interface theme.",
+    "jei.config.client.lists.darkModeEnabled.value.true.description": "Use JEI's dark theme.",
+    "jei.config.client.lists.drawBackground.value.false.description": "Hide the backgrounds behind both lists.",
+    "jei.config.client.lists.drawBackground.value.true.description": "Draw backgrounds behind both lists.",
+    "jei.configuration.server.enableCheatModeForCreative": "Allow Cheat Mode in Creative Mode",
+    "jei.configuration.server.enableCheatModeForCreative.tooltip": "Allow players in Creative Mode to use JEI cheat mode.",
+    "jei.configuration.server.enableCheatModeForGive": "Allow Cheat Mode with Give Permission",
+    "jei.configuration.server.enableCheatModeForGive.tooltip": "Allow players who can use the /give command to use JEI cheat mode.",
+    "jei.configuration.server.enableCheatModeForOp": "Allow Cheat Mode for Operators",
+    "jei.configuration.server.enableCheatModeForOp.tooltip": "Allow players with operator status (/op) to use JEI cheat mode.",
+    "jei.resourcePack.darkMode": "JEI: Dark Mode"
+  },
+  "source_jar_sha256": "778e4d5cde1549fd23c3f955a290b5f0c20f1d3bfd43ad0bd2a0d9461461332a",
+  "status": "source-only proposal; NOT a tested release",
+  "target": "Minecraft 26.3",
+  "totals": {
+    "english_fallback": 4790,
+    "fallback_modified_english": 963,
+    "fallback_new_key": 3827,
+    "safe_reused": 45902,
+    "upstream_owned": 3954
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "minecraft": "1.8.8",
+  "jei": "2.12.0.49",
+  "source_project": "https://www.curseforge.com/minecraft/mc-mods/jei/files/2271876",
+  "curseforge_file_id": 2271876,
+  "modrinth_version_id": "u8WOPvco",
+  "official_sha256": "ae95a7a3d02a16b5e1144cdc833d0b25c551053738d5ac36a667c04ad2cb4d96",
+  "source_keys": 56,
+  "language_file_format": "lang",
+  "upstream_languages": {
+    "de_de": 46,
+    "en_us": 56,
+    "fi_fi": 5,
+    "ko_kr": 5,
+    "ru_ru": 21,
+    "zh_cn": 23
+  },
+  "retrieval": "In-memory, official JAR verified through GitHub Actions source-only CI, run 38174086971",
+  "status": "english_baseline_audited; translations_to_prepare; search_adapter_to_compile; no release JAR produced"
+}

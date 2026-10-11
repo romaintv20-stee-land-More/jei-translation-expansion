@@ -1,0 +1,22 @@
+{
+  "minecraft": "1.9",
+  "generation": "G3",
+  "status": "compared_branch_head",
+  "source": "src/main/resources/assets/jei/lang/en_US.lang",
+  "baseline_keys": 77,
+  "current_keys": 80,
+  "added": {
+    "config.jei.advanced.hideLaggyModelsEnabled": "Hide Items with Laggy Models",
+    "config.jei.advanced.hideLaggyModelsEnabled.comment": "Items with models that cause a long delay will be hidden from the item list.",
+    "jei.tooltip.cheat.mode": "Cheat Mode"
+  },
+  "removed": {},
+  "changed_english_values": {
+    "gui.jei.category.craftingTable": {
+      "previous": "Crafting Table",
+      "current": "Crafting"
+    }
+  },
+  "needs_translation_review": true,
+  "warning": "Source branch head is not necessarily a published JEI JAR or the endpoint of a maintained branch."
+}

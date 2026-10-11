@@ -1,0 +1,20 @@
+{
+  "minecraft": "1.11",
+  "generation": "G7",
+  "previous_jei": "4.1.1",
+  "status": "verified_published_jar",
+  "published_jei": "4.1.1.208",
+  "published_date": "2023-01-27T05:29:27.507494Z",
+  "published_loader": "forge",
+  "version_id": "nu8VeuuP",
+  "download_url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/nu8VeuuP/jei_1.11-4.1.1.208.jar",
+  "upstream_sha512": "22d2184457351bfcf108f06851e5214858489efa9cbeb789669af0b86b2ff4be1bf6ff5076fadb0cc9306e97caf8b325b6f437a81b68b8092407e9643f215bbf",
+  "jar_sha256": "77f1ab27c47f4d458c98b64f8de6374f7ff1659e91075abbd96665a3abc0874a",
+  "english_path": "assets/jei/lang/en_us.lang",
+  "previous_keys": 87,
+  "current_keys": 87,
+  "added": {},
+  "removed": {},
+  "changed_english_values": {},
+  "needs_update": false
+}

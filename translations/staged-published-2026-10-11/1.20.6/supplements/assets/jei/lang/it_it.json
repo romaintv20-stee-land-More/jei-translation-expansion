@@ -1,0 +1,5 @@
+{
+  "jei.message.config.folder": "Or click here to open the JEI config folder instead",
+  "jei.tooltip.error.render.crash": "This ingredient crashed when being rendered. Please see the client logs for details.",
+  "key.jei.closeRecipeGui": "Close Recipes GUI"
+}

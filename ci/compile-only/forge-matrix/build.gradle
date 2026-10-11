@@ -1,0 +1,32 @@
+// Compile the exact Minecraft version's staged search source. NO mod JAR.
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+
+def mc = providers.gradleProperty('mc_version').get()
+def forge = providers.gradleProperty('forge_version').get()
+def source = providers.gradleProperty('source_variant').get()
+
+minecraft {
+    mappings channel: 'official', version: mc
+}
+
+repositories {
+    maven { url = 'https://maven.minecraftforge.net' }
+    mavenCentral()
+}
+dependencies {
+    minecraft "net.minecraftforge:forge:${mc}-${forge}"
+}
+sourceSets {
+    main {
+        java {
+            srcDirs = [
+                '../../../features/language-search/common',
+                "../../../features/language-search/drafts/mc${source}",
+            ]
+        }
+        resources.srcDirs = []
+    }
+}
+tasks.named('jar') { enabled = false }

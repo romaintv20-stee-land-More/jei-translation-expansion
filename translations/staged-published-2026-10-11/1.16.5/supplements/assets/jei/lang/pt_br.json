@@ -1,0 +1,11 @@
+{
+  "jei.chat.error.no.cheat.permission.creative": "players who are in the creative mode",
+  "jei.chat.error.no.cheat.permission.disabled": "On this server, it is disabled for all players.",
+  "jei.chat.error.no.cheat.permission.enabled": "On this server, only the following types of players can use it:",
+  "jei.chat.error.no.cheat.permission.give": "players who can use the \"/give\" command",
+  "jei.chat.error.no.cheat.permission.op": "players who have an operator status (/op)",
+  "jei.tooltip.bookmarks": "JEI Bookmarks",
+  "jei.tooltip.bookmarks.not.enough.space": "The area on the left-hand side of this screen is too small for the JEI bookmark list overlay to display.",
+  "key.jei.nextCategory": "Next Recipe Category",
+  "key.jei.previousCategory": "Previous Recipe Category"
+}

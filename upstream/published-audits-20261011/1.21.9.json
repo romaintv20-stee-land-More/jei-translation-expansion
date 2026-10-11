@@ -1,0 +1,24 @@
+{
+  "minecraft": "1.21.9",
+  "generation": "G45",
+  "previous_jei": "25.0.1",
+  "status": "verified_published_jar",
+  "published_jei": "26.1.1.24",
+  "published_date": "2025-11-23T14:34:35.601406Z",
+  "published_loader": "neoforge",
+  "version_id": "tWzeZ6Nc",
+  "download_url": "https://cdn.modrinth.com/data/u6dRKJwZ/versions/tWzeZ6Nc/jei-1.21.10-neoforge-26.1.1.24.jar",
+  "upstream_sha512": "eced27f076a3ca3441c5fe550c34684b9adce8daadd0d7f959b52ec37ad8fb85298ecd6d7aaf7d26deae6f2048a4934f831fdad32224da43f0ef5d387e901f65",
+  "jar_sha256": "3a7de43f4c97602453112d8c98ae63a14f0c91c2070455cf943192c176b684a6",
+  "english_path": "assets/jei/lang/en_us.json",
+  "previous_keys": 305,
+  "current_keys": 308,
+  "added": {
+    "jei.config.client.tooltips.enableRecipesGuiIngredientsSummary": "Recipe Ingredient Summary",
+    "jei.config.client.tooltips.enableRecipesGuiIngredientsSummary.description": "Show a summary of ingredients needed for a recipe, on its output ingredient's tooltip.",
+    "jei.tooltip.recipe.tooltips.craft.ingredients": "Ingredients summary:"
+  },
+  "removed": {},
+  "changed_english_values": {},
+  "needs_update": true
+}

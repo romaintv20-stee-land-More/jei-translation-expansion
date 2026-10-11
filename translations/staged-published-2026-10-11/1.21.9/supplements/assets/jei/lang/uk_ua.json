@@ -1,0 +1,7 @@
+{
+  "jei.config.client.tooltips.enableRecipesGuiIngredientsSummary": "Recipe Ingredient Summary",
+  "jei.config.client.tooltips.enableRecipesGuiIngredientsSummary.description": "Show a summary of ingredients needed for a recipe, on its output ingredient's tooltip.",
+  "jei.tooltip.liquid.amount": "%s mB",
+  "jei.tooltip.liquid.amount.with.capacity": "%s / %s mB",
+  "jei.tooltip.recipe.tooltips.craft.ingredients": "Ingredients summary:"
+}
