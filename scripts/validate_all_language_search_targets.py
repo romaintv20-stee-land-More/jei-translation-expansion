@@ -54,6 +54,19 @@ assert "LanguageSearchMatcher.matches(" in forge.read_text(encoding="utf-8")
 native = sum(t["status"] == "native" for t in TARGETS)
 staged = sum("source_prepared" in t["status"] for t in TARGETS)
 pending = sum("pending_versioned_gui_adapter" == t["status"] for t in TARGETS)
-assert (native, staged, pending) == (5, 18, 30), (native, staged, pending)
-print(f"PASS 53 target records: {staged} source-only adapters, {native} native search, {pending} adapter gaps")
+assert (native, staged, pending) == (5, 48, 0), (native, staged, pending)
+assert len(MATRIX["search_adapters"])==38
+assert MATRIX["search_source_targets_total"]==48
+assert MATRIX["native_search_targets_total"]==5
+assert MATRIX["runtime_verified_search_targets_total"]==0
+for target in TARGETS:
+    if target["status"]=="native":
+        continue
+    if "adapter_source_path" in target:
+        source=ROOT/target["adapter_source_path"]
+        assert source.is_file(),(target["minecraft"],source)
+        java=source.read_text(encoding="utf-8")
+        assert "class LanguageSearch" in java
+        assert "source" in target["source_note"].lower() or "Draft" in java,(target["minecraft"],source)
+print(f"PASS 53 target records: {staged} source-only adapters, {native} native search, {pending} missing source drafts; 0 runtime-verified adapters")
 print("PASS release freeze: 52 already-completed translations; 1.8.8 pending; no JARs created")
