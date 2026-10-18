@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[${fml_version},)"
+license="MIT"
+
+[[mods]]
+modId="jei_translation_expansion"
+version="1.0.1-rc.1"
+displayName="JEI Translation Expansion"
+description="Review candidate for Minecraft language search and expanded JEI translations. In-game tests needed."
+
+[[dependencies.jei_translation_expansion]]
+modId="forge"
+mandatory=true
+versionRange="[${forge_version},)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.jei_translation_expansion]]
+modId="minecraft"
+mandatory=true
+versionRange="[${minecraft_version}]"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.jei_translation_expansion]]
+modId="jei"
+mandatory=true
+versionRange="[${jei_version}]"
+ordering="AFTER"
+side="CLIENT"
