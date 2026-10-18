@@ -1,0 +1,63 @@
+name: Build remaining 1.8 to 1.12 legacy Forge language search candidates
+
+on:
+  push:
+    branches: [feature/complete-all-52-jars-2026-10-18]
+    paths: ['.github/workflows/review-all-legacy-forge.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  legacy-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {mc: '1.8', forge: '11.14.4.1577', map: 'stable_18', jei: '2.15.0', fg: '2.1-SNAPSHOT'}
+          - {mc: '1.8.9', forge: '11.15.1.2318', map: 'stable_22', jei: '2.28.18', fg: '2.1-SNAPSHOT'}
+          - {mc: '1.9', forge: '12.16.1.1938', map: 'stable_26', jei: '3.3.3', fg: '2.2-SNAPSHOT'}
+          - {mc: '1.9.4', forge: '12.17.0.2317', map: 'stable_26', jei: '3.6.8', fg: '2.2-SNAPSHOT'}
+          - {mc: '1.10', forge: '12.18.0.2000', map: 'stable_29', jei: '3.7.1', fg: '2.2-SNAPSHOT'}
+          - {mc: '1.10.2', forge: '12.18.3.2511', map: 'stable_29', jei: '3.14.8', fg: '2.2-SNAPSHOT'}
+          - {mc: '1.11', forge: '13.19.1.2199', map: 'stable_32', jei: '4.1.1', fg: '2.2-SNAPSHOT'}
+          - {mc: '1.11.2', forge: '13.20.1.2588', map: 'stable_32', jei: '4.5.1', fg: '2.2-SNAPSHOT'}
+          - {mc: '1.12', forge: '14.21.1.2443', map: 'stable_39', jei: '4.7.5', fg: '2.3-SNAPSHOT'}
+          - {mc: '1.12.1', forge: '14.22.1.2485', map: 'stable_39', jei: '4.7.8', fg: '2.3-SNAPSHOT'}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '4.10.3'
+      - name: Real ForgeGradle client compile and mod JAR assembly
+        run: >
+          gradle --no-daemon --console=plain -p ci/review/forge-1.8-1.12 build
+          -Pmc_version=${{ matrix.mc }}
+          -Pforge_version=${{ matrix.forge }}
+          -Pmappings_id=${{ matrix.map }}
+          -Pjei_version=${{ matrix.jei }}
+          -Pfg_version=${{ matrix.fg }}
+      - name: Verify exact binary not source JAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR=$(find ci/review/forge-1.8-1.12/build/libs -name '*-forge.jar' | head -n1)
+          test -s "$JAR"
+          unzip -t "$JAR"
+          unzip -l "$JAR" | grep 'LanguageSearchLegacyForge.class'
+          unzip -l "$JAR" | grep 'assets/jei/lang/'
+          sha256sum "$JAR"
+      - name: Save only valid candidate compiled to GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge-legacy-mc-${{ matrix.mc }}-search-review
+          path: ci/review/forge-1.8-1.12/build/libs/*-forge.jar
+          retention-days: 30
+          if-no-files-found: error
