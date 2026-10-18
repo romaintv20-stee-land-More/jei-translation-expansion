@@ -22,7 +22,7 @@ jobs:
         include:
           - {mc: '1.8', forge: '11.14.4.1577', map: 'stable_18', jei: '2.15.0', fg: '2.1-SNAPSHOT'}
           - {mc: '1.8.9', forge: '11.15.1.2318', map: 'stable_22', jei: '2.28.18', fg: '2.1-SNAPSHOT'}
-          - {mc: '1.9', forge: '12.16.1.1938', map: 'stable_26', jei: '3.3.3', fg: '2.2-SNAPSHOT'}
+          - {mc: '1.9', forge: '12.16.1.1938', map: 'stable_26', jei: '3.3.3', fg: '2.1-SNAPSHOT'}
           - {mc: '1.9.4', forge: '12.17.0.2317', map: 'stable_26', jei: '3.6.8', fg: '2.2-SNAPSHOT'}
           - {mc: '1.10', forge: '12.18.0.2000', map: 'stable_29', jei: '3.7.1', fg: '2.2-SNAPSHOT'}
           - {mc: '1.10.2', forge: '12.18.3.2511', map: 'stable_29', jei: '3.14.8', fg: '2.2-SNAPSHOT'}
