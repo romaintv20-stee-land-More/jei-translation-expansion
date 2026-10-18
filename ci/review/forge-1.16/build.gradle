@@ -28,7 +28,6 @@ sourceSets {
 }
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-    options.release = targetJava
 }
 tasks.named('processResources') {
     inputs.properties([
