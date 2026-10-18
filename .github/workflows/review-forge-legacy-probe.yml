@@ -42,7 +42,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          JAR=$(find ci/review/forge-1.8-1.12/build/libs -name '*.jar' | head -n1)
+          JAR=$(find ci/review/forge-1.8-1.12/build/libs -name '*-forge.jar' | head -n1)
           test -s "$JAR"
           unzip -t "$JAR"
           unzip -l "$JAR" | grep -F 'LanguageSearchLegacyForge.class'
@@ -50,6 +50,6 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: legacy-probe-mc-${{ matrix.mc }}-NOT-GAME-TESTED
-          path: ci/review/forge-1.8-1.12/build/libs/*.jar
+          path: ci/review/forge-1.8-1.12/build/libs/*-forge.jar
           retention-days: 30
           if-no-files-found: error
