@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.language.LanguageInfo;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.components.EditBox;
 import net.minecraft.client.gui.components.ObjectSelectionList;
@@ -68,7 +69,9 @@ public final class LanguageSearchForge1204 {
                     return codes.get(initial.indexOf(row));
                 }
                 @Override public String nativeName(Object row) {
-                    return "";
+                    String code = codes.get(initial.indexOf(row));
+                    LanguageInfo info = Minecraft.getInstance().getLanguageManager().getLanguage(code);
+                    return info == null ? "" : info.name() + " " + info.region();
                 }
             }
         );
