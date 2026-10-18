@@ -1,0 +1,49 @@
+// Real Forge 1.20.1 review build with the language-search client event subscriber.
+// NOT a final release: runtime GUI, font and compatibility testing still required.
+plugins {
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
+}
+group = 'io.github.romaintv20.jeitranslationexpansion'
+version = '1.0.1-rc.1'
+base {
+    archivesName = 'jei-translation-expansion-mc1.20.1-forge'
+}
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+minecraft {
+    mappings channel: 'official', version: '1.20.1'
+}
+repositories {
+    maven { url = 'https://maven.minecraftforge.net' }
+    mavenCentral()
+}
+dependencies {
+    minecraft 'net.minecraftforge:forge:1.20.1-47.3.0'
+}
+sourceSets {
+    main {
+        java.srcDirs = [
+            'src/main/java',
+            '../../../features/language-search/common',
+            '../../../features/language-search/forge_1_20_1',
+        ]
+        resources.srcDirs = [
+            'src/main/resources',
+            '../../../translations/staged-published-2026-10-11/1.20.1/full',
+            '../../../translations/staged-published-2026-10-11/1.20.1/supplements'
+        ]
+    }
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 17
+}
+tasks.named('jar') {
+    archiveFileName = 'jei-translation-expansion-1.0.1-rc.1-mc1.20.1-forge.jar'
+    manifest.attributes(
+        'Implementation-Title': 'JEI Translation Expansion',
+        'Implementation-Version': version,
+        'Minecraft-Version': '1.20.1',
+        'JEI-Version': '15.62.0.219'
+    )
+    finalizedBy 'reobfJar'
+}

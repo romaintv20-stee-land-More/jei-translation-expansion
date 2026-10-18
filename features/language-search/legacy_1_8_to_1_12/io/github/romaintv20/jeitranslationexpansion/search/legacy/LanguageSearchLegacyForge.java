@@ -2,6 +2,7 @@ package io.github.romaintv20.jeitranslationexpansion.search.legacy;
 
 import io.github.romaintv20.jeitranslationexpansion.search.LanguageSearchMatcher;
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.IdentityHashMap;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiLanguage;
 import net.minecraft.client.gui.GuiScreen;
@@ -60,15 +62,36 @@ public final class LanguageSearchLegacyForge {
 
     private LanguageSearchLegacyForge() {}
 
+    /** Minecraft 1.8..1.12 changed its FontRenderer field mapping. */
+    private static FontRenderer fontRenderer() {
+        Minecraft mc = Minecraft.getMinecraft();
+        for (Class<?> type=mc.getClass();type!=Object.class;type=type.getSuperclass()) {
+            for (Field field:type.getDeclaredFields()) {
+                if (!FontRenderer.class.isAssignableFrom(field.getType())) continue;
+                try {
+                    field.setAccessible(true);
+                    Object value=field.get(mc);
+                    if(value instanceof FontRenderer)return (FontRenderer)value;
+                } catch(ReflectiveOperationException | SecurityException exception) {
+                    continue;
+                }
+            }
+        }
+        throw new IllegalStateException("Minecraft font renderer inaccessible");
+    }
+
+
     @SubscribeEvent
     public static void onInit(GuiScreenEvent.InitGuiEvent.Post event) {
-        GuiScreen screen = event.getGui();
+        GuiScreen screen = eventScreen(event);
         if (!(screen instanceof GuiLanguage)) return;
         CONTROLS.remove(screen);
 
         // The clear button and the input field are our only additions.
         // If another add-on has already installed our button, do nothing.
-        for (GuiButton button : event.getButtonList()) {
+        List<GuiButton> guiButtons=buttons(event);
+        if(guiButtons==null)return;
+        for (GuiButton button : guiButtons) {
             if (button.id == CLEAR_ID) return;
         }
         try {
@@ -83,7 +106,7 @@ public final class LanguageSearchLegacyForge {
                 displayNames.put(lang.getLanguageCode(), lang.toString());
             }
             GuiTextField input = new GuiTextField(
-                FIELD_ID, Minecraft.getMinecraft().fontRendererObj,
+                FIELD_ID, fontRenderer(),
                 screen.width / 2 - 130, SEARCH_Y, 230, 20
             );
             input.setMaxStringLength(96);
@@ -96,7 +119,7 @@ public final class LanguageSearchLegacyForge {
             CONTROLS.put(screen, new Controls(
                 input, slot, codes, original, displayNames, screen.width, screen.height
             ));
-            event.getButtonList().add(clear);
+            guiButtons.add(clear);
         } catch (ReflectiveOperationException | SecurityException ignored) {
             // Unsupported mapping/layout: leave the vanilla screen untouched.
         }
@@ -104,11 +127,11 @@ public final class LanguageSearchLegacyForge {
 
     @SubscribeEvent
     public static void onDraw(GuiScreenEvent.DrawScreenEvent.Post event) {
-        Controls state = state(event.getGui());
+        Controls state = state(eventScreen(event));
         if (state == null) return;
         state.search.drawTextBox();
         if (state.search.getText().isEmpty() && !state.search.isFocused()) {
-            Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(
+            fontRenderer().drawStringWithShadow(
                 "Search language or code...", state.width / 2 - 125, SEARCH_Y + 6,
                 0xAAAAAA
             );
@@ -117,7 +140,7 @@ public final class LanguageSearchLegacyForge {
 
     @SubscribeEvent
     public static void onMouse(GuiScreenEvent.MouseInputEvent.Pre event) {
-        Controls state = state(event.getGui());
+        Controls state = state(eventScreen(event));
         if (state == null) return;
         if (Mouse.getEventButton() != 0 || !Mouse.getEventButtonState()) return;
         Minecraft mc = Minecraft.getMinecraft();
@@ -132,7 +155,7 @@ public final class LanguageSearchLegacyForge {
 
     @SubscribeEvent
     public static void onKeyboard(GuiScreenEvent.KeyboardInputEvent.Pre event) {
-        Controls state = state(event.getGui());
+        Controls state = state(eventScreen(event));
         if (state == null || !state.search.isFocused() ||
                 !Keyboard.getEventKeyState()) return;
         int key = Keyboard.getEventKey();
@@ -146,13 +169,63 @@ public final class LanguageSearchLegacyForge {
 
     @SubscribeEvent
     public static void onButton(GuiScreenEvent.ActionPerformedEvent.Pre event) {
-        if (event.getButton().id != CLEAR_ID) return;
-        Controls state = state(event.getGui());
+        GuiButton pressed=pressedButton(event);
+        if (pressed==null || pressed.id!=CLEAR_ID)return;
+        Controls state = state(eventScreen(event));
         if (state == null) return;
         state.search.setText("");
         state.search.setFocused(true);
         update(state);
         event.setCanceled(true);
+    }
+
+
+    /**
+     * Forge 1.8–1.12 events changed getGui()/getButtonList()/getButton()
+     * accessor availability. Search only exact runtime field types rather
+     * than assuming one API. Never modify a screen if metadata is missing.
+     */
+    private static GuiScreen eventScreen(Object event) {
+        Object value=eventMember(event,GuiScreen.class);
+        return value instanceof GuiScreen ? (GuiScreen)value : null;
+    }
+
+    @SuppressWarnings("unchecked")
+    private static List<GuiButton> buttons(Object event) {
+        Object value=eventMember(event,List.class);
+        if (!(value instanceof List<?>)) return null;
+        List<?> list=(List<?>)value;
+        if (!list.isEmpty() && !(list.get(0) instanceof GuiButton)) return null;
+        return (List<GuiButton>)list;
+    }
+
+    private static GuiButton pressedButton(Object event) {
+        Object value=eventMember(event,GuiButton.class);
+        return value instanceof GuiButton ? (GuiButton)value : null;
+    }
+
+    private static Object eventMember(Object event,Class<?> expected) {
+        if(event==null)return null;
+        for(Class<?> type=event.getClass();type!=Object.class;type=type.getSuperclass()) {
+            for(Method method:type.getDeclaredMethods()) {
+                if(method.getParameterTypes().length!=0 ||
+                   !expected.isAssignableFrom(method.getReturnType()))continue;
+                try {
+                    method.setAccessible(true);
+                    Object result=method.invoke(event);
+                    if(result!=null)return result;
+                }catch(ReflectiveOperationException | SecurityException ignored){}
+            }
+            for(Field field:type.getDeclaredFields()) {
+                if(!expected.isAssignableFrom(field.getType()))continue;
+                try {
+                    field.setAccessible(true);
+                    Object result=field.get(event);
+                    if(result!=null)return result;
+                }catch(ReflectiveOperationException | SecurityException ignored){}
+            }
+        }
+        return null;
     }
 
     private static Controls state(GuiScreen screen) {

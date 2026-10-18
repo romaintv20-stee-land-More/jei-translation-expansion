@@ -1,0 +1,32 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="jei_translation_expansion"
+version="1.0.1-rc.1"
+displayName="JEI Translation Expansion"
+displayURL="https://github.com/romaintv20-stee-land-More/jei-translation-expansion"
+authors="romaintv20-stee-land-More"
+description="Experimental translation expansion for JEI with a language-selection search bar. Pending runtime tests."
+
+[[dependencies.jei_translation_expansion]]
+modId="forge"
+mandatory=true
+versionRange="[47.3.0,)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.jei_translation_expansion]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1]"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.jei_translation_expansion]]
+modId="jei"
+mandatory=true
+versionRange="[15.62.0.219]"
+ordering="AFTER"
+side="CLIENT"

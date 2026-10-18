@@ -1,0 +1,41 @@
+plugins {
+    id 'java-library'
+    id 'net.neoforged.moddev' version '2.0.148'
+}
+def mc = providers.gradleProperty('mc_version').get()
+def neo = providers.gradleProperty('neoforge_version').get()
+def jei = providers.gradleProperty('jei_version').get()
+def src = providers.gradleProperty('search_source').get()
+group = 'io.github.romaintv20.jeitranslationexpansion'
+version = '1.0.1-rc.1'
+base.archivesName = 'jei-translation-expansion-review'
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+neoForge { version = neo }
+def stage = file('../../../translations/staged-published-2026-10-11/' + mc)
+def hasStage = new File(stage, 'semantic-diff.json').isFile()
+sourceSets {
+    main {
+        java.srcDirs = ['src/main/java', '../../../features/language-search/common',
+                        '../../../features/language-search/' + src]
+        resources.srcDirs = ['src/main/resources']
+        if (hasStage) resources.srcDirs += [new File(stage, 'full').path, new File(stage, 'supplements').path]
+    }
+}
+tasks.named('processResources') {
+    inputs.property('minecraft_version', mc)
+    inputs.property('neoforge_version', neo)
+    inputs.property('jei_version', jei)
+    if (!hasStage) {
+        def original = file('../../../candidate-jars/' + mc + '/jei-translation-expansion-1.0.0-mc' + mc + '-neoforge.jar')
+        if (!original.isFile()) throw new GradleException('Missing original JAR: ' + mc)
+        from(zipTree(original)) { include 'assets/jei/lang/**' }
+    }
+    filesMatching('META-INF/neoforge.mods.toml') {
+        expand(minecraft_version: mc, neoforge_version: neo, jei_version: jei)
+    }
+}
+tasks.named('jar') {
+    archiveFileName = 'jei-translation-expansion-1.0.1-rc.1-mc' + mc + '-neoforge.jar'
+    manifest.attributes('Implementation-Title':'JEI Translation Expansion',
+      'Implementation-Version': version, 'Minecraft-Version':mc, 'JEI-Version':jei)
+}

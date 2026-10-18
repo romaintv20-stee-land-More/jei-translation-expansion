@@ -15,7 +15,7 @@ import net.minecraft.client.resources.language.LanguageInfo;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.ScreenEvent;
+import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -35,14 +35,14 @@ public final class LanguageSearchForge1171 {
     private LanguageSearchForge1171() {}
 
     @SubscribeEvent
-    public static void onInit(ScreenEvent.InitScreenEvent.Post event) {
-        Screen screen = event.getScreen();
+    public static void onInit(GuiScreenEvent.InitGuiEvent.Post event) {
+        Screen screen = event.getGui();
         if (!(screen instanceof LanguageSelectScreen)) return;
-        for (GuiEventListener child : event.getListenersList()) {
+        for (GuiEventListener child : screen.children()) {
             if (child instanceof EditBox) return;
         }
         ObjectSelectionList<?> list = null;
-        for (GuiEventListener child : event.getListenersList()) {
+        for (GuiEventListener child : screen.children()) {
             if (child instanceof ObjectSelectionList<?> &&
                 child.getClass().getName().contains("LanguageSelectionList")) {
                 list = (ObjectSelectionList<?>) child;
@@ -97,8 +97,8 @@ public final class LanguageSearchForge1171 {
             new TextComponent("X"), b -> box.setValue(""));
 
         languageList.updateSize(screen.width, screen.height, 61, screen.height - 61);
-        event.addListener(box);
-        event.addListener(clear);
+        event.addWidget(box);
+        event.addWidget(clear);
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})

@@ -1,0 +1,54 @@
+name: Review Forge 1.14.4 and 1.15.x language-search JARs
+
+on:
+  push:
+    branches: [feature/complete-all-52-jars-2026-10-18]
+    paths:
+      - '.github/workflows/review-forge-1.14-1.15.yml'
+      - 'features/language-search/drafts/mc1_1*/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {mc: '1.14.4', forge: '28.2.26', jei: '6.0.1', source: 'drafts/mc1_14_4'}
+          - {mc: '1.15.1', forge: '30.0.51', jei: '6.0.0', source: 'drafts/mc1_15_1'}
+          - {mc: '1.15.2', forge: '31.2.57', jei: '6.0.2', source: 'drafts/mc1_15_2'}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '7.6.4'
+      - name: Compile exact Forge GUI, updated resource pack and mod JAR
+        run: >
+          gradle --no-daemon --console=plain -p ci/review/forge-1.16 build
+          -Pmc_version=${{ matrix.mc }}
+          -Pforge_version=${{ matrix.forge }}
+          -Pjei_version=${{ matrix.jei }}
+          -Psearch_source=${{ matrix.source }}
+          -Pjava_target=8
+      - name: Inspect JAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR=$(find ci/review/forge-1.16/build/libs -name '*.jar' | head -n1)
+          test -s "$JAR"
+          unzip -t "$JAR"
+          unzip -l "$JAR" | grep 'LanguageSearch.*class'
+          unzip -l "$JAR" | grep 'assets/jei/lang/'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: forge-early-review-mc-${{ matrix.mc }}-unverified
+          path: ci/review/forge-1.16/build/libs/*.jar
+          retention-days: 30
+          if-no-files-found: error

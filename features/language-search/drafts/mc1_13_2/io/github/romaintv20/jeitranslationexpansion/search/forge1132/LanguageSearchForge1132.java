@@ -68,8 +68,13 @@ public final class LanguageSearchForge1132 {
             input.setMaxStringLength(96);
             GuiButton clear=new GuiButton(
                 CLEAR,screen.width/2+100,34,24,20,"X"
-            );
-            event.getButtonList().add(clear);
+            ) {
+                @Override public void onClick(double mouseX,double mouseY) {
+                    input.setText("");
+                    filter.show(codes,"");
+                }
+            };
+            event.addButton(clear);
             ACTIVE.put(screen,new State(input,codes,filter,list));
         } catch (ReflectiveOperationException | SecurityException ex) {
             // Unknown mapping or a custom screen: leave vanilla untouched.
@@ -79,7 +84,7 @@ public final class LanguageSearchForge1132 {
     @SubscribeEvent
     public static void draw(GuiScreenEvent.DrawScreenEvent.Post event) {
         State state=ACTIVE.get(event.getGui());
-        if(state!=null) state.search.drawTextBox();
+        if(state!=null) state.search.render(event.getMouseX(),event.getMouseY(),event.getRenderPartialTicks());
     }
 
     @SubscribeEvent
@@ -93,27 +98,31 @@ public final class LanguageSearchForge1132 {
     }
 
     @SubscribeEvent
-    public static void keyboard(GuiScreenEvent.KeyboardInputEvent.Pre event) {
+    public static void pressed(GuiScreenEvent.KeyboardKeyPressedEvent.Pre event) {
         State state=ACTIVE.get(event.getGui());
-        if(state==null || !state.search.isFocused()) return;
-        int key=number(event,"getKeyCode",-1);
-        char chr=(char)number(event,"getTypedChar",0);
-        if(key<0 || key==256) return; // GLFW Escape
-        if(state.search.textboxKeyTyped(chr,key)){
+        if(state==null || !state.search.isFocused() || event.getKeyCode()==256)return;
+        if(state.search.keyPressed(event.getKeyCode(),event.getScanCode(),event.getModifiers())){
             state.filter.show(state.display,state.search.getText());
             event.setCanceled(true);
         }
     }
 
     @SubscribeEvent
-    public static void mouse(GuiScreenEvent.MouseInputEvent.Pre event) {
+    public static void typed(GuiScreenEvent.KeyboardCharTypedEvent.Pre event) {
         State state=ACTIVE.get(event.getGui());
-        if(state==null)return;
-        int x=number(event,"getMouseX",-1);
-        int y=number(event,"getMouseY",-1);
-        int button=number(event,"getButton",-1);
-        if(x<0 || y<0 || button!=0)return;
-        state.search.mouseClicked(x,y,0);
+        if(state==null || !state.search.isFocused())return;
+        if(state.search.charTyped(event.getCodePoint(),event.getModifiers())){
+            state.filter.show(state.display,state.search.getText());
+            event.setCanceled(true);
+        }
+    }
+
+    @SubscribeEvent
+    public static void mouse(GuiScreenEvent.MouseClickedEvent.Pre event) {
+        State state=ACTIVE.get(event.getGui());
+        if(state==null || event.getButton()!=0)return;
+        if(state.search.mouseClicked(event.getMouseX(),event.getMouseY(),event.getButton()))
+            event.setCanceled(true);
     }
 
     private static int number(Object event,String name,int fallback){

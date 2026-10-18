@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="jei_translation_expansion"
+version="1.0.1-rc.1"
+displayName="JEI Translation Expansion"
+authors="romaintv20-stee-land-More"
+description="Pre-release: Minecraft language search and JEI translations; game/font testing required."
+
+[[dependencies.jei_translation_expansion]]
+modId="neoforge"
+type="required"
+versionRange="[${neoforge_version},)"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.jei_translation_expansion]]
+modId="minecraft"
+type="required"
+versionRange="[${minecraft_version}]"
+ordering="NONE"
+side="CLIENT"
+
+[[dependencies.jei_translation_expansion]]
+modId="jei"
+type="required"
+versionRange="[${jei_version}]"
+ordering="AFTER"
+side="CLIENT"

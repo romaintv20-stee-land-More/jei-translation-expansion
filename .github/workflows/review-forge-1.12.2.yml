@@ -1,0 +1,41 @@
+name: Build real Forge 1.12.2 legacy language search (REVIEW ONLY)
+on:
+  push:
+    branches: [feature/complete-all-52-jars-2026-10-18]
+    paths:
+      - '.github/workflows/review-forge-1.12.2.yml'
+      - 'ci/review/forge-1.12.2/**'
+      - 'features/language-search/legacy_1_8_to_1_12/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '4.10.3'
+      - name: Build legacy Forge 14.23.5.2860 / Java 8 JAR with language search
+        run: gradle --no-daemon --console=plain -p ci/review/forge-1.12.2 build
+      - name: Validate JAR search and assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR=$(find ci/review/forge-1.12.2/build/libs -name '*.jar' | head -n1)
+          test -s "$JAR"
+          unzip -t "$JAR"
+          unzip -l "$JAR" | grep 'LanguageSearchLegacyForge.class'
+          unzip -l "$JAR" | grep 'assets/jei/lang/'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mc1.12.2-forge-language-search-preview
+          path: ci/review/forge-1.12.2/build/libs/*.jar
+          retention-days: 30
+          if-no-files-found: error

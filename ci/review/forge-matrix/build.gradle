@@ -1,0 +1,58 @@
+plugins { id 'net.minecraftforge.gradle' version '[6.0,6.2)' }
+def mc = providers.gradleProperty('mc_version').get()
+def forge = providers.gradleProperty('forge_version').get()
+def source = providers.gradleProperty('source_variant').get()
+def jei = providers.gradleProperty('jei_version').get()
+def javaTarget = Integer.parseInt(providers.gradleProperty('java_target').get())
+def fml = forge.tokenize('.')[0]
+def specialized = file('../../../features/language-search/forge_' + source)
+def searchSrcDir = specialized.isDirectory() ? specialized.path : '../../../features/language-search/drafts/mc' + source
+group = 'io.github.romaintv20.jeitranslationexpansion'
+version = '1.0.1-rc.1'
+base.archivesName = 'jei-translation-expansion-forge-review'
+java.toolchain.languageVersion = JavaLanguageVersion.of(javaTarget)
+minecraft { mappings channel: 'official', version: mc }
+repositories {
+    maven { url = 'https://maven.minecraftforge.net' }
+    mavenCentral()
+}
+dependencies { minecraft ('net.minecraftforge:forge:' + mc + '-' + forge) }
+def staged = file('../../../translations/staged-published-2026-10-11/' + mc)
+def stagedLocales = staged.exists() && file(staged.path + '/semantic-diff.json').exists()
+sourceSets {
+    main {
+        java.srcDirs = ['src/main/java', '../../../features/language-search/common',
+                        searchSrcDir]
+        resources.srcDirs = ['src/main/resources']
+        if (stagedLocales) resources.srcDirs += [staged.path + '/full', staged.path + '/supplements']
+    }
+}
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = javaTarget
+}
+tasks.named('processResources') {
+    inputs.property 'minecraft_version', mc
+    inputs.property 'forge_version', forge
+    inputs.property 'jei_version', jei
+    inputs.property 'fml_version', fml
+    if (!stagedLocales) {
+        def originalJar = file('../../../candidate-jars/' + mc +
+            '/jei-translation-expansion-1.0.0-mc' + mc + '-forge.jar')
+        if (!originalJar.isFile()) throw new GradleException("Missing original candidate JAR for " + mc)
+        from(zipTree(originalJar)) { include 'assets/jei/lang/**' }
+    }
+    filesMatching('META-INF/mods.toml') {
+        expand(minecraft_version: mc, forge_version: forge, jei_version: jei, fml_version: fml)
+    }
+}
+// Register the production obfuscation task explicitly for ForgeGradle 6 targets.
+reobf {
+    jar {}
+}
+tasks.named('jar') {
+    archiveFileName = 'jei-translation-expansion-1.0.1-rc.1-mc' + mc + '-forge.jar'
+    manifest.attributes('Implementation-Title':'JEI Translation Expansion',
+            'Implementation-Version':'1.0.1-rc.1','Minecraft-Version':mc,'JEI-Version':jei)
+    finalizedBy 'reobfJar'
+}

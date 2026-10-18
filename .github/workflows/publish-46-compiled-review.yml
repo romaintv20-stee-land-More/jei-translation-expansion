@@ -1,0 +1,94 @@
+name: Publish 46 compiled JAR candidates with version, Java and loader catalogue
+
+on:
+  push:
+    branches:
+      - feature/complete-all-52-jars-2026-10-18
+    paths: ['.github/workflows/publish-46-compiled-review.yml']
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  packaging:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Download ONLY successful review binary artifacts, never historical 1.0.0 files
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: romaintv20-stee-land-More/jei-translation-expansion
+        run: |
+          set -euo pipefail
+          mkdir -p downloaded-review-runs
+          for run in 39121057784 39123534652 39121784539 39121556827 39123638983 39123981653 39124202326 39124269883; do
+            echo "Verified GitHub Actions run: $run"
+            test "$(gh api "repos/$GH_REPO/actions/runs/$run" --jq .conclusion)" = "success"
+            gh run download "$run" -D "downloaded-review-runs/$run"
+          done
+          # Only individual jobs that passed from partially failed historical matrices.
+          while read -r RUN NAME MC; do
+            gh run download "$RUN" -n "$NAME" -D "downloaded-review-runs/legacy-$MC"
+          done <<'COMPILED'
+          39125693602 forge-legacy-mc-1.8.9-search-review 1.8.9
+          39125551704 forge-legacy-mc-1.10.2-search-review 1.10.2
+          39125551704 forge-legacy-mc-1.11-search-review 1.11
+          39125454180 legacy-probe-mc-1.11.2-NOT-GAME-TESTED 1.11.2
+          39125551704 forge-legacy-mc-1.12-search-review 1.12
+          39125454180 legacy-probe-mc-1.12.1-NOT-GAME-TESTED 1.12.1
+          39125357341 mc1.12.2-forge-language-search-preview 1.12.2
+          39125295280 forge-mc-1.14.2-search-candidate-not-game-tested 1.14.2
+          39125295280 forge-mc-1.14.3-search-candidate-not-game-tested 1.14.3
+          COMPILED
+          gh release download 'v1.0.1-rc.1-mc26.3-neoforge' \
+            -p 'jei-translation-expansion-1.0.1-rc.1-mc26.3-neoforge.jar' \
+            -D downloaded-review-runs
+          echo '2cb1ae577608ca610b8740c71dd7ce73e85aa13d79511bbba0be983b24b38ff4  downloaded-review-runs/jei-translation-expansion-1.0.1-rc.1-mc26.3-neoforge.jar' | sha256sum --check
+      - name: Compile strict 46-version catalogue with SHA256 file checks
+        run: python scripts/assemble_recompiled_46.py
+      - name: Upload complete bundle to workflow artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: JEI-46-compiled-search-JARs-candidates-2026-10-18
+          path: |
+            build/compiled-review-collection/JEI_Translation_Expansion_JAR_recompiles_46_non_testes.zip
+            build/compiled-review-collection/archive/INVENTAIRE.csv
+            build/compiled-review-collection/archive/CATALOGUE.html
+          retention-days: 90
+          if-no-files-found: error
+      - name: Publish dated preview release, never overwrite stable releases
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: romaintv20-stee-land-More/jei-translation-expansion
+        run: |
+          set -euo pipefail
+          TAG='compilation-46-versions-2026-10-18'
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Release already exists: refusing overwrite"
+            exit 1
+          fi
+          cat > build/compiled-review-collection/RELEASE_NOTES.md <<'EOF'
+          # 46 recompilations JEI Translation Expansion — préparation avant tests
+
+          **Ce lot contient 46 vrais JAR recompilés** (Forge + NeoForge, Minecraft 1.14.4–26.3), **pas les 52 anciens JAR 1.0.0**. Il comprend une recherche embarquée dans les anciennes versions et conserve la recherche native pour Minecraft 26.x. Les traductions JEI sont mises à jour là où des audits de nouvelles versions existent ; des traductions de secours en anglais restent présentes.
+
+          **JAR de revue non testés en jeu** : aucune garantie de rendu de polices, glyphes, saisie, sélection, scrolling et cohabitation avec Beyond & More. Ne pas republier comme versions stables.
+
+          **6 versions historiques restent en chantier** dans PR #34. Voir le catalogue pour les versions Minecraft / Java / Forge-NeoForge / JEI et SHA-256. L'archive ne doit pas être installée directement comme mod.
+          EOF
+          gh release create "$TAG" \
+            build/compiled-review-collection/JEI_Translation_Expansion_JAR_recompiles_46_non_testes.zip \
+            build/compiled-review-collection/archive/INVENTAIRE.csv \
+            build/compiled-review-collection/archive/CATALOGUE.html \
+            --target "$GITHUB_SHA" \
+            --prerelease \
+            --title "46 JAR recompilés avec recherche - CANDIDATS NON TESTÉS (18 octobre 2026)" \
+            --notes-file build/compiled-review-collection/RELEASE_NOTES.md

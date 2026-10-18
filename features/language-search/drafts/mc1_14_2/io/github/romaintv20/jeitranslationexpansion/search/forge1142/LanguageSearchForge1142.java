@@ -4,6 +4,8 @@ import io.github.romaintv20.jeitranslationexpansion.search.LanguageSearchMatcher
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.WeakHashMap;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.IGuiEventListener;
 import net.minecraft.client.gui.screen.LanguageScreen;
@@ -33,6 +35,7 @@ import net.minecraftforge.fml.common.Mod;
  */
 @Mod.EventBusSubscriber(modid="jei_translation_expansion", value=Dist.CLIENT)
 public final class LanguageSearchForge1142 {
+    private static final Map<Screen,Runnable> SEARCH_REFRESH = new WeakHashMap<Screen,Runnable>();
     private LanguageSearchForge1142() {}
 
     @SubscribeEvent
@@ -70,21 +73,33 @@ public final class LanguageSearchForge1142 {
         if (original.isEmpty()) return;
 
         TextFieldWidget search=new TextFieldWidget(
-            Minecraft.getInstance().font,
+            Minecraft.getInstance().fontRenderer,
             screen.width/2-130,34,230,20,
-            new StringTextComponent("Search language or code")
+            "Search language or code"
         );
-        search.setMaxLength(96);
+        search.setMaxStringLength(96);
         search.setSuggestion("Search language or code...");
         final AbstractList<?> vanillaList=languageList;
-        search.setResponder(value->apply(vanillaList,original,
-            languageCodes,languageNames,value));
+        final String[] previousQuery = new String[]{""};
+        SEARCH_REFRESH.put(screen, () -> {
+            String current = search.getText();
+            if (!current.equals(previousQuery[0])) {
+                previousQuery[0] = current;
+                apply(vanillaList, original, languageCodes, languageNames, current);
+            }
+        });
         event.addWidget(search);
         event.addWidget(new Button(
-            screen.width/2+105,34,25,20,new StringTextComponent("X"),
-            button->search.setValue("")
+            screen.width/2+105,34,25,20,"X",
+            button->search.setText("")
         ));
         languageList.updateSize(screen.width,screen.height,59,screen.height-61);
+    }
+
+    @SubscribeEvent
+    public static void onRender(GuiScreenEvent.DrawScreenEvent.Post event) {
+        Runnable refresh = SEARCH_REFRESH.get(event.getGui());
+        if (refresh != null) refresh.run();
     }
 
     @SuppressWarnings({"rawtypes","unchecked"})
