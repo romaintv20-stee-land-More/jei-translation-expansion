@@ -2,7 +2,9 @@ name: Build real Forge 1.12.2 legacy language search (REVIEW ONLY)
 on:
   push:
     branches: [feature/complete-all-52-jars-2026-10-18]
-    paths: ['.github/workflows/review-forge-1.12.2.yml']
+    paths:
+      - '.github/workflows/review-forge-1.12.2.yml'
+      - 'ci/review/forge-1.12.2/**'
   workflow_dispatch:
 permissions:
   contents: read
