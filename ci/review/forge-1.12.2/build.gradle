@@ -11,7 +11,7 @@ version = '1.0.1-rc.1'
 archivesBaseName = 'jei-translation-expansion-1.0.1-rc.1-mc1.12.2-forge'
 sourceCompatibility = targetCompatibility = '1.8'
 minecraft {
-    mappings channel: 'stable', version: '39'
+    mappings channel: 'stable', version: '39-1.12'
 }
 repositories { maven { url = 'https://maven.minecraftforge.net' } }
 dependencies { minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2860' }
