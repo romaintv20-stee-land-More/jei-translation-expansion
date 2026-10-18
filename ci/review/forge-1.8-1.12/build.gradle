@@ -1,6 +1,6 @@
 buildscript {
     repositories { maven { url = 'https://maven.minecraftforge.net' }; mavenCentral() }
-    dependencies { classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT' }
+    dependencies { classpath 'net.minecraftforge.gradle:ForgeGradle:' + (project.findProperty('fg_version') ?: '2.3-SNAPSHOT') }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
 def mc = project.hasProperty('mc_version') ? project.property('mc_version') : '1.8.9'
