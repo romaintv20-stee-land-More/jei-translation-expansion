@@ -12,7 +12,8 @@ version = '1.0.1-rc.1'
 archivesBaseName = 'jei-translation-expansion-1.0.1-rc.1-mc' + mc + '-forge'
 sourceCompatibility = targetCompatibility = ((mc == '1.12' || mc == '1.12.1') ? '1.8' : '1.7')
 minecraft {
-    version = mc + '-' + forge + ((mc == '1.8.9') ? '-1.8.9' : '')
+    def branchSuffix = ['1.8.9':'-1.8.9','1.9':'-1.9.0','1.9.4':'-1.9.4','1.10':'-1.10.0']
+    version = mc + '-' + forge + (branchSuffix.get(mc) ?: '')
     mappings = mappingsId
     runDir = 'run'
 }
