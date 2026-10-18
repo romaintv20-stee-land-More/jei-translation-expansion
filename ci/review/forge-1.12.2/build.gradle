@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        maven { url = 'https://maven.minecraftforge.net' }
+        mavenCentral()
+    }
+    dependencies { classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT' }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+group = 'io.github.romaintv20.jeitranslationexpansion'
+version = '1.0.1-rc.1'
+archivesBaseName = 'jei-translation-expansion-1.0.1-rc.1-mc1.12.2-forge'
+sourceCompatibility = targetCompatibility = '1.8'
+minecraft {
+    version = '1.12.2-14.23.5.2860'
+    mappings = 'stable_39'
+    runDir = 'run'
+}
+sourceSets {
+    main {
+        java.srcDirs = ['src/main/java',
+            '../../../features/language-search/common',
+            '../../../features/language-search/legacy_1_8_to_1_12'
+        ]
+        resources.srcDirs = ['src/main/resources']
+    }
+}
+tasks.named('processResources') {
+    def original = file('../../../candidate-jars/1.12.2/jei-translation-expansion-1.0.0-mc1.12.2-forge.jar')
+    if (!original.isFile()) throw new GradleException('Missing original JEI locales')
+    from(zipTree(original)) { include 'assets/jei/lang/**' }
+}
+jar.manifest.attributes(
+    'Implementation-Title': 'JEI Translation Expansion',
+    'Implementation-Version': '1.0.1-rc.1',
+    'Minecraft-Version': '1.12.2',
+    'JEI-Version': '4.16.5'
+)
