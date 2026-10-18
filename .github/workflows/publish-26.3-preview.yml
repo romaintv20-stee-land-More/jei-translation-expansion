@@ -1,0 +1,76 @@
+name: Publish JEI 31.10 Minecraft 26.3 PRE-RELEASE (not runtime verified)
+
+on:
+  push:
+    branches:
+      - release-prep/mc26.3-jei-31.10-2026-10-18
+    paths:
+      - .github/workflows/publish-26.3-preview.yml
+
+permissions:
+  contents: write
+
+jobs:
+  preview-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout frozen preview source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+      - name: Rebuild preview from latest pinned JEI translations
+        run: python scripts/build_next_26_3_candidate.py --output build/next-26.3
+      - name: Require independent candidate hash match
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR='build/next-26.3/jei-translation-expansion-1.0.1-rc.1-mc26.3-neoforge.jar'
+          test -s "$JAR"
+          echo "2cb1ae577608ca610b8740c71dd7ce73e85aa13d79511bbba0be983b24b38ff4  $JAR" | sha256sum --check
+          unzip -t "$JAR"
+          sha256sum "$JAR" > build/next-26.3/SHA256SUMS.txt
+      - name: Write preview release notes with limitations
+        shell: bash
+        run: |
+          cat > build/next-26.3/RELEASE_NOTES.md <<'EOF'
+          ## JEI Translation Expansion 1.0.1-rc.1 — Minecraft 26.3 / NeoForge
+
+          **Experimental pre-release. The JAR has passed static resource checks and packaging checks, but has NOT been runtime-tested in Minecraft.** Do not treat it as a stable or verified final release.
+
+          - Compatible target: Minecraft **26.3**, NeoForge, Java **25**.
+          - JEI target: **31.10.0.63** and the 31.10.x compatibility range (not JEI 31.7.x).
+          - **614** English keys audited; 43 added, 13 removed and 11 changed from the earlier 31.7.0 baseline.
+          - **89 add-on locale resources:** 63 full resources plus 26 missing-key/safety supplements; upstream English is preserved.
+          - Unverified new/changed native-language texts intentionally fall back to English; approximately **4,790** add-on key values are English fallbacks pending review.
+          - Minecraft 26.3 has its own native language-selection search. The older custom search drafts are NOT embedded in this build.
+          - **Still requires game testing**: JEI startup, correct merging of translations, accented/non-Latin fonts and glyphs, native language search, user language selection, and Beyond & More coexistence.
+
+          Each Minecraft version requires its own JAR. Do not install this Minecraft 26.3 build on another version. The current stable 1.0.0 releases are unchanged.
+
+          The release asset SHA256 is included separately.
+          EOF
+      - name: Publish GitHub pre-release without touching stable tags
+        shell: bash
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TAG='v1.0.1-rc.1-mc26.3-neoforge'
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "Preview tag already published; refusing overwrite."
+            exit 1
+          fi
+          gh release create "$TAG" \
+            build/next-26.3/jei-translation-expansion-1.0.1-rc.1-mc26.3-neoforge.jar \
+            build/next-26.3/SHA256SUMS.txt \
+            --target "$GITHUB_SHA" \
+            --prerelease \
+            --title 'JEI Translation Expansion 1.0.1 RC1 — MC 26.3 / NeoForge (UNTESTED)' \
+            --notes-file build/next-26.3/RELEASE_NOTES.md
