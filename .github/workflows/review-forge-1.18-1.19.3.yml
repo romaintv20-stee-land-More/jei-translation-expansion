@@ -1,0 +1,63 @@
+name: Build Forge 1.18-1.19.3 integrated translation and search (REVIEW ONLY)
+
+on:
+  push:
+    branches:
+      - feature/complete-all-52-jars-2026-10-18
+    paths:
+      - '.github/workflows/review-forge-1.18-1.19.3.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {mc: '1.18', forge: '38.0.17', source: '1_18', jei: '9.0.0'}
+          - {mc: '1.18.1', forge: '39.1.2', source: '1_18_1', jei: '9.4.1'}
+          - {mc: '1.18.2', forge: '40.2.10', source: '1_18_2', jei: '10.1.0'}
+          - {mc: '1.19', forge: '41.1.0', source: '1_19', jei: '11.1.1'}
+          - {mc: '1.19.1', forge: '42.0.9', source: '1_19_1', jei: '11.2.0'}
+          - {mc: '1.19.2', forge: '43.3.5', source: '1_19_2', jei: '11.68.0.1086'}
+          - {mc: '1.19.3', forge: '44.1.23', source: '1_19_3', jei: '12.3.0'}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.8'
+      - name: Compile Forge client and package language search and translations
+        run: >
+          gradle --no-daemon --console=plain -p ci/review/forge-matrix build
+          -Pmc_version=${{ matrix.mc }}
+          -Pforge_version=${{ matrix.forge }}
+          -Psource_variant=${{ matrix.source }}
+          -Pjei_version=${{ matrix.jei }}
+          -Pjava_target=17
+      - name: Verify JAR content and source integration
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR=$(find ci/review/forge-matrix/build/libs -maxdepth 1 -name '*.jar' -type f | head -n1)
+          test -s "$JAR"
+          unzip -t "$JAR"
+          unzip -l "$JAR" | grep 'META-INF/mods.toml'
+          unzip -l "$JAR" | grep 'LanguageSearch.*class'
+          unzip -l "$JAR" | grep 'assets/jei/lang/'
+          sha256sum "$JAR"
+      - name: Keep candidate on GitHub Actions
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge-review-mc-${{ matrix.mc }}-NOT-GAME-TESTED
+          path: ci/review/forge-matrix/build/libs/*.jar
+          retention-days: 30
+          if-no-files-found: error
