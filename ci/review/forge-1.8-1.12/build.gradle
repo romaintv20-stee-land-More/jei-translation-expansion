@@ -29,6 +29,7 @@ processResources {
     if (!original.isFile()) throw new GradleException('Historical locales unavailable for '+ mc)
     from(zipTree(original)) { include 'assets/jei/lang/**' }
 }
+jar.archiveName = 'jei-translation-expansion-1.0.1-rc.1-mc' + mc + '-forge.jar'
 jar.manifest.attributes(
     'Implementation-Title': 'JEI Translation Expansion',
     'Implementation-Version': version,
