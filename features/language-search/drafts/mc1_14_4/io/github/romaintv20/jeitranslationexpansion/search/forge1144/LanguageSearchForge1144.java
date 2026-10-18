@@ -72,7 +72,7 @@ public final class LanguageSearchForge1144 {
         TextFieldWidget search=new TextFieldWidget(
             Minecraft.getInstance().font,
             screen.width/2-130,34,230,20,
-            new StringTextComponent("Search language or code")
+            "Search language or code"
         );
         search.setMaxLength(96);
         search.setSuggestion("Search language or code...");
@@ -81,7 +81,7 @@ public final class LanguageSearchForge1144 {
             languageCodes,languageNames,value));
         event.addWidget(search);
         event.addWidget(new Button(
-            screen.width/2+105,34,25,20,new StringTextComponent("X"),
+            screen.width/2+105,34,25,20,"X",
             button->search.setValue("")
         ));
         languageList.updateSize(screen.width,screen.height,59,screen.height-61);
