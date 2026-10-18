@@ -42,6 +42,10 @@ tasks.named('processResources') {
         expand(minecraft_version: mc, forge_version: forge, jei_version: jei)
     }
 }
+// Register the production obfuscation task explicitly for ForgeGradle 6 targets.
+reobf {
+    jar {}
+}
 tasks.named('jar') {
     archiveFileName = 'jei-translation-expansion-1.0.1-rc.1-mc' + mc + '-forge.jar'
     manifest.attributes('Implementation-Title':'JEI Translation Expansion',
