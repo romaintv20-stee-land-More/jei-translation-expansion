@@ -5,6 +5,7 @@ on:
     paths:
       - '.github/workflows/review-forge-1.12.2.yml'
       - 'ci/review/forge-1.12.2/**'
+      - 'features/language-search/legacy_1_8_to_1_12/**'
   workflow_dispatch:
 permissions:
   contents: read
