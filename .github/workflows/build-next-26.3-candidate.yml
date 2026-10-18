@@ -1,0 +1,51 @@
+name: Prepare JEI 31.10 Minecraft 26.3 candidate (NO PUBLIC RELEASE)
+
+on:
+  push:
+    branches:
+      - release-prep/mc26.3-jei-31.10-2026-10-18
+    paths:
+      - .github/workflows/build-next-26.3-candidate.yml
+      - scripts/build_next_26_3_candidate.py
+      - translations/g53-mc26.3-31.10.0.63/**
+      - packaging/completed-versions.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-candidate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source and staged translations
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Set up Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+      - name: Rebuild and validate isolated Minecraft 26.3 candidate
+        run: python scripts/build_next_26_3_candidate.py --output build/next-26.3
+      - name: Verify JAR structure and content
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR='build/next-26.3/jei-translation-expansion-1.0.1-rc.1-mc26.3-neoforge.jar'
+          test -s "$JAR"
+          unzip -t "$JAR"
+          unzip -l "$JAR" | grep -F 'META-INF/neoforge.mods.toml'
+          sha256sum "$JAR" | tee build/next-26.3/SHA256SUMS.txt
+      - name: Store review-only artifact on GitHub Actions
+        uses: actions/upload-artifact@v4
+        with:
+          name: jei-translation-expansion-mc26.3-jei31.10-UNTESTED-CANDIDATE
+          path: |
+            build/next-26.3/*.jar
+            build/next-26.3/SHA256SUMS.txt
+          retention-days: 30
+          if-no-files-found: error
