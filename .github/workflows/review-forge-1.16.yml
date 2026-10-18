@@ -1,0 +1,62 @@
+name: Build Forge 1.16.x translated language search JARs (REVIEW ONLY)
+
+on:
+  push:
+    branches:
+      - feature/complete-all-52-jars-2026-10-18
+    paths:
+      - '.github/workflows/review-forge-1.16.yml'
+      - 'ci/review/forge-1.16/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {mc: '1.16.1', forge: '32.0.108', jei: '7.0.1', source: 'drafts/mc1_16_1'}
+          - {mc: '1.16.2', forge: '33.0.61', jei: '7.3.2', source: 'drafts/mc1_16_2'}
+          - {mc: '1.16.3', forge: '34.1.42', jei: '7.6.0', source: 'drafts/mc1_16_3'}
+          - {mc: '1.16.4', forge: '35.1.37', jei: '7.6.1', source: 'drafts/mc1_16_4'}
+          - {mc: '1.16.5', forge: '36.2.39', jei: '7.8.1.1019', source: 'forge_1_16_5'}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install JDK 17 (Gradle runner)
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - name: Gradle 7.6.4 (ForgeGradle 5)
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '7.6.4'
+      - name: Compile 1.16.x Java 8 client search into actual Forge JAR
+        run: >
+          gradle --no-daemon --console=plain -p ci/review/forge-1.16 build
+          -Pmc_version=${{ matrix.mc }}
+          -Pforge_version=${{ matrix.forge }}
+          -Pjei_version=${{ matrix.jei }}
+          -Psearch_source=${{ matrix.source }}
+      - name: Verify class, search and language resources
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR=$(find ci/review/forge-1.16/build/libs -maxdepth 1 -type f -name '*.jar' | head -n1)
+          test -s "$JAR"
+          unzip -t "$JAR"
+          unzip -l "$JAR" | grep 'LanguageSearch.*class'
+          unzip -l "$JAR" | grep 'assets/jei/lang/'
+          sha256sum "$JAR"
+      - name: Keep compiled JAR on GitHub only
+        uses: actions/upload-artifact@v4
+        with:
+          name: forge-1.16-preview-mc-${{ matrix.mc }}-NEEDS-RUNTIME-TEST
+          path: ci/review/forge-1.16/build/libs/*.jar
+          retention-days: 30
+          if-no-files-found: error
