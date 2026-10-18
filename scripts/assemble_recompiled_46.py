@@ -23,7 +23,8 @@ def sha(data):return hashlib.sha256(data).hexdigest()
 def main():
     actual={}
     for p in sorted(SOURCES.rglob("*.jar")):
-        mat=re.fullmatch(r"jei-translation-expansion-1\.0\.1-rc\.1-mc([0-9.]+)-(forge|neoforge)\.jar",p.name)
+        if p.name.endswith("-sources.jar"): continue
+        mat=re.fullmatch(r"jei-translation-expansion-1\.0\.1-rc\.1-mc([0-9.]+)-(forge|neoforge)(?:-1\.0\.1-rc\.1)?\.jar",p.name)
         if not mat: raise RuntimeError(f"Unexpected JAR filename in review archive: {p.name}")
         mc,loader=mat.group(1),mat.group(2).capitalize()
         if loader=="Neoforge":loader="NeoForge"
@@ -51,7 +52,8 @@ def main():
     rows=[]
     for mc,loader in sorted(EXPECTED,key=lambda t:(tuple(map(int,t[0].split("."))),t[1])):
         p,data,count,code=actual[(mc,loader)]
-        target=jar_dir/p.name
+        canonical = "jei-translation-expansion-1.0.1-rc.1-mc"+mc+"-"+loader.lower()+".jar"
+        target=jar_dir/canonical
         target.write_bytes(data)
         cfg=baseline[mc]
         row={
@@ -66,7 +68,7 @@ def main():
             "Test en jeu":"NON",
             "Test des polices":"NON",
             "Statut":"CANDIDAT DE REVUE - NE PAS PRÉSENTER COMME VERSION FINALE",
-            "Fichier":p.name,
+            "Fichier":canonical,
             "SHA256":sha(data),
         }
         rows.append(row)
