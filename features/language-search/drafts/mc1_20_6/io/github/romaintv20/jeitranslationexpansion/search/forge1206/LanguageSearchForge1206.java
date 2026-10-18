@@ -18,10 +18,6 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 /**
- * Staged Forge 1.20.1 language picker search. No release JAR may include
- * this class until built against Forge 47.x and tested in Minecraft.
- */
-/**
  * SOURCE-ONLY DRAFT for Minecraft 1.20.6 (Forge).
  * Fork of a neighboring GUI API: requires exact-version compile and actual
  * in-game search, scrolling, selection and duplication checks.
@@ -94,7 +90,10 @@ public final class LanguageSearchForge1206 {
             .bounds(screen.width / 2 + 100, 35, 24, 20).build();
 
         // Leave Minecraft's real rows in place and make room for the field.
-        target.updateSize(screen.width, screen.height, 62, screen.height - 61);
+        // Forge 1.20.4/1.20.6 do not share the older four-argument updateSize API.
+        // Resize the existing vanilla widget without recreating its language rows.
+        target.setY(62);
+        target.setHeight(Math.max(20, screen.height - 123));
         event.addListener(search);
         event.addListener(clear);
     }
