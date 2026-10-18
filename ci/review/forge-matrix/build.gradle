@@ -4,6 +4,9 @@ def forge = providers.gradleProperty('forge_version').get()
 def source = providers.gradleProperty('source_variant').get()
 def jei = providers.gradleProperty('jei_version').get()
 def javaTarget = Integer.parseInt(providers.gradleProperty('java_target').get())
+def fml = forge.tokenize('.')[0]
+def specialized = file('../../../features/language-search/forge_' + source)
+def searchSrcDir = specialized.isDirectory() ? specialized.path : '' + searchSrcDir
 group = 'io.github.romaintv20.jeitranslationexpansion'
 version = '1.0.1-rc.1'
 base.archivesName = 'jei-translation-expansion-forge-review'
@@ -32,6 +35,7 @@ tasks.named('processResources') {
     inputs.property 'minecraft_version', mc
     inputs.property 'forge_version', forge
     inputs.property 'jei_version', jei
+    inputs.property 'fml_version', fml
     if (!stagedLocales) {
         def originalJar = file('../../../candidate-jars/' + mc +
             '/jei-translation-expansion-1.0.0-mc' + mc + '-forge.jar')
@@ -39,7 +43,7 @@ tasks.named('processResources') {
         from(zipTree(originalJar)) { include 'assets/jei/lang/**' }
     }
     filesMatching('META-INF/mods.toml') {
-        expand(minecraft_version: mc, forge_version: forge, jei_version: jei)
+        expand(minecraft_version: mc, forge_version: forge, jei_version: jei, fml_version: fml)
     }
 }
 // Register the production obfuscation task explicitly for ForgeGradle 6 targets.
