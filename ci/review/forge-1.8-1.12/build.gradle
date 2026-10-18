@@ -1,0 +1,37 @@
+buildscript {
+    repositories { maven { url = 'https://maven.minecraftforge.net' }; mavenCentral() }
+    dependencies { classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT' }
+}
+apply plugin: 'net.minecraftforge.gradle.forge'
+def mc = project.hasProperty('mc_version') ? project.property('mc_version') : '1.8.9'
+def forge = project.hasProperty('forge_version') ? project.property('forge_version') : '11.15.1.2318'
+def mappingsId = project.hasProperty('mappings_id') ? project.property('mappings_id') : 'stable_22'
+def jei = project.hasProperty('jei_version') ? project.property('jei_version') : '2.28.18'
+group = 'io.github.romaintv20.jeitranslationexpansion'
+version = '1.0.1-rc.1'
+archivesBaseName = 'jei-translation-expansion-1.0.1-rc.1-mc' + mc + '-forge'
+sourceCompatibility = targetCompatibility = ((mc == '1.12' || mc == '1.12.1') ? '1.8' : '1.7')
+minecraft {
+    version = mc + '-' + forge
+    mappings = mappingsId
+    runDir = 'run'
+}
+sourceSets {
+    main {
+        java.srcDirs = ['src/main/java',
+            '../../../features/language-search/common',
+            '../../../features/language-search/legacy_1_8_to_1_12']
+        resources.srcDirs = ['src/main/resources']
+    }
+}
+processResources {
+    def original = file('../../../candidate-jars/' + mc + '/jei-translation-expansion-1.0.0-mc' + mc + '-forge.jar')
+    if (!original.isFile()) throw new GradleException('Historical locales unavailable for '+ mc)
+    from(zipTree(original)) { include 'assets/jei/lang/**' }
+}
+jar.manifest.attributes(
+    'Implementation-Title': 'JEI Translation Expansion',
+    'Implementation-Version': version,
+    'Minecraft-Version': mc,
+    'JEI-Version': jei
+)
