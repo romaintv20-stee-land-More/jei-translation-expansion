@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[45,)"
+loaderVersion="[${fml_version},)"
 license="MIT"
 
 [[mods]]
