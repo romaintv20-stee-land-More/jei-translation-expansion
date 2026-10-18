@@ -2,7 +2,10 @@ name: Build Forge Minecraft 1.17.1 Java 16 search candidate (REVIEW ONLY)
 on:
   push:
     branches: [feature/complete-all-52-jars-2026-10-18]
-    paths: ['.github/workflows/review-forge-1.17.1.yml']
+    paths:
+      - '.github/workflows/review-forge-1.17.1.yml'
+      - 'features/language-search/drafts/mc1_17_1/**'
+      - 'ci/review/forge-1.16/**'
   workflow_dispatch:
 permissions:
   contents: read
