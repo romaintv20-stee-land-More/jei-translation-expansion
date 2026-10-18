@@ -1,0 +1,34 @@
+name: Audit 52 old JARs versus required translation, search and font gates
+
+on:
+  push:
+    branches:
+      - feature/complete-all-52-jars-2026-10-18
+    paths:
+      - '.github/workflows/audit-52-release-readiness.yml'
+      - 'scripts/audit_all_52_release_readiness.py'
+      - 'translations/staged-published-2026-10-11/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source and 52 existing candidate JARs
+        uses: actions/checkout@v4
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Inspect all 52 JARs and identify missing features
+        run: python scripts/audit_all_52_release_readiness.py
+      - name: Export human-readable status and detailed CSV/JSON
+        uses: actions/upload-artifact@v4
+        with:
+          name: JEI-52-version-prepublication-checklist
+          path: build/all-52-readiness/
+          if-no-files-found: error
+          retention-days: 90
