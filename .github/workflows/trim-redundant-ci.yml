@@ -1,0 +1,31 @@
+name: Cancel redundant superseded translation CI on the 52-JAR review branch
+
+on:
+  push:
+    branches: [feature/complete-all-52-jars-2026-10-18]
+    paths: ['.github/workflows/trim-redundant-ci.yml']
+
+permissions:
+  actions: write
+  contents: read
+
+jobs:
+  trim:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel only superseded translation validation runs on THIS branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: romaintv20-stee-land-More/jei-translation-expansion
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh run list --workflow 'Validate translations' \
+            --branch 'feature/complete-all-52-jars-2026-10-18' \
+            --limit 100 --json databaseId,status,createdAt |
+            jq -r 'sort_by(.createdAt) | reverse | .[1:][] | select(.status=="queued" or .status=="in_progress") | .databaseId' |
+            while read -r run; do
+              echo "Cancel superseded validation $run"
+              gh run cancel "$run" || true
+            done
+          echo 'Newest validation remains active; review builds are not cancelled.'
