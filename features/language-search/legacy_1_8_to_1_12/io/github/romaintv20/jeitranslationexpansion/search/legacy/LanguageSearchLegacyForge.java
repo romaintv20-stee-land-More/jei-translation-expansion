@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiLanguage;
 import net.minecraft.client.gui.GuiScreen;
@@ -60,6 +61,25 @@ public final class LanguageSearchLegacyForge {
 
     private LanguageSearchLegacyForge() {}
 
+    /** Minecraft 1.8..1.12 changed its FontRenderer field mapping. */
+    private static FontRenderer fontRenderer() {
+        Minecraft mc = Minecraft.getMinecraft();
+        for (Class<?> type=mc.getClass();type!=Object.class;type=type.getSuperclass()) {
+            for (Field field:type.getDeclaredFields()) {
+                if (!FontRenderer.class.isAssignableFrom(field.getType())) continue;
+                try {
+                    field.setAccessible(true);
+                    Object value=field.get(mc);
+                    if(value instanceof FontRenderer)return (FontRenderer)value;
+                } catch(ReflectiveOperationException | SecurityException exception) {
+                    continue;
+                }
+            }
+        }
+        throw new IllegalStateException("Minecraft font renderer inaccessible");
+    }
+
+
     @SubscribeEvent
     public static void onInit(GuiScreenEvent.InitGuiEvent.Post event) {
         GuiScreen screen = event.getGui();
@@ -83,7 +103,7 @@ public final class LanguageSearchLegacyForge {
                 displayNames.put(lang.getLanguageCode(), lang.toString());
             }
             GuiTextField input = new GuiTextField(
-                FIELD_ID, Minecraft.getMinecraft().fontRendererObj,
+                FIELD_ID, fontRenderer(),
                 screen.width / 2 - 130, SEARCH_Y, 230, 20
             );
             input.setMaxStringLength(96);
@@ -108,7 +128,7 @@ public final class LanguageSearchLegacyForge {
         if (state == null) return;
         state.search.drawTextBox();
         if (state.search.getText().isEmpty() && !state.search.isFocused()) {
-            Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(
+            fontRenderer().drawStringWithShadow(
                 "Search language or code...", state.width / 2 - 125, SEARCH_Y + 6,
                 0xAAAAAA
             );
