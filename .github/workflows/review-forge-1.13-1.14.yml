@@ -6,6 +6,8 @@ on:
     paths:
       - '.github/workflows/review-forge-1.13-1.14.yml'
       - 'ci/review/forge-1.16/**'
+      - 'features/language-search/drafts/mc1_14_2/**'
+      - 'features/language-search/drafts/mc1_14_3/**'
   workflow_dispatch:
 permissions:
   contents: read
