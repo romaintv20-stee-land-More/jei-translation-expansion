@@ -12,7 +12,7 @@ description="Pre-release: Minecraft language search and JEI translations; game/f
 [[dependencies.jei_translation_expansion]]
 modId="neoforge"
 type="required"
-versionRange="[${neoforge_version},]"
+versionRange="[${neoforge_version},)"
 ordering="NONE"
 side="CLIENT"
 
