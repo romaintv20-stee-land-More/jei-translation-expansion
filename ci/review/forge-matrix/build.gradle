@@ -6,7 +6,7 @@ def jei = providers.gradleProperty('jei_version').get()
 def javaTarget = Integer.parseInt(providers.gradleProperty('java_target').get())
 def fml = forge.tokenize('.')[0]
 def specialized = file('../../../features/language-search/forge_' + source)
-def searchSrcDir = specialized.isDirectory() ? specialized.path : '' + searchSrcDir
+def searchSrcDir = specialized.isDirectory() ? specialized.path : '../../../features/language-search/drafts/mc' + source
 group = 'io.github.romaintv20.jeitranslationexpansion'
 version = '1.0.1-rc.1'
 base.archivesName = 'jei-translation-expansion-forge-review'
@@ -22,7 +22,7 @@ def stagedLocales = staged.exists() && file(staged.path + '/semantic-diff.json')
 sourceSets {
     main {
         java.srcDirs = ['src/main/java', '../../../features/language-search/common',
-                        '../../../features/language-search/drafts/mc' + source]
+                        searchSrcDir]
         resources.srcDirs = ['src/main/resources']
         if (stagedLocales) resources.srcDirs += [staged.path + '/full', staged.path + '/supplements']
     }
