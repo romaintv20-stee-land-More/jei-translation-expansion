@@ -1,0 +1,53 @@
+name: Review updated NeoForge 26.x translations and native search (NOT RELEASE)
+
+on:
+  push:
+    branches:
+      - feature/complete-all-52-jars-2026-10-18
+    paths:
+      - '.github/workflows/verify-updated-26x.yml'
+      - 'scripts/build_updated_26x_candidates.py'
+      - 'translations/staged-published-2026-10-11/**'
+      - 'packaging/completed-versions.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-review:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        minecraft: ['26.1', '26.1.1', '26.1.2', '26.2']
+    steps:
+      - name: Checkout audited source
+        uses: actions/checkout@v4
+      - name: Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+      - name: Validate translation resources and compile RC JAR
+        run: python scripts/build_updated_26x_candidates.py --minecraft '${{ matrix.minecraft }}' --output-dir build/updated-26x
+      - name: Check resulting JAR structure, metadata, hashes and report
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR=$(find build/updated-26x -maxdepth 1 -name '*.jar' -type f)
+          test -n "$JAR"
+          unzip -t "$JAR"
+          unzip -l "$JAR" | grep -F 'META-INF/neoforge.mods.toml'
+          sha256sum "$JAR"
+      - name: Upload review-only Minecraft candidate on GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: review-candidate-mc-${{ matrix.minecraft }}-NEEDS-INGAME-TESTS
+          path: build/updated-26x/*
+          if-no-files-found: error
+          retention-days: 30
