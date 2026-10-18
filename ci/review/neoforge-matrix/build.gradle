@@ -12,13 +12,13 @@ base.archivesName = 'jei-translation-expansion-review'
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)
 neoForge { version = neo }
 def stage = file('../../../translations/staged-published-2026-10-11/' + mc)
-def hasStage = (stage / 'semantic-diff.json').isFile()
+def hasStage = new File(stage, 'semantic-diff.json').isFile()
 sourceSets {
     main {
         java.srcDirs = ['src/main/java', '../../../features/language-search/common',
                         '../../../features/language-search/' + src]
         resources.srcDirs = ['src/main/resources']
-        if (hasStage) resources.srcDirs += [(stage / 'full').path, (stage / 'supplements').path]
+        if (hasStage) resources.srcDirs += [new File(stage, 'full').path, new File(stage, 'supplements').path]
     }
 }
 tasks.named('processResources') {
