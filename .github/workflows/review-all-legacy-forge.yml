@@ -3,7 +3,10 @@ name: Build remaining 1.8 to 1.12 legacy Forge language search candidates
 on:
   push:
     branches: [feature/complete-all-52-jars-2026-10-18]
-    paths: ['.github/workflows/review-all-legacy-forge.yml']
+    paths:
+      - '.github/workflows/review-all-legacy-forge.yml'
+      - 'features/language-search/legacy_1_8_to_1_12/**'
+      - 'ci/review/forge-1.8-1.12/**'
   workflow_dispatch:
 
 permissions:
