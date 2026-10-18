@@ -3,16 +3,16 @@ buildscript {
         maven { url = 'https://maven.minecraftforge.net' }
         mavenCentral()
     }
-    dependencies { classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT' }
+    dependencies { classpath 'net.minecraftforge.gradle:ForgeGradle:3.0.194' }
 }
-apply plugin: 'net.minecraftforge.gradle.forge'
+apply plugin: 'net.minecraftforge.gradle'
 group = 'io.github.romaintv20.jeitranslationexpansion'
 version = '1.0.1-rc.1'
 archivesBaseName = 'jei-translation-expansion-1.0.1-rc.1-mc1.12.2-forge'
 sourceCompatibility = targetCompatibility = '1.8'
 minecraft {
     version = '1.12.2-14.23.5.2860'
-    mappings = 'stable_39'
+    mappings channel: 'stable', version: '39'
     runDir = 'run'
 }
 sourceSets {
