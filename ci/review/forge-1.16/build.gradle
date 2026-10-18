@@ -5,6 +5,8 @@ def jei = providers.gradleProperty('jei_version').get()
 def source = providers.gradleProperty('search_source').get()
 def fml = forge.tokenize('.')[0]
 def targetJava = Integer.parseInt(providers.gradleProperty('java_target').orElse('8').get())
+def mappingsChannel = providers.gradleProperty('mappings_channel').orElse('official').get()
+def mappingsVersion = providers.gradleProperty('mappings_version').orElse(mc).get()
 group = 'io.github.romaintv20.jeitranslationexpansion'
 version = '1.0.1-rc.1'
 archivesBaseName = 'jei-translation-expansion-1.0.1-rc.1-mc' + mc + '-forge'
@@ -12,7 +14,7 @@ java {
     sourceCompatibility = JavaVersion.toVersion(targetJava)
     targetCompatibility = JavaVersion.toVersion(targetJava)
 }
-minecraft { mappings channel: 'official', version: mc }
+minecraft { mappings channel: mappingsChannel, version: mappingsVersion }
 repositories { maven { url = 'https://maven.minecraftforge.net' }; mavenCentral() }
 dependencies { minecraft ('net.minecraftforge:forge:' + mc + '-' + forge) }
 def staged = file('../../../translations/staged-published-2026-10-11/' + mc)
