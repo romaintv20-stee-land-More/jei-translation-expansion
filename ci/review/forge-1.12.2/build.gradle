@@ -24,7 +24,7 @@ sourceSets {
         resources.srcDirs = ['src/main/resources']
     }
 }
-tasks.named('processResources') {
+processResources {
     def original = file('../../../candidate-jars/1.12.2/jei-translation-expansion-1.0.0-mc1.12.2-forge.jar')
     if (!original.isFile()) throw new GradleException('Missing original JEI locales')
     from(zipTree(original)) { include 'assets/jei/lang/**' }
