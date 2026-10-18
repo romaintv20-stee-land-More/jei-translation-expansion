@@ -1,0 +1,747 @@
+{
+  "added": {
+    "jei.chat.error.no.cheat.permission.creative": "players who are in the creative mode",
+    "jei.chat.error.no.cheat.permission.disabled": "On this server, it is disabled for all players.",
+    "jei.chat.error.no.cheat.permission.enabled": "On this server, only the following types of players can use it:",
+    "jei.chat.error.no.cheat.permission.give": "players who can use the \"/give\" command",
+    "jei.chat.error.no.cheat.permission.op": "players who have an operator status (/op)",
+    "jei.message.configured": "Install the \"Configured\" mod to access the in-game config"
+  },
+  "changed_english_values": {
+    "description.jei.wooden.door.1": {
+      "from": "Wooden Doors allow you to block monsters from entering your building.\\nTesting sentences.",
+      "to": "Wooden doors allow you to block monsters from entering your building.\\nTesting sentences."
+    },
+    "description.jei.wooden.door.3": {
+      "from": "Wooden Doors can be opened/closed via Redstone Circuits.",
+      "to": "Wooden doors can be opened/closed via redstone circuits."
+    },
+    "gui.jei.editMode.description.hide": {
+      "from": "%s-Click to Hide",
+      "to": "%s-Click to hide."
+    },
+    "gui.jei.editMode.description.hide.wild": {
+      "from": "%s-right-click to Hide by Wildcard",
+      "to": "%s-Right-Click to hide by wildcard."
+    },
+    "jei.chat.error.command.too.long": {
+      "from": "JEI must be on the server to handle this Chat Command, it is too long for Minecraft to send.",
+      "to": "JEI must be installed on the server to handle this chat command, it is too long for Minecraft to send."
+    },
+    "jei.chat.error.no.cheat.permission.1": {
+      "from": "You do not have permission to use JEI's Cheat Mode.",
+      "to": "You do not have permission to use JEI's cheat mode."
+    },
+    "jei.tooltip.bookmarks.not.enough.space": {
+      "from": "There is not enough space to display bookmarks here.",
+      "to": "The area on the left-hand side of this screen is too small for the JEI bookmark list overlay to display."
+    },
+    "jei.tooltip.cheat.mode.button.enabled": {
+      "from": "Cheat Mode enabled",
+      "to": "Cheat mode enabled."
+    },
+    "jei.tooltip.cheat.mode.how.to.disable.hotkey": {
+      "from": "Press %s to toggle it.",
+      "to": "Press \"%s\" to toggle it."
+    },
+    "jei.tooltip.cheat.mode.how.to.disable.no.hotkey": {
+      "from": "%s-click here to toggle it.",
+      "to": "%s-Click here to toggle it."
+    },
+    "jei.tooltip.delete.item": {
+      "from": "Click to Delete",
+      "to": "Click to delete."
+    },
+    "jei.tooltip.error.crash": {
+      "from": "Tooltip error, see log",
+      "to": "This ingredient crashed when getting its tooltip. Please see the client logs for details."
+    },
+    "jei.tooltip.error.recipe.transfer.inventory.full": {
+      "from": "Inventory is too full",
+      "to": "Inventory is too full."
+    },
+    "jei.tooltip.error.recipe.transfer.no.server": {
+      "from": "The server must have JEI installed",
+      "to": "The server must have JEI installed."
+    },
+    "jei.tooltip.ingredient.list.disabled": {
+      "from": "The JEI overlay is disabled.",
+      "to": "JEI overlays are hidden."
+    },
+    "jei.tooltip.ingredient.list.disabled.how.to.fix": {
+      "from": "Press %s to enable it.",
+      "to": "Press \"%s\" to show them again."
+    },
+    "jei.tooltip.not.enough.space": {
+      "from": "There is not enough space to display JEI here.",
+      "to": "The area on the right-hand side of this screen is too small for the JEI ingredient list overlay to display."
+    },
+    "jei.tooltip.recipe.tag": {
+      "from": "Accepts any: %s",
+      "to": "Accepts Tag: %s"
+    },
+    "key.jei.bookmark": {
+      "from": "Add/Remove a Bookmarked Ingredient",
+      "to": "Add/Remove Bookmark"
+    },
+    "key.jei.nextCategory": {
+      "from": "Show Next Recipe Category",
+      "to": "Next Recipe Category"
+    },
+    "key.jei.nextPage": {
+      "from": "Show Next Page",
+      "to": "Next Page"
+    },
+    "key.jei.previousCategory": {
+      "from": "Show Previous Recipe Category",
+      "to": "Previous Recipe Category"
+    },
+    "key.jei.previousPage": {
+      "from": "Show Previous Page",
+      "to": "Previous Page"
+    },
+    "key.jei.recipeBack": {
+      "from": "Show Previously Viewed Recipe",
+      "to": "Previous Recipe"
+    },
+    "key.jei.toggleEditMode": {
+      "from": "Toggle Hide/Edit Mode",
+      "to": "Toggle Hide Ingredients Mode"
+    },
+    "key.jei.toggleOverlay": {
+      "from": "Show/Hide JEI",
+      "to": "Show/Hide JEI Overlays"
+    }
+  },
+  "generation": "G23",
+  "locale_counts": {
+    "af_za": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "ar_sa": {
+      "changed_meaning_english_fallback": 17,
+      "english_fallback": 29,
+      "new_key_english_fallback": 6,
+      "ownership": "supplement",
+      "reused_unchanged": 9,
+      "upstream_owned": 35
+    },
+    "ast_es": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "az_az": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "ba_ru": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "bar": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "be_by": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "bg_bg": {
+      "english_fallback": 2,
+      "ownership": "supplement",
+      "upstream_owned": 71
+    },
+    "br_fr": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "bs_ba": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "ca_es": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "cs_cz": {
+      "changed_meaning_english_fallback": 15,
+      "english_fallback": 26,
+      "new_key_english_fallback": 6,
+      "ownership": "supplement",
+      "reused_unchanged": 9,
+      "upstream_owned": 38
+    },
+    "cy_gb": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "da_dk": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "de_de": {
+      "changed_meaning_english_fallback": 3,
+      "english_fallback": 3,
+      "ownership": "supplement",
+      "upstream_owned": 70
+    },
+    "el_gr": {
+      "changed_meaning_english_fallback": 16,
+      "english_fallback": 25,
+      "new_key_english_fallback": 6,
+      "ownership": "supplement",
+      "reused_unchanged": 9,
+      "upstream_owned": 39
+    },
+    "eo_uy": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "es_es": {
+      "changed_meaning_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "supplement",
+      "upstream_owned": 72
+    },
+    "et_ee": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "eu_es": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "fa_ir": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "fi_fi": {
+      "changed_meaning_english_fallback": 14,
+      "english_fallback": 26,
+      "new_key_english_fallback": 6,
+      "ownership": "supplement",
+      "reused_unchanged": 9,
+      "upstream_owned": 38
+    },
+    "fil_ph": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "fo_fo": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "fr_fr": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 2,
+      "ownership": "supplement",
+      "upstream_owned": 71
+    },
+    "fur_it": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "fy_nl": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "ga_ie": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "gd_gb": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "gl_es": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "gv_im": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "haw_us": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "he_il": {
+      "changed_meaning_english_fallback": 15,
+      "english_fallback": 24,
+      "new_key_english_fallback": 6,
+      "ownership": "supplement",
+      "reused_unchanged": 9,
+      "upstream_owned": 40
+    },
+    "hi_in": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "hr_hr": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "hu_hu": {
+      "changed_meaning_english_fallback": 4,
+      "english_fallback": 4,
+      "ownership": "supplement",
+      "upstream_owned": 69
+    },
+    "hy_am": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "id_id": {
+      "changed_meaning_english_fallback": 1,
+      "english_fallback": 7,
+      "new_key_english_fallback": 6,
+      "ownership": "supplement",
+      "upstream_owned": 66
+    },
+    "ig_ng": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "is_is": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "ja_jp": {
+      "changed_meaning_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "supplement",
+      "upstream_owned": 72
+    },
+    "ka_ge": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "kk_kz": {
+      "changed_meaning_english_fallback": 4,
+      "english_fallback": 4,
+      "ownership": "supplement",
+      "upstream_owned": 69
+    },
+    "kn_in": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "ksh": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "kw_gb": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "la_la": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "lb_lu": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "li_li": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "lmo": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "lt_lt": {
+      "changed_meaning_english_fallback": 19,
+      "english_fallback": 36,
+      "new_key_english_fallback": 6,
+      "ownership": "supplement",
+      "reused_unchanged": 9,
+      "upstream_owned": 28
+    },
+    "lv_lv": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "mi_nz": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "mk_mk": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "mn_mn": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "ms_my": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "mt_mt": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "nds_de": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "nl_nl": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "no_no": {
+      "changed_meaning_english_fallback": 17,
+      "english_fallback": 23,
+      "new_key_english_fallback": 6,
+      "ownership": "supplement",
+      "reused_unchanged": 16,
+      "upstream_owned": 34
+    },
+    "oc_fr": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "ovd": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "pl_pl": {
+      "ownership": "upstream-complete",
+      "upstream_owned": 73
+    },
+    "pt_br": {
+      "changed_meaning_english_fallback": 3,
+      "english_fallback": 9,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "upstream_owned": 64
+    },
+    "ro_ro": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "se_no": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "sk_sk": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "sl_si": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "so_so": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "sq_al": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "sr_sp": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "szl": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "ta_in": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "th_th": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "tl_ph": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "tt_ru": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "uk_ua": {
+      "changed_meaning_english_fallback": 1,
+      "english_fallback": 1,
+      "ownership": "supplement",
+      "upstream_owned": 72
+    },
+    "vec_it": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "vi_vn": {
+      "changed_meaning_english_fallback": 4,
+      "english_fallback": 4,
+      "ownership": "supplement",
+      "upstream_owned": 69
+    },
+    "yi_de": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    },
+    "yo_ng": {
+      "changed_meaning_english_fallback": 26,
+      "english_fallback": 32,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 41
+    }
+  },
+  "minecraft": "1.16.5",
+  "new_jei": "7.8.1.1019",
+  "note": "Staged sources ONLY. No JAR created, no runtime-tested claim. Old supplement-only translated keys absent from candidate files are not inferred.",
+  "old_jei": "7.7.1",
+  "policy": "Reuse only unchanged key+English meaning; upstream translations first; otherwise exact new English fallback pending review.",
+  "removed": {
+    "config.jei": "JEI Config",
+    "config.jei.advanced": "Advanced",
+    "config.jei.advanced.centerSearchBarEnabled": "Center Search Bar",
+    "config.jei.advanced.centerSearchBarEnabled.comment": "Move the JEI search bar to the bottom center of the screen.",
+    "config.jei.advanced.colorSearchEnabled": "Enable Color Search",
+    "config.jei.advanced.colorSearchEnabled.comment": "Search ingredients by color and show the colors on tooltips in the list.",
+    "config.jei.advanced.comment": "Advanced config options to change the way JEI functions.",
+    "config.jei.advanced.debugModeEnabled": "Debug Mode",
+    "config.jei.advanced.debugModeEnabled.comment": "Only useful for JEI developers, adds test ingredients and some debug recipes.",
+    "config.jei.advanced.giveMode": "Give Mode",
+    "config.jei.advanced.giveMode.comment": "Choose if JEI should give ingredients direct to the inventory (inventory) or pick them up with the mouse (mouse_pickup).",
+    "config.jei.advanced.itemBlacklist": "Ingredient Blacklist",
+    "config.jei.advanced.itemBlacklist.comment": "List of ingredients that should not be displayed in the list. Format: modId[:name[:meta]]. Hide Ingredients Mode will automatically add or remove entries here.",
+    "config.jei.advanced.maxColumns": "Max Overlay Width",
+    "config.jei.advanced.maxColumns.comment": "The maximum width of the ingredient list.",
+    "config.jei.advanced.maxRecipeGuiHeight": "Max Recipe GUI Height",
+    "config.jei.advanced.maxRecipeGuiHeight.comment": "The maximum height of the recipe GUI.",
+    "config.jei.advanced.modNameFormat": "Mod Name Format",
+    "config.jei.advanced.modNameFormat.comment": "How the mod name should be formatted in the tooltip for JEI GUIs. Leave blank to disable.",
+    "config.jei.default": "Default",
+    "config.jei.interface": "Interface",
+    "config.jei.interface.bookmarkOverlayEnabled": "Show Bookmarks",
+    "config.jei.interface.bookmarkOverlayEnabled.comment": "Show the list of bookmarks next to open GUIs.",
+    "config.jei.interface.comment": "Options related to the User Interface.",
+    "config.jei.interface.overlayEnabled": "Show Ingredient List",
+    "config.jei.interface.overlayEnabled.comment": "Show the list of ingredients next to open GUIs.",
+    "config.jei.mode": "Mode",
+    "config.jei.mode.cheatItemsEnabled": "Cheat Mode",
+    "config.jei.mode.cheatItemsEnabled.comment": "Give items instead of showing the recipe.",
+    "config.jei.mode.comment": "Change the mode that JEI is operating in.",
+    "config.jei.mode.editEnabled": "Hide Ingredients Mode",
+    "config.jei.mode.editEnabled.comment": "Hide and unhide ingredients by clicking them in the list.",
+    "config.jei.search": "Search Options",
+    "config.jei.search.colorSearchMode": "^Color",
+    "config.jei.search.colorSearchMode.comment": "Search mode for Colors (prefix: ^)",
+    "config.jei.search.comment": "Options relating to the search bar.",
+    "config.jei.search.creativeTabSearchMode": "%%CreativeTab",
+    "config.jei.search.creativeTabSearchMode.comment": "Search mode for Creative Tab Names (prefix: %)",
+    "config.jei.search.modNameSearchMode": "@ModName",
+    "config.jei.search.modNameSearchMode.comment": "Search mode for Mod Names (prefix: @)",
+    "config.jei.search.resourceIdSearchMode": "&ResourceId",
+    "config.jei.search.resourceIdSearchMode.comment": "Search mode for resources IDs (prefix: &)",
+    "config.jei.search.searchAdvancedTooltips": "Search advanced tooltips",
+    "config.jei.search.tagSearchMode": "$Tag",
+    "config.jei.search.tagSearchMode.comment": "Search mode for Tag Names (prefix: $)",
+    "config.jei.search.tooltipSearchMode": "#Tooltip",
+    "config.jei.search.tooltipSearchMode.comment": "Search mode for Tooltips (prefix: #)",
+    "config.jei.title": "%MODNAME Config",
+    "config.jei.valid": "Valid",
+    "jei.chat.error.no.cheat.permission.2": "Permission is given to players who can /give items or are in Creative Mode.",
+    "jei.message.ftblibrary": "Install FTB Library to access ingame config",
+    "jei.tooltip.error.recipe.transfer.unknown": "Unknown Error, see logs"
+  },
+  "totals": {
+    "changed_meaning_english_fallback": 1749,
+    "english_fallback": 2211,
+    "new_key_english_fallback": 425,
+    "reused_unchanged": 2612,
+    "upstream_owned": 1090
+  },
+  "upstream_jar_sha256": "cbc01a1d246e246b661b44c86ff30ec04f36ae1956fc797a62ba8b80ecd50e8f"
+}

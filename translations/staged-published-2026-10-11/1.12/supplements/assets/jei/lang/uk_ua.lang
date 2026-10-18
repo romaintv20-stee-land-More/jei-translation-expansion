@@ -1,0 +1,11 @@
+# Generated staged fallback; awaiting runtime validation.
+config.jei.advanced.maxSubtypes=Max Item Subtypes
+config.jei.advanced.maxSubtypes.comment=Items with more than this many subtypes will not be displayed in JEI.
+config.jei.search.resourceIdSearchMode=&ResourceId
+config.jei.search.resourceIdSearchMode.comment=Search mode for resources ids (prefix: &)
+jei.chat.error.command.too.long=JEI must be on the server to handle this Chat Command, it is too long for Minecraft to send.
+jei.tooltip.liquid.amount=%,d mB
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.recipe.by=Recipe By: %s
+key.jei.nextPage=Show Next Page
+key.jei.previousPage=Show Previous Page

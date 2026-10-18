@@ -1,0 +1,13 @@
+# Generated staged fallback; awaiting runtime validation.
+config.jei.advanced.centerSearchBarEnabled.comment=Move the JEI search bar to the bottom center of the screen.
+config.jei.advanced.maxSubtypes=Max Item Subtypes
+config.jei.advanced.maxSubtypes.comment=Items with more than this many subtypes will not be displayed in JEI.
+config.jei.search.resourceIdSearchMode=&Resurs-ID
+config.jei.search.resourceIdSearchMode.comment=Sök efter resurs-ID (prefix: &)
+description.jei.wooden.door.1=Wooden Doors allow you to block monsters from entering your building.\nTesting sentences.
+description.jei.wooden.door.2=Clicking on a door changes its state from open to closed and visa versa.
+description.jei.wooden.door.3=Wooden Doors can be opened/closed via Redstone Circuits.
+gui.jei.editMode.description=JEI Item List Edit Mode:
+jei.tooltip.recipe.by=Recipe By: %s
+key.jei.nextPage=Visa nästa sida
+key.jei.previousPage=Visa föregående sida

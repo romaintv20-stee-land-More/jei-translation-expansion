@@ -1,0 +1,13 @@
+{
+  "minecraft": "1.8.9",
+  "generation": "G2",
+  "status": "compared_branch_head",
+  "source": "src/main/resources/assets/jei/lang/en_US.lang",
+  "baseline_keys": 75,
+  "current_keys": 75,
+  "added": {},
+  "removed": {},
+  "changed_english_values": {},
+  "needs_translation_review": false,
+  "warning": "Source branch head is not necessarily a published JEI JAR or the endpoint of a maintained branch."
+}

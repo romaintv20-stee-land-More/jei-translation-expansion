@@ -1,0 +1,4 @@
+{
+  "jei.tooltip.liquid.amount": "%s mB",
+  "jei.tooltip.liquid.amount.with.capacity": "%s / %s mB"
+}

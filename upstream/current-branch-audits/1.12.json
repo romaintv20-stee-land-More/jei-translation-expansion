@@ -1,0 +1,233 @@
+{
+  "minecraft": "1.12",
+  "generation": "G9",
+  "status": "compared_branch_head",
+  "source": "src/main/resources/assets/jei/lang/en_us.lang",
+  "baseline_keys": 93,
+  "current_keys": 120,
+  "added": {
+    "config.jei.advanced.addBookmarksToFront": "Prepend New Bookmarks",
+    "config.jei.advanced.addBookmarksToFront.comment": "Add new bookmarks to the front of the bookmark list instead of the end.",
+    "config.jei.advanced.giveMode": "Give Mode",
+    "config.jei.advanced.giveMode.comment": "Choose if JEI should give ingredients directly to the inventory or pick them up with the mouse.",
+    "config.jei.advanced.maxColumns": "Max Overlay Width",
+    "config.jei.advanced.maxColumns.comment": "The maximum width of the ingredient and bookmark list overlays.",
+    "config.jei.advanced.maxRecipeGuiHeight": "Max Recipe GUI Height",
+    "config.jei.advanced.maxRecipeGuiHeight.comment": "The maximum height of the recipe GUI.",
+    "config.jei.advanced.optimizeMemoryUsage": "Optimize Memory Usage",
+    "config.jei.advanced.optimizeMemoryUsage.comment": "Enable JEI memory usage optimizations.",
+    "config.jei.interface.bookmarkOverlayEnabled": "Show Bookmark List Overlay",
+    "config.jei.interface.bookmarkOverlayEnabled.comment": "Show the bookmark list overlay next to open GUIs.",
+    "config.jei.search.searchAdvancedTooltips": "Search in Advanced Tooltips",
+    "config.jei.search.searchAdvancedTooltips.comment": "Search in advanced tooltips (visible with F3 + H).",
+    "config.jei.searchColors": "Search Colors",
+    "config.jei.searchColors.comment": "Config options related to searching for colors of items in JEI.",
+    "config.jei.searchColors.searchColors": "Search Colors",
+    "config.jei.searchColors.searchColors.comment": "Color values to search for.",
+    "jei.message.copy.recipe.id.failure": "Failed to copy the recipe ID to the clipboard because the ID is unknown",
+    "jei.message.copy.recipe.id.success": "The following recipe ID was copied to the clipboard: %s",
+    "jei.tooltip.bookmarks": "JEI Bookmarks",
+    "jei.tooltip.bookmarks.not.enough.space": "The area on the left-hand side of this screen is too small for the JEI bookmark list overlay to display.",
+    "jei.tooltip.bookmarks.usage.key": "Hover over an ingredient and press \"%s\" to bookmark it.",
+    "jei.tooltip.bookmarks.usage.nokey": "Add a key binding for JEI bookmarks in your Controls settings.",
+    "jei.tooltip.cheat.mode.button.enabled": "Cheat mode enabled.",
+    "jei.tooltip.cheat.mode.how.to.disable.hotkey": "Press \"%s\" to toggle it.",
+    "jei.tooltip.cheat.mode.how.to.disable.no.hotkey": "%s-Click here to toggle it.",
+    "jei.tooltip.ingredient.list.disabled": "JEI overlays are hidden.",
+    "jei.tooltip.ingredient.list.disabled.how.to.fix": "Press \"%s\" to show them again.",
+    "jei.tooltip.not.enough.space": "The area on the right-hand side of this screen is too small for the JEI ingredient list overlay to display.",
+    "jei.tooltip.recipe.by": "Recipe By: %s",
+    "jei.tooltip.recipe.id": "Recipe ID: %s",
+    "key.jei.bookmark": "Add/Remove Bookmark",
+    "key.jei.closeRecipeGui": "Close Recipes GUI",
+    "key.jei.copy.recipe.id": "Copy Recipe ID to Clipboard",
+    "key.jei.pauseRecipeCycling": "Pause Recipe Cycling",
+    "key.jei.toggleBookmarkOverlay": "Show/Hide Bookmarked Ingredients",
+    "key.jei.toggleEditMode": "Toggle Hide Ingredients Mode"
+  },
+  "removed": {
+    "config.jei.advanced.maxSubtypes": "Max Item Subtypes",
+    "config.jei.advanced.maxSubtypes.comment": "Items with more than this many subtypes will not be displayed in JEI.",
+    "config.jei.interface.recipeAnimationsEnabled": "Recipe Animations",
+    "config.jei.interface.recipeAnimationsEnabled.comment": "Show recipe animations (furnace fire, progress bars, etc)",
+    "gui.jei.category.fuel.burnTime": "Burn Time: %s",
+    "gui.jei.editMode.description.hide.mod.id": "%CTRL-SHIFT-click to hide by ModId.",
+    "gui.jei.editMode.description.show": "Hidden. %CTRL-click to show.",
+    "gui.jei.editMode.description.show.mod.id": "Hidden by ModId. %CTRL-SHIFT-click to show.",
+    "gui.jei.editMode.description.show.wild": "Hidden by Wildcard. %CTRL-right-click to show.",
+    "jei.tooltip.cheat.mode": "Cheat Mode",
+    "jei.tooltip.error.recipe.transfer.unknown": "Unknown Error, see logs"
+  },
+  "changed_english_values": {
+    "config.jei.advanced.colorSearchEnabled.comment": {
+      "previous": "Search items by color and show the searchable item colors on tooltips in the item list.",
+      "current": "Search ingredients by color and show the colors in tooltips in the ingredient list overlay."
+    },
+    "config.jei.advanced.debugModeEnabled.comment": {
+      "previous": "Only useful for JEI developers, adds thousands of test items and some debug recipes.",
+      "current": "Only useful for JEI developers, adds test ingredients and some debug recipes."
+    },
+    "config.jei.advanced.itemBlacklist": {
+      "previous": "Item Blacklist",
+      "current": "Ingredient Blacklist"
+    },
+    "config.jei.advanced.itemBlacklist.comment": {
+      "previous": "List of items that should not be displayed in the item list. Format: modId[:name[:meta]]. Edit Mode will automatically add or remove entries here.",
+      "current": "List of ingredients that should not be displayed in the ingredient list overlay. Format: modId[:name[:meta]]. The hide ingredients mode will automatically add or remove entries here."
+    },
+    "config.jei.advanced.modNameFormat.comment": {
+      "previous": "How the mod name should be formatted in the tooltip for JEI guis. Leave blank to disable.",
+      "current": "Formatting for the mod names in tooltips for JEI GUIs. Leave blank to disable."
+    },
+    "config.jei.interface.comment": {
+      "previous": "Options relating to the User Interface.",
+      "current": "Options related to the user interface."
+    },
+    "config.jei.interface.overlayEnabled": {
+      "previous": "Item List Enabled",
+      "current": "Show Ingredient List Overlay"
+    },
+    "config.jei.interface.overlayEnabled.comment": {
+      "previous": "Show the list of items next to open guis.",
+      "current": "Show the ingredient list overlay next to open GUIs."
+    },
+    "config.jei.mode.cheatItemsEnabled": {
+      "previous": "Item Cheating Mode",
+      "current": "Cheat Mode"
+    },
+    "config.jei.mode.editEnabled": {
+      "previous": "Item Hiding Mode",
+      "current": "Hide Ingredients Mode"
+    },
+    "config.jei.mode.editEnabled.comment": {
+      "previous": "Hide and unhide items by clicking them in the item list.",
+      "current": "Hide or unhide ingredients by clicking them in the ingredient list overlay."
+    },
+    "config.jei.search.colorSearchMode.comment": {
+      "previous": "Search mode for Item Colors (prefix: ^)",
+      "current": "Search mode for colors (prefix: ^)."
+    },
+    "config.jei.search.comment": {
+      "previous": "Options relating to the search bar.",
+      "current": "Options related to the search bar."
+    },
+    "config.jei.search.creativeTabSearchMode": {
+      "previous": "%%CreativeTab",
+      "current": "%%CreativeModeTab"
+    },
+    "config.jei.search.creativeTabSearchMode.comment": {
+      "previous": "Search mode for Creative Tab Names (prefix: %)",
+      "current": "Search mode for creative mode tab names (prefix: %)."
+    },
+    "config.jei.search.modNameSearchMode.comment": {
+      "previous": "Search mode for Mod Names (prefix: @)",
+      "current": "Search mode for mod names (prefix: @)."
+    },
+    "config.jei.search.oreDictSearchMode.comment": {
+      "previous": "Search mode for Ore Dictionary Names (prefix: $)",
+      "current": "Search mode for Ore Dictionary names (prefix: $)."
+    },
+    "config.jei.search.resourceIdSearchMode.comment": {
+      "previous": "Search mode for resources ids (prefix: &)",
+      "current": "Search mode for resource IDs (prefix: &)."
+    },
+    "config.jei.search.tooltipSearchMode.comment": {
+      "previous": "Search mode for Tooltips (prefix: #)",
+      "current": "Search mode for tooltips (prefix: #)."
+    },
+    "description.jei.wooden.door.1": {
+      "previous": "Wooden Doors allow you to block monsters from entering your building.\\nTesting sentences.",
+      "current": "Wooden doors allow you to block monsters from entering your building.\\nTesting sentences."
+    },
+    "description.jei.wooden.door.2": {
+      "previous": "Clicking on a door changes its state from open to closed and visa versa.",
+      "current": "Clicking on a door changes its state from open to closed and vice versa."
+    },
+    "description.jei.wooden.door.3": {
+      "previous": "Wooden Doors can be opened/closed via Redstone Circuits.",
+      "current": "Wooden doors can be opened/closed via redstone circuits."
+    },
+    "gui.jei.editMode.description": {
+      "previous": "JEI Item List Edit Mode:",
+      "current": "JEI Hide Ingredients Mode:"
+    },
+    "gui.jei.editMode.description.hide": {
+      "previous": "%CTRL-click to hide.",
+      "current": "%CTRL-Click to hide."
+    },
+    "gui.jei.editMode.description.hide.wild": {
+      "previous": "%CTRL-right-click to hide with wildcard.",
+      "current": "%CTRL-Right-Click to hide by wildcard."
+    },
+    "jei.chat.error.command.too.long": {
+      "previous": "JEI must be on the server to handle this Chat Command, it is too long for Minecraft to send.",
+      "current": "JEI must be installed on the server to handle this chat command, it is too long for Minecraft to send."
+    },
+    "jei.chat.error.no.cheat.permission.1": {
+      "previous": "You do not have permission to use JEI's Cheat Mode.",
+      "current": "You do not have permission to use JEI's cheat mode."
+    },
+    "jei.chat.error.no.cheat.permission.2": {
+      "previous": "Permission is given to players who can /give items or are in Creative Mode.",
+      "current": "Permission is given to players who can /give items or are in the creative mode."
+    },
+    "jei.tooltip.delete.item": {
+      "previous": "Click to Delete",
+      "current": "Click to delete."
+    },
+    "jei.tooltip.error.crash": {
+      "previous": "Tooltip error, see log",
+      "current": "This ingredient crashed when getting its tooltip. Please see the client logs for details."
+    },
+    "jei.tooltip.error.recipe.transfer.inventory.full": {
+      "previous": "Inventory is too full",
+      "current": "Inventory is too full."
+    },
+    "jei.tooltip.error.recipe.transfer.no.server": {
+      "previous": "The server must have JEI installed",
+      "current": "The server must have JEI installed."
+    },
+    "jei.tooltip.error.recipe.transfer.too.large.player.inventory": {
+      "previous": "Recipe is not 2x2",
+      "current": "Recipe is too large to craft in the 2x2 player crafting grid."
+    },
+    "jei.tooltip.recipe.ore.dict": {
+      "previous": "Accepts any: %s",
+      "current": "Accepts Any: %s"
+    },
+    "jei.tooltip.show.recipes": {
+      "previous": "Show Recipes",
+      "current": "Show all recipes"
+    },
+    "key.jei.nextPage": {
+      "previous": "Show Next Page",
+      "current": "Next Page"
+    },
+    "key.jei.previousPage": {
+      "previous": "Show Previous Page",
+      "current": "Previous Page"
+    },
+    "key.jei.recipeBack": {
+      "previous": "Show Previously Viewed Recipe",
+      "current": "Previous Recipe"
+    },
+    "key.jei.showRecipe": {
+      "previous": "Show Item Recipe",
+      "current": "Show Recipe"
+    },
+    "key.jei.showUses": {
+      "previous": "Show Item Uses",
+      "current": "Show Uses"
+    },
+    "key.jei.toggleCheatMode": {
+      "previous": "Toggle Item Cheating Mode",
+      "current": "Toggle Cheat Mode"
+    },
+    "key.jei.toggleOverlay": {
+      "previous": "Toggle Item List Overlay",
+      "current": "Show/Hide JEI Overlays"
+    }
+  },
+  "needs_translation_review": true,
+  "warning": "Source branch head is not necessarily a published JEI JAR or the endpoint of a maintained branch."
+}

@@ -1,0 +1,23 @@
+{
+  "gui.jei.editMode.description": "JEI Hide Ingredients Mode:",
+  "jei.config.client.advanced.itemBlacklist.description": "List of ingredients that should not be displayed in the ingredient list overlay. Format: modId[:name[:meta]]. The hide ingredients mode will automatically add or remove entries here.",
+  "jei.config.client.lookupHistory": "Sökhistorik",
+  "jei.config.client.lookupHistory.description": "Konfigurationsalternativ för att visa en historik över ingredienssökningar i JEI",
+  "jei.config.client.lookupHistory.displaySide": "Visa åt sidan",
+  "jei.config.client.lookupHistory.displaySide.description": "Visa överläggets sökhistorik på sidan av skärmen.",
+  "jei.config.client.lookupHistory.enabled": "Aktiverad",
+  "jei.config.client.lookupHistory.enabled.description": "Visa eller dölj överläggets sökhistorik.",
+  "jei.config.client.lookupHistory.maxIngredients": "Max antal ingredienser",
+  "jei.config.client.lookupHistory.maxIngredients.description": "Maximalt antal ingredienser i sökhistoriken att spara.",
+  "jei.config.client.lookupHistory.maxRows": "Max antal rader",
+  "jei.config.client.lookupHistory.maxRows.description": "Maximalt antal rader att visa i överläggets sökhistorik.",
+  "jei.config.client.search.creativeTabSearchMode": "%Creative Tab Search Mode",
+  "jei.config.client.tooltips.enableRecipesGuiIngredientsSummary": "Recipe Ingredient Summary",
+  "jei.config.client.tooltips.enableRecipesGuiIngredientsSummary.description": "Show a summary of ingredients needed for a recipe, on its output ingredient's tooltip.",
+  "jei.tooltip.bookmarks.disable": "Hide JEI Bookmarks",
+  "jei.tooltip.bookmarks.enable": "Show JEI Bookmarks",
+  "jei.tooltip.lookupHistory.disable": "Hide JEI-sökhistorik",
+  "jei.tooltip.lookupHistory.enable": "Visa JEI-sökhistorik",
+  "jei.tooltip.lookupHistory.usage": "Visar en lista över ingredienser som nyligen använts för att söka efter recept.",
+  "jei.tooltip.recipe.tooltips.craft.ingredients": "Ingredients summary:"
+}

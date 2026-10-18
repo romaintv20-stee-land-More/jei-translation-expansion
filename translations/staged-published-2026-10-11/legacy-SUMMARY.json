@@ -1,0 +1,37 @@
+{
+  "no_jars": true,
+  "versions": [
+    {
+      "minecraft": "1.9",
+      "updated": "3.4.4.208",
+      "locales": 68,
+      "added": 1,
+      "removed": 0,
+      "changed": 0
+    },
+    {
+      "minecraft": "1.12",
+      "updated": "4.7.11.102",
+      "locales": 78,
+      "added": 1,
+      "removed": 0,
+      "changed": 0
+    },
+    {
+      "minecraft": "1.12.1",
+      "updated": "4.7.11.102",
+      "locales": 78,
+      "added": 1,
+      "removed": 0,
+      "changed": 0
+    },
+    {
+      "minecraft": "1.12.2",
+      "updated": "4.22.0.1035",
+      "locales": 79,
+      "added": 5,
+      "removed": 0,
+      "changed": 1
+    }
+  ]
+}

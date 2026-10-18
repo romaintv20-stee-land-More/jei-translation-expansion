@@ -1,0 +1,21 @@
+{
+  "jei.config.client.lookupHistory": "查询历史",
+  "jei.config.client.lookupHistory.description": "JEI中用于显示原料查询历史的配置选项",
+  "jei.config.client.lookupHistory.displaySide": "显示位置",
+  "jei.config.client.lookupHistory.displaySide.description": "查询历史叠加层在屏幕上显示的位置。",
+  "jei.config.client.lookupHistory.enabled": "已启用",
+  "jei.config.client.lookupHistory.enabled.description": "显示或隐藏查询历史叠加层。",
+  "jei.config.client.lookupHistory.maxIngredients": "最大原料",
+  "jei.config.client.lookupHistory.maxIngredients.description": "查询历史原料保存的最大数量。",
+  "jei.config.client.lookupHistory.maxRows": "最大行数",
+  "jei.config.client.lookupHistory.maxRows.description": "查询历史叠加层显示的最大行数。",
+  "jei.config.client.tooltips.enableRecipesGuiIngredientsSummary": "Recipe Ingredient Summary",
+  "jei.config.client.tooltips.enableRecipesGuiIngredientsSummary.description": "Show a summary of ingredients needed for a recipe, on its output ingredient's tooltip.",
+  "jei.tooltip.bookmarks.disable": "隐藏JEI书签",
+  "jei.tooltip.bookmarks.enable": "显示JEI书签",
+  "jei.tooltip.bookmarks.not.enough.space": "The area on the left-hand side of this screen is too small for the JEI bookmark list overlay to display.",
+  "jei.tooltip.lookupHistory.disable": "隐藏JEI查询历史",
+  "jei.tooltip.lookupHistory.enable": "显示JEI查询历史",
+  "jei.tooltip.lookupHistory.usage": "显示最近用于查询配方的原料列表。",
+  "jei.tooltip.recipe.tooltips.craft.ingredients": "Ingredients summary:"
+}

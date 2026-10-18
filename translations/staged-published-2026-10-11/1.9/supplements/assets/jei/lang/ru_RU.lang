@@ -1,0 +1,26 @@
+# Generated staged fallback; awaiting runtime validation.
+config.jei.advanced.colorSearchEnabled=Включить поиск по цвету
+config.jei.advanced.colorSearchEnabled.comment=Искать предметы по цвету и показывать доступные для поиска цвета в подсказках.
+config.jei.interface.overlayEnabled=Список предметов включён
+config.jei.interface.overlayEnabled.comment=Показывать список предметов рядом с открытыми интерфейсами.
+config.jei.search.prefixRequiredForColorSearch=Требовать ^ для цветов
+config.jei.search.prefixRequiredForColorSearch.comment=Требовать "^" перед словом для поиска по цветам предметов.
+config.jei.search.prefixRequiredForCreativeTabSearch=Требовать %% для названия вкладки творчества
+config.jei.search.prefixRequiredForCreativeTabSearch.comment=Требовать "%" перед словом для поиска по названиям вкладок творчества.
+config.jei.search.prefixRequiredForOreDictSearch=Требовать $ для Ore Dictionary
+config.jei.search.prefixRequiredForOreDictSearch.comment=Требовать "$" перед словом для поиска по именам Ore Dictionary.
+config.jei.search.prefixRequiredForTooltipSearch=Требовать # для поиска по подсказкам
+config.jei.search.prefixRequiredForTooltipSearch.comment=Требовать "#" перед словом для поиска по подсказкам.
+gui.jei.editMode.description.hide.mod.id=Ctrl-Shift-клик, чтобы скрыть по ModId.
+gui.jei.editMode.description.show.mod.id=Скрыто по ModId. Ctrl-Shift-клик, чтобы показать.
+jei.chat.error.command.too.long=JEI must be on the server to handle this Chat Command, it is too long for Minecraft to send.
+jei.tooltip.cheat.mode=Cheat Mode
+jei.tooltip.item.colors=Цвета: %s
+jei.tooltip.liquid.amount=%,d mB
+jei.tooltip.liquid.amount.with.capacity=%,d / %,d mB
+jei.tooltip.recipe.ore.dict=Подходит любой: %s
+jei.tooltip.shapeless.recipe=Бесформенный рецепт
+jei.tooltip.show.recipes=Показать рецепты
+jei.tooltip.transfer=Перенести предметы
+key.jei.focusSearch=Выбрать строку поиска
+key.jei.recipeBack=Показать предыдущую страницу рецептов

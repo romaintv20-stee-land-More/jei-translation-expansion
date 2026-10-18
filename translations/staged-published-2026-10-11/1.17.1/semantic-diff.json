@@ -1,0 +1,633 @@
+{
+  "added": {
+    "jei.key.category.edit.mode": "JEI (Edit Mode)",
+    "jei.tooltip.cheat.mode.how.to.disable.hover.config.button.hotkey": "%s here to toggle it.",
+    "key.jei.cheatOneItem2": "Cheat 1 item",
+    "key.jei.toggleCheatModeConfigButton": "Toggle Cheat Mode (when hovering over config button)",
+    "key.jei.toggleHideIngredient": "Hide an ingredient",
+    "key.jei.toggleWildcardHideIngredient": "Hide an ingredient using wildcard matching"
+  },
+  "changed_english_values": {
+    "gui.jei.editMode.description.hide": {
+      "from": "%s-click to hide",
+      "to": "%s to hide"
+    },
+    "gui.jei.editMode.description.hide.wild": {
+      "from": "%s-right-click to hide by wildcard",
+      "to": "%s to hide by wildcard"
+    }
+  },
+  "generation": "G24",
+  "locale_counts": {
+    "af_za": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "ar_sa": {
+      "english_fallback": 19,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 41,
+      "upstream_owned": 84
+    },
+    "ast_es": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "az_az": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "ba_ru": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "bar": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "be_by": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "bg_bg": {
+      "english_fallback": 12,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 41,
+      "upstream_owned": 91
+    },
+    "br_fr": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "bs_ba": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "ca_es": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "cs_cz": {
+      "english_fallback": 11,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 41,
+      "upstream_owned": 92
+    },
+    "cy_gb": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "da_dk": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "de_de": {
+      "english_fallback": 12,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 27,
+      "upstream_owned": 105
+    },
+    "el_gr": {
+      "english_fallback": 10,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 41,
+      "upstream_owned": 93
+    },
+    "eo_uy": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "es_es": {
+      "english_fallback": 11,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 41,
+      "upstream_owned": 92
+    },
+    "et_ee": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "eu_es": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "fa_ir": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "fi_fi": {
+      "english_fallback": 14,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 41,
+      "upstream_owned": 89
+    },
+    "fil_ph": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "fo_fo": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "fr_fr": {
+      "english_fallback": 7,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 24,
+      "upstream_owned": 113
+    },
+    "fur_it": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "fy_nl": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "ga_ie": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "gd_gb": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "gl_es": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "haw_us": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "he_il": {
+      "english_fallback": 11,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 41,
+      "upstream_owned": 92
+    },
+    "hi_in": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "hr_hr": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "hu_hu": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "hy_am": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "id_id": {
+      "english_fallback": 6,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 23,
+      "upstream_owned": 115
+    },
+    "ig_ng": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "is_is": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "it_it": {
+      "english_fallback": 5,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 23,
+      "upstream_owned": 116
+    },
+    "ja_jp": {
+      "english_fallback": 11,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 26,
+      "upstream_owned": 107
+    },
+    "ka_ge": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "kk_kz": {
+      "ownership": "upstream-complete",
+      "upstream_owned": 144
+    },
+    "kn_in": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "ko_kr": {
+      "english_fallback": 9,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 16,
+      "upstream_owned": 119
+    },
+    "ksh": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "kw_gb": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "la_la": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "lb_lu": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "li_li": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "lmo": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "lt_lt": {
+      "english_fallback": 12,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 41,
+      "upstream_owned": 91
+    },
+    "lv_lv": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "mk_mk": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "mn_mn": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "ms_my": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "mt_mt": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "nds_de": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "nl_nl": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "no_no": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "oc_fr": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "ovd": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "pl_pl": {
+      "english_fallback": 6,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 15,
+      "upstream_owned": 123
+    },
+    "pt_br": {
+      "english_fallback": 10,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 25,
+      "upstream_owned": 109
+    },
+    "ro_ro": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "ru_ru": {
+      "english_fallback": 7,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 23,
+      "upstream_owned": 114
+    },
+    "se_no": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "sk_sk": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "sl_si": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "so_so": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "sq_al": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "sr_sp": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "sv_se": {
+      "english_fallback": 7,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 17,
+      "upstream_owned": 120
+    },
+    "szl": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "ta_in": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "th_th": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "tl_ph": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "tr_tr": {
+      "english_fallback": 8,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 23,
+      "upstream_owned": 113
+    },
+    "tt_ru": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "uk_ua": {
+      "english_fallback": 11,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 39,
+      "upstream_owned": 94
+    },
+    "vec_it": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "vi_vn": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "yi_de": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "yo_ng": {
+      "changed_meaning_english_fallback": 2,
+      "english_fallback": 8,
+      "new_key_english_fallback": 6,
+      "ownership": "full",
+      "reused_unchanged": 136
+    },
+    "zh_cn": {
+      "english_fallback": 7,
+      "new_key_english_fallback": 5,
+      "ownership": "supplement",
+      "reused_unchanged": 23,
+      "upstream_owned": 114
+    }
+  },
+  "minecraft": "1.17.1",
+  "new_jei": "8.3.1.1002",
+  "note": "Staged sources ONLY. No JAR created, no runtime-tested claim. Old supplement-only translated keys absent from candidate files are not inferred.",
+  "old_jei": "8.3.0",
+  "policy": "Reuse only unchanged key+English meaning; upstream translations first; otherwise exact new English fallback pending review.",
+  "removed": {
+    "jei.tooltip.cheat.mode.how.to.disable.no.hotkey": "%s-click here to toggle it.",
+    "key.jei.ctrl": "CTRL",
+    "key.jei.ctrl.mac": "CMD"
+  },
+  "totals": {
+    "changed_meaning_english_fallback": 126,
+    "english_fallback": 710,
+    "new_key_english_fallback": 483,
+    "reused_unchanged": 9200,
+    "upstream_owned": 2330
+  },
+  "upstream_jar_sha256": "c63c24e0c20ec060ba9fabb1db465d42cee2b6227c78f3b724852d488c4255cd"
+}

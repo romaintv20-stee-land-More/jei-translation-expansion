@@ -1,0 +1,32 @@
+{
+  "minecraft": "1.13",
+  "generation": "G12",
+  "status": "compared_branch_head",
+  "source": "src/main/resources/assets/jei/lang/en_us.json",
+  "baseline_keys": 105,
+  "current_keys": 106,
+  "added": {
+    "key.jei.toggleEditMode": "Toggle Hide/Edit Mode"
+  },
+  "removed": {},
+  "changed_english_values": {
+    "config.jei.search.resourceIdSearchMode.comment": {
+      "previous": "Search mode for resources ids (prefix: &)",
+      "current": "Search mode for resources IDs (prefix: &)"
+    },
+    "description.jei.wooden.door.2": {
+      "previous": "Clicking on a door changes its state from open to closed and visa versa.",
+      "current": "Clicking on a door changes its state from open to closed and vice versa."
+    },
+    "gui.jei.editMode.description.hide": {
+      "previous": "%CTRL-Click to Hide",
+      "current": "%s-Click to Hide"
+    },
+    "gui.jei.editMode.description.hide.wild": {
+      "previous": "%CTRL-right-click to Hide by Wildcard",
+      "current": "%s-right-click to Hide by Wildcard"
+    }
+  },
+  "needs_translation_review": true,
+  "warning": "Source branch head is not necessarily a published JEI JAR or the endpoint of a maintained branch."
+}
