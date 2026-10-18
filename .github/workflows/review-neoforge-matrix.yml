@@ -1,0 +1,65 @@
+name: Build NeoForge 1.21.1-1.21.11 search and JEI translations (REVIEW ONLY)
+
+on:
+  push:
+    branches:
+      - feature/complete-all-52-jars-2026-10-18
+    paths:
+      - '.github/workflows/review-neoforge-matrix.yml'
+      - 'ci/review/neoforge-matrix/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 55
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - {mc: '1.21.1', neo: '21.1.116', jei: '19.57.0.451', source: 'mc1_21_1'}
+          - {mc: '1.21.4', neo: '21.4.136', jei: '20.0.0', source: 'neoforge_1_21_4'}
+          - {mc: '1.21.5', neo: '21.5.75', jei: '21.4.0', source: 'drafts/mc1_21_5'}
+          - {mc: '1.21.6', neo: '21.6.20-beta', jei: '22.0.0', source: 'drafts/mc1_21_6'}
+          - {mc: '1.21.7', neo: '21.7.15-beta', jei: '23.1.0', source: 'drafts/mc1_21_7'}
+          - {mc: '1.21.8', neo: '21.8.47', jei: '24.2.0', source: 'drafts/mc1_21_8'}
+          - {mc: '1.21.9', neo: '21.9.2-beta', jei: '26.1.1.24', source: 'drafts/mc1_21_9'}
+          - {mc: '1.21.10', neo: '21.10.64', jei: '26.2.0', source: 'drafts/mc1_21_10'}
+          - {mc: '1.21.11', neo: '21.11.45', jei: '27.44.0.105', source: 'drafts/mc1_21_11'}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.14.3'
+      - name: Compile NeoForge GUI search and embed latest JEI language files
+        run: >
+          gradle --no-daemon --console=plain -p ci/review/neoforge-matrix build
+          -Pmc_version=${{ matrix.mc }}
+          -Pneoforge_version=${{ matrix.neo }}
+          -Pjei_version=${{ matrix.jei }}
+          -Psearch_source=${{ matrix.source }}
+      - name: Confirm search bytecode and actual languages in valid JAR
+        shell: bash
+        run: |
+          set -euo pipefail
+          JAR=$(find ci/review/neoforge-matrix/build/libs -maxdepth 1 -name '*.jar' -type f | head -n1)
+          test -s "$JAR"
+          unzip -t "$JAR"
+          unzip -l "$JAR" | grep 'META-INF/neoforge.mods.toml'
+          unzip -l "$JAR" | grep 'LanguageSearch.*class'
+          unzip -l "$JAR" | grep 'assets/jei/lang/'
+          sha256sum "$JAR"
+      - name: Store review artifact ONLY on GitHub
+        uses: actions/upload-artifact@v4
+        with:
+          name: neoforge-search-review-mc-${{ matrix.mc }}-NEEDS-GAME-TESTS
+          path: ci/review/neoforge-matrix/build/libs/*.jar
+          retention-days: 30
+          if-no-files-found: error
